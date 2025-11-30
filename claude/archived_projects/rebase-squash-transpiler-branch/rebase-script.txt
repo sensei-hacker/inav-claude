@@ -1,0 +1,75 @@
+# Rebase script for programming_transpiler_js branch
+# Original: 37 commits → Target: 5 focused commits
+# Generated: 2025-11-25
+#
+# Usage: git rebase -i master (then replace with this script)
+
+# ============================================================================
+# Group 1: Initial transpiler implementation (8 commits → 1)
+# ============================================================================
+# Foundation: Monaco editor, Acorn parser, navigation, module structure
+pick b976af64 Cleanup old references that should have been `control_profile`
+squash 7600c043 plc javascript transpiler initital commit
+squash 906fb00b transpiler: add to navigation
+squash 5c204179 transpiler: move directory, commonjs module
+squash 2cfe68f7 transpiler: local Monaco editor
+squash d982ecef javascript programming, Acorn parser
+squash d4568061 javascript programming, fix loading LCs
+fixup c481da8e javascript programming: Remove some comments
+
+# ============================================================================
+# Group 2: Core transpiler features (16 commits → 1)
+# ============================================================================
+# API definitions, control flow (when→if), operators, timers, delays,
+# recursive booleans, on.arm, error handling, Math.abs, UI changes
+pick 44bab914 javascript programming: update api definitions
+squash 87dcb004 javascript programming: add several files
+squash d498c1f8 javascript programming: chnage when() to if()
+squash 67c18ae5 javascript programming: more when() to if()
+squash 72608fdd javascript programming: several changes
+squash d02ed074 JavaScript programming: Temporarily disable gbar optimization
+squash 90a9b4f3 javascript programming: timer, delay
+squash 252343c5 javascript programming: improve recursive booleans
+squash 8df1a85a javascriupt programming: several updates
+squash 1c67a6b1 javascript programming: on.arm
+squash 0459e780 javascript programming: update docs
+squash 53a6d486 javascript programming: added API parser script and new docs
+squash fdad8b16 javascript programming: handle nested expressions better / Math.abs
+squash 8d4241c9 javascript programming: better reporting of errors and warnings
+squash 2f25fd18 javascript programming: add error handler module
+squash 7eeb93a2 programming UI change 01
+
+# ============================================================================
+# Group 3: ESM module conversion (7 commits → 1)
+# ============================================================================
+# Convert all CommonJS (require/module.exports) to ESM (import/export)
+# Includes Vite compatibility fixes
+pick 8776626c transpiler: convert exports from CommonJS to ESM
+squash 821316e9 transpiler: convert imports from CommonJS to ESM
+squash 4a61d44f tabs: convert require() to ESM imports
+squash 7afb4783 transpiler: correct import paths in javascript_programming.js
+squash cca2b19d transpiler: fix acorn import to use namespace import
+squash 775dc0a5 transpiler: remove module.exports from javascript_programming.js
+squash 31ecca47 transpiler: convert monaco_loader.js to ESM and fix Vite compatibility
+
+# ============================================================================
+# Group 4: JavaScript variables support (4 commits → 1)
+# ============================================================================
+# Implement let/var variables with proper scoping via VariableHandler
+pick a9d7cb73 transpiler: add VariableHandler foundation for let/var support
+squash 30d7a3e7 transpiler: implement let/var variable support (Phase 2)
+squash a7eab9ef transpiler: fix VariableHandler state reuse across multiple transpile calls
+squash a4b92ee6 transpiler: add polish features and documentation for variables
+
+# ============================================================================
+# Group 5: Auto-insert INAV import (1 commit → 1)
+# ============================================================================
+# Automatically add missing INAV API import
+pick e2b16280 transpiler: AUtmatically add import inav if it's missing
+
+# ============================================================================
+# Group 6: DROPPED - Belongs on master branch (1 commit → 0)
+# ============================================================================
+# This commit fixes a bug in programming.html unrelated to transpiler work
+# It was assigned as a separate task to be fixed on master branch
+drop c8d1e78b programming.html: activator column shown twice

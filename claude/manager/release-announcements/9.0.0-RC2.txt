@@ -1,0 +1,21 @@
+INAV 9.0.0-RC2 is here!
+We're excited to announce the first release candidate of INAV 9.0! This release brings major improvements including enhanced position estimation, fixed-wing altitude controller options, temperature compensation for sensors, VTOL tilt-rotor enhancements, and 30+ new flight controller targets.
+A massive thank you to everyone who made this possible:
+
+44 code contributors to INAV firmware
+14 contributors to INAV Configurator
+Our dedicated testers like Jetrell who put countless hours into validation
+The community members providing tech support on Discord and Facebook
+Everyone who reported bugs, wrote documentation, and helped fellow pilots
+
+This is truly a community effort. ❤️
+Get it here:
+Firmware: https://github.com/iNavFlight/inav/releases/tag/9.0.0-RC2
+Configurator: https://github.com/iNavFlight/inav-configurator/releases/tag/9.0.0-RC1
+
+Want to contribute? INAV 9.0.0 is still open for contributions over the next few weeks!
+https://github.com/iNavFlight/inav/blob/master/docs/development/Contributing.md
+
+(RC1 was unpublished for technical reasons)
+#INAV #FPV #Drones #OpenSource #FlightController
+

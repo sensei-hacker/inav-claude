@@ -1,0 +1,53 @@
+# Ignore contents of inav, inav-configurator, and uNAVlib directories
+# (Users should clone these separately)
+inav/*
+!inav/.gitkeep
+inav-configurator/*
+!inav-configurator/.gitkeep
+uNAVlib/*
+!uNAVlib/.gitkeep
+
+# Ignore inavwiki (documentation wiki)
+inavwiki/
+
+# Email/message directories (private communications)
+**/inbox/*
+**/outbox/*
+**/sent/*
+**/inbox-archive/*
+**/completed/*
+
+# Downloads (binary firmware files)
+**/downloads/*
+
+# Logs
+*.log
+MSPy.log
+
+# Python
+*.pyc
+__pycache__/
+
+# Work in progress / temporary files
+work_in_progress/
+work-in-progress/
+**/work_in_progress/
+**/work-in-progress/
+markdown2mdx/
+
+# Session-specific investigation files
+developer/distance_to_home_zero_conditions.md
+developer/gps_test_investigation_notes.md
+developer/script_versions.txt
+developer/extract_json.py
+
+# Keep directory structure but ignore content
+!**/inbox/.gitkeep
+!**/outbox/.gitkeep
+!**/sent/.gitkeep
+!**/inbox-archive/.gitkeep
+!**/completed/.gitkeep
+!**/downloads/.gitkeep
+
+# Local-only files
+claude.local.md

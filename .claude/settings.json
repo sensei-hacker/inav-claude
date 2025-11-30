@@ -1,0 +1,65 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(~/Documents/planes/inavflight/**)",
+      "Read(./**)",
+      "Bash(cat:*)",
+      "Bash(grep:*)",
+      "Bash(rg:*)",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(wc:*)",
+      "Bash(file:*)",
+      "Bash(stat:*)",
+      "Bash(tree:*)",
+      "Bash(test:*)",
+      "Bash(command -v:*)",
+      "Bash(diff:*)",
+      "Bash(git fetch:*)",
+      "Bash(git checkout:*)",
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+      "Bash(git status)",
+      "Bash(git diff:*)",
+      "Bash(git stash:*)",
+      "Bash(git cherry-pick:*)",
+      "Bash(git submodule add:*)",
+      "Bash(gh pr checkout:*)",
+      "Bash(gh pr list:*)",
+      "Bash(gh pr view:*)",
+      "Bash(pgrep:*)",
+      "Bash(pkill:*)",
+      "Bash(ss:*)",
+      "Bash(nm:*)",
+      "Bash(node:*)",
+      "Bash(python3:*)",
+      "Bash(npm start)",
+      "Bash(npm test:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm run:*)",
+      "Bash(npx jest:*)",
+      "Bash(timeout 10 npm start:*)",
+      "Edit(claude/**)",
+      "Bash(mv:claude/*)",
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:www.betaflight.com)"
+    ],
+    "deny": [],
+    "ask": []
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/session-start.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
