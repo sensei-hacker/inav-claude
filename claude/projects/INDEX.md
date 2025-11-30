@@ -353,9 +353,9 @@ Investigate MCP servers for automated testing of INAV Configurator Electron app.
 Verify the GPS recovery fix is complete and correct, answer reviewer's questions about why positions go to zero (not freeze), and refactor for code clarity/obviousness.
 
 **Why Backburner:**
-- PR already merged and working
-- Code review/clarity work, not urgent
-- Can be addressed when time permits
+- PR already merged, awaiting user feedback
+- Need more information from users before proceeding
+- Code review/clarity work can wait for user reports
 
 **Location:** `claude/projects/verify-gps-fix-refactor/`
 

@@ -77,6 +77,6 @@ Medium priority:
 ## Backburner Rationale
 
 Put on hold because:
-- The PR is already merged and the fix is working correctly
-- This is code review/clarity work, not an urgent bug
-- Can be addressed when time permits or if reviewer follows up
+- The PR is already merged, but we're awaiting more information from users
+- Need user feedback to verify the fix is complete
+- Code review/clarity work can wait until we have more data
