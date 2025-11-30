@@ -95,24 +95,6 @@ Decompiler generates `// Condition can be read by logicCondition[N]` comments wi
 
 ---
 
-### 🚧 verify-gps-fix-refactor
-
-**Status:** IN PROGRESS
-**Type:** Code Review / Refactoring
-**Priority:** Medium
-**Assignment:** ✉️ Assigned
-**Created:** 2025-11-29
-**Assignee:** Developer
-**Assignment Email:** `claude/manager/sent/2025-11-29-1030-task-verify-gps-fix-refactor.md`
-**Related PR:** [#11144](https://github.com/iNavFlight/inav/pull/11144) (MERGED)
-**Related Issue:** [#11049](https://github.com/iNavFlight/inav/issues/11049)
-
-Verify the GPS recovery fix is complete and correct, answer reviewer's questions about why positions go to zero (not freeze), and refactor for code clarity/obviousness.
-
-**Location:** `claude/projects/verify-gps-fix-refactor/`
-
----
-
 ### ✅ transpiler-clean-copy
 
 **Status:** COMPLETED
@@ -353,6 +335,29 @@ Investigate MCP servers for automated testing of INAV Configurator Electron app.
 - Transpiler work takes priority
 
 **Location:** `claude/projects/investigate-automated-testing-mcp/`
+
+---
+
+### ⏸️ verify-gps-fix-refactor
+
+**Status:** BACKBURNER
+**Type:** Code Review / Refactoring
+**Priority:** Medium
+**Assignment:** ✉️ Assigned
+**Created:** 2025-11-29
+**Assignee:** Developer
+**Assignment Email:** `claude/manager/sent/2025-11-29-1030-task-verify-gps-fix-refactor.md`
+**Related PR:** [#11144](https://github.com/iNavFlight/inav/pull/11144) (MERGED)
+**Related Issue:** [#11049](https://github.com/iNavFlight/inav/issues/11049)
+
+Verify the GPS recovery fix is complete and correct, answer reviewer's questions about why positions go to zero (not freeze), and refactor for code clarity/obviousness.
+
+**Why Backburner:**
+- PR already merged and working
+- Code review/clarity work, not urgent
+- Can be addressed when time permits
+
+**Location:** `claude/projects/verify-gps-fix-refactor/`
 
 ---
 
@@ -1140,8 +1145,8 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 ## Project Summary Statistics
 
 - **Total Projects:** 47
-- **Active:** 6
-- **Backburner:** 2
+- **Active:** 5
+- **Backburner:** 3
 - **Completed (Archived):** 36
 - **Cancelled:** 3
 
@@ -1151,15 +1156,16 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 
 ### By Status
 
-- ⏸️ **BACKBURNER:** feature-add-function-syntax-support, investigate-automated-testing-mcp
-- 🚧 **IN PROGRESS:** create-inav-claude-repo, fix-search-tab-tabnames-error, fix-transpiler-empty-output, fix-decompiler-condition-numbers, verify-gps-fix-refactor
+- ⏸️ **BACKBURNER:** feature-add-function-syntax-support, investigate-automated-testing-mcp, verify-gps-fix-refactor
+- 🚧 **IN PROGRESS:** create-inav-claude-repo, fix-search-tab-tabnames-error, fix-transpiler-empty-output, fix-decompiler-condition-numbers
 - ✅ **RECENTLY COMPLETED:** review-pr2433-bot-suggestions, transpiler-clean-copy (PR #2439), consolidate-role-directories, docs-javascript-programming (PR #11143), review-pr2439-bot-suggestions, investigate-pr2434-build-failures (PR #2434 MERGED), sitl-msp-arming, fix-gps-recovery-issue-11049 (PR #11144)
 - ✅ **COMPLETED (archived):** github-issues-review, setup-code-indexes-for-claude, implement-configurator-test-suite, fix-preexisting-tab-errors, fix-require-error-onboard-logging, preserve-variable-names-decompiler, investigate-dma-usage-cleanup, refactor-transpiler-core-files, move-transpiler-docs-to-inav-repo, rebase-squash-transpiler-branch, fix-duplicate-active-when-column, feature-add-parser-tab-icon, feature-auto-insert-inav-import, fix-programming-tab-save-lockup, fix-stm32-dfu-reboot-protocol, feature-javascript-variables, merge-branches-to-transpiler-base, refactor-commonjs-to-esm, improve-transpiler-error-reporting, fix-transpiler-api-mismatches, fix-transpiler-documentation
 - ❌ **CANCELLED:** implement-pmw3901-opflow-driver, optimize-tab-msp-communication, fix-preload-foreach-error
 
 ### By Assignment
 
-- ✉️ **ASSIGNED (active):** create-inav-claude-repo, fix-search-tab-tabnames-error, fix-transpiler-empty-output, fix-decompiler-condition-numbers, verify-gps-fix-refactor
+- ✉️ **ASSIGNED (active):** create-inav-claude-repo, fix-search-tab-tabnames-error, fix-transpiler-empty-output, fix-decompiler-condition-numbers
+- ✉️ **ASSIGNED (backburner):** verify-gps-fix-refactor
 - 🔧 **DEVELOPER-INITIATED (completed):** sitl-msp-arming
 - ✉️ **ASSIGNED (completed):** github-issues-review, setup-code-indexes-for-claude, implement-configurator-test-suite, fix-preexisting-tab-errors, fix-require-error-onboard-logging, preserve-variable-names-decompiler, investigate-dma-usage-cleanup, refactor-transpiler-core-files, move-transpiler-docs-to-inav-repo, rebase-squash-transpiler-branch, fix-duplicate-active-when-column, feature-auto-insert-inav-import, fix-programming-tab-save-lockup, fix-stm32-dfu-reboot-protocol, feature-javascript-variables, merge-branches-to-transpiler-base, refactor-commonjs-to-esm, improve-transpiler-error-reporting, fix-transpiler-api-mismatches, fix-transpiler-documentation
 - ✉️ **ASSIGNED (cancelled):** optimize-tab-msp-communication, fix-preload-foreach-error
@@ -1169,8 +1175,9 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 ### By Priority
 
 - **HIGH (active):** fix-search-tab-tabnames-error, fix-transpiler-empty-output
-- **MEDIUM (active):** fix-decompiler-condition-numbers, verify-gps-fix-refactor
+- **MEDIUM (active):** fix-decompiler-condition-numbers
 - **MEDIUM-HIGH (backburner):** feature-add-function-syntax-support
+- **MEDIUM (backburner):** verify-gps-fix-refactor
 - **LOW (backburner):** investigate-automated-testing-mcp
 - **HIGH (completed):** fix-require-error-onboard-logging, preserve-variable-names-decompiler, move-transpiler-docs-to-inav-repo, merge-branches-to-transpiler-base, fix-transpiler-documentation
 - **MEDIUM (completed):** github-issues-review
@@ -1185,8 +1192,8 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 
 - **Repository Setup / Documentation (Active):** create-inav-claude-repo
 - **Bug Fix (Active):** fix-search-tab-tabnames-error, fix-transpiler-empty-output, fix-decompiler-condition-numbers
-- **Code Review / Refactoring (Active):** verify-gps-fix-refactor
 - **Feature (Backburner):** feature-add-function-syntax-support
+- **Code Review / Refactoring (Backburner):** verify-gps-fix-refactor
 - **Research (Backburner):** investigate-automated-testing-mcp
 - **Research / Triage (Completed):** github-issues-review
 - **Development Tooling / Infrastructure (Completed):** setup-code-indexes-for-claude
