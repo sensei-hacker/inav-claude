@@ -6,6 +6,7 @@ inav-configurator/*
 !inav-configurator/.gitkeep
 uNAVlib/*
 !uNAVlib/.gitkeep
+claude/projects/*
 
 # Ignore inavwiki (documentation wiki)
 inavwiki/
