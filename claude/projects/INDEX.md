@@ -2,7 +2,7 @@
 
 This file tracks all active and completed projects in the INAV codebase.
 
-**Last Updated:** 2025-11-30 13:25
+**Last Updated:** 2025-11-30 14:15
 
 ---
 
@@ -27,22 +27,6 @@ This file tracks all active and completed projects in the INAV codebase.
 
 ## Active Projects
 
-### 🚧 create-inav-claude-repo
-
-**Status:** IN PROGRESS
-**Type:** Repository Setup / Documentation
-**Priority:** Medium
-**Assignment:** ✉️ Assigned
-**Created:** 2025-11-30
-**Assignee:** Developer
-**Assignment Email:** `claude/manager/sent/2025-11-30-0300-task-create-inav-claude-repo.md`
-
-Create public repository `inav-claude` under github.com/sensei-hacker with Claude workflow infrastructure files (skills, role guides, project templates, test tools). Excludes email content, downloads, and logs. Must sanitize paths and check for secrets before committing.
-
-**Location:** N/A (repository creation task)
-
----
-
 ### 🚧 fix-search-tab-tabnames-error
 
 **Status:** IN PROGRESS
@@ -59,42 +43,6 @@ Search tab throws `ReferenceError: tabNames is not defined` at line 9. Missing i
 
 ---
 
-### 🚧 fix-transpiler-empty-output
-
-**Status:** IN PROGRESS
-**Type:** Bug Fix
-**Priority:** High
-**Assignment:** ✉️ Assigned
-**Created:** 2025-11-29
-**Assignee:** Developer
-**Assignment Email:** `claude/manager/sent/2025-11-29-1000-task-fix-transpiler-empty-output.md`
-**Branch:** transpiler_clean_copy
-**Related PR:** [#2439](https://github.com/iNavFlight/inav-configurator/pull/2439)
-
-JavaScript transpiler produces empty output for valid if-statement chains with chained && conditions. Decompiler works correctly but transpiling the output back produces nothing.
-
-**Location:** `claude/projects/fix-transpiler-empty-output/`
-
----
-
-### 🚧 fix-decompiler-condition-numbers
-
-**Status:** IN PROGRESS
-**Type:** Bug Fix
-**Priority:** Medium
-**Assignment:** ✉️ Assigned
-**Created:** 2025-11-29
-**Assignee:** Developer
-**Assignment Email:** `claude/manager/sent/2025-11-29-1045-task-fix-decompiler-condition-numbers.md`
-**Branch:** transpiler_clean_copy
-**Related PR:** [#2439](https://github.com/iNavFlight/inav-configurator/pull/2439)
-
-Decompiler generates `// Condition can be read by logicCondition[N]` comments with wrong condition numbers. Shows first condition in chain instead of the terminal/last condition.
-
-**Location:** `claude/projects/fix-decompiler-condition-numbers/`
-
----
-
 ### 🚧 investigate-boolean-struct-bitfields
 
 **Status:** IN PROGRESS
@@ -108,6 +56,80 @@ Decompiler generates `// Condition can be read by logicCondition[N]` comments wi
 Investigate structs in INAV firmware that contain members used only as boolean conditions. Analyze whether fields use `:1` bit fields or larger types, and determine if converting to bit fields would change EEPROM binary format. Research only - no code changes or branches until findings are documented.
 
 **Location:** `claude/projects/investigate-boolean-struct-bitfields/`
+
+---
+
+### ✅ fix-transpiler-empty-output
+
+**Status:** COMPLETED
+**Type:** Bug Fix
+**Priority:** High
+**Assignment:** ✉️ Assigned
+**Created:** 2025-11-29
+**Completed:** 2025-11-30
+**Assignee:** Developer
+**Assignment Email:** `claude/manager/sent/2025-11-29-1000-task-fix-transpiler-empty-output.md`
+**Branch:** transpiler_clean_copy
+**PR:** [#2439](https://github.com/iNavFlight/inav-configurator/pull/2439)
+
+Fixed JavaScript transpiler producing empty output for valid if-statement chains with chained && conditions. Decompiler works correctly but transpiling the output back produces nothing.
+
+**Location:** `claude/archived_projects/fix-transpiler-empty-output/`
+
+---
+
+### ✅ fix-decompiler-condition-numbers
+
+**Status:** COMPLETED
+**Type:** Bug Fix
+**Priority:** Medium
+**Assignment:** ✉️ Assigned
+**Created:** 2025-11-29
+**Completed:** 2025-11-30
+**Assignee:** Developer
+**Assignment Email:** `claude/manager/sent/2025-11-29-1045-task-fix-decompiler-condition-numbers.md`
+**Branch:** transpiler_clean_copy
+**PR:** [#2439](https://github.com/iNavFlight/inav-configurator/pull/2439)
+
+Fixed decompiler generating `// Condition can be read by logicCondition[N]` comments with wrong condition numbers. Now shows the terminal/last condition instead of first condition in chain.
+
+**Location:** `claude/archived_projects/fix-decompiler-condition-numbers/`
+
+---
+
+### ✅ create-inav-claude-repo
+
+**Status:** COMPLETED
+**Type:** Repository Setup / Documentation
+**Priority:** Medium
+**Assignment:** ✉️ Assigned
+**Created:** 2025-11-30
+**Completed:** 2025-11-30
+**Assignee:** Developer
+**Assignment Email:** `claude/manager/sent/2025-11-30-0300-task-create-inav-claude-repo.md`
+**Completion Report:** `claude/manager/inbox-archive/2025-11-30-1045-completed-create-inav-claude-repo.md`
+**Repository:** https://github.com/sensei-hacker/inav-claude
+
+Created public repository `inav-claude` under github.com/sensei-hacker with Claude workflow infrastructure files (skills, role guides, project templates, test tools). Path sanitization and security review completed. 152 files published.
+
+**Location:** N/A (repository creation task)
+
+---
+
+### ✅ investigate-w25q128-support
+
+**Status:** COMPLETED
+**Type:** Research / Investigation
+**Priority:** Low
+**Assignment:** Ad-hoc (not tracked)
+**Created:** 2025-11-30
+**Completed:** 2025-11-30
+**Assignee:** Developer
+**Completion Report:** `claude/manager/inbox-archive/2025-11-30-1430-completed-investigate-w25q128-support.md`
+
+Investigated W25Q128 SPI NOR flash chip support in INAV firmware. Confirmed W25Q128 is fully supported in both 8.0.1 and master branches with two JEDEC ID variants (0xEF4018, 0xEF7018). Driver supports 18 different flash chips up to 32MB. Confirmed working on SKYSTARS V2 target.
+
+**Location:** N/A (investigation task, no code changes)
 
 ---
 
@@ -1161,9 +1183,9 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 ## Project Summary Statistics
 
 - **Total Projects:** 48
-- **Active:** 6
+- **Active:** 2
 - **Backburner:** 3
-- **Completed (Archived):** 36
+- **Completed (Archived):** 40
 - **Cancelled:** 3
 
 ---
@@ -1173,30 +1195,32 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 ### By Status
 
 - ⏸️ **BACKBURNER:** feature-add-function-syntax-support, investigate-automated-testing-mcp, verify-gps-fix-refactor
-- 🚧 **IN PROGRESS:** create-inav-claude-repo, fix-search-tab-tabnames-error, fix-transpiler-empty-output, fix-decompiler-condition-numbers, investigate-boolean-struct-bitfields
-- ✅ **RECENTLY COMPLETED:** review-pr2433-bot-suggestions, transpiler-clean-copy (PR #2439), consolidate-role-directories, docs-javascript-programming (PR #11143), review-pr2439-bot-suggestions, investigate-pr2434-build-failures (PR #2434 MERGED), sitl-msp-arming, fix-gps-recovery-issue-11049 (PR #11144)
+- 🚧 **IN PROGRESS:** fix-search-tab-tabnames-error, investigate-boolean-struct-bitfields
+- ✅ **RECENTLY COMPLETED:** fix-transpiler-empty-output (PR #2439), fix-decompiler-condition-numbers (PR #2439), create-inav-claude-repo, investigate-w25q128-support, review-pr2433-bot-suggestions, transpiler-clean-copy (PR #2439), consolidate-role-directories, docs-javascript-programming (PR #11143)
 - ✅ **COMPLETED (archived):** github-issues-review, setup-code-indexes-for-claude, implement-configurator-test-suite, fix-preexisting-tab-errors, fix-require-error-onboard-logging, preserve-variable-names-decompiler, investigate-dma-usage-cleanup, refactor-transpiler-core-files, move-transpiler-docs-to-inav-repo, rebase-squash-transpiler-branch, fix-duplicate-active-when-column, feature-add-parser-tab-icon, feature-auto-insert-inav-import, fix-programming-tab-save-lockup, fix-stm32-dfu-reboot-protocol, feature-javascript-variables, merge-branches-to-transpiler-base, refactor-commonjs-to-esm, improve-transpiler-error-reporting, fix-transpiler-api-mismatches, fix-transpiler-documentation
 - ❌ **CANCELLED:** implement-pmw3901-opflow-driver, optimize-tab-msp-communication, fix-preload-foreach-error
 
 ### By Assignment
 
-- ✉️ **ASSIGNED (active):** create-inav-claude-repo, fix-search-tab-tabnames-error, fix-transpiler-empty-output, fix-decompiler-condition-numbers, investigate-boolean-struct-bitfields
+- ✉️ **ASSIGNED (active):** fix-search-tab-tabnames-error, investigate-boolean-struct-bitfields
 - ✉️ **ASSIGNED (backburner):** verify-gps-fix-refactor
 - 🔧 **DEVELOPER-INITIATED (completed):** sitl-msp-arming
-- ✉️ **ASSIGNED (completed):** github-issues-review, setup-code-indexes-for-claude, implement-configurator-test-suite, fix-preexisting-tab-errors, fix-require-error-onboard-logging, preserve-variable-names-decompiler, investigate-dma-usage-cleanup, refactor-transpiler-core-files, move-transpiler-docs-to-inav-repo, rebase-squash-transpiler-branch, fix-duplicate-active-when-column, feature-auto-insert-inav-import, fix-programming-tab-save-lockup, fix-stm32-dfu-reboot-protocol, feature-javascript-variables, merge-branches-to-transpiler-base, refactor-commonjs-to-esm, improve-transpiler-error-reporting, fix-transpiler-api-mismatches, fix-transpiler-documentation
+- ✉️ **ASSIGNED (completed):** fix-transpiler-empty-output, fix-decompiler-condition-numbers, create-inav-claude-repo, github-issues-review, setup-code-indexes-for-claude, implement-configurator-test-suite, fix-preexisting-tab-errors, fix-require-error-onboard-logging, preserve-variable-names-decompiler, investigate-dma-usage-cleanup, refactor-transpiler-core-files, move-transpiler-docs-to-inav-repo, rebase-squash-transpiler-branch, fix-duplicate-active-when-column, feature-auto-insert-inav-import, fix-programming-tab-save-lockup, fix-stm32-dfu-reboot-protocol, feature-javascript-variables, merge-branches-to-transpiler-base, refactor-commonjs-to-esm, improve-transpiler-error-reporting, fix-transpiler-api-mismatches, fix-transpiler-documentation
+- ⚡ **AD-HOC (completed):** investigate-w25q128-support
 - ✉️ **ASSIGNED (cancelled):** optimize-tab-msp-communication, fix-preload-foreach-error
 - 👤 **EXTERNAL (completed):** feature-add-parser-tab-icon
 - 📝 **PLANNED:** feature-add-function-syntax-support, investigate-automated-testing-mcp
 
 ### By Priority
 
-- **HIGH (active):** fix-search-tab-tabnames-error, fix-transpiler-empty-output
-- **MEDIUM (active):** create-inav-claude-repo, fix-decompiler-condition-numbers, investigate-boolean-struct-bitfields
+- **HIGH (active):** fix-search-tab-tabnames-error
+- **MEDIUM (active):** investigate-boolean-struct-bitfields
 - **MEDIUM-HIGH (backburner):** feature-add-function-syntax-support
 - **MEDIUM (backburner):** verify-gps-fix-refactor
 - **LOW (backburner):** investigate-automated-testing-mcp
-- **HIGH (completed):** fix-require-error-onboard-logging, preserve-variable-names-decompiler, move-transpiler-docs-to-inav-repo, merge-branches-to-transpiler-base, fix-transpiler-documentation
-- **MEDIUM (completed):** github-issues-review
+- **HIGH (completed):** fix-transpiler-empty-output, fix-require-error-onboard-logging, preserve-variable-names-decompiler, move-transpiler-docs-to-inav-repo, merge-branches-to-transpiler-base, fix-transpiler-documentation
+- **MEDIUM (completed):** fix-decompiler-condition-numbers, create-inav-claude-repo, github-issues-review
+- **LOW (completed):** investigate-w25q128-support
 - **MEDIUM-HIGH (completed):** refactor-transpiler-core-files, fix-programming-tab-save-lockup
 - **MEDIUM (completed):** setup-code-indexes-for-claude, implement-configurator-test-suite, investigate-dma-usage-cleanup, rebase-squash-transpiler-branch, refactor-commonjs-to-esm, improve-transpiler-error-reporting, fix-stm32-dfu-reboot-protocol, feature-javascript-variables
 - **LOW (completed):** fix-preexisting-tab-errors, fix-duplicate-active-when-column, feature-add-parser-tab-icon, feature-auto-insert-inav-import
@@ -1206,12 +1230,14 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 
 ### By Type
 
-- **Repository Setup / Documentation (Active):** create-inav-claude-repo
-- **Bug Fix (Active):** fix-search-tab-tabnames-error, fix-transpiler-empty-output, fix-decompiler-condition-numbers
+- **Bug Fix (Active):** fix-search-tab-tabnames-error
 - **Research / Memory Optimization (Active):** investigate-boolean-struct-bitfields
 - **Feature (Backburner):** feature-add-function-syntax-support
 - **Code Review / Refactoring (Backburner):** verify-gps-fix-refactor
 - **Research (Backburner):** investigate-automated-testing-mcp
+- **Bug Fix (Completed):** fix-transpiler-empty-output, fix-decompiler-condition-numbers, fix-require-error-onboard-logging, fix-duplicate-active-when-column, fix-programming-tab-save-lockup, fix-transpiler-api-mismatches, fix-stm32-dfu-reboot-protocol
+- **Repository Setup / Documentation (Completed):** create-inav-claude-repo
+- **Research / Investigation (Completed):** investigate-w25q128-support
 - **Research / Triage (Completed):** github-issues-review
 - **Development Tooling / Infrastructure (Completed):** setup-code-indexes-for-claude
 - **Infrastructure / Testing (Completed):** implement-configurator-test-suite
@@ -1219,7 +1245,6 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 - **Refactoring (Completed):** refactor-transpiler-core-files, refactor-commonjs-to-esm
 - **Documentation (Completed):** move-transpiler-docs-to-inav-repo, fix-transpiler-documentation, improve-transpiler-error-reporting
 - **Git Operations (Completed):** rebase-squash-transpiler-branch, merge-branches-to-transpiler-base
-- **Bug Fix (Completed):** fix-require-error-onboard-logging, fix-duplicate-active-when-column, fix-programming-tab-save-lockup, fix-transpiler-api-mismatches, fix-stm32-dfu-reboot-protocol
 - **Bug Fix / Technical Debt (Completed):** fix-preexisting-tab-errors
 - **Feature (Completed):** preserve-variable-names-decompiler, feature-auto-insert-inav-import, feature-javascript-variables
 - **UI Enhancement (Completed):** feature-add-parser-tab-icon
