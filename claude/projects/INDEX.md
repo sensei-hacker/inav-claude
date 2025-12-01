@@ -2,7 +2,7 @@
 
 This file tracks all active and completed projects in the INAV codebase.
 
-**Last Updated:** 2025-12-01 17:30
+**Last Updated:** 2025-12-01 17:35
 
 ---
 
@@ -271,6 +271,44 @@ Research the CORS (Cross-Origin Resource Sharing) policy issue affecting firmwar
 **Expected Time:** 7-10 hours
 
 **Location:** `claude/projects/configurator-web-cors-research/`
+
+---
+
+### 📋 investigate-sitl-wasm-compilation
+
+**Status:** TODO
+**Type:** Research / Investigation
+**Priority:** MEDIUM
+**Assignment:** ✉️ Assigned
+**Created:** 2025-12-01
+**Assignee:** Developer
+**Assignment Email:** `claude/manager/sent/2025-12-01-1735-investigate-sitl-wasm.md`
+
+Investigate the feasibility of compiling INAV's SITL (Software In The Loop) target for WebAssembly (wasm) to enable browser-based flight simulation.
+
+**Research Questions:**
+- Can SITL be compiled with Emscripten (LLVM-to-wasm compiler)?
+- What dependencies need wasm equivalents?
+- How would networking work (MSP over WebSockets)?
+- What is the expected effort to implement?
+- Is it worth doing?
+
+**Key Tasks:**
+- Analyze SITL architecture and build system
+- Research Emscripten/WebAssembly capabilities
+- Review prior art (Betaflight, ArduPilot, etc.)
+- Create compatibility matrix (native APIs → wasm APIs)
+- Provide GO/MAYBE/NO-GO recommendation with effort estimate
+
+**Potential Benefits:**
+- Browser-based simulation (no installation)
+- Web configurator integration
+- Educational demos
+- Lower barrier for contributors
+
+**Expected Time:** 7-10 hours
+
+**Location:** `claude/projects/investigate-sitl-wasm-compilation/`
 
 ---
 
@@ -1505,7 +1543,7 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 ### By Status
 
 - 🚧 **IN PROGRESS:** investigate-boolean-struct-bitfields
-- 📋 **TODO:** configurator-web-cors-research (MEDIUM), privacylrs-fix-finding4-secure-logging (HIGH), privacylrs-fix-finding5-chacha-benchmark (MEDIUM), privacylrs-fix-finding7-forward-secrecy (MEDIUM), privacylrs-fix-finding8-entropy-sources (MEDIUM)
+- 📋 **TODO:** configurator-web-cors-research (MEDIUM), investigate-sitl-wasm-compilation (MEDIUM), privacylrs-fix-finding4-secure-logging (HIGH), privacylrs-fix-finding5-chacha-benchmark (MEDIUM), privacylrs-fix-finding7-forward-secrecy (MEDIUM), privacylrs-fix-finding8-entropy-sources (MEDIUM)
 - ⏸️ **BACKBURNER:** feature-add-function-syntax-support, investigate-automated-testing-mcp, verify-gps-fix-refactor
 - ✅ **RECENTLY COMPLETED:** privacylrs-complete-tests-and-fix-finding1 (CRITICAL Finding #1 FIXED - 25h, zero overhead, 711 packet loss tolerance), create-privacylrs-test-runner, security-analysis-privacylrs-initial, onboard-privacylrs-repo, fix-search-tab-tabnames-error (PR #2440), fix-transpiler-empty-output (PR #2439), fix-decompiler-condition-numbers (PR #2439)
 - ✅ **COMPLETED (archived):** github-issues-review, setup-code-indexes-for-claude, implement-configurator-test-suite, fix-preexisting-tab-errors, fix-require-error-onboard-logging, preserve-variable-names-decompiler, investigate-dma-usage-cleanup, refactor-transpiler-core-files, move-transpiler-docs-to-inav-repo, rebase-squash-transpiler-branch, fix-duplicate-active-when-column, feature-add-parser-tab-icon, feature-auto-insert-inav-import, fix-programming-tab-save-lockup, fix-stm32-dfu-reboot-protocol, feature-javascript-variables, merge-branches-to-transpiler-base, refactor-commonjs-to-esm, improve-transpiler-error-reporting, fix-transpiler-api-mismatches, fix-transpiler-documentation
@@ -1513,7 +1551,7 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 
 ### By Assignment
 
-- ✉️ **ASSIGNED (active):** investigate-boolean-struct-bitfields, configurator-web-cors-research
+- ✉️ **ASSIGNED (active):** investigate-boolean-struct-bitfields, configurator-web-cors-research, investigate-sitl-wasm-compilation
 - 📝 **PLANNED (todo):** privacylrs-fix-finding4-secure-logging, privacylrs-fix-finding5-chacha-benchmark, privacylrs-fix-finding7-forward-secrecy, privacylrs-fix-finding8-entropy-sources
 - ✉️ **ASSIGNED (completed):** privacylrs-complete-tests-and-fix-finding1
 - ✉️ **ASSIGNED (backburner):** verify-gps-fix-refactor
@@ -1528,7 +1566,7 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 ### By Priority
 
 - **HIGH (todo):** privacylrs-fix-finding4-secure-logging
-- **MEDIUM (todo):** configurator-web-cors-research, privacylrs-fix-finding5-chacha-benchmark, privacylrs-fix-finding7-forward-secrecy, privacylrs-fix-finding8-entropy-sources
+- **MEDIUM (todo):** configurator-web-cors-research, investigate-sitl-wasm-compilation, privacylrs-fix-finding5-chacha-benchmark, privacylrs-fix-finding7-forward-secrecy, privacylrs-fix-finding8-entropy-sources
 - **MEDIUM (active):** investigate-boolean-struct-bitfields
 - **MEDIUM-HIGH (backburner):** feature-add-function-syntax-support
 - **MEDIUM (backburner):** verify-gps-fix-refactor
@@ -1550,7 +1588,7 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 - **Security Enhancement / Performance Analysis (TODO):** privacylrs-fix-finding5-chacha-benchmark
 - **Security Enhancement / Cryptographic Protocol (TODO):** privacylrs-fix-finding7-forward-secrecy
 - **Security Enhancement (TODO):** privacylrs-fix-finding8-entropy-sources
-- **Research / Investigation (Active):** configurator-web-cors-research
+- **Research / Investigation (Active):** configurator-web-cors-research, investigate-sitl-wasm-compilation
 - **Research / Memory Optimization (Active):** investigate-boolean-struct-bitfields
 - **Feature (Backburner):** feature-add-function-syntax-support
 - **Code Review / Refactoring (Backburner):** verify-gps-fix-refactor
