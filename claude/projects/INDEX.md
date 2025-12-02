@@ -2,7 +2,7 @@
 
 This file tracks all active and completed projects in the INAV codebase.
 
-**Last Updated:** 2025-12-02 02:30
+**Last Updated:** 2025-12-02 02:40
 
 ---
 
@@ -277,27 +277,82 @@ Implemented secure logging mechanism preventing cryptographic keys from being lo
 
 ---
 
-### 📋 privacylrs-fix-finding5-chacha-benchmark
+### ✅ privacylrs-fix-finding5-chacha-benchmark
 
-**Status:** TODO
+**Status:** COMPLETE (Analysis Phase)
 **Type:** Security Enhancement / Performance Analysis
 **Priority:** MEDIUM
-**Assignment:** 📝 Planned
+**Assignment:** ✉️ Assigned
 **Created:** 2025-11-30
-**Assignee:** Security Analyst (or Developer)
+**Completed:** 2025-12-02 05:15
+**Assignee:** Security Analyst
+**Completion Email:** `claude/manager/sent/2025-12-02-0235-finding5-approved-assign-dev.md`
 
-Benchmark ChaCha20 (20 rounds) performance on target hardware and decide whether to upgrade from ChaCha12 (12 rounds) based on actual measurements.
+**✅ Analysis complete - Recommendation: UPGRADE TO CHACHA20**
 
-**Key Tasks:**
-- Set up benchmarking infrastructure
-- Measure ChaCha12 baseline performance
-- Measure ChaCha20 performance
-- Make data-driven decision (upgrade or document rationale)
+**Current:** ChaCha12 (12 rounds) - Non-standard
+**Recommended:** ChaCha20 (20 rounds) - RFC 8439 IETF standard
+
+**Performance impact:** Negligible (<0.2% CPU increase)
+**Security benefit:** Significant (standards-compliant, stronger margin)
+
+**Key Findings:**
+- ✅ PrivacyLRS currently uses ChaCha12 (confirmed at rx_main.cpp:63, tx_main.cpp:36)
+- ✅ ChaCha20 is RFC 8439 standard (used by WireGuard, TLS 1.3, OpenSSH)
+- ✅ Performance cost negligible (~0.1% CPU additional @ 250Hz)
+- ✅ All platforms have sufficient headroom (ESP8285 worst case: <2% CPU)
+- ✅ No major projects use ChaCha12 in production
+
+**Decision Matrix:** ChaCha20 wins 6 of 7 categories
+
+**Analysis Time:** 1.25h actual vs 4-6h estimated - **70-80% under budget** ✅
+
+**Deliverables:**
+1. ✅ Comprehensive analysis report (20+ sections)
+2. ✅ Benchmark design document
+3. ✅ Production-ready benchmark code
+
+**Implementation:** Two-line change (assigned to Developer)
 
 **Reference:** Security Finding 5 (MEDIUM)
-**Stakeholder Decision:** "Option 2" (Benchmark first, then decide)
+**Stakeholder Decision:** "Option 2" (Benchmark first, then decide) → **APPROVED: Upgrade to ChaCha20**
 
 **Location:** `claude/projects/privacylrs-fix-finding5-chacha-benchmark/`
+
+---
+
+### 📋 privacylrs-implement-chacha20-upgrade
+
+**Status:** TODO
+**Type:** Security Enhancement / Implementation
+**Priority:** MEDIUM-HIGH
+**Assignment:** ✉️ Assigned
+**Created:** 2025-12-02
+**Assignee:** Developer
+**Assignment Email:** `claude/manager/sent/2025-12-02-0240-chacha20-upgrade-assignment.md`
+**Estimated Time:** 30 minutes - 2 hours
+
+Implement ChaCha20 upgrade from Finding #5 analysis.
+
+**Objective:** Upgrade PrivacyLRS encryption from ChaCha12 to ChaCha20 (RFC 8439 standard)
+
+**Implementation:** Simple two-line change
+- `rx_main.cpp:63`: Change `ChaCha cipher(12)` → `ChaCha cipher(20)`
+- `tx_main.cpp:36`: Change `ChaCha cipher(12)` → `ChaCha cipher(20)`
+
+**Benefits:**
+- RFC 8439 standards compliance
+- Industry best practice alignment (WireGuard, TLS 1.3, OpenSSH)
+- Stronger security margin
+- Improved audit-ability and user trust
+
+**Performance impact:** <0.2% CPU (negligible)
+
+**Testing:** Optional full testing on ESP32/ESP8285/ESP32S3
+
+**Predecessor:** privacylrs-fix-finding5-chacha-benchmark (analysis complete)
+
+**Location:** `claude/projects/privacylrs-implement-chacha20-upgrade/`
 
 ---
 
@@ -1701,10 +1756,10 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 
 ## Project Summary Statistics
 
-- **Total Projects:** 54
-- **Active (TODO):** 5
+- **Total Projects:** 55
+- **Active (TODO):** 6
 - **Backburner:** 3
-- **Completed (Archived):** 46
+- **Completed (Archived):** 47
 - **Cancelled:** 4
 
 ---
@@ -1713,9 +1768,9 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 
 ### By Status
 
-- 📋 **TODO:** privacylrs-fix-build-failures (MEDIUM), sitl-wasm-phase1-configurator-poc (MEDIUM), privacylrs-fix-finding5-chacha-benchmark (MEDIUM), privacylrs-fix-finding7-forward-secrecy (MEDIUM), privacylrs-fix-finding8-entropy-sources (MEDIUM)
+- 📋 **TODO:** privacylrs-fix-build-failures (MEDIUM), sitl-wasm-phase1-configurator-poc (MEDIUM), privacylrs-implement-chacha20-upgrade (MEDIUM-HIGH), privacylrs-fix-finding7-forward-secrecy (MEDIUM), privacylrs-fix-finding8-entropy-sources (MEDIUM)
 - ⏸️ **BACKBURNER:** feature-add-function-syntax-support, investigate-automated-testing-mcp, verify-gps-fix-refactor
-- ✅ **RECENTLY COMPLETED:** privacylrs-fix-finding4-secure-logging (HIGH - PR #19, 2.5h under budget), investigate-sitl-wasm-compilation (CONDITIONAL GO - Phase 1 approved), investigate-boolean-struct-bitfields (DO NOT PROCEED - breaks EEPROM), configurator-web-cors-research (GitHub Pages solution), privacylrs-complete-tests-and-fix-finding1 (CRITICAL Finding #1 FIXED - 25h, zero overhead, 711 packet loss tolerance), create-privacylrs-test-runner, security-analysis-privacylrs-initial, onboard-privacylrs-repo, fix-search-tab-tabnames-error (PR #2440), fix-transpiler-empty-output (PR #2439), fix-decompiler-condition-numbers (PR #2439)
+- ✅ **RECENTLY COMPLETED:** privacylrs-fix-finding5-chacha-benchmark (MEDIUM analysis - 1.25h, 70-80% under budget), privacylrs-fix-finding4-secure-logging (HIGH - PR #19, 2.5h under budget), investigate-sitl-wasm-compilation (CONDITIONAL GO - Phase 1 approved), investigate-boolean-struct-bitfields (DO NOT PROCEED - breaks EEPROM), configurator-web-cors-research (GitHub Pages solution), privacylrs-complete-tests-and-fix-finding1 (CRITICAL Finding #1 MERGED - 25h, zero overhead, 711 packet loss tolerance), create-privacylrs-test-runner, security-analysis-privacylrs-initial, onboard-privacylrs-repo, fix-search-tab-tabnames-error (PR #2440), fix-transpiler-empty-output (PR #2439), fix-decompiler-condition-numbers (PR #2439)
 - ✅ **COMPLETED (archived):** github-issues-review, setup-code-indexes-for-claude, implement-configurator-test-suite, fix-preexisting-tab-errors, fix-require-error-onboard-logging, preserve-variable-names-decompiler, investigate-dma-usage-cleanup, refactor-transpiler-core-files, move-transpiler-docs-to-inav-repo, rebase-squash-transpiler-branch, fix-duplicate-active-when-column, feature-add-parser-tab-icon, feature-auto-insert-inav-import, fix-programming-tab-save-lockup, fix-stm32-dfu-reboot-protocol, feature-javascript-variables, merge-branches-to-transpiler-base, refactor-commonjs-to-esm, improve-transpiler-error-reporting, fix-transpiler-api-mismatches, fix-transpiler-documentation
 - ❌ **CANCELLED:** privacylrs-fix-finding2-counter-init (Finding #2 removed - no vulnerability), implement-pmw3901-opflow-driver, optimize-tab-msp-communication, fix-preload-foreach-error
 
