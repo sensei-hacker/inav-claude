@@ -2,7 +2,7 @@
 
 This file tracks all active and completed projects in the INAV codebase.
 
-**Last Updated:** 2025-12-01 17:35
+**Last Updated:** 2025-12-01 18:30
 
 ---
 
@@ -227,48 +227,82 @@ Implement robust entropy gathering that XORs multiple entropy sources (hardware 
 
 ---
 
-### 🚧 investigate-boolean-struct-bitfields
+### ✅ investigate-boolean-struct-bitfields
 
-**Status:** IN PROGRESS
+**Status:** COMPLETE
 **Type:** Research / Memory Optimization
 **Priority:** Medium
 **Assignment:** ✉️ Assigned
 **Created:** 2025-11-30
+**Completed:** 2025-12-01
 **Assignee:** Developer
 **Assignment Email:** `claude/manager/sent/2025-11-30-1325-task-investigate-boolean-struct-bitfields.md`
+**Completion Report:** `claude/manager/inbox-archive/2025-12-01-boolean-bitfields-research-complete.md`
+**Approval Email:** `claude/manager/sent/2025-12-01-1815-boolean-bitfields-approved.md`
 
-Investigate structs in INAV firmware that contain members used only as boolean conditions. Analyze whether fields use `:1` bit fields or larger types, and determine if converting to bit fields would change EEPROM binary format. Research only - no code changes or branches until findings are documented.
+Investigated boolean-heavy structs in INAV firmware to determine if bitfield optimization (`:1` syntax) would provide memory savings.
+
+**Findings:**
+- 13 config structs with 1-11 boolean fields each (EEPROM-stored)
+- 3 runtime structs with 1-6 boolean fields each (RAM only)
+- All use full `bool` or `uint8_t`, none use bitfields currently
+- EEPROM uses direct `memcpy` serialization - struct changes break compatibility
+
+**Recommendation:** **DO NOT PROCEED**
+
+**Reasons:**
+- Memory savings: Only 0-30 bytes (< 1% of EEPROM)
+- User impact: ALL users would lose settings on firmware update
+- EEPROM format break requires version bumps, settings reset
+- Better alternatives: Optimize large buffers/arrays (100x better return)
+
+**Time:** ~4 hours
 
 **Location:** `claude/projects/investigate-boolean-struct-bitfields/`
 
 ---
 
-### 📋 configurator-web-cors-research
+### ✅ configurator-web-cors-research
 
-**Status:** TODO
+**Status:** COMPLETE
 **Type:** Research / Investigation
 **Priority:** MEDIUM
 **Assignment:** ✉️ Assigned
 **Created:** 2025-12-01
+**Completed:** 2025-12-01
 **Assignee:** Developer
 **Assignment Email:** `claude/manager/sent/2025-12-01-1730-configurator-web-cors-assignment.md`
+**Completion Reports:**
+- `claude/manager/inbox-archive/2025-12-01-1800-cors-research-complete.md`
+- `claude/manager/inbox-archive/2025-12-01-1810-github-pages-implementation-plan.md`
+**Approval Email:** `claude/manager/sent/2025-12-01-1820-cors-research-approved.md`
 
-Research the CORS (Cross-Origin Resource Sharing) policy issue affecting firmware hex file downloads in the INAV Configurator web/PWA migration.
+Researched CORS policy issue preventing PWA from downloading firmware hex files from GitHub.
 
-**Context:** INAV Configurator is being migrated from Electron app to Progressive Web App. CORS policy is preventing the firmware flasher from downloading hex files (firmware assets) from the INAV repository.
+**Root Cause:** GitHub doesn't send `Access-Control-Allow-Origin` headers, browsers block cross-origin requests.
 
-**Key Tasks:**
-- Review web migration documentation (`copilot/convert-electron-app-to-web` branch)
-- Review PWA implementation (`Scavanger/PWA` branch)
-- Identify root cause of CORS issue with hex file downloads
-- Research and evaluate potential solutions
-- Provide recommendation
+**Current Solution:** Cloudflare Worker proxy at `proxy.inav.workers.dev` (external dependency, risks)
 
-**Branches to Review:**
-- `copilot/convert-electron-app-to-web` - Web migration with documentation
-- `Scavanger/PWA` - PWA port implementation
+**Evaluated 8 Solutions:**
+1. Current proxy (improved) - ⭐⭐
+2. GitHub Pages - ⭐⭐⭐⭐ **RECOMMENDED**
+3. GitHub Actions artifacts - ⭐⭐
+4. Public CORS proxies - ⭐
+5. Self-hosted API - ⭐⭐⭐
+6. GitHub API + auth - ⭐
+7. Cloudflare R2 - ⭐⭐⭐⭐⭐ (best long-term)
+8. Hybrid fallback - ⭐⭐⭐
 
-**Expected Time:** 7-10 hours
+**Recommendation:** **GitHub Pages** (free, automatic CORS, simple)
+
+**Implementation Plan Created:**
+- Production-ready code examples
+- CI/CD workflow updates
+- Migration strategy (all-at-once or gradual fallback)
+- Testing plan and rollback procedures
+- Estimated effort: 3-4 hours
+
+**Time:** ~8-10 hours (exceeded scope with implementation plan)
 
 **Location:** `claude/projects/configurator-web-cors-research/`
 
@@ -1542,21 +1576,20 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 
 ### By Status
 
-- 🚧 **IN PROGRESS:** investigate-boolean-struct-bitfields
-- 📋 **TODO:** configurator-web-cors-research (MEDIUM), investigate-sitl-wasm-compilation (MEDIUM), privacylrs-fix-finding4-secure-logging (HIGH), privacylrs-fix-finding5-chacha-benchmark (MEDIUM), privacylrs-fix-finding7-forward-secrecy (MEDIUM), privacylrs-fix-finding8-entropy-sources (MEDIUM)
+- 📋 **TODO:** investigate-sitl-wasm-compilation (MEDIUM), privacylrs-fix-finding4-secure-logging (HIGH), privacylrs-fix-finding5-chacha-benchmark (MEDIUM), privacylrs-fix-finding7-forward-secrecy (MEDIUM), privacylrs-fix-finding8-entropy-sources (MEDIUM)
 - ⏸️ **BACKBURNER:** feature-add-function-syntax-support, investigate-automated-testing-mcp, verify-gps-fix-refactor
-- ✅ **RECENTLY COMPLETED:** privacylrs-complete-tests-and-fix-finding1 (CRITICAL Finding #1 FIXED - 25h, zero overhead, 711 packet loss tolerance), create-privacylrs-test-runner, security-analysis-privacylrs-initial, onboard-privacylrs-repo, fix-search-tab-tabnames-error (PR #2440), fix-transpiler-empty-output (PR #2439), fix-decompiler-condition-numbers (PR #2439)
+- ✅ **RECENTLY COMPLETED:** investigate-boolean-struct-bitfields (DO NOT PROCEED - breaks EEPROM), configurator-web-cors-research (GitHub Pages solution), privacylrs-complete-tests-and-fix-finding1 (CRITICAL Finding #1 FIXED - 25h, zero overhead, 711 packet loss tolerance), create-privacylrs-test-runner, security-analysis-privacylrs-initial, onboard-privacylrs-repo, fix-search-tab-tabnames-error (PR #2440), fix-transpiler-empty-output (PR #2439), fix-decompiler-condition-numbers (PR #2439)
 - ✅ **COMPLETED (archived):** github-issues-review, setup-code-indexes-for-claude, implement-configurator-test-suite, fix-preexisting-tab-errors, fix-require-error-onboard-logging, preserve-variable-names-decompiler, investigate-dma-usage-cleanup, refactor-transpiler-core-files, move-transpiler-docs-to-inav-repo, rebase-squash-transpiler-branch, fix-duplicate-active-when-column, feature-add-parser-tab-icon, feature-auto-insert-inav-import, fix-programming-tab-save-lockup, fix-stm32-dfu-reboot-protocol, feature-javascript-variables, merge-branches-to-transpiler-base, refactor-commonjs-to-esm, improve-transpiler-error-reporting, fix-transpiler-api-mismatches, fix-transpiler-documentation
 - ❌ **CANCELLED:** privacylrs-fix-finding2-counter-init (Finding #2 removed - no vulnerability), implement-pmw3901-opflow-driver, optimize-tab-msp-communication, fix-preload-foreach-error
 
 ### By Assignment
 
-- ✉️ **ASSIGNED (active):** investigate-boolean-struct-bitfields, configurator-web-cors-research, investigate-sitl-wasm-compilation
+- ✉️ **ASSIGNED (active):** investigate-sitl-wasm-compilation
 - 📝 **PLANNED (todo):** privacylrs-fix-finding4-secure-logging, privacylrs-fix-finding5-chacha-benchmark, privacylrs-fix-finding7-forward-secrecy, privacylrs-fix-finding8-entropy-sources
 - ✉️ **ASSIGNED (completed):** privacylrs-complete-tests-and-fix-finding1
 - ✉️ **ASSIGNED (backburner):** verify-gps-fix-refactor
 - 🔧 **DEVELOPER-INITIATED (completed):** sitl-msp-arming
-- ✉️ **ASSIGNED (completed):** create-privacylrs-test-runner, security-analysis-privacylrs-initial, fix-search-tab-tabnames-error, fix-transpiler-empty-output, fix-decompiler-condition-numbers, create-inav-claude-repo, github-issues-review, setup-code-indexes-for-claude, implement-configurator-test-suite, fix-preexisting-tab-errors, fix-require-error-onboard-logging, preserve-variable-names-decompiler, investigate-dma-usage-cleanup, refactor-transpiler-core-files, move-transpiler-docs-to-inav-repo, rebase-squash-transpiler-branch, fix-duplicate-active-when-column, feature-auto-insert-inav-import, fix-programming-tab-save-lockup, fix-stm32-dfu-reboot-protocol, feature-javascript-variables, merge-branches-to-transpiler-base, refactor-commonjs-to-esm, improve-transpiler-error-reporting, fix-transpiler-api-mismatches, fix-transpiler-documentation
+- ✉️ **ASSIGNED (completed):** investigate-boolean-struct-bitfields, configurator-web-cors-research, create-privacylrs-test-runner, security-analysis-privacylrs-initial, fix-search-tab-tabnames-error, fix-transpiler-empty-output, fix-decompiler-condition-numbers, create-inav-claude-repo, github-issues-review, setup-code-indexes-for-claude, implement-configurator-test-suite, fix-preexisting-tab-errors, fix-require-error-onboard-logging, preserve-variable-names-decompiler, investigate-dma-usage-cleanup, refactor-transpiler-core-files, move-transpiler-docs-to-inav-repo, rebase-squash-transpiler-branch, fix-duplicate-active-when-column, feature-auto-insert-inav-import, fix-programming-tab-save-lockup, fix-stm32-dfu-reboot-protocol, feature-javascript-variables, merge-branches-to-transpiler-base, refactor-commonjs-to-esm, improve-transpiler-error-reporting, fix-transpiler-api-mismatches, fix-transpiler-documentation
 - 📝 **PLANNED (completed):** onboard-privacylrs-repo
 - ⚡ **AD-HOC (completed):** investigate-w25q128-support
 - ✉️ **ASSIGNED (cancelled):** privacylrs-fix-finding2-counter-init, optimize-tab-msp-communication, fix-preload-foreach-error
@@ -1566,14 +1599,13 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 ### By Priority
 
 - **HIGH (todo):** privacylrs-fix-finding4-secure-logging
-- **MEDIUM (todo):** configurator-web-cors-research, investigate-sitl-wasm-compilation, privacylrs-fix-finding5-chacha-benchmark, privacylrs-fix-finding7-forward-secrecy, privacylrs-fix-finding8-entropy-sources
-- **MEDIUM (active):** investigate-boolean-struct-bitfields
+- **MEDIUM (todo):** investigate-sitl-wasm-compilation, privacylrs-fix-finding5-chacha-benchmark, privacylrs-fix-finding7-forward-secrecy, privacylrs-fix-finding8-entropy-sources
 - **MEDIUM-HIGH (backburner):** feature-add-function-syntax-support
 - **MEDIUM (backburner):** verify-gps-fix-refactor
 - **LOW (backburner):** investigate-automated-testing-mcp
 - **CRITICAL (completed):** privacylrs-complete-tests-and-fix-finding1 (Finding #1 FIXED)
 - **HIGH (completed):** security-analysis-privacylrs-initial, fix-search-tab-tabnames-error, fix-transpiler-empty-output, fix-require-error-onboard-logging, preserve-variable-names-decompiler, move-transpiler-docs-to-inav-repo, merge-branches-to-transpiler-base, fix-transpiler-documentation
-- **MEDIUM (completed):** create-privacylrs-test-runner, onboard-privacylrs-repo, fix-decompiler-condition-numbers, create-inav-claude-repo, github-issues-review
+- **MEDIUM (completed):** investigate-boolean-struct-bitfields, configurator-web-cors-research, create-privacylrs-test-runner, onboard-privacylrs-repo, fix-decompiler-condition-numbers, create-inav-claude-repo, github-issues-review
 - **LOW (completed):** investigate-w25q128-support
 - **MEDIUM-HIGH (completed):** refactor-transpiler-core-files, fix-programming-tab-save-lockup
 - **MEDIUM (completed):** setup-code-indexes-for-claude, implement-configurator-test-suite, investigate-dma-usage-cleanup, rebase-squash-transpiler-branch, refactor-commonjs-to-esm, improve-transpiler-error-reporting, fix-stm32-dfu-reboot-protocol, feature-javascript-variables
@@ -1588,8 +1620,7 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 - **Security Enhancement / Performance Analysis (TODO):** privacylrs-fix-finding5-chacha-benchmark
 - **Security Enhancement / Cryptographic Protocol (TODO):** privacylrs-fix-finding7-forward-secrecy
 - **Security Enhancement (TODO):** privacylrs-fix-finding8-entropy-sources
-- **Research / Investigation (Active):** configurator-web-cors-research, investigate-sitl-wasm-compilation
-- **Research / Memory Optimization (Active):** investigate-boolean-struct-bitfields
+- **Research / Investigation (Active):** investigate-sitl-wasm-compilation
 - **Feature (Backburner):** feature-add-function-syntax-support
 - **Code Review / Refactoring (Backburner):** verify-gps-fix-refactor
 - **Research (Backburner):** investigate-automated-testing-mcp
@@ -1600,7 +1631,8 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 - **Infrastructure / Role Setup (Completed):** onboard-privacylrs-repo
 - **Bug Fix (Completed):** fix-search-tab-tabnames-error, fix-transpiler-empty-output, fix-decompiler-condition-numbers, fix-require-error-onboard-logging, fix-duplicate-active-when-column, fix-programming-tab-save-lockup, fix-transpiler-api-mismatches, fix-stm32-dfu-reboot-protocol
 - **Repository Setup / Documentation (Completed):** create-inav-claude-repo
-- **Research / Investigation (Completed):** investigate-w25q128-support
+- **Research / Investigation (Completed):** configurator-web-cors-research, investigate-w25q128-support
+- **Research / Memory Optimization (Completed):** investigate-boolean-struct-bitfields
 - **Research / Triage (Completed):** github-issues-review
 - **Development Tooling / Infrastructure (Completed):** setup-code-indexes-for-claude
 - **Infrastructure / Testing (Completed):** implement-configurator-test-suite
