@@ -2,7 +2,7 @@
 
 This file tracks all active and completed projects in the INAV codebase.
 
-**Last Updated:** 2025-12-01 18:30
+**Last Updated:** 2025-12-01 18:35
 
 ---
 
@@ -136,17 +136,24 @@ Three-phase project: (1) Complete encryption test coverage, (2) Address Finding 
 **Status:** TODO
 **Type:** Security Fix
 **Priority:** HIGH
-**Assignment:** 📝 Planned
+**Assignment:** ✉️ Assigned
 **Created:** 2025-11-30
-**Assignee:** Security Analyst (or Developer)
+**Assignee:** Security Analyst
+**Assignment Email:** `claude/manager/sent/2025-12-01-1835-finding4-secure-logging-assignment.md`
+**Estimated Time:** 3-4 hours
 
 Implement secure logging mechanism preventing cryptographic keys from being logged in production builds while maintaining debugging capability when explicitly enabled.
+
+**Problem:** Session keys are logged via `DBGLN()` at `rx_main.cpp:516-517, 537`, potentially exposing keys in production builds.
+
+**Solution:** Implement `DBGLN_KEY()` macro that only logs when `ALLOW_KEY_LOGGING=1` build flag is set.
 
 **Key Tasks:**
 - Audit all key logging locations in codebase
 - Implement ALLOW_KEY_LOGGING build flag
 - Create DBGLN_KEY macro with compile-time warning
 - Replace all key logging with secure logging
+- Test production build (no keys) and debug build (keys visible)
 
 **Reference:** Security Finding 4 (HIGH)
 **Stakeholder Decision:** "Option 2" (Secure logging with explicit build flag)
@@ -1576,7 +1583,7 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 
 ### By Status
 
-- 📋 **TODO:** investigate-sitl-wasm-compilation (MEDIUM), privacylrs-fix-finding4-secure-logging (HIGH), privacylrs-fix-finding5-chacha-benchmark (MEDIUM), privacylrs-fix-finding7-forward-secrecy (MEDIUM), privacylrs-fix-finding8-entropy-sources (MEDIUM)
+- 📋 **TODO:** privacylrs-fix-finding4-secure-logging (HIGH), investigate-sitl-wasm-compilation (MEDIUM), privacylrs-fix-finding5-chacha-benchmark (MEDIUM), privacylrs-fix-finding7-forward-secrecy (MEDIUM), privacylrs-fix-finding8-entropy-sources (MEDIUM)
 - ⏸️ **BACKBURNER:** feature-add-function-syntax-support, investigate-automated-testing-mcp, verify-gps-fix-refactor
 - ✅ **RECENTLY COMPLETED:** investigate-boolean-struct-bitfields (DO NOT PROCEED - breaks EEPROM), configurator-web-cors-research (GitHub Pages solution), privacylrs-complete-tests-and-fix-finding1 (CRITICAL Finding #1 FIXED - 25h, zero overhead, 711 packet loss tolerance), create-privacylrs-test-runner, security-analysis-privacylrs-initial, onboard-privacylrs-repo, fix-search-tab-tabnames-error (PR #2440), fix-transpiler-empty-output (PR #2439), fix-decompiler-condition-numbers (PR #2439)
 - ✅ **COMPLETED (archived):** github-issues-review, setup-code-indexes-for-claude, implement-configurator-test-suite, fix-preexisting-tab-errors, fix-require-error-onboard-logging, preserve-variable-names-decompiler, investigate-dma-usage-cleanup, refactor-transpiler-core-files, move-transpiler-docs-to-inav-repo, rebase-squash-transpiler-branch, fix-duplicate-active-when-column, feature-add-parser-tab-icon, feature-auto-insert-inav-import, fix-programming-tab-save-lockup, fix-stm32-dfu-reboot-protocol, feature-javascript-variables, merge-branches-to-transpiler-base, refactor-commonjs-to-esm, improve-transpiler-error-reporting, fix-transpiler-api-mismatches, fix-transpiler-documentation
@@ -1584,8 +1591,8 @@ preload.mjs:25 Uncaught Error: Cannot read properties of undefined (reading 'for
 
 ### By Assignment
 
-- ✉️ **ASSIGNED (active):** investigate-sitl-wasm-compilation
-- 📝 **PLANNED (todo):** privacylrs-fix-finding4-secure-logging, privacylrs-fix-finding5-chacha-benchmark, privacylrs-fix-finding7-forward-secrecy, privacylrs-fix-finding8-entropy-sources
+- ✉️ **ASSIGNED (active):** privacylrs-fix-finding4-secure-logging, investigate-sitl-wasm-compilation
+- 📝 **PLANNED (todo):** privacylrs-fix-finding5-chacha-benchmark, privacylrs-fix-finding7-forward-secrecy, privacylrs-fix-finding8-entropy-sources
 - ✉️ **ASSIGNED (completed):** privacylrs-complete-tests-and-fix-finding1
 - ✉️ **ASSIGNED (backburner):** verify-gps-fix-refactor
 - 🔧 **DEVELOPER-INITIATED (completed):** sitl-msp-arming
