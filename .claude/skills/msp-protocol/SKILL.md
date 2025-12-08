@@ -138,3 +138,11 @@ Or use **uNAVlib** for interactive testing and automation.
 - **uNAVlib Python library:** `uNAVlib/` (for testing and automation)
 - **Investigation notes:** `claude/msp_investigation_facts.md`
 - **Test tools:** `claude/test_tools/inav/`
+
+---
+
+## Related Skills
+
+- **sitl-arm** - Arm SITL using MSP protocol
+- **build-sitl** - Build SITL firmware for MSP testing
+- **find-symbol** - Find MSP command handlers and definitions in code

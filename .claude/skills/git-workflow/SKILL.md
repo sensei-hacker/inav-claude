@@ -342,3 +342,13 @@ git checkout correct-branch
 
 - **Git basics:** `git --help`
 - **Project workflow:** See `claude/manager/README.md` and `claude/developer/README.md`
+
+---
+
+## Related Skills
+
+- **create-pr** - Create pull requests after committing changes
+- **pr-review** - Review pull requests and check out PR branches
+- **check-builds** - Check CI build status for branches and PRs
+- **start-task** - Begin tasks with proper branch setup
+- **finish-task** - Complete tasks with commits and cleanup

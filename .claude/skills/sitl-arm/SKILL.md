@@ -167,3 +167,10 @@ MSP_SET_RAW_RC expects: `[Roll, Pitch, Throttle, Yaw, AUX1, ...]`
 - rcmap: `src/main/rx/rx.c:114`
 - MSP_SIMULATOR: `src/main/fc/fc_msp.c:4080-4160`
 - Arming flags: `src/main/fc/runtime_config.h`
+
+## Related Skills
+
+- **build-sitl** - Building SITL firmware
+- **test-crsf-sitl** - Testing CRSF telemetry with SITL
+- **run-configurator** - Using INAV Configurator with SITL
+- **msp-protocol** - MSP protocol reference (used for arming)

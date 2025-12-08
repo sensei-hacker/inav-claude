@@ -225,3 +225,13 @@ git checkout master
 - **GitHub CLI docs:** `gh pr --help`
 - **Project review guidelines:** Check `claude/COMMUNICATION.md` for standards
 - **Recent PR reviews:** See `claude/projects/review-pr*/` for examples
+
+---
+
+## Related Skills
+
+- **git-workflow** - Checkout PR branches and manage git operations
+- **create-pr** - Create your own pull requests
+- **check-builds** - Check CI build status for PRs under review
+- **run-configurator** - Test configurator PRs locally
+- **build-sitl** - Build and test firmware PRs

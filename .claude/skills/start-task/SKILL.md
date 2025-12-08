@@ -133,3 +133,11 @@ rm claude/locks/inav-configurator.lock
 ```
 
 Include in your completion report: "Released <repo>.lock"
+
+---
+
+## Related Skills
+
+- **finish-task** - Complete tasks and release locks
+- **git-workflow** - Create branches and manage git state
+- **create-pr** - Create pull request after completing task

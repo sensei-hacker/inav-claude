@@ -167,3 +167,11 @@ Key files:
 - `main.py` - Main MSPy class
 - `enums/msp_codes.py` - MSP code definitions
 - `modules/process.py` - Message processing handlers
+
+---
+
+## Related Skills
+
+- **msp-protocol** - MSP protocol reference and command definitions
+- **sitl-arm** - Example scripts using uNAVlib to arm SITL
+- **build-sitl** - Build SITL for MSP testing with uNAVlib

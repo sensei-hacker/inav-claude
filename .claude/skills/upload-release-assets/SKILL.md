@@ -1,3 +1,14 @@
+---
+description: Upload firmware hex files and configurator packages to GitHub releases
+triggers:
+  - upload release assets
+  - upload to release
+  - upload firmware
+  - upload configurator
+  - upload hex files
+  - upload packages
+---
+
 # Upload Release Assets
 
 Upload files/artifacts/assets to a GitHub release.
@@ -80,22 +91,33 @@ gh release view {tag} --repo {repo} --json assets --jq '.assets | length'
 - If a file with the same name already exists, the upload will fail unless you use `--clobber`
 - For large uploads (200+ files), this may take several minutes
 - Upload progress is not shown; wait for the command to complete
-- Ensure the source directory is FLAT (no subdirectories) before uploading
+- **Firmware:** Source directory should be FLAT (no subdirectories)
+- **Configurator:** Source directory should have platform subdirectories (linux/, macos/, windows/)
 
 ## Examples
 
 ### Upload firmware hex files
 
 ```bash
-cd claude/release-manager/downloads/9.0.0-rc2
+cd claude/release-manager/downloads/firmware-9.0.0-rc2
 gh release upload 9.0.0-RC2 *.hex --repo iNavFlight/inav
 ```
 
-### Upload configurator packages
+### Upload configurator packages (BY PLATFORM)
+
+**IMPORTANT:** Configurator artifacts are organized by platform. Upload each platform separately.
 
 ```bash
 cd claude/release-manager/downloads/configurator-9.0.0-rc2
-gh release upload 9.0.0-RC2 * --repo iNavFlight/inav-configurator
+
+# Upload Linux packages
+gh release upload 9.0.0-RC2 linux/* --repo iNavFlight/inav-configurator
+
+# Upload macOS packages
+gh release upload 9.0.0-RC2 macos/* --repo iNavFlight/inav-configurator
+
+# Upload Windows packages
+gh release upload 9.0.0-RC2 windows/* --repo iNavFlight/inav-configurator
 ```
 
 ### Overwrite existing files
@@ -109,3 +131,10 @@ gh release upload 9.0.0-RC2 *.hex --repo iNavFlight/inav --clobber
 1. Clear existing assets (see `remove-release-assets` skill)
 2. Upload new assets using this skill
 3. Verify the count matches expected files
+
+---
+
+## Related Skills
+
+- **download-release-artifacts** - Download artifacts before uploading
+- **remove-release-assets** - Remove old assets before uploading new ones

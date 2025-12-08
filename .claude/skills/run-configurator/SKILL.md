@@ -71,3 +71,12 @@ cd inav-configurator
 npm run package  # Package the app
 npm run make     # Create installers
 ```
+
+---
+
+## Related Skills
+
+- **build-sitl** - Build SITL firmware to test with configurator
+- **test-crsf-sitl** - Complete CRSF telemetry testing workflow (uses configurator for setup)
+- **sitl-arm** - Arm SITL for testing (often used with configurator)
+- **pr-review** - Test configurator PRs locally using this skill

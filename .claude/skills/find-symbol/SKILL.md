@@ -113,3 +113,10 @@ ctags -R --fields=+niazS --extras=+q --exclude=node_modules --exclude=.git --exc
 1. Search for `^navConfig\b` in both indexes
 2. Look for entries with `kind:s` (struct) or `kind:t` (typedef)
 3. Report all matches with file locations
+
+---
+
+## Related Skills
+
+- **wiki-search** - Search documentation for implementation guidance
+- **msp-protocol** - Look up MSP commands and structures

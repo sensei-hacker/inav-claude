@@ -60,16 +60,86 @@ The `outbox/` folder is for draft reports that need review or are waiting for ad
 1. Move from `outbox/` to `sent/`
 2. Copy to recipient's `inbox/`
 
+## ⚠️ CRITICAL: Git Workflow - MANDATORY BEFORE ANY CODE CHANGES
+
+**BEFORE making ANY code changes to PrivacyLRS:**
+
+### Pre-Work Checklist (MUST COMPLETE EVERY TIME)
+
+1. ✅ **Check current branch:**
+   ```bash
+   git branch --show-current
+   ```
+
+2. ✅ **If on `secure_01`, `master`, or `main` → STOP!**
+   - **NEVER commit directly to production branches**
+   - **NEVER push directly to production branches**
+
+3. ✅ **Create a feature branch:**
+   ```bash
+   git checkout -b descriptive-feature-name
+   ```
+   - Use descriptive names WITHOUT slashes (e.g., `fix-encryption-bug`, `add-chacha20`)
+   - Branch from secure_01 for PrivacyLRS work
+
+4. ✅ **Make changes ONLY on feature branch**
+
+5. ✅ **Before each commit, verify branch:**
+   ```bash
+   git branch --show-current  # Must NOT be secure_01/master/main
+   ```
+
+6. ✅ **Before pushing, verify branch:**
+   ```bash
+   git branch --show-current  # Must NOT be secure_01/master/main
+   ```
+
+7. ✅ **Create PR instead of pushing to production**
+
+### ❌ What NOT to Do
+
+- ❌ `git checkout secure_01` then commit
+- ❌ `git push origin secure_01`
+- ❌ Working directly on secure_01, master, or main
+- ❌ Pushing without creating a PR
+
+### ✅ Correct Workflow
+
+```bash
+# 1. Check branch
+git branch --show-current
+
+# 2. If on secure_01, create feature branch
+git checkout -b fix-encryption-issue
+
+# 3. Make changes and commit
+git add specific-files
+git commit -m "Description"
+
+# 4. Push feature branch
+git push -u origin fix-encryption-issue
+
+# 5. Create PR using create-pr skill
+```
+
+### 🚨 If You Already Committed to secure_01
+
+**STOP IMMEDIATELY. DO NOT PUSH.**
+1. Do not run `git push`
+2. Ask the user how to proceed
+3. Options: revert commit, create branch from current state, or force-reset
+
 ## Workflow
 
 ```
 1. Check security-analyst/inbox/ for new assignments
 2. Read security analysis request
-3. Perform analysis (code review, threat modeling, crypto review)
-4. Document findings with severity ratings
-5. Create findings report in security-analyst/sent/
-6. Copy report to manager/inbox/
-7. Archive assignment from security-analyst/inbox/ to security-analyst/inbox-archive/
+3. **BEFORE CODE CHANGES: Complete Git Pre-Work Checklist above**
+4. Perform analysis (code review, threat modeling, crypto review)
+5. Document findings with severity ratings
+6. Create findings report in security-analyst/sent/
+7. Copy report to manager/inbox/
+8. Archive assignment from security-analyst/inbox/ to security-analyst/inbox-archive/
 ```
 
 ## Repository Overview
@@ -198,6 +268,85 @@ This project likely involves wireless communication protocols that require caref
 - Padding oracle vulnerabilities
 - Replay attacks
 - Key reuse
+
+## Testing and Validation Principles
+
+### CRITICAL RULE: Never Dismiss Test Failures
+
+**If a test crashes, hangs, or fails - you MUST fix it before proceeding with recommendations.**
+
+**Never say:** "The test failed, but the data is probably sufficient anyway"
+**Never say:** "The hardware crashed, but we can proceed with theoretical analysis"
+**Never say:** "Risk: NONE" when you haven't verified functionality on target hardware
+
+### Why This Matters in Security Analysis
+
+1. **Crashes indicate real problems** - A null pointer crash, boot loop, or hang is not a "benchmark integration issue" - it's evidence that the code may not work correctly on the target platform.
+
+2. **Security depends on correct execution** - Cryptographic code that crashes cannot protect data. Performance optimizations that cause instability create security vulnerabilities.
+
+3. **You cannot assess risk without working code** - If you can't run the code successfully, you cannot make claims about performance, security, or safety.
+
+4. **Hardware matters for embedded systems** - Theoretical analysis and native benchmarks do NOT substitute for actual hardware testing in embedded systems. Memory constraints, timing requirements, and hardware peripherals behave differently than simulation.
+
+### Test Failure Response Protocol
+
+When a test fails, crashes, or produces unexpected results:
+
+1. **STOP** - Do not proceed with recommendations
+2. **INVESTIGATE** - Determine root cause of the failure
+3. **FIX** - Correct the code and/or test
+4. **VERIFY** - Re-run test and confirm it passes
+5. **ONLY THEN** - Proceed with analysis and recommendations
+
+### Example Violations (DO NOT DO THIS)
+
+❌ **Wrong approach:**
+```
+Test crashed with null pointer exception on ESP32.
+Hardware test failed, but native x86 benchmark shows good performance.
+Recommendation: Proceed with upgrade. Risk: NONE
+```
+
+✅ **Correct approach:**
+```
+Test crashed with null pointer exception on ESP32.
+Root cause: Benchmark ran before hardware initialization complete.
+Fix: Moved benchmark to run in loop() after 5-second stabilization delay.
+Re-test: Successful execution on ESP32 hardware.
+Verified results: ChaCha20 overhead measured at X%.
+Recommendation: Proceed with upgrade. Risk: LOW (verified on target)
+```
+
+### When Theoretical Analysis Is Acceptable
+
+Theoretical analysis WITHOUT hardware testing is acceptable ONLY when:
+- Target hardware is not available AND
+- Similar hardware has been tested successfully AND
+- The change has no platform-specific dependencies AND
+- Risk assessment explicitly acknowledges the limitation
+
+**In all other cases: Test on actual hardware before making recommendations.**
+
+### Performance Testing Requirements
+
+For cryptographic performance changes:
+1. Test on target hardware (ESP32, STM32, etc.)
+2. Measure actual CPU usage, memory usage, and timing
+3. Verify no crashes, hangs, or unexpected behavior
+4. Test under load conditions (not just single iterations)
+5. Document all results with actual measurements
+
+### Documentation of Test Results
+
+Always document:
+- What was tested (hardware, software versions, configurations)
+- How it was tested (procedure, tools, parameters)
+- What the results were (actual measurements, not estimates)
+- Any failures encountered and how they were resolved
+- Limitations of the testing
+
+**Never make recommendations based on failed tests.**
 
 ## Communication Templates
 
@@ -504,7 +653,7 @@ The protocol design is generally sound but has implementation issues that need a
 ## Tools You Can Use
 
 - **Read** - Read source code files
-- **Grep** - Search for security-relevant patterns
+- **Grep** - Search for security-relevant patterns (ripgrep / rg is installed)
 - **Glob** - Find cryptographic files
 - **Bash** - Run security analysis tools
 - **Write** - Create security reports
@@ -567,6 +716,30 @@ Use consistent severity ratings in all reports:
 - **HIGH:** Privilege escalation, data breach, weak crypto
 - **MEDIUM:** Info disclosure, DoS, implementation weakness
 - **LOW:** Minor issues, edge cases, defense-in-depth
+
+---
+
+# Useful Skills
+
+The following skills are available to help with security analysis tasks:
+
+## PrivacyLRS Testing & Analysis
+- **privacylrs-test-runner** - Run PlatformIO unit tests (validate security fixes)
+- **test-privacylrs-hardware** - Flash and test on ESP32 hardware
+- **create-pr** - Create pull requests for PrivacyLRS fixes
+
+## Git & Pull Requests
+- **git-workflow** - Branch management (create feature branches before fixes)
+- **check-builds** - Verify CI builds pass
+
+## Code Navigation
+- **find-symbol** - Find function/struct definitions using ctags
+
+## Communication
+- **email** - Send findings reports to manager
+- **communication** - Message templates and guidelines
+
+---
 
 ## Summary
 

@@ -268,3 +268,12 @@ gh run list --status=failure --limit 3
 - **GitHub CLI docs:** `gh run --help`, `gh pr --help`
 - **Build failure projects:** See `claude/projects/investigate-pr*/` for examples
 - **CI configuration:** `.github/workflows/` in each repository
+
+---
+
+## Related Skills
+
+- **pr-review** - Review PRs (uses check-builds to verify CI status)
+- **create-pr** - Create PRs (use check-builds after PR creation)
+- **git-workflow** - Git operations (often precedes build checks)
+- **finish-task** - Complete tasks (verify builds pass before finishing)

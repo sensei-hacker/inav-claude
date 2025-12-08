@@ -69,3 +69,9 @@ done < /tmp/asset_ids.txt
 # Verify
 gh release view 9.0.0-RC2 --repo iNavFlight/inav --json assets --jq '.assets | length'
 ```
+
+---
+
+## Related Skills
+
+- **upload-release-assets** - Upload new assets after removal

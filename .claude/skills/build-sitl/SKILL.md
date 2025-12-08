@@ -60,7 +60,8 @@ cd inav/build_sitl
 ```
 
 SITL will:
-- Bind to ports 5760 (UART1) and 5761 (UART2)
+- Bind TCP to ports 5761-5768 (UART1-8)
+- Bind WebSocket to ports 5771-5778 (UART1-8) [if WebSocket support compiled in]
 - Listen on all interfaces [::]
 - Load/save eeprom.bin in current directory
 
@@ -72,9 +73,18 @@ SITL will:
 | CMake path errors | `rm CMakeCache.txt && cmake -DSITL=ON ..` |
 | Wrong toolchain (ARM instead of host) | Ensure `-DSITL=ON` in cmake command |
 | Hardware builds disappeared | Use separate `build_sitl/` directory |
+| Linker error: `unrecognized option '--no-warn-rwx-segments'` | Older ld versions don't support this flag. Comment out lines 69-72 in `cmake/sitl.cmake` |
 
 ## Full Documentation
 
 ```bash
 cat claude/test_tools/inav/BUILDING_SITL.md
 ```
+
+## Related Skills
+
+- **sitl-arm** - Arming SITL via MSP for automated testing
+- **test-crsf-sitl** - Complete CRSF telemetry testing workflow with SITL
+- **run-configurator** - Using INAV Configurator with SITL
+- **msp-protocol** - MSP protocol reference for SITL testing
+- **pr-review** - Build SITL to test firmware PRs

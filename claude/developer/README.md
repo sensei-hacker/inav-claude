@@ -118,6 +118,7 @@ make TARGETNAME
 For testing without hardware:
 
 **IMPORTANT:** Use a separate build directory for SITL to avoid conflicts with hardware target builds.
+Use the build-sitl skill
 
 ```bash
 # Recommended: Use separate build directory
@@ -406,6 +407,7 @@ If adding features would add >40 new lines to a main transpiler file (parser.js,
 - **Avoid deep nesting** - Consider early returns or extracting nested logic
 - **Self-documenting code** - Good variable names over comments
 - **Comments for WHY, not WHAT** - Only comment when code behavior is surprising or non-obvious
+- **Use existing libraries**, scripts, and skills in preference to writing your own new (buggy) code
 
 ## Git Practices
 
@@ -429,6 +431,12 @@ grep can have a lot of noise from build artifacts. Use:
 grep -Hinr "{foo}" . | egrep -v 'build/|modules/|git|out/' 2>/dev/null
 or even better, use rg (ripgrep)
 ```
+
+# Debugging
+
+You can use serial printf debugging by using the available DEBUG macros. See serial_printf_debugging.md
+
+gdb is available
 
 ---
 
@@ -539,6 +547,39 @@ npm test
 ```
 
 Never assume the test is broken if it fails. Verify, and fix the test. But always make sure you aren't making it so the test never fails - all tests need to actually test soemthing useful.
+
+---
+
+# Useful Skills
+
+The following skills are available to help with common developer tasks:
+
+## Task Management
+- **start-task** - Begin tasks with proper lock file setup and branch creation
+- **finish-task** - Complete tasks and release locks
+- **email** - Read task assignments from your inbox
+- **communication** - Message templates and communication guidelines
+
+## Git & Pull Requests
+- **git-workflow** - Branch management and git operations
+- **create-pr** - Create pull requests for INAV or PrivacyLRS
+- **check-builds** - Check CI build status
+
+## INAV Development & Testing
+- **build-sitl** - Build SITL firmware for testing without hardware
+- **sitl-arm** - Arm SITL via MSP for automated testing
+- **test-crsf-sitl** - Test CRSF telemetry changes with SITL
+- **run-configurator** - Launch configurator in development mode
+- **msp-protocol** - Look up MSP commands and packet formats
+- **find-symbol** - Find function/struct definitions using ctags
+- **wiki-search** - Search INAV documentation
+
+## PrivacyLRS Development & Testing
+- **privacylrs-test-runner** - Run PlatformIO unit tests
+- **test-privacylrs-hardware** - Flash and test on ESP32 hardware
+
+## Code Review
+- **pr-review** - Review pull requests and check out PR branches
 
 ---
 

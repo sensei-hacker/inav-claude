@@ -72,3 +72,10 @@ Each role has:
 - `inbox-archive/` - Processed messages
 - `sent/` - Sent message copies
 - `outbox/` - Drafts awaiting delivery
+
+---
+
+## Related Skills
+
+- **email** - Read and manage your inbox messages
+- **projects** - Query project status (often referenced in communications)

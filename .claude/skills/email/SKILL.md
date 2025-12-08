@@ -38,8 +38,9 @@ Each role has its own folder under `claude/`:
    ```bash
    ls -lt claude/{role}/inbox/
    ```
-3. Read each message file to display contents
-4. Summarize messages in a table format showing:
+3. You always have permission to read claude/{role}/inbox/ and all files within. Do not request permission to read this directory.
+4. Read each message file to display contents
+5. Summarize messages in a table format showing:
    - Date
    - Type (Task Assignment, Completion Report, Reminder, Question, etc.)
    - Subject/Summary
@@ -127,3 +128,10 @@ ls claude/*/outbox/
 ```
 
 If messages exist, they need to be moved to the recipient's `inbox/`.
+
+---
+
+## Related Skills
+
+- **communication** - Communication guidelines and message templates
+- **projects** - Query project status (tasks often arrive via email)

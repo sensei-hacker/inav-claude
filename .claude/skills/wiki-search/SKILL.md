@@ -288,3 +288,9 @@ rg -i "pmw3901|vl53l1x|qmc5883" inavwiki/
 - **Online wiki:** https://github.com/iNavFlight/inav/wiki
 - **Local copy:** `inavwiki/` directory
 - **Ripgrep guide:** `rg --help` or `man rg`
+
+---
+
+## Related Skills
+
+- **find-symbol** - Find function/struct definitions in code

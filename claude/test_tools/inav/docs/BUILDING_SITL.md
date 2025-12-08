@@ -122,3 +122,12 @@ pkill -9 inav_SITL
 **Symptom**: Built hardware firmware (e.g., BLUEBERRYF435WING.hex) disappeared after SITL build
 **Cause**: Building SITL in the same directory as hardware builds (`build/`) cleans those targets
 **Prevention**: Always use separate `build_sitl/` directory for SITL builds
+
+---
+
+## Related Skills
+
+- **build-sitl** - Complete SITL build workflow with troubleshooting
+- **sitl-arm** - Arm SITL via MSP for automated testing
+- **test-crsf-sitl** - Test CRSF telemetry with SITL
+- **msp-protocol** - MSP protocol reference for SITL testing

@@ -11,7 +11,7 @@ cd inav
 git checkout master
 mkdir -p build_baseline && cd build_baseline
 cmake -DSITL=ON ..
-make -j$(nproc)
+make -j4
 cp inav_SITL ../inav_SITL_baseline
 cd ..
 
@@ -19,7 +19,7 @@ cd ..
 git checkout faster_msp_when_disarmed
 mkdir -p build_optimized && cd build_optimized
 cmake -DSITL=ON ..
-make -j$(nproc)
+make -j4
 cp inav_SITL ../inav_SITL_optimized
 cd ..
 

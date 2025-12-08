@@ -146,7 +146,7 @@ Create assignment in `manager/sent/`:
 **Project:** <project-name>
 **Priority:** High | Medium | Low
 **Estimated Effort:** X-Y hours
-**Branch:** From master (or specify)
+**Branch:** From appropriate base branch (see Repository Base Branches below)
 
 ## Task
 <Clear description of what needs to be done>
@@ -391,6 +391,75 @@ grep -r "<keyword>" claude/archived_projects/
 - Configuration files (except documentation)
 - Developer's inbox/sent folders (only copy files there)
 
+## Repository Base Branches
+
+**CRITICAL:** Always specify the correct base branch when assigning tasks involving code changes or PRs.
+
+### PrivacyLRS
+- **Repository:** `sensei-hacker/PrivacyLRS` (origin)
+- **Base Branch:** `secure_01` (NOT master)
+- **PR Target:** origin (sensei-hacker/PrivacyLRS)
+- **Note:** This is a separate fork/derivative project
+
+### INAV Firmware
+- **Repository:** `inavflight/inav` (upstream)
+- **Base Branch:** `maintenance-9.x` (for changes compatible with INAV 9.x configurator)
+- **Alternative:** `maintenance-10.x` (for breaking changes - incompatible with 9.x configurator)
+- **Master Branch:** ONLY for documentation and GitHub Actions/workflows
+- **PR Target:** upstream (inavflight/inav)
+
+### INAV Configurator
+- **Repository:** `inavflight/inav-configurator` (upstream)
+- **Base Branch:** `maintenance-9.x` (for changes compatible with INAV 9.x firmware)
+- **Alternative:** `maintenance-10.x` (for breaking changes - incompatible with 9.x firmware)
+- **Master Branch:** ONLY for documentation and GitHub Actions/workflows
+- **PR Target:** upstream (inavflight/inav-configurator)
+
+**CRITICAL RULES:**
+- **NEVER use master branch** except for documentation or GitHub Actions/workflow updates
+- **Use maintenance-9.x** for changes that maintain compatibility between firmware and configurator
+- **Use maintenance-10.x** for breaking changes that require both firmware and configurator updates
+- **Always specify:** "Branch: From `maintenance-9.x`" (or `maintenance-10.x` if breaking change)
+- **For PrivacyLRS:** "Branch: From `secure_01`"
+
+**Compatibility Guidelines:**
+- `maintenance-9.x`: INAV 9.x firmware ↔ INAV 9.x configurator (backwards compatible)
+- `maintenance-10.x`: INAV 10.x firmware ↔ INAV 10.x configurator (breaking changes)
+- Breaking changes include: MSP protocol changes, settings changes, UI/UX requiring protocol updates
+
+**Quick Reference:**
+```
+PrivacyLRS:               base = secure_01
+inav (firmware):          base = maintenance-9.x (or maintenance-10.x if breaking)
+inav-configurator:        base = maintenance-9.x (or maintenance-10.x if breaking)
+master branch:            ONLY docs and GitHub Actions - NEVER code
+```
+
+See `.claude/skills/create-pr/SKILL.md` for complete PR creation workflows.
+
+---
+
+# Useful Skills
+
+The following skills are available to help with common manager tasks:
+
+## Project & Task Management
+- **projects** - Query and manage project status using project_manager.py
+- **email** - Read completion reports and send task assignments
+- **communication** - Message templates and communication guidelines
+
+## Git & Pull Requests
+- **git-workflow** - Branch management and status checks
+- **pr-review** - Review pull requests including bot suggestions
+- **check-builds** - Check CI build status for PRs
+
+## Code Navigation & Research
+- **find-symbol** - Find function/struct definitions using ctags
+- **wiki-search** - Search INAV documentation
+- **msp-protocol** - Look up MSP commands and packet formats
+
+---
+
 ## Summary
 
 As Development Manager:
@@ -399,6 +468,7 @@ As Development Manager:
 3. ✅ Process completion reports
 4. ✅ Update INDEX.md
 5. ✅ Archive completed work
-6. ❌ Never edit code directly
+6. ✅ Specify correct base branch for each repo
+7. ❌ Never edit code directly
 
 **Remember:** You coordinate and track. The developer implements.
