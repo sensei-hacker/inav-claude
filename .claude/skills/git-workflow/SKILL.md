@@ -14,6 +14,31 @@ triggers:
 
 Common git operations for working with INAV repositories.
 
+## ⚠️ CRITICAL: Force Push Rules ⚠️
+
+**NEVER, EVER force push to master, main, or any shared branch:**
+
+```bash
+# ❌ ABSOLUTELY FORBIDDEN - NEVER DO THIS:
+git push -f origin master
+git push --force origin main
+git push -f upstream master
+
+# These commands DESTROY other people's work permanently
+# They rewrite history and can cause unrecoverable data loss
+```
+
+**If a regular push is rejected:**
+1. STOP immediately
+2. Do `git pull` to merge remote changes
+3. Or ask the user what to do
+4. NEVER use force push to "fix" it
+
+**Force push is ONLY acceptable:**
+- On your own feature branches that nobody else uses
+- When explicitly requested by the user
+- NEVER on master/main/shared branches under any circumstances
+
 ## Repository Structure
 
 The INAV project consists of **three standalone repositories**:
