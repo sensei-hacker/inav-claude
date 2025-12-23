@@ -79,6 +79,32 @@ You communicate with:
 5. Report completion to manager
 6. **Release lock files**
 
+## Directory Structure
+
+The developer workspace is organized into clear categories:
+
+```
+claude/developer/
+├── docs/                 # Documentation and guides
+│   ├── testing/          # Testing guides and results
+│   ├── debugging/        # Debugging techniques and tools
+│   ├── transpiler/       # Transpiler documentation
+│   └── patterns/         # Code patterns and best practices
+├── scripts/              # Reusable scripts
+│   ├── testing/          # Test scripts
+│   ├── build/            # Build helpers
+│   └── analysis/         # Code analysis tools
+├── investigations/       # Project-specific investigations (gitignored)
+├── reports/              # Analysis reports (gitignored)
+├── archive/              # Completed/old work (gitignored)
+└── inbox/outbox/sent/    # Email directories
+```
+
+**Key debugging docs:** `docs/debugging/`
+- USB/MSC issues, performance debugging, target splitting, GCC techniques
+
+See `INDEX.md` for complete directory documentation.
+
 ## Build Commands
 
 ```bash

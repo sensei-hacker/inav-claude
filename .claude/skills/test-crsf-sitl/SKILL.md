@@ -27,7 +27,10 @@ Use this skill when testing Pull Requests that modify CRSF telemetry:
 3. **Python 3** - For testing scripts
 4. **MSP Library** - mspapi2 (recommended) or uNAVlib (older alternative)
    - **mspapi2:** `/home/raymorris/Documents/planes/inavflight/mspapi2` (https://github.com/xznhj8129/mspapi2)
+     - Install: `cd mspapi2 && pip install .`
+     - Docs: `mspapi2/docs/GETTING_STARTED.md`
    - **uNAVlib:** `/home/raymorris/Documents/planes/inavflight/uNAVlib` (https://github.com/xznhj8129/uNAVlib)
+     - Use for legacy scripts only, prefer mspapi2 for new work
 
 ### Testing Scripts
 

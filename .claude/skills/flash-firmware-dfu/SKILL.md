@@ -321,6 +321,18 @@ Simple standalone script that only reboots to DFU mode (equivalent to `fc-cli.py
 
 Use `fc-cli.py` for new work - it's more flexible.
 
+## USB Debugging
+
+When USB MSC (mass storage) or CDC (serial) modes have issues, see:
+`claude/developer/docs/debugging/usb-msc-debugging.md`
+
+Quick commands:
+```bash
+lsusb -v | grep -A20 "STM"
+dmesg | tail -50
+cat /sys/bus/usb/devices/*/product
+```
+
 ## Related Skills
 
 - **build-inav-target** - Build firmware before flashing
@@ -329,4 +341,5 @@ Use `fc-cli.py` for new work - it's more flexible.
 
 ## References
 
-Full documentation: `inav/docs/development/Building in Linux.md`
+- Full documentation: `inav/docs/development/Building in Linux.md`
+- USB debugging: `claude/developer/docs/debugging/usb-msc-debugging.md`

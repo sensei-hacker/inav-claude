@@ -139,7 +139,10 @@ Popular flight controller targets:
 - **Matek:** MATEKF405, MATEKF722, MATEKF405SE, MATEKF722SE
 - **JHEMCU:** JHEF405, JHEF722
 - **SpeedyBee:** SPEEDYBEEF405, SPEEDYBEEF7
-- **Generic:** OMNIBUSF4, OMNIBUSF7
+
+## Build for serial printf debugging
+This will allow LOG_DEBUG lines to be used for troubleshooting (serial printf debugging):
+make CPPFLAGS="-DUSE_BOOTLOG=1024 -DUSE_LOG" BROTHERHOBBYH743
 
 ## Next Steps
 
@@ -147,6 +150,19 @@ After building, you can:
 1. Flash using INAV Configurator (GUI)
 2. Flash using command-line tools (see **flash-firmware-dfu** skill)
 3. Use msp-tool or flash.sh helper tools
+
+## Target Directory Split Verification
+
+When splitting multi-target directories (e.g., OMNIBUSF4 with multiple variants), see:
+`claude/developer/docs/debugging/target-split-verification.md`
+
+**Scripts:** `claude/developer/scripts/analysis/`
+
+```bash
+python3 comprehensive_verification.py   # Multi-tool verification
+python3 verify_target_conditionals.py   # Pattern matching
+python3 split_omnibus_targets.py        # Functional verification (gcc -E)
+```
 
 ## Related Skills
 
@@ -157,4 +173,6 @@ After building, you can:
 
 ## References
 
-Full documentation: `inav/docs/development/Building in Linux.md`
+- Full documentation: `inav/docs/development/Building in Linux.md`
+- Target split verification: `claude/developer/docs/debugging/target-split-verification.md`
+- Performance debugging: `claude/developer/docs/debugging/performance-debugging.md`

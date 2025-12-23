@@ -55,11 +55,18 @@ work-in-progress/
 **/work-in-progress/
 markdown2mdx/
 
-# Session-specific investigation files
+# Session-specific investigation files (old paths - kept for compatibility)
 developer/distance_to_home_zero_conditions.md
 developer/gps_test_investigation_notes.md
 developer/script_versions.txt
 developer/extract_json.py
+
+# Project-specific investigation directories
+# (Lessons learned extracted to docs/LESSONS-LEARNED.md)
+claude/developer/investigations/
+claude/developer/archive/
+claude/developer/builds/
+claude/developer/reports/
 
 # Keep directory structure but ignore content
 !**/inbox/.gitkeep
