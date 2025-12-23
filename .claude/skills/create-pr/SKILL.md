@@ -139,7 +139,7 @@ Detailed description of what changed and why.
 - First line: Brief summary (50-72 chars)
 - Blank line
 - Concise explanation
-- DO NOT mention Claude or AI assistance
+- DO NOT mention Claude or AI assistance. Avoid writing "Generated with [Claude Code]" or anything similar anywhere
 - Focus on what and why, not how
 
 ### Step 3: Push Branch
@@ -216,6 +216,9 @@ A good PR description includes:
 - **Testing** - How was it tested?
 - **Performance Impact** - If relevant
 - **Security Considerations** - For security changes
+
+## Prohibited in PR description:
+- DO NOT mention Claude or AI assistance. Avoid writing "Generated with [Claude Code]" or anything similar anywhere
 
 ### Example Template
 

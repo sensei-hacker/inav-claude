@@ -1,3 +1,11 @@
+---
+description: Remove all files/artifacts/assets from a GitHub release
+triggers:
+  - remove release assets
+  - delete release assets
+  - clear release files
+---
+
 # Remove Release Assets
 
 Remove all files/artifacts/assets from a GitHub release.

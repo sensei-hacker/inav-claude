@@ -79,6 +79,7 @@ The **mspapi2** library is the recommended Python MSP implementation for testing
 - Serial and TCP communication with robust error handling
 - High-level API with typed getters/setters
 - INAV enums for type-safe mission scripting
+- Introspection tools for discovering message structure
 - Useful for testing, scripting, automation, and multi-client scenarios
 - Can communicate with both real hardware and SITL
 
@@ -94,14 +95,42 @@ pip install -e .
 ```python
 from mspapi2 import MSPApi
 
-api = MSPApi(port="/dev/ttyACM0", baudrate=115200)
-api.open()
-try:
+with MSPApi(port="/dev/ttyACM0", baudrate=115200) as api:
     info, version = api.get_api_version()
-    print(info, version)
-finally:
-    api.close()
+    print(f"API Version: {version['apiVersionMajor']}.{version['apiVersionMinor']}")
 ```
+
+**Discovering message fields:**
+```python
+from examples.introspection import print_message_info
+from mspapi2 import InavMSP
+
+# Find out what fields a message has
+print_message_info(InavMSP.MSP_ATTITUDE)
+```
+
+**Using messages without convenience methods:**
+```python
+from mspapi2 import MSPApi, InavMSP
+
+with MSPApi(port="/dev/ttyACM0") as api:
+    # Pack request
+    request = api._pack_request(
+        InavMSP.MSP2_INAV_LOGIC_CONDITIONS_SINGLE,
+        {"conditionIndex": 0}
+    )
+
+    # Send and get reply
+    info, reply = api._request(InavMSP.MSP2_INAV_LOGIC_CONDITIONS_SINGLE, request)
+    print(f"Enabled: {reply['enabled']}")
+```
+
+**Documentation:**
+- Getting Started: `mspapi2/docs/GETTING_STARTED.md`
+- Flight Computer Guide: `mspapi2/docs/FLIGHT_COMPUTER.md`
+- Discovering Fields: `mspapi2/docs/DISCOVERING_FIELDS.md`
+- TCP Server: `mspapi2/docs/SERVER.md`
+- Examples: `mspapi2/examples/`
 
 **Contributing:**
 If you encounter issues or see improvements needed in mspapi2, PRs are welcome at the GitHub repository!

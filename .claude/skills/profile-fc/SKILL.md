@@ -1,3 +1,11 @@
+---
+description: Profile INAV firmware performance by measuring CPU usage at specific code points
+triggers:
+  - profile fc
+  - profile performance
+  - measure cpu usage
+---
+
 # Profile Flight Controller Performance
 
 **Purpose:** Profile INAV firmware performance by measuring CPU usage at specific code points.

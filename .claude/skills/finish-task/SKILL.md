@@ -1,3 +1,14 @@
+---
+description: Close task or complete task/project with commit, PR, and completion report
+triggers:
+  - finish task
+  - close task
+  - complete task
+  - close project
+  - complete project
+  - task done
+---
+
 # Finish Task Skill
 
 Use this skill when completing a task that involved code modifications.

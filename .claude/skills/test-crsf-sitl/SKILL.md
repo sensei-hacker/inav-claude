@@ -1,3 +1,11 @@
+---
+description: Test CRSF telemetry changes using INAV SITL simulation
+triggers:
+  - test crsf
+  - test crsf sitl
+  - crsf telemetry test
+---
+
 # test-crsf-sitl
 
 **Complete workflow for testing CRSF telemetry changes using INAV SITL**

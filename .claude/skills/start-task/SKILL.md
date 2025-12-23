@@ -1,3 +1,13 @@
+---
+description: Start task or begin project with lock acquisition and branch setup
+triggers:
+  - start task
+  - begin task
+  - start project
+  - begin project
+  - new task
+---
+
 # Start Task Skill
 
 Use this skill when beginning any assigned task that involves modifying code.

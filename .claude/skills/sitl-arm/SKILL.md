@@ -41,6 +41,31 @@ Or install directly from GitHub:
 pip3 install git+https://github.com/xznhj8129/mspapi2
 ```
 
+**Quick Example (mspapi2):**
+```python
+from mspapi2 import MSPApi
+
+# Connect to SITL
+with MSPApi(tcp_endpoint="localhost:5760") as api:
+    # Get status
+    info, status = api.get_nav_status()
+    print(f"Nav State: {status['navState']}")
+
+    # Set RC channels (ARM on AUX1)
+    api.set_rc_channels({
+        "roll": 1500,
+        "pitch": 1500,
+        "throttle": 1000,
+        "yaw": 1500,
+        4: 2000  # AUX1 for ARM
+    })
+```
+
+**Documentation:**
+- mspapi2 Getting Started: `mspapi2/docs/GETTING_STARTED.md`
+- Flight Computer Guide: `mspapi2/docs/FLIGHT_COMPUTER.md` (autonomous navigation)
+- Discovering MSP Fields: `mspapi2/docs/DISCOVERING_FIELDS.md`
+
 **Alternative: uNAVlib (older)**
 ```bash
 pip3 install git+https://github.com/xznhj8129/uNAVlib
