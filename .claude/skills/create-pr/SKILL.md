@@ -71,7 +71,7 @@ Remote: upstream → https://github.com/inavflight/inav.git
 - Production branches (secure_01, master, main) should only be updated via PRs
 - Direct commits bypass code review
 - Direct pushes pollute the git history with mistakes
-- You cannot easily undo a pushed commit without force-push
+- You cannot undo a pushed commit (force push is absolutely forbidden)
 - **This is a CRITICAL workflow violation**
 
 ---

@@ -14,7 +14,45 @@ triggers:
 
 Common git operations for working with INAV repositories.
 
-## ⚠️ CRITICAL: Force Push Rules ⚠️
+## ⚠️ CRITICAL: Git Safety Rules ⚠️
+
+### Questions Are Not Commands
+
+**When the user asks a question, ONLY answer the question.**
+- Do NOT take any action (delete, push, modify, etc.)
+- Do NOT "fix" things while explaining them
+- Do NOT assume you know what action should follow
+- WAIT for explicit instructions before doing anything
+
+### Never Destroy Evidence During Investigation
+
+**When investigating a problem or answering questions about repository state:**
+- Do NOT delete branches, tags, or commits
+- Do NOT push, force-push, or overwrite anything
+- Do NOT "clean up" anything
+- PRESERVE the current state so it can be examined
+- The evidence is needed to understand and fix the problem
+
+### Never Alter the Public Record
+
+**Once something is pushed to a public/shared repository:**
+- It becomes part of the permanent record
+- Other developers around the world may have fetched it
+- Altering it (force push, amend+push) creates problems for EVERYONE
+- It breaks other developers' local repositories
+- It corrupts CI/CD pipelines, PR references, and git history
+- The damage is often irreversible and far-reaching
+
+**Force pushing after a PR is merged corrupts GitHub's PR display:**
+- GitHub's "Files changed" tab shows the diff between base and the CURRENT branch head
+- If you force push after merge, the PR now shows DIFFERENT code than what was actually merged
+- Example: PR #2496 actually merged an `afterCopy` hook, but after force push GitHub shows `postPackage`
+- Anyone reviewing the PR history sees FALSE information about what was merged
+- This makes debugging, auditing, and understanding project history impossible
+- The merge commit in master contains the ORIGINAL code, but the PR display shows the AMENDED code
+- This is a permanent corruption of the project's historical record
+
+### Force Push Rules
 
 **NEVER, EVER force push to master, main, or any shared branch:**
 

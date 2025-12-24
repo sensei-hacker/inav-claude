@@ -72,40 +72,51 @@ The `outbox/` folder is for draft messages that need review before sending. When
 
 ## Release Workflow
 
+**IMPORTANT:** Verify builds BEFORE creating tags. Never tag a commit that hasn't been proven to build successfully.
+
 ```
 1. Verify release readiness
    ├── All PRs merged
-   ├── CI passing
-   └── Version numbers updated
+   ├── Version numbers updated
+   └── SITL binaries updated in configurator (if needed)
 
-2. Update SITL binaries in Configurator
-   ├── Build SITL from firmware for each platform
-   └── Commit updated binaries to configurator repo
+2. Identify target commits
+   ├── Find HEAD of release branch (e.g., maintenance-9.x)
+   ├── Record exact commit SHAs for both repos
+   └── Verify CI has run on these commits
 
-3. Create tags
-   ├── inav: git tag <version>
-   └── inav-configurator: git tag <version>
+3. Verify CI passing on target commits
+   ├── Check all build jobs succeeded (not just some)
+   ├── If ANY build failed: STOP - fix before proceeding
+   └── Document CI run IDs for artifact download
 
-4. Generate changelog
+4. Download and verify artifacts
+   ├── Download firmware hex files from nightly
+   ├── Download configurator artifacts from CI run
+   ├── Verify macOS DMGs (no cross-platform contamination)
+   ├── Verify Windows SITL (cygwin1.dll present)
+   ├── Verify Linux SITL (glibc <= 2.35)
+   └── Test SITL functionality
+
+5. Generate changelog
    ├── List PRs since last tag
    ├── Categorize changes
    ├── **Identify incompatible settings** (./find-incompatible-settings.sh)
-   ├── Add incompatibility section to release notes
    └── Format release notes
 
-5. Build artifacts
-   ├── Firmware: all targets
-   └── Configurator: Win/Mac/Linux
-
-6. Create draft releases
-   ├── Upload firmware artifacts
-   ├── Upload configurator artifacts
+6. Create tags and draft releases (ONLY after artifacts verified)
+   ├── Create tag + draft release for firmware (targeting verified commit)
+   ├── Create tag + draft release for configurator (targeting verified commit)
+   ├── Upload verified artifacts
    └── Add release notes
 
 7. Review and publish
-   ├── Maintainer review
+   ├── Final review of draft releases
+   ├── Maintainer approval
    └── Publish releases
 ```
+
+**Why this order matters:** If you tag first and then discover the build is broken, you have a tag pointing to a broken commit. By verifying artifacts first, you only tag commits that are proven to work.
 
 ## Repositories
 
@@ -371,6 +382,65 @@ lipo -info "/Volumes/INAV-Configurator/INAV Configurator.app/Contents/MacOS/inav
 hdiutil detach /Volumes/INAV-Configurator -quiet
 ```
 
+## Verifying Windows SITL Files (cygwin1.dll)
+
+**CRITICAL:** Windows SITL requires `cygwin1.dll` to run. Without it, users get "cygwin1.dll not found" errors and SITL fails to launch.
+
+### Why This Matters
+
+The Windows SITL binary (`inav_SITL.exe`) is built using Cygwin and requires the Cygwin runtime DLL to execute. This file must be bundled with the configurator in the `resources/public/sitl/windows/` directory.
+
+### Using the Verification Script
+
+A verification script is available at: `claude/release-manager/verify-windows-sitl.sh`
+
+```bash
+# Verify Windows configurator zip or extracted directory
+./claude/release-manager/verify-windows-sitl.sh downloads/configurator-9.0.0-RC4/windows/INAV-Configurator_win_x64_9.0.0.zip
+```
+
+### Manual Verification
+
+```bash
+# For zip files - list contents and check for both required files
+unzip -l INAV-Configurator_win_x64_9.0.0.zip | grep -E "(cygwin1.dll|inav_SITL.exe)"
+
+# Expected output (both files must be present):
+# Note: Packaged builds use resources/sitl/ (not resources/public/sitl/)
+#    2953269  12-19-2024 01:41   resources/sitl/windows/cygwin1.dll
+#    1517041  12-21-2024 17:25   resources/sitl/windows/inav_SITL.exe
+```
+
+### Path Differences
+
+| Context | SITL Path |
+|---------|-----------|
+| Source repo | `resources/public/sitl/windows/` |
+| Packaged builds | `resources/sitl/windows/` |
+
+The `extraResource` config in `forge.config.js` copies `resources/public/sitl` to `resources/sitl` in packaged builds (see PR #2496).
+
+### What to Check
+
+- ✅ `cygwin1.dll` exists in `resources/sitl/windows/` (packaged) or `resources/public/sitl/windows/` (source)
+- ✅ `inav_SITL.exe` exists in same directory
+- ✅ File sizes are reasonable (cygwin1.dll ~2.9MB, inav_SITL.exe ~1.5MB)
+
+### If cygwin1.dll is Missing
+
+1. **DO NOT release** - Windows SITL will be broken
+2. Check if the configurator repo has the file in `resources/public/sitl/windows/`
+3. If missing from repo, obtain from a working Cygwin installation or previous release
+4. Create PR to add/fix the file before proceeding with release
+
+### Source of cygwin1.dll
+
+The `cygwin1.dll` file comes from the Cygwin build environment used to compile the Windows SITL binary. It should only be updated when:
+- The Cygwin toolchain version changes
+- There are compatibility issues with the current DLL
+
+---
+
 ## Using gh to Create Releases and Tags
 
 **TIP:** You can create both the tag and release in one step using `gh release create`, bypassing the need to work in locked local repositories.
@@ -590,11 +660,42 @@ For releases, you need SITL binaries for all three platforms:
 - **macOS:** Must be built on a macOS machine
 - **Windows:** Cross-compile with mingw-w64 or build on Windows
 
+### Linux SITL glibc Compatibility Requirement
+
+**CRITICAL:** Linux SITL binaries must be compiled on a system with glibc old enough to support all non-EOL Ubuntu LTS releases.
+
+| Period | Oldest Supported Ubuntu LTS | glibc Version |
+|--------|----------------------------|---------------|
+| 2025-2027 | Ubuntu 22.04.3 LTS | glibc 2.35 |
+
+**Why this matters:**
+- glibc is forward-compatible but NOT backward-compatible
+- A binary compiled on Ubuntu 24.04 (glibc 2.39) will fail on Ubuntu 22.04 with errors like:
+  ```
+  /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.38' not found
+  ```
+- Users on older (but still supported) Ubuntu LTS releases would be unable to use SITL
+
+**How to verify:**
+```bash
+# Check glibc version requirements of a binary
+objdump -T inav_SITL | grep GLIBC | sed 's/.*GLIBC_//;s/ .*//' | sort -V | tail -1
+
+# Check system glibc version
+ldd --version | head -1
+```
+
+**Build recommendations:**
+- Build on Ubuntu 22.04 LTS or equivalent (glibc 2.35) for maximum compatibility
+- Alternatively, use a Docker container with an older base image
+- The inav-nightly CI should be configured to build on an appropriate base image
+
 ### Notes
 
 - The `cygwin1.dll` in the Windows folder is a runtime dependency; only update if the build toolchain changes
 - SITL binaries are platform-specific and cannot be cross-used
 - Linux arm64 binary added in 9.0.0 for ARM-based Linux systems (e.g., Raspberry Pi)
+- Linux binaries must support glibc 2.35+ (see glibc compatibility section above)
 - Ensure the SITL version matches the firmware version being released
 - Test the SITL binaries work before committing (run configurator and try SITL mode)
 - The SITL PR triggers CI builds - use those artifacts for the configurator release
@@ -935,6 +1036,7 @@ git diff 8.0.1..9.0.0-RC3 -- src/main/fc/settings.yaml | less
 - [ ] Firmware hex files downloaded and renamed
 - [ ] Configurator artifacts organized by platform (linux/, macos/, windows/)
 - [ ] macOS DMG contents verified (no .exe files, correct architecture)
+- [ ] **Windows SITL cygwin1.dll verified** (use verify-windows-sitl.sh)
 - [ ] **Configurator SITL tested** (launch SITL, verify version matches firmware)
 
 ## Post-Release Tasks
@@ -1062,6 +1164,22 @@ Usage:
 
 # For patch releases
 ./claude/release-manager/rename-firmware-for-release.sh 9.0.1 downloads/firmware-9.0.1/
+```
+
+**`claude/release-manager/verify-windows-sitl.sh`**
+- Verifies Windows configurator packages contain required SITL files
+- Checks for `cygwin1.dll` (required runtime for Windows SITL)
+- Checks for `inav_SITL.exe`
+- Works with both zip files and extracted directories
+- Exits with error if either file is missing
+
+Usage:
+```bash
+# Verify zip file
+./claude/release-manager/verify-windows-sitl.sh downloads/configurator-9.0.0-RC4/windows/INAV-Configurator_win_x64_9.0.0.zip
+
+# Verify extracted directory
+./claude/release-manager/verify-windows-sitl.sh downloads/configurator-9.0.0-RC4/windows/INAV-Configurator_win_x64_9.0.0/
 ```
 
 ## Important Reminders

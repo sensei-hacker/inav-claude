@@ -2,7 +2,7 @@
 
 This file tracks all active and completed projects in the INAV codebase.
 
-**Last Updated:** 2025-12-18
+**Last Updated:** 2025-12-23
 
 ---
 
@@ -25,6 +25,163 @@ This file tracks all active and completed projects in the INAV codebase.
 ---
 
 ## Recent Activity (Last 7 Days)
+
+### 2025-12-23: Five Projects Complete, Issue #9912 Analysis Progress ✅📊
+
+**Developer** - BLUEBERRY PID Performance Investigation Complete
+- **Manufacturer was WRONG:** gyroLuluApplyFn is NOT the bottleneck!
+- **True culprit:** Dynamic Gyro Notch Filter adds ~110µs per PID cycle (FFT overhead)
+- **LULU filter impact:** Only ~6µs (negligible)
+- **Performance improvement:** 435µs → 320µs with dynamic notch OFF (-115µs!)
+- **Remaining gap:** 66µs difference vs JHEMCU (320µs vs 254µs) - cause unknown
+- **Recommendation:** Disable dynamic notch on BLUEBERRY boards
+- **Documentation:** Updated investigation reports in `claude/developer/investigations/blueberry-pid/`
+
+**Developer** - BLUEBERRY Configuration Fix Complete
+- **PR #11199:** https://github.com/iNavFlight/inav/pull/11199
+- **Dynamic notch:** Disabled by default in `config.c` (performance optimization)
+- **DMA analysis:** AT32F43x has DMAMUX - sequential numbering is CORRECT!
+- **Key discovery:** AT32F43x DMA architecture differs from STM32 (flexible assignment)
+- **DMA option 7 skip:** Intentional to avoid ADC1 conflict
+- **Build verification:** Both BLUEBERRYF435WING variants build successfully
+- **Branch:** fix-blueberry-disable-dynamic-notch, Commit: b7bfdeed54
+
+**Developer** - OMNIBUSF4 4-Way Target Split Complete
+- **PR #11196:** https://github.com/iNavFlight/inav/pull/11196
+- **Structure:** Split into 4 directories (DYSF4/, OMNIBUSF4/, OMNIBUSF4PRO/, OMNIBUSF4V3_SS/)
+- **Verification:** All 9 targets build successfully, preprocessor output identical
+- **Tools:** Created unifdef automation scripts for future splits
+- **Status:** Ready for review and merge
+
+**Developer** - Organize claude/developer/ Directory Complete
+- **Reorganized:** 50+ loose files into logical structure
+- **Directories:** docs/, scripts/, investigations/, reports/, archive/
+- **Documentation:** Updated CLAUDE.md with directory structure, created comprehensive INDEX.md
+- **Commits:** 2fe97a4, 7a7697d
+- **Result:** Clean, navigable structure with clear organization
+
+**Developer** - Issue #9912 Root Cause Analysis (Theory)
+- **Task:** Create reproduction script
+- **Progress:** Performed deep code analysis instead
+- **Theory:** Missing I-term stability check in autotrim (servos.c:644)
+- **Hypothesis:** Transient I-term during maneuver transitions incorrectly transferred to servo midpoints
+- **Proposed Fix:** Add I-term rate-of-change stability check before transfer
+- **Report:** `claude/developer/reports/issue-9912-autotrim-analysis.md`
+- **Status:** Theory needs verification through reproduction or pilot testing
+- **Next:** Either reproduce bug in SITL or have pilot test the proposed fix
+
+**Developer** - New Project Started: OLED Auto-Detection
+- **Goal:** Auto-detect OLED controller type (SSD1306, SH1106, SH1107, SSD1309)
+- **Progress:** Detection algorithm implemented and compiling
+- **Still Needed:** Handle different display widths (132px vs 128px) and aspect ratios
+- **File:** `inav/src/main/drivers/display_ug2864hsweg01.c`
+- **Reference:** Based on ss_oled library detection algorithm
+
+### 2025-12-23: Two New Tasks Assigned 📋
+
+**Manager** - Fix BLUEBERRYF435 Configuration (DMA + Disable Dynamic Notch) *(UPDATED)*
+- **Context:** Board overloaded at 132.1% task load from performance investigation
+- **Task 1:** Disable dynamic gyro notch filter by default (wing optimization)
+- **Task 2:** Fix DEF_TIM DMA configuration (sequential numbers → "0")
+- **Rationale:** Two-pronged approach to reduce CPU load
+  - Dynamic notch unnecessary for wing aircraft
+  - DMA conflicts could cause contention
+- **Target Files:** `config.c` and `target.c`
+- **Priority:** MEDIUM-HIGH (related to HIGH priority performance issue)
+- **Estimated Time:** 1-2 hours
+- **Assignment Email:** `claude/manager/sent/2025-12-23-0033-task-fix-blueberry-deftim-config.md`
+
+**Manager** - Create Test Script to Reproduce Issue #9912
+- **Issue:** https://github.com/iNavFlight/inav/issues/9912
+- **Goal:** Automated test script to reproduce bug
+- **Approach:** Use SITL in simulator mode if helpful
+- **Deliverables:** Test script, config files, reproduction report
+- **Value:** Baseline for testing fixes, regression testing capability
+- **Estimated Time:** 3-5 hours
+- **Assignment Email:** `claude/manager/sent/2025-12-23-0029-task-reproduce-issue-9912.md`
+
+### 2025-12-22: New Investigation Assigned - gyroLulu Performance 📋
+**Manager** - Investigate gyroLuluApplyFn Performance Bottleneck
+- **Context:** BLUEBERRY435 vs JHEMCU performance difference investigation
+- **Finding:** Manufacturer identified gyroLuluApplyFn as bottleneck
+- **Clue:** Disabling interrupts didn't help (NOT an interrupt issue)
+- **Task:** Analyze function to find what causes significant slowdown on BLUEBERRY435
+- **Areas:** FPU differences, memory access, filter operations, debug code impact
+- **Estimated Time:** 2-4 hours
+- **Assignment Email:** `claude/manager/sent/2025-12-22-2259-task-investigate-gyrolulu-performance.md`
+
+### 2025-12-22: One Task Completed, One In Progress ✅
+
+**Developer** - mspapi2 Documentation Complete
+- **Delivered:** Comprehensive user-focused documentation for mspapi2 library
+- **Statistics:** 13 files, 2,281 lines of documentation
+- **PR:** #1 submitted to upstream repository (xznhj8129/mspapi2)
+- **Content:** Getting started, flight computer guide, field discovery, server setup, examples
+- **Status:** Awaiting maintainer feedback
+
+**Developer** - OMNIBUSF4 Target Split In Progress 🚧
+- **Progress:** Analysis complete, implementation started
+- **PR:** #11196 submitted to iNavFlight/inav
+- **Current work:** Split from 1 directory (9 targets) into 4 directories
+- **Structure:** DYSF4/ (2), OMNIBUSF4/ (1), OMNIBUSF4PRO/ (3), OMNIBUSF4V3_SS/ (3)
+- **Status:** Still working on final implementation and verification
+
+### 2025-12-22: Developer Directory Organization Assigned 📋
+**Manager** - Organize claude/developer/ directory structure
+- **Problem:** 50+ loose files at root level, unclear organization
+- **Scope:** Organize docs/, investigations, reports, scripts into logical tree
+- **Constraints:** DO NOT move email directories (inbox, sent, etc.)
+- **Deliverables:** Clean directory tree + updated CLAUDE.md + INDEX.md
+- **Estimated Time:** 2-3 hours
+- **Assignment Email:** `claude/manager/sent/2025-12-22-0029-task-organize-developer-directory.md`
+
+### 2025-12-21: Two Tasks Completed ✅
+
+**Developer** - PR #2477 / #2491 Conflict Resolution Complete
+- **Problem:** PR #2477 showed CONFLICTING status despite appearing to have no conflict
+- **Finding:** Both PRs added same JavaScript translation keys with different Ukrainian wording
+- **Resolution:** Updated PR #2477 to use PR #2491's Ukrainian translations for overlapping keys
+- **Result:** PR #2477 now MERGEABLE (conflicts resolved)
+- **Note:** Also merged upstream/maintenance-9.x to complete resolution
+
+**Developer** - H743 USB MSC Investigation Complete
+- **Result:** COULD NOT REPRODUCE bug on CORVON743V1 hardware
+- **Testing:** All builds from git tags (8.0.0, 8.0.1, 9.0.0) work correctly
+- **False Positive:** Initial failing test caused by uncommitted SPI bus speed changes
+- **Recommendation:** Keep issue #10800 open, investigate official release binaries
+- **Hypothesis:** Official 8.0.1 release binaries may not match the 8.0.1 git tag
+
+### 2025-12-21: One Analysis Task Assigned 📋
+
+**Manager** - Analyze Qodo Bot Comments on PR #2482
+- **PR:** https://github.com/iNavFlight/inav-configurator/pull/2482
+- **Issue:** Qodo comments apply to commits removed from PR during cleanup
+- **Task:** Check if suggestions still apply to current maintenance-9.x
+- **Evaluation:** Determine if suggestions are worth implementing
+- **Outcome:** If yes, create new branch off maintenance-9.x for improvements
+- **Estimated Time:** 1-2 hours
+- **Assignment Email:** `claude/manager/sent/2025-12-21-1643-task-analyze-pr2482-qodo-comments.md`
+
+**Manager** - Analyze OMNIBUSF4 Target Structure for Refactoring
+- **Problem:** 9 targets in one directory with 290 lines of conditional compilation
+- **Issue:** 4 targets differ ONLY by softserial pin configuration
+- **Question 1:** Can we split into 2-3 logical target directories?
+- **Question 2:** Can softserial work at runtime without separate builds?
+- **Analysis:** Determine if S5/S6 motor pins can share with softserial dynamically
+- **Estimated Time:** 3-4 hours
+- **Assignment Email:** `claude/manager/sent/2025-12-21-1622-task-analyze-omnibusf4-target-split.md`
+
+### 2025-12-18: USB MSC H743 Regression Investigation Assigned 📋
+**Manager** - Investigate commit that broke USB MSC mode on H743 (REVISED)
+- **Issue:** https://github.com/iNavFlight/inav/issues/10800
+- **Problem:** USB MSC mode broken on H743 MCUs in 8.0.1, worked in 8.0.0
+- **Symptoms:** No drive appears, Device Manager shows missing drivers (Code 28)
+- **Approach:** Option 1: Investigate PR #10706 directly (suspected cause)
+- **Approach:** Option 2: Manual search of 83 commits for USB/H743 changes
+- **Approach:** Option 3: Proper git bisect (only if testing is possible)
+- **Note:** Revised to clarify that bisect requires actual testing, not code guessing
+- **Estimated Time:** 2-4 hours
+- **Assignment Email:** `claude/manager/sent/2025-12-18-0135-task-investigate-usb-msc-h743-regression-REVISED.md`
 
 ### 2025-12-18: Two Quick Bug Fixes Completed ✅
 
@@ -200,39 +357,131 @@ This file tracks all active and completed projects in the INAV codebase.
 
 ## Active Projects
 
-### 📋 update-msp-library-documentation
+### 🚧 feature-oled-auto-detection
 
-**Status:** TODO
-**Type:** Documentation Update
+**Status:** IN PROGRESS
+**Type:** Feature Enhancement / Driver Improvement
+**Priority:** MEDIUM
+**Assignment:** 📝 Started by Developer
+**Created:** 2025-12-23
+**Assignee:** Developer
+**Estimated Time:** 4-6 hours
+
+Implement automatic OLED controller detection to eliminate manual configuration, supporting SSD1306, SH1106, SH1107, and SSD1309 controllers.
+
+**Background:**
+Developer started this work proactively and requested it be tracked as a project.
+
+**Problem:**
+Users currently need to manually configure which OLED controller type they have. Different controllers have different display dimensions and require different handling.
+
+**Solution:**
+Implement auto-detection algorithm based on ss_oled library that reads status register 0x00 to identify controller type.
+
+**Progress So Far:**
+- ✅ Added controller type enum (SSD1306, SH1106, SH1107, SSD1309)
+- ✅ Implemented `detectOledController()` function
+- ✅ Added LOG_ERROR debug messages for detection results
+- ✅ Code compiles successfully (tested with YUPIF7 target)
+
+**Still Needed:**
+- Update drawing code to handle different display widths:
+  - SSD1306: 128 pixels wide (standard)
+  - SH1106: 132 pixels wide (requires +2 pixel X offset)
+  - SH1107: 128x128 displays (different aspect ratio)
+- Testing on real hardware with different controller types
+- Documentation updates
+
+**Benefits:**
+- Eliminates user configuration step
+- Prevents display issues from wrong controller selection
+- Better user experience
+- More robust detection than manual setting
+
+**Files Modified:**
+- `inav/src/main/drivers/display_ug2864hsweg01.c`
+
+**Reference:**
+- ss_oled library detection: https://github.com/bitbank2/ss_oled/blob/01fb9a53388002bbb653c7c05d8e80ca413aa306/src/ss_oled.cpp#L810
+
+**Project Request:** `claude/manager/inbox/2025-12-22-2249-project-request-oled-detection.md`
+
+---
+
+### 🚧 reproduce-issue-9912
+
+**Status:** IN PROGRESS (Theory Identified, Needs Verification)
+**Type:** Testing / Bug Reproduction / Root Cause Analysis
 **Priority:** MEDIUM
 **Assignment:** ✉️ Assigned
-**Created:** 2025-12-18
+**Created:** 2025-12-23
 **Assignee:** Developer
-**Estimated Time:** 2-3 hours
+**Estimated Time:** 3-5 hours (original), additional time for verification
 
-Update internal documentation and skills to reference **mspapi2** instead of **uNAVlib** for MSP communication. The library author recommends using the newer mspapi2 library.
+**Issue:** https://github.com/iNavFlight/inav/issues/9912 - Continuous Auto Trim active during maneuvers
 
-**Scope:**
-- Update 2 CLAUDE.md files (developer and manager)
-- Update 3 skills (msp-protocol, sitl-arm, test-crsf-sitl)
-- Update developer documentation (CRSF telemetry MSP config guide)
-- Preserve uNAVlib as "older alternative" for backward compatibility
-- Add note that PRs can be submitted to mspapi2 for improvements
+**Progress So Far:**
+Developer performed deep code analysis and identified a **theory** for the root cause (not yet verified).
 
-**Files to Update:**
-- `claude/developer/CLAUDE.md`
-- `claude/manager/CLAUDE.md`
-- `.claude/skills/msp-protocol/SKILL.md`
-- `.claude/skills/sitl-arm/SKILL.md`
-- `.claude/skills/test-crsf-sitl/SKILL.md`
-- `claude/developer/crsf-telemetry-msp-config-guide.md`
-- Other files with uNAVlib references
+**Theory - Missing I-term Stability Check:**
+- Location: `src/main/common/servos.c:644`
+- Autotrim verifies flight conditions (level, centered sticks, low rotation)
+- BUT fails to check if I-term is in **steady state**
+- During maneuvers, I-term accumulates transient error
+- When plane momentarily satisfies level-flight, transient I-term incorrectly transferred to servo midpoints
 
-**Branch:** Documentation only (no code branch)
+**Proposed Fix:**
+Add I-term rate-of-change stability check before allowing trim transfer.
 
-**Assignment Email:** `claude/manager/sent/2025-12-18-0115-task-update-msp-library-documentation.md`
+**Analysis Report:** `claude/developer/reports/issue-9912-autotrim-analysis.md`
 
-**Location:** `claude/projects/update-msp-library-documentation/`
+**Still Needed (Theory Not Yet Verified):**
+Theory needs verification through one of:
+1. **SITL Reproduction:** Create test script to reproduce the bug
+2. **Pilot Testing:** Have pilot test the proposed fix on real hardware
+3. **Additional Analysis:** Further code investigation to confirm theory
+
+**Next Steps:**
+- Either create SITL reproduction script (original task goal)
+- Or work with pilot/maintainers to test proposed fix
+- Verify theory matches actual bug behavior before implementing fix
+
+**Assignment Email:** `claude/manager/sent/2025-12-23-0029-task-reproduce-issue-9912.md`
+
+---
+
+### 📋 analyze-pr2482-qodo-comments
+
+**Status:** TODO
+**Type:** Code Quality Analysis
+**Priority:** MEDIUM-LOW
+**Assignment:** ✉️ Assigned
+**Created:** 2025-12-21
+**Assignee:** Developer
+**Estimated Time:** 1-2 hours
+
+Analyze qodo bot comments on PR #2482 that apply to commits removed from the PR. Determine if suggestions are still applicable to current maintenance-9.x and worth implementing.
+
+**PR:** https://github.com/iNavFlight/inav-configurator/pull/2482
+
+**Background:**
+PR #2482 (power limiting UI) has qodo bot suggestions on commits that were removed during cleanup. The suggestions might still be valuable for the current codebase.
+
+**Analysis Required:**
+1. Review all qodo bot comments on PR #2482
+2. Identify which comments apply to removed commits
+3. Check if issues still exist in current maintenance-9.x
+4. Evaluate each suggestion (applicable? good? worth it?)
+
+**Deliverables:**
+- List of qodo bot suggestions with status
+- Evaluation of each suggestion (implement vs skip)
+- If implementing: effort estimate and recommended approach
+- Recommendation: create new branch or skip
+
+**Assignment Email:** `claude/manager/sent/2025-12-21-1643-task-analyze-pr2482-qodo-comments.md`
+
+**Location:** `claude/projects/analyze-pr2482-qodo-comments/`
 
 ---
 
@@ -623,7 +872,7 @@ Wizard-style tool that automatically detects and sets FC and compass alignment b
 
 All completed and cancelled projects have been archived for reference.
 
-**Total Completed:** 65 projects
+**Total Completed:** 73 projects
 **Total Cancelled:** 4 projects
 
 **See:** [COMPLETED_PROJECTS.md](COMPLETED_PROJECTS.md) for full archive
