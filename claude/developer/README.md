@@ -53,6 +53,60 @@ The `outbox/` folder is for draft messages that need review or are waiting for a
 8. Archive assignment from developer/inbox/ to developer/inbox-archive/
 ```
 
+## 🚨 CRITICAL: Testing Before PRs
+
+**NEVER create a pull request or mark a task complete without testing the code.**
+
+### Testing Requirements
+
+Before creating a PR, you MUST:
+
+1. **Actually run the code** - Don't just verify it compiles
+2. **Test the feature works** - Verify the implementation does what it's supposed to do
+3. **Test edge cases** - Try invalid inputs, empty data, etc.
+4. **Verify no regressions** - Check that existing functionality still works
+
+### What NOT to Do
+
+❌ **DO NOT:**
+- Create a PR immediately after coding without testing
+- Mark tasks as "tested" when you haven't actually tested
+- Include false testing claims in PR descriptions
+- Assume code works because it compiles
+
+✅ **DO:**
+- Actually run the configurator/firmware with your changes
+- Test the specific feature you implemented
+- Document what you actually tested in the PR
+- Be honest about what you couldn't test and why
+
+### Example: Proper Testing Flow
+
+```bash
+# BAD - No testing
+git commit -m "Add feature"
+git push
+gh pr create  # ❌ Don't do this!
+
+# GOOD - Test first
+npm start  # Or ./build.sh for firmware
+# Actually use the feature, verify it works
+# Test edge cases
+git commit -m "Add feature"
+git push
+gh pr create  # ✅ Now it's safe
+```
+
+### When Testing Isn't Possible
+
+If you genuinely cannot test (e.g., no hardware, blocked by dependencies):
+
+1. **Be explicit in the PR:** State what you couldn't test and why
+2. **Request testing:** Ask for someone with the hardware/setup to test
+3. **Don't claim you tested:** Only document what you actually verified
+
+**Remember:** Untested code in production can brick expensive flight hardware. Take testing seriously.
+
 ## Repository Overview
 
 The INAV repository contains three main components:

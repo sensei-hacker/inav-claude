@@ -142,6 +142,42 @@ Detailed description of what changed and why.
 - DO NOT mention Claude or AI assistance. Avoid writing "Generated with [Claude Code]" or anything similar anywhere
 - Focus on what and why, not how
 
+### Step 2.5: 🚨 CRITICAL - Test Your Changes
+
+**BEFORE pushing and creating a PR, you MUST test your code.**
+
+```bash
+# For configurator changes
+cd inav-configurator
+npm start
+# Actually use the feature, verify it works
+
+# For firmware changes
+cd inav
+./build.sh TARGETNAME
+# Flash to hardware or test in SITL
+```
+
+**Testing Checklist:**
+- [ ] Code actually runs (not just compiles)
+- [ ] Feature works as intended
+- [ ] Tested edge cases (invalid inputs, empty data, etc.)
+- [ ] No regressions in existing functionality
+- [ ] Documented what you tested
+
+**DO NOT:**
+- ❌ Create PR immediately after coding
+- ❌ Claim you tested if you didn't
+- ❌ Mark tasks complete without testing
+- ❌ Assume it works because it compiles
+
+**If you cannot test:**
+- Be explicit in PR description about what you couldn't test
+- Request testing from someone with the hardware/setup
+- Only document what you actually verified
+
+**Remember:** Untested code can brick flight hardware. Test first, PR second.
+
 ### Step 3: Push Branch
 
 ```bash
@@ -296,10 +332,19 @@ gh pr create --repo sensei-hacker/PrivacyLRS --base secure_01 --title "My PR"
 
 ## Before Creating PR Checklist
 
-- [ ] Code changes are complete and tested
-- [ ] All tests pass
+**🚨 CRITICAL - Testing:**
+- [ ] **Code has been ACTUALLY TESTED** (not just compiled)
+- [ ] **Feature verified working** in running application
+- [ ] **Edge cases tested** (invalid inputs, empty data, etc.)
+- [ ] **No regressions** - existing features still work
+- [ ] **Only claim what you actually tested** in PR description
+
+**Code Quality:**
 - [ ] Commit messages are clear and descriptive
 - [ ] Only intended files are committed (review with `git status`)
+- [ ] Code follows project standards
+
+**PR Setup:**
 - [ ] Branch is pushed to correct remote
 - [ ] PR description is complete and accurate
 - [ ] Targeting correct repository (origin for PrivacyLRS, upstream for INAV)
