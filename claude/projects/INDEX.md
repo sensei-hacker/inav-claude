@@ -2,7 +2,7 @@
 
 This file tracks all active and completed projects in the INAV codebase.
 
-**Last Updated:** 2025-12-27
+**Last Updated:** 2025-12-31
 
 ---
 
@@ -25,6 +25,237 @@ This file tracks all active and completed projects in the INAV codebase.
 ---
 
 ## Recent Activity (Last 7 Days)
+
+### 2026-01-02: APA Safety Implementation - Pitot Validation and Formula Fixes 📋
+
+**Manager** - Implement Pitot Sensor Validation with GPS Sanity Checks
+- **Objective:** Implement GPS-based pitot sensor validation with automatic fallback
+- **Parent Analysis:** analyze-pitot-blockage-apa-issue (COMPLETED 2025-12-28)
+- **Problem:** Pitot failures are common and currently make aircraft nearly unflyable
+- **Solution:** Cross-validate pitot readings against GPS, automatic fallback to virtual airspeed, OSD warning
+- **Implementation:**
+  1. GPS-based sanity check algorithm
+  2. Automatic fallback to virtual airspeed when pitot fails validation
+  3. OSD warning display: "PITOT FAIL - VIRTUAL"
+  4. Edge case handling (wind, takeoff/landing, hysteresis)
+- **Type:** Safety Feature Implementation
+- **Priority:** HIGH
+- **Estimated Time:** 8-12 hours
+- **Milestone:** 9.1 or 9.2
+- **Assignment Email:** `claude/manager/sent/2026-01-02-0200-task-implement-pitot-sensor-validation.md`
+
+**Manager** - Fix APA Formula: Limits, I-term Scaling, Default Disabled
+- **Objective:** Fix three issues with APA formula implementation
+- **Parent Analysis:** analyze-pitot-blockage-apa-issue (COMPLETED 2025-12-28)
+- **Changes:**
+  1. Change limits from [0.3, 2.0] to [0.5, 1.5] (safer, symmetric)
+  2. Reduce I-term scaling: use exponent (apa_pow - 100)/100 instead of apa_pow/100 (compromise approach)
+  3. Set apa_pow default to 0 (disabled by default, opt-in for safety)
+- **Impact:** Simple changes (~7 lines) with significant safety improvement
+- **Compromise:** I-term gets gentle scaling (exponent 0.2) instead of aggressive (1.2) or none
+- **User Impact:** Users must manually set apa_pow=120 to re-enable after upgrade
+- **Type:** Bug Fix / Safety Improvement
+- **Priority:** HIGH
+- **Estimated Time:** 2-3 hours
+- **Milestone:** 9.1
+- **Assignment Email:** `claude/manager/sent/2026-01-02-0205-task-fix-apa-formula-limits-iterm.md`
+
+### 2025-12-31: Infrastructure Task - Reorganize Developer Directory Structure 📋
+
+**Manager** - Reorganize Developer Directory Structure
+- **Objective:** Improve organization of `claude/developer/` directory
+- **Scope:** Audit current state, plan better structure, implement reorganization, update all documentation
+- **Current Issues:** Structure in CLAUDE.md is "not great", may not match reality, files scattered
+- **Tasks:**
+  1. Survey actual directory contents and skill expectations
+  2. Design realistic, useful organization structure
+  3. Move files to appropriate locations, clean up clutter
+  4. Update developer/CLAUDE.md, developer/INDEX.md, skills, and other docs
+- **Principles:** Intuitive, matches actual usage, supports workflows, scales well, self-documenting
+- **Type:** Infrastructure / Organization
+- **Priority:** MEDIUM
+- **Estimated Time:** 3-4 hours
+- **Assignment Email:** `claude/manager/sent/2025-12-31-2345-task-reorganize-developer-directory.md`
+
+### 2025-12-31: Implementation Task - Enable Galileo and Optimize GPS Update Rate 📋
+
+**Manager** - Enable Galileo by Default and Optimize GPS Update Rate
+- **Objective:** Implement top recommendations from u-blox GPS configuration analysis
+- **Changes:**
+  1. Enable Galileo by default on M8+ GPS receivers (clear benefit, no downsides)
+  2. Optimize GPS update rate - investigate and consider lowering to 8Hz based on Jetrell's testing
+- **Rationale:** Analysis shows Galileo provides equal/better accuracy with more satellites, 8Hz may be optimal balance
+- **Implementation:**
+  - settings.yaml: Change gps_ublox_use_galileo default to ON
+  - gps_ublox.c: Potentially update default GPS rate (pending research)
+  - Documentation updates
+- **Research Required:** Find and document Jetrell's testing results on GPS update rates
+- **Type:** Feature / Optimization (backward compatible)
+- **Priority:** MEDIUM
+- **Estimated Time:** 2-3 hours
+- **Assignment Email:** `claude/manager/sent/2025-12-31-1530-task-enable-galileo-optimize-gps-rate.md`
+
+### 2025-12-31: New Documentation Task - u-blox GPS Configuration Analysis 📋
+
+**Manager** - Document u-blox GPS Configuration and Compare with ArduPilot
+- **Objective:** Analyze INAV's u-blox GPS configuration choices and compare with ArduPilot
+- **Scope:** GNSS constellations, navigation model, update rates, protocol, special features
+- **Analysis:** Document why INAV makes specific choices using code and u-blox datasheets
+- **Comparison:** Review ArduPilot's configuration and identify key differences
+- **Deliverables:** Two analysis documents in `claude/developer/reports/`
+- **Goal:** Provide recommendations for potential improvements
+- **Type:** Local project documentation (no PR)
+- **Priority:** MEDIUM
+- **Estimated Time:** 4-6 hours
+- **Assignment Email:** `claude/manager/sent/2025-12-31-1200-task-document-ublox-gps-configuration.md`
+
+### 2025-12-28: Three Tasks Completed - Pitot APA Analysis, Issue #9912 Fix, macOS DMG Fix ✅
+
+**Developer** - Pitot Blockage APA Analysis COMPLETED
+- **Status:** ✅ Analysis complete, awaiting approval for implementation
+- **Deliverable:** Comprehensive 11,800+ word analysis report
+- **Findings:** Identified four distinct issues requiring solutions
+  1. Pitot sensor validation with GPS sanity checks (8-12 hours)
+  2. I-term scaling should be removed (15 minutes)
+  3. Cruise speed reference - keep as-is
+  4. Symmetric limits [0.67, 1.5] instead of [0.3, 2.0] (15 minutes)
+- **Total implementation effort:** 10-12 hours for all four solutions
+- **Report:** `claude/developer/reports/issue-11208-pitot-blockage-apa-analysis.md`
+- **Mathematical analysis:** `claude/developer/investigations/apa_formula_analysis.py`
+- **Next step:** Awaiting manager approval to proceed with implementation
+
+**Developer** - Issue #9912 Fix COMPLETED
+- **Status:** ✅ PR submitted and ready for review
+- **PR:** https://github.com/iNavFlight/inav/pull/11215
+- **Fix:** Added I-term stability check to servo autotrim
+- **Implementation:** I-term rate-of-change tracking prevents autotrim during maneuvers
+- **Testing:** SITL build verified, needs flight testing
+- **Copilot review:** All 3 comments addressed
+- **Note:** Needs "needs testing" label added manually (gh CLI API issue)
+
+**Developer** - macOS DMG Fix COMPLETED
+- **Status:** ✅ Verified working, ready for merge
+- **PR:** https://github.com/iNavFlight/inav-configurator/pull/2508
+- **Fix:** Corrected postPackage hook path for macOS app bundles
+- **Result:** macOS DMG now correctly excludes Windows/Linux SITL binaries
+- **Verification:** CI build artifacts confirmed fix working
+- **Impact:** Reduces DMG size by ~5-6 MB
+- **Iterations:** Two commits (first had path bug, second fixed .app bundle path)
+
+### 2025-12-31: Email Processed and Tasks Updated 📬
+
+**Manager** - Processed 8 inbox messages
+- Archived all Dec 28 completion reports
+- Updated project statuses in INDEX.md
+- Inbox now empty
+
+### 2025-12-29: New Tasks - Safety Issues, Blackbox Fix, BLE Debugging, UX Enhancements 📋
+
+**Manager** - Fix Blackbox Zero Motors Bug
+- **Problem:** Catastrophic decoder failures (207 frames) on fixed-wing with zero motors
+- **Root cause:** I-frame uses `CONDITION(MOTORS)` instead of `CONDITION(AT_LEAST_MOTORS_1)`
+- **Bug:** Writes motor[0] unconditionally when motorCount=0, creating spurious 0x00 byte
+- **Impact:** Header declares 0 fields, I-frame writes 1 byte → mismatch → decoder fails
+- **Fix:** Change one word at line 1079: `MOTORS` → `AT_LEAST_MOTORS_1`
+- **Documentation:** `claude/test_tools/inav/gps/MOTORS_CONDITION_BUG.md`
+- **Testing:** JHEMCUF435 fixed-wing, 207 failures → 3 failures (baseline)
+- **Milestone:** 9.1
+- **Priority:** MEDIUM
+- **Estimated Time:** 1-2 hours
+- **Assignment Email:** `claude/manager/sent/2025-12-29-1230-task-fix-blackbox-zero-motors-bug.md`
+
+**Manager** - Investigate ESC Motor Spinup After Disarm (SAFETY CRITICAL)
+- **Issue:** https://github.com/iNavFlight/inav/issues/10913
+- **Problem:** Motors spin up several seconds after disarm - DANGEROUS
+- **Likely cause:** EEPROM blocking prevents DSHOT signal → ESC reboots → motors spin during reboot
+- **Context:** Issue #9441 - Pawel explained EEPROM save blocks FC from generating valid ESC frames
+- **Task:** Investigate root cause, implement fix (likely: hold motor pins low during EEPROM save)
+- **Safety impact:** User injury risk if near aircraft
+- **Solutions:** (A) Force pins low during save, (B) Non-blocking EEPROM, (C) Defer save
+- **Priority:** HIGH
+- **Estimated Time:** 4-6 hours
+- **Assignment Email:** `claude/manager/sent/2025-12-29-1225-task-investigate-esc-spinup-after-disarm.md`
+
+**Manager** - Add BLE Debug Logging for Windows Connection Issue
+- **Issue:** BLE connects but no data received on Windows (Sent: 27 bytes, Received: 0 bytes)
+- **Device:** SYNERDUINO7-BT-E-LE
+- **Problem:** Connection establishes, notifications start, but MSP requests timeout
+- **Log:** `/home/raymorris/Downloads/inav-log.txt`
+- **Task:** Add comprehensive logging around BLE write/read/notifications
+- **Goal:** Diagnose why data isn't being received
+- **Areas:** Data transfer, service discovery, connection setup, errors, timing
+- **Priority:** MEDIUM-HIGH
+- **Estimated Time:** 2-3 hours
+- **Assignment Email:** `claude/manager/sent/2025-12-29-1220-task-add-ble-debug-logging.md`
+
+**Manager** - Remember Last Save Directory in Configurator
+- **Enhancement:** Make save dialogs default to last used directory
+- **Problem:** Users must navigate to preferred directory every time they save
+- **Scope:** All file save operations (blackbox logs, diffs, config exports)
+- **Solution:** Store last save directory in settings, persist across restarts
+- **Implementation:** Use Electron's `defaultPath` option with stored directory
+- **Priority:** MEDIUM
+- **Estimated Time:** 2-4 hours
+- **Assignment Email:** `claude/manager/sent/2025-12-29-1215-task-remember-last-save-directory.md`
+
+**Manager** - Add Easy Configurator Download Links
+- **Enhancement:** Add prominent download links to main pages (README, wiki)
+- **Problem:** Users must navigate Releases → scroll → Assets → expand to download
+- **Solution:** Add direct link to `https://github.com/iNavFlight/inav-configurator/releases/latest`
+- **Scope:** Add to `inav/README.md` and wiki home page
+- **Benefits:** Saves users 3-4 clicks, better user onboarding
+- **Priority:** MEDIUM
+- **Estimated Time:** 1-2 hours
+- **Assignment Email:** `claude/manager/sent/2025-12-29-1200-task-easy-configurator-download-links.md`
+
+### 2025-12-28: New Tasks Assigned - Pitot Blockage APA Analysis, Issue #9912 Fix, Mac DMG Fix 📋
+
+**Manager** - Analyze Pitot Blockage APA Safety Issue
+- **Issue:** https://github.com/iNavFlight/inav/issues/11208
+- **PDF:** `/home/raymorris/Downloads/pitot blockage sanity check.pdf`
+- **Problem:** INAV 9's Fixed Wing APA increases PIFF gains by 200% below cruise speed
+- **Safety Critical:** When pitot fails/blocks, aircraft becomes nearly unflyable
+- **Failure scenario:** Pitot reads low → system thinks aircraft is slow → massively increases gains at actual cruise speed
+- **Task:** Analyze code, evaluate suggested solutions, propose specific code changes
+- **Solutions to evaluate:** (1) Don't increase gains below cruise, (2) Separate increase/decrease parameters, (3) Airspeed sanity checks
+- **Type:** Analysis & Proposal (no implementation yet)
+- **Priority:** MEDIUM-HIGH
+- **Estimated Time:** 6-8 hours
+- **Assignment Email:** `claude/manager/sent/2025-12-28-1230-task-analyze-pitot-blockage-apa-issue.md`
+
+**Manager** - Implement Fix for Issue #9912 Auto-Trim
+- **Follow-up to:** Developer's completed root cause analysis
+- **Issue:** Continuous auto-trim during maneuvers
+- **Root cause:** Missing I-term stability check (already identified)
+- **Task:** Implement the fix with I-term rate-of-change detection
+- **Important:** Mark PR with "needs testing" label (requires flight testing)
+- **Priority:** MEDIUM-HIGH
+- **Estimated Time:** 3-4 hours
+- **Assignment Email:** `claude/manager/sent/2025-12-28-1105-task-implement-issue-9912-fix.md`
+
+**Manager** - Fix Mac DMG Containing Windows Binaries
+- **Issue:** macOS DMG includes Windows SITL binaries (cygwin1.dll, inav_SITL.exe)
+- **Root cause:** afterCopy hook in forge.config.js not working on macOS builds
+- **Task:** Fix hook to properly remove non-native SITL binaries
+- **Priority:** MEDIUM
+- **Estimated Time:** 2-3 hours
+- **Assignment Email:** `claude/manager/sent/2025-12-28-1050-task-fix-mac-dmg-windows-binaries.md`
+
+**Manager** - Add MSP Reboot Parameter for DFU Mode
+- **Enhancement:** Add optional parameter to MSP_REBOOT to trigger DFU mode
+- **Benefits:** Reliable programmatic DFU entry, no CLI timing issues
+- **Testing:** Use mspapi2 for testing
+- **Updates needed:** Skills documentation, USB Flashing.md
+- **Priority:** MEDIUM
+- **Estimated Time:** 4-6 hours
+- **Assignment Email:** `claude/manager/sent/2025-12-28-1045-task-msp-reboot-dfu-mode.md`
+
+**Manager** - Created check-pr-docs Skill
+- **New skill:** Check pull requests for documentation compliance
+- **Key feature:** Independently fetches and checks wiki commits
+- **Matching:** Direct PR refs, author+time, topic/keywords
+- **Tools:** Shell script for automated checking, Python script for interactive tagging
+- **Purpose:** Ensure PRs include appropriate documentation
 
 ### 2025-12-27: GPS Test Tools Documentation Task Assigned 📋
 
@@ -449,6 +680,555 @@ Implement auto-detection algorithm based on ss_oled library that reads status re
 
 ---
 
+### 📋 document-ublox-gps-configuration
+
+**Status:** TODO
+**Type:** Documentation / Analysis
+**Priority:** MEDIUM
+**Assignment:** ✉️ Assigned
+**Created:** 2025-12-31
+**Assignee:** Developer
+**Estimated Time:** 4-6 hours
+
+Analyze and document INAV's u-blox GPS receiver configuration choices, compare with ArduPilot, and provide recommendations.
+
+**Objectives:**
+1. Document INAV's u-blox configuration (constellations, nav model, rates, protocol, features)
+2. Reference u-blox datasheets to understand each choice and trade-offs
+3. Analyze ArduPilot's u-blox configuration for comparison
+4. Identify key differences and analyze implications
+5. Provide actionable recommendations for INAV
+
+**Configuration Areas:**
+- **GNSS Constellations:** GPS, GLONASS, Galileo, BeiDou - which enabled?
+- **Navigation Model:** Airborne <1g/<2g/<4g, or other models
+- **Update Rates:** Position, measurement, navigation rates
+- **Protocol:** NMEA vs UBX, message selection
+- **Special Features:** SBAS, jamming detection, power modes
+
+**Deliverables:**
+- `claude/developer/reports/ublox-gps-configuration-analysis.md` - INAV configuration analysis
+- `claude/developer/reports/ublox-gps-inav-vs-ardupilot.md` - Comparison and recommendations
+
+**Value:**
+- Better understanding of GPS configuration
+- Informed decisions about future GPS improvements
+- Reference for troubleshooting and optimization
+- Knowledge base for community
+
+**Note:** Local project documentation - no PR, analysis stays in reports/
+
+**Assignment Email:** `claude/manager/sent/2025-12-31-1200-task-document-ublox-gps-configuration.md`
+
+---
+
+### 📋 implement-pitot-sensor-validation
+
+**Status:** TODO
+**Type:** Safety Feature Implementation
+**Priority:** HIGH
+**Assignment:** ✉️ Assigned
+**Created:** 2026-01-02
+**Assignee:** Developer
+**Estimated Time:** 8-12 hours
+**Milestone:** 9.1 or 9.2
+**GitHub Issue:** [#11208](https://github.com/iNavFlight/inav/issues/11208)
+
+Implement GPS-based pitot sensor validation with automatic fallback to virtual airspeed when pitot readings are implausible or failed.
+
+**Parent Analysis:** analyze-pitot-blockage-apa-issue (COMPLETED 2025-12-28)
+
+**Problem:**
+- INAV lacks proper airspeed sensor validation
+- When pitot tubes fail/block, aircraft becomes nearly unflyable
+- Current APA with blocked pitot: 200% gains at cruise speed
+- Pitot failures are COMMON (mechanical, blockage, forgotten sock)
+
+**Solution Components:**
+
+1. **GPS-Based Sanity Checking**
+   - Cross-validate pitot readings against GPS groundspeed
+   - Account for wind (use wind estimator)
+   - Detect implausible readings (e.g., 25 km/h when GPS shows 85 km/h)
+   - Rate-of-change anomaly detection
+
+2. **Automatic Fallback**
+   - Use virtual airspeed when pitot fails validation
+   - Seamless transition (no control glitches)
+   - Continue validation to detect recovery
+
+3. **Pilot Warning**
+   - Display "PITOT FAIL - VIRTUAL" on OSD
+   - Clear indication of sensor failure
+   - Warning clears when pitot validates again
+
+4. **Edge Case Handling**
+   - Wind uncertainty (conservative margins)
+   - Takeoff/landing (low airspeed edge cases)
+   - Hysteresis (prevent oscillation)
+   - GPS unavailable (fallback to existing behavior)
+
+**Implementation Phases:**
+- Phase 1: Core validation (4-5 hours)
+- Phase 2: Automatic fallback (2-3 hours)
+- Phase 3: OSD warning (1-2 hours)
+- Phase 4: Edge cases (2-3 hours)
+- Phase 5: Testing & docs (2-3 hours)
+
+**Files to Modify:**
+- `src/main/sensors/pitotmeter.c` - GPS sanity check
+- `src/main/sensors/pitotmeter.h` - Failure state enum
+- `src/main/flight/pid.c` - Use validated airspeed
+- `src/main/io/osd.c` - Warning display
+- Documentation
+
+**Safety Impact:**
+- Makes aircraft flyable when pitot fails
+- Common failure mode now handled gracefully
+- Automatic safety improvement
+- Clear pilot awareness
+
+**Reference:** `claude/developer/reports/issue-11208-pitot-blockage-apa-analysis.md`
+
+**Assignment Email:** `claude/manager/sent/2026-01-02-0200-task-implement-pitot-sensor-validation.md`
+
+---
+
+### 📋 fix-apa-formula-limits-iterm
+
+**Status:** TODO
+**Type:** Bug Fix / Safety Improvement
+**Priority:** HIGH
+**Assignment:** ✉️ Assigned
+**Created:** 2026-01-02
+**Assignee:** Developer
+**Estimated Time:** 2-3 hours
+**Milestone:** 9.1
+**GitHub Issue:** [#11208](https://github.com/iNavFlight/inav/issues/11208)
+
+Fix three issues with Fixed Wing APA (Airspeed-based PID Attenuation) formula.
+
+**Parent Analysis:** analyze-pitot-blockage-apa-issue (COMPLETED 2025-12-28)
+
+**Three Simple Changes (3 lines of code):**
+
+1. **Change Limits from [0.3, 2.0] to [0.5, 1.5]**
+   - More physically justified (symmetric)
+   - Reduces maximum gain increase from 200% to 150%
+   - Safer if pitot fails
+   - File: `src/main/flight/pid.c`
+
+2. **Reduce I-term Scaling (Compromise Approach)**
+   - Calculate separate `itermFactor` using exponent (apa_pow - 100)/100
+   - Example: apa_pow=120 → I exponent=0.2, P/D/FF exponent=1.2
+   - Provides minimal I-term adaptation without control theory issues
+   - Compromise between full scaling (causes windup/overshoot) and no scaling
+   - File: `src/main/flight/pid.c`
+
+3. **Set apa_pow Default to 0 (Disabled)**
+   - Change: `default_value: 120` → `default_value: 0`
+   - Feature should be opt-in for safety
+   - Requires working pitot sensor
+   - Users set apa_pow=120 to enable
+   - File: `src/main/fc/settings.yaml`
+
+**Rationale from Analysis:**
+- **Limits:** Asymmetric [0.3, 2.0] have no physical justification, too wide
+- **I-term:** Full scaling causes windup at low speeds, overshoot at high speeds; reduced scaling is a compromise
+- **Default:** Feature unsafe without validated pitot, should be opt-in
+
+**User Impact:**
+- Existing users: APA disabled after upgrade (must set apa_pow=120 to re-enable)
+- This is intentional for safety
+- Users with re-enabled APA will notice smoother behavior (I-term fix)
+
+**Implementation:**
+- Change 1: Update constrainf() limits (1 line)
+- Change 2: Add itermFactor calculation and use for I-term (~5 lines)
+- Change 3: Update default_value (1 line)
+- Add explanatory comments
+- Update documentation
+
+**Testing:**
+- Build test
+- SITL with apa_pow=0 (disabled, default)
+- SITL with apa_pow=120 (enabled, verify new limits)
+- Verify I-term not scaling (debug logs)
+- Mathematical verification
+
+**Simple but Significant:**
+- ~7 lines changed (limits, itermFactor calc, default)
+- Major safety improvement
+- Better control characteristics (reduced I-term issues)
+- Clear opt-in approach
+
+**Reference:** `claude/developer/reports/issue-11208-pitot-blockage-apa-analysis.md`
+
+**Assignment Email:** `claude/manager/sent/2026-01-02-0205-task-fix-apa-formula-limits-iterm.md`
+
+---
+
+### 📋 enable-galileo-optimize-gps-rate
+
+**Status:** TODO
+**Type:** Feature / Optimization
+**Priority:** MEDIUM
+**Assignment:** ✉️ Assigned
+**Created:** 2025-12-31
+**Assignee:** Developer
+**Estimated Time:** 2-3 hours
+
+Implement top recommendations from u-blox GPS configuration analysis: enable Galileo by default and optimize GPS update rate.
+
+**Background:**
+The u-blox GPS configuration analysis identified clear opportunities for improvement. This task implements the most impactful recommendations.
+
+**Objectives:**
+
+1. **Enable Galileo by Default (Clear Win)**
+   - Change default: `gps_ublox_use_galileo` from OFF to ON
+   - Benefits: Equal/better accuracy, more satellites, better HDOP, faster TTFF
+   - No downsides, backward compatible (users can still disable)
+
+2. **Optimize GPS Update Rate (Research Required)**
+   - Current: 10Hz default on M7+
+   - ArduPilot: 5Hz (noted M9N performance issues)
+   - **Jetrell's testing:** Suggests 8Hz may be optimal
+   - Need to find and document testing results before implementation
+
+**Implementation Plan:**
+
+Phase 1: Research (30 min)
+- Find Jetrell's GPS update rate testing results
+- Understand why 8Hz might be better than 10Hz
+- Document findings
+
+Phase 2: Enable Galileo (45 min)
+- Edit settings.yaml: Change Galileo default to ON
+- Verify implementation in code
+- Test build
+- Update documentation
+
+Phase 3: GPS Rate Decision (45-60 min)
+- Based on research, choose:
+  - Option A: Change default to 8Hz for all M7+
+  - Option B: Hardware-specific rates (8Hz M8/M9, 10Hz M10)
+  - Option C: Keep 10Hz, document 8Hz option
+- Implement if evidence supports change
+
+Phase 4: Testing (30 min)
+- Build verification (multiple targets)
+- Hardware testing if available
+- Verify defaults are correct
+
+Phase 5: Pull Request
+- Create PR with clear rationale
+- Reference analysis document and Jetrell's testing
+- Request community testing
+
+**Files to Modify:**
+- `inav/src/main/fc/settings.yaml` - Galileo default
+- `inav/src/main/io/gps_ublox.c` - GPS rate (if changed)
+- `docs/Gps.md` - Documentation
+
+**Key Decision Point:**
+GPS rate change requires evidence from Jetrell's testing. Don't change without understanding the rationale.
+
+**Deliverables:**
+- Code changes with Galileo enabled by default
+- GPS rate optimization (if evidence supports it)
+- Updated documentation
+- Pull request with clear rationale
+- Completion report documenting decisions made
+
+**Value:**
+- Improved GPS accuracy for all INAV users with M8+ receivers
+- More satellites = better reliability and HDOP
+- Optimal GPS update rate for performance/reliability balance
+- Better defaults out-of-the-box
+
+**Parent Project:** document-ublox-gps-configuration (analysis completed)
+
+**Reference Document:** `claude/developer/reports/ublox-gps-inav-vs-ardupilot.md`
+
+**Assignment Email:** `claude/manager/sent/2025-12-31-1530-task-enable-galileo-optimize-gps-rate.md`
+
+---
+
+### 📋 reorganize-developer-directory
+
+**Status:** TODO
+**Type:** Infrastructure / Organization
+**Priority:** MEDIUM
+**Assignment:** ✉️ Assigned
+**Created:** 2025-12-31
+**Assignee:** Developer
+**Estimated Time:** 3-4 hours
+
+Analyze, plan, and implement better organization structure for `claude/developer/` directory, then update all documentation.
+
+**Problem:**
+- Current structure documented in `developer/CLAUDE.md` is "not great"
+- Documentation may not match actual directory layout
+- Files may be scattered or poorly organized
+- No clear guidelines for where different types of files should go
+- Skills may have expectations about locations that aren't met
+
+**Objectives:**
+
+1. **Audit Current State**
+   - Survey actual files and directories
+   - Review skill documentation about file organization
+   - Review current documentation (CLAUDE.md, INDEX.md)
+   - Identify what's working and what needs improvement
+
+2. **Plan Better Structure**
+   - Design realistic, useful organization
+   - Match how work is actually done
+   - Keep things neat, tidy, and easy to find
+   - Consider reusable vs. task-specific files
+   - Consider active vs. archived work
+
+3. **Implement Organization**
+   - Move files to new locations
+   - Create necessary directories
+   - Clean up clutter and duplicates
+   - Ensure everything has a clear home
+
+4. **Update Documentation**
+   - Update `developer/CLAUDE.md` with new structure
+   - Update `developer/INDEX.md` with comprehensive guide
+   - Update skill documentation if needed
+   - Update other internal docs with path references
+
+**Design Principles:**
+- Intuitive - easy to find things without reading docs
+- Matches actual usage - reflects how work is actually done
+- Supports workflows - makes common tasks easier
+- Scales well - handles growth without becoming messy
+- Self-documenting - directory names explain purpose
+
+**Key Questions to Answer:**
+- Where do reusable scripts go vs. task-specific scripts?
+- How to organize active work vs. archived work?
+- How to categorize different types of scripts (testing, build, analysis, investigation)?
+- How to organize different types of documentation (guides, reference, reports)?
+- Where do task working files go?
+
+**Implementation Phases:**
+
+1. Discovery (45 min) - Survey current state, review docs, identify issues
+2. Planning (45 min) - Design structure, plan moves, plan documentation
+3. Implementation (60 min) - Create directories, move files, update references
+4. Documentation (45 min) - Update CLAUDE.md, INDEX.md, skills, other docs
+5. Testing (15 min) - Verify locations, test workflows, test skills
+
+**Files to Update:**
+- `claude/developer/CLAUDE.md`
+- `claude/developer/INDEX.md`
+- `~/.claude/skills/*/SKILL.md` (if needed)
+- Other docs with path references
+
+**Deliverables:**
+- Reorganized directory structure with all files in logical locations
+- Updated documentation accurately reflecting structure
+- Migration documentation (old → new paths)
+- Completion report with before/after comparison
+
+**Value:**
+- Easier to find files and documentation
+- Clear guidelines for where things go
+- Reduced clutter and confusion
+- Better productivity and workflow
+- Easier for new developers (or AI instances) to navigate
+
+**Note from Manager:**
+> "When working on a task, keep the files you create neatly organized. Testing scripts should go in scripts_testing if they are reuseable. Other things should go in the appropriate task working directory. When creating Python scripts that you may need to re-use later, save them to an appropriately named file, with documentation at the top. Don't leave files littering random directories."
+
+The new structure should make this guidance easier to follow.
+
+**Assignment Email:** `claude/manager/sent/2025-12-31-2345-task-reorganize-developer-directory.md`
+
+---
+
+### 📋 fix-blackbox-zero-motors-bug
+
+**Status:** TODO
+**Type:** Bug Fix
+**Priority:** MEDIUM
+**Assignment:** ✉️ Assigned
+**Created:** 2025-12-29
+**Assignee:** Developer
+**Estimated Time:** 1-2 hours
+**Milestone:** 9.1
+
+Fix blackbox logging bug causing catastrophic decoder failures (207 frames) on aircraft with zero motors.
+
+**Problem:**
+I-frame motor write uses `CONDITION(MOTORS)` (flag only) instead of `CONDITION(AT_LEAST_MOTORS_1)` (flag + count check), causing header/data mismatch on fixed-wing with servos only.
+
+**The Bug:**
+- Field definitions: `AT_LEAST_MOTORS_1` (requires motorCount >= 1)
+- I-frame write: `MOTORS` (flag only)
+- When motorCount=0, flag=true:
+  - Header: 0 motor fields (correct)
+  - I-frame: Writes motor[0] unconditionally (1 spurious byte)
+  - Decoder expects frame marker, gets 0x00 → catastrophic failure
+
+**The Fix:**
+Change one word at line 1079:
+```c
+// From:
+if (testBlackboxCondition(FLIGHT_LOG_FIELD_CONDITION_MOTORS)) {
+
+// To:
+if (testBlackboxCondition(FLIGHT_LOG_FIELD_CONDITION_AT_LEAST_MOTORS_1)) {
+```
+
+**Testing:**
+JHEMCUF435 fixed-wing, motorCount=0:
+- Before: 207 decoder failures
+- After: 3 decoder failures (baseline)
+
+**Documentation:** `claude/test_tools/inav/gps/MOTORS_CONDITION_BUG.md`
+
+**Assignment Email:** `claude/manager/sent/2025-12-29-1230-task-fix-blackbox-zero-motors-bug.md`
+
+---
+
+### 📋 investigate-esc-spinup-after-disarm
+
+**Status:** TODO
+**Type:** Bug Investigation / Safety Issue
+**Priority:** HIGH
+**Assignment:** ✉️ Assigned
+**Created:** 2025-12-29
+**Assignee:** Developer
+**Estimated Time:** 4-6 hours
+
+**⚠️ SAFETY CRITICAL:** Investigate and fix dangerous motor spinup several seconds after disarm.
+
+**Problem:**
+Motors unexpectedly spin up after disarm - risk of injury if user is near aircraft.
+
+**Issue #10913:** https://github.com/iNavFlight/inav/issues/10913
+
+**Likely Root Cause (from Issue #9441):**
+1. User disarms
+2. EEPROM save triggered (stats, config)
+3. EEPROM blocks CPU for 1-2 seconds
+4. FC cannot generate valid DSHOT frames
+5. ESC interprets as signal loss → reboots
+6. **ESC spins motors during reboot sequence**
+
+**Investigation Tasks:**
+- Analyze EEPROM save timing on disarm
+- Check motor output behavior during EEPROM blocking
+- Investigate other potential causes
+- Propose fix (likely: hold motor pins LOW during save)
+
+**Proposed Solutions:**
+- **Option A:** Force motor output pins LOW before EEPROM save (preferred - simple, safe)
+- **Option B:** Make EEPROM save non-blocking (complex, long-term)
+- **Option C:** Defer EEPROM save 5-10 seconds (simpler but risky)
+
+**Safety Requirements:**
+- Must prevent ANY motor spinup after disarm
+- Must work across all ESC protocols (DSHOT, OneShot, PWM)
+- Must be thoroughly tested
+
+**Assignment Email:** `claude/manager/sent/2025-12-29-1225-task-investigate-esc-spinup-after-disarm.md`
+
+---
+
+### 📋 add-ble-debug-logging
+
+**Status:** TODO
+**Type:** Debugging / Logging Enhancement
+**Priority:** MEDIUM-HIGH
+**Assignment:** ✉️ Assigned
+**Created:** 2025-12-29
+**Assignee:** Developer
+**Estimated Time:** 2-3 hours
+
+Add comprehensive debug logging to BLE connection code to diagnose Windows issue where device connects but no data is received (Sent: 27 bytes, Received: 0 bytes).
+
+**Problem:**
+BLE device "SYNERDUINO7-BT-E-LE" connects successfully on Windows, notifications start, but MSP requests timeout due to receiving 0 bytes despite sending 27 bytes.
+
+**Solution:**
+Add detailed logging around:
+- Data write operations (hex dump, timing)
+- Data receive/notification handler
+- Service/characteristic discovery
+- Connection state changes
+- Detailed error information
+
+**Goal:**
+Capture detailed logs to identify root cause before attempting fix.
+
+**Assignment Email:** `claude/manager/sent/2025-12-29-1220-task-add-ble-debug-logging.md`
+
+---
+
+### 📋 remember-last-save-directory
+
+**Status:** TODO
+**Type:** UX Enhancement
+**Priority:** MEDIUM
+**Assignment:** ✉️ Assigned
+**Created:** 2025-12-29
+**Assignee:** Developer
+**Estimated Time:** 2-4 hours
+
+Make file save dialogs default to the last directory used, eliminating repeated navigation for users saving multiple files.
+
+**Problem:**
+Save dialogs always default to system directories (Documents, Downloads). Users must navigate to their preferred location every time, which is tedious for common workflows like saving multiple blackbox logs.
+
+**Solution:**
+- Store last save directory in persistent settings
+- Use Electron's `defaultPath` option with stored directory
+- Apply to all save operations (blackbox, diffs, config exports)
+- Handle edge cases (deleted directory, first use)
+
+**Benefits:**
+Significantly improves user experience for common workflows.
+
+**Assignment Email:** `claude/manager/sent/2025-12-29-1215-task-remember-last-save-directory.md`
+
+---
+
+### 📋 easy-configurator-download-links
+
+**Status:** TODO
+**Type:** Documentation / UX Enhancement
+**Priority:** MEDIUM
+**Assignment:** ✉️ Assigned
+**Created:** 2025-12-29
+**Assignee:** Developer
+**Estimated Time:** 1-2 hours
+
+Add prominent download links to main pages (README and wiki) pointing to latest configurator release.
+
+**Problem:**
+Users must navigate: Releases → scroll → Assets → expand to find downloads. This is 3-4 extra clicks for a common task.
+
+**Solution:**
+Add direct link to `https://github.com/iNavFlight/inav-configurator/releases/latest` (auto-redirects, Assets expanded).
+
+**Scope:**
+- Add download section to `inav/README.md`
+- Add download section to wiki home page
+- Link to both configurator and firmware releases
+
+**Benefits:**
+Better onboarding experience, saves users time.
+
+**Assignment Email:** `claude/manager/sent/2025-12-29-1200-task-easy-configurator-download-links.md`
+
+---
+
 ### 📋 implement-3d-hardware-acceleration-auto-fallback
 
 **Status:** TODO
@@ -468,7 +1248,6 @@ inav-configurator has a setting to disable 3D hardware acceleration, but users w
 - App probably attempts to create WebGL contexts without checking for support
 - Likely crashes or shows cryptic errors when 3D fails
 - Users must manually find and enable the "disable 3D" setting
-- Poor UX for users without GPU support
 
 **Solution:**
 Auto-detect 3D capability and fall back gracefully when not available.
@@ -492,56 +1271,83 @@ Auto-detect 3D capability and fall back gracefully when not available.
    - No crashes or cryptic errors
    - Log details for debugging
 
-**Example Pattern:**
-```javascript
-function init3DView() {
-  const canvas = document.getElementById('3d-view');
-  let gl = null;
-
-  try {
-    gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-  } catch (e) {
-    console.error('WebGL failed:', e);
-  }
-
-  if (!gl) {
-    console.warn('3D not available, using 2D fallback');
-    return init2DFallback(canvas);
-  }
-
-  return init3DRenderer(gl);
-}
-```
-
-**Search Hints:**
-- `getContext('webgl')`
-- `getContext('experimental-webgl')`
-- `THREE.js` or other 3D libraries
-- Settings containing "hardware acceleration" or "3D"
-
-**Testing Scenarios:**
-- Disable via configurator setting
-- Use `--disable-webgl` Chrome flag
-- Use `--disable-gpu` Electron flag
-- Test on VM without GPU passthrough
-
 **Benefits:**
-- Better UX for users without GPU support
-- No crashes on systems lacking 3D acceleration
-- Automatic detection vs manual setting
-- Makes app more robust and accessible
-- Easier to debug 3D issues
+- Improved UX for users without GPU support
+- No crashes or cryptic errors
+- No manual setting changes required
+- Graceful degradation
 
-**Deliverables:**
-- Investigation report of 3D usage locations
-- Capability detection implementation
-- Automatic fallback code
-- User-friendly messaging
-- Testing on 3D-disabled systems
+**Location:** `claude/projects/implement-3d-hardware-acceleration-auto-fallback/`
 
 **Assignment Email:** `claude/manager/sent/2025-12-26-task-3d-hardware-acceleration-auto-fallback.md`
 
 ---
+
+### ✅ analyze-pitot-blockage-apa-issue
+
+**Status:** COMPLETED
+**Type:** Bug Analysis / Safety Issue
+**Priority:** MEDIUM-HIGH
+**Assignment:** ✅ Complete
+**Created:** 2025-12-28
+**Completed:** 2025-12-28
+**Assignee:** Developer
+**Actual Time:** ~8 hours
+**GitHub Issue:** [#11208](https://github.com/iNavFlight/inav/issues/11208)
+
+Analyze the dangerous behavior of INAV 9's Fixed Wing APA (Airspeed-based PID Attenuation) when pitot tube fails or becomes blocked, and propose specific code changes.
+
+**Problem:**
+INAV 9's new Fixed Wing APA feature creates a safety-critical issue:
+- Above cruise speed: PIFF gains reduced by up to 70% (working as intended)
+- Below cruise speed: PIFF gains increased by up to 200% (problematic)
+
+**Dangerous Failure Mode:**
+When pitot tube fails, gets blocked, or sock is left on:
+1. Airspeed sensor reads very low (< 25 km/h)
+2. Aircraft is actually at cruise speed (~85 km/h)
+3. System thinks aircraft is slow → increases PIFF gains to 200%
+4. Aircraft becomes nearly unflyable with over-driven control surfaces
+5. Landing becomes extremely difficult/dangerous
+
+**Safety Impact:**
+CRITICAL - pitot failures are common (mechanical failure, blockage, forgotten sock). Current behavior makes aircraft nearly unflyable in these failure conditions.
+
+**Task:**
+1. Read GitHub issue #11208
+2. Read PDF document: `/home/raymorris/Downloads/pitot blockage sanity check.pdf`
+3. Locate and analyze APA implementation code
+4. Evaluate suggested solutions:
+   - Don't increase gains below cruise speed
+   - Add separate increase/decrease parameters
+   - Add airspeed sanity checks
+5. Propose specific code changes with rationale
+6. Create detailed analysis report
+
+**Type:** Analysis & Proposal (no implementation yet)
+
+**Deliverable:** Analysis report in `claude/developer/reports/issue-11208-pitot-blockage-apa-analysis.md`
+
+**Location:** `claude/projects/analyze-pitot-blockage-apa-issue/`
+
+**Assignment Email:** `claude/manager/sent/2025-12-28-1230-task-analyze-pitot-blockage-apa-issue.md`
+
+**Completion Summary:**
+- ✅ Comprehensive 11,800+ word analysis report completed
+- ✅ Identified four distinct issues requiring separate solutions
+- ✅ Mathematical analysis with Python visualization
+- ✅ Specific code changes proposed with line numbers
+- ✅ Implementation effort estimated: 10-12 hours total
+- 🔄 **Status:** Analysis complete, awaiting approval for implementation phase
+
+**Key Findings:**
+1. Pitot sensor validation needed (GPS-based sanity checks) - 8-12 hours
+2. I-term scaling should be removed (control theory issue) - 15 minutes
+3. Cruise speed reference - keep as-is (no change)
+4. Symmetric limits [0.67, 1.5] instead of [0.3, 2.0] - 15 minutes
+
+---
+
 
 ### 📋 reproduce-issue-11202-gps-fluctuation
 
@@ -1171,6 +1977,52 @@ Wizard-style tool that automatically detects and sets FC and compass alignment b
 - Lower priority than bug fixes
 
 **Location:** `claude/projects/feature-auto-alignment-tool/`
+
+---
+
+### ⏸️ remove-transpiler-backward-compatibility
+
+**Status:** BACKBURNER
+**Type:** Refactoring
+**Priority:** LOW
+**Assignment:** 📝 Planned (not yet assigned)
+**Created:** 2025-12-28
+**Scheduled For:** February 2026
+
+Remove backward compatibility support from transpiler namespace refactoring, requiring users to use the fully namespaced `inav.` syntax.
+
+**Background:**
+Transpiler currently supports dual syntax for backward compatibility:
+- New: `inav.gvar[0]`, `inav.rc[5]`, `inav.events.edge()`
+- Old: `gvar[0]`, `rc[5]`, `edge()`
+
+**Goal:**
+Remove dual-path logic after 14-month migration period (Dec 2024 - Feb 2026).
+
+**Scope:**
+- Remove backward compatibility from parser.js
+- Remove backward compatibility from codegen.js
+- Remove backward compatibility from analyzer.js
+- Remove backward compatibility from action_generator.js
+- Update examples to use new syntax only
+
+**Benefits:**
+- Simpler codebase
+- Clearer API (one way instead of two)
+- Better maintainability
+- Easier for new contributors
+
+**Why Backburner:**
+- Scheduled for February 2026
+- Gives users 14 months migration time
+- Decompiler already outputs new syntax only
+- Not urgent, but planned
+
+**Estimated Time:** 4-6 hours
+
+**Location:** `claude/projects/remove-transpiler-backward-compatibility/`
+
+**Related:** Developer request in `claude/manager/inbox-archive/2025-12-20-1903-project-request-remove-transpiler-backward-compatibility.md`
 
 ---
 
