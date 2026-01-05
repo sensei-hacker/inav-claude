@@ -207,24 +207,36 @@ stm32flash -w inav_9.0.0_BLUEBERRYF435WING.bin -v -g 0x08000000 /dev/ttyUSB0
 - Some FC boards don't expose BOOT0 pin
 - May not work if bootloader is disabled via option bytes
 
-## Prevention - Don't Auto-Configure EOPB0
+## Prevention - EOPB0 Configuration Status
 
-**What NOT to do:**
+**⚠️ CRITICAL: No safe EOPB0 configuration method has been verified yet.**
+
+### Attempts Made:
+
+All attempts to modify EOPB0 programmatically have resulted in flash protection:
+
+1. **❌ Early boot (systemInit before system_clock_config)** - Bricked FC
+   ```c
+   void systemInit(void) {
+       init_sram_config();  // ← Tried here - FAILED
+       system_clock_config();
+   }
+   ```
+
+2. **❌ Early boot (systemInit after system_clock_config)** - Bricked FC
+
+3. **❓ Late boot (after flashInit/readEEPROM)** - NOT TESTED (never implemented)
+
+4. **❓ CLI command (full boot, idle state)** - NOT TESTED
+
+### Theoretical Approach - Requires Testing
+
+**Manual CLI Command (UNVERIFIED):**
+
+A CLI command *might* be safer because it runs after full boot initialization:
+
 ```c
-void systemInit(void) {
-    // ❌ DANGEROUS - Don't modify USD/EOPB0 here!
-    init_sram_config();  // Tries to write flash
-    system_clock_config();
-    // ...
-}
-```
-
-**Safer Approach - Manual CLI Command:**
-
-Instead of automatic configuration, implement as a user-controlled CLI command:
-
-```c
-// In cli.c - add new command
+// In cli.c - THEORETICAL implementation (NOT TESTED)
 static void cliEopb0Config(char *cmdline)
 {
     uint16_t sram_kb;
@@ -252,25 +264,18 @@ static void cliEopb0Config(char *cmdline)
     flash_unlock();
     flash_user_system_data_erase();
     flash_eopb0_config(cfg);
-    systemReset();  // Safe reset after all flash operations complete
+    systemReset();
 }
 ```
 
-**Usage:**
-```
-# Show current EOPB0 config
-eopb0_config
-
-# Set to 192KB SRAM (optimal for most targets)
-eopb0_config 192
-```
-
-**Benefits:**
+**Theoretical benefits:**
 - User has control
 - Can backup config first (`diff all` command)
 - Clear warning about reset
 - Only runs when explicitly requested
 - Flash operations happen after full boot, not during early init
+
+**⚠️ WARNING: This approach MUST be tested on recovered hardware before deployment.**
 
 ## Technical Details
 
@@ -299,21 +304,33 @@ eopb0_config 192
 
 **Recommended:** 192K SRAM (EOPB0=0x05) provides good balance for INAV workloads.
 
-### Why Early Boot USD Write Fails
+### Why USD Write Triggers Flash Protection
 
-The USD (User System Data) area requires:
-1. Flash controller fully initialized
-2. Clock system stable
-3. Power supply stable
-4. No active flash operations
+**Observed behavior:**
+- EOPB0 writes during early boot (before OR after system_clock_config) trigger flash protection
+- FC becomes unbootable
+- Flash controller locks, preventing all erase/program operations
+- DFU recovery fails with "ERASE_PAGE not correctly executed"
 
-During `systemInit()` (before `system_clock_config()`):
-- Flash controller may not be ready
-- Clocks are still being configured
-- Attempting USD erase/program triggers protection
+**Root cause unclear:**
+The exact timing requirements and failure mechanisms are not fully understood. Possible causes:
+1. Flash controller not fully initialized
+2. Clock system timing issues
+3. Power supply instability
+4. Flash operation sequencing requirements
+5. Hardware-specific protection mechanisms
 
 **Betaflight observation:**
-Even though Betaflight calls EOPB0 config at the start of `systemInit()`, this doesn't guarantee it works reliably on all hardware. The flash protection we encountered suggests there are edge cases or hardware-specific timing issues.
+Betaflight places EOPB0 config at the very start of `systemInit()` (before `system_clock_config()`), but:
+- We tested this approach - it bricked our FC
+- Betaflight may have additional initialization or different hardware
+- The approach is not reliable across all AT32F43x boards
+
+**Unknown:**
+- Would placement after `flashInit()`/`readEEPROM()` work? (Never tested)
+- Would CLI command execution work? (Never tested)
+- Are there specific flash unlock sequences required?
+- Do different AT32F43x variants behave differently?
 
 ## Current Status of INAV Implementation
 
@@ -324,9 +341,10 @@ Even though Betaflight calls EOPB0 config at the start of `systemInit()`, this d
 
 **Current state:**
 - EOPB0 configuration code exists but is **disabled** (commented out)
-- Called in `systemInit()` but performs no operations
-- Phase 1 linker script committed (single FLASH1 region)
-- Needs CLI command implementation before re-enabling
+- Called in `systemInit()` but performs no operations (read-only check)
+- Phase 1 linker script committed (single FLASH1 region, 192KB SRAM config)
+- **BLOCKED**: Cannot proceed until safe EOPB0 write timing is verified
+- Requires FC recovery and controlled testing before re-enabling
 
 **Phase 2 Future Work:**
 - Split linker script into explicit FLASH_ZW / FLASH_NZW regions
@@ -336,11 +354,13 @@ Even though Betaflight calls EOPB0 config at the start of `systemInit()`, this d
 
 ## Lessons Learned
 
-1. **Never modify flash during early boot** - Too many subsystems not ready
-2. **User control is safer than automation** - Let users decide when to configure
-3. **Test on actual hardware** - Simulators won't catch flash protection issues
-4. **Document recovery before risky operations** - This document should have existed first!
-5. **Have a hardware debugger available** - ST-Link is essential for recovery
+1. **USD/EOPB0 writes are extremely risky** - All attempted timings during boot triggered flash protection
+2. **Betaflight's approach doesn't work universally** - What works on their hardware bricked our FC
+3. **Flash protection is catastrophic** - Requires hardware debugger to recover, DFU cannot help
+4. **Test incrementally with recovery plan** - Have ST-Link BEFORE attempting risky operations
+5. **Document recovery procedures FIRST** - This guide should have existed before first flash attempt
+6. **Never assume "later is safer"** - Testing is required; theoretical safety is not real safety
+7. **Verify claims before documenting them** - Don't claim an approach is safe without testing it
 
 ## References
 
