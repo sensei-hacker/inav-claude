@@ -352,6 +352,11 @@ bash_rules:
     category: other
     decision: allow
 
+  - name: "Allow dfu-util (device firmware update)"
+    command_pattern: "^dfu-util$"
+    category: other
+    decision: allow
+
   - name: "Allow build and test commands"
     command_pattern: "^(make|npm|pip|pio|gcc|g\\+\\+|clang)$"
     argument_pattern: "^(test|build|compile|install|run).*"
