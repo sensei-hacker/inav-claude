@@ -369,6 +369,11 @@ bash_rules:
     category: other
     decision: allow
 
+  - name: "Allow direct execution of scripts in .claude/skills/"
+    command_pattern: ".*(~/inavflight/\\.claude/skills/|/Documents/planes/inavflight/\\.claude/skills/|\\./\\.claude/skills/).*"
+    category: other
+    decision: allow
+
   # ===================================================================
   # Common Read-Only Commands (Broad Allow List)
   # ===================================================================
