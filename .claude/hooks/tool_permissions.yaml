@@ -208,21 +208,21 @@ bash_rules:
 
   - name: "Block git add -A"
     command_pattern: "^git$"
-    argument_pattern: "^add -A"
+    argument_pattern: "^(-C\\s+\\S+\\s+)?add -A"
     category: write
     decision: deny
     message: "STOP! IMPORTANT: Do NOT run 'git add -A'. Add the specific files you actually want."
 
   - name: "Block git push to maintenance/master"
     command_pattern: "^git$"
-    argument_pattern: "^push.*(maintenance|master).*"
+    argument_pattern: "^(-C\\s+\\S+\\s+)?push.*(maintenance|master).*"
     category: write
     decision: deny
     message: "STOP! IMPORTANT: Do NOT push to a version branch (maintenance-9.x, maintenance-10.x) or to master (except for inavwiki). Use your create-pr skill with a feature branch."
 
   - name: "Block git force push"
     command_pattern: "^git$"
-    argument_pattern: "^push.*force.*"
+    argument_pattern: "^(-C\\s+\\S+\\s+)?push.*force.*"
     category: write
     decision: deny
     message: "STOP! IMPORTANT: Do NOT force push! That will break public history!"
@@ -230,31 +230,31 @@ bash_rules:
   # Git read operations (safe)
   - name: "Allow git read operations"
     command_pattern: "^git$"
-    argument_pattern: "^(status|log|diff|show|branch|remote|describe|rev-parse|rev-list|cat-file|ls-tree|ls-files|grep|merge-base|blame|tag).*"
+    argument_pattern: "^(-C\\s+\\S+\\s+)?(status|log|diff|show|branch|remote|describe|rev-parse|rev-list|cat-file|ls-tree|ls-files|grep|merge-base|blame|tag).*"
     category: read
     decision: allow
 
   - name: "Allow git fetch"
     command_pattern: "^git$"
-    argument_pattern: "^fetch.*"
+    argument_pattern: "^(-C\\s+\\S+\\s+)?fetch.*"
     category: read
     decision: allow
 
   - name: "Allow git pull"
     command_pattern: "^git$"
-    argument_pattern: "^pull.*"
+    argument_pattern: "^(-C\\s+\\S+\\s+)?pull.*"
     category: write
     decision: allow
 
   - name: "Allow git checkout/stash/cherry-pick"
     command_pattern: "^git$"
-    argument_pattern: "^(checkout|stash|cherry-pick|restore).*"
+    argument_pattern: "^(-C\\s+\\S+\\s+)?(checkout|stash|cherry-pick|restore).*"
     category: write
     decision: allow
 
   - name: "Git commit reminder"
     command_pattern: "^git$"
-    argument_pattern: "^commit.*"
+    argument_pattern: "^(-C\\s+\\S+\\s+)?commit.*"
     category: write
     decision: allow
     message: "Git commit detected - reminder added about not mentioning Claude/AI in commit messages"
