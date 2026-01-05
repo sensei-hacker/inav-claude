@@ -1,5 +1,8 @@
 # AT32F43x Flash Recovery - Flash Protection / Lock Recovery
 
+**INAV Branch:** `at32-sram-zw-flash-config`
+**Related Document:** `claude/developer/AT32F43x_SRAM_ZW_Flash_Analysis.md`
+
 ## Problem Summary
 
 After attempting to automatically configure EOPB0 (Extended Option Byte 0) during early boot initialization, the AT32F435 flash controller entered a protected/locked state that prevents DFU flashing operations.
@@ -314,6 +317,7 @@ Even though Betaflight calls EOPB0 config at the start of `systemInit()`, this d
 
 ## Current Status of INAV Implementation
 
+**Branch:** `inav/at32-sram-zw-flash-config`
 **Commit:** `7b541080f` - AT32F43x: Add EOPB0 SRAM configuration (currently disabled)
 
 **Code location:** `src/main/drivers/system_at32f43x.c`
