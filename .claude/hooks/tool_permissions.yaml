@@ -240,6 +240,12 @@ bash_rules:
     category: read
     decision: allow
 
+  - name: "Allow git pull"
+    command_pattern: "^git$"
+    argument_pattern: "^pull.*"
+    category: write
+    decision: allow
+
   - name: "Allow git checkout/stash/cherry-pick"
     command_pattern: "^git$"
     argument_pattern: "^(checkout|stash|cherry-pick|restore).*"
