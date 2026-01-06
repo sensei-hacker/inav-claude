@@ -177,6 +177,17 @@ rules:
     message: "STOP! The claude/ directory is at /home/raymorris/Documents/planes/inavflight/claude/ (or ~/inavflight/claude/), NOT inside inav/, inav-configurator/, or inavwiki/. Use the correct path: /home/raymorris/Documents/planes/inavflight/claude/ or ~/inavflight/claude/"
 
   # ===================================================================
+  # Allow Rules (Safe File Modifications)
+  # ===================================================================
+
+  - name: "Allow editing tool permissions configuration"
+    tool_name_pattern: "^(Write|Edit)$"
+    tool_input_patterns:
+      file_path: ".*tool_permissions\\.yaml.*"
+    category: write
+    decision: allow
+
+  # ===================================================================
   # Ask Rules (File Modifications)
   # ===================================================================
 
