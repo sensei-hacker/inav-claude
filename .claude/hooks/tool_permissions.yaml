@@ -405,7 +405,7 @@ bash_rules:
   # These are safe commands that only read/display data
 
   - name: "Allow common read commands"
-    command_pattern: "^(grep|egrep|find|cat|ls|head|tail|less|more|wc|sort|uniq|diff|stat|file|du|df|awk|sed|cut|xargs|printf|pwd|whoami|md5sum|lsusb)$"
+    command_pattern: "^(grep|egrep|find|cat|ls|head|tail|less|more|wc|sort|uniq|diff|stat|file|du|df|awk|sed|cut|xargs|printf|pwd|whoami|md5sum|lsusb|sleep)$"
     category: read
     decision: allow
 
@@ -420,7 +420,7 @@ bash_rules:
   # These handle bash syntax elements and parser edge cases
 
   - name: "Allow shell control structures"
-    command_pattern: "^(if|then|else|elif|fi|for|while|do|done|case|esac|\\[|\\[\\[|test)$"
+    command_pattern: "^(if|then|else|elif|fi|for|while|do|done|case|esac|break|continue|\\[|\\[\\[|test)$"
     category: read
     decision: allow
 
