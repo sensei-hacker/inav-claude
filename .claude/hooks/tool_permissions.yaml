@@ -131,6 +131,11 @@ rules:
     category: other
     decision: allow
 
+  - name: "Allow TaskOutput for retrieving task results"
+    tool_name_pattern: "^TaskOutput$"
+    category: read
+    decision: allow
+
   - name: "Allow Skill tool (always allow skills)"
     tool_name_pattern: "^Skill$"
     category: other
