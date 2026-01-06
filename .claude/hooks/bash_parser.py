@@ -57,7 +57,7 @@ class BashCommandParser:
 
         # Handle simple case: no operators
         if not self.separator_pattern.search(command):
-            return [self._parse_simple_command(command, None)]
+            return self._parse_with_control_keywords(command, None)
 
         # Split by operators while preserving them, respecting quotes
         parts = self._split_respecting_quotes(command)
@@ -74,9 +74,9 @@ class BashCommandParser:
             if part in self.COMMAND_SEPARATORS:
                 current_operator = part
             else:
-                # This is a command
-                parsed_cmd = self._parse_simple_command(part, current_operator)
-                parsed_commands.append(parsed_cmd)
+                # This is a command - may contain control keywords to split
+                split_cmds = self._parse_with_control_keywords(part, current_operator)
+                parsed_commands.extend(split_cmds)
                 current_operator = None
 
         return parsed_commands
@@ -262,13 +262,13 @@ class BashCommandParser:
             # Strip outer parentheses - the inner command will be parsed normally
             cmd_str = cmd_str_stripped[1:-1].strip()
 
-        # Control structure keywords (must be exact match or followed by space/special char)
-        control_keywords = ['do', 'then', 'else', 'elif', 'fi', 'done', 'esac']
+        # Standalone control keywords (terminators that don't take commands)
+        standalone_keywords = {'fi', 'done', 'esac'}
         first_word = cmd_str.split()[0] if cmd_str.split() else cmd_str
-        if first_word in control_keywords:
-            # Control structure keywords
+        if first_word in standalone_keywords:
+            # These are standalone - return as-is
             return ParsedCommand(
-                command=cmd_str,
+                command=first_word,
                 arguments='',
                 raw=cmd_str,
                 operator_before=operator
@@ -300,6 +300,51 @@ class BashCommandParser:
             raw=cmd_str,
             operator_before=operator
         )
+
+    def _parse_with_control_keywords(self, cmd_str: str, operator: Optional[str]) -> List[ParsedCommand]:
+        """
+        Parse a command that may start with a control keyword followed by another command.
+
+        Handles cases like "do sleep 1" -> [ParsedCommand("do"), ParsedCommand("sleep", "1")]
+
+        Args:
+            cmd_str: Command string to parse
+            operator: The operator that preceded this command
+
+        Returns:
+            List of ParsedCommand objects
+        """
+        cmd_str = cmd_str.strip()
+        if not cmd_str:
+            return []
+
+        # Control keywords that can be followed by commands inline
+        # (after ; separation by the main parser, these may still have commands after them)
+        inline_control_keywords = {'do', 'then', 'else', 'elif'}
+
+        tokens = cmd_str.split(None, 1)  # Split on first whitespace only
+        if not tokens:
+            return []
+
+        first_word = tokens[0]
+
+        if first_word in inline_control_keywords and len(tokens) > 1:
+            # Control keyword followed by more content - split them
+            rest = tokens[1]
+            result = [
+                ParsedCommand(
+                    command=first_word,
+                    arguments='',
+                    raw=first_word,
+                    operator_before=operator
+                )
+            ]
+            # Recursively parse the rest (might have more control keywords)
+            result.extend(self._parse_with_control_keywords(rest, None))
+            return result
+        else:
+            # Not a control keyword with following content, parse normally
+            return [self._parse_simple_command(cmd_str, operator)]
 
     def categorize_command(self, parsed_cmd: ParsedCommand) -> str:
         """
