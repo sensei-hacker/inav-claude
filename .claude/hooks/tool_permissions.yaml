@@ -357,9 +357,9 @@ bash_rules:
   # Email/Inbox File Operations
   # ===================================================================
 
-  - name: "Allow mv within inbox directories"
-    command_pattern: "^mv$"
-    argument_pattern: ".*(claude/developer/inbox|claude/manager/inbox).*"
+  - name: "Allow cp/mv within role email directories"
+    command_pattern: "^(cp|mv)$"
+    argument_pattern: ".*(claude/(developer|manager)/(inbox|sent|inbox-archive)).*"
     category: write
     decision: allow
 
