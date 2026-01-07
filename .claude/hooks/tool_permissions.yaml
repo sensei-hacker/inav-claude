@@ -339,6 +339,12 @@ bash_rules:
   # ===================================================================
   # Handle patterns like: cat > file << 'EOF' or cat > file <<EOF
 
+  - name: "Allow cat > to lock files"
+    command_pattern: "^cat$"
+    argument_pattern: "^>\\s+.*claude/locks/.*\\.lock.*"
+    category: write
+    decision: allow
+
   - name: "Allow cat > to claude/ directories"
     command_pattern: "^cat$"
     argument_pattern: "^>\\s+(claude/|\\./claude/|\\.claude/).*"
