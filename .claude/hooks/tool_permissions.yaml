@@ -446,6 +446,12 @@ bash_rules:
     category: other
     decision: allow
 
+  - name: "Allow pkill for SITL"
+    command_pattern: "^pkill$"
+    argument_pattern: ".*SITL.*"
+    category: other
+    decision: allow
+
   # ===================================================================
   # Common Read-Only Commands (Broad Allow List)
   # ===================================================================
