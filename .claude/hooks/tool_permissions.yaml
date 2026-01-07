@@ -436,6 +436,11 @@ bash_rules:
     category: other
     decision: allow
 
+  - name: "Allow developer scripts"
+    command_pattern: ".*(~/inavflight/claude/developer/scripts/|/Documents/planes/inavflight/claude/developer/scripts/|claude/developer/scripts/).*"
+    category: other
+    decision: allow
+
   - name: "Allow SITL simulator execution"
     command_pattern: ".*SITL\\.elf$"
     category: other
