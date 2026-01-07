@@ -348,10 +348,10 @@ bash_rules:
 
   - name: "Ask for cat > to other locations"
     command_pattern: "^cat$"
-    argument_pattern: ".*>.*"
+    argument_pattern: "(^|\\s)>>?"
     category: write
     decision: ask
-    message: "cat with output redirection requires approval"
+    message: "cat with stdout redirection requires approval"
 
   # ===================================================================
   # Email/Inbox File Operations
