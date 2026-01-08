@@ -458,6 +458,12 @@ bash_rules:
     category: other
     decision: allow
 
+  - name: "Allow kill for SITL processes"
+    command_pattern: "^kill$"
+    argument_pattern: ".*"
+    category: other
+    decision: allow
+
   # ===================================================================
   # Common Read-Only Commands (Broad Allow List)
   # ===================================================================
