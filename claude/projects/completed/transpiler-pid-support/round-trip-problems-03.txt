@@ -1,0 +1,154 @@
+I pasted the jetrell_logic in again and I get this, which looks reasonably close to being correct:
+```
+const { flight, override, rc, gvar, edge, sticky, pid } = inav;
+
+// Variable declarations
+var latch4 = 0;
+var latch5 = 0;
+var latch6 = 0;
+
+if (flight.gpsValid === 1) {
+  latch1 = sticky({
+    on: () => flight.groundSpeed > 1000,
+    off: () => flight.isArmed === 0
+  });
+  if (latch1) {
+    if (flight.isAutoLaunch === 0) {
+      if (rc[11] > 1480) {
+        latch2 = sticky({
+          on: () => gvar[0],
+          off: () => flight.airSpeed > (50 * 28)
+        });
+        latch3 = sticky({
+          on: () => edge(rc[11] > 1480, 100),
+          off: () => flight.gpsValid === 0 || delta(rc[4], 90) || flight.isLanding === 1
+        });
+        if (latch3) {
+          if (flight.speed3d > flight.airSpeed) {
+            if (flight.airSpeed < (50 * 28)) {
+              gvar[0] = gvar[0] + ((50 * 28) - flight.airSpeed);
+            }
+          }
+          if (!latch2) {
+            gvar[0] = Math.min(110, Math.max(0, (rc[12] - 1000) * 110 / 1000)) * 28;
+          }
+          let clamped = Math.min(1800, ((pid[3].output + 3000) / 2));
+          override.throttle = Math.max(clamped, Math.max(1250, clamped));
+          if (flight.mode.poshold === 1 || rc[11].high) {
+            gvar[1] = flight.airSpeed;
+          }
+          if (!gvar[1]) {
+            gvar[1] = flight.speed3d;
+          }
+        }
+      }
+    }
+  }
+}
+``` 
+
+Compiling the above results in:
+```
+logic 0 1 -1 18 0 7 0 0 0
+logic 1 1 -1 18 0 6 0 0 0
+logic 2 1 -1 18 0 5 0 0 0
+logic 3 1 -1 1 2 31 0 1 0
+logic 4 1 3 2 2 9 0 1000 0
+logic 5 1 -1 1 2 17 0 0 0
+logic 6 1 3 13 4 4 4 5 0
+logic 7 1 6 1 2 18 0 0 0
+logic 8 1 7 2 1 11 0 1480 0
+logic 9 1 8 1 5 0 0 1 0
+logic 10 1 -1 2 2 11 0 0 0
+logic 11 1 8 13 4 9 4 10 0
+logic 12 1 8 2 1 11 0 1480 0
+logic 13 1 8 47 4 12 0 100 0
+logic 14 1 -1 1 2 31 0 0 0
+logic 15 1 -1 50 1 4 0 90 0
+logic 16 1 -1 8 4 14 4 15 0
+logic 17 1 -1 1 2 23 0 1 0
+logic 18 1 -1 8 4 16 4 17 0
+logic 19 1 8 13 4 13 4 18 0
+logic 20 1 19 2 2 10 2 11 0
+logic 21 1 -1 16 0 50 0 28 0
+logic 22 1 20 3 2 11 4 21 0
+logic 23 1 22 19 0 0 0 0 0
+logic 24 1 19 12 4 11 0 0 0
+logic 25 1 -1 15 1 12 0 1000 0
+logic 26 1 -1 16 4 25 0 110 0
+logic 27 1 -1 17 4 26 0 1000 0
+logic 28 1 -1 44 0 0 4 27 0
+logic 29 1 -1 43 0 110 4 28 0
+logic 30 1 24 16 4 29 0 28 0
+logic 31 1 24 18 0 0 4 30 0
+logic 32 1 19 29 0 0 0 0 0
+logic 33 1 19 1 3 3 0 1 0
+logic 34 1 19 6 1 11 0 0 0
+logic 35 1 19 8 4 33 4 34 0
+logic 36 1 35 18 0 1 2 11 0
+logic 37 1 19 1 5 1 0 1 0
+logic 38 1 19 12 4 37 0 0 0
+logic 39 1 38 18 0 1 2 10 0
+```
+
+
+Decompiling again results in:
+```
+const { flight, override, rc, gvar, edge, sticky } = inav;
+
+// Variable declarations
+let clamped = Math.min(1800, ((pid[3].output + 3000) / 2));
+var latch4 = 0;
+var latch5 = 0;
+var latch6 = 0;
+var latch1; // logicCondition[6] - sticky/timer state
+var latch2; // logicCondition[11] - sticky/timer state
+var latch3; // logicCondition[19] - sticky/timer state
+
+latch4 = 0;
+
+latch5 = 0;
+
+latch6 = 0;
+
+if (flight.gpsValid === 1) {
+  latch1 = sticky({
+    on: () => flight.groundSpeed > 1000,
+    off: () => flight.isArmed === 0
+  });
+  if (latch1) {
+    if (flight.isAutoLaunch === 0) {
+      if (rc[11] > 1480) {
+        latch2 = sticky({
+          on: () => gvar[0] === 1,
+          off: () => flight.airSpeed > 0
+        });
+        latch3 = sticky({
+          on: () => edge(rc[11] > 1480, 100),
+          off: () => flight.gpsValid === 0 || delta(rc[4], 90) || flight.isLanding === 1
+        });
+        if (latch3) {
+          if (flight.speed3d > flight.airSpeed) {
+            if (flight.airSpeed < (50 * 28)) {
+              gvar[0] = gvar[0] + 0;
+            }
+          }
+          if (!latch2) {
+            let bounded = Math.max(0, (((rc[12] - 1000) * 110) / 1000));
+            gvar[0] = Math.min(110, bounded) * 28;
+          }
+          override.throttle = 0;
+          if (flight.mode.poshold === 1 || rc[11].high) {
+            gvar[1] = flight.airSpeed;
+          }
+          if (!(gvar[1] === 1)) {
+            gvar[1] = flight.speed3d;
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+

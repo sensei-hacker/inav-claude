@@ -25,9 +25,6 @@ uNAVlib/*
 !uNAVlib/.gitkeep
 !uNAVlib/**/CLAUDE.md
 
-# Ignore project tracking files (dynamic content)
-claude/projects/*
-
 # Node.js dependencies and package files
 node_modules/
 package.json
@@ -35,13 +32,6 @@ package-lock.json
 
 # Local tools
 raytools/
-
-# Email/message directories (private communications)
-**/inbox/*
-**/outbox/*
-**/sent/*
-**/inbox-archive/*
-**/completed/*
 
 # Downloads (binary firmware files)
 **/downloads/*
@@ -75,12 +65,7 @@ claude/developer/archive/
 claude/developer/builds/
 claude/developer/reports/
 
-# Keep directory structure but ignore content
-!**/inbox/.gitkeep
-!**/outbox/.gitkeep
-!**/sent/.gitkeep
-!**/inbox-archive/.gitkeep
-!**/completed/.gitkeep
+# Keep downloads directory structure
 !**/downloads/.gitkeep
 
 # Local-only files

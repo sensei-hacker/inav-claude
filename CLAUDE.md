@@ -75,15 +75,25 @@ You are responsible for:
 
 ---
 
-## Initial Setup (New Users)
+## First-Time Setup (New Users)
 
-After cloning, update `.claude/settings.json` with your home directory path:
+**👉 Run the installation script:**
+
+```bash
+./claude/install.sh
+```
+
+Choose:
+- **fresh** - Start with clean projects/emails (recommended for new users)
+- **continue** - Keep existing projects from previous owner (sensei-hacker)
+
+**Then update paths:**
 
 ```bash
 sed -i "s|/home/user/|$HOME/|g" .claude/settings.json
 ```
 
-See `claude/README.md` for full setup instructions.
+See `claude/INSTALL.md` for detailed setup instructions and `claude/examples/` for templates.
 
 ---
 

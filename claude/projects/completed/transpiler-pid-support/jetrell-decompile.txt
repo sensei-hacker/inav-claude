@@ -1,0 +1,9 @@
+const { flight, override, rc, gvar, pid } = inav;
+
+if (flight.gpsValid === 1 && flight.groundSpeed > 1000 && logicCondition[1] /* sticky (on: logicCondition[1], off: flight.isArmed === 0) */ && (flight.airSpeed + 0) && (flight.speed3d + 0) && flight.isAutoLaunch === 0 && rc[11] > 1480 && logicCondition[24] /* sticky (on: logicCondition[24], off: logicCondition[26]) */ && logicCondition[4] > (50 * 28) && logicCondition[27] /* edge with duration 100ms */ /* sticky (on: logicCondition[27] /* edge with duration 100ms */, off: flight.gpsValid === 0 || /* delta(rc[4], threshold 90) */ true || flight.isLanding === 1) */ && logicCondition[5] > logicCondition[4] && logicCondition[4] < (50 * 28) && ((50 * 28) - logicCondition[4]) && !logicCondition[25] && (rc[12] - 1000) && Math.min(110, Math.max(0, Math.round(logicCondition[35] * 110 / 1000))) && (logicCondition[36] * 28) && (pid[3].output + 3000) && (logicCondition[39] / 2) && Math.min(1800, logicCondition[40]) && Math.max(1250, logicCondition[41]) && Math.max(logicCondition[41], logicCondition[42]) && (logicCondition[43] / 10) && (logicCondition[45] - 100) && rc[11].high && flight.mode.poshold === 1 || logicCondition[48] && !logicCondition[50]) {
+  gvar[0] = gvar[0] + logicCondition[23];
+  gvar[0] = logicCondition[37];
+  override.throttle = 0;
+  gvar[1] = logicCondition[4];
+  gvar[1] = logicCondition[5];
+}
