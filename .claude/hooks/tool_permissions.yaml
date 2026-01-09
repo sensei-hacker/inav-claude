@@ -509,6 +509,12 @@ bash_rules:
   # GitHub CLI Commands
   # ===================================================================
 
+  - name: "Allow gh api commands for PR comments"
+    command_pattern: "^gh$"
+    argument_pattern: "^api.*comments.*"
+    category: read
+    decision: allow
+
   - name: "Allow GitHub CLI read operations"
     command_pattern: "^gh$"
     argument_pattern: "^(pr|issue|run|release|api|workflow).*(list|view|diff|checks|download).*"
