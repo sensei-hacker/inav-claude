@@ -17,7 +17,7 @@ cd inav-claude
 
 ### 2. Clone the Required Repositories
 
-This workflow requires the INAV firmware, configurator, and uNAVlib repositories. Clone them into the appropriate directories:
+This workflow requires the INAV firmware, configurator, and mspapi2 repositories. Clone them into the appropriate directories:
 
 ```bash
 # Clone INAV firmware
@@ -30,8 +30,8 @@ git clone git@github.com:sensei-hacker/inav-configurator.git inav-configurator
 # Or use the official repo:
 # git clone https://github.com/iNavFlight/inav-configurator.git inav-configurator
 
-# Clone uNAVlib (testing library)
-git clone https://github.com/your-fork/uNAVlib.git uNAVlib
+# Clone mspapi2 (MSP protocol library for testing)
+git clone https://github.com/xznhj8129/mspapi2.git mspapi2
 ```
 
 ### 3. Set Up Context Files for Claude Code
@@ -59,7 +59,7 @@ Start Claude from the project root directory:
 claude
 ```
 
-Claude will read `CLAUDE.local.md` and ask which role you want to work in (Manager, Developer, or Release Manager).
+Claude will read `CLAUDE.md` and ask which role you want to work in (Manager, Developer, or Release Manager).
 
 ## Roles and Workflow
 
@@ -101,11 +101,12 @@ This workflow is designed to work with three separate repositories:
 - **Description:** Desktop configuration GUI (JavaScript/Electron)
 - **License:** GPL
 
-### uNAVlib/
-- **Description:** Testing and simulation library for UAV development
+### mspapi2/
+- **Repository:** https://github.com/xznhj8129/mspapi2
+- **Description:** MSP protocol library for testing and simulation
 - **Used by:** Developer test tools in `developer/test_tools/`
 
-**Important:** The `inav/`, `inav-configurator/`, and `uNAVlib/` directories are NOT tracked by this repository. You need to clone them separately as shown above.
+**Important:** The `inav/`, `inav-configurator/`, and `mspapi2/` directories are NOT tracked by this repository. You need to clone them separately as shown above.
 
 
 ## Code Navigation
@@ -119,7 +120,7 @@ See `INDEXING.md` for more details.
 ```
 inav-claude/
 ├── README.md                    # This file
-├── CLAUDE.local.md              # Role selection guide (start here)
+├── CLAUDE.md              # Role selection guide (start here)
 ├── .claude/                     # Root-level Claude settings
 │   ├── settings.local.json
 │   └── skills/                  # Claude skills (build-sitl, email, etc.)
@@ -129,11 +130,11 @@ inav-claude/
 │   ├── INDEXING.md              # Code navigation with ctags
 │   ├── manager/                 # Development Manager role
 │   │   ├── README.md
-│   │   ├── CLAUDE.local.md
+│   │   ├── CLAUDE.md
 │   │   └── .claude/settings.local.json
 │   ├── developer/               # Developer role
 │   │   ├── README.md
-│   │   ├── CLAUDE.local.md
+│   │   ├── CLAUDE.md
 │   │   ├── .claude/settings.local.json
 │   │   └── test_tools/          # Testing utilities for SITL
 │   ├── release-manager/         # Release Manager role
@@ -144,12 +145,12 @@ inav-claude/
 │   └── archived_projects/       # Completed project documentation
 ├── inav/                        # INAV firmware (clone separately)
 ├── inav-configurator/           # INAV configurator GUI (clone separately)
-└── uNAVlib/                     # UAV testing library (clone separately)
+└── mspapi2/                     # MSP protocol library (clone separately)
 ```
 
 ## Documentation
 
-- **Role Selection:** `CLAUDE.local.md` (start here!)
+- **Role Selection:** `CLAUDE.md` (start here!)
 - **Workflow Overview:** `claude/README.md`
 - **Manager Guide:** `claude/manager/README.md`
 - **Developer Guide:** `claude/developer/README.md`
