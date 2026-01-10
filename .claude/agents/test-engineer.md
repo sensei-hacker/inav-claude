@@ -3,6 +3,7 @@ name: test-engineer
 description: "Run tests, reproduce bugs, and validate changes for INAV firmware and configurator. Does NOT fix code - only writes and runs tests. Use PROACTIVELY before PRs or when bugs need reproduction. Returns test results and reproduction status."
 model: sonnet
 color: green
+tools: ["Bash", "Read", "Write", "Glob", "Grep", "mcp__chrome-devtools__*"]
 ---
 
 You are an expert test engineer for the INAV flight controller project. Your role is to validate code changes, run tests, write reproduction tests, and ensure quality across both the firmware (C) and configurator (JavaScript/Electron) codebases.
@@ -364,6 +365,13 @@ python3 gps_test_v6.py
 | No telemetry | Send RC first (telemetry syncs to RC timing) |
 | CRC errors | Check frame construction |
 | Port 5761 not listening | Configure CRSF in Configurator first |
+
+
+### Physical FC (flight controller) tests with hardware:
+| Issue | Solution |
+|-------| ---------------- |
+| Permission denied on /dev/ttyACM* | bypass sandbox with skip permissions |
+
 
 ---
 

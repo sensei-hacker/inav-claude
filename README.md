@@ -81,7 +81,7 @@ Claude will read `CLAUDE.md` and ask which role you want to work in (Manager, De
 
 ### Communication Between Roles
 
-Roles communicate via message files in `inbox/`, `outbox/`, `sent/`, and `inbox-archive/` directories. The `email` skill helps read and manage messages.
+Roles communicate via message files in `email/inbox/`, `email/outbox/`, `email/sent/`, and `email/inbox-archive/` directories. The `email` skill helps read and manage messages.
 
 See `COMMUNICATION.md` for detailed message formats and workflows.
 

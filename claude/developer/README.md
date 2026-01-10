@@ -9,7 +9,7 @@ You implement features, fix bugs, and write code for the INAV flight controller 
 1. **Check inbox:** `ls claude/developer/email/inbox/`
 2. **Read assignment:** Open the task file
 3. **Do the work:** Implement the solution
-4. **Report completion:** Create report in `developer/email/sent/`, copy to `manager/inbox/`
+4. **Report completion:** Create report in `developer/email/sent/`, copy to `manager/email/inbox/`
 
 ##
 
@@ -30,10 +30,10 @@ You implement features, fix bugs, and write code for the INAV flight controller 
 - `developer/email/outbox/` - Draft messages awaiting delivery
 
 **Message Flow:**
-- **To Manager:** Create in `developer/email/sent/`, copy to `manager/inbox/`
-- **To Release Manager:** Create in `developer/email/sent/`, copy to `release-manager/inbox/`
-- **From Manager:** Arrives in `developer/email/inbox/` (copied from `manager/sent/`)
-- **From Release Manager:** Arrives in `developer/email/inbox/` (copied from `release-manager/sent/`)
+- **To Manager:** Create in `developer/email/sent/`, copy to `manager/email/inbox/`
+- **To Release Manager:** Create in `developer/email/sent/`, copy to `release-manager/email/inbox/`
+- **From Manager:** Arrives in `developer/email/inbox/` (copied from `manager/email/sent/`)
+- **From Release Manager:** Arrives in `developer/email/inbox/` (copied from `release-manager/email/sent/`)
 
 **Outbox Usage:**
 The `outbox/` folder is for draft messages that need review or are waiting for a decision before sending. When ready:
@@ -44,7 +44,7 @@ The `outbox/` folder is for draft messages that need review or are waiting for a
 
 Follow this workflow when working on issues and bug fixes. Each step includes the relevant agent or skill to use.
 
-### Step-by-Step Issue Workflow
+### Step-by-Step Issue Workflow (use the Todo agent to help track these steps each time)
 
 | Step | Action | Agent/Skill |
 |------|--------|-------------|
@@ -65,7 +65,8 @@ Follow this workflow when working on issues and bug fixes. Each step includes th
 
 #### 1. Check inbox for assignments
 ```bash
-ls -lt claude/developer/email/inbox/ | head
+# Note: Avoid piping ls to head due to sandbox environment issues
+ls -lt claude/developer/email/inbox/
 ```
 
 #### 2. Read task assignment
@@ -103,6 +104,7 @@ Save test to: claude/developer/workspace/[task-name]/"
 Write the code to fix the issue. Follow the coding standards in this guide.
 
 **Other useful agents during implementation:**
+- **inav-architecture** agent - Find where code lives in the codebase
 - **msp-expert** agent - For MSP protocol questions or changes
 - **settings-lookup** agent - For CLI setting values and defaults
 - **Explore** agent (via Task tool) - For understanding unfamiliar code
@@ -234,132 +236,73 @@ Running make directly will miss cmake changes and cause hard-to-debug build issu
 - **Hardware firmware:** `inav/build/inav_<version>_<TARGET>.hex`
 - **SITL binary:** `inav/build_sitl/bin/SITL.elf`
 
-## First-Time Setup (if build/ doesn't exist)
-
-```bash
-cd inav && mkdir -p build && cd build && cmake ..
-```
-
-## Requirements
-
-- ARM GCC toolchain (auto-downloaded by cmake)
-- CMake 3.13+, Ruby, Make
-
----
-
 # Building the Configurator (inav-configurator/)
 
-```bash
-cd inav-configurator
-npm install
-npm start              # Run in development mode
-npm run make           # Build distributable packages
+Use the **inav-builder** agent for all configurator builds:
+
+```
+Task tool with subagent_type="inav-builder"
+Prompt: "Build configurator" or "Run configurator in dev mode"
 ```
 
-## Build for Specific Architecture
-
-```bash
-npm run make -- --arch="x64"
-npm run make -- --arch="ia32"
-```
+See `.claude/agents/inav-builder.md` for detailed build commands and troubleshooting.
 
 ---
 
 # Firmware Architecture
 
-## Task-Based Cooperative Scheduler
+**Use the `inav-architecture` agent** to navigate the codebase and find where functionality lives:
 
-INAV uses a priority-based cooperative scheduler (not preemptive). All functionality runs as tasks with defined priorities:
-
-- **TASK_PRIORITY_REALTIME (18)**: Gyro sampling, PID loop
-- **TASK_PRIORITY_MEDIUM (3-4)**: GPS, compass, battery monitoring
-- **TASK_PRIORITY_LOW (1)**: Serial communication, telemetry
-- **TASK_PRIORITY_IDLE (0)**: Background tasks
-
-Main loop: `main() -> init() -> while(true) { scheduler() }`
-
-## Source Code Organization (inav/src/main/)
-
-### Core Flight Control
-- `fc/` - Flight controller core (initialization, arming, CLI, main loop)
-- `flight/` - Flight algorithms (IMU, PID, mixer, servos, failsafe)
-- `scheduler/` - Task scheduler implementation
-
-### Navigation System
-- `navigation/` - GPS navigation and autonomous flight
-  - `navigation_fixedwing.c` - Fixed-wing specific logic (TECS, autolaunch)
-  - `navigation_multicopter.c` - Multirotor specific logic
-  - `navigation_rover_boat.c` - Ground/water vehicle logic
-  - `navigation_pos_estimator.c` - Position estimation (sensor fusion)
-
-### Sensors & Drivers
-- `sensors/` - Sensor abstraction layer (gyro, accel, compass, baro, GPS, etc.)
-- `drivers/` - Low-level hardware drivers
-  - `drivers/accgyro/` - IMU drivers (MPU6000, ICM426xx, BMI270, etc.)
-  - `drivers/barometer/` - Barometer drivers (BMP280, MS5611, etc.)
-  - `drivers/compass/` - Magnetometer drivers (HMC5883L, QMC5883L, etc.)
-
-### Communication
-- `rx/` - Radio receiver protocols (SBUS, CRSF, IBUS, FPort, etc.)
-- `telemetry/` - Telemetry protocols (SmartPort, CRSF, MAVLink, LTM)
-- `msp/` - MultiWii Serial Protocol (configurator communication)
-- `io/` - Serial port management, OSD, GPS, VTX control
-
-### Configuration
-- `config/` - Configuration system using Parameter Groups (PG)
-- `fc/settings.yaml` - All configurable parameters (auto-generates C code)
-
-### Other Subsystems
-- `blackbox/` - Flight data logging to flash/SD card
-- `cms/` - Configuration Menu System (OSD-based UI)
-- `programming/` - Logic conditions and global variables (programmable flight logic)
-- `common/` - Utility functions (math, filters, encoding)
-
-## Target/Board Configuration
-
-Each flight controller board has a directory in `inav/src/main/target/BOARDNAME/`:
-
-- `target.h` - Hardware pin definitions, IMU type, feature enables
-- `target.c` - Board-specific initialization (optional)
-- `CMakeLists.txt` - Build configuration defining target variants
-
-Example: `src/main/target/MATEKF405/CMakeLists.txt`
-```cmake
-target_stm32f405xg(MATEKF405)
-target_stm32f405xg(MATEKF405OSD)
+```
+Task tool with subagent_type="inav-architecture"
+Prompt: "Where is the PID controller?" or "Find CRSF telemetry files" or "How to add a sensor driver?"
 ```
 
-## Platform Types
+The agent knows the complete source organization, architectural patterns, and can guide you to the right files BEFORE you start searching with Grep.
 
-INAV supports multiple vehicle types with platform-specific control logic:
+## Quick Reference
 
-- **PLATFORM_MULTIROTOR** - Quadcopters, hexacopters, etc.
-- **PLATFORM_AIRPLANE** - Fixed-wing aircraft, flying wings
-- **PLATFORM_ROVER** - Ground vehicles
-- **PLATFORM_BOAT** - Water vehicles
+| What you need | Use this agent |
+|--------------|----------------|
+| Find where code lives | **inav-architecture** |
+| Understand subsystem connections | **inav-architecture** |
+| Learn architectural patterns | **inav-architecture** |
+| Locate files for your task | **inav-architecture** |
 
-Navigation logic branches based on platform type (see `navigation/` directory).
+## Architecture Overview
 
-## Key Architectural Patterns
+**For complete details, use the `inav-architecture` agent.** Here's a quick summary:
 
-### Parameter Group (PG) System
-- Type-safe configuration storage with EEPROM persistence
-- Defined in `settings.yaml`, auto-generates C code at build time
-- CLI commands auto-generated from parameter definitions
+### Task-Based Cooperative Scheduler
+- Priority-based (REALTIME=18 for gyro/PID, MEDIUM=3-4 for GPS/compass, LOW=1 for serial/telemetry, IDLE=0 for background)
+- Non-preemptive cooperative execution
+- Main loop: `main() -> init() -> while(true) { scheduler() }`
 
-### Hardware Abstraction
-- `drivers/bus.c/h` - Unified SPI/I2C interface
-- Sensor drivers use common bus abstraction
-- Platform-specific code isolated in `platform.h`
+### Source Code Organization (inav/src/main/)
 
-### Feature System
-- Compile-time flags: `USE_XXX` (e.g., `USE_GPS`, `USE_MAG`)
-- Runtime enables: `FEATURE_XXX`
-- Allows minimal/full firmware builds
+| Directory | Purpose |
+|-----------|---------|
+| `fc/` | Flight controller core (initialization, arming, CLI, main loop) |
+| `flight/` | Flight algorithms (IMU, PID, mixer, servos, failsafe) |
+| `navigation/` | GPS navigation and autonomous flight |
+| `sensors/` | Sensor abstraction layer |
+| `drivers/` | Low-level hardware drivers |
+| `rx/` | Radio receiver protocols (SBUS, CRSF, IBUS, FPort) |
+| `telemetry/` | Telemetry protocols (SmartPort, CRSF, MAVLink, LTM) |
+| `msp/` | MultiWii Serial Protocol (configurator communication) |
+| `config/` | Configuration system using Parameter Groups (PG) |
+| `fc/settings.yaml` | All configurable parameters (auto-generates C code) |
 
-### Adding New Source Files
+**Common questions?** Ask the `inav-architecture` agent instead of searching manually.
 
-Source files must be listed in `inav/src/main/CMakeLists.txt` to be included in the build.
+### Key Architectural Patterns
+
+1. **Parameter Group (PG) System** - Type-safe config storage with EEPROM persistence, defined in settings.yaml
+2. **Hardware Abstraction** - drivers/bus.c/h for unified SPI/I2C interface
+3. **Feature System** - Compile-time USE_XXX flags, runtime FEATURE_XXX enables
+4. **Platform Types** - PLATFORM_MULTIROTOR, PLATFORM_AIRPLANE, PLATFORM_ROVER, PLATFORM_BOAT
+
+**For details on any pattern, consult the `inav-architecture` agent.**
 
 ---
 
@@ -510,14 +453,9 @@ throttleValue = rawThrottle + 48;
 
 ### Pull requests
 - 3 minutes after creating a pull request, check the PR to see if it has suggestions from the bot. Decide if the suggestions are good or not.
-## Searching in inav-configurator/
 
-grep can have a lot of noise from build artifacts. Use:
-
-```bash
-grep -Hinr "{foo}" . | egrep -v 'build/|modules/|git|out/' 2>/dev/null
-or even better, use rg (ripgrep)
-```
+### GH API and Github ssh
+- When using the gh command or the github API, or SSH with Github, remember you are running in a sandbox and probably need to DangerouslySkipPermissions
 
 # Debugging
 
@@ -565,7 +503,7 @@ When a task is complete, create a report in `developer/email/sent/`:
 
 **Then copy to manager:**
 ```bash
-cp claude/developer/email/sent/<report>.md claude/manager/inbox/
+cp claude/developer/email/sent/<report>.md claude/manager/email/inbox/
 ```
 
 **Then archive your assignment:**
@@ -600,14 +538,15 @@ mv claude/developer/email/inbox/<assignment>.md claude/developer/email/inbox-arc
 
 ### Check for new assignments
 ```bash
-ls -lt claude/developer/email/inbox/ | head
+# Note: Avoid piping ls to head due to sandbox environment issues
+ls -lt claude/developer/email/inbox/
 ```
 
 ### Send completion report
 ```bash
 # Create report in developer/email/sent/
 # Then copy:
-cp claude/developer/email/sent/<report>.md claude/manager/inbox/
+cp claude/developer/email/sent/<report>.md claude/manager/email/inbox/
 ```
 
 ### Archive processed assignment
@@ -644,17 +583,60 @@ Agents are specialized subprocesses that handle complex, multi-step tasks autono
 
 **Important:** When invoking agents, include relevant context in your prompt so the agent can work effectively. See each agent's "Context to provide" section.
 
+## 🔍 Before You Search the Codebase
+
+**DO NOT use Grep or Explore to search the INAV firmware codebase directly.**
+
+Instead, **FIRST use the `inav-architecture` agent** to narrow your search scope. The INAV codebase has 1000+ source files - blind searching wastes time and context.
+
+```
+Task tool with subagent_type="inav-architecture"
+Prompt: "Where is [functionality you're looking for]?"
+```
+
+The agent will tell you exactly which files/directories to look at, THEN you can use Grep/Read on those specific locations.
+
+## inav-architecture
+**Purpose:** Navigate INAV firmware codebase and find where functionality lives
+
+**When to use:**
+- **BEFORE using Grep/Explore** - Find the right directories to search first
+- When you need to **find** where specific functionality is implemented
+- When **searching** for the right files/directories to modify
+- Understanding how subsystems connect (sensors, navigation, flight control)
+- Learning about architectural patterns (PG system, task scheduler, hardware abstraction)
+- Questions like "where is X", "which file handles Y", "how do I add Z"
+
+**Context to provide:**
+- What functionality you're trying to find (e.g., "PID controller", "CRSF telemetry", "RTH logic")
+- Task context (optional - e.g., "need to add a new sensor", "debugging GPS issue")
+- Platform (optional - "fixed-wing", "multirotor" - affects which navigation files)
+
+**Example prompts:**
+```
+"Where is the PID controller code?"
+"I need to find where RTH logic lives"
+"Which file handles CRSF telemetry?"
+"Where do I add a new CLI setting?"
+"Find the gyro sampling code"
+"I'm searching for the MSP protocol handler"
+"Help me locate the navigation state machine"
+```
+
+**Configuration:** `.claude/agents/inav-architecture.md`
+
 ## inav-builder
-**Purpose:** Compile INAV firmware (SITL and hardware targets)
+**Purpose:** Build INAV firmware (SITL and hardware targets) and configurator
 
 **When to use:**
 - Building SITL for testing firmware changes
 - Compiling specific flight controller targets
+- Building or running the configurator
 - Verifying code changes compile before creating a PR
 - Diagnosing build errors
 
 **Context to provide:**
-- Target name (e.g., SITL, MATEKF405, JHEMCUF435)
+- Target name (e.g., SITL, MATEKF405, JHEMCUF435) or "configurator"
 - Whether to do a clean build (if switching targets or after CMakeLists changes)
 
 **Example prompts:**
@@ -663,12 +645,14 @@ Agents are specialized subprocesses that handle complex, multi-step tasks autono
 "Build MATEKF405 target"
 "Clean build SITL - I modified CMakeLists.txt"
 "Verify my changes to inav/src/main/flight/pid.c compile for SITL"
+"Build configurator"
+"Run configurator in dev mode"
 ```
 
 **Configuration:** `.claude/agents/inav-builder.md`
 
 ## test-engineer
-**Purpose:** Run tests, reproduce bugs, and validate changes (does NOT fix code)
+**Purpose:** Run tests, reproduce bugs, and validate changes
 
 **When to use:**
 - **Reproducing bugs** - Have it write a test that demonstrates an issue before you fix it
@@ -687,8 +671,6 @@ Agents are specialized subprocesses that handle complex, multi-step tasks autono
 - **For testing changes:**
   - Which files were modified
   - What functionality to test
-- **For configurator tests:**
-  - Specific test file or area to focus on (or "all" for full suite)
 
 **Example prompts:**
 ```
@@ -762,7 +744,6 @@ Modified files: inav/src/main/telemetry/crsf.c, inav/src/main/telemetry/crsf.h"
 - Writing Python scripts that use mspapi2
 - Adding or modifying MSP messages in firmware
 - Debugging MSP communication issues (CRC errors, timing, no response)
-- Understanding MSP v1 vs v2 differences
 
 **Context to provide:**
 - MSP message name or code (e.g., `MSP_ATTITUDE`, `108`)
@@ -774,7 +755,6 @@ Modified files: inav/src/main/telemetry/crsf.c, inav/src/main/telemetry/crsf.h"
 "Look up MSP_NAV_STATUS - what fields does it return?"
 "Write mspapi2 code to read all logic conditions from SITL"
 "I'm getting CRC errors when sending MSP_SET_RC - help debug"
-"How do I add a new MSP2 message to the firmware?"
 ```
 
 **Configuration:** `.claude/agents/msp-expert.md`

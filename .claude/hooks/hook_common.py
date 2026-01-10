@@ -123,8 +123,8 @@ class HookLogger:
             os.makedirs(log_dir, exist_ok=True)
 
             # Rotate log if needed
-            max_log_size_mb = log_config.get('max_log_size_mb', 10)
-            self._rotate_log_if_needed(log_file, max_log_size_mb)
+            max_log_size_kb = log_config.get('max_log_size_kb', 200)
+            self._rotate_log_if_needed(log_file, max_log_size_kb)
 
             # Set up logging
             logging.basicConfig(
@@ -138,7 +138,7 @@ class HookLogger:
         else:
             self.logger = None
 
-    def _rotate_log_if_needed(self, log_file: str, max_size_mb: int):
+    def _rotate_log_if_needed(self, log_file: str, max_size_kb: int):
         """
         Rotate log file if it exceeds max size.
 
@@ -146,15 +146,15 @@ class HookLogger:
 
         Args:
             log_file: Path to log file
-            max_size_mb: Maximum log size in megabytes
+            max_size_kb: Maximum log size in kilobytes
         """
         if not os.path.exists(log_file):
             return
 
         # Check file size
-        file_size_mb = os.path.getsize(log_file) / (1024 * 1024)
+        file_size_kb = os.path.getsize(log_file) / 1024
 
-        if file_size_mb >= max_size_mb:
+        if file_size_kb >= max_size_kb:
             backup_file = f"{log_file}.1"
             # Remove old backup if it exists
             if os.path.exists(backup_file):

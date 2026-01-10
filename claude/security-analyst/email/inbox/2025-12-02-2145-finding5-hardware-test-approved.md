@@ -93,7 +93,7 @@ I'll update `privacylrs-fix-finding5-chacha-benchmark` to reflect:
 ## Communication
 
 When you have hardware test results:
-1. Send completion report via email (manager/inbox/)
+1. Send completion report via email (manager/email/inbox/)
 2. Include measured metrics and final recommendation
 3. I'll review and assign implementation task to Developer if approved
 

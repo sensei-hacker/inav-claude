@@ -1,21 +1,27 @@
 {
   "sandbox": {
+    "_excludedCommands_disabled": ["git"],
     "filesystem": {
       "read": {
         "allow": [
           "/dev/ttyACM*",
-          "/dev/ttyUSB*"
+          "/dev/ttyUSB*",
+          ".claude/hooks/*.log",
+          "~/.ssh/*"
         ]
       },
       "write": {
         "allow": [
           "/run/user/*/gvfsd",
+          "/run/user/*/bus",
+          "/run/user/*/keyring/ssh",
           "/dev/ttyACM*",
           "/dev/ttyUSB*"
         ]
       }
     },
     "network": {
+      "allowAllUnixSockets": true,
       "allowedHosts": [
         "github.com",
         "www.betaflight.com",

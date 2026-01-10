@@ -6,6 +6,7 @@
 **Created:** 2025-12-29
 **Estimated Effort:** 4-6 hours
 **GitHub Issue:** [#10913](https://github.com/iNavFlight/inav/issues/10913)
+**Branch: test-dma-during-flash-erase**
 
 ## Overview
 

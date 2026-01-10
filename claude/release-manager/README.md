@@ -518,40 +518,20 @@ The nightly builds include all targets and can be used directly for RC releases 
 
 ### Building Locally
 
-#### Prerequisites
+Use the **inav-builder** agent for all firmware builds:
 
-- ARM GCC toolchain
-- CMake
-- Make
-
-### Build All Targets
-
-```bash
-cd inav
-
-# Clean previous builds
-rm -rf build
-
-# Build all targets (this takes a long time)
-mkdir build && cd build
-cmake ..
-make -j4
-
-# Or build specific target
-make MATEKF405
+```
+Task tool with subagent_type="inav-builder"
+Prompt: "Build MATEKF405" or "Build all targets"
 ```
 
-### Build Script (if available)
+The agent handles cmake configuration, parallel compilation, and error diagnosis automatically.
 
-```bash
-# Check for existing build scripts
-ls -la inav/*.sh
-ls -la inav/build_scripts/
-```
+See `.claude/agents/inav-builder.md` for detailed build commands and troubleshooting.
 
 ### Output Location
 
-Firmware hex files are output to: `build/bin/`
+Firmware hex files are output to: `inav/build/inav_<version>_<TARGET>.hex`
 
 ## Building Configurator
 
@@ -581,31 +561,20 @@ find . -mindepth 1 -type d -empty -delete
 
 Only build locally if CI is unavailable.
 
-#### Prerequisites
+Use the **inav-builder** agent for all configurator builds:
 
-- Node.js (check `.nvmrc` for version)
-- npm
-
-#### Build Commands
-
-```bash
-cd inav-configurator
-
-# Install dependencies
-npm install
-
-# Build for all platforms
-npm run dist
-
-# Or build for specific platform
-npm run dist:linux
-npm run dist:mac
-npm run dist:win
 ```
+Task tool with subagent_type="inav-builder"
+Prompt: "Build configurator" or "Build configurator for Linux"
+```
+
+The agent handles npm installation, build configuration, and error diagnosis automatically.
+
+See `.claude/agents/inav-builder.md` for detailed build commands and troubleshooting.
 
 ### Output Location
 
-Configurator packages are output to: `dist/` or `release/`
+Configurator packages are output to: `inav-configurator/out/make/`
 
 ## Updating SITL Binaries
 
@@ -648,18 +617,21 @@ git commit -m "Update SITL binaries for <version>"
 
 ### Building SITL Locally (Preferred for glibc Compatibility)
 
-**Use the `build-sitl` skill** to build SITL binaries locally. This ensures:
+Use the **inav-builder** agent to build SITL binaries locally:
+
+```
+Task tool with subagent_type="inav-builder"
+Prompt: "Build SITL"
+```
+
+This ensures:
 - Linux binaries meet glibc compatibility requirements (≤ 2.35 for Ubuntu 22.04 LTS)
 - Binaries match the exact firmware commit being released
 
-```
-/build-sitl
-```
-
-The skill will guide you through building SITL. Build on a system with glibc 2.35 (Ubuntu 22.04 LTS) for maximum compatibility.
+Build on a system with glibc 2.35 (Ubuntu 22.04 LTS) for maximum compatibility.
 
 **For releases, you need SITL binaries for all platforms:**
-- **Linux x64:** Build using the skill on Ubuntu 22.04 LTS (glibc 2.35)
+- **Linux x64:** Build using the inav-builder agent on Ubuntu 22.04 LTS (glibc 2.35)
 - **Linux arm64:** Build on arm64 Ubuntu 22.04 or use CI artifacts
 - **macOS:** Use CI artifacts (must be built on macOS)
 - **Windows:** Use CI artifacts (includes cygwin1.dll from PR #11203)
@@ -1246,6 +1218,29 @@ When updating this README with new procedures or lessons learned, also update th
 
 ---
 
+# Agents
+
+Use these agents via the Task tool for complex, multi-step operations:
+
+## inav-builder
+**Purpose:** Build INAV firmware (SITL and hardware targets) and configurator
+
+**When to use:**
+- Building firmware for specific targets
+- Building or running the configurator locally
+- Diagnosing build errors
+
+**Example prompts:**
+```
+"Build MATEKF405"
+"Build configurator"
+"Build SITL"
+```
+
+**Configuration:** `.claude/agents/inav-builder.md`
+
+---
+
 # Useful Skills
 
 The following skills are available to help with common release manager tasks:
@@ -1254,6 +1249,10 @@ The following skills are available to help with common release manager tasks:
 - **download-release-artifacts** - Download firmware and configurator builds from CI
 - **upload-release-assets** - Upload files to GitHub releases
 - **remove-release-assets** - Remove old/incorrect assets from releases
+
+## Building
+- **build-sitl** - Build SITL firmware (prefer inav-builder agent)
+- **build-inav-target** - Build hardware target (prefer inav-builder agent)
 
 ## Git Operations
 - **git-workflow** - Tag creation and branch management

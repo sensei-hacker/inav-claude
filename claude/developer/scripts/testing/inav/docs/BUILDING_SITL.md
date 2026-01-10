@@ -2,13 +2,28 @@
 
 ## Quick Reference
 
-### Build from scratch (Recommended - Separate Directory)
+### Build Script (Recommended)
+
+Use the build script which handles cmake configuration and toolchain compatibility automatically:
+
+```bash
+claude/developer/scripts/build/build_sitl.sh
+```
+
+To clean and rebuild:
+```bash
+claude/developer/scripts/build/build_sitl.sh clean
+```
+
+The binary will be at: `inav/build_sitl/bin/SITL.elf`
+
+### Manual Build (Separate Directory)
 ```bash
 cd inav
 mkdir -p build_sitl
 cd build_sitl
 cmake -DSITL=ON ..
-make -j4
+make SITL.elf -j4
 ```
 
 The binary will be at: `build_sitl/bin/SITL.elf`
@@ -122,6 +137,11 @@ pkill -9 inav_SITL
 **Symptom**: Built hardware firmware (e.g., BLUEBERRYF435WING.hex) disappeared after SITL build
 **Cause**: Building SITL in the same directory as hardware builds (`build/`) cleans those targets
 **Prevention**: Always use separate `build_sitl/` directory for SITL builds
+
+### Linker error: unrecognized option '--no-warn-rwx-segments'
+**Symptom**: Build fails at link stage with `/usr/bin/ld: unrecognized option '--no-warn-rwx-segments'`
+**Cause**: GNU ld versions < 2.39 don't support this flag, but cmake adds it for GCC 12+
+**Fix**: Use `build_sitl.sh` which handles this automatically, or manually comment out lines 67-69 in `cmake/sitl.cmake`
 
 ---
 

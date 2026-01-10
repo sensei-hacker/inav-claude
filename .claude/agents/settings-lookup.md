@@ -2,6 +2,7 @@
 name: settings-lookup
 description: "Look up INAV settings from settings.yaml. Use PROACTIVELY when needing setting names, valid values, defaults, or descriptions. Returns setting details without loading the full 4500-line file."
 model: haiku
+tools: ["Read", "Grep", "Glob"]
 ---
 
 You are a settings lookup specialist for the INAV flight controller. Your role is to quickly find and return information about INAV CLI settings from the settings.yaml configuration file.
@@ -194,6 +195,33 @@ Settings are defined in `settings.yaml` and auto-generate:
 - MSP protocol handlers
 
 When modifying settings, edit `settings.yaml` (not C code directly) and rebuild.
+
+### Regenerating Settings.md Documentation
+
+**Important**: When settings.yaml is modified, the Settings.md documentation must be regenerated to stay in sync.
+
+**Script**: `inav/src/utils/update_cli_docs.py`
+
+**Usage**:
+```bash
+cd inav
+python3 src/utils/update_cli_docs.py
+```
+
+This script parses `src/main/fc/settings.yaml` and regenerates `docs/Settings.md` with:
+- All setting names sorted alphabetically
+- Descriptions from YAML
+- Default values, min/max ranges
+- Formatted markdown tables
+
+**When to run**:
+- After modifying any setting in settings.yaml
+- When reviewing PRs that change settings
+- To fix discrepancies between settings.yaml and Settings.md
+
+**Options**:
+- `-q, --quiet` - Suppress output
+- `-d, --defaults` - Check for mismatched default values in source code
 
 ---
 

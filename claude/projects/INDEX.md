@@ -3,7 +3,7 @@
 This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER).
 
 **Last Updated:** 2026-01-09
-**Active:** 14 | **Backburner:** 5
+**Active:** 15 | **Backburner:** 5
 
 > **Completed projects:** See [completed/INDEX.md](completed/INDEX.md)
 >
@@ -32,6 +32,21 @@ This file tracks **active** projects only (TODO, IN PROGRESS, BACKBURNER).
 ---
 
 ## Active Projects
+
+### 📋 esc-passthrough-bluejay-am32
+
+**Status:** TODO | **Type:** Bug Fix / Feature Parity | **Priority:** HIGH
+**Created:** 2026-01-09 | **Assignee:** Developer
+**Branch:** From `maintenance-9.x`
+
+ESC passthrough (4-way interface) works with Bluejay/AM32 in Betaflight but fails in INAV. Port fixes from Betaflight PRs #13287 (timeout handling) and #14214 (motor IO access).
+
+**Key Issues:** Missing timeout handling in ReadByte(), outdated motor IO access method, narrow SILABS device detection, missing ESC reboot logic.
+
+**Directory:** `active/esc-passthrough-bluejay-am32/`
+**Assignment:** ✉️ Assigned - `manager/email/sent/2026-01-09-1900-task-esc-passthrough-bluejay-am32.md`
+
+---
 
 ### 🚧 feature-oled-auto-detection
 

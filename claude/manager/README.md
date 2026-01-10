@@ -555,9 +555,12 @@ The following skills are available to help with common manager tasks:
 - **check-builds** - Check CI build status for PRs
 
 ## Code Navigation & Research
+- **inav-architecture** agent - Understand high-level source organization and find where functionality lives
 - **find-symbol** - Find function/struct definitions using ctags
 - **wiki-search** - Search INAV documentation
 - **msp-protocol** - Look up MSP commands and packet formats
+
+**Note on code navigation:** As manager, you may need to understand source organization at a high level (e.g., "where does navigation logic live?"). Use the `inav-architecture` agent for this. However, avoid going deep into implementation details - that's the developer's domain.
 
 ---
 
