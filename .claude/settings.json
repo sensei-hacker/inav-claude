@@ -1,9 +1,17 @@
 {
   "sandbox": {
     "filesystem": {
+      "read": {
+        "allow": [
+          "/dev/ttyACM*",
+          "/dev/ttyUSB*"
+        ]
+      },
       "write": {
         "allow": [
-          "/run/user/*/gvfsd"
+          "/run/user/*/gvfsd",
+          "/dev/ttyACM*",
+          "/dev/ttyUSB*"
         ]
       }
     },
