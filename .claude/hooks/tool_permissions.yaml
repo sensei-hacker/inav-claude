@@ -470,7 +470,7 @@ bash_rules:
   # These are safe commands that only read/display data
 
   - name: "Allow common read commands"
-    command_pattern: "^(grep|egrep|find|cat|ls|head|tail|less|more|wc|sort|uniq|diff|stat|file|du|df|awk|sed|cut|xargs|printf|pwd|whoami|md5sum|lsusb|sleep|ss|date)$"
+    command_pattern: "^(grep|egrep|find|cat|ls|head|tail|less|more|wc|sort|uniq|diff|stat|file|du|df|awk|sed|cut|xargs|printf|pwd|whoami|md5sum|lsusb|sleep|ss|date|touch)$"
     category: read
     decision: allow
 
