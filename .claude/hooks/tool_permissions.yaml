@@ -192,6 +192,13 @@ rules:
     category: write
     decision: allow
 
+  - name: "Allow editing SITL build configuration"
+    tool_name_pattern: "^(Write|Edit)$"
+    tool_input_patterns:
+      file_path: ".*/cmake/sitl\\.cmake.*"
+    category: write
+    decision: allow
+
   - name: "Allow Write/Edit to email directories"
     tool_name_pattern: "^(Write|Edit)$"
     tool_input_patterns:
