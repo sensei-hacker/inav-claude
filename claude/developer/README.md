@@ -42,18 +42,127 @@ The `outbox/` folder is for draft messages that need review or are waiting for a
 
 ## Workflow
 
-```
-1. Check developer/email/inbox/ for new assignments
-2. Read task assignment
-3. Use test-engineer agent to reproduce the issue (test should fail)
-4. Implement solution
-5. Use test-engineer agent to verify the fix (test should now pass)
-6. Create completion report in developer/email/sent/
-7. Copy report to manager/email/inbox/
-8. Archive assignment from developer/email/inbox/ to developer/email/inbox-archive/
+Follow this workflow when working on issues and bug fixes. Each step includes the relevant agent or skill to use.
+
+### Step-by-Step Issue Workflow
+
+| Step | Action | Agent/Skill |
+|------|--------|-------------|
+| 1 | Check inbox for assignments | `ls claude/developer/email/inbox/` |
+| 2 | Read task assignment | Read the task file |
+| 3 | Create a git branch | **git-workflow** skill or `/git-workflow` |
+| 4 | Reproduce the issue (test should fail) | **test-engineer** agent |
+| 5 | Implement the fix | Manual coding |
+| 6 | Compile the code | **inav-builder** agent |
+| 7 | Verify the fix (test should pass) | **test-engineer** agent |
+| 8 | Create a pull request | **git-workflow** skill or `/git-workflow` |
+| 9 | Check PR status and bot suggestions | **pr-review** skill or **check-builds** skill |
+| 10 | Create completion report | Create in `developer/email/sent/` |
+| 11 | Notify manager | Copy report to `manager/email/inbox/` |
+| 12 | Archive assignment | Move from `inbox/` to `inbox-archive/` |
+
+### Detailed Workflow Steps
+
+#### 1. Check inbox for assignments
+```bash
+ls -lt claude/developer/email/inbox/ | head
 ```
 
-**Reproducing issues first:** Before fixing a bug, have the `test-engineer` agent write a test that reproduces it. This ensures you understand the problem and can verify when it's fixed.
+#### 2. Read task assignment
+Open and read the task file to understand what needs to be done.
+
+#### 3. Create a git branch from current INAV version
+**Before changing any code**, create a feature branch from the current version.
+
+```
+Use: git-workflow skill (/git-workflow)
+Action: "Create branch fix/issue-1234-description from master"
+```
+
+Or manually:
+```bash
+cd inav  # or inav-configurator
+git checkout master && git pull
+git checkout -b fix/issue-1234-description
+```
+
+#### 4. Reproduce the issue
+Use the **test-engineer** agent to write a test that demonstrates the bug. The test should **fail** initially, proving the bug exists.
+
+```
+Task tool with subagent_type="test-engineer"
+Prompt: "Reproduce issue #1234: [description of bug].
+Expected: [expected behavior]. Actual: [actual behavior].
+Relevant files: [file paths]
+Save test to: claude/developer/workspace/[task-name]/"
+```
+
+**Why this matters:** You can't verify a fix if you can't reproduce the problem first.
+
+#### 5. Implement the fix
+Write the code to fix the issue. Follow the coding standards in this guide.
+
+**Other useful agents during implementation:**
+- **msp-expert** agent - For MSP protocol questions or changes
+- **settings-lookup** agent - For CLI setting values and defaults
+- **Explore** agent (via Task tool) - For understanding unfamiliar code
+
+#### 6. Compile the code
+Use the **inav-builder** agent to compile your changes. Never run cmake/make directly.
+
+```
+Task tool with subagent_type="inav-builder"
+Prompt: "Build SITL" or "Build [TARGET_NAME]"
+```
+
+Fix any compilation errors before proceeding.
+
+#### 7. Verify the fix
+Use the **test-engineer** agent to run the same test from step 4. The test should now **pass**.
+
+```
+Task tool with subagent_type="test-engineer"
+Prompt: "Run the test for issue #1234 to verify the fix works.
+Test location: claude/developer/workspace/[task-name]/
+Expected: test should now pass"
+```
+
+**Additional testing agents:**
+- **sitl-operator** agent - Start/stop/configure SITL for testing
+- **test-crsf-sitl** skill - For CRSF telemetry testing
+
+#### 8. Create a pull request
+Use the **git-workflow** skill to commit changes and create a PR.
+
+```
+Use: git-workflow skill (/git-workflow)
+Action: "Commit and create PR for issue #1234"
+```
+
+The skill handles:
+- Staging and committing changes
+- Pushing to remote
+- Creating the PR with proper description
+
+#### 9. Check PR status and bot suggestions
+**Wait 3 minutes** after creating the PR, then check for:
+- CI build status
+- Bot suggestions (automated code review)
+- Any failing checks
+
+```
+Use: check-builds skill (/check-builds)
+Or: pr-review skill (/pr-review) with PR number
+```
+
+Address any legitimate bot suggestions before considering the task complete.
+
+#### 10-12. Report and archive
+Create a completion report, copy to manager, and archive the assignment (see "Completion Reports" section below).
+
+---
+
+**Key principle:** Before fixing a bug, have the `test-engineer` agent write a test that reproduces it. This ensures you understand the problem and can verify when it's fixed.
 
 ## 🚨 CRITICAL: Testing Before PRs
 
