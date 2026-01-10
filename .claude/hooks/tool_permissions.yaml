@@ -372,7 +372,7 @@ bash_rules:
 
   - name: "Allow cp/mv within role email directories"
     command_pattern: "^(cp|mv)$"
-    argument_pattern: ".*(claude/(developer|manager)/(inbox|sent|inbox-archive)).*"
+    argument_pattern: ".*(claude/(developer|manager|release-manager|security-analyst)/(inbox|sent|inbox-archive|email)).*"
     category: write
     decision: allow
 
