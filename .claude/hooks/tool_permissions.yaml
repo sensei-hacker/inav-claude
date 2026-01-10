@@ -92,7 +92,7 @@ logging:
   log_file: "~/inavflight/.claude/hooks/tool_permissions.log"  # Project-local log file
   log_inputs: true     # Log incoming hook JSON
   log_outputs: true    # Log hook decisions
-  max_log_size_mb: 10  # Rotate log when it exceeds this size
+  max_log_size_kb: 300  # Rotate log when it exceeds this size (in KB)
 
 
 # =============================================================================
@@ -452,7 +452,7 @@ bash_rules:
 
   - name: "Allow python3 scripts in claude/ directories"
     command_pattern: "^python3$"
-    argument_pattern: ".*(~/inavflight/\\.claude/|\\./\\.claude/|claude/|\\.claude/).*"
+    argument_pattern: ".*(*/inavflight/\\.claude/|\\./\\.claude/|claude/|\\.claude/).*"
     category: other
     decision: allow
 
@@ -475,12 +475,12 @@ bash_rules:
     decision: allow
 
   - name: "Allow direct execution of scripts in .claude/skills/"
-    command_pattern: ".*(~/inavflight/\\.claude/skills/|/Documents/planes/inavflight/\\.claude/skills/|\\./\\.claude/skills/).*"
+    command_pattern: ".*(*/inavflight/\\.claude/skills/|\\./\\.claude/skills/).*"
     category: other
     decision: allow
 
   - name: "Allow developer scripts"
-    command_pattern: ".*(~/inavflight/claude/developer/scripts/|/Documents/planes/inavflight/claude/developer/scripts/|claude/developer/scripts/).*"
+    command_pattern: ".*(*/inavflight/claude/developer/scripts/|claude/developer/scripts/).*"
     category: other
     decision: allow
 
