@@ -141,6 +141,11 @@ rules:
     category: other
     decision: allow
 
+  - name: "Allow Task tool for agents"
+    tool_name_pattern: "^Task$"
+    category: other
+    decision: allow
+
   - name: "Allow read-only file operations"
     tool_name_pattern: "^(Read|Glob|Grep)$"
     category: read
