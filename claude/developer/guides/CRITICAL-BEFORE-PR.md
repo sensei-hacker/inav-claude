@@ -42,6 +42,32 @@ If you genuinely cannot test (no hardware, blocked dependencies):
 
 ---
 
+## 🚨 CODE REVIEW IS MANDATORY
+
+**Use the `inav-code-review` agent before creating your PR.**
+
+### Required Code Review Steps
+
+```
+Task tool with subagent_type="inav-code-review"
+Prompt: "Review changes in [files] - [brief description]"
+```
+
+**What the review checks:**
+- Coding standards compliance
+- Embedded systems safety (ISR safety, memory constraints, stack usage)
+- INAV-specific patterns (PG system, scheduler, hardware abstraction)
+- Common pitfalls (integer overflow, volatile misuse, race conditions)
+- Over-engineering and unnecessary complexity
+- Flight-critical code path safety
+
+**Address issues found:**
+- Fix CRITICAL issues (must fix before merge)
+- Fix IMPORTANT issues (should fix before merge)
+- Consider MINOR issues (nice to have)
+
+---
+
 ## PR Creation Checklist
 
 ### 1. Review Changes
@@ -51,23 +77,29 @@ git diff master...HEAD
 git log master..HEAD
 ```
 
-### 2. Verify All Changes Committed
+### 2. Run Code Review Agent
+```
+Use inav-code-review agent to check your changes
+Fix any issues found
+```
+
+### 3. Verify All Changes Committed
 ```bash
 git status  # Should show "nothing to commit, working tree clean"
 ```
 
-### 3. Push to Remote
+### 4. Push to Remote
 ```bash
 git push -u origin branch-name
 ```
 
-### 4. Create PR
+### 5. Create PR
 Use `/create-pr` skill or:
 ```bash
 gh pr create --title "Title" --body "Description"
 ```
 
-### 5. Wait 3 Minutes, Then Check Bots
+### 6. Wait 3 Minutes, Then Check Bots
 
 **After creating PR:**
 1. Wait 3 minutes for bots to analyze
@@ -77,7 +109,7 @@ gh pr create --title "Title" --body "Description"
    - github-actions build status
    - Any failing CI checks
 
-### 6. Address Bot Suggestions
+### 7. Address Bot Suggestions
 
 Review bot comments and decide if suggestions are valid:
 - Fix legitimate issues
@@ -91,6 +123,7 @@ Review bot comments and decide if suggestions are valid:
 **Include:**
 - Summary of changes
 - Testing performed (be specific)
+- Code review performed (mention using inav-code-review agent)
 - Related issue number (if applicable)
 
 **Do NOT mention:**

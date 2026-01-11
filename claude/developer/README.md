@@ -71,14 +71,15 @@ These checklists contain critical rules that MUST be followed:
 | 2 | Read task assignment | Read the task file |
 | 3 | Create a git branch | **git-workflow** skill or `/git-workflow` |
 | 4 | Reproduce the issue (test should fail) | **test-engineer** agent |
-| 5 | Implement the fix | Manual coding |
+| 5 | Implement the fix | Check for specialized agents first (see below), then code |
 | 6 | Compile the code | **inav-builder** agent |
 | 7 | Verify the fix (test should pass) | **test-engineer** agent |
-| 8 | Create a pull request | **git-workflow** skill or `/git-workflow` |
-| 9 | Check PR status and bot suggestions | **check-pr-bots** agent or **check-builds** skill |
-| 10 | Create completion report | Create in `developer/email/sent/` |
-| 11 | Notify manager | Copy report to `manager/email/inbox/` |
-| 12 | Archive assignment | Move from `inbox/` to `inbox-archive/` |
+| 8 | Review your code | **inav-code-review** agent |
+| 9 | Create a pull request | **git-workflow** skill or `/git-workflow` |
+| 10 | Check PR status and bot suggestions | **check-pr-bots** agent or **check-builds** skill |
+| 11 | Create completion report | Create in `developer/email/sent/` |
+| 12 | Notify manager | Copy report to `manager/email/inbox/` |
+| 13 | Archive assignment | Move from `inbox/` to `inbox-archive/` |
 
 **Key principle:** Before fixing a bug, have the `test-engineer` agent write a test that reproduces it. This ensures you understand the problem and can verify when it's fixed.
 
@@ -98,29 +99,25 @@ INAV is an open-source flight controller firmware with advanced GPS navigation c
 
 ## Essential Agents (Use These - Never Direct Commands)
 
-**For finding code:**
-- **inav-architecture** - Find where functionality lives BEFORE using Grep/Explore
-  - Example: "Where is the PID controller?" or "Find CRSF telemetry files"
+**🚨 IMPORTANT:** Before implementing any fix, check if a specialized agent applies. Use the table below to match your task to the right agent.
 
-**For building:**
-- **inav-builder** - Build SITL and hardware targets (NEVER use cmake/make directly)
-  - Example: "Build SITL" or "Build MATEKF405"
+| Task involves... | Use this agent FIRST | Example |
+|------------------|----------------------|---------|
+| **MSP protocol** work | **msp-expert** | "Look up MSP_REBOOT message format" |
+| **Settings/CLI** parameters | **settings-lookup** | "Find valid values for nav_fw_launch_timeout" |
+| **Finding firmware code** | **inav-architecture** | "Where is the PID controller?" |
+| **Building** firmware/configurator | **inav-builder** | "Build SITL" or "Build MATEKF405" |
+| **Testing** or reproducing bugs | **test-engineer** | "Reproduce issue #1234" |
+| **SITL** operations | **sitl-operator** | "Start SITL with fresh config" |
+| **Code review** before PR | **inav-code-review** | "Review changes in pid.c" |
+| **PR checks** after creating PR | **check-pr-bots** | "Check PR #11220 for bot comments" |
 
-**For testing:**
-- **test-engineer** - Run tests, reproduce bugs, validate changes
-  - Example: "Reproduce issue #1234" or "Test my CRSF changes with SITL"
-
-**For SITL:**
-- **sitl-operator** - Start/stop/configure SITL
-  - Example: "Start SITL" or "Restart SITL with fresh config"
-
-**For PR checks:**
-- **check-pr-bots** - Check for bot comments after creating PR
-  - Example: "Check PR #11220 for bot comments"
-
-**For other tasks:**
-- **settings-lookup** - Look up CLI settings from settings.yaml
-- **msp-expert** - MSP protocol lookups and mspapi2 usage
+**Quick pattern matching:**
+- Task mentions "MSP" → **msp-expert**
+- Task mentions "setting" or CLI value → **settings-lookup**
+- Need to find code location → **inav-architecture** (BEFORE Grep)
+- Need to build anything → **inav-builder** (NEVER cmake/make/npm)
+- Before creating PR → **inav-code-review**
 
 See `.claude/agents/` for complete agent documentation.
 
@@ -188,6 +185,9 @@ When a task is complete, create a report in `developer/email/sent/`:
 - Test 2 performed
 - Results: <results>
 
+## Code Review
+Use the **inav-code-review** agent before creating the PR.
+
 ## Files Modified
 - `path/to/file1`
 - `path/to/file2`
@@ -209,14 +209,40 @@ mv claude/developer/email/inbox/<assignment>.md claude/developer/email/inbox-arc
 **In `guides/` directory:**
 - `CRITICAL-BEFORE-CODE.md` - Pre-coding checklist (lock files, agents, search strategy)
 - `CRITICAL-BEFORE-COMMIT.md` - Git and commit best practices
-- `CRITICAL-BEFORE-PR.md` - Testing requirements and PR checklist
+- `CRITICAL-BEFORE-PR.md` - Testing and code review requirements
 - `CRITICAL-BEFORE-TEST.md` - Testing philosophy and approach
-- `coding-standards.md` - Code organization, quality, comments (when created in Step 3)
-- `git-workflow.md` - Detailed git practices (when created in Step 3)
+- `coding-standards.md` - Code organization, quality, comments
 
 **Agent documentation:** `.claude/agents/*.md`
 
 **Skill documentation:** `.claude/skills/*/SKILL.md`
+
+---
+
+## Agents
+
+### inav-code-review
+**Purpose:** Perform comprehensive code review for INAV firmware and configurator changes
+
+**When to use:**
+- Before creating a pull request
+- After implementing code changes
+- When you want feedback on code quality and safety
+
+**Context to provide:**
+- List of changed files (or git diff)
+- Brief description of changes
+- PR number (if already created)
+- Any specific concerns (optional)
+
+**Example prompts:**
+```
+"Review changes in navigation/navigation_pos_estimator.c - GPS altitude fix"
+"Review PR #11234 changes before submission"
+"Review my motor mixer changes for embedded safety issues"
+```
+
+**Documentation:** See `.claude/agents/inav-code-review.md` for complete details
 
 ---
 
@@ -226,10 +252,11 @@ As Developer:
 1. ✅ Check developer/email/inbox/ for assignments
 2. ✅ Read critical checklists before each operation
 3. ✅ Write a test that reproduces the issue (for bugs)
-4. ✅ Use agents for all builds, tests, and searches
+4. ✅ Use agents for all builds, tests, searches, and code review
 5. ✅ Implement solutions according to specs
-6. ✅ Test thoroughly (MANDATORY before PR)
-7. ✅ Report completion to manager
-8. ✅ Ask questions when unclear
+6. ✅ Review your code with **inav-code-review** before PR
+7. ✅ Test thoroughly (MANDATORY before PR)
+8. ✅ Report completion to manager
+9. ✅ Ask questions when unclear
 
 **Remember:** You implement. The manager coordinates and tracks.
