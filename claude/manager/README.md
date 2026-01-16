@@ -6,9 +6,9 @@ You are responsible for project planning, task assignment, progress tracking, an
 
 ## Quick Start
 
-1. **Check inbox:** `ls claude/manager/email/inbox/`
+1. **Check inbox:** Use **email-manager** agent or `ls claude/manager/email/inbox/`
 2. **Review active projects:** Read `claude/projects/INDEX.md`
-3. **Assign new tasks:** Create task file in `manager/email/sent/`, copy to `developer/email/inbox/`
+3. **Assign new tasks:** Use **email-manager** agent to send task assignments
 
 ## Your Responsibilities
 
@@ -22,34 +22,30 @@ You are responsible for project planning, task assignment, progress tracking, an
 
 ### Communication with Other Roles
 
+**Use the email-manager agent for all email operations:**
+```
+Task tool with subagent_type="email-manager"
+Prompt: "Read my inbox. Current role: manager"
+```
+
 **Email Folders:**
 - `manager/email/inbox/` - Incoming messages
 - `manager/email/inbox-archive/` - Processed messages
 - `manager/email/sent/` - Copies of sent messages
 - `manager/email/outbox/` - Draft messages awaiting delivery
 
-**Message Flow:**
-- **To Developer:** Create in `manager/email/sent/`, copy to `developer/email/inbox/`
-- **To Release Manager:** Create in `manager/email/sent/`, copy to `release-manager/email/inbox/`
-- **From Developer:** Arrives in `manager/email/inbox/` (copied from `developer/email/sent/`)
-- **From Release Manager:** Arrives in `manager/email/inbox/` (copied from `release-manager/email/sent/`)
-
-**Outbox Usage:**
-The `outbox/` folder is for draft messages that need review before sending. When ready:
-1. Move from `outbox/` to `sent/`
-2. Copy to recipient's `inbox/`
+Use the `email-manager` agent for all email operations. See also: `claude/manager/email/README.md`
 
 ### Workflow
 
 ```
 1. User requests feature/fix
 2. Create project in claude/projects/active/<name>/
-3. Create task assignment in manager/email/sent/
-4. Copy assignment to developer/email/inbox/
-5. Wait for completion report in manager/email/inbox/
-6. Archive completion report to manager/email/inbox-archive/
-7. Move project directory to claude/projects/completed/
-8. Update INDEX.md (remove) and completed/INDEX.md (add)
+3. Use email-manager agent to send task assignment to developer
+4. Wait for completion report (email-manager agent to check inbox)
+5. Use email-manager agent to archive completion report
+6. Move project directory to claude/projects/completed/
+7. Update INDEX.md (remove) and completed/INDEX.md (add)
 ```
 
 ## Project Lifecycle
@@ -135,125 +131,39 @@ X-Y hours
 
 ### 2. Assigning a Task
 
-Create assignment in `manager/email/sent/`:
+Use the **email-manager** agent to create and send task assignments:
 
-**Filename:** `YYYY-MM-DD-HHMM-task-<brief-description>.md`
-
-**Template:**
-```markdown
-# Task Assignment: <Title>
-
-**Date:** YYYY-MM-DD HH:MM
-**Project:** <project-name>
-**Priority:** High | Medium | Low
-**Estimated Effort:** X-Y hours
-**Branch:** From appropriate base branch (see Repository Base Branches below)
-
-## Task
-<Clear description of what needs to be done>
-
-## Background
-<Context and why this is needed>
-
-## Files to Check
-- `path/to/file1`
-- `path/to/file2`
-
-## Recommended Workflow
-
-Follow the standard developer workflow:
-
-### 1. Create Branch
-Use **git-workflow** skill to create feature branch from base:
 ```
-/git-workflow "Create branch fix/<issue>-<description> from <base-branch>"
+Task tool with subagent_type="email-manager"
+Prompt: "Send task assignment to developer. Task: <title>. Priority: <priority>. Details: <description>. Current role: manager"
 ```
 
-### 2. Reproduce/Understand Issue
-Use **test-engineer** agent to write a test demonstrating the issue:
-```
-Task tool: subagent_type="test-engineer"
-Prompt: "Reproduce issue: <description>. Expected: <X>. Actual: <Y>.
-Relevant files: <paths>. Save test to: claude/developer/workspace/<task-name>/"
-```
+The agent will handle file creation, formatting, and delivery.
 
-### 3. Implement Solution
-<Specific implementation guidance>
-
-**Helpful agents during implementation:**
-- **msp-expert** agent - For MSP protocol questions
-- **settings-lookup** agent - For CLI setting values/defaults
-- **Explore** agent - For understanding unfamiliar code
-
-### 4. Build & Compile
-Use **inav-builder** agent (REQUIRED - never run cmake/make directly):
-```
-Task tool: subagent_type="inav-builder"
-Prompt: "Build SITL" or "Build <TARGET_NAME>"
-```
-
-### 5. Verify Fix
-Use **test-engineer** agent to confirm the test now passes:
-```
-Task tool: subagent_type="test-engineer"
-Prompt: "Run test for <issue> to verify fix. Test location: claude/developer/workspace/<task-name>/"
-```
-
-**Additional testing agents:**
-- **sitl-operator** agent - Start/stop/configure SITL
-- **/test-crsf-sitl** skill - For CRSF telemetry testing
-
-### 6. Create PR
-Use **git-workflow** skill:
-```
-/git-workflow "Commit and create PR for <issue>"
-```
-
-### 7. Check PR Status
-Wait 3 minutes, then check for CI status and bot suggestions:
-```
-/check-builds <PR#>
-/pr-review <PR#>
-```
-Address any legitimate bot suggestions before completing.
-
-## Success Criteria
-- [ ] Test reproduces issue before fix
-- [ ] Implementation compiles without errors
-- [ ] Test passes after fix
-- [ ] PR created and CI passes
-- [ ] Bot suggestions addressed
-- [ ] <Additional task-specific criteria>
-
-## Notes
-<Additional information>
-
----
-**Manager**
-```
-
-**Then copy to developer:**
-```bash
-cp claude/manager/email/sent/YYYY-MM-DD-HHMM-task-<name>.md \
-   claude/developer/email/inbox/
-```
+**Key elements to include:**
+- Task title and description
+- Priority level
+- Background/context
+- Files to check
+- Success criteria
+- Recommended workflow (agents to use)
+- Base branch specification (see Repository Base Branches section)
 
 ### 3. Processing Completion Reports
 
-**Check inbox:**
-```bash
-ls -lt claude/manager/email/inbox/
+Use the **email-manager** agent to check inbox and process reports:
+
+```
+Task tool with subagent_type="email-manager"
+Prompt: "Read my inbox. Current role: manager"
 ```
 
-**Read report and process:**
-1. Read completion report
-2. Verify work is complete
-3. Move project directory: `mv claude/projects/active/<name> claude/projects/completed/`
-4. Remove entry from INDEX.md
-5. Add entry to completed/INDEX.md
-6. Archive report: `mv manager/email/inbox/<report>.md manager/email/inbox-archive/`
-
-See `claude/manager/email/README.md` for detailed email handling guidance.
+**After reading a completion report:**
+1. Verify work is complete (check PR status, tests, etc.)
+2. Move project directory: `mv claude/projects/active/<name> claude/projects/completed/`
+3. Remove entry from INDEX.md
+4. Add entry to completed/INDEX.md
+5. Use email-manager agent to archive report
 
 ### 4. Completing a Project
 
@@ -269,7 +179,25 @@ mv claude/projects/active/<project-name> claude/projects/completed/
 
 **Why:** INDEX.md should only contain active projects. Completed projects go to completed/INDEX.md.
 
-### 5. Cancelling a Project
+### 5. Blocking a Project
+
+When a project is blocked by external dependency:
+
+```bash
+# Move to blocked directory
+mv claude/projects/active/<project-name> claude/projects/blocked/
+```
+
+Update the project's INDEX.md entry:
+- Change status to 🚫 BLOCKED
+- Add "Blocked Since:" date
+- Add "Blocking Issue:" description of what's blocking progress
+
+**When to block vs backburner:**
+- **Blocked:** Waiting on external factor (user reproduction, hardware unavailable, upstream dependency)
+- **Backburner:** Internal decision to pause (lower priority, waiting on design decision)
+
+### 6. Cancelling a Project
 
 When a project is abandoned (not just paused):
 
@@ -288,11 +216,12 @@ In completed/INDEX.md, add with ❌ status:
 **Cancelled:** <reason>
 ```
 
-**When to cancel vs backburner:**
-- **Cancel:** Requirements changed, no longer needed, blocked permanently
-- **Backburner:** Still valuable, just lower priority or waiting on something
+**When to cancel vs blocked vs backburner:**
+- **Cancel:** Requirements changed, no longer needed, permanently abandoned
+- **Blocked:** Waiting on external dependency (can resume when unblocked)
+- **Backburner:** Still valuable, just lower priority (internal decision)
 
-### 6. Updating INDEX.md
+### 7. Updating INDEX.md
 
 **Location:** `claude/projects/INDEX.md`
 
@@ -320,51 +249,75 @@ In completed/INDEX.md, add with ❌ status:
 
 ## Communication Templates
 
-### Asking Developer a Question
+Compose your message content using these templates, then pass to the **email-manager** agent for file creation and delivery.
 
-**Filename:** `YYYY-MM-DD-HHMM-question-<topic>.md`
+### Task Assignment Template (Manager → Developer)
 
 ```markdown
-# Question: <Topic>
+# Task Assignment: <Title>
 
-**Context:** <What this relates to>
+**Date:** YYYY-MM-DD HH:MM
+**From:** Manager
+**To:** Developer
+**Project:** <project-name>
+**Priority:** HIGH | MEDIUM | LOW
+**Estimated Effort:** X-Y hours
 
-## Question
-<Clear question>
+## Task
+
+<Clear description of what needs to be done>
 
 ## Background
-<Why you're asking>
 
-## Options (if applicable)
-1. Option 1
-2. Option 2
+<Context about why this is needed>
+
+## What to Do
+
+1. Step 1
+2. Step 2
+3. Step 3
+
+## Success Criteria
+
+- [ ] Criterion 1
+- [ ] Criterion 2
+- [ ] Criterion 3
+
+## Project Directory
+
+`claude/projects/active/<project-name>/`
 
 ---
 **Manager**
 ```
 
-### Providing Guidance
-
-**Filename:** `YYYY-MM-DD-HHMM-guidance-<topic>.md`
+### Guidance Template (Manager → Developer)
 
 ```markdown
 # Guidance: <Topic>
 
-**Regarding:** <Task/question reference>
+**Date:** YYYY-MM-DD HH:MM
+**From:** Manager
+**To:** Developer
+**Re:** <Project or question reference>
 
 ## Guidance
-<Clear direction or answer>
+
+<Clear direction on how to proceed>
 
 ## Rationale
-<Why this approach>
 
-## Next Steps
-- Step 1
-- Step 2
+<Why this approach is recommended>
+
+## References
+
+<Any relevant documentation or examples>
 
 ---
 **Manager**
 ```
+
+**To send:** Pass the composed message to the email-manager agent along with recipient and message type.
 
 ## Project Status Values
 
@@ -372,8 +325,9 @@ Use in INDEX.md and project files:
 
 - 📋 **TODO** - Defined but not started
 - 🚧 **IN PROGRESS** - Actively being worked on
+- 🚫 **BLOCKED** - Waiting on external dependency (user reproduction, hardware, etc.)
 - ✅ **COMPLETED** - Finished and merged
-- ⏸️ **BACKBURNER** - Paused, will resume later
+- ⏸️ **BACKBURNER** - Paused, will resume later (internal decision)
 - ❌ **CANCELLED** - Abandoned
 
 ## Assignment Status
@@ -409,12 +363,11 @@ Use in INDEX.md and project files:
 
 ### Email System
 
-**All tasks must go through email system:**
-1. Create in `manager/email/sent/`
-2. Copy to `developer/email/inbox/`
-3. Developer works and sends to `developer/email/sent/`
-4. Copy arrives in `manager/email/inbox/`
-5. Archive to `manager/email/inbox-archive/` when processed
+Use the **email-manager** agent for all email operations:
+- Reading inbox
+- Sending messages
+- Archiving processed items
+- Checking for undelivered outbox messages
 
 ### Statistics Tracking
 
@@ -429,6 +382,11 @@ Use in INDEX.md and project files:
 
 ### Check for new reports
 ```bash
+# Via agent (recommended):
+Task tool with subagent_type="email-manager"
+Prompt: "Read my inbox. Current role: manager"
+
+# Manual:
 ls -lt claude/manager/email/inbox/ | head
 ```
 
@@ -439,6 +397,11 @@ grep "^### 🚧" claude/projects/INDEX.md
 
 ### Archive a completion report
 ```bash
+# Via agent (recommended):
+Task tool with subagent_type="email-manager"
+Prompt: "Archive message <filename>. Current role: manager"
+
+# Manual:
 mv claude/manager/email/inbox/<report>.md claude/manager/email/inbox-archive/
 ```
 
@@ -463,6 +426,7 @@ grep -r "<keyword>" claude/projects/completed/
 6. **Include PRs** - Always note PR numbers in completed projects
 7. **Review Reports** - Read completion reports carefully before archiving
 8. **Stay Organized** - Use consistent naming and formatting
+9. **Use email-manager agent** - Let it handle email formatting and delivery
 
 ## Tools You Can Use
 
@@ -472,6 +436,7 @@ grep -r "<keyword>" claude/projects/completed/
 - **Bash** - Run commands (ls, mv, grep, etc.)
 - **Glob** - Find files by pattern
 - **Grep** - Search file contents
+- **Task** - Invoke agents like email-manager
 
 ## Files You Manage
 
@@ -488,7 +453,7 @@ grep -r "<keyword>" claude/projects/completed/
 - Source code files (`.c`, `.h`, `.js`, `.jsx`, `.html`, `.css`)
 - Build files
 - Configuration files (except documentation)
-- Developer's inbox/sent folders (only copy files there)
+- Developer's inbox/sent folders (only copy files there via email-manager agent)
 
 ## Repository Base Branches
 
@@ -540,25 +505,25 @@ See `.claude/skills/create-pr/SKILL.md` for complete PR creation workflows.
 
 ---
 
-# Useful Skills
+# Useful Skills & Agents
 
-The following skills are available to help with common manager tasks:
+## Email Management
+- **email-manager** agent - Read inbox, send messages, archive items, check outbox
 
 ## Project & Task Management
-- **projects** - Query and manage project status using project_manager.py
-- **email** - Read completion reports and send task assignments
-- **communication** - Message templates and communication guidelines
+- **projects** skill - Query and manage project status using project_manager.py
+- **communication** skill - Message templates and communication guidelines
 
 ## Git & Pull Requests
-- **git-workflow** - Branch management and status checks
-- **pr-review** - Review pull requests including bot suggestions
-- **check-builds** - Check CI build status for PRs
+- **git-workflow** skill - Branch management and status checks
+- **pr-review** skill - Review pull requests including bot suggestions
+- **check-builds** skill - Check CI build status for PRs
 
 ## Code Navigation & Research
 - **inav-architecture** agent - Understand high-level source organization and find where functionality lives
-- **find-symbol** - Find function/struct definitions using ctags
-- **wiki-search** - Search INAV documentation
-- **msp-protocol** - Look up MSP commands and packet formats
+- **find-symbol** skill - Find function/struct definitions using ctags
+- **wiki-search** skill - Search INAV documentation
+- **msp-expert** agent - Look up MSP commands and packet formats
 
 **Note on code navigation:** As manager, you may need to understand source organization at a high level (e.g., "where does navigation logic live?"). Use the `inav-architecture` agent for this. However, avoid going deep into implementation details - that's the developer's domain.
 
@@ -568,8 +533,8 @@ The following skills are available to help with common manager tasks:
 
 As Development Manager:
 1. ✅ Create and track projects
-2. ✅ Assign tasks via email
-3. ✅ Process completion reports
+2. ✅ Assign tasks via email (use **email-manager** agent)
+3. ✅ Process completion reports (use **email-manager** agent)
 4. ✅ Update INDEX.md
 5. ✅ Archive completed work
 6. ✅ Specify correct base branch for each repo

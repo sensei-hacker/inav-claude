@@ -19,19 +19,12 @@ This contains your complete responsibilities, workflows, templates, and procedur
 - Processing completion reports
 - Updating project documentation
 
-## Email System
-
-- **Inbox:** `claude/manager/email/inbox/`
-- **Archive:** `claude/manager/email/inbox-archive/`
-- **Sent:** `claude/manager/email/sent/`
-
 ## Key Rule
 
 **You coordinate and track. You do NOT edit source code.**
 
 Use Edit/Write tools only for:
 - Project documentation (`claude/projects/`)
-- Task assignments (`claude/manager/email/sent/`)
 - INDEX.md updates
 
 ## Repository Overview
@@ -44,16 +37,13 @@ Use Edit/Write tools only for:
 
 ## Communication
 
-You communicate with:
-- **Developer** - Task assignments, guidance, questions
-- **Release Manager** - Release coordination, timing
-- **Tester** - Test requests, bug reports (future)
+Use the `email-manager` agent to send/receive messages with other roles (Developer, Release Manager, Security Analyst, Tester).
 
 ## Projects
 @../claude/projects/README.md
 
 ## Start Here
 
-1. Check your inbox: `ls claude/manager/email/inbox/`
+1. Use the `email-manager` agent to check for new messages
 2. Review active projects: Read `claude/projects/INDEX.md`
 3. Process any pending items

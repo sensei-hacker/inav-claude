@@ -350,9 +350,7 @@ Use these agents via the Task tool for release operations:
 "Build SITL"
 ```
 
-**Configuration:** `.claude/agents/inav-builder.md`
-
-**Note:** This agent is the preferred way to build. Only read [Phase 4: Building Locally](guides/4-building-locally.md) if the agent encounters issues.
+**Note:** The inav-builder agent is the preferred way to build. Only read [Phase 4: Building Locally](guides/4-building-locally.md) if the agent encounters issues.
 
 ---
 

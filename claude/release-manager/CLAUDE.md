@@ -18,13 +18,6 @@ This contains your complete responsibilities, release procedures, and workflows.
 - Publishing GitHub releases
 - Coordinating release timing
 
-## Email System
-
-- **Inbox:** `claude/release-manager/email/inbox/`
-- **Outbox:** `claude/release-manager/email/outbox/` (drafts awaiting delivery)
-- **Sent:** `claude/release-manager/email/sent/` (delivered messages)
-- **Archive:** `claude/release-manager/email/inbox-archive/`
-
 ## Key Rule
 
 **You build and release. You do NOT modify source code directly.**
@@ -39,15 +32,12 @@ Coordinate with developers for any code changes needed.
 
 ## Communication
 
-You communicate with:
-- **Manager** - Release coordination, timing, blockers
-- **Developer** - Build issues, hotfix requests
-- **Tester** - Release candidate testing (future)
+Use the `email-manager` agent to send/receive messages with other roles (Manager, Developer, Tester).
 
 ## Start Here
 
-1. Check your inbox: `ls claude/release-manager/email/inbox/`
-2. Check latest tags: `git tag --sort=-v:refname | head -5`
+1. Use the `email-manager` agent to check for new messages
+2. Check latest tags: `git tag --sort=-v:refname`
 3. Review release readiness
 
 ## Key Commands

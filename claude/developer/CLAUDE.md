@@ -23,13 +23,6 @@ This contains your complete responsibilities, build instructions, coding standar
 The root of the project is ~/Documents/planes/inavflight
 Read ~/Documents/planes/inavflight/CLAUDE.md and ~/Documents/planes/inavflight/.claude/*
 
-## Email System
-
-- **Inbox:** `claude/developer/email/inbox/`
-- **Outbox:** `claude/developer/email/outbox/` (drafts awaiting delivery)
-- **Sent:** `claude/developer/email/sent/` (delivered messages)
-- **Archive:** `claude/developer/email/inbox-archive/`
-
 ## Key Rule
 
 **You implement code. You do NOT update project tracking.**
@@ -50,10 +43,7 @@ Let the manager handle INDEX.md and project documentation updates (other than yo
 
 ## Communication
 
-You communicate with:
-- **Manager** - Completion reports, status updates, questions, blockers
-- **Release Manager** - Build issues, hotfix needs
-- **Tester** - Bug reproduction, test results (future)
+Use the `email-manager` agent to send/receive messages with other roles (Manager, Release Manager, Security Analyst, Tester).
 
 ## Lock Files - IMPORTANT!
 
@@ -72,12 +62,10 @@ You communicate with:
 
 ## Start Here
 
-1. Check your inbox: `ls claude/developer/email/inbox/`
-2. Read task assignments
-3. **Check lock files** before modifying code (see above)
-4. Implement solutions
-5. Report completion to manager
-6. **Release lock files**
+1. Use the `email-manager` agent to check for task assignments
+2. **Check lock files** before modifying code (see above)
+3. Implement solutions following the workflow in README.md
+4. **Release lock files**
 
 ## Directory Structure
 
@@ -137,16 +125,3 @@ workspace/fix-gps-bug/
     └── gps_log.txt
 ```
 
-
-## Build Commands
-
-```bash
-# Firmware
-cd inav && ./build.sh TARGETNAME
-
-# Configurator
-cd inav-configurator && npm install && npm start
-
-# Tests
-cd inav-configurator && npm test
-```
