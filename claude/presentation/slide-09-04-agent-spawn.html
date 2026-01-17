@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>slide-09-04-agent-spawn.md</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .timestamp {
+            color: #888;
+        }
+        .header {
+            color: #4fc3f7;
+            font-weight: bold;
+        }
+        .success {
+            color: #81c784;
+        }
+        .error {
+            color: #ff5252;
+        }
+        .filename {
+            color: #ffb74d;
+        }
+        .comment {
+            color: #888;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<pre>```
+[Task Tool - Spawning Agent]
+subagent_type: &quot;test-engineer&quot;
+prompt: &quot;Check why terrain chart isn&#x27;t displaying&quot;
+
+[Agent context: 492 lines - separate window]
+<span class="success">✓ Chrome DevTools knowledge</span>
+<span class="error">✗ Build system (not needed)</span>
+
+test-engineer&gt; Taking snapshot of Mission Control...
+test-engineer&gt; Checking console logs...
+test-engineer&gt; Found: plotElevation() commented out
+<span class="filename">test-engineer&gt; Location: mission_control.js:4228-4351</span>
+test-engineer&gt; Reason: ESM compatibility (Dec 2024)
+```
+</pre>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>slide-09-06-code-review.md</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .timestamp {
+            color: #888;
+        }
+        .header {
+            color: #4fc3f7;
+            font-weight: bold;
+        }
+        .success {
+            color: #81c784;
+        }
+        .error {
+            color: #ff5252;
+        }
+        .filename {
+            color: #ffb74d;
+        }
+        .comment {
+            color: #888;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<pre>```
+[Task Tool - Code Review]
+subagent_type: &quot;inav-code-review&quot;
+
+<span class="success">inav-code-review&gt; ✓ Chart.js v4 ESM support confirmed</span>
+<span class="success">inav-code-review&gt; ✓ Import follows ES6 standards</span>
+<span class="success">inav-code-review&gt; ✓ Global registration correct</span>
+<span class="success">inav-code-review&gt; ✓ No unsafe patterns</span>
+<span class="success">inav-code-review&gt; ✓ Semver range appropriate</span>
+
+inav-code-review&gt; Recommendations:
+  → Test with yarn install
+  → Verify dev and production builds
+
+[Review complete - agent context discarded]
+```
+</pre>
+</body>
+</html>

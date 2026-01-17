@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>slide-09-05-implement-fix.md</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .timestamp {
+            color: #888;
+        }
+        .header {
+            color: #4fc3f7;
+            font-weight: bold;
+        }
+        .success {
+            color: #81c784;
+        }
+        .error {
+            color: #ff5252;
+        }
+        .filename {
+            color: #ffb74d;
+        }
+        .comment {
+            color: #888;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<pre>```diff
+<span class="filename">--- a/package.json</span>
+<span class="filename">+++ b/package.json</span>
+@@ -44,6 +44,7 @@
+   &quot;dependencies&quot;: {
+<span class="filename">+    &quot;chart.js&quot;: &quot;^4.4.1&quot;,</span>
+
+<span class="filename">--- a/tabs/mission_control.js</span>
+<span class="filename">+++ b/tabs/mission_control.js</span>
+<span class="filename">+import { Chart, registerables } from &#x27;chart.js&#x27;;</span>
++Chart.register(...registerables);
+
+ plotElevation() {
+-    /*
+     const elevationDiv = $(&#x27;.elevation&#x27;);
+```
+</pre>
+</body>
+</html>

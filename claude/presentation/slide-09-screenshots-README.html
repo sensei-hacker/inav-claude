@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>slide-09-screenshots-README.md</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .timestamp {
+            color: #888;
+        }
+        .header {
+            color: #4fc3f7;
+            font-weight: bold;
+        }
+        .success {
+            color: #81c784;
+        }
+        .error {
+            color: #ff5252;
+        }
+        .filename {
+            color: #ffb74d;
+        }
+        .comment {
+            color: #888;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<pre><span class="comment"># Slide 9 Screenshots - Usage Guide</span>
+
+**Created:** 2026-01-12
+**Format:** Text-based mockups showing inav-claude workflow
+
+<span class="comment">## Files Created</span>
+
+| File | Timestamp | Content |
+|------|-----------|---------|
+<span class="filename">| slide-09-01-task-assignment.md | 0:00 | Manager creates structured task |</span>
+<span class="filename">| slide-09-02-developer-starts.md | 0:10 | /start-task skill, JIT guide loads |</span>
+<span class="filename">| slide-09-03-jit-guide.md | 0:20 | CRITICAL-BEFORE-CODE guide |</span>
+<span class="filename">| slide-09-04-agent-spawn.md | 0:30 | test-engineer agent investigates |</span>
+<span class="filename">| slide-09-05-implement-fix.md | 0:40 | Code changes (git diff) |</span>
+<span class="filename">| slide-09-06-code-review.md | 0:50 | inav-code-review agent |</span>
+<span class="filename">| slide-09-07-pr-created.md | 1:00 | /create-pr skill, PR #2518 |</span>
+<span class="filename">| slide-09-08-completion.md | 1:10 | Completion report, project archived |</span>
+<span class="filename">| slide-09-09-context-comparison.md | 1:20 | With/without system comparison |</span>
+
+**Total presentation time:** 1:20 (80 seconds)
+
+<span class="comment">## How to Use in Presentation</span>
+
+<span class="header">### Option A: Embedded in Slides (Recommended)</span>
+
+Copy the content from each markdown file into Slide 9 as sequential sub-slides or advancing content.
+
+**Marp syntax:**
+```markdown
+---
+
+<span class="comment"># Real Example - Fix Terrain Data Loading</span>
+
+<span class="filename">[Content from slide-09-01-task-assignment.md]</span>
+
+---
+
+<span class="filename">[Content from slide-09-02-developer-starts.md]</span>
+
+---
+
+[...etc...]
+```
+
+<span class="header">### Option B: External Images</span>
+
+Convert each markdown file to a terminal screenshot image:
+
+```bash
+<span class="comment"># Using terminal screenshot tool</span>
+<span class="filename">for file in slide-09-*.md; do</span>
+<span class="filename">  cat &quot;$file&quot; | convert -font Courier -pointsize 12 label:@- &quot;${file%.md}.png&quot;</span>
+done
+```
+
+Then reference in slides:
+```markdown
+![](slide-09-01-task-assignment.png)
+```
+
+<span class="header">### Option C: Presenter Notes Only</span>
+
+Keep the text-based mockups in presenter notes and narrate the workflow verbally.
+
+<span class="comment">## Key Points to Emphasize</span>
+
+**Screenshot 1-2:** Structured communication, TODO format
+**Screenshot 3:** Just-in-time documentation loading
+**Screenshot 4:** Agent with separate context window
+**Screenshot 5-6:** Quality gates (testing, code review)
+**Screenshot 7-8:** Complete trail of work
+**Screenshot 9:** Context efficiency comparison
+
+<span class="comment">## Timing</span>
+
+If presenting live, advance screens every ~10 seconds:
+- 0:00 → Screenshot 1
+- 0:10 → Screenshot 2
+- 0:20 → Screenshot 3
+- 0:30 → Screenshot 4
+- 0:40 → Screenshot 5
+- 0:50 → Screenshot 6
+- 1:00 → Screenshot 7
+- 1:10 → Screenshot 8
+- 1:20 → Screenshot 9
+- 1:30 → Return to slide
+
+Total: 1:30 for full walkthrough
+
+<span class="comment">## Customization</span>
+
+These are **text-based mockups** showing the workflow. You can:
+
+1. **Use as-is** - Copy into slides as code blocks
+2. **Screenshot terminals** - Cat each file in terminal and screenshot
+3. **Recreate live** - Actually run the commands during presentation
+4. **Simplify** - Pick 3-5 key screenshots instead of all 9
+
+<span class="comment">## File Locations</span>
+
+All files in: `claude/developer/workspace/`
+
+These files show the **inav-claude context engineering system** in action, not the terrain bug itself.
+
+<span class="comment">## Integration with Slide 9</span>
+
+<span class="filename">Current Slide 9 in presentation-slides.md has placeholder text. Replace with actual screenshot content or reference these files in presenter notes.</span>
+</pre>
+</body>
+</html>

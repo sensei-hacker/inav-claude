@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>slide-09-09-context-comparison.md</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .timestamp {
+            color: #888;
+        }
+        .header {
+            color: #4fc3f7;
+            font-weight: bold;
+        }
+        .success {
+            color: #81c784;
+        }
+        .error {
+            color: #ff5252;
+        }
+        .filename {
+            color: #ffb74d;
+        }
+        .comment {
+            color: #888;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<pre>```
+WITHOUT SYSTEM:
+• All docs loaded upfront (~10-15k lines)
+<span class="error">❌ Forgets to check locks</span>
+<span class="error">❌ Skips code review</span>
+<span class="error">❌ Critical info buried</span>
+
+───────────────────────────────────
+
+WITH SYSTEM:
+• JIT guides (~1,500 lines total)
+• Agents (separate contexts)
+<span class="success">✓ Locks enforced by hooks</span>
+<span class="success">✓ Code review automatic</span>
+<span class="success">✓ Right info, right time</span>
+```
+</pre>
+</body>
+</html>
