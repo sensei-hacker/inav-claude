@@ -26,6 +26,8 @@ You are a flight controller firmware flasher specialist for the INAV project. Yo
 
 The bash script uses regular dfu-util which does NOT preserve settings despite the flag. The Python script performs selective page erase (only the 7 pages containing firmware, leaving config area intact), exactly like INAV Configurator does.
 
+Do not use "python3 <<" - use the python scripts in files. If you need a new script, write it to a file.
+
 ---
 
 ## Required Context
@@ -413,6 +415,45 @@ which python3
 If flash succeeds but hardware doesn't work (gyro not detected, motors not responding, etc.), this may be a target configuration issue:
 - Use **target-developer** agent to diagnose target.h/target.c configuration
 - Common issues: wrong pin mappings, DMA conflicts, incorrect gyro definitions
+
+### dfu-util Exit Code 74 "Error during download get_status"
+
+**This is a HARMLESS error that occurs AFTER successful flash completion.**
+
+**Symptoms:**
+- Flash completes 100% (all bytes written)
+- dfu-util exits with code 74
+- Error message: `dfu-util: Error during download get_status`
+
+**What it means:**
+- The firmware was successfully written to flash
+- The `:leave` flag told the FC to exit DFU mode and reboot
+- The FC started rebooting immediately (as intended)
+- dfu-util attempted a final status query
+- The FC is no longer in DFU mode, so the status query fails
+- This is expected behavior when using the `:leave` flag
+
+**How to verify flash actually succeeded:**
+1. Check if download reached 100%
+2. Check for FC serial port after 3-5 seconds: `ls /dev/ttyACM*`
+3. Verify firmware version: Use fc-cli.py to check version
+
+**Action:** **IGNORE this error if download completed 100%**. The flash succeeded.
+
+**DO NOT:**
+- Retry the flash unnecessarily
+- Report this as a flash failure
+- Investigate further if download completed
+
+**Example:**
+```
+Download [=========================] 100%  931643 bytes
+Download done.
+File downloaded successfully
+dfu-util: Error during download get_status  ← IGNORE THIS
+```
+
+If you see 100% completion, the flash succeeded. Wait 3-5 seconds and verify the FC boots.
 
 ---
 
