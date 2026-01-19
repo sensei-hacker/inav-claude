@@ -561,6 +561,11 @@ bash_rules:
     category: read
     decision: allow
 
+  - name: "Allow pdfgrep for PDF searching"
+    command_pattern: "^pdfgrep$"
+    category: read
+    decision: allow
+
   # ===================================================================
   # Shell Control Structures & Parser Artifacts
   # ===================================================================
