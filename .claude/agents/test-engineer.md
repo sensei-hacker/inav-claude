@@ -319,6 +319,109 @@ python3 gps_test_v6.py
 
 IMPORTANT: Be sure to actually RUN the test and really look at the results. Do not just think about a test, or write about a test, or calculate a result you want. DO the test.
 
+---
+
+## 🚨 CRITICAL: Test Script Quality Requirements
+
+**Test scripts MUST be trustworthy or they're worse than useless.** A test that fails silently gives false confidence and leads to completely wrong conclusions.
+
+### Mandatory Error Handling
+
+**EVERY test script must include:**
+
+1. **Connection Verification**
+   - Check if serial port / network socket actually opens
+   - Verify target device is responding before running tests
+   - Clear error messages if connection fails
+
+2. **Command Execution Verification**
+   - Verify commands were sent successfully (check bytes written)
+   - Detect if connection is lost mid-test
+   - Track and report failed operations
+
+3. **Pre-Test Sanity Checks**
+   - Send a test command first to verify device responds
+   - Check for conflicting processes (configurator, other scripts)
+   - Validate test prerequisites (props off, FC armed, etc.)
+
+4. **Clear Success/Failure Indicators**
+   - Use visual indicators: ✓ for success, ✗ for failure
+   - Count and report failures during test execution
+   - Exit with non-zero code on failure
+
+5. **Helpful Diagnostics**
+   - Tell user what to check when failures occur
+   - Suggest common fixes (close configurator, check USB, etc.)
+   - Don't just say "failed" - explain what might be wrong
+
+### Example: Bad vs Good Test Script
+
+**❌ BAD (Silent Failures):**
+```python
+def test_settings_save():
+    ser = serial.Serial('/dev/ttyACM0', 115200)  # May fail silently
+    ser.write(msp_command)  # May not actually send
+    # Test appears to pass but nothing happened!
+```
+
+**✅ GOOD (Reliable):**
+```python
+def test_settings_save():
+    try:
+        ser = serial.Serial('/dev/ttyACM0', 115200, timeout=1)
+        print("✓ Connected to FC")
+    except serial.SerialException as e:
+        print(f"✗ FAILED to connect: {e}")
+        print("  Check: Is FC plugged in? Is configurator closed?")
+        return 1
+
+    # Verify FC is responding
+    ser.write(msp_api_version)
+    time.sleep(0.1)
+    if ser.in_waiting == 0:
+        print("✗ FC not responding to MSP commands!")
+        print("  The test cannot run reliably.")
+        return 1
+    print("✓ FC is responding")
+
+    # Run test with per-command error checking
+    try:
+        bytes_written = ser.write(msp_command)
+        if bytes_written != len(msp_command):
+            print(f"✗ Only wrote {bytes_written}/{len(msp_command)} bytes")
+            return 1
+        print("✓ Command sent successfully")
+    except serial.SerialException as e:
+        print(f"✗ Failed to send command: {e}")
+        return 1
+```
+
+### Why This Matters
+
+**Real example from this session:**
+- Test script `test_settings_save_simple.py` had minimal error handling
+- If it failed to connect, it would fail silently
+- We'd observe no DShot glitch on oscilloscope
+- We'd conclude the fix worked (wrong!)
+- We'd create a PR with a broken fix
+- Users' ESCs would still spin up (safety hazard)
+
+**Silent test failures lead to:**
+- Wrong conclusions about code behavior
+- Broken code being merged
+- Safety hazards in flight controller firmware
+- Wasted debugging time chasing phantom issues
+
+### Lesson Learned
+
+**Test scripts need error handling.** We MUST be able to trust our test results.
+
+If a test passes, it must mean the feature works.
+If a test fails, it must mean the feature is broken.
+If the test itself is broken, it must SCREAM about it.
+
+---
+
 ## Test Scripts Reference
 
 ### CRSF Testing (`claude/developer/scripts/testing/inav/crsf/`)
