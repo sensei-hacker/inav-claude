@@ -221,6 +221,13 @@ rules:
     category: write
     decision: allow
 
+  - name: "Allow editing projects/INDEX.md"
+    tool_name_pattern: "^(Write|Edit)$"
+    tool_input_patterns:
+      file_path: ".*/claude/projects/INDEX\\.md$"
+    category: write
+    decision: allow
+
   # ===================================================================
   # Ask Rules (File Modifications)
   # ===================================================================
