@@ -36,7 +36,7 @@ def fetch_logic_condition(api: MSPApi, index: int) -> dict:
     )
 
     # Step 2: Send the request
-    info, reply = api._request(
+    reply = api._request(
         InavMSP.MSP2_INAV_LOGIC_CONDITIONS_SINGLE,
         request_payload
     )
@@ -53,7 +53,7 @@ def fetch_logic_condition(api: MSPApi, index: int) -> dict:
         "flags": reply["flags"],
     }
 
-    print(f"Request info: {info.get('latency_ms')}ms latency")
+    print(f"Request info: {api.info.get('latency_ms')}ms latency")
     return condition
 
 

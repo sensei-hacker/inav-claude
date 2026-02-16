@@ -229,7 +229,7 @@ def example_discover_runtime():
 
     # with MSPApi(port="/dev/ttyACM0", baudrate=115200) as api:
     #     # Get a reply
-    #     info, reply = api._request(InavMSP.MSP_API_VERSION)
+    #     reply = api._request(InavMSP.MSP_API_VERSION)
     #
     #     # Discover what's in it
     #     discover_reply_fields(reply)

@@ -6,6 +6,7 @@ from mspapi2 import MSPApi
 
 print("Connecting to SITL on port 5760...")
 api = MSPApi(tcp_endpoint='localhost:5760')
+api.open()
 
 time.sleep(1)
 
@@ -15,7 +16,7 @@ try:
     print(f"GPS Data: {gps_data}")
 except Exception as e:
     print(f"Error: {e}")
-
-print("Closing connection...")
-api.close()
-print("Done.")
+finally:
+    print("Closing connection...")
+    api.close()
+    print("Done.")

@@ -22,7 +22,7 @@ def read_servo():
     """Read servo 0 value"""
     with MSPApi(tcp_endpoint="localhost:5760") as api:
         try:
-            info, reply = api._request(InavMSP.MSP_SERVO, b'')
+            reply = api._request(InavMSP.MSP_SERVO, b'')
             # mspapi2 returns a dict with servo data
             if isinstance(reply, dict):
                 # Check if servo data is in the dict

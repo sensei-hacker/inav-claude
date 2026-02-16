@@ -109,7 +109,7 @@ def print_condition(index: int, condition: Dict[str, Any]) -> None:
 
 def fetch_single_condition_direct(
     api: MSPApi, condition_index: int
-) -> Tuple[Dict[str, Any], Dict[str, Any]]:
+) -> Dict[str, Any]:
     """
     Fetch a single logic condition using MSP2_INAV_LOGIC_CONDITIONS_SINGLE.
 
@@ -121,7 +121,7 @@ def fetch_single_condition_direct(
         condition_index: Index of condition to fetch (0-based)
 
     Returns:
-        (info_dict, condition_dict)
+        condition_dict (request metadata available via api.info)
     """
     # Pack the request payload with the condition index
     request_payload = api._pack_request(
@@ -129,7 +129,7 @@ def fetch_single_condition_direct(
     )
 
     # Send request and get reply
-    info, reply = api._request(
+    reply = api._request(
         InavMSP.MSP2_INAV_LOGIC_CONDITIONS_SINGLE, request_payload
     )
 
@@ -149,7 +149,7 @@ def fetch_single_condition_direct(
         ],
     }
 
-    return info, condition
+    return condition
 
 
 def main() -> None:
@@ -176,8 +176,8 @@ def main() -> None:
     ) as api:
         # Get FC info first
         print("\nFetching flight controller info...")
-        _, fc_variant = api.get_fc_variant()
-        _, board_info = api.get_board_info()
+        fc_variant = api.get_fc_variant()
+        board_info = api.get_board_info()
         print(f"  FC Variant: {fc_variant['fcVariantIdentifier']}")
         print(f"  Board:      {board_info['boardIdentifier']}")
 
@@ -187,10 +187,10 @@ def main() -> None:
             print("Using convenience method: api.get_logic_conditions()")
             print("="*70)
 
-            info, conditions = api.get_logic_conditions()
+            conditions = api.get_logic_conditions()
 
             print(f"\nFetched {len(conditions)} logic conditions")
-            print(f"Latency: {info.get('latency_ms', 'N/A')} ms")
+            print(f"Latency: {api.info.get('latency_ms', 'N/A')} ms")
 
             for i, condition in enumerate(conditions):
                 if condition["enabled"]:  # Only print enabled conditions
@@ -206,12 +206,12 @@ def main() -> None:
             print(f"Fetching condition index: {args.condition_index}")
             print("="*70)
 
-            info, condition = fetch_single_condition_direct(api, args.condition_index)
+            condition = fetch_single_condition_direct(api, args.condition_index)
 
             print(f"\nRequest completed:")
-            print(f"  Latency:    {info.get('latency_ms', 'N/A')} ms")
-            print(f"  Cached:     {info.get('cached', False)}")
-            print(f"  Transport:  {info.get('transport', 'unknown')}")
+            print(f"  Latency:    {api.info.get('latency_ms', 'N/A')} ms")
+            print(f"  Cached:     {api.info.get('cached', False)}")
+            print(f"  Transport:  {api.info.get('transport', 'unknown')}")
 
             print_condition(args.condition_index, condition)
 

@@ -23,7 +23,7 @@ def send_rc(ch6_value, ch10_value):
 def read_servo():
     """Read servo 0 value"""
     with MSPApi(tcp_endpoint="localhost:5760") as api:
-        info, reply = api._request(InavMSP.MSP_SERVO, b'')
+        reply = api._request(InavMSP.MSP_SERVO, b'')
         if isinstance(reply, dict) and 'servoOutputs' in reply:
             return reply['servoOutputs'][0]
     return None
