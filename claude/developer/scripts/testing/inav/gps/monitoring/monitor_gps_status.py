@@ -20,14 +20,17 @@ def monitor_gps():
                 gps_data = api.get_raw_gps()
 
                 if gps_data:
-                    # Parse the response
-                    print(f"[{time.strftime('%H:%M:%S')}] GPS Fix: {gps_data.get('fixType', 'N/A')} | "
+                    # Parse the response (new API already converts units)
+                    # fixType is now an enum, get numeric value or name
+                    fix_type = gps_data.get('fixType')
+                    fix_str = fix_type.value if hasattr(fix_type, 'value') else fix_type
+
+                    print(f"[{time.strftime('%H:%M:%S')}] GPS Fix: {fix_str} | "
                           f"Sats: {gps_data.get('numSat', 0)} | "
-                          f"Lat: {gps_data.get('lat', 0)/1e7:.6f} | "
-                          f"Lon: {gps_data.get('lon', 0)/1e7:.6f} | "
-                          f"Alt: {gps_data.get('alt', 0)/100:.1f}m | "
-                          f"HDOP: {gps_data.get('hdop', 0)/100:.2f} | "
-                          f"EPH: {gps_data.get('eph', 0)/100:.2f}m")
+                          f"Lat: {gps_data.get('latitude', 0):.6f} | "  # Already in decimal degrees
+                          f"Lon: {gps_data.get('longitude', 0):.6f} | "  # Already in decimal degrees
+                          f"Alt: {gps_data.get('altitude', 0):.1f}m | "  # Already in meters
+                          f"Speed: {gps_data.get('speed', 0):.1f}m/s")  # Already in m/s
                 else:
                     print(f"[{time.strftime('%H:%M:%S')}] No GPS data")
 
@@ -35,6 +38,7 @@ def monitor_gps():
                 try:
                     stats = api.get_gps_statistics()
                     if stats:
+                        # GPS stats are already converted (hdop, eph, epv already scaled)
                         print(f"              GPS Stats: {stats}")
                 except:
                     pass
