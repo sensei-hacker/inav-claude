@@ -132,9 +132,9 @@ Do NOT call `gh api` or `gh issue edit` directly — the script handles API quir
 
 | Milestone | When to use |
 |-----------|-------------|
-| **9.0.1** | Straightforward bug fixes with very little risk. Minimal code change, obvious correctness, no behavior change beyond the fix. |
-| **9.1** | Compatible fixes and features. Backward-compatible with Configurator 9.0.0 and firmware 9.0.0. |
+| **9.1** | Straightforward bug fixes and compatible fixes/features with very little risk. Minimal code change, obvious correctness, backward-compatible with Configurator 9.0.0 and firmware 9.0.0. *(9.0.1 milestone is closed as of 2026-08 — its low-risk fixes now land in 9.1.)* |
 | **10.0** | Breaking changes. Would break compatibility with Configurator 9.0.0 or firmware 9.0.0, or requires coordinated firmware+configurator changes. |
+| **11.0** | Next major after 10.0. Protocol/MSP cleanup that must wait for the following release cycle. |
 | **Future** | Good idea but not prioritized for any current release. Large scope or speculative. |
 | **Skip** | Don't assign a milestone now (add to skip file for later). |
 
@@ -144,9 +144,9 @@ Do NOT call `gh api` or `gh issue edit` directly — the script handles API quir
 
 | Milestone | Expected Base Branch |
 |-----------|---------------------|
-| **9.0.1** | `maintenance-9.x` — unless a temporary override is active; check `.claude/skills/git-workflow/SKILL.md` ("Creating Branches") for the current inav base |
-| **9.1** | `maintenance-9.x` — same override caveat as above |
+| **9.1** | `release/9.1` — **temporary override active** (bugfix line); verify in `.claude/skills/git-workflow/SKILL.md` ("Creating Branches") before relying on it |
 | **10.0** | `maintenance-10.x` |
+| **11.0** | `maintenance-10.x` (current 11.0 PRs, e.g. #9929, target this) |
 | **Future** | any (no change needed) |
 
 If the PR targets the wrong branch:
@@ -158,10 +158,12 @@ If the PR targets the wrong branch:
 ### iNavFlight/inav
 | Milestone | API Number |
 |-----------|------------|
-| 9.0.1 | 51 |
 | 9.1 | 50 |
 | 10.0 | 46 |
+| 11.0 | 52 |
 | Future | 18 |
+
+> **9.0.1 (51) is CLOSED as of 2026-08** — do not assign it. Low-risk fixes go to 9.1.
 
 ### iNavFlight/inav-configurator
 | Milestone | API Number |
@@ -281,6 +283,14 @@ echo "PR_NUMBER" >> claude/local-data/triage/skip-inav.txt
 # or
 echo "PR_NUMBER" >> claude/local-data/triage/skip-configurator.txt
 ```
+
+**Date every skip entry** (manager convention, 2026-08-29): always annotate
+with `# PR - YYYY-MM-DD: <reason>` above the bare PR number. The date is
+the "last looked" timestamp — a future session must be able to re-find any
+PR whose activity is newer than its skip-date (e.g. read the PRs that have
+updates AFTER the last time we looked at them). Keep the reason brief and
+actionable (e.g. "awaiting author reply", "CI pending", "assigned to dev",
+"MERGED").
 
 Then invalidate cache and show prefetched PR as in Step 6.
 
