@@ -531,6 +531,141 @@ def main():
         except TimeoutError:
             bad("FC NOT RESPONSIVE after OSD_CHAR_WRITE test - possible crash/hang!")
 
+        # =========================================================
+        # TEST 4: Wire-size accept/reject equivalence (Phase 4) --
+        # the sticky overrun check must not change accept/reject for
+        # ANY dataSize vs the pre-PR contract:
+        #   AUX_RC: 2..49 accepted (length drives channel count)
+        #   OSD_CHAR_WRITE: >= 55 accepted, < 55 rejected
+        # Longer messages from newer senders must be accepted with
+        # trailing bytes ignored; shorter-but-valid AUX_RC messages
+        # (the normal case) must be accepted.
+        # =========================================================
+        print("\n=== TEST 4: wire-size accept/reject equivalence (longer/exact/shorter) ===")
+
+        # 4a: AUX_RC min valid (dataSize=2: defByte + 1 data byte) -> accepted
+        print("\n-- AUX_RC dataSize=2 (min valid) --")
+        status, frame = send_aux_rc(conn, start_channel=12, resolution_mode=0, data_bytes=[0b01010101])
+        print(f"  Send result: {status}")
+        if status == "ok":
+            ok("AUX_RC dataSize=2 accepted (shorter-but-valid is the normal case)")
+        elif status == "timeout":
+            bad("TIMEOUT on AUX_RC dataSize=2 - possible hang/crash regression!")
+        else:
+            bad(f"AUX_RC dataSize=2 unexpectedly rejected: {status}")
+
+        # 4b: AUX_RC max valid (dataSize=41: defByte + 40 bytes, 16-bit, 20 channels
+        #     from startChannel=12 -> 12+20=32, exactly the cap) -> accepted
+        print("\n-- AUX_RC dataSize=41 (max valid: 20ch x 16-bit from ch12) --")
+        data41 = b"".join(struct.pack("<H", 1000 + 50 * i) for i in range(20))
+        status, frame = send_aux_rc(conn, start_channel=12, resolution_mode=3, data_bytes=data41)
+        print(f"  Send result: {status}")
+        if status == "ok":
+            ok("AUX_RC dataSize=41 accepted (max valid frame)")
+        elif status == "timeout":
+            bad("TIMEOUT on AUX_RC dataSize=41 - possible hang/crash regression!")
+        else:
+            bad(f"AUX_RC dataSize=41 unexpectedly rejected: {status}")
+        time.sleep(0.3)
+        rc = get_rc_channels(conn)
+        if len(rc) > 31 and rc[12] == 1000:
+            ok(f"channel[12] = {rc[12]} (expected 1000 from 41-byte frame)")
+        else:
+            bad(f"channel[12] = {rc[12] if len(rc) > 12 else 'N/A'}, expected 1000")
+
+        # 4c: AUX_RC dataSize=49 (gate allows 2..49, but 16-bit 24ch from ch12 would
+        #     overflow 12+24=36>32 -> channel-count check rejects; pre-PR identical)
+        print("\n-- AUX_RC dataSize=49 (within gate, exceeds channel bounds) --")
+        data49 = b"".join(struct.pack("<H", 1500) for _ in range(24))
+        status, frame = send_aux_rc(conn, start_channel=12, resolution_mode=3, data_bytes=data49)
+        print(f"  Send result: {status}")
+        if status == "error":
+            ok("AUX_RC dataSize=49 rejected (startChannel+channelCount>32 check, matches pre-PR)")
+        elif status == "timeout":
+            bad("TIMEOUT on AUX_RC dataSize=49 - possible hang/crash regression!")
+        else:
+            bad(f"AUX_RC dataSize=49 unexpected result: {status}")
+
+        # 4d: AUX_RC dataSize=50 (beyond gate 2..49) -> rejected
+        print("\n-- AUX_RC dataSize=50 (beyond gate 2..49) --")
+        data50 = bytes([1]) * 49  # 8-bit mode, 49 data bytes -> dataSize = 1 + 49 = 50
+        status, frame = send_aux_rc(conn, start_channel=12, resolution_mode=2, data_bytes=data50)
+        print(f"  Send result: {status}")
+        if status == "error":
+            ok("AUX_RC dataSize=50 rejected (dataSize>49 gate, matches pre-PR)")
+        elif status == "timeout":
+            bad("TIMEOUT on AUX_RC dataSize=50 - possible hang/crash regression!")
+        else:
+            bad(f"AUX_RC dataSize=50 unexpected result: {status}")
+
+        # 4e: OSD_CHAR_WRITE dataSize=54 (shorter than gate 55) -> rejected
+        print("\n-- OSD_CHAR_WRITE dataSize=54 (shorter than >=55 gate) --")
+        status, frame = send_osd_char_write(conn, bytes([5]), bytes(range(53)))
+        print(f"  Send result: {status}")
+        if status == "error":
+            ok("OSD_CHAR_WRITE dataSize=54 rejected (matches pre-PR gate)")
+        elif status == "timeout":
+            bad("TIMEOUT on OSD_CHAR_WRITE dataSize=54 - possible hang/crash regression!")
+        else:
+            bad(f"OSD_CHAR_WRITE dataSize=54 unexpected result: {status}")
+
+        # 4f: OSD_CHAR_WRITE dataSize=56 (16-bit addr + 54 visible bytes) -> accepted
+        print("\n-- OSD_CHAR_WRITE dataSize=56 (16-bit addr + visible char) --")
+        status, frame = send_osd_char_write(conn, struct.pack("<H", 5), bytes(range(54)))
+        print(f"  Send result: {status}")
+        if status == "ok":
+            ok("OSD_CHAR_WRITE dataSize=56 accepted (16-bit addr layout)")
+        elif status == "timeout":
+            bad("TIMEOUT on OSD_CHAR_WRITE dataSize=56 - possible hang/crash regression!")
+        else:
+            bad(f"OSD_CHAR_WRITE dataSize=56 unexpected result: {status}")
+
+        # 4g: OSD_CHAR_WRITE dataSize=66 (16-bit addr + 64 full char) -> accepted
+        print("\n-- OSD_CHAR_WRITE dataSize=66 (16-bit addr + full 64-byte char) --")
+        status, frame = send_osd_char_write(conn, struct.pack("<H", 5), bytes(range(64)))
+        print(f"  Send result: {status}")
+        if status == "ok":
+            ok("OSD_CHAR_WRITE dataSize=66 accepted (full-char layout)")
+        elif status == "timeout":
+            bad("TIMEOUT on OSD_CHAR_WRITE dataSize=66 - possible hang/crash regression!")
+        else:
+            bad(f"OSD_CHAR_WRITE dataSize=66 unexpected result: {status}")
+
+        # 4h: OSD_CHAR_WRITE dataSize=67 (LONGER than any layout needs: 16-bit addr +
+        #     64 full char + 1 trailing byte) -> accepted, trailing ignored
+        print("\n-- OSD_CHAR_WRITE dataSize=67 (longer than layout, trailing byte ignored) --")
+        status, frame = send_osd_char_write(conn, struct.pack("<H", 5), bytes(range(65)))
+        print(f"  Send result: {status}")
+        if status == "ok":
+            ok("OSD_CHAR_WRITE dataSize=67 accepted (longer message from newer sender, trailing ignored)")
+        elif status == "timeout":
+            bad("TIMEOUT on OSD_CHAR_WRITE dataSize=67 - possible hang/crash regression!")
+        else:
+            bad(f"OSD_CHAR_WRITE dataSize=67 unexpected result: {status}")
+
+        # 4i: sbufSwitchToReader reset -- a rejected message must not poison the
+        #     next message's overrun state. Send an AUX_RC max-valid frame right
+        #     after a rejected one; it must still be accepted.
+        print("\n-- overrun state does not leak across messages --")
+        status, frame = send_aux_rc(conn, start_channel=12, resolution_mode=2, data_bytes=[1, 2, 3])
+        print(f"  Send result (after rejected frames): {status}")
+        if status == "ok":
+            ok("AUX_RC accepted right after rejected frames (no overrun leak / switch-to-reader reset)")
+        elif status == "timeout":
+            bad("TIMEOUT - possible hang/crash regression!")
+        else:
+            bad(f"AUX_RC after rejected frames unexpectedly rejected: {status}")
+
+        # final liveness check
+        try:
+            frame = conn.request(MSP_API_VERSION, b"", timeout=2.0)
+            if frame["direction"] == ">":
+                ok("FC still responsive after Phase-4 wire-size tests")
+            else:
+                bad(f"FC responded with unexpected direction after Phase-4 tests: {frame['direction']!r}")
+        except TimeoutError:
+            bad("FC NOT RESPONSIVE after Phase-4 tests - possible crash/hang!")
+
     finally:
         rc_sender.stop()
         conn.close()

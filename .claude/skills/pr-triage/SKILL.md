@@ -237,6 +237,8 @@ Present your analysis with a **merge readiness verdict first**, then the suggest
 
 **Always include the PR URL** (e.g., `https://github.com/iNavFlight/inav/pull/NNNN`) so the user can quickly open it.
 
+**Link placement (manager convention, 2026-08-29):** in batch summaries, the PR number at the **start of the headline** must be the clickable link — `**[#NNNN](https://github.com/iNavFlight/inav/pull/NNNN) — PR title**`. Do NOT put the link somewhere else in the description body; the headline link is the only link for that PR.
+
 ### Step 4: User Confirms or Changes
 
 Wait for user to confirm the milestone choice or specify a different one.

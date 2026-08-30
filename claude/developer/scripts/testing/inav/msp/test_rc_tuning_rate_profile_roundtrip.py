@@ -32,6 +32,7 @@ Exit code 0 = all checks passed. Exit code 1 = any mismatch found.
 """
 import sys
 import struct
+import time
 
 sys.path.insert(0, "/home/raymorris/Documents/planes/inavflight/mspapi2")
 
@@ -327,6 +328,155 @@ def main():
     check("manualRollRate clamp (1 -> MIN)", ROLL_PITCH_RATE_MIN, manRollc)
     check("manualPitchRate clamp (255 -> MAX)", ROLL_PITCH_RATE_MAX, manPitchc)
     check("manualYawRate clamp (0 -> MIN)", YAW_RATE_MIN, manYawc)
+
+    # ------------------------------------------------------------------
+    # TEST 7: MSP_SET_RC_TUNING, LONGER payload (12 bytes: 10-byte struct +
+    # rcYawExpo8 + 1 trailing byte). Forward-compat: longer messages from a
+    # newer sender must be ACCEPTED (known fields applied, trailing ignored).
+    # ------------------------------------------------------------------
+    print("\n=== TEST 7: MSP_SET_RC_TUNING 12-byte frame (longer, accepted, trailing ignored) ===")
+    sent_long = dict(
+        rcRate8=100, stabilizedRcExpo8=54,
+        rollRate=68, pitchRate=73, yawRate=58,
+        dynPID=88, throttleRcMid8=38, throttleRcExpo8=18,
+        throttlePaBreakpoint=1540,
+    )
+    long_yaw_expo = 66
+    payload_12 = struct.pack(
+        "<BBBBBBBBHBB",
+        sent_long["rcRate8"], sent_long["stabilizedRcExpo8"], sent_long["rollRate"],
+        sent_long["pitchRate"], sent_long["yawRate"], sent_long["dynPID"],
+        sent_long["throttleRcMid8"], sent_long["throttleRcExpo8"], sent_long["throttlePaBreakpoint"],
+        long_yaw_expo,   # byte 10: rcYawExpo8
+        0xAB,            # byte 11: trailing garbage, must be ignored
+    )
+    assert len(payload_12) == 12, f"expected 12 bytes, got {len(payload_12)}"
+
+    info, rsp = api._request_raw(MSP_SET_RC_TUNING, payload_12)
+    info, raw = api._request_raw(MSP_RC_TUNING)
+    fields = struct.unpack("<BBBBBBBBHB", raw)
+    (_, stabExpo_l, roll_l, pitch_l, yaw_l, dyn_l, thrMid_l, thrExpo_l, paBrk_l, yawExpo_l) = fields
+    check("stabilizedRcExpo8 (12-byte frame)", sent_long["stabilizedRcExpo8"], stabExpo_l)
+    check("rollRate (12-byte frame)", sent_long["rollRate"], roll_l)
+    check("pitchRate (12-byte frame)", sent_long["pitchRate"], pitch_l)
+    check("yawRate (12-byte frame)", sent_long["yawRate"], yaw_l)
+    check("dynPID (12-byte frame)", sent_long["dynPID"], dyn_l)
+    check("throttleRcMid8 (12-byte frame)", sent_long["throttleRcMid8"], thrMid_l)
+    check("throttleRcExpo8 (12-byte frame)", sent_long["throttleRcExpo8"], thrExpo_l)
+    check("throttlePaBreakpoint (12-byte frame)", sent_long["throttlePaBreakpoint"], paBrk_l)
+    check("rcYawExpo8 (12-byte frame, byte 10)", long_yaw_expo, yawExpo_l)
+
+    # ------------------------------------------------------------------
+    # TEST 8: MSP_SET_RC_TUNING, SHORTER payload (9 bytes < 10). Must be
+    # REJECTED cleanly: state unchanged, no partial mutation, no over-read.
+    # ------------------------------------------------------------------
+    print("\n=== TEST 8: MSP_SET_RC_TUNING 9-byte frame (shorter, rejected, state unchanged) ===")
+    # Baseline = TEST 7 state. Now send a 9-byte truncated frame with DIFFERENT
+    # values; every field must stay at the TEST 7 values.
+    payload_9 = struct.pack(
+        "<BBBBBBBBH",
+        100, 99, 99, 99, 99, 99, 99, 99, 9999,
+    )[:9]  # truncate the trailing u16 -> 9 bytes
+    assert len(payload_9) == 9, f"expected 9 bytes, got {len(payload_9)}"
+    api._serial.send(int(MSP_SET_RC_TUNING), payload_9)
+    time.sleep(0.3)  # allow FC to process and reply (error frame is discarded by mspapi2)
+    info, raw = api._request_raw(MSP_RC_TUNING)
+    fields = struct.unpack("<BBBBBBBBHB", raw)
+    (_, stabExpo_9, roll_9, pitch_9, yaw_9, dyn_9, thrMid_9, thrExpo_9, paBrk_9, yawExpo_9) = fields
+    check("stabilizedRcExpo8 unchanged (9-byte rejected)", sent_long["stabilizedRcExpo8"], stabExpo_9)
+    check("rollRate unchanged (9-byte rejected)", sent_long["rollRate"], roll_9)
+    check("pitchRate unchanged (9-byte rejected)", sent_long["pitchRate"], pitch_9)
+    check("yawRate unchanged (9-byte rejected)", sent_long["yawRate"], yaw_9)
+    check("dynPID unchanged (9-byte rejected)", sent_long["dynPID"], dyn_9)
+    check("throttleRcMid8 unchanged (9-byte rejected)", sent_long["throttleRcMid8"], thrMid_9)
+    check("throttleRcExpo8 unchanged (9-byte rejected)", sent_long["throttleRcExpo8"], thrExpo_9)
+    check("throttlePaBreakpoint unchanged (9-byte rejected)", sent_long["throttlePaBreakpoint"], paBrk_9)
+    check("rcYawExpo8 unchanged (9-byte rejected)", long_yaw_expo, yawExpo_9)
+    # FC must still accept a well-formed frame afterwards (rejection not sticky)
+    info, rsp = api._request_raw(MSP_SET_RC_TUNING, payload_10)
+    info, raw = api._request_raw(MSP_RC_TUNING)
+    fields = struct.unpack("<BBBBBBBBHB", raw)
+    check("FC responsive after rejection (10-byte accepted)", sent2["stabilizedRcExpo8"], fields[1])
+
+    # ------------------------------------------------------------------
+    # TEST 9: MSP2_INAV_SET_RATE_PROFILE, LONGER payload (17 bytes: 15-byte
+    # struct + 2 trailing bytes). Must be ACCEPTED, trailing ignored.
+    # ------------------------------------------------------------------
+    print("\n=== TEST 9: MSP2_INAV_SET_RATE_PROFILE 17-byte frame (longer, accepted, trailing ignored) ===")
+    rp_long = dict(
+        throttleRcMid8=43, throttleRcExpo8=23, throttleDynPID=93,
+        throttlePaBreakpoint=1580,
+        stabilizedRcExpo8=58, stabilizedRcYawExpo8=36,
+        stabilizedRollRate=74, stabilizedPitchRate=79, stabilizedYawRate=64,
+        manualRcExpo8=24, manualRcYawExpo8=37,
+        manualRollRate=75, manualPitchRate=80, manualYawRate=65,
+    )
+    rp_payload_17 = struct.pack(
+        "<BBBHBBBBBBBBBBBB",
+        rp_long["throttleRcMid8"], rp_long["throttleRcExpo8"], rp_long["throttleDynPID"],
+        rp_long["throttlePaBreakpoint"], rp_long["stabilizedRcExpo8"], rp_long["stabilizedRcYawExpo8"],
+        rp_long["stabilizedRollRate"], rp_long["stabilizedPitchRate"], rp_long["stabilizedYawRate"],
+        rp_long["manualRcExpo8"], rp_long["manualRcYawExpo8"],
+        rp_long["manualRollRate"], rp_long["manualPitchRate"], rp_long["manualYawRate"],
+        0xCD, 0xEF,  # trailing garbage, must be ignored
+    )
+    assert len(rp_payload_17) == 17, f"expected 17 bytes, got {len(rp_payload_17)}"
+
+    info, rsp = api._request_raw(MSP2_INAV_SET_RATE_PROFILE, rp_payload_17)
+    info, raw = api._request_raw(MSP2_INAV_RATE_PROFILE)
+    rp_fields = struct.unpack("<BBBHBBBBBBBBBB", raw)
+    (thrMid_l, thrExpo_l, thrDyn_l, paBrk_l, stabExpo_l, stabYawExpo_l, stabRoll_l, stabPitch_l,
+     stabYaw_l, manExpo_l, manYawExpo_l, manRoll_l, manPitch_l, manYaw_l) = rp_fields
+    check("throttleRcMid8 (17-byte)", rp_long["throttleRcMid8"], thrMid_l)
+    check("throttleRcExpo8 (17-byte)", rp_long["throttleRcExpo8"], thrExpo_l)
+    check("throttleDynPID (17-byte)", rp_long["throttleDynPID"], thrDyn_l)
+    check("throttlePaBreakpoint (17-byte)", rp_long["throttlePaBreakpoint"], paBrk_l)
+    check("stabilizedRcExpo8 (17-byte)", rp_long["stabilizedRcExpo8"], stabExpo_l)
+    check("stabilizedRcYawExpo8 (17-byte)", rp_long["stabilizedRcYawExpo8"], stabYawExpo_l)
+    check("stabilizedRollRate (17-byte)", rp_long["stabilizedRollRate"], stabRoll_l)
+    check("stabilizedPitchRate (17-byte)", rp_long["stabilizedPitchRate"], stabPitch_l)
+    check("stabilizedYawRate (17-byte)", rp_long["stabilizedYawRate"], stabYaw_l)
+    check("manualRcExpo8 (17-byte)", rp_long["manualRcExpo8"], manExpo_l)
+    check("manualRcYawExpo8 (17-byte)", rp_long["manualRcYawExpo8"], manYawExpo_l)
+    check("manualRollRate (17-byte)", rp_long["manualRollRate"], manRoll_l)
+    check("manualPitchRate (17-byte)", rp_long["manualPitchRate"], manPitch_l)
+    check("manualYawRate (17-byte)", rp_long["manualYawRate"], manYaw_l)
+
+    # ------------------------------------------------------------------
+    # TEST 10: MSP2_INAV_SET_RATE_PROFILE, SHORTER payload (14 bytes < 15).
+    # Must be REJECTED cleanly: state unchanged, no partial mutation.
+    # ------------------------------------------------------------------
+    print("\n=== TEST 10: MSP2_INAV_SET_RATE_PROFILE 14-byte frame (shorter, rejected, state unchanged) ===")
+    payload_14 = struct.pack(
+        "<BBBHBBBBBBBBBB",
+        77, 77, 77, 7777, 77, 77, 77, 77, 77, 77, 77, 77, 77, 77,
+    )[:14]
+    assert len(payload_14) == 14, f"expected 14 bytes, got {len(payload_14)}"
+    api._serial.send(int(MSP2_INAV_SET_RATE_PROFILE), payload_14)
+    time.sleep(0.3)
+    info, raw = api._request_raw(MSP2_INAV_RATE_PROFILE)
+    rp_fields = struct.unpack("<BBBHBBBBBBBBBB", raw)
+    (thrMid_9, thrExpo_9, thrDyn_9, paBrk_9, stabExpo_9, stabYawExpo_9, stabRoll_9, stabPitch_9,
+     stabYaw_9, manExpo_9, manYawExpo_9, manRoll_9, manPitch_9, manYaw_9) = rp_fields
+    check("throttleRcMid8 unchanged (14-byte rejected)", rp_long["throttleRcMid8"], thrMid_9)
+    check("throttleRcExpo8 unchanged (14-byte rejected)", rp_long["throttleRcExpo8"], thrExpo_9)
+    check("throttleDynPID unchanged (14-byte rejected)", rp_long["throttleDynPID"], thrDyn_9)
+    check("throttlePaBreakpoint unchanged (14-byte rejected)", rp_long["throttlePaBreakpoint"], paBrk_9)
+    check("stabilizedRcExpo8 unchanged (14-byte rejected)", rp_long["stabilizedRcExpo8"], stabExpo_9)
+    check("stabilizedRcYawExpo8 unchanged (14-byte rejected)", rp_long["stabilizedRcYawExpo8"], stabYawExpo_9)
+    check("stabilizedRollRate unchanged (14-byte rejected)", rp_long["stabilizedRollRate"], stabRoll_9)
+    check("stabilizedPitchRate unchanged (14-byte rejected)", rp_long["stabilizedPitchRate"], stabPitch_9)
+    check("stabilizedYawRate unchanged (14-byte rejected)", rp_long["stabilizedYawRate"], stabYaw_9)
+    check("manualRcExpo8 unchanged (14-byte rejected)", rp_long["manualRcExpo8"], manExpo_9)
+    check("manualRcYawExpo8 unchanged (14-byte rejected)", rp_long["manualRcYawExpo8"], manYawExpo_9)
+    check("manualRollRate unchanged (14-byte rejected)", rp_long["manualRollRate"], manRoll_9)
+    check("manualPitchRate unchanged (14-byte rejected)", rp_long["manualPitchRate"], manPitch_9)
+    check("manualYawRate unchanged (14-byte rejected)", rp_long["manualYawRate"], manYaw_9)
+    # FC must still accept a well-formed frame afterwards (rejection not sticky)
+    info, rsp = api._request_raw(MSP2_INAV_SET_RATE_PROFILE, rp_payload)
+    info, raw = api._request_raw(MSP2_INAV_RATE_PROFILE)
+    rp_fields = struct.unpack("<BBBHBBBBBBBBBB", raw)
+    check("FC responsive after rejection (15-byte accepted)", rp_sent["stabilizedRcExpo8"], rp_fields[4])
 
     api.close()
 

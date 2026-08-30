@@ -9,7 +9,7 @@ import time
 import sys
 
 HOST = "127.0.0.1"
-PORT = 7760
+PORT = 5760
 
 # MSP v1 command IDs
 MSP_API_VERSION          = 1
