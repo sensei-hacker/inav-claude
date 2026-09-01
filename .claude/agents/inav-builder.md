@@ -40,6 +40,26 @@ When invoked, you should receive:
 
 **IMPORTANT**: Use these scripts instead of manual cmake/make commands when possible. They handle edge cases like linker compatibility issues automatically.
 
+### 🚨 ALWAYS Reuse the Standard Build Directories — Never Invent a New One
+
+**Use exactly these three directories, every time, for every task:**
+- `inav/build/` — hardware targets (default flags, `-DWARNINGS_AS_ERRORS=ON`, `-DCMAKE_BUILD_TYPE=Release`, or any other cmake flag combination)
+- `inav/build_sitl/` — SITL
+- `inav/build_test/` — unit tests (`make check`)
+
+**NEVER create a task-specific or PR-specific build directory** (e.g. `build_hw_werr`, `build_pr11605_h7`, `build_unittest_verify_fix_sweep`, `build-orbith-fix`). This checkout is shared across every task that gets this checkout assigned, and one-off directory names accumulate as permanent clutter that nobody ever cleans up, since no single task "owns" the checkout long enough to know it's safe to delete another task's leftover directory.
+
+**Switching cmake flags (e.g. adding `-DWARNINGS_AS_ERRORS=ON`) is a reconfigure, not a reason for a new directory:**
+```bash
+cd inav/build
+rm -f CMakeCache.txt
+cmake -DWARNINGS_AS_ERRORS=ON .. && ninja <TARGET>
+# or: make <TARGET> if the cache was generated without -G Ninja
+```
+Removing just `CMakeCache.txt` (not the whole directory) keeps the object-file cache and is fast on a re-run with the same flags later.
+
+If you are asked to build in a way that would conflict with build/'s current configuration (e.g. it's mid-build for a different target from another session), report that back rather than spinning up a new directory to work around it.
+
 ### SITL Build Script (Recommended for SITL)
 ```bash
 claude/developer/scripts/build/build_sitl.sh
@@ -101,8 +121,9 @@ When directed to use skills, reference the skill documentation:
 
 ### Directory Structure
 - Source code: `inav/src/`
-- Build output (hardware): `inav/build/`
-- Build output (SITL): `inav/build_sitl/` (recommended separate directory)
+- Build output (hardware): `inav/build/` (always this directory — reconfigure in place for different flags/targets)
+- Build output (SITL): `inav/build_sitl/` (separate directory, always this name)
+- Build output (unit tests): `inav/build_test/` (separate directory, always this name)
 - CMake configuration: `inav/CMakeLists.txt`
 - Target definitions: `inav/src/main/target/`
 - Developer scripts: `claude/developer/scripts/build/`
@@ -126,11 +147,10 @@ make -j4 <TARGET_NAME>
 
 **For production/release builds or building many targets:**
 ```bash
-cd inav
-mkdir -p build-release
-cd build-release
+cd inav/build
+rm -f CMakeCache.txt
 cmake -DCMAKE_BUILD_TYPE=Release ..
-# Saves ~100GB disk space when building all targets
+# Saves disk space when building all targets
 make -j4 <TARGET_NAME>
 # Or: make release  (builds all official release targets)
 ```
@@ -204,7 +224,7 @@ Common build issues:
 - **Syntax errors**: Report exact file and line
 - **Linker errors**: Report undefined symbols and their context
 - **Out of flash/RAM**: Report memory usage and overflow amount - suggest using **target-developer** agent to analyze target configuration and optimize flash usage
-- **CMake cache conflicts**: Remove CMakeCache.txt when switching between SITL and hardware builds
+- **CMake cache conflicts**: Remove CMakeCache.txt (not the whole directory) when switching flags/targets in `build/` — do NOT create a new directory to work around a cache conflict
 - **Target configuration problems** (DMA conflicts, gyro detection, pin mapping): Hand off to **target-developer** agent for diagnosis
 
 ## Response Format
@@ -236,6 +256,7 @@ Ready to flash? I can hand off to the **fc-flasher** agent which will preserve y
 
 - **CRITICAL: Always report errors to parent session** - If any operation fails, tool execution fails, or unexpected behavior occurs, immediately output an error message to the parent session with instructions to inform the user. Never fail silently.
 - Always work from the repository root directory as the base
+- **Always reuse `build/` / `build_sitl/` / `build_test/` — never create a new task- or PR-named directory**
 - Check if build directory needs initialization before building
 - Use parallel builds (`make -j4`) for faster compilation
 - Preserve important warning messages even on successful builds

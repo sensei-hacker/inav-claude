@@ -264,9 +264,10 @@ with MSPApi(tcp_endpoint="localhost:5760") as api:
 
 ### 6. Firmware Unit Tests (included for Logic Bugs)
 
+**Always build in `inav/build_test/` — never a task/PR-named directory** (e.g. `build_unittest_verify_fix`, `build_unittest_verify_fix2`). This checkout is shared across every task assigned to it; one-off directory names accumulate as clutter nobody cleans up. Reconfigure the same directory in place if needed:
 
 ```bash
-cd inav/build
+mkdir -p inav/build_test && cd inav/build_test
 cmake -DTOOLCHAIN= ..
 make check
 ```
@@ -614,7 +615,7 @@ Many subdirectories have a `README.md` listing every script and its purpose:
 - `ports/test-sensor-port-function.js` - Sensor port function test
 
 ### In-Tree Firmware Unit Tests (`inav/src/test/unit/`)
-Run with: `cd inav/build && cmake -DTOOLCHAIN= .. && make check`
+Run with: `cd inav/build_test && cmake -DTOOLCHAIN= .. && make check`
 - `osd_unittest.cc` - OSD unit tests
 - `gps_ublox_unittest.cc` - uBlox GPS parsing
 - `maths_unittest.cc` - Math library tests
