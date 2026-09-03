@@ -160,10 +160,10 @@ rules:
     decision: allow
     message: "CommonJS test file modification allowed"
 
-  - name: "Allow editing projects/INDEX.md"
+  - name: "Allow editing projects/INDEX.md and completed/INDEX.md"
     tool_name_pattern: "^(Write|Edit)$"
     tool_input_patterns:
-      file_path: ".*/claude/projects/INDEX\\.md$"
+      file_path: ".*/claude/projects/(completed/)?INDEX\\.md$"
     category: write
     decision: allow
 
