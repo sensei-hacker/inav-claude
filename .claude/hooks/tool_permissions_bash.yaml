@@ -326,6 +326,48 @@ bash_rules:
     message: "Recursive file operations require manual approval"
 
   # ===================================================================
+  # Hardware Flashing Operations (DFU/USB Firmware Updates)
+  # ===================================================================
+  # These commands are used by fc-flasher agent to flash INAV firmware to flight controllers.
+  # They require USB/serial access which is blocked by sandbox, hence dangerouslyDisableSandbox=true.
+  # Pre-approving these commands prevents hook approval context injection during subagent execution.
+
+  - name: "Allow dfu-util list (verify DFU devices)"
+    command_pattern: "^dfu-util$"
+    argument_pattern: "^-l.*"
+    category: read
+    decision: allow
+    message: "DFU device listing - verify flight controller is in DFU bootloader mode"
+
+  - name: "Allow listing serial ports for flight controller detection"
+    command_pattern: "^ls$"
+    argument_pattern: "^/dev/tty(ACM|USB)\\*.*"
+    category: read
+    decision: allow
+    message: "Serial port listing - detect flight controller connection"
+
+  - name: "Allow Node.js DFU flasher script (primary flashing method)"
+    command_pattern: "^node$"
+    argument_pattern: ".*(claude/developer/scripts/build/)?flash-dfu-node\\.js\\s+.*\\.hex.*"
+    category: other
+    decision: allow
+    message: "Flash firmware to flight controller via DFU using Node.js flasher (preserves settings)"
+
+  - name: "Allow Python DFU preserve-settings flasher script (fallback method)"
+    command_pattern: "^python3$"
+    argument_pattern: ".*flash-dfu-preserve-settings\\.py\\s+.*\\.hex.*"
+    category: other
+    decision: allow
+    message: "Flash firmware to flight controller via DFU using Python flasher (preserves settings)"
+
+  - name: "Allow MSP reboot-to-DFU script"
+    command_pattern: "^python3$"
+    argument_pattern: ".*reboot-to-dfu\\.py\\s+/dev/tty(ACM|USB)\\d+.*"
+    category: other
+    decision: allow
+    message: "Send MSP reboot command to flight controller to enter DFU bootloader mode"
+
+  # ===================================================================
   # Build Tools & Compilers
   # ===================================================================
 
