@@ -348,21 +348,21 @@ bash_rules:
 
   - name: "Allow Node.js DFU flasher script (primary flashing method)"
     command_pattern: "^node$"
-    argument_pattern: ".*(claude/developer/scripts/build/)?flash-dfu-node\\.js\\s+.*\\.hex.*"
+    argument_pattern: "^(~/inavflight/|\\.\\./|/home/[^/\\s]+/Documents/planes/inavflight/)?claude/developer/scripts/build/flash-dfu-node\\.js\\s+[\\w./~-]+\\.hex$"
     category: other
     decision: allow
     message: "Flash firmware to flight controller via DFU using Node.js flasher (preserves settings)"
 
   - name: "Allow Python DFU preserve-settings flasher script (fallback method)"
     command_pattern: "^python3$"
-    argument_pattern: ".*flash-dfu-preserve-settings\\.py\\s+.*\\.hex.*"
+    argument_pattern: "^(~/inavflight/|\\.\\./|/home/[^/\\s]+/Documents/planes/inavflight/)?claude/developer/scripts/build/flash-dfu-preserve-settings\\.py\\s+[\\w./~-]+\\.hex(\\s+\\w+)?$"
     category: other
     decision: allow
     message: "Flash firmware to flight controller via DFU using Python flasher (preserves settings)"
 
   - name: "Allow MSP reboot-to-DFU script"
     command_pattern: "^python3$"
-    argument_pattern: ".*reboot-to-dfu\\.py\\s+/dev/tty(ACM|USB)\\d+.*"
+    argument_pattern: "^(~/inavflight/|\\.\\./|/home/[^/\\s]+/Documents/planes/inavflight/)?\\.claude/skills/flash-firmware-dfu/reboot-to-dfu\\.py\\s+/dev/tty(ACM|USB)\\d+$"
     category: other
     decision: allow
     message: "Send MSP reboot command to flight controller to enter DFU bootloader mode"
