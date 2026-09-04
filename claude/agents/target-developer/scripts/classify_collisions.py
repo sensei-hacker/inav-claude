@@ -46,6 +46,31 @@ fc_init.c, so a MOTOR side always wins and the LED silently just doesn't
 light; never flight-critical, so there's no CERTAIN/NOTICE split to make
 here, just a single LED_COLLISION bucket).
 
+SAME-(TIM,CH) BLIND SPOT, FIXED 2026-09-04: classify() keyed its
+`positions` dict by f"{tim}_{ch}", so when one target declared the SAME
+(timer, channel) twice on different pins, the second row overwrote the
+first, `involved` collapsed to a single element, and the
+`len(involved) < 2` guard discarded the hazard -- invisible, exactly like
+the LED case above. Found while merging the two shared-DMA PRs: WARPF7
+declares TIM3_CH3 on both PB0 and PC8 unconditionally and had never been
+reported by any sweep. Rows are now matched against the hazard text by
+their full "TIM_CH(label)" token instead, which is how simulate() renders
+each claimer -- per-entry, so neither the overwrite nor the converse
+over-match (one (tim,ch) present twice on DIFFERENT streams, where a bare
+substring test would absorb an unrelated entry's position and could invent
+a bogus CERTAIN) can happen. Surfaced a real previously-invisible CERTAIN
+on FURYF4OSD: TIM2_CH3 is declared on both PA2 and PB10, and at
+motorCount=4 both resolve to MOTOR on DMA1 Stream1, so a basic quad
+silently loses an output.
+
+SEVERITY NOTE (2026-09-04, per Ray): a (timer, channel) duplicate is
+strictly WORSE than any DMA collision and is now reported above CERTAIN.
+Losing DMA only costs an output DSHOT -- it still works as a servo or with
+Multishot. Two pins sharing one compare register can only ever emit the
+same waveform, so the second output is unusable for every protocol. The
+CERTAIN/NOTICE/LED tiers below rank DMA damage only; see
+timer_channel_duplicates().
+
 CONDITIONAL-COMPILATION BLIND SPOT, FIXED 2026-08-21: parser-gap targets
 (conditional-compilation flattening -- see simulate_pwm_roles.py's
 parse_target_c() docstring) used to silently surface same-(tim,ch)-twice
@@ -111,12 +136,26 @@ def classify(target_name):
         for h in result.hazards:
             if not (h.startswith("DMA_STREAM_COLLISION") or h.startswith("BURST_STREAM_COLLISION")):
                 continue
-            positions = {}
-            for row in result.rows:
-                e = row["entry"]
-                if row["claims_dma"]:
-                    positions[f"{e.tim}_{e.ch}"] = row["position"]
-            involved = sorted((pos, tim_ch) for tim_ch, pos in positions.items() if tim_ch in h and pos is not None)
+            # Match each row against the hazard text by its FULL
+            # "TIM_CH(label)" token, which is exactly how simulate() renders
+            # each claimer (see the `names` join in its collision loop).
+            #
+            # Keying by the bare f"{tim}_{ch}" was wrong twice over:
+            #   1. As a dict key it silently dropped same-(tim,ch)-twice
+            #      targets -- the second row overwrote the first, `involved`
+            #      collapsed to one element, and the `len(involved) < 2`
+            #      guard below discarded the hazard entirely (WARPF7,
+            #      FURYF4OSD; see the module docstring).
+            #   2. As a substring test it OVER-matched: one (tim,ch) can
+            #      appear twice on DIFFERENT streams, so a hazard on stream X
+            #      would wrongly absorb the position of the entry sitting on
+            #      stream Y and could manufacture a bogus CERTAIN from it.
+            # The label disambiguates both cases, since it is per-entry.
+            involved = sorted(
+                (row["position"], f'{row["entry"].tim}_{row["entry"].ch}')
+                for row in result.rows
+                if row["claims_dma"] and row["position"] is not None
+                and f'{row["entry"].tim}_{row["entry"].ch}({row["entry"].label})' in h)
             if len(involved) < 2:
                 continue  # need at least a winner + a loser to say anything
             losers = involved[1:]  # everything but the lowest position (the winner)
@@ -128,6 +167,44 @@ def classify(target_name):
                 worst = "NOTICE"
             detail.append((mc, sev, involved, dshot_dmar))
     return worst, detail, dshot_dmar
+
+
+def timer_channel_duplicates(target_name):
+    """Detect two DEF_TIM entries sharing one (timer, channel) on DIFFERENT pins.
+
+    This outranks every DMA hazard in this file. A DMA collision only costs
+    the loser its DMA, so the output drops to non-DSHOT but still works for
+    servo/Multishot. Two pins on ONE timer channel share a single compare
+    register, so they can only ever emit the SAME waveform -- the second
+    output cannot be driven independently at all, for any protocol. Unusable
+    beats degraded, so these are reported above CERTAIN.
+
+    Conditional (#if-guarded) entries are skipped: mutually exclusive build
+    variants legitimately reuse a (tim,ch) across branches, and
+    parse_target_c() flattens them into one array. main() already routes
+    those targets to the N/A bucket.
+
+    Returns [(tim_ch, [pins...]), ...] or None.
+    """
+    loaded = _load(target_name)
+    if loaded is None:
+        return None
+    _family, entries, _adc, _led, _dmar, _res, _mc = loaded
+
+    seen = {}
+    for e in entries:
+        if e.conditional:
+            continue
+        seen.setdefault((e.tim, e.ch), []).append(e)
+
+    dupes = []
+    for (tim, ch), group in sorted(seen.items()):
+        pins = [e.pin for e in group]
+        # Distinct pins only: the same pin repeated is a source duplicate,
+        # not two physical outputs fighting over one compare register.
+        if len(group) >= 2 and len(set(pins)) >= 2:
+            dupes.append((f"{tim}_{ch}", pins))
+    return dupes or None
 
 
 def led_collisions(target_name):
@@ -172,11 +249,23 @@ def led_collisions(target_name):
 
 
 def main():
-    certain, notice, led, conditional = [], [], [], []
+    certain, notice, led, conditional, timch = [], [], [], [], []
     for line in TARGETS_FILE.read_text().splitlines():
         t = line.strip()
         if not t:
             continue
+        # Run the (tim,ch)-duplicate check BEFORE the conditional skip below:
+        # it ignores #if-guarded entries itself, so a target that is N/A for
+        # the DMA machinery can still have its unconditional duplicates
+        # reported rather than vanishing entirely.
+        try:
+            dup = timer_channel_duplicates(t)
+        except Exception as ex:
+            print(f"ERROR (tim/ch dup check) {t}: {ex}", file=sys.stderr)
+            dup = None
+        if dup:
+            timch.append((t, dup))
+
         loaded = _load(t)
         if loaded is not None and sim.has_conditional_tim(loaded[1]):
             # DEF_TIM lines guarded by #if/#ifdef/#ifndef: parse_target_c()
@@ -211,6 +300,11 @@ def main():
     def fmt(pairs):
         return ",".join(f"{tc}@pos{p}" for p, tc in pairs)
 
+    print(f"=== TIMER_CHANNEL_DUPLICATE (WORST: two pins on one compare register -- the later output cannot be driven independently AT ALL, for any protocol, not merely DSHOT): {len(timch)} targets ===")
+    for t, dups in timch:
+        for tim_ch, pins in dups:
+            print(f"  {t}  {tim_ch}  pins={'/'.join(pins)}")
+    print()
     print(f"=== CERTAIN (a loser sits at position < 4 -- a basic-quad output actually goes dead): {len(certain)} targets ===")
     for t, mc, pairs, dmar in certain:
         print(f"  {t}  (first at motorCount={mc})  {fmt(pairs)}{'  [USE_DSHOT_DMAR]' if dmar else ''}")
