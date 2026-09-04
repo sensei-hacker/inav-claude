@@ -9,10 +9,12 @@
 # Usage:
 #   new-branch.sh <repo> <bugfix|feature|breaking> <branch-name> [--dry-run]
 #
-#   repo: inav | inav2 | inav3 | inav-configurator | PrivacyLRS
+#   repo: inav | inav2 | inav3 | inav-configurator | inav-configurator2 | PrivacyLRS
 #
 #   inav2/inav3 are separate parallel checkouts of the same inav repo (used
 #   when inav/ is locked by another task) and follow the same inav decision
+#   table below. inav-configurator2 is likewise a separate parallel checkout
+#   of inav-configurator and follows the same inav-configurator decision
 #   table below.
 #
 # Examples:
@@ -35,7 +37,7 @@ usage() {
   cat <<'EOF'
 Usage: new-branch.sh <repo> <bugfix|feature|breaking> <branch-name> [--dry-run]
 
-  repo:        inav | inav-configurator | PrivacyLRS
+  repo:        inav | inav2 | inav3 | inav-configurator | inav-configurator2 | PrivacyLRS
   change-type: bugfix | feature | breaking
   branch-name: kebab-case, no slashes (e.g. fix-gps-recovery)
 
@@ -57,18 +59,20 @@ if [[ "${4:-}" == "--dry-run" ]]; then
 fi
 
 case "$REPO" in
-  inav|inav2|inav3|inav-configurator|PrivacyLRS) ;;
+  inav|inav2|inav3|inav-configurator|inav-configurator2|PrivacyLRS) ;;
   *)
-    echo "ERROR: unknown repo '$REPO' (expected inav | inav2 | inav3 | inav-configurator | PrivacyLRS)" >&2
+    echo "ERROR: unknown repo '$REPO' (expected inav | inav2 | inav3 | inav-configurator | inav-configurator2 | PrivacyLRS)" >&2
     exit 1
     ;;
 esac
 
-# inav2/inav3 are separate checkouts of the same inav repo — same decision
-# table, different directory.
+# inav2/inav3 are separate checkouts of the same inav repo, and
+# inav-configurator2 is a separate checkout of inav-configurator — same
+# decision table, different directory.
 DECISION_REPO="$REPO"
 case "$REPO" in
   inav2|inav3) DECISION_REPO="inav" ;;
+  inav-configurator2) DECISION_REPO="inav-configurator" ;;
 esac
 
 case "$CHANGE_TYPE" in

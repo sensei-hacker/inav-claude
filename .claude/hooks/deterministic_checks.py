@@ -37,7 +37,7 @@ from pathlib import Path
 from typing import Dict, Optional, Tuple
 
 # Repos with a claude/locks/<name>.lock file, per claude/locks/README.md.
-_LOCKABLE_REPOS = ('inav-configurator', 'inav3', 'inav2', 'inav')
+_LOCKABLE_REPOS = ('inav-configurator', 'inav-configurator2', 'inav3', 'inav2', 'inav')
 
 # rule_name values whose only concern is "this is a write" (no independent
 # risk rationale) - the only ones a session-match lock check may override.

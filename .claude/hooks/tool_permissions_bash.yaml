@@ -141,24 +141,24 @@ bash_rules:
       fi
 
       # Check if the ORIGINAL_COMMAND contains a cd to a sub-repo
-      # Pattern: cd ... /inav, /inav2, /inav-configurator, /PrivacyLRS, /mspapi2, /inavwiki, /OpenTX-Telemetry-Widget, /blackbox-tools, or /iNavFlight.github.io
+      # Pattern: cd ... /inav, /inav2, /inav-configurator, /inav-configurator2, /PrivacyLRS, /mspapi2, /inavwiki, /OpenTX-Telemetry-Widget, /blackbox-tools, or /iNavFlight.github.io
       # This handles cases like: cd /home/.../inav && git branch -b feature
       ORIGINAL_CMD="{ORIGINAL_COMMAND}"
-      if [ -n "$ORIGINAL_CMD" ] && echo "$ORIGINAL_CMD" | grep -qE "cd\\s+[^&|;]*/(inav3|inav2|inav|inav-configurator|PrivacyLRS|mspapi2|inavwiki|OpenTX-Telemetry-Widget|blackbox-tools|iNavFlight\\.github\\.io)(/|$|\\s+)"; then
+      if [ -n "$ORIGINAL_CMD" ] && echo "$ORIGINAL_CMD" | grep -qE "cd\\s+[^&|;]*/(inav3|inav2|inav|inav-configurator2|inav-configurator|PrivacyLRS|mspapi2|inavwiki|OpenTX-Telemetry-Widget|blackbox-tools|iNavFlight\\.github\\.io)(/|$|\\s+)"; then
         # The original command contains a cd into a sub-repo, allow branch creation
         echo "allow"
         exit 0
       fi
 
-      # Check if we're in a sub-repo (contains /inav2/, /inav/, /inav-configurator/, /PrivacyLRS/, /mspapi2/, /inavwiki/, /OpenTX-Telemetry-Widget/, /blackbox-tools/, or /iNavFlight.github.io/)
-      if echo "$ABS_CWD" | grep -qE "/(inav3|inav2|inav|inav-configurator|PrivacyLRS|mspapi2|inavwiki|OpenTX-Telemetry-Widget|blackbox-tools|iNavFlight\\.github\\.io)(/|$)"; then
+      # Check if we're in a sub-repo (contains /inav2/, /inav/, /inav-configurator/, /inav-configurator2/, /PrivacyLRS/, /mspapi2/, /inavwiki/, /OpenTX-Telemetry-Widget/, /blackbox-tools/, or /iNavFlight.github.io/)
+      if echo "$ABS_CWD" | grep -qE "/(inav3|inav2|inav|inav-configurator2|inav-configurator|PrivacyLRS|mspapi2|inavwiki|OpenTX-Telemetry-Widget|blackbox-tools|iNavFlight\\.github\\.io)(/|$)"; then
         # We're in a sub-repo, allow branch creation here
         echo "allow"
       else
         # We're in root inavflight/ repo, deny branch creation
         echo "deny"
       fi
-    message: "Branch creation blocked in root inavflight/ repo. Branches should be created in the appropriate project repo instead: inav/, inav2/, inav3/, inav-configurator/, PrivacyLRS/, mspapi2/, inavwiki/, OpenTX-Telemetry-Widget/, blackbox-tools/, or iNavFlight.github.io/."
+    message: "Branch creation blocked in root inavflight/ repo. Branches should be created in the appropriate project repo instead: inav/, inav2/, inav3/, inav-configurator/, inav-configurator2/, PrivacyLRS/, mspapi2/, inavwiki/, OpenTX-Telemetry-Widget/, blackbox-tools/, or iNavFlight.github.io/."
 
   - name: "Block git commit with Claude mentions"
     command_pattern: "^git$"

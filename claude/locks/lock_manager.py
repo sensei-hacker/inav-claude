@@ -27,7 +27,7 @@ from pathlib import Path
 
 # Keep in sync with _LOCKABLE_REPOS in .claude/hooks/deterministic_checks.py.
 FIRMWARE_REPOS = ("inav", "inav2", "inav3")
-CONFIGURATOR_REPOS = ("inav-configurator",)
+CONFIGURATOR_REPOS = ("inav-configurator", "inav-configurator2")
 ALL_REPOS = FIRMWARE_REPOS + CONFIGURATOR_REPOS
 
 

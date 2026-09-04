@@ -38,6 +38,11 @@ rules:
     category: read
     decision: allow
 
+  - name: "Allow ListAgents for discovering agents and sessions"
+    tool_name_pattern: "^ListAgents$"
+    category: read
+    decision: allow
+
   - name: "Allow Agent tool (explore agent)"
     tool_name_pattern: "^Agent$"
     category: other

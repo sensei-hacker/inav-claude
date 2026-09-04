@@ -15,17 +15,20 @@ below) before handing out a lock.
 - `inav2.lock` - Locks the second firmware worktree/clone (`inav2/`), if present
 - `inav3.lock` - Locks the third firmware worktree/clone (`inav3/`), if present
 - `inav-configurator.lock` - Locks the configurator repository (`inav-configurator/`)
+- `inav-configurator2.lock` - Locks the second configurator worktree/clone (`inav-configurator2/`), if present
 
 Some setups only have a single `inav/` checkout — in that case only `inav.lock`
 applies. If `inav2/` and/or `inav3/` exist as separate worktrees/clones, they
-allow parallel firmware tasks and use their own numbered lock file. Each lock
-file governs only its matching directory; holding `inav.lock` does not block
-work in `inav2/` or `inav3/`.
+allow parallel firmware tasks and use their own numbered lock file. Likewise
+`inav-configurator2/`, if present, allows a second parallel configurator task.
+Each lock file governs only its matching directory; holding `inav.lock` does
+not block work in `inav2/` or `inav3/`, and holding `inav-configurator.lock`
+does not block work in `inav-configurator2/`.
 
 ## Rules
 
-1. **One developer per directory** - Only one developer can hold a lock on a given repo directory (`inav/`, `inav2/`, `inav3/`, `inav-configurator/`) at a time
-2. **Parallel work allowed** - A developer can work in `inav2/` while another works in `inav/`, `inav3/`, or `inav-configurator/`
+1. **One developer per directory** - Only one developer can hold a lock on a given repo directory (`inav/`, `inav2/`, `inav3/`, `inav-configurator/`, `inav-configurator2/`) at a time
+2. **Parallel work allowed** - A developer can work in `inav2/` while another works in `inav/`, `inav3/`, `inav-configurator/`, or `inav-configurator2/`
 3. **Check before starting** - `lock_manager.py acquire` tries `inav.lock`, then `inav2.lock`, then `inav3.lock` in order and returns whichever checkout it locked
 4. **Release when done** - `lock_manager.py release <repo>` when task is complete
 
@@ -37,8 +40,8 @@ work in `inav2/` or `inav3/`.
 REPO=$(python3 claude/locks/lock_manager.py acquire --task <task-name> --branch <branch-name> --type firmware)
 ```
 
-This tries `inav`, `inav2`, `inav3` in order (or just `inav-configurator` with
-`--type configurator`), skipping anything locked or unexpectedly dirty, and
+This tries `inav`, `inav2`, `inav3` in order (or `inav-configurator`, then
+`inav-configurator2`, with `--type configurator`), skipping anything locked or unexpectedly dirty, and
 prints the name of the checkout it locked (e.g. `inav2`) to stdout — that's
 the directory to `cd` into and branch from. Diagnostics for skipped
 candidates go to stderr.
