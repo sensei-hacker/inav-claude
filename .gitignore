@@ -14,6 +14,9 @@ inav/*
 inav-configurator/*
 !inav-configurator/.gitkeep
 !inav-configurator/**/CLAUDE.md
+inav-configurator2/*
+!inav-configurator2/.gitkeep
+!inav-configurator2/**/CLAUDE.md
 inavwiki/*
 !inavwiki/**/CLAUDE.md
 mspapi2/*
@@ -123,6 +126,7 @@ iNavFlight.github.io/
 inav-blackbox-log-viewer/
 inav-can/
 inav-configurator/
+inav-configurator2/
 inav-sitl-bench/
 /inav/
 inav2/
