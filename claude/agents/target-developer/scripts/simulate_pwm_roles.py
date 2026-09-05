@@ -716,8 +716,19 @@ class DmaResolver:
         if chosen[2] != 0:
             return False
         group_siblings = set()
+        # De-N the entry's OWN channel before excluding it. The header
+        # table is keyed on BASE channels only (there is no ('TIM1','CH2N')
+        # key -- see _lookup()'s CHxN -> CHx fallback), so comparing the raw
+        # 'CH2N' against key 'CH2' never matches and the entry's own base
+        # channel gets counted as a "sibling". Since active_siblings is
+        # itself de-N'd (see simulate()'s active_ch_by_tim precompute), that
+        # produced a guaranteed self-match: EVERY N-channel entry using a
+        # combined request line was flagged, even when it was the only
+        # channel of that timer in the whole target (the SOLO case this
+        # check exists to exclude).
+        entry_ch_norm = entry.ch[:-1] if entry.ch.endswith("N") else entry.ch
         for (tim_tok, ch_tok), other_opts in self.table.items():
-            if tim_tok != entry.tim or ch_tok == entry.ch:
+            if tim_tok != entry.tim or ch_tok == entry_ch_norm:
                 continue
             if chosen in other_opts:
                 group_siblings.add(ch_tok)
@@ -732,6 +743,15 @@ class DmaResolver:
 # ---------------------------------------------------------------------------
 # Faithful port of pwm_mapping.c
 # ---------------------------------------------------------------------------
+def base_channel_token(ch):
+    """CH2N -> CH2. An N-channel is the complementary output of the SAME
+    capture/compare register, not a separate channel -- see timer_def.h's
+    `#define BTCH_TIM1_CH2N BTCH_TIM1_CH2`. Anything asking "is this the
+    same hardware channel" (duplicate detection, DMA request lookup,
+    active-sibling sets) must collapse an N-channel onto its base."""
+    return ch[:-1] if ch.endswith("N") else ch
+
+
 def check_pwm_timer_conflicts(entry, entries, adc_pins, led_strip_active):
     if entry.pin in adc_pins:
         return True
@@ -1042,6 +1062,48 @@ def simulate(entries_orig, motor_count, servo_count, adc_pins, led_strip_active,
 
     result = SimResult()
     dma_claims = {}  # (dma,stream) -> list of entry describing string
+
+    # ---- TIMER_CHANNEL_DUPLICATE ---------------------------------------
+    # Two DEF_TIM entries on DIFFERENT pins sharing ONE compare register.
+    # Strictly worse than any DMA hazard: a DMA collision only costs the
+    # loser DSHOT (it still works as servo/Multishot/analog PWM), whereas
+    # two pins on one CCR can only ever mirror each other -- the second
+    # output cannot be driven independently for ANY protocol.
+    #
+    # This needs its own hazard class because every DMA check here can be
+    # completely silent about it: if the two entries pick different
+    # dmavars they resolve to different streams, so DMA_STREAM_COLLISION
+    # never fires. Found while evaluating TIM8_CH3N on PB15 as an escape
+    # route from DMA-less TIM12_CH2 on a board already driving TIM8_CH3 on
+    # PC8 -- the whole sweep came back clean on a change that would have
+    # bricked an output.
+    #
+    # Keyed on the DE-N'd channel: CH2N is the complementary output of the
+    # SAME compare register as CH2 (timer_def.h aliases BTCH_TIMn_CHmN to
+    # BTCH_TIMn_CHm), so CH2/CH2N on two pins is a duplicate even though
+    # the raw tokens differ. Conditional (#if-guarded) entries are skipped:
+    # mutually exclusive build variants legitimately reuse a (tim,ch)
+    # across branches and parse_target_c() flattens them together.
+    _dup_seen = {}
+    for e in entries:
+        if e.conditional:
+            continue
+        _dup_seen.setdefault((e.tim, base_channel_token(e.ch)), []).append(e)
+    for (dup_tim, dup_ch), group in sorted(_dup_seen.items()):
+        pins = [g.pin for g in group]
+        # Distinct pins only -- the same pin repeated is a source-level
+        # duplicate line, not two physical pads fighting over one CCR.
+        if len(group) >= 2 and len(set(pins)) >= 2:
+            spelled = ", ".join(f"{g.tim}_{g.ch} on {g.pin} ({g.label})" for g in group)
+            result.hazards.append(
+                f"TIMER_CHANNEL_DUPLICATE: {dup_tim}_{dup_ch} is declared on "
+                f"{len(set(pins))} different pins -- {spelled}. These share ONE "
+                f"compare register, so they can only ever emit the SAME "
+                f"waveform: the later output cannot be driven independently "
+                f"for any protocol (not merely DSHOT). This is invisible to "
+                f"every DMA check in this script whenever the entries resolve "
+                f"to different DMA streams."
+            )
 
     for e in entries:
         b = bucket.get(e.index)
@@ -1775,6 +1837,94 @@ timerHardware_t timerHardware[] = {
           "with S1 -- so the flag above is SHARED_TIMER_DMA_REQUEST doing "
           "its job, not DMA_STREAM_COLLISION firing instead)",
           not any("DMA_STREAM_COLLISION" in h for h in r_spurious.hazards))
+
+    # --- Reference point 7: the SOLO check must survive an N-CHANNEL entry.
+    # The header table is keyed on BASE channels only (no ('TIM1','CH2N')
+    # key -- _lookup() falls back by stripping the N), while
+    # active_ch_by_tim is de-N'd too. Before the fix, group_siblings
+    # excluded only the RAW 'CH2N' key, so the entry's own base 'CH2'
+    # counted as a sibling and matched itself: every lone N-channel on a
+    # combined request line was reported as SHARED_TIMER_DMA_REQUEST. That
+    # false positive is not academic -- TIM1_CH2N/TIM1_CH3N on PB14/PB15 is
+    # the standard F405 escape route off DMA-less TIM12, so the bogus flag
+    # landed squarely on the fix for a real SILENT_DEAD_MOTOR.
+    SOLO_NCHANNEL_TARGET_C = '''
+timerHardware_t timerHardware[] = {
+    DEF_TIM(TIM1,  CH2N, PB14, TIM_USE_OUTPUT_AUTO,  0, 0), // S1
+};
+'''
+    solo_n_entries = parse_target_c(SOLO_NCHANNEL_TARGET_C)
+    r_solo_n = simulate(solo_n_entries, motor_count=1, servo_count=None,
+                         adc_pins=set(), led_strip_active=False,
+                         dma_resolver=dma_resolver, dshot=True)
+    check("SOLO, N-channel: lone TIM1_CH2N dmavar=0 (combined line), no other "
+          "TIM1 channel declared -- NOT flagged (regression guard: the raw "
+          "'CH2N' key must be de-N'd before excluding the entry's own "
+          "channel from the sibling set, or it self-matches)",
+          not any("SHARED_TIMER_DMA_REQUEST" in h for h in r_solo_n.hazards))
+    check("SOLO, N-channel: TIM1_CH2N still resolves to a real DMA stream "
+          "(confirms the case above is a genuine SOLO combined-line user, "
+          "not silently skipped for having no DMA at all)",
+          not any("SILENT_DEAD_MOTOR" in h for h in r_solo_n.hazards))
+
+    SPURIOUS_NCHANNEL_TARGET_C = '''
+timerHardware_t timerHardware[] = {
+    DEF_TIM(TIM1,  CH2N, PB14, TIM_USE_OUTPUT_AUTO,  0, 0), // S1
+    DEF_TIM(TIM1,  CH1,  PA8,  TIM_USE_OUTPUT_AUTO,  0, 1), // S2
+};
+'''
+    spur_n_entries = parse_target_c(SPURIOUS_NCHANNEL_TARGET_C)
+    r_spur_n = simulate(spur_n_entries, motor_count=2, servo_count=None,
+                         adc_pins=set(), led_strip_active=False,
+                         dma_resolver=dma_resolver, dshot=True)
+    check("SPURIOUS TRIGGERS, N-channel: TIM1_CH2N dmavar=0 (combined line) "
+          "WITH a genuinely driven sibling TIM1_CH1 on its own dedicated "
+          "line -- IS still flagged (the de-N fix must not blanket-suppress "
+          "N-channels, only stop them matching themselves)",
+          any("SHARED_TIMER_DMA_REQUEST" in h and "TIM1_CH2N" in h
+              for h in r_spur_n.hazards))
+
+    # --- Reference point 8: TIMER_CHANNEL_DUPLICATE. Two pins declared on
+    # one compare register cannot be driven independently for ANY protocol,
+    # which is strictly worse than any DMA hazard -- yet the DMA checks can
+    # be completely silent about it when the two entries pick different
+    # dmavars (different streams => no DMA_STREAM_COLLISION). Found while
+    # evaluating TIM8_CH3N on PB15 as an escape from DMA-less TIM12_CH2 on
+    # a board that already drove TIM8_CH3 on PC8: every DMA check came back
+    # clean on a change that would have bricked an output.
+    DUP_TARGET_C = '''
+timerHardware_t timerHardware[] = {
+    DEF_TIM(TIM8,  CH3N, PB15, TIM_USE_OUTPUT_AUTO,  0, 1), // S1
+    DEF_TIM(TIM8,  CH3,  PC8,  TIM_USE_OUTPUT_AUTO,  0, 0), // S2
+};
+'''
+    dup_entries = parse_target_c(DUP_TARGET_C)
+    r_dup = simulate(dup_entries, motor_count=2, servo_count=None,
+                      adc_pins=set(), led_strip_active=False,
+                      dma_resolver=dma_resolver, dshot=True)
+    check("TIMER_CHANNEL_DUPLICATE: TIM8_CH3N (PB15) and TIM8_CH3 (PC8) are "
+          "the same compare register -- flagged even though their dmavars "
+          "resolve to different DMA streams, so no DMA check fires",
+          any("TIMER_CHANNEL_DUPLICATE" in h for h in r_dup.hazards))
+    check("TIMER_CHANNEL_DUPLICATE scenario: confirms no DMA_STREAM_COLLISION "
+          "fires here (the duplicate is invisible to every DMA check -- that "
+          "is exactly why it needs its own hazard class)",
+          not any("DMA_STREAM_COLLISION" in h for h in r_dup.hazards))
+
+    NODUP_TARGET_C = '''
+timerHardware_t timerHardware[] = {
+    DEF_TIM(TIM8,  CH2N, PB14, TIM_USE_OUTPUT_AUTO,  0, 1), // S1
+    DEF_TIM(TIM8,  CH3,  PC8,  TIM_USE_OUTPUT_AUTO,  0, 1), // S2
+};
+'''
+    nodup_entries = parse_target_c(NODUP_TARGET_C)
+    r_nodup = simulate(nodup_entries, motor_count=2, servo_count=None,
+                        adc_pins=set(), led_strip_active=False,
+                        dma_resolver=dma_resolver, dshot=True)
+    check("TIMER_CHANNEL_DUPLICATE control: TIM8_CH2N and TIM8_CH3 are "
+          "DIFFERENT compare registers on the same timer -- NOT flagged "
+          "(the check must key on the de-N'd channel, not on the timer)",
+          not any("TIMER_CHANNEL_DUPLICATE" in h for h in r_nodup.hazards))
 
     print()
     print("SELFTEST " + ("PASSED" if ok else "FAILED"))

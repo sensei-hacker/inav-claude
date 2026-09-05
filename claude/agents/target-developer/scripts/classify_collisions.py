@@ -179,6 +179,9 @@ def timer_channel_duplicates(target_name):
     output cannot be driven independently at all, for any protocol. Unusable
     beats degraded, so these are reported above CERTAIN.
 
+    Keyed on the DE-N'd channel (CH2N and CH2 are one compare register), so
+    a base/complementary pair on two pins is caught too.
+
     Conditional (#if-guarded) entries are skipped: mutually exclusive build
     variants legitimately reuse a (tim,ch) across branches, and
     parse_target_c() flattens them into one array. main() already routes
@@ -195,7 +198,12 @@ def timer_channel_duplicates(target_name):
     for e in entries:
         if e.conditional:
             continue
-        seen.setdefault((e.tim, e.ch), []).append(e)
+        # De-N the channel: CH2N is the complementary output of the SAME
+        # compare register as CH2 (timer_def.h aliases BTCH_TIMn_CHmN to
+        # BTCH_TIMn_CHm), so CH2 on one pin and CH2N on another IS a
+        # duplicate even though the raw tokens differ. Keying on the raw
+        # token missed that entire sub-class.
+        seen.setdefault((e.tim, sim.base_channel_token(e.ch)), []).append(e)
 
     dupes = []
     for (tim, ch), group in sorted(seen.items()):

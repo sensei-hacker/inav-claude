@@ -26,6 +26,13 @@ Runs, in order:
                                  BEEPER_PWM_FREQUENCY needs a DEF_TIM entry,
                                  GYRO_n_EXTI_PIN needs BUSDEV_REGISTER_SPI_TAG,
                                  AT32 UARTs need an explicit TX_PIN
+  8. check_timer_pin_af.py   -- flags a DEF_TIM(tim, ch, pin) triple whose
+                                 (timer, channel) is not routable to that pin
+                                 per the indexed datasheet AF table. On F4
+                                 this class of bug COMPILES CLEANLY (no
+                                 per-pin AF table exists in the firmware --
+                                 the AF is derived from the timer name alone)
+                                 and just leaves the output silently dead
 
 None of these are pass/fail gates -- each prints a checklist for a human to
 verify; false positives are expected and explained in each script's own
@@ -60,6 +67,7 @@ CHECKS = [
     ("TARGET_BOARD_IDENTIFIER length/uniqueness", "check_board_identifier.py"),
     ("SERIAL_PORT_COUNT / softserial feature bit", "check_serial_port_count.py"),
     ("Misc target invariants", "check_target_invariants.py"),
+    ("DEF_TIM pin/timer/channel vs datasheet AF table", "check_timer_pin_af.py"),
 ]
 
 
