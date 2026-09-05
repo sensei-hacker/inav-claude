@@ -131,6 +131,5 @@ Use the Edit tool to append new entries. Format: `- **Brief title**: One-sentenc
 ### Lessons
 
 - **Don't route around permission/auth restrictions on your own initiative**: Narrow GitHub token scopes, force-push blocks, etc. are deliberate guardrails, not bugs — agents have previously force-pushed to public branches after amending commits, destroying other people's work. If an operation fails due to a permission restriction, report the failure; only switch to a broader-scoped credential or bypass it if the user explicitly authorizes that specific case.
-- **Avoid the literal substrings `maintenance`/`master`/`main` in feature branch names**: the "Block git push to maintenance/master in sub-repos" hook matches those strings anywhere in the push command's text, not just as the actual target branch — a feature branch like `fix-x-maintenance-10x` (naming the base branch it targets, a natural convention) gets blocked as if it were pushing to `maintenance-10.x` itself. Rename the branch (e.g. `fix-x-10x`) rather than trying to bypass the hook; this is a false positive in the hook's substring match, not a real safety concern for a push to your own fork.
 
 <!-- Add new lessons above this line -->

@@ -169,5 +169,6 @@ Use the Edit tool to append new entries. Format: `- **Brief title**: One-sentenc
 - **`str.split("\n")` on a trailing-newline file yields a phantom trailing `""` line**: when doing line-based text processing, drop that empty element (it is the terminator, not a real blank line), or merged/joined output gains spurious blank lines.
 - **A file trivially "overlaps" itself at k = its whole length**: self-overlap / loop detection must require a *proper* overlap (k < total non-empty lines), or every file is reported as a self-match.
 - **Configurator `i18n` attributes replace the element's ENTIRE inner HTML**: `i18n.localize()` in `js/localization.js` does `element.html(translated)`, so putting `i18n` on a wrapper div wipes its nested structure (e.g. the LED strip tab's step-header wrappers holding `circle-number`/`step-instruction` spans, or containers holding a JS-updated counter span like `.placed-count`). Put `i18n` on the text-only leaf span or on the static text node's own span, keeping structure-bearing wrappers and JS-managed counters untouched.
+- **Floats must end in `f` to avoid promotion to double**: writing `2.0` instead of `2.0f` silently pulls in double-precision math on embedded targets where that library isn't wanted.
 
 <!-- Add new lessons above this line -->
