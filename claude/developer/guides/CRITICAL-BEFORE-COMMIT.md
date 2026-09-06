@@ -131,5 +131,6 @@ Use the Edit tool to append new entries. Format: `- **Brief title**: One-sentenc
 ### Lessons
 
 - **Don't route around permission/auth restrictions on your own initiative**: Narrow GitHub token scopes, force-push blocks, etc. are deliberate guardrails, not bugs — agents have previously force-pushed to public branches after amending commits, destroying other people's work. If an operation fails due to a permission restriction, report the failure; only switch to a broader-scoped credential or bypass it if the user explicitly authorizes that specific case.
+- **Don't rewrite pushed history on a PR branch to fix or redo prior work — add a normal follow-up commit instead**: this avoids force-push entirely, so there's no need to reset/revert/re-derive remote state first.
 
 <!-- Add new lessons above this line -->

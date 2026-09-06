@@ -342,4 +342,6 @@ Use the Edit tool to append new entries. Format: `- **Brief title**: One-sentenc
 
 ### Lessons
 
+- **`clean_<TARGET>` cleans the whole tree**: it's a full `make clean`, not per-target — building several targets in clean→build→clean→build sequence loses each prior target's `.elf`/`.hex`.
+
 <!-- Add new lessons above this line -->

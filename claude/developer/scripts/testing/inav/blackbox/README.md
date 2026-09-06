@@ -38,6 +38,7 @@ replay/replay_and_capture_blackbox.sh
 | **Erase FC flash** | `config/erase_blackbox_flash.py` |
 | **Replay blackbox** | `replay/replay_and_capture_blackbox.sh` |
 | **Decode frames** | `analysis/decode_blackbox_frames.py` |
+| **Check log integrity / detect corruption (A/B compare builds)** | `analysis/check_blackbox_integrity.py` |
 
 ## Key Concepts
 

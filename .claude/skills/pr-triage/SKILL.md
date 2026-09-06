@@ -91,6 +91,13 @@ bash claude/developer/scripts/triage/fetch-activity-prs.sh iNavFlight/inav --no-
   once the sorted list reaches older PRs, so it's fast even with many open PRs.
 - **Limitation:** If our last comment was beyond the 100 most recent comments on a very active PR,
   we may be classified as NO-COMMENT. Check the PR directly in that case.
+- **Limitation (found 2026-09-05):** `updated_at` is bumped by ANY metadata event — a label
+  added/removed, milestone set, base branch changed — not just new comments. A PR can show
+  NEEDS-REVIEW with an "activity by X" attribution that's actually months stale (X is just the
+  most recent human commenter, not necessarily the cause of the bump). If the visible comments
+  don't match a NEEDS-REVIEW flag, check
+  `gh api repos/<owner>/<repo>/issues/<N>/timeline --jq '.[-6:]'` to see the real last event
+  before trusting the classification.
 
 ---
 
@@ -238,6 +245,10 @@ Present your analysis with a **merge readiness verdict first**, then the suggest
 **Always include the PR URL** (e.g., `https://github.com/iNavFlight/inav/pull/NNNN`) so the user can quickly open it.
 
 **Link placement (manager convention, 2026-08-29):** in batch summaries, the PR number at the **start of the headline** must be the clickable link — `**[#NNNN](https://github.com/iNavFlight/inav/pull/NNNN) — PR title**`. Do NOT put the link somewhere else in the description body; the headline link is the only link for that PR.
+
+**Unaddressed Qodo/bot findings (manager convention, 2026-09-04):** ask the author to read and respond to the finding rather than the manager judging it right or wrong — Qodo is often wrong, but the author should still be the one to decide.
+
+**Always check the most recent comments/commits (manager convention, 2026-09-05):** an older flag (build failure, requested change, blocker) may already be resolved by later activity — don't stop at the first blocking comment you find, confirm it's still current.
 
 ### Step 4: User Confirms or Changes
 
