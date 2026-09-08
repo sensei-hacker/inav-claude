@@ -104,7 +104,7 @@ pgrep -la SITL && ss -tlnp | grep 576
 ### Using the Test Script
 
 ```bash
-python3 claude/developer/test_tools/sitl_arm_test.py 5761
+python3 claude/developer/scripts/testing/inav/sitl/sitl_arm_test.py 5761
 ```
 
 ### Manual Arming Steps
@@ -199,9 +199,21 @@ MSP_SET_RAW_RC expects: `[Roll, Pitch, Throttle, Yaw, AUX1, ...]`
 
 ### SITL Arming Scripts
 
-- **Basic arm** (uNAVlib): `claude/test_tools/inav/arm_sitl.py` - Simple arming script
-- **Full test** (uNAVlib): `claude/test_tools/inav/sitl/sitl_arm_test.py` - Complete test suite
-- **Configure for arming** (mspapi2): `claude/test_tools/inav/gps/configure_sitl_for_arming.py` - Set up MSP receiver and ARM mode
+All under `claude/developer/scripts/testing/inav/sitl/`:
+
+- **Basic arm** (uNAVlib): `arm_sitl.py` - Simple arming script
+- **Full test** (uNAVlib): `sitl_arm_test.py` - Complete test suite
+- **Configure for arming** (mspapi2): `configure_sitl_for_arming.py` - Set up MSP receiver and ARM mode
+
+### Physical FC (not SITL)
+
+These scripts live in the same `sitl/` directory tree by convention but target
+real hardware over a serial port, not SITL over TCP — see the **arm-fc-physical**
+skill:
+
+- `arm_fc_physical.py` - Quick MSP-arm smoke test via HITL (does not produce blackbox logs)
+- `configure_fc_msp_rx.py` - Configure MSP receiver/ARM mode on a physical FC
+- `continuous_msp_rc_sender.py` - Arm and hold a physical FC armed (does NOT use HITL, so blackbox logging works)
 
 ### Project Documentation
 

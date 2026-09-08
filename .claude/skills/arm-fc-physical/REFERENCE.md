@@ -67,9 +67,12 @@ If status shows "ACC" flag:
 
 Run the configuration script:
 ```bash
-cd claude/developer/scripts/testing/inav/gps
-python3 configure_fc_for_msp_arming.py /dev/ttyACM0
+cd claude/developer/scripts/testing/inav/sitl
+python3 configure_fc_msp_rx.py --port /dev/ttyACM0
 ```
+
+(Not needed at all if you're going to use `blackbox_arm_control = -1` —
+see "Logging Without Arming" in the main SKILL.md.)
 
 Or configure manually via CLI:
 ```bash
@@ -87,15 +90,22 @@ set rx_max_usec = 2115
 ### Step 4: Configure Blackbox
 
 ```bash
-cd claude/developer/scripts/testing/inav/gps
-python3 configure_fc_blackbox.py /dev/ttyACM0
+cd claude/developer/scripts/testing/inav/blackbox/config
+python3 configure_fc_blackbox.py --port /dev/ttyACM0 --rate-denom 100
+# or, for an arm-gated variant of the same thing:
+python3 configure_blackbox_arm_controlled.py --port /dev/ttyACM0 --rate-denom 100
 ```
 
-Or via CLI:
+Or via CLI — **send `set` and `save` in the same invocation** (a `set` from
+one `fc-cli.py` call can be lost before a separate later call's `save`
+commits it, since each call opens/closes its own serial connection):
 ```bash
-set blackbox_device = SPIFLASH
-set blackbox_rate_denom = 100
-save
+fc-cli.py $'set blackbox_device = SPIFLASH\nset blackbox_rate_denom = 100\nsave' /dev/ttyACM0
+```
+
+To skip arming entirely and log continuously from boot instead:
+```bash
+fc-cli.py $'set blackbox_arm_control = -1\nsave' /dev/ttyACM0
 ```
 
 ### Step 5: Arm FC and Generate Log
@@ -103,7 +113,7 @@ save
 **IMPORTANT**: Make sure propellers are removed or FC is in a safe location!
 
 ```bash
-cd claude/developer/scripts/testing/inav/gps
+cd claude/developer/scripts/testing/inav/sitl
 
 # Arm for 30 seconds at 50Hz (default)
 python3 continuous_msp_rc_sender.py /dev/ttyACM0
@@ -119,10 +129,19 @@ The script will:
 4. Fly armed at mid-throttle for specified duration
 5. Disarm and exit
 
+**Do not substitute `arm_fc_physical.py`** (same directory) for this step —
+it arms via HITL mode, which bypasses the blackbox subsystem (see "Why Not
+Use HITL Mode" below). It's a quick MSP-arming smoke test only.
+
+If you configured `blackbox_arm_control = -1` instead of arm-gated logging,
+skip this step — the FC is already logging from boot. Optionally run
+`claude/developer/scripts/testing/inav/gps/injection/gps_inject_no_arming.py`
+to feed it synthetic GPS data while it logs.
+
 ### Step 6: Download Blackbox Log
 
 ```bash
-cd claude/developer/scripts/testing/inav/gps
+cd claude/developer/scripts/testing/inav/blackbox/config
 
 # Download to default filename
 python3 download_blackbox_from_fc.py /dev/ttyACM0
@@ -136,8 +155,12 @@ Download takes ~2-3 minutes for a typical log.
 ### Step 7: Decode Blackbox Log
 
 ```bash
-cd claude/developer/scripts/testing/inav/gps
+cd claude/developer/scripts/testing/inav/blackbox/config
 blackbox_decode test_results/my_log.TXT
+
+# For an objective CLEAN/SUSPECT/CORRUPT verdict instead of eyeballing the CSV
+# (useful for A/B firmware comparisons):
+python3 ../analysis/check_blackbox_integrity.py test_results/my_log.TXT
 ```
 
 This creates a CSV file with decoded data.
@@ -146,9 +169,10 @@ This creates a CSV file with decoded data.
 
 ## Configuration Scripts
 
-### configure_fc_for_msp_arming.py
+### sitl/configure_fc_msp_rx.py
 
-Configures MSP receiver and ARM mode.
+Configures MSP receiver and ARM mode. (Formerly referenced in this doc as
+`configure_fc_for_msp_arming.py` — that name no longer exists in the repo.)
 
 **What it does**:
 1. Sets receiver type to MSP (RX_TYPE_MSP = 2)
@@ -156,14 +180,37 @@ Configures MSP receiver and ARM mode.
 3. Sets valid RX channel limits
 4. Saves and reboots
 
-### configure_fc_blackbox.py
+### blackbox/config/configure_fc_blackbox.py
 
-Configures blackbox logging.
+Configures blackbox logging (arm-gated: logs only while armed).
 
 **What it does**:
-1. Sets `blackbox_device = SPIFLASH`
-2. Sets `blackbox_rate_denom = 100` (logs every 100th loop)
+1. Sets `blackbox_device` (default SPIFLASH; pass `--device sdcard` for SD)
+2. Sets `blackbox_rate_denom` (default 100; logs every Nth loop — but see
+   "Blackbox Rate Settings" below, the firmware may silently raise this)
 3. Saves configuration
+
+**Caveat**: uses `MSP2_COMMON_SET_SETTING`, which this script does not verify
+after writing. Its "✓" output means "the write was sent," not "the write took
+effect." Confirm with `fc-cli.py "get <setting>"` afterward.
+
+### blackbox/config/configure_blackbox_arm_controlled.py
+
+Same purpose as `configure_fc_blackbox.py`, explicitly framed around
+arm-gated logging (log only while armed, not continuously). Same MSP-verification
+caveat applies.
+
+### gps/injection/gps_inject_no_arming.py
+
+Injects synthetic GPS MSP data without attempting to arm — for use alongside
+`blackbox_arm_control = -1` when you want GPS fields populated in a
+log-from-boot test but don't want to deal with arming prerequisites.
+
+### sitl/arm_fc_physical.py
+
+Arms via HITL mode for a quick "can it arm at all" MSP smoke test. **Not
+usable for blackbox log generation** — HITL bypasses the blackbox subsystem
+entirely (see "Why Not Use HITL Mode" below).
 
 ---
 
@@ -210,6 +257,7 @@ Should show ARM on AUX1 with range 1700-2100.
 
 1. **HITL mode enabled** - HITL bypasses blackbox!
    - Solution: Use `continuous_msp_rc_sender.py` (does NOT use HITL)
+   - Do NOT use `arm_fc_physical.py` for this — it arms via HITL by design
    - Verify: Check script doesn't call MSP_SIMULATOR
 
 2. **FC not actually armed**
@@ -298,6 +346,18 @@ For blackbox testing, use real sensor calibration without HITL.
 
 For a 5-second nav cycle, use `rate_denom = 100` to ensure full cycle captured.
 
+**Hard cap you can't configure around:** INAV enforces a maximum blackbox rate
+of 1kHz regardless of what you set (`fc_init.c`, checked at every boot) —
+"Do not allow blackbox to run faster than 1kHz. It can cause UAV to drop dead
+when digital ESC protocol is used." If `rate_denom` would imply logging faster
+than that given the board's actual PID loop rate, the firmware silently
+overrides it: `rate_num = 1`, `rate_denom = ceil(1000 / looptime_us)`. In
+practice this means `rate_denom = 1` only takes effect as written on a board
+running at ≤1kHz PID rate; on a ~2kHz board it becomes `2` after reboot no
+matter what you sent. If you need the true maximum sustainable rate for a
+stress test, don't hardcode `1` — set it, reboot, then read back the actual
+value with `fc-cli.py "get blackbox_rate_denom"`.
+
 ### Performance Notes
 
 **Arming Script**:
@@ -342,6 +402,9 @@ For a 5-second nav cycle, use `rate_denom = 100` to ensure full cycle captured.
 ```bash
 #!/bin/bash
 # Run multiple test iterations
+# continuous_msp_rc_sender.py: claude/developer/scripts/testing/inav/sitl/
+# download_blackbox_from_fc.py: claude/developer/scripts/testing/inav/blackbox/config/
+# check_blackbox_integrity.py: claude/developer/scripts/testing/inav/blackbox/analysis/
 
 for i in {1..5}; do
     echo "=== Test $i of 5 ==="
@@ -354,6 +417,9 @@ for i in {1..5}; do
 
     # Decode
     blackbox_decode test_results/test_$i.TXT
+
+    # Or classify pass/fail objectively (useful when scripting an A/B comparison)
+    python3 check_blackbox_integrity.py test_results/test_$i.TXT
 
     # Brief pause
     sleep 5

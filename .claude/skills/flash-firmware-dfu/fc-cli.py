@@ -207,6 +207,7 @@ def cmd_tasks(cli):
         Exit code (0 for success)
     """
     response = cli.send_command('tasks', read_response=True, response_timeout=0.5)
+    cli.send_command('exit', read_response=False)
     cli.close()
 
     if response:
@@ -232,6 +233,10 @@ def cmd_generic(cli, command):
         Exit code (0 for success)
     """
     response = cli.send_command(command, read_response=True, response_timeout=0.5)
+    # Leave CLI mode so the FC returns to MSP — otherwise it stays latched in
+    # CLI (visible as the CLI arming-disabled flag) and ignores MSP/RC frames
+    # from any script that connects afterward.
+    cli.send_command('exit', read_response=False)
     cli.close()
 
     if response:
