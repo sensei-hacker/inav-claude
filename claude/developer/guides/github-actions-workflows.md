@@ -78,6 +78,26 @@ directly instead: `gh api repos/{repo}/actions/runs/{run_id}/jobs --jq
 '.jobs[] | select(.name == "<job name>") | .conclusion'` (note reusable-
 workflow job names are prefixed `"<caller job name> / <callee job id>"`).
 
+## Two different workflow *files* can share the same `name:`, and `workflow_run` can't tell them apart
+
+A `workflow_run` listener matches on the triggering workflow's `name:` field,
+not its file path. Nothing stops two separate `.yml` files from declaring the
+identical `name:` — a common intentional pattern for satisfying one required
+branch-protection check with either a real, expensive workflow (gated by
+`paths:`) or a cheap stub (gated by the exact `paths-ignore:` complement),
+so exactly one of them runs per PR. But a `workflow_run` listener gated only
+on `if: github.event.workflow_run.name == '<Name>'` fires for *either* one,
+even though the stub never produces the jobs/artifacts the listener expects
+— it isn't an unrelated failing job dragging down `conclusion` (see the
+section above), it's a wholly different, much smaller workflow silently
+substituting for the real one, still reporting overall `conclusion: success`.
+Found via `gh api repos/{repo}/actions/runs/{run_id} --jq
+'{workflow_id, path, name}'` — two runs with the identical reported `name`
+had different `path`/`workflow_id`. Disambiguate by checking for the
+specific job/artifact you actually need (same fix as the aggregate-conclusion
+gotcha), or gate on `workflow_id` directly if the two files' identity is
+otherwise indistinguishable.
+
 ## Debugging technique
 
 For all of the above, `gh run list --workflow <file> --event <event>`

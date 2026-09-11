@@ -38,6 +38,22 @@ Use this string **everywhere**: directory names, rename script argument, release
 
 ---
 
+## ⚠️ Step 0 (New Major Versions Only): Reserve the Previous Major's Patch Number First
+
+**Applies only when this release establishes a new major version's version string for the first time** (e.g. setting `10.0.0` on `maintenance-10.x`). Not needed for RC-to-RC releases or for patch releases within an existing major version.
+
+**The hazard:** Once `maintenance-10.x`'s version number is set to `10.0.0`, any later patch fix on the previous major's release branch (e.g. `release/9.1` → `9.1.1`) has to be merged forward into `maintenance-10.x`, per [Post-Release: Merging Changes Upward](#️-post-release-merging-changes-upward-to-the-next-version) below. If that forward-merge happens *after* `10.0.0` was already set, it can carry the `9.1.x` branch's version-string commit along with it — silently overwriting the already-set `10.0.0` version number on `maintenance-10.x`.
+
+**Do this, in order, before setting the new major's version number:**
+1. On the previous major's release branch (e.g. `release/9.1`), bump the patch level (e.g. to `9.1.2`) — even if there's no pending bug fix. This reserves the next patch number.
+2. Commit that patch-level bump.
+3. Open a PR carrying it forward into the new major's branch (`maintenance-10.x`), following the [forward-merge procedure](#️-post-release-merging-changes-upward-to-the-next-version) below — **never use GitHub's "Resolve conflicts" button** on that PR.
+4. **Only after that PR merges**, set the new major's own version number (e.g. `10.0.0`) on `maintenance-10.x`.
+
+This ordering exists because a version bump landing on `maintenance-10.x` before the previous major's patch reservation is merged forward can get silently reverted by that later merge.
+
+---
+
 ## ⚠️ Step 0.5: Lock the Repo Before Any Local Build/Validation
 
 `inav/` and `inav-configurator/` are shared working directories — other roles (Developer) check out and commit to them concurrently. A build or PG-validation run in an unlocked checkout can have its `HEAD` moved out from under it mid-run, silently invalidating the result.

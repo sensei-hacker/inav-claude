@@ -27,6 +27,9 @@ Do NOT read other roles' files (Manager's INDEX, other inboxes, cross-role track
 7. **[Phase 7: Publishing Releases](guides/7-publishing-releases.md)** - Publish and announce
 8. **[Phase 8: Post-Release](guides/8-post-release.md)** - Monitor, hotfix, capture lessons learned
 
+**Other guides (not yet part of the standard flow):**
+- **[WASM SITL + Browser/PWA Build](guides/wasm-sitl-pwa-build.md)** - Building/packaging the browser-based PWA Configurator build (feature not yet merged as of 2026-09-01)
+
 **Important:** Use the **inav-builder** agent for all builds. Only read Phase 4 if the agent encounters issues.
 
 ---
