@@ -1,0 +1,15 @@
+Keyword: RS485
+Occurrences: 11
+================================================================================
+
+Page    1: bus: supports CF, SRAM, PSRAM, NOR, NAND,                       IrDA capability, modem control and RS485 drive enable,
+Page  207: RS485EN DEP
+Page  211: 5. RS485 mode:
+Page  211: This mode is enabled by setting RS485EN=1. The enable signal is output on the RTS pin. The DEP
+Page  222: In RS485 mode, the first data (in sequential transmit
+Page  222: In RS485 mode, a period of time (delay) is needed before
+Page  225: RS485 enable
+Page  225: This bit is used to enable RS485 mode. In RS485 mode,
+Page  225: Bit 14        RS485EN       0x0             rw
+Page  225: 0: RS485 mode disabled. The control signal DE output is
+Page  225: 1: RS485 mode enabled. The control signal DE outputs on

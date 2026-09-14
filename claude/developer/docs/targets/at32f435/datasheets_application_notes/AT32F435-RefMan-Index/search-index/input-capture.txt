@@ -1,0 +1,29 @@
+Keyword: input capture
+Occurrences: 25
+================================================================================
+
+Page  257: achieve input capture and programmable PWM output.
+Page  257:       4 independent channels for input capture, output compare, PWM generation and one-pulse
+Page  264: and input capture of input signals.
+Page  264:  Enable channel 1 input capture (C1EN=1).
+Page  265:  Set C1EN=1’b1 and C2EN=1’b1 to enable channel 1 and input capture.
+Page  278: Input capture mode:
+Page  279: 00: No divider. An input capture is generated at each
+Page  279: Input capture mode:
+Page  283:  2 independent channels for input capture, output compare, PWM generation and one-pulse
+Page  284:  1 independent channel for input capture, output compare, PWM generation
+Page  288: and input capture of input signals.
+Page  289:  Enable channel 1 input capture (C1EN=1);
+Page  289:  Set C1EN=1’b1 and C2EN=1’b1 to enable channel 1 and input capture.
+Page  297: Input capture mode:
+Page  297: 00: No divider. An input capture is generated at each
+Page  302: Input capture mode:
+Page  302: 00: No divider. An input capture is generated at each
+Page  304: embedded dead-time, input capture and programmable PWM output.
+Page  304:  Five independent channels for input capture, output compare, PWM generation, one-pulse mode
+Page  312: and input capture of input signals.
+Page  313:  Enable channel 1 input capture (C1EN=1).
+Page  313:  Set C1EN=1’b1 and C2EN=1’b1 to enable channel 1 and input capture.
+Page  327: Input capture mode:
+Page  328: 00: No divider. An input capture is generated at each
+Page  329: Input capture mode:

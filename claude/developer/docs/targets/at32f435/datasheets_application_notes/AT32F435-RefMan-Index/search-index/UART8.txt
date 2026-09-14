@@ -1,0 +1,28 @@
+Keyword: UART8
+Occurrences: 24
+================================================================================
+
+Page   52: 83   90   Configu   UART8                 UART8 global interrupt                       0x0000_018C
+Page   61: 0x4000 7C00 - 0x4000 7FFF       UART8
+Page   81: UART8 reset
+Page   81: Bit 31       UART8RST         0x0            rw       0: Does not reset UART8
+Page   81: 1: Reset UART8
+Page   85: UART8 clock enable
+Page   85: Bit 31       UART8EN         0x0             rw        0: Disabled
+Page   89: UART8 clock enable in sleep mode
+Page   89: Bit 31       UART8LPEN        0x1            rw       0: Disabled
+Page  128: I2S4_MCK     TMR20_CH3    UART8_TX
+Page  128: I2C3_SDA                              UART8_RX
+Page  129: PC2    UART8_TX                SDIO2_D2      EMAC_MII_TXD2   XMC_SDCS0                XMC_NWE   EVENTOUT
+Page  129: PC3    UART8_RX    QSPI2_IO1   SDIO2_D3
+Page  131: PD13   UART8_TX   QSPI1_IO3   XMC_SD_CLK                       XMC_A18                         EVENTOUT
+Page  131: PD14   UART8_RX                                                XMC_D0                          EVENTOUT
+Page  133: PE0    UART8_RX
+Page  133: PE1    UART8_TX
+Page  154: SPI3       UART8                           DMA ack
+Page  158: SPI3     UART8
+Page  159: 22          reserved      54        TMR8_TRIG          86        TMR20_CH1      118     UART8_RX
+Page  159: 23          reserved      55        TMR8_HALL          87        TMR20_CH2      119     UART8_TX
+Page  693: SPI3     UART8
+Page  694: 22              reserved              54        TMR8_TRIG         86           TMR20_CH1         118     UART8_RX
+Page  694: 23              reserved              55        TMR8_HALL         87           TMR20_CH2         119     UART8_TX

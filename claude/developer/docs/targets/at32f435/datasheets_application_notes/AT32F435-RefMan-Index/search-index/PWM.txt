@@ -1,0 +1,91 @@
+Keyword: PWM
+Occurrences: 87
+================================================================================
+
+Page    1: − Floating Point Unit (FPU)                                       IC/OC/PWM or pulse counter channels
+Page   34: Figure 14-24 Example of PWM input mode configuration ........................................................................ 265
+Page   34: Figure 14-25 PWM input mode.................................................................................................................. 266
+Page   34: Figure 14-28 Upcounting mode and PWM mode A ................................................................................... 268
+Page   34: Figure 14-29 Up/down counting mode and PWM mode A ........................................................................ 268
+Page   34: Figure 14-31 Clearing CxORAW (PWM mode A) by EXT input ................................................................ 269
+Page   35: Figure 14-50 Example of PWM input mode configuration ........................................................................ 289
+Page   35: Figure 14-51 PWM input mode.................................................................................................................. 290
+Page   35: Figure 14-54 Upcounting mode and PWM mode A ................................................................................... 291
+Page   35: Figure 14-77 Example of PWM input mode configuration ........................................................................ 313
+Page   35: Figure 14-78 PWM input mode.................................................................................................................. 314
+Page   35: Figure 14-82 Upcounting mode and PWM mode A ................................................................................... 316
+Page   35: Figure 14-83 Up/down counting mode and PWM mode A ........................................................................ 316
+Page   35: Figure 14-85 Clearing CxORAW(PWM mode A) by EXT input ................................................................. 317
+Page  252: PWM
+Page  252: Timer                 Counter Count    PWM           Complementary Dead-                        Linkage
+Page  257: achieve input capture and programmable PWM output.
+Page  257:       4 independent channels for input capture, output compare, PWM generation and one-pulse
+Page  265: PWM input
+Page  265: The PWM input mode applies to channel 1 and channel 2. To enable this mode, map the C1IN and C2IN
+Page  265: The PWM input mode can be used to measure the period and duty cycle of input signal. The period and
+Page  265: Figure 14-24 Example of PWM input mode configuration
+Page  266: Figure 14-25 PWM input mode
+Page  266:  PWM mode A: Set CxOCTRL=3’b110 to enable PWM mode A. In upcounting, when
+Page  266: when TMRx_C1DT<TMRx_CVAL, C1ORAW outputs low; otherwise, outputs high. To set PWM
+Page  266: - Set the TMRx_PR register to set PWM period;
+Page  266: - Set the TMRx_CxDT register to set PWM duty cycle;
+Page  266: - Set CxOCTRL=3’b110 in TMRx_CM1/CM2 register and set output mode as PWM mode A;
+Page  267:     PWM mode B: Set CxOCTRL=3’b111 to enable PWM mode B. In upcounting, when
+Page  267:  One-pulse mode: This is a particular case of PWM mode. Set OCMEN=1 to enable one-pulse
+Page  267: Figure 28 gives an example of the combination between upcounting mode and PWM mode A. The output
+Page  267: Figure 29 gives an example of the combination between up/down counting mode and PWM mode A.
+Page  267: Figure 30 gives an example of the combination between upcounting mode and one-pulse PWM mode B.
+Page  268: Figure 14-28 Upcounting mode and PWM mode A
+Page  268: Figure 14-29 Up/down counting mode and PWM mode A
+Page  269: This function can only be used in output capture or PWM modes, and does not work in forced mode.
+Page  269: Figure 14-31 Clearing CxORAW (PWM mode A) by EXT input
+Page  278: 110: PWM mode A
+Page  278: 111: PWM mode B
+Page  278: In PWM mode A or B, this bit is used to accelerate the
+Page  283:  2 independent channels for input capture, output compare, PWM generation and one-pulse
+Page  284:  1 independent channel for input capture, output compare, PWM generation
+Page  289: PWM input (TMR9/12)
+Page  289: The PWM input mode applies to channel 1 and channel 2. To enable this mode, map the C1IN and C2IN
+Page  289: The PWM input mode can be used to measure the period and duty cycle of input signal. The period and
+Page  289: Figure 14-50 Example of PWM input mode configuration
+Page  290: Figure 14-51 PWM input mode
+Page  290:  PWM mode A: Set CxOCTRL=3’b110 to enable PWM mode A. In upcounting, when
+Page  290: when TMRx_C1DT<TMRx_CVAL, C1ORAW outputs low; otherwise, outputs high. To set PWM
+Page  290: - Set the TMRx_PR register to set PWM period;
+Page  290: - Set the TMRx_CxDT register to set PWM duty cycle;
+Page  290: - Set CxOCTRL=3’b110 in TMRx_CM1/CM2 register and set output mode as PWM mode A;
+Page  291:     PWM mode B: Set CxOCTRL=3’b111 to enable PWM mode B. In upcounting, when
+Page  291:  One-pulse mode (TMR9/12 only): This is a particular case of PWM mode. Set OCMEN=1 to
+Page  291: Figure 54 gives an example of the combination between upcounting mode and PWM mode A. The output
+Page  291: Figure 55 gives an example of the combination between upcounting mode and one-pulse PWM mode B.
+Page  291: Figure 14-54 Upcounting mode and PWM mode A
+Page  296: 110: PWM mode A
+Page  296: 111: PWM mode B
+Page  296: Bit 2        C1OIEN            0x0             rw       In PWM mode A or B, this bit is used to accelerate the
+Page  301: 110: PWM mode A
+Page  301: 111: PWM mode B
+Page  301: In PWM mode A or B, this bit is used to accelerate the
+Page  304: embedded dead-time, input capture and programmable PWM output.
+Page  304:  Five independent channels for input capture, output compare, PWM generation, one-pulse mode
+Page  313: PWM input
+Page  313: The PWM input mode applies to channel 1 and channel 2. To enable this mode, map the C1IN and C2IN
+Page  313: The PWM input mode can be used to measure the period and duty cycle of input signal. The period and
+Page  313: Figure 14-77 Example of PWM input mode configuration
+Page  314: Figure 14-78 PWM input mode
+Page  314:  PWM mode A: Set CxOCTRL=3’b110 to enable PWM mode A. In upcounting, when
+Page  314: when TMRx_C1DT<TMRx_CVAL, C1ORAW outputs low; otherwise, outputs high. To set PWM
+Page  315: -      Set the TMRx_PR register to set PWM period;
+Page  315: -      Set the TMRx_CxDT register to set PWM duty cycle;
+Page  315: -      Set CxOCTRL=3’b110 in the TMRx_CM1/CM2 register to set output mode as PWM mode A;
+Page  315:     PWM mode B: Set CxOCTRL=3’b111 to enable PWM mode B. In upcounting, when
+Page  315:  One-pulse mode: This is a particular case of PWM mode. Set OCMEN=1 to enable one-pulse
+Page  315: Figure 14-82 gives an example of the combination between upcounting mode and PWM mode A. The
+Page  315: Figure 14-83 gives an example of the combination between up/down counting mode and PWM mode A.
+Page  315: Figure 14-84 gives an example of the combination between upcounting mode and one-pulse PWM mode
+Page  316: Figure 14-82 Upcounting mode and PWM mode A
+Page  316: Figure 14-83 Up/down counting mode and PWM mode A
+Page  317: This function can only be used in output capture or PWM modes, and does not work in forced mode.
+Page  317: Figure 14-85 Clearing CxORAW(PWM mode A) by EXT input
+Page  327: 110: PWM mode A
+Page  327: 111: PWM mode B
+Page  327: In PWM mode A or B, this bit is used to accelerate the

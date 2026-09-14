@@ -1,0 +1,7 @@
+Keyword: real-time clock
+Occurrences: 3
+================================================================================
+
+Page   15: 17       Enhanced real-time clock (ERTC) ............................................... 341
+Page  341: 17 Enhanced real-time clock (ERTC)
+Page  341: The real-time clock provides a calendar clock function. The time and date can be modified by modifying

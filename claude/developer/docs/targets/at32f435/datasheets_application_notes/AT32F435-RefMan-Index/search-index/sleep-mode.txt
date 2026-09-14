@@ -1,0 +1,147 @@
+Keyword: sleep mode
+Occurrences: 143
+================================================================================
+
+Page   63:    Three types of power saving modes: Sleep mode, Deepsleep mode, and Standby mode
+Page   65: (Sleep mode, Deepsleep mode and Standby mode) to save power. Users can select the mode that gives
+Page   65: Sleep mode
+Page   65: The Sleep mode is entered by executing WFI or WFE instruction. There are two options to select the
+Page   65: Sleep mode entry mechanism through the SLEEPONEXIT bit in the Cortex® -M4F system control register.
+Page   65: When SLEEPDEEP=0 and SLEEPONEXIT=0, the MCU enters Sleep mode as soon as WFI or WFE
+Page   66: In Sleep mode, all clocks and LDO work normally except CPU clocks (stopped), and all I/O pins keep
+Page   66: 1) If the WFI is executed to enter Sleep mode, any peripheral interrupt can wake up the device from
+Page   66: Sleep mode.
+Page   66: 2) If the WFE is executed to enter Sleep mode, the MCU exits Sleep mode as soon as an event occurs.
+Page   66: Deepsleep Mode
+Page   66: Deepsleep mode is entered by setting the SLEEPDEEP bit in the Cortex®-M4F system control register
+Page   66: In Deepsleep mode, all clocks in 1.2 V domain are stopped, and both HICK and HEXT oscillators are
+Page   66: 1) When the Sleep mode is entered by executing a WFI instruction, the interrupt generated on any
+Page   66: external interrupt line in Interrupt mode can wake up the system from Deepsleep mode.
+Page   66: 2) When the Sleep mode is entered by executing a WFE instruction, the interrupt generated on any
+Page   66: external interrupt line in Event mode can wake up the system from Deepsleep mode.
+Page   66: When the MCU exits the Deepsleep mode, the HICK RC oscillator is enabled and selected as a system
+Page   67: By default, the debug connection is lost if the MCU enters Deepsleep mode or Standby mode while
+Page   68: Bit 1        LPSEL           0x0            rw       0: Enter DEEPSLEEP mode
+Page   68: LDO state select in Deepsleep mode
+Page   71: 30 kHz and 60 kHz. It acts as a low-power clock source that can be kept running in Deepsleep mode
+Page   73: when entering Deepsleep mode (by clearing the nDEPSLP_RST in the user system data area).
+Page   75: hardware when exiting Standby or Deepsleep mode. When
+Page   87: OTGFS2 clock enable in sleep mode
+Page   87: EMAC PTP clock enable in sleep mode
+Page   87: EMAC RX clock enable in sleep mode
+Page   87: EMAC TX clock enable in sleep mode
+Page   88: EMAC clock enable during sleep mode
+Page   88: DMA2 clock enable in sleep mode
+Page   88: DMA1 clock enable in sleep mode
+Page   88: EDMA clock enable in sleep mode
+Page   88: SRAM2 clock enable in sleep mode
+Page   88: SRAM1 clock enable in sleep mode
+Page   88: FLASH clock enable during sleep mode
+Page   88: CRC clock enable during sleep mode
+Page   88: O port H clock enable in sleep mode
+Page   88: IO port G clock enable in sleep mode
+Page   88: IO port F clock enable in sleep mode
+Page   88: IO port E clock enable in sleep mode
+Page   88: IO port D clock enable in sleep mode
+Page   88: IO port C clock enable in sleep mode
+Page   88: IO port B clock enable in sleep mode
+Page   88: IO port A clock enable in sleep mode
+Page   89: SDIO1 clock enable in sleep mode
+Page   89: OTGFS1 clock enable in sleep mode
+Page   89: DVP clock enable in sleep mode
+Page   89: SDIO2 clock enable in sleep mode
+Page   89: QSPI2 clock enable in sleep mode
+Page   89: QSPI1 clock enable in sleep mode
+Page   89: XMC clock enable in sleep mode
+Page   89: UART8 clock enable in sleep mode
+Page   89: UART7 clock enable in sleep mode
+Page   89: DAC interface clock enable in sleep mode
+Page   89: Power interface clock enable in sleep mode
+Page   89: CAN2 clock enable in sleep mode
+Page   89: CAN1 clock enable in sleep mode
+Page   90: I2C3 clock enable in sleep mode
+Page   90: I2C2 clock enable in sleep mode
+Page   90: I2C1 clock enable in sleep mode
+Page   90: UART5 clock enable in sleep mode
+Page   90: UART4 clock enable in sleep mode
+Page   90: USART3 clock enable in sleep mode
+Page   90: USART2 clock enable in sleep mode
+Page   90: SPI3 clock enable in sleep mode
+Page   90: SPI 2 clock enable in sleep mode
+Page   90: Window watchdog clock enable in sleep mode
+Page   90: Timer14 clock enable in sleep mode
+Page   90: Timer13 clock enable in sleep mode
+Page   90: Timer12 clock enable in sleep mode
+Page   90: Timer 7 clock enable in sleep mode
+Page   90: Timer 6 clock enable in sleep mode
+Page   90: Timer 5 clock enable in sleep mode
+Page   90: Timer 4 clock enable in sleep mode
+Page   90: Timer 3 clock enable in sleep mode
+Page   90: Timer 2 clock enable in sleep mode
+Page   91: ACC clock enable in sleep mode
+Page   91: Timer20 clock enable in sleep mode
+Page   91: Timer11 clock enable during sleep mode
+Page   91: Timer10 clock enable in sleep mode
+Page   91: Timer9 clock enable in sleep mode
+Page   91: SCFG clock enable in sleep mode
+Page   91: SPI4 clock enable in sleep mode
+Page   91: SPI1 clock enable in sleep mode
+Page   91: ADC3 interface clock enable in sleep mode
+Page   91: DC2 interface clock enable in sleep mode
+Page   91: ADC1 interface clock enable in sleep mode
+Page   91: USART6 clock enable in sleep mode
+Page   91: USART1 clock enable in sleep mode
+Page   91: TMR8 timer clock enable in sleep mode
+Page   91: TMR1 timer clock enable in sleep mode
+Page   98: Deepsleep mode
+Page   98: [23: 16]                                     entering Deepsleep mode
+Page   99: Deepsleep mode
+Page   99: Deepsleep mode
+Page  344: Note: In Standby and Deepsleep modes, the current calendar values are not copied into the shadow
+Page  405:  Sleep mode
+Page  405: After a system reset, the CAN controller is in Sleep mode. In this mode, the CAN clock is stopped
+Page  405: The software request the CAN controller to enter Sleep mode by setting the DZEN bit in the
+Page  405: Exit Sleep mode in two ways: The CAN controller can be woke up by hardware clearing the DZEN
+Page  405: Switch to Frozen mode: The CAN controller switches from Sleep mode to Frozen mode when the
+Page  405: Switch to Sleep mode: The CAN controller enters Sleep mode if DZEN=1 and FZEN=0 in the
+Page  405: Switch to Sleep mode: The CAN controller switches to Sleep mode when the DZEN bit is set in the
+Page  411: The CAN enters Sleep mode after reset. Then this bit is
+Page  411: 0: Automatic exit sleep mode disabled
+Page  411: 1: Automatic exit sleep mode enabled
+Page  411: When Automatic exit sleep mode is disabled, the sleep
+Page  411: When Automatic exit sleep mode is enabled, the sleep
+Page  412: 0: Sleep mode is disabled.
+Page  412: 1: Sleep mode is enabled.
+Page  412: The hardware will automatically leave sleep mode when
+Page  412: 0: Sleep mode is not entered or no condition for flag set.
+Page  412: 1: Sleep mode is entered.
+Page  412: CAN enters Sleep mode. When set, this bit will generate a
+Page  412: 0: Sleep mode is not left or no condition for exit.
+Page  412: 1: Sleep mode has been left or exit condition has
+Page  413: Sleep mode is left when a SOF is detected on the bus.
+Page  413: 0: The CAN is not in Sleep mode.
+Page  413: 1: CAN is in Sleep mode.
+Page  413: mode or not. This bit acknowledges the Sleep mode
+Page  413: Bit 1    DZC      0x1             ro       The Sleep mode can be entered only when the current
+Page  413: The Sleep mode is left only once 11 consecutive recessive
+Page  413: the software acknowledges the exit of Sleep mode after
+Page  417: 0: Enter sleep mode interrupt disabled
+Page  417: 1: Enter sleep mode interrupt enabled
+Page  417: 0: Quit sleep mode interrupt disabled
+Page  417: 1: Quit sleep mode interrupt enabled
+Page  608: When a remote wakeup frame is received, the EMAC will move from sleep mode to normal mode. At the
+Page  609: In Sleep mode, the PMT will constantly detect each frame transferred to the station to determine whether
+Page  609: Precautions on system in DEEPSLEEP mode
+Page  609: In DEEPSLEEP mode, the Ethernet PMT block is still able to detect frames as long as the EXTI 19 is
+Page  609: 8.    MCU enters DEEPSLEEP mode.
+Page  711: In addition, code debugging is supported in Low-power mode. In Sleep mode, the clock programmed by
+Page  711: code remains active for HCLK and FCLK to continue to work. In DeepSleep mode, HICK oscillator is
+Page  713: Debug Deepsleep mode control bit
+Page  713: 0: In Deepsleep mode, all clocks in the 1.2V domain are
+Page  713: disabled. When exiting from Deepsleep mode, the internal
+Page  713: 1: In Deepsleep mode, system clock is provided by the
+Page  713: Deepsleep mode, HICK is used as the system clock
+Page  713: Debug Sleep mode control bit
+Page  713: 0: When entering Sleep mode, CPU HCLK clock is
+Page  713: from Sleep mode, it is not necessary to reprogram the
+Page  713: 1: When entering Sleep mode, all clocks keep running.

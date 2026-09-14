@@ -1,0 +1,34 @@
+Keyword: USART6
+Occurrences: 30
+================================================================================
+
+Page   52: 71   78             USART6                USART6 global interrupt                      0x0000_015C
+Page   61: 0x4001 1400 - 0x4001 17FF       USART6
+Page   82: USART6 reset
+Page   82: Bit 5        USART6RST        0x0            rw       0: Does not reset USART6
+Page   82: 1: Reset USART6
+Page   87: USART6 clock enable
+Page   87: Bit 5        USART6EN        0x0              rw          0: Disabled
+Page   91: USART6 clock enable in sleep mode
+Page   91: Bit 5        USART6LPEN       0x1            rw       0: Disabled
+Page  125: PA4    USART6_TX               SDIO2_D4    SDIO2_D0
+Page  125: PA5    USART6_RX   QSPI2_IO2   SDIO2_D5    SDIO2_D1                                    XMC_D7     EVENTOUT
+Page  125: PA11   USART6_TX   CAN1_RX     OTG1_D-                                    DVP_D2                  EVENTOUT
+Page  125: PA12   USART6_RX   CAN1_TX     OTG1_D+                                    DVP_D3                  EVENTOUT
+Page  129: PC6    USART6_TX               XMC_A0                        SDIO1_D6     DVP_D0      XMC_D1    EVENTOUT
+Page  129: PC7    USART6_RX               XMC_A1                        SDIO1_D7     DVP_D1                EVENTOUT
+Page  129: PC8    USART6_CK   QSPI1_IO2   XMC_A2                        SDIO1_D0     DVP_D2                EVENTOUT
+Page  137: PG7    USART6_CK                                                 XMC_INT3     DVP_D13          EVENTOUT
+Page  137: PG8    USART6_RTS_DE                           EMAC_PPS_OUT      XMC_SDCLK                     EVENTOUT
+Page  137: PG9    USART6_RX       QSPI1_IO2
+Page  137: PG12   USART6_RTS_DE   CAN2_TX                                   XMC_NE4                       EVENTOUT
+Page  137: PG13   USART6_CTS                                                XMC_A24                       EVENTOUT
+Page  137: PG14   USART6_TX       QSPI1_IO3                                 XMC_A25                       EVENTOUT
+Page  137: PG15   USART6_CTS                                                XMC_SDNCAS   DVP_D13          EVENTOUT
+Page  154: SPI1       USART6                                                           ch2     Master
+Page  158: SPI1     USART6          Req_gen1
+Page  159: 18          I2C2_RX       50        TMR8_CH2           82        reserved       114     USART6_RX
+Page  159: 19          I2C2_TX       51        TMR8_CH3           83        reserved       115     USART6_TX
+Page  693: SPI1     USART6               Req_gen1
+Page  693: 18          I2C2_RX           50             TMR8_CH2                             82             reserved                     114                USART6_RX
+Page  693: 19          I2C2_TX           51             TMR8_CH3                             83             reserved                     115                USART6_TX

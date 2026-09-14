@@ -1,0 +1,88 @@
+Keyword: DMAMUX
+Occurrences: 84
+================================================================================
+
+Page    7: 9.4    DMA multiplexer (DMAMUX) ....................................................... 157
+Page    7: 9.4.1 DMAMUX functional overview ..................................................... 158
+Page    7: 9.4.2 DMAMUX overflow interrupts ...................................................... 160
+Page    7: 9.5.7 DMAMUX selection register (DMA_MUXSEL) ............................... 167
+Page    7: 9.5.8 DMAMUX channel-x control register (DMA_MUXCxCTRL) (x = 1…7)167
+Page    7: 9.5.9 DMAMUX generator x control register (DMA_MUXGxCTRL) (x = 1…4) 168
+Page    7: 9.5.10 DMAMUX channel synchronization status register
+Page    7: 9.5.11 DMAMUX channel interrupt clear flag register (DMA_ MUXSYNCCLR)169
+Page    7: 9.5.12 DMAMUX generator interrupt status register (DMA_ MUXGSTS) .... 169
+Page    7: 9.5.13 DMAMUX generator interrupt flag clear register (DMA_ MUXGCLR)170
+Page   30: 29.4 DMA multiplexer (DMAMUX) ....................................................... 692
+Page   30: 29.4.1 DMAMUX functional overview ..................................................... 692
+Page   30: 29.4.2 DMAMUX overflow interrupts ...................................................... 694
+Page   31: 29.5.17 DMAMUX table select (DMA_MUXSEL) ..................................... 708
+Page   31: 29.5.18 DMAMUX channel-x control register (DMA_MUXSxCTRL)
+Page   31: 29.5.19 DMAMUX generator-x control register (DMA_MUXGxCTRL)
+Page   31: 29.5.20 DMAMUX synchronization interrupt status register
+Page   31: 29.5.21 DMAMUX synchronization interrupt clear flag register
+Page   31: 29.5.22 DMAMUX generator interrupt status register (DMA_ MUXGSTS) 710
+Page   31: 29.5.23 DMAMUX generator interrupt clear flag register (DMA_ MUXGCLR)710
+Page   32: Figure 9-6 DMAMUX block diagram .......................................................................................................... 158
+Page   32: Figure 9-7 DMAMUX request synchronized mode .................................................................................... 160
+Page   32: Figure 9-8 DMAMUX event generation ..................................................................................................... 161
+Page   39: Figure 29-11 DMAMUX block diagram ...................................................................................................... 693
+Page   39: Figure 29-12 DMAMUX synchronized mode ............................................................................................. 695
+Page   39: Figure 29-13 DMAMUX event generation ................................................................................................. 695
+Page   40: Table 9-4 DMAMUX EXINT LINE for trigger input and synchronized input .............................................. 160
+Page   43: Table 29-4 DMAMUX EXINT LINE for trigger input and synchronized input ............................................ 694
+Page   53: 94      101                DMAMUX                 DMAMUX overflow interrupt            0x0000_01B8
+Page  154: I2C1       USART1           DMAMUX
+Page  157: 9.4 DMA multiplexer (DMAMUX)
+Page  157: DMAMUX manages DMA requests/acknowledge between peripherals and DMA controller.
+Page  158: 9.4.1         DMAMUX functional overview
+Page  158: The DMAMUX consists of a request generator and a request multiplexer.
+Page  158: Each of the DMAMUX generator channel x has a GEN enable bit in the DMA_MUXGxCTR register. The
+Page  158: SIGSEL bit is used to select the trigger input of the DMAMUX generator. Typically, the number of DMA
+Page  158: Each of the DMAMUX stream x comes from all_req [127: 1].
+Page  158: Figure 9-6 DMAMUX block diagram
+Page  158: DMAMUX
+Page  158: DAC1     TMR5                                                        Stream 1               DMAMUX_SEL
+Page  158: {dmamux_evt[x:1], exint_gpio [15:0]}                             dmamux_evt[x:0]
+Page  159: DMAMUX                    DMAMUX                       DMAMUX                   DMAMUX
+Page  160: Table 9-4 DMAMUX EXINT LINE for trigger input and synchronized input
+Page  160: 9.4.2          DMAMUX overflow interrupts
+Page  160: During DMAMUX request generation, when a new trigger input occurs before the GREQCNT underflows,
+Page  160: In DMAMUX synchronous mode, when a new synchronized input occurs before the REQCNT underflows,
+Page  160: Figure 9-7 DMAMUX request synchronized mode
+Page  161: Figure 9-8 DMAMUX event generation
+Page  167: 9.5.7             DMAMUX selection register (DMA_MUXSEL)
+Page  167: 9.5.8 DMAMUX channel-x control register (DMA_MUXCxCTRL)
+Page  168: Bit 6: 0     REQSEL           0x00                     Select DMA request. Refer to DMAMUX table for more
+Page  168: 9.5.9 DMAMUX generator x control register
+Page  169: 9.5.10 DMAMUX channel synchronization status register
+Page  169: 9.5.11 DMAMUX channel interrupt clear flag register
+Page  169: 9.5.12 DMAMUX generator interrupt status register
+Page  170: 9.5.13 DMAMUX generator interrupt flag clear register
+Page  692: 29.4 DMA multiplexer (DMAMUX)
+Page  692: DMAMUX manages DMA requests/acknowledge between peripherals and DMA controller.
+Page  692: 29.4.1 DMAMUX functional overview
+Page  692: The DMAMUX consists of a request generator and a request multiplexer.
+Page  692: Each of the DMAMUX generator channel x has a GEN enable bit in the DMA_MUXGxCTR register. The
+Page  692: SIGSEL bit is used to select the trigger input of the DMAMUX generator. Typically, the number of DMA
+Page  692: Each of the DMAMUX stream x comes from all_req [127: 1].
+Page  693: Figure 29-11 DMAMUX block diagram
+Page  693: DMAMUX
+Page  693: DAC1     TMR5                                                             Stream 1               DMAMUX_SEL
+Page  693: {dmamux_evt[x:1], exint_gpio [15:0]}                             dmamux_evt[x:0]
+Page  693: DMAMUX                        DMAMUX                                              DMAMUX                                      DMAMUX
+Page  694: Table 29-4 DMAMUX EXINT LINE for trigger input and synchronized input
+Page  694: 29.4.2 DMAMUX overflow interrupts
+Page  694: During DMAMUX request generation, when a new trigger input occurs before the GREQCNT underflows,
+Page  694: In DMAMUX synchronous mode, when a new synchronized input occurs before the REQCNT underflows,
+Page  695: Figure 29-12 DMAMUX synchronized mode
+Page  695: Figure 29-13 DMAMUX event generation
+Page  708: 29.5.17 DMAMUX table select (DMA_MUXSEL)
+Page  708: 29.5.18 DMAMUX channel-x control register (DMA_MUXSxCTRL)
+Page  708: Bit 6: 0       REQSEL         0x00                     Select a DMA request Refer to DMAMUX table for more
+Page  709: 29.5.19 DMAMUX generator-x control register
+Page  709: 29.5.20 DMAMUX synchronization interrupt status register
+Page  709: 29.5.21 DMAMUX synchronization interrupt clear flag register
+Page  710: 29.5.22 DMAMUX generator interrupt status register (DMA_
+Page  710: 29.5.23 DMAMUX generator interrupt clear flag register (DMA_
+Page  716: 3. Updated the descriptions of Section 9.4.1 DMAMUX functional overview
+Page  716: 7. Updated the descriptions of Section 29.4.1 DMAMUX functional overview

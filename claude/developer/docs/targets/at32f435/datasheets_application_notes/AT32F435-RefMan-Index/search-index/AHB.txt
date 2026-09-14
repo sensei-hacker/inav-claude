@@ -1,0 +1,195 @@
+Keyword: AHB
+Occurrences: 191
+================================================================================
+
+Page    3: 4.3.10 APB peripheral clock enable register 1 (CRM_AHBEN1) ................ 83
+Page    3: 4.3.11 APB peripheral clock enable register 2 (CRM_AHBEN2) ................ 84
+Page    3: 4.3.12 APB1 peripheral clock enable register 3 (CRM_AHBEN3) .............. 84
+Page    3: 4.3.14 APB2 peripheral clock enable register (CRM_AHB2EN) ................. 86
+Page    3: (CRM_AHBLPEN1) ................................................................................ 87
+Page    3: (CRM_AHBLPEN2) ................................................................................ 89
+Page    3: (CRM_AHBLPEN3) ................................................................................ 89
+Page    3: (CRM_AHB1LPEN) ................................................................................ 89
+Page    4: (CRM_AHB2LPEN) ................................................................................ 91
+Page   20: 21.6.3.3 OTGFS AHB configuration register ( OTGFS_GAHBCFG) .......... 466
+Page   25: 25.3.3.3 SDIO AHB interface .............................................................. 569
+Page   32: Figure 1-3 Internal block diagram of AHB BusMatrix. ................................................................................. 47
+Page   45: AHB Bus Matrix (Freq. Max. 288 MHz)
+Page   45: 14 Channel                                                                                            AHB1
+Page   46: AHB-AP                  Bus Matrix            ITM
+Page   46: Figure 1-3 shows the block diagram of AHB BusMatrix.
+Page   47: Figure 1-3 Internal block diagram of AHB BusMatrix.
+Page   47: AHB1
+Page   47: AHB BUS MATRIX
+Page   60: AHB BusMatrix
+Page   61: AHB1
+Page   65: 5) Set pre-division factors for AHB and APB
+Page   65: clocks or gating the clocks to the APB and AHB peripherals when they are not used.
+Page   66: 11) Set pre-division factors for AHB and APB
+Page   70: HEXT_OUT                                                                                                               AHB
+Page   70: To AHB peripheral/memory
+Page   70: AHB, APB1 and APB2 all support multiple frequency division. The AHB domain has a maximum of 288
+Page   72: when the system clock source is switched from others to the PLL or when the AHB prescaler factor is
+Page   72: enable the automatic frequency switch. Once it is enabled, the AHB bus is halted by hardware till the
+Page   72: are recorded and then handled by NVIC when the AHB bus resumes.
+Page   73: CRM_AHBRST1                       0x010                        0x0000 0000
+Page   73: CRM_AHBRST2                       0x014                        0x0000 0000
+Page   73: CRM_AHBRST3                       0x018                        0x0000 0000
+Page   73: CRM_AHBEN1                        0x030                        0x0000 0000
+Page   73: CRM_AHBEN2                        0x034                        0x0000 0000
+Page   73: CRM_AHBEN3                        0x038                        0x0000 0000
+Page   73: CRM_AHBLPEN1                      0x050                        0x3F63 90FF
+Page   74: CRM_AHBLPEN2                   0x054                           0x0000 8081
+Page   74: CRM_AHBLPEN3                   0x058                           0x0000 C003
+Page   77: AHB division
+Page   77: Bit 7: 4     AHBDIV     0x0        rw
+Page   83: 4.3.10 APB peripheral clock enable register 1 (CRM_AHBEN1)
+Page   84: 4.3.11 APB peripheral clock enable register 2 (CRM_AHBEN2)
+Page   84: 4.3.12 APB1 peripheral clock enable register 3 (CRM_AHBEN3)
+Page   86: 4.3.14 APB2 peripheral clock enable register (CRM_AHB2EN)
+Page   87: (CRM_AHBLPEN1)
+Page   89: (CRM_AHBLPEN2)
+Page   89: (CRM_AHBLPEN3)
+Page   89: (CRM_AHB1LPEN)
+Page   91: (CRM_AHB2LPEN)
+Page   95: the PLL or when the AHB prescaler is changed from large
+Page   95: Once it is enabled, the AHB bus is halted by hardware till
+Page   95: and then handled by NVIC when the AHB bus resumes.
+Page   95: 11: Enabled. When AHBDIV or SCLKSEL is modified, the
+Page  106: Flash memory can be accessed through AHB bus of the CPU.
+Page  109: User system data area can be accessed through AHB bus of the CPU.
+Page  120: AHB bus
+Page  154:     Only support AHB OKAY and ERROR responses
+Page  154:     HBUSREQ and HGRANT of AHB master interface are not supported
+Page  154: ch1      AHB
+Page  154: I2S2_EXT   TMR8                                   AHB             Arbiter
+Page  154: DMA request                      ch1      AHB
+Page  154: AHB             Arbiter
+Page  156: AHB Read Sequence                                             AHB Write Sequence
+Page  157: AHB Read Sequence                                               AHB Write Sequence
+Page  157: AHB Read Sequence                                               AHB Write Sequence
+Page  157: Transfer error         AHB response error occurred during DMA read/write access
+Page  171: AHB bus
+Page  424: AHB and has a dedicated SRAM of 1280 bytes.
+Page  426: AHB Configuration
+Page  426: 1. Program the following fields in the global AHB configuration register:
+Page  427: 2. Program the following fields in the global AHB configuration register:
+Page  427: packet while the previous packet is being transferred to the AHB. If there is a longer latency on AHB,
+Page  427: better the USB performance, and this helps to avoid latency on the AHB line.
+Page  428: can receive the subsequent packet while the previous packet is being transferred to the AHB. If there is
+Page  428: a longer latency on AHB, sufficient spaces must be reserved to receive multiple packets in order to
+Page  428: USB performance, and this helps to avoid latency on the AHB line. Typically, two largest packet sizes of
+Page  428: space is recommended so that the AHB can get the next data packet while the current packet is being
+Page  428: transferred to the USB. If there is a longer latency on AHB, sufficient spaces must be reserved to receive
+Page  429:  Poll the OTGFS_GRSTCTL register and wait until AHBIDLE=1. AHBIDLE = H indicates that the
+Page  431: GAHBCFG.NPTXFEMPLVL or
+Page  431: GAHBCFG.PTXFEMPLVL
+Page  437: Application            AHB                Host                  USB                   Device
+Page  441: Application            AHB                    Host                USB                  Device
+Page  444: Application           AHB                 Host                 USB                 Device
+Page  450: 4. The application reads the SETUP packages through the AHB bus.
+Page  454: Figure 21-12 describes the reception of a single bulk OUT data packet from the USB to the AHB and
+Page  461: registers (CSRx) through the AHB slave interface. These registers are accessible by 32 bits, and the
+Page  461: The host and device mode registers occupy different addresses. All registers are located in the AHB
+Page  462: OTGFS_GAHBCFG                         0x008                         0x0000 0000
+Page  466: 21.6.3.3 OTGFS AHB configuration register (OTGFS_GAHBCFG)
+Page  466: contains AHB-related parameters. Do not change this register after the initial configuration. The
+Page  466: application must configure this register before starting transmission on either the AHB or USB.
+Page  467: program the register before handling any transaction on either the AHB or USB. Do not change this
+Page  467: a minimum of 30MHz AHB frequency. The USB
+Page  467: cables and 5-Hub. If you want the AHB to run below 30
+Page  468: AHB master Idle
+Page  468: Bit 31       AHBIDLE           0x1             ro
+Page  468: This bit indicates that the AHB master state machine is in
+Page  468: Write: AHBIDLE bit in GRSTCTL ensures that the
+Page  469: to clear this bit (slowest of PHY or AHB)
+Page  469: Resets all state machines (except AHB slave) to the idle
+Page  469: All transactions on the AHB master are terminated as
+Page  469: AHB data transfer. All transactions on the USB are
+Page  469: this register is set (AHB master is in idle state) before
+Page  470: periodic transmit FIFO empty level bit in the AHB
+Page  472: bit in the Core AHB Configuration register.
+Page  473: completed on the AHB, but it is ignored by the controller
+Page  482: This register contains the status of a channel related to USB and AHB events, as shown in Figure 21-2.
+Page  495: This register indicates the status of an endpoint when USB and AHB-related events occurs, as shown in
+Page  495: empty level bit in the controller AHB configuration register.
+Page  495: the AHB and on the USB for this endpoint.
+Page  495: This register indicates the status of an endpoint with respect to USB and AHB-related events, as shown
+Page  496: the AHB and on the USB for this endpoint.
+Page  506: XMC peripheral block can translate the AHB signals into the external memory signals and vice versa. It
+Page  506:    Translate the AHB data size into the appropriate external memory data size
+Page  506:  Translate the AHB data size into the appropriate external memory data size
+Page  506:  Translate the AHB data size into the appropriate external memory data size
+Page  506:  Supports AHB byte, halfword and word accesses
+Page  508: XMC registers AHB           XMC memory AHB
+Page  511: HADDR (AHB internal address line)
+Page  512: HADDR (AHB address line)
+Page  513: In case that the AHB data width is not equal to that of the memories, the XMC will make appropriate
+Page  513: Memory            Mode            AHB data width        Memory width       Description
+Page  529: In case that the AHB data width is not equal to that of the memories, the XMC will make appropriate
+Page  530: Memory             Mode                 AHB data width         Memory width          Description
+Page  532: In case that the AHB data width is not equal to that of the memories, the XMC will make appropriate
+Page  532: Memory          Mode              AHB data size     Memory data size    Description
+Page  534: bit in the SDRAM_CTRLx register; otherwise, an AHB error may occur.
+Page  534: The SDRAM controller translates single or burst AHB write requests into a single SDRAM write access,
+Page  534: consecutive or discontinuous AHB write requests into a single SDRAM write request in order to increase
+Page  534: The SDRAM controller translates single or burst AHB read requests into a single SDRAM read access,
+Page  535:    If the current BANK is the last memory area, an AHB error occurs.
+Page  538: This bit defines whether the XMC will split a wrapped AHB
+Page  539: This bit defines whether the XMC will split a wrapped AHB
+Page  542: from AHB.
+Page  544: from AHB.
+Page  547: When this bit is set, it indicates that single AHB requests
+Page  551: The SD/SDIO MMC card host interface (SDIO) provides an interface between the AHB peripheral bus
+Page  564:      AHB interface: generates interrupt and DMA request signals
+Page  565: AHB Bus                                                   Control unit                      SDIO_CK
+Page  565: DMA_req         AHB            Adapter                      Command
+Page  569: Because the data BUF operates in the AHB clock domain (HCLK), all signals connected to the SDIO
+Page  569:  Transmit BUF: Data can be written to the transmit BUF via the AHB interface when the SDIO
+Page  569: 25.3.3.3 SDIO AHB interface
+Page  569: The AHB interface generates the interrupt and DMA requests, and access the SDIO interface registers
+Page  571: The device communicates with the system through 32-bit control registers accessible via AHB.
+Page  580: AHB SLAVE
+Page  580: AHB MASTER
+Page  580:  Programmable AHB burst transfer types
+Page  582: The SMI clock source is a divided AHB clock. The divide factor depends on the ABH clock frequency.
+Page  582: Selection bit                AHB clock              MDC clock
+Page  582: 0000                     60~100MHz             AHB clock/42
+Page  582: 0001                     100~150MHz            AHB clock/62
+Page  582: 0010                     20~35MHz              AHB clock/16
+Page  582: 0011                     35~60MHz              AHB clock/26
+Page  582: 0100                     150~250MHz            AHB clock/102
+Page  582: 0101                     250~288MHz            AHB clock/124
+Page  592: The MAC received frames are stored into the RXFIFO and sent out by the DMA using the AHB interface.
+Page  594: via the AHB master interface and forwards them to the TXFIFO. The EMAC core then transfers the data
+Page  594: to the user data buffer (SRAM) via the AHB master interface.
+Page  595: DMA AHB host burst access
+Page  595: The DMA executes a fixed-length burst access on the AHB master interface if the FB bit is set in the
+Page  595: The DMA provides the start address and the number of transfers to the AHB master interface before
+Page  595: AHB host data alignment
+Page  595: when both transmit and RXDMA request access to the AHB bus simultaneously. When the DA bit is set
+Page  628: When this bit is set and the FB bit equals 1, the AHB
+Page  628: This bit is applicable to GMAC-AHB and GMAC-AXI
+Page  629: This bit controls whether the AHB master interface
+Page  629: Bit 16       FB    0x0         rw       the AHB uses only SINGLE, INCR4, INCR8 or INCR16
+Page  629: cleared, the AHB or AXI interface uses SINGLE and INCR
+Page  635: start bytes have not been transferred to the AHB bus.
+Page  647: AHB I/F
+Page  652: activated. The DMA accesses the DVP_DT register through the AHB bus to fetch the DVP-captured data.
+Page  652: Note: To ensure correct data acquisition using DMA access interface, the AHB bus clock (AHB_CLK)
+Page  669: address mapping. Additionally, the QSPI allows AHB data port to access data in either IPO or DMA mode.
+Page  669: AHB Bus Interconnect
+Page  684:      Only support AHB OKAY and ERROR responses
+Page  684:      HBUSREQ and HGRANT of AHB master interface are not supported
+Page  684:      Two AHB main interfaces for data transfer
+Page  684: AHB
+Page  684: AHB
+Page  684: AHB
+Page  687: AHB Read Sequence                                                      AHB Write Sequence
+Page  688: AHB Read Sequence                                                           AHB Write Sequence
+Page  689: After enabling a stream, the memory controller in DMA issues a few AHB commands to load the descriptor
+Page  691: AHB response error during DMA read/write
+Page  703: This field defines the HSIZE (AHB bus signal) in the
+Page  703: This field defines the HSIZE (AHB bus signal) in the
+Page  704: -If a transfer error occurs on the AHB master buses
+Page  704: -When the FIFO threshold on memory AHB port is not

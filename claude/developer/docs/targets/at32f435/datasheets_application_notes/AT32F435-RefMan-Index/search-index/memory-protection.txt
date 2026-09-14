@@ -1,0 +1,6 @@
+Keyword: memory protection
+Occurrences: 2
+================================================================================
+
+Page    4: 5.4   Flash memory protection ............................................................ 109
+Page  109: 5.4 Flash memory protection

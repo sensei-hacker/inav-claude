@@ -1,0 +1,48 @@
+Keyword: WWDT
+Occurrences: 44
+================================================================================
+
+Page    1: − DSP instructions                                              − 2 x Watchdog timers (WDT and WWDT)
+Page   14: 15       Window watchdog timer (WWDT) ................................................ 335
+Page   14: 15.1 WWDT introduction .................................................................... 335
+Page   14: 15.2 WWDT main features ................................................................. 335
+Page   14: 15.3 WWDT functional overview ......................................................... 335
+Page   14: 15.5 WWDT registers ........................................................................ 336
+Page   14: 15.5.1 Control register (WWDT_CTR L) .................................................. 336
+Page   14: 15.5.2 Configuration register (WWDT_CFG) ........................................... 336
+Page   14: 15.5.3 Status register (WWDT_STS) ...................................................... 337
+Page   41: Table 15-2 WWDT register map and reset value ...................................................................................... 336
+Page   45: DAC2         Controller                                       WWDT                                                                                                      @VDDA
+Page   50: 0       7                     WWDT                      Window watchdog timer                     0x0000_0040
+Page   62: 0x4000 2C00 - 0x4000 2FFF       Window watchdog timer (WWDT)
+Page   72:  WWDT reset: window watchdog overflow
+Page   73: NRST reset, WDT reset, WWDT reset, software reset and low-power management reset sets all
+Page   73: WWDT reset
+Page   81: Bit 11       WWDTRST          0x0            rw       0: Does not reset Window watchdog
+Page   86: Bit 11       WWDTEN          0x0             rw        0: Disabled
+Page   90: Bit 11       WWDTLPEN     0x1        rw       0: Disabled
+Page   92: Bit 30       WWDTRSTF        0x0            ro
+Page  335: 15 Window watchdog timer (WWDT)
+Page  335: 15.1 WWDT introduction
+Page  335: 15.2 WWDT main features
+Page  335: 15.3 WWDT functional overview
+Page  335: The WWDT counter is clocked by a divided APB1_CLK, with the division factor being defined by the
+Page  335: DIV[1: 0] bit in the WWDT_CFG register. The counter value determines the maximum counter period
+Page  335: WWDT offers reload counter interrupt feature. If enabled, the WWDT will set the RLDF flag when the
+Page  335: WWDTEN bit will generate a system reset, so the CNT[6] bit must be always set (CNT[6]=1) while writing
+Page  335: to the WWDT_CTRL register to prevent the occurrence of an immediate reset once the window watchdog
+Page  335: TWWDT = TPCLK1 × 4096 × 2DIV[1:0] × (CNT[5: 0] + 1); (ms)
+Page  336: When the microcontroller enters debug mode (Cortex®-M4F core halted), the WWDT counter stops
+Page  336: counting by setting the WWDT_PAUSE in the DEBUG module. Refer to Chapter 30.2 for more
+Page  336: 15.5 WWDT registers
+Page  336: Table 15-2 WWDT register map and reset value
+Page  336: WWDT_CTRL                                 0x00                                       0x7F
+Page  336: WWDT_CFG                                  0x04                                       0x7F
+Page  336: WWDT_STS                                  0x08                                       0x00
+Page  336: 15.5.1 Control register (WWDT_CTRL)
+Page  336: Bit 7         WWDTEN                0x0                    rw1s    1: Enabled
+Page  336: 15.5.2 Configuration register (WWDT_CFG)
+Page  337: 15.5.3 Status register (WWDT_STS)
+Page  714: WWDT pause control bit
+Page  714: Bit 11       WWDT_PAUSE           0x0         rw     0: WWDT works normally
+Page  714: 1: WWDT stops running

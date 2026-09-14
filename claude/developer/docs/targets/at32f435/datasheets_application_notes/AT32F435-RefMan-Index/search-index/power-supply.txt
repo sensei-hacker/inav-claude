@@ -1,0 +1,9 @@
+Keyword: power supply
+Occurrences: 5
+================================================================================
+
+Page   32: Figure 3-1 Block diagram of each power supply ......................................................................................... 63
+Page   63: Figure 3-1 Block diagram of each power supply
+Page   64: The PVM is used to monitor the power supply variations. It is enabled by setting the PVMEN bit in the
+Page  480: The application uses this bit to control power supply to this
+Page  559: Send the host power supply voltage to

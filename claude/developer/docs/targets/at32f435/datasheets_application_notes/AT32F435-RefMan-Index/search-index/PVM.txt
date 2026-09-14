@@ -1,0 +1,24 @@
+Keyword: PVM
+Occurrences: 20
+================================================================================
+
+Page    1: power voltage monitor (PVM)
+Page    2: 3.4   Power voltage monitor (PVM) ........................................................ 64
+Page   32: Figure 3-3 PVM threshold and output ......................................................................................................... 64
+Page   44: monitor (PVM) and other peripherals. Cortex®-M4F processer supports enhanced high-performance DSP
+Page   45: SRAM1             PVM
+Page   50: 1       8                     PVM                       PVM from EXINT interrupt                  0x0000_0044
+Page   63: POR          PVM          LDO              HICK
+Page   64: 3.4 Power voltage monitor (PVM)
+Page   64: The PVM is used to monitor the power supply variations. It is enabled by setting the PVMEN bit in the
+Page   64: PVMSEL[2: 0].
+Page   64: After PVM is enabled, the comparison result between VDD and the programmed threshold is indicated
+Page   64: by the PVMOF bit in the PWC_CTRLSTS register, with the hysteresis voltage VHYS_P being 100 mv.
+Page   64: The PVM interrupt will be generated through the EXTI line 16 when VDD rises above the PVM threshold.
+Page   64: Figure 3-3 PVM threshold and output
+Page   64: PVMOF
+Page   68: Bit 7: 5     PVMSEL          0x0            rw       011: 2.5 V
+Page   68: Bit 4        PVMEN           0x0            rw       0: Disabled
+Page   68: Bit 2        PVMOF           0x0            ro       1: Power voltage is lower than the threshold
+Page  151: PVM output EXINT_LINE[16]        EXINT_LINE[22:16]
+Page  151: sources but also seven internal sources such as PVM output, ERTC alarm events and time stamp

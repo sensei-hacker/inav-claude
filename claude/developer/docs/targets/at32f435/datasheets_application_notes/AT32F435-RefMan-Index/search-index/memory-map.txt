@@ -1,0 +1,10 @@
+Keyword: memory map
+Occurrences: 6
+================================================================================
+
+Page    1: SPI RAM extension, and memory mapping mode                      multiplexed, I2S2/ I2S3 support full-duplex
+Page   37: Figure 21-13 CSR memory map................................................................................................................ 461
+Page  143:  Control the memory mapping mode
+Page  144: 000: Main Flash memory mapped at 0x0000 0000
+Page  144: 001: Boot memory mapped at 0x0000 0000
+Page  461: Figure 21-13 CSR memory map

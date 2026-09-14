@@ -1,0 +1,869 @@
+Keyword: ACC
+Occurrences: 865
+================================================================================
+
+Page    1: accuracy ±1% at TA=25 °C, ±2.5 % at TA=-40 to
+Page    1: +105 °C, with automatic clock calibration (ACC)
+Page    4: 5.4.1 Access protection ....................................................................... 109
+Page   22: 22       HICK auto clock calibration (ACC) .............................................. 499
+Page   22: 22.1 ACC introduction ....................................................................... 499
+Page   23: 22.6.1 ACC register map ....................................................................... 502
+Page   23: 22.6.2 Status register (ACC_STS) ......................................................... 502
+Page   23: 22.6.3 Control register 1 (ACC_CTRL1) ................................................. 502
+Page   23: 22.6.4 Control register 2 (ACC_CTRL2) ................................................. 503
+Page   23: 22.6.5 Compare value 1 (ACC_C1) ........................................................ 503
+Page   23: 22.6.6 Compare value 2 (ACC_C2) ........................................................ 504
+Page   23: 22.6.7 Compare value 3 (ACC_C3) ........................................................ 504
+Page   23: 24.4.2 Access mode ............................................................................. 513
+Page   23: 24.5.2 Access timings ........................................................................... 530
+Page   23: 24.6.2 Access timings ........................................................................... 532
+Page   23: 24.7.1 SDRAM access management ...................................................... 533
+Page   25: 26       Ethernet media access control (EMAC) ....................................... 580
+Page   26: 26.3.1 Ethernet MAC configuration register (EMAC_MACCTRL) .............. 616
+Page   28: 27.4 DMA access interface and data output packing ............................ 652
+Page   28: 27.4.1 DMA access interface ................................................................. 652
+Page   32: Figure 11-8 10-bit address read access when READH10=1 .................................................................... 183
+Page   32: Figure 11-9 10-bit address read access when READH10=0 .................................................................... 183
+Page   37: Figure 22-1 ACC interrupt mapping diagram............................................................................................. 499
+Page   37: Figure 22-2 ACC block diagram ................................................................................................................ 500
+Page   37: Figure 24-3 NOR/PSRAM mode 1 read access ........................................................................................ 515
+Page   37: Figure 24-4 NOR/PSRAM mode 1 write access ....................................................................................... 515
+Page   37: Figure 24-5 NOR/PSRAM mode 2 read access ........................................................................................ 516
+Page   37: Figure 24-6 NOR/PSRAM mode 2 write access ....................................................................................... 517
+Page   37: Figure 24-7 NOR/PSRAM mode A read access ........................................................................................ 518
+Page   37: Figure 24-8 NOR/PSRAM mode A write access ....................................................................................... 519
+Page   37: Figure 24-9 NOR/PSRAM mode B read access ....................................................................................... 520
+Page   37: Figure 24-10 NOR/PSRAM mode B write access ..................................................................................... 521
+Page   37: Figure 24-11 NOR/PSRAM mode C read access ..................................................................................... 522
+Page   37: Figure 24-12 NOR/PSRAM mode C write access ..................................................................................... 523
+Page   37: Figure 24-13 NOR/PSRAM mode D read access ..................................................................................... 524
+Page   37: Figure 24-14 NOR/PSRAM mode D write access ..................................................................................... 525
+Page   37: Figure 24-15 NOR/PSRAM multiplexed mode read access ..................................................................... 526
+Page   37: Figure 24-16 NOR/PSRAM multiplexed mode write access ..................................................................... 527
+Page   37: Figure 24-17 NOR/PSRAM synchronous multiplexed mode read access................................................ 528
+Page   37: Figure 24-18 NOR/PSRAM synchronous multiplexed mode write access ............................................... 529
+Page   37: Figure 24-19 NAND read access............................................................................................................... 530
+Page   37: Figure 24-22 SDRAM write access waveforms (Trcd=2, 9 consecutive write access)............................. 534
+Page   37: Figure 24-23 SDRAM read access without using read FIFO (Trcd=2,CL=3, and 4 consecutive read accesses)
+Page   40: Table 5-7 Flash memory access limit ........................................................................................................ 109
+Page   41: Table 22-1 ACC interrupt requests ............................................................................................................ 499
+Page   41: Table 22-2 ACC register map and reset values ......................................................................................... 502
+Page   42: Table 24-10 Data access width vs. external memory data width .............................................................. 513
+Page   42: Table 24-33 Data access width vs. external memory data width .............................................................. 530
+Page   42: Table 24-37 Access data width and PC card data width ........................................................................... 532
+Page   44: interface, HICK with automatic clock calibration (ACC), 12-bit ADC, 12-bit DAC, programmable voltage
+Page   44: instruction set, including extended single-cycle 16-bit/32-bit multiply accumulator (MAC), dual 16-bit MAC
+Page   45: @VDDA                                                                                                                                              ACC
+Page   48: With the help of bit-band, read and write access to a single bit can be performed using common
+Page   48: bytes of SRAM and the least significant 1Mbytes of peripherals. In addition to access to bit-band
+Page   48: addresses, their respective bit-band alias region can be used to access to any bit in these two bit-band
+Page   48: regions. The bit-band alias region transforms each bit into a 32-bit word. Thus, accessing to a bit in an
+Page   48: Bit-band alias region: access to the alias region has the same effect as read-modify-write operation on
+Page   48: Each bit in a bit-band region is mapped into a word (LSB) in an alias region. When accessing to the
+Page   50: 1                     BusFault                  Pre-fetch fault, memory access fault      0x0000_0014
+Page   53: 103     110                ACC                    ACC global interrupt                 0x0000_01DC
+Page   57: Aliased to Flash or                                 SRAM according to
+Page   57: according to BOOT                                      configuration
+Page   60: can be accessed by bytes, half-words (16 bits) or words (32 bits). In addition, AT32F435/437 also provide
+Page   60: is divided into SRAM1 and SRAM2. The SRAM1 is fixed at 64 KB, and can be accessed through either
+Page   60: 64 KB to 448 KB, accessible through address 0x2001_0000~2007_FFF.
+Page   61: 0x4001 7400 - 0x4001 77FF       ACC
+Page   65: Typically, to ensure a better accuracy of ADC/DAC at a low voltage, the digital circuit is supplied by VDD
+Page   65: the best compromise according to the low-power consumption, short startup time, and available wakeup
+Page   67: The peripheral registers must be accessed by words (32 bits).
+Page   68: After reset, the battery powered domain write access is
+Page   70: ACC                                   PLLRCS
+Page   70: a highly accurate clock for the system. The HEXT clock signal is not released until it becomes stable.
+Page   70: HICK clock is 48 MHz. Although it is less accurate, its startup time is shorter than the HEXT crystal
+Page   70: oscillator. The HICK clock frequency of each device is calibrated by ARTERY to ±1% accuracy (TA=25°C)
+Page   72: access, the LICK oscillator is forced ON. The clock is provided to the watchdog only after the LICK
+Page   72: configured accordingly.
+Page   73: These peripheral registers have to be accessed by bytes (8 bits), half words (16 bits) or words (32 bits).
+Page   75: Access: 0 wait state, accessible by words, half-words and bytes.
+Page   76: Access: 0 to 2 wait states. 1 or 2 wait states are inserted only when the access occurs during a clock
+Page   78: Access: 0 wait state, accessible by words, half-words and bytes.
+Page   79: Access: 0 wait state, accessible by words, half-words and bytes.
+Page   80: Access: 0 wait state, accessible by words, half-words and bytes.
+Page   80: Access: 0 wait state, accessible by words, half-words and bytes.
+Page   81: Access: 0 wait state, accessible by words, half-words and bytes.
+Page   82: Access: 0 wait state, accessible by words, half-words and bytes.
+Page   82: ACC reset
+Page   82: Bit 29       ACCRST           0x0            rw       0: Does not reset ACC
+Page   82: 1: Reset ACC
+Page   83: Access: 0 wait state, accessible by words, half-words and bytes.
+Page   84: Access: 0 wait state, accessible by words, half-words and bytes.
+Page   84: Access: 0 wait state, accessible by words, half-words and bytes.
+Page   85: Access: 0 wait state, accessible by words, half-words and bytes.
+Page   86: Access: 0 wait state, accessible by words, half-words and bytes.
+Page   86: ACC clock enable
+Page   86: Bit 29       ACCEN           0x0             rw        0: Disabled
+Page   87: Access: 0 wait state, accessible by words, half-words and bytes.
+Page   89: Access: 0 wait state, accessible by words, half-words and bytes.
+Page   89: Access: 0 wait state, accessible by words, half-words and bytes.
+Page   89: Access: 0 wait state, accessible by words, half-words and bytes.
+Page   91: Access: 0 wait state, accessible by words, half-words and bytes.
+Page   91: ACC clock enable in sleep mode
+Page   91: Bit 29       ACCLPEN          0x1            rw       0: Disabled
+Page   92: Access: 0 to 3 wait states, accessible by words, half-words or bytes. Wait states are inserted in the case
+Page   92: of consecutive accesses to this register.
+Page   92: Access: 0 to 3 wait states, accessible by words, half-words or bytes. Wait states are inserted in the case
+Page   92: of consecutive accesses to this register.
+Page   93: Access: 0 to 3 wait states, accessible by words, half-words or bytes.
+Page   98: FAP[7:0]: Flash memory access protection (Access protection
+Page   98: 0xFF: Enable Flash access protection (by erasing USD area. At this
+Page  100: QSPIKEY0 [7: 0]: QuadSPI (QSPI) ciphertext access area encryption
+Page  106: Flash memory can be accessed through AHB bus of the CPU.
+Page  109: User system data area can be accessed through AHB bus of the CPU.
+Page  109: Flash memory includes access and erase/program protection.
+Page  109: 5.4.1       Access protection
+Page  109: activate access protection after a system reset. In this case, only the Flash program is allowed to read
+Page  109: When the Flash access is protected, the user can re-erase the system data area, and unlock Flash
+Page  109: access protection (switching from protected to unprotected state will trigger mass erase on the Flash
+Page  109: system data loader will be reloaded with system data and updated with Flash memory access protection
+Page  109: Note: If the access protection bit is set in debug mode, then the debug mode has to be cleared by POR
+Page  109: instead of system reset in order to resume access to Flash memory data.
+Page  109: Table 5-7 shows Flash memory access limits when Flash access protection is enabled.
+Page  109: Table 5-7 Flash memory access limit
+Page  109: Block                                             Access limits
+Page  109: Main Flash memory                Not allowed                               Accessible
+Page  109: User system data area        Not allowed          Accessible                 Accessible
+Page  109: (1)Main Flash memory is cleared automatically by hardware only when the access protection is disabled;
+Page  109: accordingly:
+Page  109:  When the Flash access protection is enabled, the first 4 KB in the main Flash memory will be
+Page  109:  Once the Flash access protection is enabled, the main Flash memory is protected against
+Page  110: By default, security library setting register is unreadable and write protected. To enable write access to
+Page  110: Note: Security library should be enabled when the Flash access protection is not activated
+Page  111: These peripheral registers must be accessed by words (32 bits).
+Page  114: Flash access protection
+Page  114: Access to Flash memory is not allowed when this bit is set.
+Page  120: I/O port registers can be accessed by words, half-words or bytes, and each I/O port bit can be
+Page  122: GPIOx_PULL register according to the peripheral characteristics.
+Page  122: GPIOx_OMODE register or pull-up/pull-down by setting the GPIOx_PULL register according to the
+Page  123:  In push-pull output mode, output 0/1 according to the peripheral output.
+Page  139: accessed by bytes (8 bits), half-words (16 bits) or words (32 bits).
+Page  143: These peripheral registers must be accessed by words (32 bits).
+Page  151: EXINT also features an independent interrupt status bit. Reading access to EXINT_INTSTS register can
+Page  152: These peripheral registers must be accessed by words (32 bits).
+Page  154: Direct memory access (DMA) controller is designed for 32-bit MCU applications with the aim of
+Page  154: channel manages memory access requests from one or more peripherals. An arbiter is available for
+Page  156: according to the settings of PWIDTH/ MWIDTH.
+Page  157: Transfer error         AHB response error occurred during DMA read/write access
+Page  161: These peripheral registers must be accessed by bytes (8 bits), half-words (16 bits) or words (32 bits).
+Page  162: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  164: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  166: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  167: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  167: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  167: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  167: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  167: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  168: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  169: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  169: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  169: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  170: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  171: According to CRC calculation principle, the input data is taken as dividend, and the generator
+Page  172: CRC_DT register can be accessed by bytes (8 bits), half-words (16 bits) or words (32 bits). Other
+Page  172: registers have to be accessed by words (32 bits).
+Page  173: according to their needs.
+Page  183: timing. When READH10=1, the master sends data to the slave before read access to the slave, as
+Page  183: Figure 11-8 10-bit address read access when READH10=1
+Page  183: Figure 11-9 10-bit address read access when READH10=0
+Page  184: direction can be obtained by read access to the SDIR bit in the I2C_STS register. When SDIR=0,
+Page  188: information, tell the system its model/part number, report different types of errors and accept control
+Page  188: signal, the slave notifies the host to access the slave. SMBALERT is a wired-AND signal. For more
+Page  188: 5. The host then processes the interrupt and accesses to all devices through ARA (Alert Response
+Page  189: into account master/slave device, however actively or passively pulled low)
+Page  194: direction can be obtained by read access to the SDIR bit in the I2C_STS register. When SDIR=0,
+Page  200: These peripheral registers must be accessed by words (32 bits).
+Page  215: 1. Write access to the USART_BAUDR register before UEN. The baud rate register value should not
+Page  216: USART_CTRL3 register) is set, and configure DMA register accordingly.
+Page  216: 11. When TDC=1, read access to the USART_STS register and write access to the USART_DT register
+Page  217: and the RDBF is set accordingly. An interrupt is generated if the RDBFIEN is set.
+Page  217: register accordingly.
+Page  217:  In non-DMA mode, the RDBF bit is cleared when read access to the USART_DT register by
+Page  219: The NERR bit is cleared by read access to USART_STS register followed by the USART_DT read
+Page  219: interrupt source inside the USART in real time and the generation of interrupts according to the
+Page  221: These peripheral registers must be accessed by words (32 bits).
+Page  221: cleared by software. (Option 1: read access to
+Page  231: software. The MMERR is cleared by read or write access to the SPI_STS register followed by write
+Page  231: SPIEN and MSTEN bits cannot be set by software. The MMERR bit is cleared by read or write access
+Page  231: the CRC value automatically according to the value in the SPI_CPOLY register and each transmitted
+Page  231: the CRC value automatically according to the value in the SPI_CPOLY register and each received data,
+Page  233: In this mode, the SPI interface will generates a communication clock SPI_CLK in accordance with the
+Page  233: In this mode, the SPI interface will generate a CS signal in accordance with the TI protocol, meaning
+Page  234: case, read access to the SPI_DT register will clear the RDBF bit.
+Page  242: taken into account. When the main clock is needed, the CK should be divided by 8 (I2SCBN=0) or 4
+Page  245: transmitter and receiver is responsible for sending and receiving the desired data frame according to the
+Page  247: These peripheral registers must be accessed by words (32 bits).
+Page  249: (read/write access to the SPI_STS register, followed by
+Page  255: These peripheral registers must be accessed by words (32 bits).
+Page  266: signal CxORAW is generated according to the output mode selected by CxOCTRL[2: 0], which is sent
+Page  269: corresponding level according to the comparison result between the counter value and CxDT value.
+Page  272: These peripheral registers must be accessed by words (32 bits).
+Page  276: cleared by software or read access to the TMRx_C1DT
+Page  278: In PWM mode A or B, this bit is used to accelerate the
+Page  282: A read or write operation to the DMADT register accesses
+Page  290: signal CxORAW is generated according to the output mode selected by CxOCTRL[2: 0], which is sent
+Page  293: These peripheral registers must be accessed by words (32 bits).
+Page  295: cleared by software or read access to the TMRx_C1DT
+Page  296: Bit 2        C1OIEN            0x0             rw       In PWM mode A or B, this bit is used to accelerate the
+Page  299: These peripheral registers must be accessed by words (32 bits).
+Page  300: cleared by software or read access to the TMRx_C1DT
+Page  301: In PWM mode A or B, this bit is used to accelerate the
+Page  314: signal CxORAW is generated according to the output mode selected by CxOCTRL[2: 0], which is sent
+Page  317: corresponding level according to the comparison result between the counter value and CxDT value.
+Page  321: These peripheral registers must be accessed by words (32 bits).
+Page  325: cleared by software or read access to the TMRx_C1DT
+Page  327: In PWM mode A or B, this bit is used to accelerate the
+Page  334: A write/read operation to the DMADT register accesses
+Page  335: the window watchdog to take accurate control of the limited window.
+Page  335: counter value reaches 0x40h, and an interrupt is generated accordingly. The interrupt service routine
+Page  336: These peripheral registers must be accessed by words (32 bits).
+Page  338: The WDT is driven by a dedicated low-speed clock (LICK). Due to the lower clock accuracy of LICK, the
+Page  338: WDT is best suited to the applications that have lower timing accuracy and can run independently
+Page  338: range, so a margin should be taken into account when configuring timeout period. The LICK can be
+Page  338: calibrated to obtain the WDT timeout with a relatively accuracy. For more details, please refer to
+Page  339: These peripheral registers must be accessed by words (32 bits).
+Page  340: write access to the register. The register can be read only
+Page  340: write access to the register. The register can be read only
+Page  342: by the system reset. Write access to the ERTC registers (except the ERTC_STS[14: 8], ERTC_TAMP
+Page  343: In the case of DREN=1, the ERTC will perform direct read access to the ERTC clock and calendar
+Page  344: of two read accesses are consistent. Besides, it is also possible to compare the least significant bits of
+Page  344: 2. Wait until the ALAWF or ALBWF bit is set to enable write access to the alarm clock A or B
+Page  344: 2. Wait until WATWF=1 to enable write access to the wakeup reload timer and WATCLK[2: 0]
+Page  345: should be reduced so that each second is accelerated by 8 ERTC_CLK cycles, which means that 256
+Page  346: aligned. If the 1 Hz clock has a slight shift, a more accurate reference clock can be used to fine-tune the
+Page  346: generated accordingly. Once a tamper event occurs, the battery powered registers will be reset so as
+Page  346: 2. According to your needs, configure whether to activate a time stamp on a tamer event (TPTSEN=1)
+Page  346: 3. According to your needs, enable a tamper detection interrupt (TPIEN=1)
+Page  347: 4. According to your needs, enable tamper detection pull-up (setting TPPU=1). When TPPU=1 is
+Page  347: 5. According to your needs, configure whether to activate a time stamp on a tamper event
+Page  347: 6. According to your needs, enable a tamper interrupt (TPIEN=1)
+Page  348: These peripheral registers must be accessed by words (32 bits).
+Page  351: Note: The write access to this field is supported when
+Page  351: new calibration value is taking into account. When this bit is
+Page  351: set, the write access to the ERTC_SCAL register is not
+Page  352: This bit is automatically set when a write access to the
+Page  360: the initial power-on in order to improve the accuracy of sampling and conversion. After the calibration,
+Page  369: Read access to the ADC_ODT register using CPU or DMA gets the converted data of the ordinary group.
+Page  369: Read access to the ADC_PDTx register using CPU gets the converted data of the preempted group.
+Page  374: These peripheral registers must be accessed by words (32 bits).
+Page  376: Accessed by words.
+Page  377: Accessed by words.
+Page  378: Accessed by words.
+Page  380: Accessed by words.
+Page  382: Accessed by words.
+Page  384: Accessed by words.
+Page  384: Accessed by words.
+Page  384: Accessed by words.
+Page  384: Accessed by words.
+Page  384: Accessed by words.
+Page  385: Accessed by words.
+Page  385: Accessed by words.
+Page  385: Accessed by words.
+Page  386: Accessed by words.
+Page  386: Accessed by words.
+Page  387: Accessed by words.
+Page  387: Accessed by words.
+Page  388: Accessed by words.
+Page  391: Accessed by words.
+Page  392: simultaneously in dual DAC mode. The input reference voltage VREF+ makes conversion more accuracy.
+Page  395: These peripheral registers must be accessed by words (32 bits).
+Page  404:  Register access protection
+Page  405: can still access to the mailbox registers.
+Page  407: does not take into account the activation state of the filter banks.
+Page  407: In this case, the filter match number stored in the receive mailbox is determined according to the
+Page  410: These peripheral registers must be accessed by words (32 bits).
+Page  411: Bit 16       PTD        0x1               rw     can be still accessible normally.
+Page  416: 0, the software has to release the FIFO 0 to access the
+Page  417: 0, the software has to release the FIFO 1 to access the
+Page  418: This counter is implemented in accordance with the
+Page  418: This counter is implemented in accordance with the
+Page  419: by hardware according to the error condition detected on
+Page  420: of FIFO, and can only access to the first received message in the FIFO.
+Page  425: When the HICK 48M clock is used as a USB control clock, it is recommended to enable ACC feature.
+Page  426: initialized according to the controller configuration.
+Page  427: Configure the following registers according to the above mentioned:
+Page  429: Configure the following registers according to the above mentioned:
+Page  430: 10. Configure the HFIR register according to the selected PHY clock value
+Page  430: To communicate with the device, the application must enable and initialize at least one channel according
+Page  430: To communicate with the device, the application must enable and initialize at least one channel according
+Page  430: the PID bit according to the initial data PID (it is the PID on the first OUT transfer, or to be received
+Page  430: 6. Configure the OTGFS_HCCHARx register of the selected channel according to the device endpoint
+Page  431: The OTGFS host determines the actual packet size according to the programmed maximum packet size
+Page  434: 1. Initialize channel 2 (according to OTGFS channel initialization requirements)
+Page  436: 1. Initialize channel 1 (according to OTGFS channel initialization requirements)
+Page  438: 1. Initialize channel 2 (according to OTGFS channel initialization requirements). The application must
+Page  440: 1. Initialize channel 1 (according to OTGFS channel initialization requirements). The application must
+Page  442: 1. Initialize channel 2 (according to OTGFS channel initialization requirements). The application must
+Page  444: 1. Initialize channel 1 (according to OTGFS channel initialization requirements). The application must
+Page  445: At this time, the device is ready to accept SOF packets and perform control transfers on control endpoint
+Page  446: registers according to the characteristics of the valid endpoints defined in the new configuration
+Page  453: length packets according to the IN token, and the packet count is decremented automatically.
+Page  453: 1. Program the OTGFS_DIEPTSIZx register according to the transfer size and the corresponding packet
+Page  453: 2. Program the OTGFS_DIEPCTLx register according to the endpoint characteristics and set the CNAK
+Page  458:  When the receive FIFO cannot accommodate the complete ISO OUT data packet, the controller
+Page  461: registers (CSRx) through the AHB slave interface. These registers are accessible by 32 bits, and the
+Page  461: Only the controller global, power and clock control, data FIFO access and host port control and status
+Page  461: or device mode, the application must not access the register group from the other mode. If an illegal
+Page  461: access occurs, a mode mismatch interrupt is generated and the MODMIS bit (in the OTGFS_GINTSTS
+Page  461: initialized as they are after a power-on reset. These peripheral registers must be accessed by words
+Page  461: Data directly accessed during debugging FIFO RAM
+Page  462: 4. Data FIFO access registers: These registers are valid in both in host and device modes, and are
+Page  462: These peripheral registers must be accessed by words (32-bit).
+Page  466: Accessible in both host and device modes
+Page  466: Accessible in both host and device modes
+Page  466: Accessible in host mode only
+Page  467: Accessible in both host mode and device modes
+Page  467: Accessible in both host mode and device modes
+Page  467: Accessible in both host mode and device modes
+Page  467: Accessible in both host mode and device modes
+Page  467: Accessible in both host mode and device modes
+Page  467: Accessible in device mode
+Page  468: Accessible in both host mode and device modes
+Page  468: Accessible in both host mode and device modes
+Page  468: Accessible in both host mode and device modes
+Page  468: Accessible in both host mode and device modes
+Page  468: Bit 4        RXFFLSH           0x0             rw1s     Accessible in both host mode and device modes
+Page  469: Accessible in both host mode and device modes
+Page  469: Accessible in both host mode and device modes
+Page  469: Accessible in both host mode and device modes
+Page  469: wait at least 3 PHY clocks before accessing the PHY
+Page  470: Accessible in both host mode and device modes
+Page  470: Accessible in host mode only
+Page  470: Accessible in both host mode and device modes
+Page  470: Accessible in host mode only
+Page  470: Accessible in host mode only
+Page  470: Accessible in device mode only
+Page  471: Accessible in device mode only
+Page  471: Accessible in device mode only
+Page  471: Accessible in device mode only
+Page  471: Accessible in device mode only
+Page  471: Accessible in device mode only
+Page  471: enough space to accommodate a maximum size packet
+Page  471: Accessible in device mode only
+Page  471: Accessible in device mode only
+Page  471: Accessible in device mode only
+Page  472: Accessible in device mode only
+Page  472: Accessible in device mode only
+Page  472: Accessible in device mode only
+Page  472: Accessible in both host and device modes
+Page  472: Accessible in both host and device modes
+Page  472: Accessible in both host and device modes
+Page  472: Accessible in both host and device modes
+Page  472: Bit 1      MODEMIS      0x0         rw1c     Accessible in both host and device modes
+Page  473: attempting to access:
+Page  473: An OKAY response occurs when the register access is
+Page  473: Accessible in both host and device modes
+Page  473: Accessible in both host and device modes
+Page  473: Accessible in both host and device modes
+Page  473: Accessible in both host and device modes
+Page  473: Accessible in host mode only
+Page  473: Accessible in host mode only
+Page  473: Accessible in host mode only
+Page  473: INCOMPIPMSK                                 Accessible in host mode only
+Page  473: Accessible in device mode only
+Page  473: Accessible in device mode only
+Page  473: Accessible in device mode only
+Page  473: Accessible in device mode only
+Page  473: Accessible in device mode only
+Page  473: Accessible in device mode only
+Page  473: Accessible in device mode only
+Page  473: Bit 11       USBSUSPMSK         0x0             rw       Accessible in device mode only
+Page  474: Accessible in device mode only
+Page  474: Accessible in device mode only
+Page  474: Accessible in device mode only
+Page  474: Accessible in both host and device modes
+Page  474: Accessible in both host and device modes
+Page  474: Accessible in both host and device modes
+Page  474: Accessible in both host and device modes
+Page  474: Accessible in both host and device modes
+Page  477: accessible in device mode (as the results are undefined in device mode). Host-mode registers contain
+Page  484: access results. Some of the registers affect all the endpoints, while some affect only one endpoint.
+Page  485: states for the USB host to detect a device disconnect. To accommodate clock jitter, it is advised that
+Page  491: to accommodate the incoming data packets.
+Page  494: to accommodate the incoming data packets.
+Page  495: Bit 1       EPTDISD             0x0             rw1c     This bit indicates that the endpoint is disabled according
+Page  496: Bit 1        EPTDISD            0x0             rw1c     Indicates that the endpoint is disabled according to the
+Page  499: 22 HICK auto clock calibration (ACC)
+Page  499: 22.1 ACC introduction
+Page  499: HICK auto clock calibration (HICK ACC), which uses the SOF signal (1 ms of period) generated as a
+Page  499: Table 22-1 ACC interrupt requests
+Page  499: ACC interrupt events are linked to the same interrupt vector (see Figure 25-1). Interrupt events include:
+Page  499: Figure 22-1 ACC interrupt mapping diagram
+Page  499: ACC interrupt
+Page  499: Auto clock calibration (HICK ACC), which uses the SOF signal (1 ms of period) generated as a reference
+Page  500: Figure 22-2 ACC block diagram
+Page  500: ACC_HICKCAL
+Page  500: ACC_HICKTRIM
+Page  500: ACC
+Page  500: USB_SOF period signal: 1ms of period must be accurate, which is a prerequisite of the normal operation
+Page  500: theory, the actual frequency after calibration can be adjusted to be within an accuracy range of about
+Page  501: From the above figure, auto calibration function will adjust the HICKCAL or HICKTRIM according to the
+Page  501: HICKTRIM according to the step definition until the actual sampling value is greater than C2. In this way,
+Page  501: or HICKTRIM according to the step definition until the actual sampling value become less than C1. In
+Page  501: According to the cross-return strategy, in theory, it is possible to get the frequency accuracy that is 0.5
+Page  501: 0.5 steps of the center frequency. To achieve the best calibration accuracy, it is recommended to remain
+Page  501: These peripheral registers must be accessed by words (32 bits).
+Page  502: 22.6.1 ACC register map
+Page  502: Table 22-2 ACC register map and reset values
+Page  502: ACC_STS                       0x00                              0x0000 000
+Page  502: ACC_CTRL1                     0x04                              0x0000 0100
+Page  502: ACC_CTRL2                     0x08                              0x0000 2080
+Page  502: ACC_C1                        0x0C                              0x0000 1F2C
+Page  502: ACC_C2                        0x10                              0x0000 1F40
+Page  502: ACC_C3                        0x14                              0x00000 1F54
+Page  502: 22.6.2 Status register (ACC_STS)
+Page  502: 22.6.3 Control register 1 (ACC_CTRL1)
+Page  502: a more accurate calibration result. While ENTRIM=0, only
+Page  502: decremented by one accordingly, and the HICK frequency
+Page  502: accordingly, and the HICK frequency will increase or
+Page  503: 1: ACC interrupt is generated when CALRDY=1 in the
+Page  503: ACC_STS register
+Page  503: 1: ACC interrupt is generated when RSLOST=1 in the
+Page  503: ACC_STS register
+Page  503: higher calibration accuracy.
+Page  503: accuracy of the HICK clock, it is unnecessary to enable
+Page  503: 22.6.4 Control register 2 (ACC_CTRL2)
+Page  503: Internal high-speed clock is adjusted by ACC module,
+Page  503: which is added to the ACC_HICKCAL[7: 0] bit. These bits
+Page  503: frequency of the HICKRC oscillator according to the
+Page  503: between two consecutive ACC_HICKTRIM steps.
+Page  503: Internal high-speed clock is adjusted by ACC module.
+Page  503: Bit 7: 0     HICKCAL    0x80            ro       adjust the frequency of the HICKPC oscillator according to
+Page  503: between two consecutive ACC_HICKCAL steps.
+Page  503: 22.6.5 Compare value 1 (ACC_C1)
+Page  503: sampled by ACC in 1ms period is less than or equal to C1,
+Page  504: 22.6.6 Compare value 2 (ACC_C2)
+Page  504: calibration can be trimmed to be within an accuracy of 0.5
+Page  504: 22.6.7 Compare value 3 (ACC_C3)
+Page  504: When the number of clock sampled by ACC in 1ms period
+Page  506:  Support access to static memory devices, including
+Page  506: ― Static random access memory (SRAM)
+Page  506:  Supports AHB byte, halfword and word accesses
+Page  506:  Programmable SDRAM access timing parameters
+Page  507:    Multi-memory area ping-pong access
+Page  511: Some HADDR bits are used to select which bank to access to, as shown in Table 24-3.
+Page  512: NOR/PSRAM offers multiple access modes with different timings to drive multiple memories including
+Page  512: accessed by means of different timings and different chip-select signals.
+Page  512: Access address
+Page  512: words. Address translation between them is shown in Table 22-5. As long as read/write access to a
+Page  512: memories according to the HADDR bit.
+Page  513: External memory data                                                   Accessible maximum           memory
+Page  513: Data access
+Page  513: arrangement according to the typical signals of the external memories. Table 22-6 lists the operation
+Page  513: Table 24-10 Data access width vs. external memory data width
+Page  513: Asynchronous                                             One-time access, or split into 2
+Page  513: read/write                                               or 4 accesses
+Page  513: read/write                                               time, or split into two access
+Page  513: NOR Flash                         32                    16                 Split into 2 XMC accesses
+Page  513: 32                    16                 Split into 2 XMC accesses
+Page  513: PSRAM                             32                    16                 Split into 2 XMC accesses
+Page  513: 32                    16                 Split into 2 XMC accesses
+Page  513: 24.4.2 Access mode
+Page  513: The XMC offers various access modes. Each access mode is operated based on the timing parameters,
+Page  513: as shown in Table 24-11.Users can perform programming operations according to the specifications of
+Page  513: Access modes available in the XMC:
+Page  514: Function                     Access mode                          Unit
+Page  514: As configured in Table 24-12 and Table 24-13, the XMC uses mode 1 to access the external memory.
+Page  514: Bit 15                                            Configure according to memory specifications
+Page  514: Bit 12       WEN: Write enable                    Configure according to needs
+Page  514: Bit 9        NWPOL: NWAIT polarity                Configure according to memory specifications
+Page  514: Bit 6        NOREN: NOR flash access enable       0x0
+Page  514: Bit 5: 4                                          Configure according to memory specifications
+Page  514: Configure according to memory specifications. It is valid
+Page  514: Bit 19: 16   BUSLAT: Bus latency                  falling edge. Configure according to needs and memory
+Page  514: Refer to Figure 24-3 and Figure 24-4. Configure according to
+Page  514: Refer to Figure 24-3 and Figure 24-4. Configure according to
+Page  515: Figure 24-3 NOR/PSRAM mode 1 read access
+Page  515: Figure 24-4 NOR/PSRAM mode 1 write access
+Page  515: As configured in Table 24-14 and Table 24-15, the XMC uses mode 2 to access the external memory.
+Page  515: Bit 15                                                           Configure according to memory specifications.
+Page  516: Bit 12           WEN: Write enable                           Configure according to needs.
+Page  516: Bit 9            NWPOL: NWAIT polarity                       Configure according to memory specifications.
+Page  516: Bit 6            NOREN: NOR Flash access enable              0x1
+Page  516: Bit 5: 4                                                     Configure according to memory specifications.
+Page  516: Bit 19: 16              BUSLAT: Bus latency                    the falling edge. Configure according to needs and
+Page  516: Refer to Figure 24-5 and Figure 24-6. Configure according
+Page  516: Refer to Figure 24-5 and Figure 24-6. Configure according
+Page  516: Figure 24-5 NOR/PSRAM mode 2 read access
+Page  517: Figure 24-6 NOR/PSRAM mode 2 write access
+Page  517: As configured in Table 24-16 and Table 24-17, the XMC uses mode A to access the external memory.
+Page  517: Bit 15                                                       Configure according to memory specifications.
+Page  517: Bit 12           WEN: Write enable                           Configure according to needs.
+Page  517: Bit 9            NWPOL: NWAIT polarity                       Configure according to memory specifications.
+Page  517: Bit 6            NOREN: NOR Flash access enable              0x0
+Page  517: Bit 5: 4                                                     Configure according to memory specifications.
+Page  517: Configure according to memory specifications. It is valid
+Page  518: Bit 19: 16        BUSLAT: Bus latency                      falling edge. Configure according to needs and memory
+Page  518: Refer to Figure 24-7.Configure according to needs and
+Page  518: Refer to Figure 24-7.Configure according to needs and
+Page  518: Bit 19: 16        BUSLAT: Bus latency                      falling edge. Configure according to needs and memory
+Page  518: Refer to Figure 24-8. Configure according to needs and
+Page  518: Refer to Figure 24-8. Configure according to needs and
+Page  518: Figure 24-7 NOR/PSRAM mode A read access
+Page  519: Figure 24-8 NOR/PSRAM mode A write access
+Page  519: As configured in Table 24-19, Table 24-20, and Table 24-21, the XMC uses mode B to access the external
+Page  519: Bit 15                                                          Configure according to memory specifications.
+Page  519: Bit 12           WEN: Write enable                              Configure according to needs.
+Page  519: Bit 9            NWPOL: NWAIT polarity                          Configure according to memory specifications.
+Page  519: Bit 6            NOREN: NOR Flash access enable                 0x1
+Page  519: Bit 5: 4                                                        Configure according to memory specifications.
+Page  520: Bit 19: 16        BUSLAT: Bus latency                       falling edge. Configure according to needs and memory
+Page  520: Refer to Figure 24-9. Configure according to needs and
+Page  520: Refer to Figure 24-9. Configure according to needs and
+Page  520: Bit 19: 16        BUSLAT: Bus latency                       falling edge. Configure according to needs and memory
+Page  520: Refer to Figure 24-10. Configure according to needs and
+Page  520: Refer to Figure 24-10. Configure according to needs and
+Page  520: Figure 24-9 NOR/PSRAM mode B read access
+Page  521: Figure 24-10 NOR/PSRAM mode B write access
+Page  521: As configured in Table 24-22, Table 24-23 and Table 24-24, the XMC uses mode C to access the external
+Page  521: Bit 15                                                    Configure according to memory specifications.
+Page  521: Bit 12            WEN: Write enable                       Configure according to needs.
+Page  521: Bit 9             NWPOL: NWAIT polarity                   Configure according to memory specifications.
+Page  521: Bit 6             NOREN: NOR Flash access enable          0x1
+Page  521: Bit 5: 4                                                  Configure according to memory specifications.
+Page  522: Bit 19: 16        BUSLAT: Bus latency                        falling edge. Configure according to needs and memory
+Page  522: Refer to Figure 24-11. Configure according to needs and
+Page  522: Refer to Figure 24-11. Configure according to needs and
+Page  522: Bit 19: 16       BUSLAT: Bus latency                         falling edge. Configure according to needs and memory
+Page  522: Refer to Figure 24-12. Configure according to needs and
+Page  522: Refer to Figure 24-12. Configure according to needs and
+Page  522: Figure 24-11 NOR/PSRAM mode C read access
+Page  523: Figure 24-12 NOR/PSRAM mode C write access
+Page  523: As configured in Table 24-25, Table 24-26, and Table 24-27, the XMC uses mode D to access the
+Page  523: Bit 15                                                      Configure according to memory specifications.
+Page  523: Bit 12           WEN: Write enable                          Configure according to needs.
+Page  523: Bit 9            NWPOL: NWAIT polarity                      Configure according to memory specifications.
+Page  523: Bit 6            NOREN: NOR Flash access enable             Configure according to memory specifications.
+Page  523: Bit 5: 4                                                    Configure according to memory specifications.
+Page  523: Bit 3: 2         DEV: Memory device type                    Configure according to memory specifications.
+Page  524: Bit 19: 16         BUSLAT: Bus latency                          falling edge. Configure according to needs and memory
+Page  524: Refer to Figure 24-13. Configure according to needs and
+Page  524: Refer to Figure 24-13. Configure according to needs and
+Page  524: Refer to Figure 24-13. Configure according to needs and
+Page  524: Bit 19: 16        BUSLAT: Bus latency                          falling edge. Configure according to needs and memory
+Page  524: Refer to Figure 24-14. Configure according to needs and
+Page  524: Refer to Figure 24-14. Configure according to needs and
+Page  524: Refer to Figure 24-14. Configure according to needs and
+Page  524: Figure 24-13 NOR/PSRAM mode D read access
+Page  525: Figure 24-14 NOR/PSRAM mode D write access
+Page  525: As configured in Table 24-28 and Table 24-29, the XMC uses mode A to access the external memory.
+Page  525: Bit 15                                                          Configure according to memory specifications.
+Page  525: Bit 12            WEN: Write enable                             Configure according to needs.
+Page  525: Bit 9             NWPOL: NWAIT polarity                         Configure according to memory specifications.
+Page  525: Bit 6             NOREN: NOR Flash access enable                Configure according to memory specifications.
+Page  525: Bit 5: 4                                                        Configure according to memory specifications.
+Page  525: Configure according to memory specifications. It is valid
+Page  526: Bit 19: 16         BUSLAT: Bus latency                        falling edge. Configure according to needs and memory
+Page  526: according to needs and memory specifications.
+Page  526: Refer to Figure 24-15 and Figure 24-16. Configure according
+Page  526: Refer to Figure 24-15 and Figure 24-16. Configure according
+Page  526: Figure 24-15 NOR/PSRAM multiplexed mode read access
+Page  527: Figure 24-16 NOR/PSRAM multiplexed mode write access
+Page  527: As configured in Table 24-30 and Table 24-31, the XMC uses synchronous mode to access the external
+Page  527: only wait (DTLAT+1) CLK clock cycles but also have to take into account the XMC_NWAIT signal. During
+Page  527: Figure 24-17 shows the timing for read access, while Figure 24-18 shows the timing for write access.
+Page  527: Bit 18: 16        CRPGS:CRAM page size                      Configure according to memory specifications.
+Page  527: Bit 13                                                      Configure according to memory specifications.
+Page  527: Bit 12            WEN: Write enable                         Configure according to needs.
+Page  527: Bit 11            NWTCFG: NWAIT timing configuration        Configure according to memory specifications.
+Page  527: Bit 10            WRAPEN: Wrapped enable                    Configure according to needs.
+Page  527: Bit 6             NOREN: NOR Flash access enable            Read synchronization: Configure according to memory
+Page  527: Bit 5: 4                                                    Configure according to memory specifications.
+Page  527: Bit 3: 2          DEV: Memory device type                   Read synchronization: Configure according to memory
+Page  527: Bit 1                                                       Configure according to needs.
+Page  528: Bit 19: 16         BUSLAT: Bus latency                           falling edge. Configure according to needs and memory
+Page  528: Figure 24-17 NOR/PSRAM synchronous multiplexed mode read access
+Page  529: Figure 24-18 NOR/PSRAM synchronous multiplexed mode write access
+Page  529: special bank, each with its separate timing registers. Both banks can be accessible with different timings.
+Page  529: Access address
+Page  529: section, and reads or writes the data from or to the data section. As the access addresses are transmitted
+Page  529: has no limitation on the NAND Flash capacity accessible.
+Page  529: Data access
+Page  529: arrangement according to the typical signals of the external memories. Table 24-33 lists the operation
+Page  530: Table 24-33 Data access width vs. external memory data width
+Page  530: 8-bit NAND         R/W                  16                     8                     Split into 2 XMC accesses
+Page  530: R/W                  32                     8                     Split into 4 XMC accesses
+Page  530: R/W                  32                     16                    Split into 4 XMC accesses
+Page  530: 24.5.2 Access timings
+Page  530: The XMC access the NAND Flash according to the timing parameters, as shown in Table 24-34 and
+Page  530: Figure 24-19. Users can perform programming operations according to the specifications of the external
+Page  530: Parameter register        Function                                 Access mode           Unit
+Page  530: Figure 24-19 NAND read access
+Page  531: computation when the NAND interface access the NAND Flash. The computed value is stored into the
+Page  531: timing register. The three memory spaces are accessible through different timings.
+Page  532: Access address and Data access
+Page  532: address. Address translation between them is shown in Table 24-5. As long as read/write access to a
+Page  532: memories according to the HADDR bit.
+Page  532: arrangement according to the typical signals of the external memories. Table 24-37 lists the operation
+Page  532: Table 24-37 Access data width and PC card data width
+Page  532: Split into 2 XMC accesses and use
+Page  532: 24.6.2 Access timings
+Page  532: The XMC access the NAND Flash according to the timing parameters, as shown in Table 24-38 and Figure
+Page  532: 24-21. Users can perform programming operations according to the specifications of the external memory
+Page  532: Parameter register        Description                           Access mode        Unit
+Page  533: 24.7.1 SDRAM access management
+Page  533: 1.     Program the SDRAM_CTRLx register according to the external SDRAM device row/column and
+Page  534: After the initialization, the SDRAM is ready to accept commands. If a system reset occurs during an on-
+Page  534: going SDRAM access, the SDRAM device has to be reset after re-initialization in order to issue a new
+Page  534: access to the SDRAM.
+Page  534: access commands are issued using the timing parameters configured for SDRAM device 1.
+Page  534: Before performing any write access, the SDRAM write protection must be disabled by clearing the WRP
+Page  534: The SDRAM controller translates single or burst AHB write requests into a single SDRAM write access,
+Page  534: consecutive write accesses to different banks (multibank ping-pong access). If the next write access is
+Page  534: in the same row or in another active row, the write operation is performed. If the next write access targets
+Page  534: Figure 24-22 SDRAM write access waveforms (Trcd=2, 9 consecutive write access)
+Page  534: The SDRAM controller translates single or burst AHB read requests into a single SDRAM read access,
+Page  534: consecutive read accesses to different banks (multibank ping-pong access). If the next read access is
+Page  534: in the same row or in another active row, the read operation is performed. If the next read access targets
+Page  535: Figure 24-23 SDRAM read access without using read FIFO (Trcd=2,CL=3, and 4 consecutive read accesses)
+Page  535: When a read or write access crosses a row boundary, if the next read or write access is sequential and
+Page  535: the current access was performed to a row boundary, then the SDRAM controller precharges the
+Page  535: If the next access is sequential and the current access crosses BANK boundary, two cases are possible:
+Page  535:    If the current BANK is not the last one, the SDRAM will perform access to the next BANK. If the
+Page  535: next BANK is an active row and the active row matches the one to be accessed, a read operation
+Page  535: is issued; if such active row is not the one to be accessed, disable the active row and activate a
+Page  535: new row; if no active row, activate directly a new row to be accessed, and issue a read/write
+Page  535: refresh commands have priority over read/write accesses. In other words, if the auto-refresh commands
+Page  535: and read/write access commands are generated simultaneously, the read/write requests are suspended
+Page  536: It is possible to leave self-refresh mode by setting CMD=000 or by read/write access to the SDRAM.
+Page  536: It is possible to leave power-down mode by setting CMD=000 or by read/write access to the SDRAM.
+Page  536: These peripheral registers must be accessed by words (32 bits).
+Page  537: Accessed by words
+Page  537: Cellular RAM 1.5 does not allow synchronous access to
+Page  537: will automatically split the access when the page size is
+Page  537: Bit 18: 16   CRPGS      0x0             rw       000: No split access when crossing address boundary
+Page  538: Bit 10       WRAPEN     0x0             rw       access into two accesses.
+Page  538: 0: Direct wrapped access is not allowed
+Page  538: 1: Direct wrapped access is allowed
+Page  538: This bit allows synchronous access to Flash memories.
+Page  538: Nor flash access enable
+Page  538: Bit 6        NOREN      0x1             rw       0: Nor flash access is disabled
+Page  538: 1: Nor flash access is enabled
+Page  538: Accessed by words.
+Page  538: Cellular RAM 1.5 does not allow synchronous access to
+Page  538: will automatically split the access when the page size is
+Page  538: 000: No split access when crossing address boundary
+Page  539: Bit 10     WRAPEN     0x0         rw       access into two accesses.
+Page  539: 0: Direct wrapped access is not allowed
+Page  539: 1: Direct wrapped access is allowed
+Page  539: This bit allows synchronous access to Flash memories.
+Page  539: Nor flash access enable
+Page  539: Bit 6      NOREN      0x1         rw       0: Nor flash access is disabled
+Page  539: 1: Nor flash access is enabled
+Page  540: Accessed by words.
+Page  540: Accessed by words.
+Page  541: Accessed by words.
+Page  542: Accessed by words.
+Page  542: Accessed by words.
+Page  543: Accessed by words.
+Page  543: when write access to NAND Flash is started in a regular
+Page  543: This field defines the databus hold time when access to
+Page  543: This field defines the address setup time when access to
+Page  543: Accessed by words.
+Page  543: when write access to NAND Flash is started in a special
+Page  544: This field defines the databus hold time when access to
+Page  544: This field defines the address setup time when access to
+Page  544: Accessed by words.
+Page  544: Accessed by words.
+Page  544: Accessed by words.
+Page  545: Accessed by words.
+Page  545: when write access to NAND Flash is started in a common
+Page  545: This field defines the databus hold time when access to
+Page  545: This field defines the address setup time when access to
+Page  545: Accessed by words.
+Page  545: when write access to NAND Flash is started in an attribute
+Page  545: This field defines the databus hold time when access to
+Page  546: This field defines the address setup time when access to
+Page  546: Accessed by words.
+Page  546: when write access to NAND Flash is started in an IO
+Page  546: This field defines the databus hold time when access to
+Page  546: This field defines the address setup time when access to
+Page  547: 0: Write access allowed
+Page  547: 1: Write access forbidden
+Page  555: If the host uses partial blocks with accumulated length is not block aligned, and block misalignment is
+Page  555: to accept new data from a new WRITE_BLOCK command. The host can check the status of the card
+Page  555: The READY_FOR_DATA status bit indicates whether the car can accept new data or whether the write
+Page  556: query for status, but not allowed to access data on the card. When the password is set (PWD_LEN is
+Page  556: replaced, the block size must take into account the length of both the old and the new
+Page  558: If the user forgot the password (PWD content), it is possible to access the card after clearing all the data
+Page  558: types. In the meantime, specific customer/application features must also be taken into account. Because
+Page  559: [25: 24] access
+Page  561: accesses application-specific registers
+Page  566: output clock. If BYPSEN = 0, the SDIO_CK output signal is driven by the SDIOCLK divided according
+Page  569: The AHB interface generates the interrupt and DMA requests, and access the SDIO interface registers
+Page  570: avoid BUF underflow and overflow errors. Read/write access to the BUF is still active even if flow control
+Page  570: response and when an ACK signal is received from the card (suspend accepted), it acknowledges the
+Page  571: The device communicates with the system through 32-bit control registers accessible via AHB.
+Page  571: The peripheral registers must be accessed by words (32-bit).
+Page  571: Note: Write access to this register is not allowed within seven HCLK clock periods after data is written.
+Page  572: divided according to the CLKDIV value. When enabled,
+Page  573: can vary according to the type of response. The software will distinguish the type of
+Page  573: response according to the command sent.
+Page  576: transferred is returned. Write access has no effect.
+Page  580: 26 Ethernet media access control (EMAC)
+Page  581: The Ethernet peripheral consists of a MAC 802.3 (media access controller), MII interface and a
+Page  581:    Media access management in half-duplex mode
+Page  581: The PHY management interface (SMI) accesses PHY registers through a clock and data line. It
+Page  584: peripheral and the external Ethernet. According to the IEEE802.3u standard, the MII interface requires
+Page  587: address filtering status is reported accordingly.
+Page  587: EMAC will accept all broadcast frames.
+Page  589: When the SOF is detected, the MAC accepts data and begins transmitting to the MII/RMII. The time
+Page  590: The EMAC jabber timer is enabled (set EMAC_MACCTRL[20]=0) to prevent certain station on the LAN
+Page  590: maintains an idle period of the programmed interframe gap (IFG bits in the EMAC_MACCTRL register)
+Page  593: + FCS) are cut off. This feature can be disabled by the WD bit in the EMAC_MACCTRL register. However,
+Page  593: Both IPv4 and IPv6 frames are detected for data integrity by setting the IPC bit in the EMAC_MACCTRL
+Page  593: according to the delay specified within the received Pause frame.
+Page  593: EMAC_MACCTRL register.
+Page  595: DMA AHB host burst access
+Page  595: The DMA executes a fixed-length burst access on the AHB master interface if the FB bit is set in the
+Page  595: EMAC_DMABM register). The receive and transmit descriptors are always accessed in the maximum
+Page  595: accommodate these bytes
+Page  595: If the receive buffer length field is big enough to accommodate a full frame, then both the FS and LS bits
+Page  595: arbiter allocates the databus according to the ratio set by the PR bit in the EMAC_DMABM register,
+Page  595: when both transmit and RXDMA request access to the AHB bus simultaneously. When the DA bit is set
+Page  595: to 1, the RXDAM always has priority over the TXDMA for data access.
+Page  596: 1. Configure AT32F437xx bus access parameters in the EMAC_DMABM register.
+Page  596: 5. Configure the EMAC_MACCTRL register to enable the transmit and receive operating modes
+Page  596: Program the PS and DM bits according to the auto-negotiation result
+Page  596: 1.     The DMA operates according to steps 1-6 of the TXDMA.
+Page  599: timeout. This bit is set only when the JAD bit is not set in the EMAC_MACCTRL
+Page  599: (Retry disabled) bit in the EMAC_MACCTRL register is set, then this bit is set after
+Page  599: deferral of over 24288 bit times when the DC bit is set in the EMAC_MACCTRL
+Page  600: 2. IPV4 checksum is activated (by setting IPC to 1 in the EMAC_MACCTRL register)
+Page  602: up or at the end of the frame reception. If the current descriptor buffer is enough to accommodate the
+Page  603: indicates the accumulated number of bytes that have been transferred to the system
+Page  603: the EMAC_MACCTRL register.
+Page  605: 2. IPV4 checksum is activated (by setting IPC to 1 in the EMAC_MACCTRL register)
+Page  606: If IPv4 checksum offload is activated (IPCO=1, ETH_MACCR bit 10), these bits
+Page  609: enabled. However, the RE bit has to be set in the EMAC_MACCTRL register because the EMAC needs
+Page  609: EMAC_MACCTRL register.
+Page  609: 7.    Enable the EMAC receiver by setting the RE bit in the EMAC_MACCTRL register.
+Page  609: The PTP block captures the accurate time when a PTP packet is transmitted or received from Ethernet
+Page  610: According to IEEE158 standard, the system requires a reference time in a 64-bit format as the current
+Page  610: synchronization accuracy between the master node and the slave node is around 100ns.
+Page  610: The time synchronization accuracy depends on the PTP reference clock input period, the frequency
+Page  610: defined in IEEE1588) is corrected over a period of time. An accumulator sums up the value of the addend
+Page  610: register as shown in Figure 26-15.The pulse generated by the arithmetic carry of the accumulator is
+Page  610: frequency. Both the accumulator and the addend are 32-bit registers.
+Page  611: Accumulator register
+Page  611: The subsecond register update frequency requires 50 MHz to achieve 20 ns accuracy for the system
+Page  611: The value in the addend register has to be updated according to the drift of the system clock frequency.
+Page  611: accumulator register accordingly. Initially, the slave clock addend register is programmed to be
+Page  611: Sync cycles, the frequency is locked. The slave clock can then determine an accurate
+Page  612: interrupt introduces an interrupt latency. To obtain an accurate interrupt latency time, a PTP will output
+Page  612: a high signal to the TMR2 when the system time becomes greater than the target value. An accurate
+Page  614: The peripheral registers can be accessed by bytes (8-bit), half words (16-bit) or words (32-bit).
+Page  614: EMAC_MACCTRL                       0x00                        0x0000 8000
+Page  616: 26.3.1 Ethernet MAC configuration register (EMAC_MACCTRL)
+Page  616: A delay greater than 4μs is required for two consecutive write accesses to this register.
+Page  619: filtering of the received multicast frames according to the
+Page  619: filtering for unicast frames according to the hash table.
+Page  620: The Hash value of the destination address is calculated according to the following steps:
+Page  620: are being accessed.
+Page  621: During a PHY register access, this bit is set to 1’b1 by
+Page  621: software, indicating that a read or write access is in
+Page  624: a read access to this register.
+Page  624: of a Magic packet. This bit is cleared by a read access to
+Page  625: access to the EMAC_MACPMTCTRLSTS register.
+Page  625: domain so as to achieve an accurate synchronous update.
+Page  626: domain so as to achieve an accurate synchronous update.
+Page  627: domain so as to achieve an accurate synchronous update.
+Page  627: domain so as to achieve an accurate synchronous update.
+Page  628: Bit 25       AAB             0x0             rw       transfer (accessing the data buffer’s start address) is not
+Page  631: 100: Error during Rx DMA descriptor write access
+Page  632: 101: Error during Tx DMA descriptor write access
+Page  632: 110: Error during Rx DMA descriptor read access
+Page  632: 111: Error during Tx DMA descriptor read access
+Page  633: will disable all its bus accesses.
+Page  634: greater than 4us is required between two consecutive write accesses to this register.
+Page  642: configured according to PTP reference clock frequency
+Page  643: the system time whenever the accumulator has an overflow.
+Page  643: Bit 7: 0     SSIV              0x00            rw       accuracy (by setting the bit 9 in the EMAC_PTPTSCTRL
+Page  643: register resolution is ~0.465ns accuracy. In this case, the
+Page  644: ns accuracy. When the bit 9 is set in the
+Page  644: ns accuracy. When the bit 9 is set in the
+Page  644: value is added to a 32-bit accumulator at every clock cycle (of clk_ptp_ref_i). The system time is
+Page  644: updated whenever the accumulator overflows.
+Page  644: accumulator in order to achieve time synchronization.
+Page  647:     DMA access single or burst transfer
+Page  652: 27.4 DMA access interface and data output packing
+Page  652: 27.4.1 DMA access interface
+Page  652: activated. The DMA accesses the DVP_DT register through the AHB bus to fetch the DVP-captured data.
+Page  652: A 32-bit data is transferred for each access. The DVP DMA interface supports single or burst transfers,
+Page  652: Burst transfer mode is enabled when setting DMABT=1. A DMA access is triggered each time the DVP
+Page  652: receives four 32-bit data. After receiving a DMA request, the DMA makes four consecutive accesses to
+Page  652: Single transfer mode is enabled when setting DMABT=0. In this mode, a DMA access request is
+Page  652: accesses the DVP_DT register once. When the DMA interface uses DMA, only single transfer mode is
+Page  652: Note: To ensure correct data acquisition using DMA access interface, the AHB bus clock (AHB_CLK)
+Page  655: Note: As the DVP packs the captured data into a 32-bit word for DMA access, the CHNUM bit has the
+Page  658: The CMOS video camera offers various image output formats. This section only gives a brief account of
+Page  660: EFDF must be programmed according to the CMOS video camera output format. Table 27-4 describes
+Page  661: The peripheral registers can be accessed by words (32-bit).
+Page  669: access) and QSPI interface controller used for SPI Flash command execution. The command-based
+Page  669: slave port is used to access registers and data ports, and the XIP slave port reads data from direct
+Page  669: address mapping. Additionally, the QSPI allows AHB data port to access data in either IPO or DMA mode.
+Page  669: The QSPI has a command slave interface that contains register and data ports. The users can access
+Page  669: (CMD_W3 is the last to be written) and is accessible in words, while any other registers (including data
+Page  669: port register) can be accessed by bytes, half-words and words.
+Page  669: The data port can be accessed in either PIO or DMA mode. The RxFIFO / TxFIFO registers (0x18)
+Page  670: The DMA mode can also be used to access data ports. The DMA controller register must be
+Page  670: The QSPI offers a XIP slave port (direct address mapping read/write) for users to perform a direct access
+Page  670: be programmed according to SPI device specification. Refer to Figure 28-3 and Figure 28-10 for more
+Page  676: These registers must be accessed by bytes (8-bit), half-words (16-bit) or words (32-bit).
+Page  677: No-wait states, accessible words
+Page  677: No-wait states, accessible by words.
+Page  678: No-wait states, accessible by bytes, half-words and words.
+Page  679: No-wait states, accessible by bytes, half-words and words.
+Page  679: No-wait states, accessible by bytes, half-words and words.
+Page  680: No-wait states, accessible by bytes, half-words and words.
+Page  680: No-wait states, accessible by bytes, half-words and words.
+Page  680: No-wait states, accessible by bytes, half-words and words.
+Page  681: No-wait states, accessible by words.
+Page  681: No-wait states, accessible by words.
+Page  682: No-wait states, accessible by words.
+Page  683: No-wait states, accessible by bytes, half-words and words.
+Page  683: No-wait states, accessible by bytes, half-words and words.
+Page  683: This bit is used to correct sampling phase according to
+Page  683: When ISPC is set, this bit setting is taken into account.
+Page  683: No-wait states, accessible by bytes, half-words and words.
+Page  683: No-wait states, accessible by bytes, half-words and words.
+Page  684: Enhanced direct memory access (EDMA) controller is designed for 32-bit MCU applications with the
+Page  686: channel completes a single or burst transfer according to the priority defined by the main controller.
+Page  691: Write access to the current destination memory address register in dual buffer mode
+Page  696: These peripheral registers must be accessed by bytes (8 bits), half-words (16 bits) or words (32 bits).
+Page  698: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  699: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  700: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  701: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  702: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  704: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  704: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  705: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  705: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  705: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  706: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  706: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  706: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  706: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  707: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  707: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  708: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  708: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  709: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  709: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  709: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  710: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  710: Access: 0 wait state, accessible by bytes, half-words or words.
+Page  711: There are several ID codes inside the MCU, which is accessible by the debugger using the
+Page  711: bus. These codes are accessible using the JTAG debug port or the SWD debug port or by the user
+Page  711: software. They are even accessible while the MCU is under system reset.
+Page  711: These peripheral registers must be accessed by words (32 bits).
+Page  712: is mapped on the external PPB bus at address 0xE0042000. This code is accessible by the JTAG debug
+Page  713: Bit 1        DEEPSLEEP_DEBUG    0x0           rw       the system clock according to application requirements.
+Page  713: clock. According to application requirements.
+Page  715: POR Reset (not reset by system reset). This code is accessible by the JTAG debug port or SW debug
+Page  716: 2. Modified the reset value of section 22.6.4 Control register 2 (ACC_CTRL2)
+Page  716: 8. Updated the descriptions of Section 26 Ethernet media access control (EMAC)

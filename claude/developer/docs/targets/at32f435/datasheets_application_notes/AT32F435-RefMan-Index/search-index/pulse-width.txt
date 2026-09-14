@@ -1,0 +1,13 @@
+Keyword: pulse width
+Occurrences: 9
+================================================================================
+
+Page   94: Ethernet pulse width select
+Page   94: Bit 9       EMAC_PPS_SEL   0x0           rw        0: Pulse width is 125 ms.
+Page   94: 1: Pulse width is 1 system clock.
+Page  210: pulse width is specified as 3/16 bit. In infrared low-power mode, the pulse width can be configurable.
+Page  613: If it is 1 Hz, the pulse width of the PPS is 125 ms when the binary rollover control is selected (TSSSR=0
+Page  613: in the EMAC_PTPTSCTRL register); the pulse width of the PPS is 100 ms when the digital rollover
+Page  645: 0000: 1 Hz, use binary rollover control, pulse width is 125
+Page  645: ms; use digital rollover, pulse width is 100 ms
+Page  645: 0000: 1 Hz, pulse width is one clk_ptp cycle

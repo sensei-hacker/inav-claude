@@ -1,0 +1,75 @@
+Keyword: register map
+Occurrences: 71
+================================================================================
+
+Page   20: 21.6.1 CSR register map ....................................................................... 461
+Page   23: 22.6.1 ACC register map ....................................................................... 502
+Page   40: Table 3-1 PW register map and reset values .............................................................................................. 67
+Page   40: Table 4-1 CRM register map and reset values ............................................................................................ 73
+Page   40: Table 5-8 Flash memory interface—Register map and reset value ........................................................... 111
+Page   40: Table 6-10 GPIO register map and reset values ....................................................................................... 139
+Page   40: Table 7-1 SCFG register map and reset values ........................................................................................ 143
+Page   40: Table 8-1 External interrupt/Event controller register map and reset value .............................................. 152
+Page   40: Table 9-5 DMA register map and reset value ............................................................................................ 161
+Page   40: Table 10-1 CRC register map and reset value .......................................................................................... 172
+Page   40: Table 11-8 I2C register map and reset values ........................................................................................... 200
+Page   41: Table 12-5 USART register map and reset value ...................................................................................... 221
+Page   41: Table 13-2 SPI register map and reset value ............................................................................................ 247
+Page   41: Table 14-5 TMRx register map and reset value ........................................................................................ 272
+Page   41: Table 14-8 TMRx register map and reset value ........................................................................................ 293
+Page   41: Table 14-10 TMRx register map and reset value ...................................................................................... 299
+Page   41: Table 14-14 TMR1 and TMR8 register map and reset value .................................................................... 321
+Page   41: Table 15-2 WWDT register map and reset value ...................................................................................... 336
+Page   41: Table 17-1 RTC register map and reset values ......................................................................................... 342
+Page   41: Table 17-4 ERTC register map and reset values ...................................................................................... 348
+Page   41: Table 18-5 ADC register map and reset values ......................................................................................... 374
+Page   41: Table 19-2 DAC register map and reset values ........................................................................................ 395
+Page   41: Table 20-1 CAN register map and reset values ........................................................................................ 410
+Page   41: Table 21-4 OTGFS register map and reset values ................................................................................... 462
+Page   41: Table 22-2 ACC register map and reset values ......................................................................................... 502
+Page   43: Table 26-8 Ethernet register map and its reset values .............................................................................. 614
+Page   43: Table 27-5 DVP register map and reset values ......................................................................................... 661
+Page   43: Table 28-1 SPI register map and reset values .......................................................................................... 676
+Page   43: Table 29-5 BPR register map and reset values ......................................................................................... 696
+Page   67: Table 3-1 PWC register map and reset values
+Page   73: Table 4-1 CRM register map and reset values
+Page  111: Table 5-8 lists Flash register map and their reset values.
+Page  111: Table 5-8 Flash memory interface—Register map and reset value
+Page  139: Table 6-10 lists GPIO register map and their reset values. These peripheral registers must be
+Page  139: Table 6-10 GPIO register map and reset values
+Page  143: Table 7-1 shows SCFG register map and their reset values.
+Page  143: Table 7-1 SCFG register map and reset values
+Page  152: Table 8-1 shows EXINT register map and their reset value.
+Page  152: Table 8-1 External interrupt/Event controller register map and reset value
+Page  161: Table 9-5 shows DMA register map and their reset values.
+Page  161: Table 9-5 DMA register map and reset value
+Page  172: Table 10-1 CRC register map and reset value
+Page  200: Table 11-8 I2C register map and reset values
+Page  221: Table 12-6 USART register map and reset value
+Page  247: Table 13-2 SPI register map and reset value
+Page  255: Table 14-2 TMR6 and TMR7 register map and reset value
+Page  272: Table 14-5 TMR2 and TMR 5 register map and reset value
+Page  293: Table 14-8 TMR9 and TMR12 register map and reset value
+Page  299: Table 14-10 TMR10, TMR11, TMR13 and TMR14 register map and reset value
+Page  321: Table 14-14 TMR1, TMR8 and TMR20 register map and reset value
+Page  336: Table 15-2 WWDT register map and reset value
+Page  342: Table 17-1 RTC register map and reset values
+Page  348: Table 17-4 ERTC register map and reset values
+Page  374: Table 18-5 lists ADC register map and their reset values.
+Page  374: Table 18-5 ADC register map and reset values
+Page  395: Table 19-2 DAC register map and reset values
+Page  410: Table 20-1 CAN register map and reset values
+Page  419: information on register map.
+Page  461: 21.6.1 CSR register map
+Page  462: Table 21-4 shows the USB OTG register map and their reset values.
+Page  462: Table 21-4 OTGFS register map and reset values
+Page  502: 22.6.1 ACC register map
+Page  502: Table 22-2 ACC register map and reset values
+Page  614: Table 26-8 shows the Ethernet register map and its reset values.
+Page  614: Table 26-8 Ethernet register map and its reset values
+Page  661: Table 27-5 shows the DVP register map and its reset values.
+Page  661: Table 27-5 DVP register map and reset values
+Page  676: Table 28-1 QSPI register map and reset values
+Page  696: Table 29-5 shows DMA register map and reset values.
+Page  696: Table 29-5 BPR register map and reset values
+Page  711: Table 30-1 shows DEBUG register map and reset values.

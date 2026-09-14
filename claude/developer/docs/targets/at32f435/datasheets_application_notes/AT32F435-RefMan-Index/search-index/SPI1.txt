@@ -1,0 +1,90 @@
+Keyword: SPI1
+Occurrences: 86
+================================================================================
+
+Page   45: SRAM 4KB                                                                                                             QSPI1/2
+Page   45: SPI2 / I S2                                                                                                                                   SPI1 / I2S1
+Page   47: QSPI1_
+Page   51: 35   42             SPI1                   SPI1 global interrupt                  0x0000_00CC
+Page   53: 92      99                 QSPI1                  QSPI1 global interrupt               0x0000_01B0
+Page   57: 0x1FFF_BFFF                                                          XMC and QSPI1/2 Reg
+Page   57: (QSPI1)         0x9000_0000
+Page   60: 0x9000 0000 - 0x9FFF FFFF       QSPI1_MEM
+Page   61: 0xA000 1000 - 0xA000 1FFF       QSPI1_REG
+Page   61: 0x4001 3000 - 0x4001 33FF       SPI1/I2S1
+Page   80: QSPI1 reset
+Page   80: Bit 1        QSPI1RST       0x0             rw          0: Does not reset QSPI1
+Page   80: 1: Reset QSPI1
+Page   82: SPI1 reset
+Page   82: Bit 12       SPI1RST          0x0            rw       0: Does not reset SPI1
+Page   82: 1: Reset SPI1
+Page   84: QSPI1 clock enable
+Page   84: Bit 1        QSPI1EN         0x0            rw        0: Disabled
+Page   87: SPI1 clock enable
+Page   87: Bit 12       SPI1EN          0x0              rw          0: Disabled
+Page   89: QSPI1 clock enable in sleep mode
+Page   89: Bit 1        QSPI1LPEN        0x1            rw       0: Disabled
+Page   91: SPI1 clock enable in sleep mode
+Page   91: Bit 12       SPI1LPEN         0x1            rw       0: Disabled
+Page  100: of QSPI1.
+Page  124: SPI1_CS     SPI3_CS
+Page  124: TMR2_CH1                                       SPI1_SCK
+Page  124: PA6                TMR1_BRK    TMR3_CH1   TMR8_BRK                SPI1_MISO   I2S2_MCK    USART3_CTS
+Page  124: SPI1_MOSI
+Page  124: TMR2_CH1                                       SPI1_CS     SPI3_CS
+Page  125: PA1    UART4_RX    QSPI1_IO3                                                                      EVENTOUT
+Page  125: PA6                TMR13_CH1   QSPI1_IO0   SDIO2_D2
+Page  125: PA7                TMR14_CH1   QSPI1_IO1
+Page  125: PA15   USART2_RX   QSPI2_IO1   QSPI1_IO2                       XMC_NCE                            EVENTOUT
+Page  126: JTDO                                                         SPI1_SCK    SPI3_SCK
+Page  126: PB4    JNTRST                  TMR3_CH1                 I2C3_SDA    SPI1_MISO   SPI3_MISO    I2S3_SDEXT
+Page  126: SPI1_MOSI   SPI3_MOSI
+Page  127: QSPI1_IO
+Page  127: PB1    USART3_RTS_DE   QSPI1_SCK
+Page  127: PB2                    QSPI1_SCK
+Page  127: QSPI1_IO
+Page  127: QSPI1_C                        XMC_SD
+Page  127: QSPI1_C
+Page  127: QSPI1_IO
+Page  127: PB10                   QSPI1_CS
+Page  127: QSPI1_IO     EMAC_MII_TX_EN
+Page  129: PC4                            QSPI1_IO2     EMAC_RMII_RX    XMC_SDCS0    SDIO2_CK    XMC_NE4   EVENTOUT
+Page  129: PC5                            QSPI1_IO3     EMAC_RMII_RX    XMC_SDCKE0   SDIO2_CMD   XMC_NOE   EVENTOUT
+Page  129: PC8    USART6_CK   QSPI1_IO2   XMC_A2                        SDIO1_D0     DVP_D2                EVENTOUT
+Page  129: PC9                QSPI1_IO0   XMC_A3        OTG2_OE         SDIO1_D1     DVP_D3                EVENTOUT
+Page  129: PC10   UART4_TX    QSPI1_IO1                                 SDIO1_D2     DVP_D8                EVENTOUT
+Page  129: PC11   UART4_RX    QSPI1_CS                                  SDIO1_D3     DVP_D4      XMC_D2    EVENTOUT
+Page  131: PD3               QSPI1_SCK   XMC_A8                           XMC_CLK     DVP_D5              EVENTOUT
+Page  131: PD11              QSPI1_IO0
+Page  131: PD12              QSPI1_IO1
+Page  131: PD13   UART8_TX   QSPI1_IO3   XMC_SD_CLK                       XMC_A18                         EVENTOUT
+Page  132: SPI1_CS    SPI4_SCK
+Page  132: SPI1_SCK
+Page  132: SPI1_MIS   SPI4_MOSI
+Page  132: SPI1_MOS
+Page  133: PE2               QSPI1_IO2   XMC_SDNCAS      EMAC_MII_TXD3   XMC_A23                      EVENTOUT
+Page  135: PF6    UART7_RX   QSPI1_IO3                            XMC_NIORD                      EVENTOUT
+Page  135: PF7    UART7_TX   QSPI1_IO2                            XMC_NREG                       EVENTOUT
+Page  135: PF8               TMR13_CH1   QSPI1_IO0                XMC_NIOWR                      EVENTOUT
+Page  135: PF9               TMR14_CH1   QSPI1_MOSI_IO1           XMC_CD                         EVENTOUT
+Page  135: PF10              QSPI1_SCK                            XMC_INTR     DVP_D11           EVENTOUT
+Page  136: PG0                       TMR20_CH1C                     SPI1_MISO
+Page  136: SPI1_MOSI
+Page  137: PG6                                QSPI1_CS                      XMC_INT2     DVP_D12          EVENTOUT
+Page  137: PG9    USART6_RX       QSPI1_IO2
+Page  137: PG14   USART6_TX       QSPI1_IO3                                 XMC_A25                       EVENTOUT
+Page  138: PH2      UART4_RX              QSPI1_IO0                                                      EVENTOUT
+Page  138: PH3      UART4_TX              QSPI1_IO1                                                      EVENTOUT
+Page  154: SPI1       USART6                                                           ch2     Master
+Page  154: SPI4       QSPI1                                                            ch7
+Page  158: SPI1     USART6          Req_gen1
+Page  158: SPI4     QSPI1           Req_gen3
+Page  159: 8           TMR6_OVERFLOW 40        QSPI1              72        TMR5_CH1       104     QSPI2
+Page  159: 10          SPI1_RX       42        TMR1_CH1           74        TMR5_CH3       106     SPI4_RX
+Page  159: 11          SPI1_TX       43        TMR1_CH2           75        TMR5_CH4       107     SPI4_TX
+Page  238: Note: Some of SPI1/I2S1 and SPI3/I2S3 are shared with JTAG pins (SPIx_CS/I2Sx_WS shared
+Page  693: SPI1     USART6               Req_gen1
+Page  693: SPI4     QSPI1                Req_gen3
+Page  693: 8           TMR6_OVERFLOW 40                 QSPI1                                72             TMR5_CH1                     104                QSPI2
+Page  693: 10          SPI1_RX           42             TMR1_CH1                             74             TMR5_CH3                     106                SPI4_RX
+Page  693: 11          SPI1_TX           43             TMR1_CH2                             75             TMR5_CH4                     107                SPI4_TX

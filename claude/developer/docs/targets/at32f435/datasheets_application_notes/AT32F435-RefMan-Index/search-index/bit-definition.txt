@@ -1,0 +1,6 @@
+Keyword: bit definition
+Occurrences: 2
+================================================================================
+
+Page  500: Refer to Section 22.6 for more information about the bit definition in the registers.
+Page  597: The descriptor structure consists of four 32-bit words. The bit definitions of TDES0, TDES1, TDES2 and

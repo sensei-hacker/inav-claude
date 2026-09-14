@@ -1,0 +1,444 @@
+Keyword: POR
+Occurrences: 440
+================================================================================
+
+Page    1: bus: supports CF, SRAM, PSRAM, NOR, NAND,                       IrDA capability, modem control and RS485 drive enable,
+Page    1: SPI RAM extension, and memory mapping mode                      multiplexed, I2S2/ I2S3 support full-duplex
+Page    1:    Power control (PWC)                                             − Up to 2 x OTG FS controllers supporting crystal-less
+Page    1: − Power-on reset (POR)/ low voltage reset (LVR), and            − Infrared transmitter (IRTMR)
+Page    1: − Low power: Sleep, Deepsleep, and Standby modes                  SRAM(4 Kbytes): IEEE1588 hardware support, MII/RMII
+Page    2: 3.3   POR/LVR .................................................................................... 63
+Page    5: 6.2.6 I/O port write protection .............................................................. 122
+Page    6: 6.3.11 GPIO port bit clear register (GPIOx_CLR) (x=A..H) ...................... 142
+Page   21: 21.6.4.7 OTGFS host port control and status register ( OTGFS_HPRT) ... 480
+Page   29: 28.3 QSPI command slave port .......................................................... 669
+Page   29: 28.3.1 QSPI command slave port ........................................................... 669
+Page   29: 28.3.4 XIP port (direct address mapping read/write) ............................... 670
+Page   29: 28.3.5 XIP port prefetch ........................................................................ 670
+Page   30: 28.4.17 Data port register (DT) ............................................................. 683
+Page   40: Table 6-1 Port A multiplexed function configuration with GPIOA_MUX* register ...................................... 124
+Page   40: Table 6-2 Port B multiplexed function configuration with GPIOB_MUX* register ..................................... 126
+Page   40: Table 6-3 Port C multiplexed function configuration with GPIOC_MUX* register ..................................... 128
+Page   40: Table 6-4 Port D multiplexed function configuration with GPIOD_MUX* register ..................................... 130
+Page   40: Table 6-5 Port E multiplexed function configuration with GPIOE_MUX* register ..................................... 132
+Page   40: Table 6-6 Port F multiplexed function configuration with GPIOF_MUX* register ...................................... 134
+Page   40: Table 6-7 Port G multiplexed function configuration with GPIOG_MUX* register .................................... 136
+Page   40: Table 6-8 Port H multiplexed function configuration with GPIOH_MUX* register ..................................... 138
+Page   43: Table 27-4 Enhanced features and DVP data formats supported............................................................. 660
+Page   44: AT32F435/437 series microcontrollers incorporates a 32-bit ARM® Cortex®-M4F processor core, multiple
+Page   44: monitor (PVM) and other peripherals. Cortex®-M4F processer supports enhanced high-performance DSP
+Page   45: POR/LVR
+Page   46: latency, and low-cost debug. It supports DSP instruction set and FPU, and is applicable to deeply-embedded
+Page   46: M architecture, supporting both Thumb instruction set and DSP instruction set.
+Page   48: The address ranges of two memories supporting bit-band operations:
+Page   50: Apart from making code more concise, its important function is also reflected in multi-task environment.
+Page   50: When it comes to multiple tasks, it turns the read-modify-write operations into a hardware-supported
+Page   53: Note: AT32F437 supports EMAC and EMAC_WKUP interrupts, but AT32F435 does not.
+Page   57: AT32F435/437 series provide up to 4032 KB of on-chip Flash memory, supporting a 0-wait state single
+Page   60: 0x4002 1C00 - 0x4002 1FFF       GPIO port H
+Page   61: 0x4002 1800 - 0x4002 1BFF       GPIO port G
+Page   61: 0x4002 1400 - 0x4002 17FF       GPIO port F
+Page   61: 0x4002 1000 - 0x4002 13FF       GPIO port E
+Page   61: 0x4002 0C00 - 0x4002 0FFF       GPIO port D
+Page   61: 0x4002 0800 - 0x4002 0BFF       GPIO port C
+Page   61: 0x4002 0400 - 0x4002 07FF       GPIO port B
+Page   61: 0x4002 0000 - 0x4002 03FF       GPIO port A
+Page   62: Note: Only AT32F437 supports EMAC module.
+Page   63: POR          PVM          LDO              HICK
+Page   63: LEXT           ERTC       POR_BPD
+Page   63: 3.3 POR/LVR
+Page   63: A POR analog module embedded in the VDD/VDDA domain is used to generate a power reset. The
+Page   63: power reset signal is released at VPOR when the VDD is increased from 0 V to the operating voltage, or
+Page   63: time, hysteresis occurs in power-on reset (POR) and low voltage reset (LVR).
+Page   64: VPOR
+Page   64: (VPOR-VLVR)
+Page   64: Temporization
+Page   65: power-saving mode wakeup circuit, watchdog timer (WDT), power-on reset/low voltage reset (POR/LVR),
+Page   65: can be used as a GPIO or LEXT pin. (As an I/O port, PC13, PC14 and PC15 must be limited below
+Page   65: 2 MHz, and to the maximum load of 30 pF, and these I/O ports must not be used as current sources)
+Page   69: cleared by POR/LVR or by setting the CLSEF bit.
+Page   69: Bit 0       SWEF       0x0            ro       cleared by POR/LVR or by setting the CLSWEF bit.
+Page   70: AHB, APB1 and APB2 all support multiple frequency division. The AHB domain has a maximum of 288
+Page   72: oscillator temporization.
+Page   72: When being used as the CLKOUT1/2 clock output pin, the corresponding GPIO port registers must be
+Page   73:  POR reset: power-on reset
+Page   76: frequency of an IO port)
+Page   76: frequency of an IO port).
+Page   79: IO port H reset
+Page   79: Bit 7        GPIOHRST         0x0              rw          0: Does not reset IO port H
+Page   79: 1: Reset IO port H
+Page   79: IO port G reset
+Page   79: Bit 6        GPIOGRST         0x0              rw          0: Does not reset IO port G
+Page   79: 1: Reset IO port G
+Page   79: IO port F reset
+Page   79: Bit 5        GPIOFRST         0x0              rw          0: Does not reset IO port F
+Page   79: 1: Reset IO port F
+Page   80: IO port E reset
+Page   80: Bit 4           GPIOERST        0x0              rw         0: Does not reset IO port E
+Page   80: 1: Reset IO port E
+Page   80: IO port D reset
+Page   80: Bit 3           GPIODRST        0x0              rw         0: Does not reset IO port D
+Page   80: 1: Reset IO port D
+Page   80: IO port C reset
+Page   80: Bit 2           GPIOCRST        0x0              rw         0: Does not reset IO port C
+Page   80: 1: Reset IO port C
+Page   80: IO port B reset
+Page   80: Bit 1           GPIOBRST        0x0              rw         0: Does not reset IO port B
+Page   80: 1: Reset IO port B
+Page   80: IO port A reset
+Page   80: Bit 0           GPIOARST        0x0              rw         0: Does not reset IO port A
+Page   80: 1: Reset IO port A
+Page   83: IO port H clock enable
+Page   83: IO port G clock enable
+Page   84: IO port F clock enable
+Page   84: IO port E clock enable
+Page   84: IO port D clock enable
+Page   84: IO port C clock enable
+Page   84: IO port B clock enable
+Page   84: IO port A clock enable
+Page   88: O port H clock enable in sleep mode
+Page   88: IO port G clock enable in sleep mode
+Page   88: IO port F clock enable in sleep mode
+Page   88: IO port E clock enable in sleep mode
+Page   88: IO port D clock enable in sleep mode
+Page   88: IO port C clock enable in sleep mode
+Page   88: IO port B clock enable in sleep mode
+Page   88: IO port A clock enable in sleep mode
+Page   93: POR/LVR reset flag
+Page   93: Bit 27      PORRSTF          0x1           ro
+Page   93: 0: No POR/LVR reset occurs
+Page   93: 1: POR/LVR reset occurs.
+Page  105: executed unless the data to be written is all 0. In this case, a programming error is reported by the
+Page  106: supports write/erase operation to the user system data area.
+Page  109: Note: If the access protection bit is set in debug mode, then the debug mode has to be cleared by POR
+Page  120: AT32F435 series supports up to 116 bidirectional I/O pins, namely PA0-PA15, PB0-PB15, PC0-PC15,
+Page  120:  Each pin supports write protection function.
+Page  120: I/O port registers can be accessed by words, half-words or bytes, and each I/O port bit can be
+Page  121: When an I/O port is configured as general-purpose input:
+Page  121: When an I/O port is configured as analog mode:
+Page  121: When an I/O port is configured as general-purpose output:
+Page  122: 6.2.6       I/O port write protection
+Page  122: Each I/O port supports write protection function. When write protection is enabled, I/O port
+Page  123: When an I/O port is configured as multiplexed function:
+Page  124: The multiplexed function of each IO port line is configured through the GPIOx_MUXL (for pin 0 to 7)
+Page  124: Table 6-1 Port A multiplexed function configuration with GPIOA_MUX* register
+Page  126: Table 6-2 Port B multiplexed function configuration with GPIOB_MUX* register
+Page  128: Table 6-3 Port C multiplexed function configuration with GPIOC_MUX* register
+Page  130: Table 6-4 Port D multiplexed function configuration with GPIOD_MUX* register
+Page  132: Table 6-5 Port E multiplexed function configuration with GPIOE_MUX* register
+Page  134: Table 6-6 Port F multiplexed function configuration with GPIOF_MUX* register
+Page  136: Table 6-7 Port G multiplexed function configuration with GPIOG_MUX* register
+Page  138: Table 6-8 Port H multiplexed function configuration with GPIOH_MUX* register
+Page  139: Reset values: 0xa8000000 for port A, 0x0000 0280 for port B, 0x00000000 for other ports
+Page  140: Reset values: 0x0000 00C0 for port B    0x00000000 for other ports
+Page  140: This field is used to configure the IO port drive capability.
+Page  140: Reset values: 0x6400 0000 for port A, 0x0000 0100 for port B, 0x0000000 for other ports
+Page  140: Bit                                                   IO port.
+Page  140: Bit 15: 0    IDT             0xXXXX          ro       Indicates the input status of I/O port. Each bit corresponds
+Page  140: Each bit represents an I/O port.
+Page  140: Bit 15: 0    ODT             0x0000          rw       It indicates the output status of I/O port.
+Page  141: Each bit corresponds to an I/O port.
+Page  142: 6.3.11 GPIO port bit clear register (GPIOx_CLR) (x=A..H)
+Page  151: EXINT supports multiple edge detection modes, including rising edge, falling edge or both edges,
+Page  151: In addition, EXINT supports independent software trigger for the generation of an event or interrupt. This
+Page  154:     Only support AHB OKAY and ERROR responses
+Page  154:     HBUSREQ and HGRANT of AHB master interface are not supported
+Page  154:     Support 7 channels
+Page  154:     Support hardware handshake
+Page  154:     Support 8-bit, 16-bit and 32- bit data transfers
+Page  154:     Support flexible mapping
+Page  171:  Support the generation of polynomial
+Page  171:  Support input/output data format toggle
+Page  172: This field is used to store one byte data temporarily. This
+Page  174: serial I2C bus. It supports master and slave modes, with up to 1 Mbit/s of communication speed
+Page  174:     Support DMA transfer
+Page  174:     Support SMBus2.0 protocol
+Page  175: slave mode, vice versa, is supported as well. By default, the interface operates in slave mode. When
+Page  175: Both master and slave support 7-bit and 10-bit addressing modes.
+Page  175: ― Only supports a single address mode (ADDR1EN=1, ADDR2EN=0), matches OADDR1
+Page  176: Support special slave address:
+Page  176: SCL line low for software operation. If the clock stretching capability is not supported by master, then
+Page  188: information, tell the system its model/part number, report different types of errors and accept control
+Page  188: 3. Report its own address, but it continues to wait if the arbitration is lost;
+Page  188: 4. Address is reported properly, and the ALERT pin is released (SMBALERT=0).
+Page  207: supports asynchronous full-duplex and half-duplex as well as synchronous transfer. USART offers a
+Page  207: protocols, USART also supports widely-used serial communication protocols such as LIN (Local
+Page  207: It also allows mutli-processor communication, and supports silent mode waken up by idle frames or ID
+Page  208: ─ Asynchronous SmartCard protocol defined in ISO7816-3 standard: Support 0.5 or 1.5 stop bits in
+Page  208: ─ Programmable stop bits-support 1 or 2 stop bits
+Page  209: USART supports NRZ standard format (Mark/Space), by default. It also supports LIN (Local
+Page  217: The data is input on the RX pin of the USART. When a valid start bit is detected, the receiver ports the
+Page  227: The SPI interface supports either the SPI protocol or the I2S protocol, depending on software
+Page  227: The SPI can be configured as host or slave based on software configuration, supporting full-duplex,
+Page  227: ─ Full-duplex synchronous communication (supporting reception-only mode to release IO for
+Page  228:  Support transmission and reception using DMA
+Page  228:  Support hardware CRC transmission and error checking
+Page  229: When used as an SPI interface, it supports four synchronous modes: two-wire unidirectional full-duplex,
+Page  229: both 0. In this case, the SPI supports data transmission and reception at the same time. IO connection
+Page  229: set. In this case, the SPI can be used only for data reception (transmission is not supported). The MISO
+Page  230: the SPI supports data reception and transmission alternately. In master mode, the MOSI pin transmits
+Page  232: The SPI supports write and read operations with DMA. Refer to the following configuration procedure.
+Page  236: The SPI interface supports TI mode. The TIEN bit can be set to enable SPI TI mode.
+Page  238: reception/transmission, supporting four kinds of audio protocols including Philips standard, MSB-aligned
+Page  238: standard, LSB-aligned standard and PCM standard, respectively. The DMA transfer is also supported.
+Page  238: A single I2S supports half-duplex. However, it can work with two additional instantiated I2S modules
+Page  238: I2S2EXT enables the I2S2 to support full-duplex mode. This is true for the I2S3 through the combination
+Page  239: Two extra I2S modules (I2S2EXT and I2S3EXT) are used to support I2S full-duplex mode. Combine
+Page  239: the I2S2 with the I2S2EXT, and I2S3 with I2S3EXT to support full-duplex mode.
+Page  241: While being used as I2S, the SPI supports multiple audio protocols. The user can control the audio
+Page  242: The audio protocols the SPI supports adopts synchronous transmission. In master mode, it is required
+Page  244: The SPI supports write and read operations with DMA. Whether used as SPI or I2S, read/write request
+Page  245: the corresponding interrupts, is not supported.
+Page  253: The basic timer only supports upcounting mode, and it has an internal 16-bit counter.
+Page  257: The general-purpose timer (TMR2 to TMR5) consists of a 16-bit counter supporting up, down, up/down
+Page  257:       Support TMR burst DMA transfer
+Page  261: The timer (TMR2 to TMR5) supports several counting modes to meet different application scenarios.
+Page  283: The general-purpose timer (TMR9 to TMR14) consists of a 16-bit counter supporting upcounting mode.
+Page  287: The general-purpose timer only supports upcounting mode, and it consists of a 16-bit counter.
+Page  304: Each of the advanced-control timer (TMR1, TMR8 and TMR20) consists of a 16-bit counter supporting
+Page  304:  Support TMR burst DMA transfer
+Page  308: The advanced-control timer consists of an internal 16-bit counter supporting up, down, up/down counting
+Page  341:    Two programmable tamper detection, supporting time stamp feature
+Page  341:    Supports fine calibration and coarse calibration
+Page  343: RCDEN=1, coarse digital calibration is not supported.
+Page  351: Note: The write access to this field is supported when
+Page  358:  Conversion sequence supports various conversion modes
+Page  363: represent slow ones supporting a minimum of 6.5 sampling cycles.
+Page  392: DMA. It supports left or right alignment in a single /dual DAC modes. It has two output channels, DAC1
+Page  392: be ignored and no error is reported.
+Page  393: reporting the error condition. An interrupt is generated if its corresponding DxDMAUDRIEN bit in the
+Page  394: The DAC supports a single DAC and dual DA mode. The data format is dependent on the selected
+Page  400: data communication among various nodes. It supports the CAN protocol version 2.0A and 2.0B.
+Page  400:  Supports the time triggered communication
+Page  400:  Supports the time stamp on transmission
+Page  400:  Supports the identifier list mode
+Page  400:  Supports the identifier mask mode
+Page  404: identifiers (29-bit) are fully supported by hardware.
+Page  424: The OTGFS supports control transfer, bulk transfer, interrupt transfer and synchronous transfer.
+Page  424: In device mode, the OTGFS supports one bidirectional control endpoint, 7 IN endpoints, and 7 OUT
+Page  424: endpoints; in hose mode, the OTGFS supports 16 host channels.
+Page  425: The OTGFS supports SOF and OE pulse features: a SOF pulse generates at a SOF packet, the pulse
+Page  425: Suspend mode is supported. The OTGFS goes into power-saving mode after Suspend mode is entered.
+Page  426: Host Port Control and Status
+Page  429: is connected to the port
+Page  431: Up to 8 interrupt and synchronous transfer requests are supported in the periodic hardware transfer
+Page  432: The OTGFS controller handles two cases of babble: packet babble and port babble. Packet babble
+Page  432: occurs if the device sends more than the largest packet size for the channel. Port babble occurs if the
+Page  432: When the OTGFS controller detects a port babble, it flushes the receive FIFO and disables the port.
+Page  432: Then the controller generates a Port disable interrupt. Once receiving the interrupt, the application must
+Page  432: determine that this is not caused by an overcurrent condition (another cause of the port disable interrupt)
+Page  432: controller does not send any more tokens if a port babble signal is detected.
+Page  456: 3. If the device supports the synchronous OUT endpoints, the application must read all synchronous
+Page  456: Instead, synchronous support in the OTGFS controller is based on a single-transfer level. The application
+Page  461: Only the controller global, power and clock control, data FIFO access and host port control and status
+Page  470: Host port interrupt
+Page  470: The controller sets this bit to indicate a change in port
+Page  470: status one of the ports. The application must read the
+Page  470: Host Port Control and Status register to determine the
+Page  470: Port Control and Status register to clear this bit.
+Page  473: Host port interrupt mask
+Page  474: supported.
+Page  476: periodic transmit request queue. This queue supports
+Page  477: FS- and LS-only support
+Page  477: Bit 2        FSLSSUPP          0x0             ro       even if the connected device supports high-speed
+Page  477: 0: FS/LS, depending on the largest speed supported by
+Page  478: 1: FS/LS-only, even if the connected device supports
+Page  478: frame interval register only after the port enable bit in the
+Page  478: Bit 15: 0    FRINT             0xEA60          rw       host port control and status register has been set.
+Page  480: 21.6.4.7 OTGFS host port control and status register ( OTGFS_HPRT)
+Page  480: This register is valid only in host mode. Currently, the OTG host supports only one port.
+Page  480: This register contains USB port-related information such as USB reset, enable, suspend, resume,
+Page  480: application through the host port interrupt bit in the controller interrupt register. Upon a port interrupt, the
+Page  480: Port speed
+Page  480: Indicates the speed of the device connected to this port.
+Page  480: Port test control
+Page  480: the port into test mode, and the port gives a corresponding
+Page  480: Port power
+Page  480: port (by writing 1 or 0)
+Page  480: Port line status
+Page  480: Port reset
+Page  480: is started on this port. The application must calculate the
+Page  480: 0: Port not in reset
+Page  480: Bit 8        PRTRST              0x0             rw       1: Port in reset
+Page  480: specification to start a reset on the port. In addition to this,
+Page  480: Port suspend
+Page  480: The application sets this bit to put this port in suspend
+Page  480: The application must set the port clock stop bit in order to
+Page  480: status of the port.
+Page  480: signal is detected or when the application sets the port
+Page  480: reset bit or port resume bit in this register, or sets the
+Page  481: 0: Port not in suspend mode
+Page  481: 1: Port in suspend mode
+Page  481: Port resume
+Page  481: the port. The controller continues to trigger the resume
+Page  481: the port resume/remote wakeup detected interrupt bit of
+Page  481: Port overcurrent change
+Page  481: The controller sets this bit when the status of the port
+Page  481: Port overcurrent active
+Page  481: Indicates the overcurrent status of the port.
+Page  481: Port enable/disable change
+Page  481: The controller sets this bit when the status of the port
+Page  481: Port enable
+Page  481: A port is enabled only by the controller after a reset
+Page  481: sequence. This port is enabled by an overcurrent
+Page  481: operation. It can only clear this bit to disable the port. This
+Page  481: 0: Port disabled
+Page  481: 1: Port enabled
+Page  481: Port connect detected
+Page  481: Bit 1    PRTCONDET     0x0             rw1c     bit using the host port interrupt bit in the controller register.
+Page  481: Port connect status
+Page  481: Bit 0    PRTCONSTS     0x0             ro       0: No device is connected to the port
+Page  481: 1: A device is connected to the port
+Page  482: port.
+Page  484: These registers are applicable in device mode only. They are not supported in host mode due to unknown
+Page  484: the application can support. However, the actual bus
+Page  491: This is the transfer type supported by this logical endpoint.
+Page  494: This is the transfer type supported by this logical endpoint.
+Page  506: boasts two chip-select signals for interfacing up to external memories at a time. The supported external
+Page  506:  Chip-select signal supports 4 external memories, each of which has their own control register
+Page  506:  Support access to static memory devices, including
+Page  506:  Chip-select signal supports 2 external memories
+Page  506:  Support ECC calculation
+Page  506:  Chip-select signal supports 1 external memory
+Page  506:  Supports up to 13-bit address row, 11-bit address column and 4 internal memory areas
+Page  506:  Supports AHB byte, halfword and word accesses
+Page  507:    Supports self-refresh mode
+Page  507:    Supports power-down mode
+Page  512: address. HADDR is a byte address whereas the XMC supports the memory addressed in words or half
+Page  513: modes supported by XMC.
+Page  530: modes supported by XMC.
+Page  532: modes supported by XMC.
+Page  533: 7.     Configure the MRD field (controller supports BL=1 only). Set CMD=100 to issue a “Load Mode
+Page  535: temporarily, and are processed when the auto-refresh is complete.
+Page  536: The SDRAM controller supports two low-power modes: self-refresh mode and power-down mode.
+Page  551:    Full compatibility with SDI/O card specification version 2.0 and support 1-bit and 4-bit databus
+Page  551:  Full compatibility with MultiMedia card specification version 4.2 and support 1-bit, 4-bit and 8-bit
+Page  551: Note: The SDIO is not compatible with SPI communication mode. It supports only one
+Page  555: the card will report an error and does not change any register contents. Some cards may require long
+Page  555: Three write protection methods are supported in the SDIO card host module to ensure that the protected
+Page  555: by the manufacturer or the content provider by setting the permanent or temporary write-protect bits in
+Page  555: the CSD. For cards that support write protection of groups of sectors by setting the WP_GRP_ENABLE
+Page  556: Locked cards can support certain commands, indicating that the host is allowed to reset, initialize and
+Page  559: supports the voltage or not.
+Page  565: data bus. After reset, the SDIO_D0 is used for data transfer by default. MMCV3.31 or previous supports
+Page  570: The SDIO can support the following operations (except read suspend, for it does not require specific
+Page  570: can instruct the host to stop data transfer temporarily while the host is reading from multiple registers
+Page  570: If the SDIO card does not support the mentioned above read wait operation, the SDIO can enter a read
+Page  580: The AT32F437 Ethernet peripheral supports two standard interfaces to the external PHY: media
+Page  580:  Supports ring or chained descriptor
+Page  580:  Status information report for each transfer
+Page  580:  Supports 10/100Mbps data transfer rates
+Page  580:  Supports flow control for full-duplex operation, and CSMA/CD protocol for half-duplex operations
+Page  580:  Supports a variety of address filtering modes and promiscuous modes
+Page  580:  Supports IEEE 802.1Q VLAN tag detection for reception frames
+Page  580:  Supports mandatory network statistics with RMON/MIB counters (RFC2819/RFC2665)
+Page  581:    Supports checking IPv4 header checksum and IPv4, TCP, UDP or ICMP (packaged in IPv4 or
+Page  581:    Supports Ethernet frame time stamp as defined in IEEE 1588-2008. 64-bit time stamps are
+Page  581:    Supports store-forward mechanism for data transfer to the MAC controller
+Page  581:    Supports loopback mode on the MII interface for debugging
+Page  581:    Supports two correction methods: coarse and fine correction
+Page  581: ― Physical medium supports simultaneous transmission and reception
+Page  581: supports up to 32 PHYs.
+Page  581: MDIO: Bidirectional port, data input/output lines.
+Page  587: EMAC supports source and destination address filtering.
+Page  587: address filtering status is reported accordingly.
+Page  591: controller has a transmit checksum feature that supports checksum calculation and insertion in the
+Page  592: error is reported. When the first type of error is detected, the TCP, UDP or ICMP header is not modified.
+Page  593: timeout event is reported.
+Page  593: The EMAC supports loopback of transmitted frames onto its receiver. The loopback mode is very useful
+Page  597: and report only the status bits.
+Page  598: mismatch, an error is given. For IPv6 frames, an error is reported when the header
+Page  598: frame must match the IP header version. For IPv4 frame, an error is reported and
+Page  604: to an unsupported payload
+Page  608: PMT supports the reception of remote wakeup frames and AMD Magic Packet frames and uses them to
+Page  608: PMT supports four programmable filters. If the incoming frame passed the address filtering of the filter,
+Page  609: port, and the captured time is returned to the application.
+Page  616: mode. No error is reported due to loss of carrier or no
+Page  616: When this bit is cleared, the MAC transmitter will report
+Page  617: ignore the current frame transmission and report a frame
+Page  629: FIFO constraint: The maximum beat supported by the
+Page  631: The EMAC_DMASTS register contains all the status bits the DMA reports to the host. This register is
+Page  636: The EMAC_DMAIE register enables the interrupts reported by the status register. Setting a bit to 1’b1
+Page  637: reports the current value of the counter. The counter is used for the purpose of diagnosis. The bit [15:
+Page  645: (V2 format supported) overflows and has exceeded the
+Page  648: pixel data. The digital video parallel interface (DVP) supports hardware or embedded code
+Page  651: The digital video parallel interface (DVP) supports two types of capture: single frame and continuous
+Page  652: A 32-bit data is transferred for each access. The DVP DMA interface supports single or burst transfers,
+Page  652: improve bus performance. Only EDMA is supported in burst transfer mode, and the peripheral burst
+Page  652: supported. To use EMDA in this mode, the peripheral burst transfer must be set as single transfer mode
+Page  653: DVP supports three synchronization status interrupts:
+Page  653: The DVP supports two types of error interrupts:
+Page  660: two features and DVP data formats supported.
+Page  660: Table 27-4 Enhanced features and DVP data formats supported
+Page  660: 0       don’t care      don’t care                       Not supported           not supported
+Page  660: 1       0                                                Supported               Supported
+Page  660: 1       1                                                Supported               Supported
+Page  660: 1       2                                                Supported               Not supported
+Page  660: 1       3               Y8 (Y-only)                      Supported               Supported
+Page  666: Data Port
+Page  669: The QSPI interface consists of a command-based slave port, an XIP port (direct address mapping
+Page  669: slave port is used to access registers and data ports, and the XIP slave port reads data from direct
+Page  669: address mapping. Additionally, the QSPI allows AHB data port to access data in either IPO or DMA mode.
+Page  669:                            XIP port (direct address mapping read/write)
+Page  669:                            XIP port prefetch function (2-channel read cache)
+Page  669: Slave Port
+Page  669: Port
+Page  669: 28.3 QSPI command slave port
+Page  669: 28.3.1 QSPI command slave port
+Page  669: The QSPI has a command slave interface that contains register and data ports. The users can access
+Page  669: registers or data ports using this interface. The command word register must be written sequentially
+Page  669: port register) can be accessed by bytes, half-words and words.
+Page  669: The data port can be accessed in either PIO or DMA mode. The RxFIFO / TxFIFO registers (0x18)
+Page  670: The DMA mode can also be used to access data ports. The DMA controller register must be
+Page  670: 28.3.4 XIP port (direct address mapping read/write)
+Page  670: The QSPI offers a XIP slave port (direct address mapping read/write) for users to perform a direct access
+Page  670: to system addresses. In this case, only 0x10 register can be used to select a command slave port or a
+Page  670: XIP port, or read other registers than data register (0x100). It should be noted that when reading Flash
+Page  670: memory using this XIP port, the Abort function (bit [8] in the 0x10 register) cannot be used (meaning that
+Page  670: the bit [20] of the 0x10 register is set to 1), and the XIP port cannot be aborted with this bit, which means
+Page  670: that port switch must be performed in sequence. The user’s system must have a main Flash memory, in
+Page  670: which the user can load the port switch code and perform switching operation.
+Page  670: 28.3.5 XIP port prefetch
+Page  670: The XPI port supports read prefetch with 2-channel read cache.
+Page  670: The host controller supports a SPI protocol (mode 0 and mode 3). The command queue register must
+Page  674: When XIP port is reading or writing back-to-back addresses, it wil keep reading or writing until the higher
+Page  675: When XIP port is reading or writing back-to-back addresses at intervals, it wil disable CLK wait aftr
+Page  678: XIP port selection
+Page  678: Read SPI Flash data from the following ports:
+Page  678: 0: Command slave port
+Page  678: Bit 20       XIPSEL           0x1             rw       1: XIP port
+Page  679: XIP port idle status
+Page  679: Bit 7        XIPIDLE          0x1             ro       0: XIP port is busy
+Page  679: 1: XIP port is idle
+Page  680: command-based slave port to XIP port.
+Page  682: The XIP slave port can be used for the improvement of
+Page  682: The XIP slave port can be used for the improvement of
+Page  683: 28.4.17 Data port register (DT)
+Page  683: Data port register
+Page  683: This port is used for data read or write.
+Page  684:      Only support AHB OKAY and ERROR responses
+Page  684:      HBUSREQ and HGRANT of AHB master interface are not supported
+Page  684:      Support 8 channels
+Page  684:      Support hardware handshake
+Page  684:      Support 8-bit, 16-bit and 32- bit data transfers
+Page  684:      Support multiplexer
+Page  691:  Support M2M transfer only
+Page  691:  Circular and dual buffer mode are not supported
+Page  691:  Linked table transfer is not supported
+Page  704: -When the FIFO threshold on memory AHB port is not
+Page  711: Cortex®-M4F core provides powerful debugging features including halt and single step support, as well
+Page  711: implemented with two interfaces: serial wire debug (SWD) and JTAG debug port. Trace information is
+Page  711: It is possible to support debugging for different peripherals, and configure the status of peripherals during
+Page  711: In addition, code debugging is supported in Low-power mode. In Sleep mode, the clock programmed by
+Page  711: bus. These codes are accessible using the JTAG debug port or the SWD debug port or by the user
+Page  711: Two trace interface modes supported: single-pin mode for serial wire view and multi-pin trace interface.
+Page  711: SWJ-DP debug is supported in different packages of AT32F435/437. It uses 5 general-purpose I/O ports.
+Page  711: GPIO and IOMUX registers can be configured to allow users to switch between debug ports or disable
+Page  712: port or SW debug port or by the user code.
+Page  713: This register is asynchronously reset by POR Reset (not reset by system reset). It can be written by the
+Page  713: This register is asynchronously reset by POR Reset (not reset by system reset). It can be written by the
+Page  715: This register is asynchronously reset by POR Reset (not reset by system reset). It can be written by the
+Page  715: POR Reset (not reset by system reset). This code is accessible by the JTAG debug port or SW debug
+Page  715: port or by the user code.
+Page  717: IMPORTANT NOTICE – PLEASE READ CAREFULLY
+Page  717: safety such as life support and active implantable device, or system with functional safety requirements; (B) any aircraft application; (C) any

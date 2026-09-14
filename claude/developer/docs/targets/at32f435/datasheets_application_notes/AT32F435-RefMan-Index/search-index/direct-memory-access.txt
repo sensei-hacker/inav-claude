@@ -1,0 +1,6 @@
+Keyword: direct memory access
+Occurrences: 2
+================================================================================
+
+Page  154: Direct memory access (DMA) controller is designed for 32-bit MCU applications with the aim of
+Page  684: Enhanced direct memory access (EDMA) controller is designed for 32-bit MCU applications with the

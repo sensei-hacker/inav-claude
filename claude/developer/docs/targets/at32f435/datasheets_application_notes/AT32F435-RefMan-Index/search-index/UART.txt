@@ -1,0 +1,103 @@
+Keyword: UART
+Occurrences: 99
+================================================================================
+
+Page    1: − External memory controller (XMC) with 16-bit data             − Up to 4 x USARTs/4 x UARTs (ISO7816 interface, LIN,
+Page   44: communication interfaces such as SPI, QSPI, I2C, USART/UART and SDIO, CAN bus controller,
+Page   45: UART4/5/7/8                                                                                                                                TMR9/10/11
+Page   52: 52   59             UART4                 UART4 global interrupt                       0x0000_0110
+Page   52: 53   60             UART5                 UART5 global interrupt                       0x0000_0114
+Page   52: 82   89             UART7                 UART7 global interrupt                       0x0000_0188
+Page   52: 83   90   Configu   UART8                 UART8 global interrupt                       0x0000_018C
+Page   61: 0x4000 7C00 - 0x4000 7FFF       UART8
+Page   61: 0x4000 7800 - 0x4000 7BFF       UART7
+Page   62: 0x4000 5000 - 0x4000 53FF       UART5
+Page   62: 0x4000 4C00 - 0x4000 4FFF       UART4
+Page   81: UART8 reset
+Page   81: Bit 31       UART8RST         0x0            rw       0: Does not reset UART8
+Page   81: 1: Reset UART8
+Page   81: UART7 reset
+Page   81: Bit 30       UART7RST         0x0            rw       0: Does not reset UART7
+Page   81: 1: Reset UART7
+Page   81: UART5 reset
+Page   81: Bit 20       UART5RST         0x0            rw       0: Does not reset UART5
+Page   81: 1: Reset UART5
+Page   81: UART4 reset
+Page   81: Bit 19       UART4RST         0x0            rw       0: Does not reset UART4
+Page   81: 1: Reset UART4
+Page   85: UART8 clock enable
+Page   85: Bit 31       UART8EN         0x0             rw        0: Disabled
+Page   85: UART7 clock enable
+Page   85: Bit 30       UART7EN         0x0             rw        0: Disabled
+Page   85: UART5 clock enable
+Page   85: Bit 20       UART5EN         0x0             rw        0: Disabled
+Page   85: UART4 clock enable
+Page   85: Bit 19       UART4EN         0x0             rw        0: Disabled
+Page   89: UART8 clock enable in sleep mode
+Page   89: Bit 31       UART8LPEN        0x1            rw       0: Disabled
+Page   89: UART7 clock enable in sleep mode
+Page   89: Bit 30       UART7LPEN        0x1            rw       0: Disabled
+Page   90: UART5 clock enable in sleep mode
+Page   90: Bit 20       UART5LPEN    0x1        rw       0: Disabled
+Page   90: UART4 clock enable in sleep mode
+Page   90: Bit 19       UART4LPEN    0x1        rw       0: Disabled
+Page  125: PA0    UART4_TX                            EMAC_MII_CRS                                           EVENTOUT
+Page  125: PA1    UART4_RX    QSPI1_IO3                                                                      EVENTOUT
+Page  127: PB3    UART7_RX
+Page  127: PB4    UART7_TX                                                   SDIO1_D0   DVP_D5                EVENTOUT
+Page  127: PB5    UART5_RX        CAN2_RX                  EMAC_PPS_OUT
+Page  127: PB6    UART5_TX        CAN2_TX
+Page  127: PB8    UART5_RX        CAN1_RX
+Page  127: PB9    UART5_TX        CAN1_TX
+Page  128: I2S4_MCK     TMR20_CH3    UART8_TX
+Page  128: I2C3_SDA                              UART8_RX
+Page  129: PC0    UART7_TX                SDIO2_D0                      XMC_SDNWE                          EVENTOUT
+Page  129: PC1    UART7_RX                SDIO2_D1      EMAC_MDC                                           EVENTOUT
+Page  129: PC2    UART8_TX                SDIO2_D2      EMAC_MII_TXD2   XMC_SDCS0                XMC_NWE   EVENTOUT
+Page  129: PC3    UART8_RX    QSPI2_IO1   SDIO2_D3
+Page  129: PC10   UART4_TX    QSPI1_IO1                                 SDIO1_D2     DVP_D8                EVENTOUT
+Page  129: PC11   UART4_RX    QSPI1_CS                                  SDIO1_D3     DVP_D4      XMC_D2    EVENTOUT
+Page  129: PC12   UART5_TX                                              SDIO1_CK     DVP_D9      XMC_D3    EVENTOUT
+Page  131: PD2    UART5_RX               XMC_A7                           SDIO1_CMD   DVP_D11   XMC_NWE   EVENTOUT
+Page  131: PD13   UART8_TX   QSPI1_IO3   XMC_SD_CLK                       XMC_A18                         EVENTOUT
+Page  131: PD14   UART8_RX                                                XMC_D0                          EVENTOUT
+Page  132: PE8             TMR1_CH1C                                                             UART4_TX
+Page  132: PE9             TMR1_CH1                                                              UART4_RX
+Page  133: PE0    UART8_RX
+Page  133: PE1    UART8_TX
+Page  133: PE7    UART7_RX               QSPI2_IO0                       XMC_D4                       EVENTOUT
+Page  133: PE8    UART7_TX               QSPI2_IO1                       XMC_D5                       EVENTOUT
+Page  133: PE10   UART5_TX               QSPI2_IO3                       XMC_D7                       EVENTOUT
+Page  133: PE11   UART5_RX                                               XMC_D8                       EVENTOUT
+Page  135: PF6    UART7_RX   QSPI1_IO3                            XMC_NIORD                      EVENTOUT
+Page  135: PF7    UART7_TX   QSPI1_IO2                            XMC_NREG                       EVENTOUT
+Page  138: PH2      UART4_RX              QSPI1_IO0                                                      EVENTOUT
+Page  138: PH3      UART4_TX              QSPI1_IO1                                                      EVENTOUT
+Page  154: SDIO1      UART4 DMA ack
+Page  154: SDIO2      UART5
+Page  154: SPI2       UART7                                                            ch3
+Page  154: SPI3       UART8                           DMA ack
+Page  158: SDIO1    UART4                                                                         SYNC
+Page  158: SDIO2    UART5
+Page  158: SPI2     UART7           Req_gen2
+Page  158: SPI3     UART8
+Page  159: 1           DMA_MUXREQG1 33         UART5_TX           65        TMR3_OVERFLOW 97       reserved
+Page  159: 20          I2C3_RX       52        TMR8_CH4           84        reserved       116     UART7_RX
+Page  159: 21          I2C3_TX       53        TMR8_OVERFLOW 85             reserved       117     UART7_TX
+Page  159: 22          reserved      54        TMR8_TRIG          86        TMR20_CH1      118     UART8_RX
+Page  159: 23          reserved      55        TMR8_HALL          87        TMR20_CH2      119     UART8_TX
+Page  159: 30          UART4_RX      62        TMR3_CH2           94        TMR20_HALL     126     TMR2_TRIG
+Page  159: 31          UART4_TX      63        TMR3_CH3           95        reserved       127     TMR4_TRIG
+Page  159: 32          UART5_RX      64        TMR3_CH4           96        reserved
+Page  693: SDIO1    UART4                                                                              SYNC
+Page  693: SDIO2    UART5
+Page  693: SPI2     UART7                Req_gen2
+Page  693: SPI3     UART8
+Page  693: 1           DMA_MUXREQG1 33                  UART5_TX                             65             TMR3_OVERFLOW 97                                reserved
+Page  693: 20          I2C3_RX           52             TMR8_CH4                             84             reserved                     116                UART7_RX
+Page  694: 21              I2C3_TX               53        TMR8_OVERFLOW 85               reserved          117     UART7_TX
+Page  694: 22              reserved              54        TMR8_TRIG         86           TMR20_CH1         118     UART8_RX
+Page  694: 23              reserved              55        TMR8_HALL         87           TMR20_CH2         119     UART8_TX
+Page  694: 30              UART4_RX              62        TMR3_CH2          94           TMR20_HALL        126     TMR2_TRIG
+Page  694: 31              UART4_TX              63        TMR3_CH3          95           reserved          127     TMR4_TRIG
+Page  694: 32              UART5_RX              64        TMR3_CH4          96           reserved

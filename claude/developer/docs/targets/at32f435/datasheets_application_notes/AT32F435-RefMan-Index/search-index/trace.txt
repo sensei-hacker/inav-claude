@@ -1,0 +1,11 @@
+Keyword: trace
+Occurrences: 7
+================================================================================
+
+Page   31: 30.2 Debug and Trace ....................................................................... 711
+Page  711: as trace function that is used for checking the details of the program execution. The debug features are
+Page  711: implemented with two interfaces: serial wire debug (SWD) and JTAG debug port. Trace information is
+Page  711: collected by a single-wire serial wire view interface, or by TRACE interface when a larger trace
+Page  711: bandwidth is needed. Trace and debugging interfaces can be combined into one interface.
+Page  711: 30.2 Debug and Trace
+Page  711: Two trace interface modes supported: single-pin mode for serial wire view and multi-pin trace interface.

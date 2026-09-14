@@ -1,0 +1,45 @@
+Keyword: TMR13
+Occurrences: 41
+================================================================================
+
+Page   12: 14.3.2.2 TMR10, TMR11, TMR13 and TMR14 main features .................. 284
+Page   13: 14.3.5 TMR10, TMR11, TMR13 and TMR14 registers .............................. 299
+Page   13: 14.3.5.1 TMR10, TMR11, TMR13 and TMR14 control register 1
+Page   13: 14.3.5.2 TMR10, TMR11, TMR13 and TMR14 DMA/interrupt enable register
+Page   13: 14.3.5.3 TMR10, TMR11, TMR13 and TMR14 interrupt status register
+Page   13: 14.3.5.4 TMR10, TMR11, TMR13 and TMR14 software event register
+Page   13: 14.3.5.5 TMR10, TMR11, TMR13 and TMR14 channel mode register 1
+Page   13: 14.3.5.6 TMR10, TMR11, TMR13 and TMR14 channel control register
+Page   13: 14.3.5.7 TMR10, TMR11, TMR13 and TMR14 counter value (TMRx_CVAL) 303
+Page   13: 14.3.5.8 TMR10, TMR11, TMR13 and TMR14 division value (TMRx_DIV) 303
+Page   13: 14.3.5.9 TMR10, TMR11, TMR13 and TMR14 period register (TMRx_PR) 303
+Page   13: 14.3.5.10      TMR10, TMR11, TMR13 and TMR14 channel 1 data register
+Page   51: Configu                          TMR8 overflow interrupt and TMR13
+Page   51: 44   51             TMR8_OVF_TMR13                                                0x0000_00F0
+Page   62: 0x4000 1C00 - 0x4000 1FFF       TMR13 timer
+Page   81: Bit 7        TMR13RST         0x0            rw
+Page   86: Bit 7        TMR13EN         0x0             rw        0: Disabled
+Page   90: Bit 7        TMR13LPEN    0x1        rw       0: Disabled
+Page  125: PA6                TMR13_CH1   QSPI1_IO0   SDIO2_D2
+Page  135: PF8               TMR13_CH1   QSPI1_IO0                XMC_NIOWR                      EVENTOUT
+Page  252: TMR13
+Page  252: TMR13
+Page  284: 14.3.2.2 TMR10, TMR11, TMR13 and TMR14 main features
+Page  284: The main functions of general-purpose TMRx (TMR10, TMR11, TMR13 and TMR14) include:
+Page  286: TMR12                              TMR4_TRGOUT                    TMR5_TRGOUT           TMR13_OC       TMR14_OC
+Page  288: Each timer of TMR9 and TMR12 has two independent channels, while each of TMR10, TMR11, TMR13
+Page  299: 14.3.5 TMR10, TMR11, TMR13 and TMR14 registers
+Page  299: Table 14-10 TMR10, TMR11, TMR13 and TMR14 register map and reset value
+Page  299: 14.3.5.1 TMR10, TMR11, TMR13 and TMR14 control register 1
+Page  300: 14.3.5.2 TMR10, TMR11, TMR13 and TMR14 DMA/interrupt enable
+Page  300: 14.3.5.3 TMR10, TMR11, TMR13 and TMR14 interrupt status register
+Page  300: 14.3.5.4 TMR10, TMR11, TMR13 and TMR14 software event register
+Page  301: 14.3.5.5 TMR10, TMR11, TMR13 and TMR14 channel mode register 1
+Page  302: 14.3.5.6 TMR10, TMR11, TMR13 and TMR14 channel control register
+Page  303: 14.3.5.7 TMR10, TMR11, TMR13 and TMR14 counter value
+Page  303: 14.3.5.8 TMR10, TMR11, TMR13 and TMR14 division value (TMRx_DIV)
+Page  303: 14.3.5.9 TMR10, TMR11, TMR13 and TMR14 period register (TMRx_PR)
+Page  303: 14.3.5.10 TMR10, TMR11, TMR13 and TMR14 channel 1 data register
+Page  714: TMR13 pause control bit
+Page  714: Bit 7        TMR13_PAUSE          0x0         rw     0: TMR13 works normally
+Page  714: 1: TMR13 stops running

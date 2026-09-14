@@ -1,0 +1,72 @@
+Keyword: TMR9
+Occurrences: 68
+================================================================================
+
+Page   12: 14.3 General-purpose timer (TMR9 to TMR14) .................................... 283
+Page   12: 14.3.1 TMR9 to TMR14 introduction ....................................................... 283
+Page   12: 14.3.2 TMR9 to TMR14 main features .................................................... 283
+Page   12: 14.3.2.1 TMR9 and TMR12 main features ............................................ 283
+Page   12: 14.3.3 TMR9 to TMR14 functional overview ........................................... 284
+Page   12: 14.3.4 TMR9 and TMR12 registers ........................................................ 293
+Page   12: 14.3.4.1 TMR9 and TMR12 control register 1 (TMRx_CTRL1) ................ 293
+Page   12: 14.3.4.2 TMR9 and TMR12 slave timer control register (TMRx_STCTRL) 294
+Page   12: 14.3.4.3 TMR9 and TMR12 DMA/interrupt enable register (TMRx_IDEN) 294
+Page   12: 14.3.4.4 TMR9 and TMR12 interrupt status register (TMRx_ISTS) ......... 295
+Page   12: 14.3.4.5 TMR9 and TMR12 software event register (TM Rx_SW EVT) ...... 295
+Page   12: 14.3.4.6 TMR9 and TMR12 channel mode register1 (TMRx_CM1) .......... 296
+Page   12: 14.3.4.7 TMR9 and TMR12 channel control register (TMRx_CCTRL) ...... 298
+Page   12: 14.3.4.8 TMR9 and TMR12 counter value (TMRx_CVAL) ....................... 298
+Page   12: 14.3.4.9 TMR9 and TMR12 division value (TMRx_DIV) ......................... 298
+Page   12: 14.3.4.10     TMR9 and TMR12 period register (TMRx_PR) ..................... 298
+Page   12: 14.3.4.11     TMR9 and TMR12 channel 1 data register (TMRx_C1DT) ..... 298
+Page   13: 14.3.4.12      TMR9 and TMR12 channel 2 data register (TMRx_C2DT) ..... 299
+Page   34: Figure 14-38 Block diagram of general-purpose TMR9/12 ....................................................................... 283
+Page   45: UART4/5/7/8                                                                                                                                TMR9/10/11
+Page   51: Configu                          TMR1 break interrupt and TMR9 global
+Page   51: 24   31             TMR1_BRK_TMR9                                                 0x0000_00A0
+Page   61: 0x4001 4000 - 0x4001 43FF       TMR9 timer
+Page   82: Bit 16       TMR9RST          0x0            rw       0: Does not reset Timer9
+Page   86: Bit 16       TMR9EN          0x0             rw        0: Disabled
+Page   91: Bit 16       TMR9LPEN         0x1            rw       0: Disabled
+Page  124: PA2                TMR2_CH3    TMR5_CH3   TMR9_CH1                                        USART2_TX
+Page  124: PA3                TMR2_CH4    TMR5_CH4   TMR9_CH2                I2S2_MCK                USART2_RX
+Page  128: TMR9_CH
+Page  128: TMR9_CH
+Page  132: TMR3_CH   TMR9_CH
+Page  132: TMR3_CH   TMR9_CH               SPI4_MOSI
+Page  252: purpose        TMR9
+Page  252: purpose       TMR9                                                                                   Timer
+Page  283: 14.3 General-purpose timer (TMR9 to TMR14)
+Page  283: 14.3.1 TMR9 to TMR14 introduction
+Page  283: The general-purpose timer (TMR9 to TMR14) consists of a 16-bit counter supporting upcounting mode.
+Page  283: 14.3.2 TMR9 to TMR14 main features
+Page  283: 14.3.2.1 TMR9 and TMR12 main features
+Page  283: The main functions of general-purpose TMR9 and TMR12 include:
+Page  283: Figure 14-38 Block diagram of general-purpose TMR9/12
+Page  284: 14.3.3 TMR9 to TMR14 functional overview
+Page  285: External clock (TMR9/12 only)
+Page  286: Each timer (TMR9 ~TMR14) consists of a 16-bit prescaler, which is used to generate the CK_CNT that
+Page  286: TMR9                               TMR2_TRGOUT                    TMR3_TRGOUT           TMR10_OC       TMR11_OC
+Page  288: Each timer of TMR9 and TMR12 has two independent channels, while each of TMR10, TMR11, TMR13
+Page  289: PWM input (TMR9/12)
+Page  291:  One-pulse mode (TMR9/12 only): This is a particular case of PWM mode. Set OCMEN=1 to
+Page  291:  Fast output mode (TMR9/12 only): Set CxOIEN=1 to enable this mode. If enabled, the
+Page  292: TMR9 and TMR12 are linked together internally for timer synchronization. Slave timer is selected by
+Page  293: 14.3.4 TMR9 and TMR12 registers
+Page  293: All TMR9 and TMR12 registers are mapped into a 16-bit addressable space.
+Page  293: Table 14-8 TMR9 and TMR12 register map and reset value
+Page  293: 14.3.4.1 TMR9 and TMR12 control register 1 (TMRx_CTRL1)
+Page  294: 14.3.4.2 TMR9 and TMR12 slave timer control register
+Page  294: 14.3.4.3 TMR9 and TMR12 DMA/interrupt enable register (TMRx_IDEN)
+Page  295: 14.3.4.4 TMR9 and TMR12 interrupt status register (TMRx_ISTS)
+Page  295: 14.3.4.5 TMR9 and TMR12 software event register (TMRx_SWEVT)
+Page  296: 14.3.4.6 TMR9 and TMR12 channel mode register1 (TMRx_CM1)
+Page  298: 14.3.4.7 TMR9 and TMR12 channel control register (TMRx_CCTRL)
+Page  298: 14.3.4.8 TMR9 and TMR12 counter value (TMRx_CVAL)
+Page  298: 14.3.4.9 TMR9 and TMR12 division value (TMRx_DIV)
+Page  298: 14.3.4.10             TMR9 and TMR12 period register (TMRx_PR)
+Page  298: 14.3.4.11             TMR9 and TMR12 channel 1 data register (TMRx_C1DT)
+Page  299: 14.3.4.12             TMR9 and TMR12 channel 2 data register (TMRx_C2DT)
+Page  715: TMR9 pause control bit
+Page  715: Bit 16       TMR9_PAUSE        0x0             rw       0: TMR9 works normally
+Page  715: 1: TMR9 stops running

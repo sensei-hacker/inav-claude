@@ -1,0 +1,267 @@
+Keyword: DVP
+Occurrences: 263
+================================================================================
+
+Page    1: power register (ERTC_BPR)                                    8~14 bit parallel digital camera interface (DVP)
+Page   28: 27       Digital Video parallel interface (DVP) .......................................... 647
+Page   28: 27.8.1 DVP control register (DVP_CTRL) ............................................... 661
+Page   28: 27.8.2 DVP status register (DVP_STS) .................................................. 663
+Page   28: 27.8.3 DVP event status register (DVP_ESTS) ....................................... 663
+Page   28: 27.8.4 DVP interrupt enable register (DVP_IENA)................................... 664
+Page   28: 27.8.5 DVP interrupt status register (DVP_ISTS) .................................... 664
+Page   28: 27.8.6 DVP interrupt clear register (DVP_ICLR) ..................................... 664
+Page   28: 27.8.7 DVP embedded synchronization code register (DVP_SCR) ........... 665
+Page   28: 27.8.8 DVP embedded synchronization unmask register (DVP_SUR) ....... 665
+Page   28: 27.8.9 DVP crop window start register (DVP_CWST) .............................. 666
+Page   29: 27.8.10 DVP crop window size register (DVP_CWSZ) ............................ 666
+Page   29: 27.8.11 DVP data register (DVP_DT) .................................................... 666
+Page   29: 27.8.12 DVP advanced control register (DVP_ACTRL) ........................... 666
+Page   29: 27.8.13 DVP enhanced horizontal scaling factor register (DVP_HSCF) ... 668
+Page   29: 27.8.14 DVP enhanced vertical scaling factor register (DVP_VSCF) ....... 668
+Page   29: 27.8.15 DVP enhanced frame rate control factor re gister (DVP_FRF) ..... 668
+Page   29: 27.8.16 DVP binarization threshold register (DVP_BTH) ........................ 668
+Page   38: Figure 27-1 DVP block diagram ................................................................................................................ 647
+Page   43: Table 27-1 DVP pin use in hardware synchronization mode..................................................................... 649
+Page   43: Table 27-2 DVP pin use in embedded synchronization mode .................................................................. 650
+Page   43: Table 27-3 DVP register configuration and DVP_D pin use ...................................................................... 651
+Page   43: Table 27-4 Enhanced features and DVP data formats supported............................................................. 660
+Page   43: Table 27-5 DVP register map and reset values ......................................................................................... 661
+Page   45: DVP
+Page   47: DVP
+Page   52: 78   85             DVP                   DVP global interrupt                         0x0000_0178
+Page   60: 0x5005 0000 - 0x5005 03FF       DVP
+Page   70: DVP_PCLK                                                                             /1,1.5,2,2.5,                                                                                                         CLK
+Page   80: DVP reset
+Page   80: Bit 0        DVPRST         0x0             rw          0: Does not reset DVP
+Page   80: 1: Reset DVP
+Page   84: DVP clock enable
+Page   84: Bit 0        DVPEN           0x0            rw        0: Disabled
+Page   89: DVP clock enable in sleep mode
+Page   89: Bit 0        DVPLPEN          0x1            rw       0: Disabled
+Page  125: DVP_HSYNC    XMC_D6     EVENTOUT
+Page  125: DVP_PIXCLK   SDIO2_D6   EVENTOUT
+Page  125: SDIO1_D2   DVP_D0                  EVENTOUT
+Page  125: PA10   I2C1_SDA                OTG1_ID                                    DVP_D1                  EVENTOUT
+Page  125: PA11   USART6_TX   CAN1_RX     OTG1_D-                                    DVP_D2                  EVENTOUT
+Page  125: PA12   USART6_RX   CAN1_TX     OTG1_D+                                    DVP_D3                  EVENTOUT
+Page  127: DVP_D4                EVENTOUT
+Page  127: PB4    UART7_TX                                                   SDIO1_D0   DVP_D5                EVENTOUT
+Page  127: DVP_D10    SDIO1_D3   EVENTOUT
+Page  127: DVP_D5     SDIO1_D0   EVENTOUT
+Page  127: XMC_NA     DVP_VSYN
+Page  127: EMAC_MII_TXD3     SDIO1_D4   DVP_D6                EVENTOUT
+Page  127: SDIO1_D5   DVP_D7                EVENTOUT
+Page  129: PC6    USART6_TX               XMC_A0                        SDIO1_D6     DVP_D0      XMC_D1    EVENTOUT
+Page  129: PC7    USART6_RX               XMC_A1                        SDIO1_D7     DVP_D1                EVENTOUT
+Page  129: PC8    USART6_CK   QSPI1_IO2   XMC_A2                        SDIO1_D0     DVP_D2                EVENTOUT
+Page  129: PC9                QSPI1_IO0   XMC_A3        OTG2_OE         SDIO1_D1     DVP_D3                EVENTOUT
+Page  129: PC10   UART4_TX    QSPI1_IO1                                 SDIO1_D2     DVP_D8                EVENTOUT
+Page  129: PC11   UART4_RX    QSPI1_CS                                  SDIO1_D3     DVP_D4      XMC_D2    EVENTOUT
+Page  129: PC12   UART5_TX                                              SDIO1_CK     DVP_D9      XMC_D3    EVENTOUT
+Page  131: PD2    UART5_RX               XMC_A7                           SDIO1_CMD   DVP_D11   XMC_NWE   EVENTOUT
+Page  131: PD3               QSPI1_SCK   XMC_A8                           XMC_CLK     DVP_D5              EVENTOUT
+Page  131: PD6                           XMC_A11                          XMC_NWAIT   DVP_D10             EVENTOUT
+Page  133: DVP_D2           EVENTOUT
+Page  133: DVP_D3           EVENTOUT
+Page  133: PE3                                                           XMC_A19     DVP_D9           EVENTOUT
+Page  133: PE4                                                           XMC_A20     DVP_D4           EVENTOUT
+Page  133: PE5                                                           XMC_A21     DVP_D6           EVENTOUT
+Page  133: PE6                           XMC_SDNRAS                      XMC_A22     DVP_D7           EVENTOUT
+Page  135: PF10              QSPI1_SCK                            XMC_INTR     DVP_D11           EVENTOUT
+Page  135: PF11                                                   XMC_SDNRAS   DVP_D12           EVENTOUT
+Page  137: PG6                                QSPI1_CS                      XMC_INT2     DVP_D12          EVENTOUT
+Page  137: PG7    USART6_CK                                                 XMC_INT3     DVP_D13          EVENTOUT
+Page  137: XMC_NE2      DVP_VSY
+Page  137: PG10                                                                          DVP_D2           EVENTOUT
+Page  137: PG11                   CAN2_RX                                   XMC_NCE4_2   DVP_D3           EVENTOUT
+Page  137: PG15   USART6_CTS                                                XMC_SDNCAS   DVP_D13          EVENTOUT
+Page  154: DVP        TMR7
+Page  158: DVP      TMR7                                                                                                        x
+Page  159: 9           TMR7_OVERFLOW 41        DAC2               73        TMR5_CH2       105     DVP
+Page  647: 27 Digital Video parallel interface (DVP)
+Page  647: The digital video parallel interface (DVP) is able to capture parallel data output on the CMOS video
+Page  647: Figure 27-1 DVP block diagram
+Page  647: DVP_D[13:0]
+Page  647: DVP_PCLK      Synchronization
+Page  647: DVP_HSYNC
+Page  647: DVP_VSYNC
+Page  648: The digital video parallel interface uses the DVP pixel clock (DVP_PCLK) to capture the pixel parallel
+Page  648: data (DVP_D) output from the CMOS video camera. The DVP_PCLK is provided by the CMOS video
+Page  648: camera. Data can be captured on either the rising or the falling edge of the DVP_PCLK by setting the
+Page  648: CKP bit in the DVP_CTR register. The captured data can be divided into two parts: valid pixel data and
+Page  648: pixel data. The digital video parallel interface (DVP) supports hardware or embedded code
+Page  648: synchronization, which can be done through the SM bit in the DVP_CTRL register.
+Page  648: DVP_CTRL register. The horizontal synchronization signals are used to distinguish the valid pixel and
+Page  648: blanking periods, and it is activated by the DVP_HSYNC pin to enable DVP to split lines and fetch valid
+Page  648: bit in the DVP_CTRL register in order to ensure that it matches the output of the digital video camera.
+Page  648: DVP_VSYNC pin to enable DVP to split frames. The vertical synchronization signals are expressed in
+Page  648: signal is programmable through the VSP bit in the DVP_CTRL register to ensure that it matches the
+Page  648: DVP_VSYNC high level marks the Frame start).
+Page  648: DVP_PCLK
+Page  648: DVP_VSYNC
+Page  648: DVP_HSYNC
+Page  648: DVP_D               blanking
+Page  648: in the DVP_CTR register can be used to program the polarity of the frame valid to ensure that it matches
+Page  648: (DVP_VSYNC low level indicates that the captured data is in the vertical blanking period).
+Page  648: DVP_PCLK
+Page  648: DVP_VSYNC
+Page  648: DVP_HSYNC
+Page  648: DVP_D         blanking     blanking           blanking               blanking    blanking       blanking
+Page  649: Table 27-1 lists the physical signals used by DVP in hardware synchronization mode. The use of the
+Page  649: pixel parallel data (DVP_D) depends on the configurations of parallel data bits and alignment. Refer to
+Page  649: Table 27-1 DVP pin use in hardware synchronization mode
+Page  649: DVP_D[m:n]                Input                         DVP pixel parallel data
+Page  649: DVP_PCLK                  Input                         DVP pixel clock
+Page  649: DVP_HSYNC                 Input                         DVP horizontal synchronization signal
+Page  649: DVP_VSYNC                 Input                         DVP vertical synchronization signal
+Page  649: DVP_CTRL register. The embedded codes are composed of four data, in which the first three data have
+Page  649: synchronization information. The DVP_SCR register is programmed based on the synchronization type
+Page  649: To enable FS/FE/LS/LE reception, the corresponding bits in the DVP_SCR register are configured as
+Page  650: To enable SAV/EAV reception, the corresponding bits in the DVP_SCR register are configured as follows:
+Page  650: codes to pass on additional information. The DVP_SUR register can be used to mask the comparison
+Page  650: Table 27-2 gives the physical signals used in DVP in embedded synchronization mode. The use of
+Page  650: the DVP_D depends on the configurations of parallel data bits and alignment. Refer to Section 27.3.3
+Page  650: Table 27-2 DVP pin use in embedded synchronization mode
+Page  650: DVP_D[m:n]                Input                     DVP pixel parallel data
+Page  650: DVP_PCLK                  Input                     DVP pixel clock
+Page  650: model to model. To ensure the greatest degree of flexibility, the IDUS and IDUN bits in the DVP_ACTRL
+Page  650: pin count, parallel data bits and alignment, and corresponding DVP register configuration and the use of
+Page  650: DVP_D pin.
+Page  651: Table 27-3 DVP register configuration and DVP_D pin use
+Page  651: DVP_D
+Page  651: The digital video parallel interface (DVP) supports two types of capture: single frame and continuous
+Page  651: A single frame mode is selected by setting CFM=1 in the DVP_CTRL register. In this mode, after the
+Page  651: CAP bit is set in the DVP_CTR register, the DVP interface starts sampling data on the next frame start
+Page  651: based on the received synchronization information. At the end of the frame, the DVP interface
+Page  651: DVP_VSYNC
+Page  651: DVP_D              blanking                            blanking       Captured frame      blanking
+Page  651: The continuous capture mode is enabled by setting CFM=0 in the DVP_CTRL register. In this mode,
+Page  651: after the CAP bit is set in the DVP_CTRL register, the DVP interface, based on the received
+Page  651: continues. When the CAP bit is cleared, the DVP interface keeps the CAP bit in Set state and continues
+Page  651: sampling data until the end of the current frame. At this point, the DVP interface resets the CAP bit and
+Page  652: DVP_VSYNC
+Page  652: DVP_D            blanking             blanking
+Page  652: CPU resources. After the CAP is set in the DVP_CTRL register, the DMA interface is automatically
+Page  652: activated. The DMA accesses the DVP_DT register through the AHB bus to fetch the DVP-captured data.
+Page  652: A 32-bit data is transferred for each access. The DVP DMA interface supports single or burst transfers,
+Page  652: depending on the DMABT bit in the DVP_ACTRL register.
+Page  652: Burst transfer mode is enabled when setting DMABT=1. A DMA access is triggered each time the DVP
+Page  652: the DVP_DT register. The burst mode is able to significantly reduce the number of arbitration so as to
+Page  652: triggered each time the DVP receives a 32-bit data. After receiving a DMA request, the DMA interface
+Page  652: accesses the DVP_DT register once. When the DMA interface uses DMA, only single transfer mode is
+Page  652: must be higher than 2.5 DVP_PCLK clocks.
+Page  652: The captured data are packed into a 32-bit data register (DVP_DT) and then transferred through a DMA.
+Page  652: The packing mode depends on the PDL bit in the DVP_CTRL register. Refer to Figure 27-8 for more
+Page  652: When the PDL is programmed to 0, the DVP captures an 8-bit data every DVP_PCLK clock, and packs
+Page  652: When the PDL is programmed to 1, the DVP captures a 10-bit data is captured every DVP_PCLK clock,
+Page  652: When the PDL bit is programmed to 2, the DVP captures a 12-bit data every DVP_PCLK clock, and
+Page  653: When the PDL bit is programmed to 3, the DVP captures a 14-bit data every DVP_PCLK clock, and
+Page  653: There are four registers available to control the interrupts of the DVP interface. The read-only
+Page  653: DVP_ESTS register is used to describe the synchronization status of error events occurred over the
+Page  653: course of sampling. The DVP_IENA is used to control interrupt signals, and it can be programmed to
+Page  653: The interrupts, after enabled, are stored in the read-only DVP_ISTS register, which is used to check the
+Page  653: event sources. The status in the DVP_ESTS and DVP_ISTS can be cleared by setting the corresponding
+Page  653: bit in the DVP_ICLR register. The DVP_ICLR is a write-only register and does not need to be cleared.
+Page  653: DVP supports three synchronization status interrupts:
+Page  653: DVP_ACTRL register.
+Page  653: DVP_ACTRL register.
+Page  653: The DVP supports two types of error interrupts:
+Page  654: the current synchronization, and re-decode the subsequent data. In this case, the DVP stops data
+Page  654: The DVP interface can adjust the number of frame captured every second with the frame rate control
+Page  654: the DVP_CTR register.
+Page  654: BFRC=0, and set the EFRCE bit in the DVP_ACTRL register, the DVP can adjust the number of
+Page  654: frames through the EFRCSF and EFRCTF bits in the DVP_FRF register, based on the following
+Page  654: When the CRP bit is set in the DVP_CTRL register, the DVP follows the configurations of the
+Page  654: DVP_CWST and DVP_CWSZ registers to perform crop feature.
+Page  655: Note: As the DVP packs the captured data into a 32-bit word for DMA access, the CHNUM bit has the
+Page  655: DVP_CTRL register. After the LCDC bit is set to 1, drop one out of every two captured image lines to
+Page  657: in the DVP_ACTRL register. The DVP adjusts the size of the horizontal axis of an image through the
+Page  657: HSRSF and HSRTF bits in the DVP_HSCF register, and modifies the size of the vertical axis of an
+Page  657: image through the VSRSF and VSRTF bits in the DVP_VSCF register, based on the following
+Page  658: video camera. Refer to Section 27.7.3 for more information. The MIBE bit is set in the DVP_ACTRL
+Page  658: The MIBTHD bit in the DVP_BTH register is used to program the grayscale image binarization threshold.
+Page  658: component, and R component. Figure 27-14 gives an example of DVP data capture and packing in
+Page  658: Typically, the CMOS video camera directly outputs a low level. Figure 27-15 gives an example of DVP
+Page  659: 27-16 gives an example of DVP data capture and packing in YUV422 format, in which the sequence of
+Page  660: format. There is no chroma output. Figure 27-17 gives an example of DVP data capture and packing in
+Page  660: DVP_CTRL register. In this format, the vertical synchronization signal is still used to separate frames,
+Page  660: two features and DVP data formats supported.
+Page  660: Table 27-4 Enhanced features and DVP data formats supported
+Page  660: In YUV422 format, the DVP interface can use a basic pixel capture/drop feature to pick up luminance
+Page  661: Table 27-5 shows the DVP register map and its reset values.
+Page  661: Table 27-5 DVP register map and reset values
+Page  661: DVP_CTRL                       0x000                               0x0000 0000
+Page  661: DVP_STS                        0x004                               0x0000 0000
+Page  661: DVP_ESTS                       0x008                               0x0000 0000
+Page  661: DVP_IENA                       0x00C                               0x0000 0000
+Page  661: DVP_ISTS                       0x010                               0x0000 0000
+Page  661: DVP_ICLR                       0x014                               0x0000 0000
+Page  661: DVP_SCR                        0x018                               0x0000 0000
+Page  661: DVP_SUR                        0x01C                               0x0000 0000
+Page  661: DVP_CWST                       0x020                               0x0000 0000
+Page  661: DVP_CWSZ                       0x024                               0x0000 0000
+Page  661: DVP_DT                         0x028                               0x0000 0000
+Page  661: DVP_ACTRL                      0x040                               0x0000 0000
+Page  661: DVP_HSCF                       0x048                               0x0000 0000
+Page  661: DVP_VSCF                       0x04C                               0x0000 0000
+Page  661: DVP_FRF                        0x050                               0x0000 0000
+Page  661: DVP_BTH                        0x054                               0x0000 0000
+Page  661: 27.8.1 DVP control register (DVP_CTRL)
+Page  662: DVP Enable
+Page  662: 0: DVP disabled
+Page  662: Bit 14       ENA        0x0         rw       1: DVP enabled
+Page  662: The DVP register configuration must be completed before
+Page  662: enabling DVP.
+Page  662: DVP_VSYNC polarity
+Page  662: 0: DVP_VSYNC low level indicates a Frame start signal
+Page  662: 1: DVP_VSYNC high level indicates a Frame start signal
+Page  662: 0: DVP_VSYNC low level indicates that the captured data
+Page  662: 1: DVP_VSYNC high level indicates that the captured data
+Page  662: DVP_HSYNC polarity
+Page  662: 0: DVP_HSYNC high level indicates that the captured data
+Page  662: Bit 6        HSP        0x0         rw       1: DVP_HSYNC low level indicates that the captured data
+Page  662: DVP_PCLK polarity
+Page  662: Bit 5        CKP        0x0         rw       0: DVP_PCLK rising edge active
+Page  662: 1: DVP_PCLK falling edge active
+Page  663: The DMA controller and DVP register configurations must
+Page  663: 27.8.2 DVP status register (DVP_STS)
+Page  663: 27.8.3 DVP event status register (DVP_ESTS)
+Page  663: It is cleared by writing 1 to the HSIC bit in the DVP_ICLR
+Page  663: It is cleared by writing 1 to the VSIC bit in the DVP_ICLR
+Page  663: It is cleared by writing 1 to the ESEIC bit in the DVP_ICLR
+Page  663: It is cleared by writing 1 to the OVRIC bit in the DVP_ICLR
+Page  664: It is cleared by writing 1 to the CFDIC bit in the DVP_ICLR
+Page  664: 27.8.4 DVP interrupt enable register (DVP_IENA)
+Page  664: 27.8.5 DVP interrupt status register (DVP_ISTS)
+Page  664: It is cleared by writing 1 to the HSIC bit in the DVP_ICLR
+Page  664: It is cleared by writing 1 to the VSIC bit in the DVP_ICLR
+Page  664: It is cleared by writing 1 to the ESEIC bit in the DVP_ICLR
+Page  664: It is cleared by writing 1 to the OVRIC bit in the DVP_ICLR
+Page  664: It is cleared by writing 1 to the CFDIC bit in the DVP_ICLR
+Page  664: 27.8.6 DVP interrupt clear register (DVP_ICLR)
+Page  664: Bit 4       HSIC       0x0             wo       Writing 1 to this bit clears the HSES bit in the DVP_ESTS
+Page  664: register, and clears the HSIS bit in the DVP_ISTS register.
+Page  664: Bit 3       VSIC       0x0             wo       Writing 1 to this bit clears the VSES bit in the DVP_ESTS
+Page  664: register, and clears the VSIS bit in the DVP_ISTS register.
+Page  665: Writing 1 to this bit clears the ESEES bit in the DVP_ESTS
+Page  665: register, and clears the ESEIS bit in the DVP_ISTS
+Page  665: Writing 1 to this bit clears the OVRES bit in the DVP_ESTS
+Page  665: register, and clears the OVRIS bit in the DVP_ISTS
+Page  665: Writing 1 to this bit clears the CFDES bit in the DVP_ESTS
+Page  665: register, and clears the CFDIS bit in the DVP_ISTS
+Page  665: 27.8.7 DVP embedded synchronization code register (DVP_SCR)
+Page  665: 27.8.8 DVP embedded synchronization unmask register
+Page  665: (DVP_SUR)
+Page  666: 27.8.9 DVP crop window start register (DVP_CWST)
+Page  666: 27.8.10 DVP crop window size register (DVP_CWSZ)
+Page  666: 27.8.11 DVP data register (DVP_DT)
+Page  666: 27.8.12 DVP advanced control register (DVP_ACTRL)
+Page  668: 27.8.13 DVP enhanced horizontal scaling factor register
+Page  668: (DVP_HSCF)
+Page  668: 27.8.14 DVP enhanced vertical scaling factor register
+Page  668: (DVP_VSCF)
+Page  668: 27.8.15 DVP enhanced frame rate control factor register
+Page  668: (DVP_FRF)
+Page  668: 27.8.16 DVP binarization threshold register (DVP_BTH)
+Page  693: DVP      TMR7                                                                                                             x
+Page  693: 9           TMR7_OVERFLOW 41                 DAC2                                 73             TMR5_CH2                     105                DVP

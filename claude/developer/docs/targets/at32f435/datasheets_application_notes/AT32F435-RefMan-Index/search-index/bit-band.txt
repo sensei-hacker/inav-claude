@@ -1,0 +1,34 @@
+Keyword: bit-band
+Occurrences: 30
+================================================================================
+
+Page   32: Figure 1-4 Comparison between bit-band region and its alias region: image A ......................................... 48
+Page   32: Figure 1-5 Comparison between bit-band region and its alias region: image B ......................................... 48
+Page   40: Table 1-1 Bit-band address mapping in SRAM ........................................................................................... 49
+Page   40: Table 1-2 Bit-band address mapping in the peripheral area ....................................................................... 49
+Page   48: With the help of bit-band, read and write access to a single bit can be performed using common
+Page   48: load/store operations. The Cortex®-M4F memory includes two bit-band regions: the least significant 1M
+Page   48: bytes of SRAM and the least significant 1Mbytes of peripherals. In addition to access to bit-band
+Page   48: addresses, their respective bit-band alias region can be used to access to any bit in these two bit-band
+Page   48: regions. The bit-band alias region transforms each bit into a 32-bit word. Thus, accessing to a bit in an
+Page   48: alias region has the same effect as read-modify-write operation on the corresponding bit in a bit-band
+Page   48: Figure 1-4 Comparison between bit-band region and its alias region: image A
+Page   48: Figure 1-5 Comparison between bit-band region and its alias region: image B
+Page   48: Bit-band region: address region for bit-band operations
+Page   48: Bit-band alias region: access to the alias region has the same effect as read-modify-write operation on
+Page   48: the bit-band region
+Page   48: Each bit in a bit-band region is mapped into a word (LSB) in an alias region. When accessing to the
+Page   48: address in a bit-band alias region, such address is transformed into a bit-band address first. For a read
+Page   48: operation, read one word in the bit-band region, and then move the targeted bit to the right to LSB before
+Page   48: The address ranges of two memories supporting bit-band operations:
+Page   49: For a bit in the SRAM bit-band region, if the byte address is A, the bit number is n (0<=n<=7), then the
+Page   49: For a bit in the peripheral bit-band region, if the byte address is A, the bit number is n (0<=n<=7), then
+Page   49: Table 1-1 shows the mapping between bit-band region and alias region in SRAM:
+Page   49: Table 1-1 Bit-band address mapping in SRAM
+Page   49: Bit-band region                    Equivalent alias address
+Page   49: Table 1-2 shows the mapping between bit-band region and alias region in the peripheral area:
+Page   49: Table 1-2 Bit-band address mapping in the peripheral area
+Page   49: Bit-band region                   Equivalent alias address
+Page   49: In terms of bit-band operation, one of the advantages is to control LED ON/OFF independently via GPIO
+Page   49: In addition, bit-band operations can also simplify jump process. When jump operation is based on a bit
+Page   50:  Read the bit status from the bit-band alias region

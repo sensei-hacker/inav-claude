@@ -1,0 +1,60 @@
+Keyword: TMR6
+Occurrences: 56
+================================================================================
+
+Page   11: 14.1 Basic timer (TMR6 and TMR7) .................................................... 253
+Page   11: 14.1.1 TMR6 and TMR7 introduction ...................................................... 253
+Page   11: 14.1.2 TMR6 and TMR7 main features ................................................... 253
+Page   11: 14.1.3 TMR6 and TMR7 function overview ............................................. 253
+Page   11: 14.1.4 TMR6 and TMR7 registers .......................................................... 255
+Page   11: 14.1.4.1 TMR6 and TMR7 control register 1 (TMRx_CTRL1) .................. 255
+Page   11: 14.1.4.2 TMR6 and TMR7 control register 2 (TMRx_CTRL2) .................. 256
+Page   11: 14.1.4.3 TMR6 and TMR7 DMA/interrupt enable register (TMRx_IDEN) .. 256
+Page   11: 14.1.4.4 TMR6 and TMR7 interrupt status register (TMRx_ISTS) ........... 256
+Page   11: 14.1.4.5 TMR6 and TMR7 software event register (TMRx_SW EVT) ........ 256
+Page   11: 14.1.4.6 TMR6 and TMR7 counter value (TMRx_CVAL) ........................ 256
+Page   11: 14.1.4.7 TMR6 and TMR7 division (TMRx_DIV) .................................... 257
+Page   11: 14.1.4.8 TMR6 and TMR7 period register (TMRx_PR) ........................... 257
+Page   41: Table 14-2 TMR6 and TMR7— register table and reset value .................................................................. 255
+Page   45: DAC1                                                          TMR6/7
+Page   52: Configu                         TMR6 global interrupt
+Page   52: 54   61   rable     TMR6_DAC              DAC1 and DAC2 underflow error                0x0000_0118
+Page   62: 0x4000 1000 - 0x4000 13FF       TMR6 timer
+Page   82: Bit 4        TMR6RST          0x0            rw       0: Does not reset Timer6
+Page   86: Bit 4        TMR6EN          0x0             rw        0: Disabled
+Page   90: Bit 4        TMR6LPEN     0x1        rw       0: Disabled
+Page  154: DAC2       TMR6
+Page  158: DAC2     TMR6
+Page  159: 8           TMR6_OVERFLOW 40        QSPI1              72        TMR5_CH1       104     QSPI2
+Page  252: TMR6
+Page  252: Basic         TMR6
+Page  253: 14.1 Basic timer (TMR6 and TMR7)
+Page  253: 14.1.1 TMR6 and TMR7 introduction
+Page  253: Each of the basic timers (TMR6 and TMR7) includes a 16-bit upcounter and the corresponding control
+Page  253: 14.1.2 TMR6 and TMR7 main features
+Page  253: 14.1.3 TMR6 and TMR7 function overview
+Page  253: The counter clock of TMR6 and TMR7 is provided by the internal clock source (CK_INT) divided by
+Page  255: 14.1.4 TMR6 and TMR7 registers
+Page  255: Table 14-2 TMR6 and TMR7 register map and reset value
+Page  255: 14.1.4.1 TMR6 and TMR7 control register 1 (TMRx_CTRL1)
+Page  256: 14.1.4.2 TMR6 and TMR7 control register 2 (TMRx_CTRL2)
+Page  256: 14.1.4.3 TMR6 and TMR7 DMA/interrupt enable register (TMRx_IDEN)
+Page  256: 14.1.4.4 TMR6 and TMR7 interrupt status register (TMRx_ISTS)
+Page  256: 14.1.4.5 TMR6 and TMR7 software event register (TMRx_SWEVT)
+Page  256: 14.1.4.6 TMR6 and TMR7 counter value (TMRx_CVAL)
+Page  257: 14.1.4.7 TMR6 and TMR7 division (TMRx_DIV)
+Page  257: 14.1.4.8 TMR6 and TMR7 period register (TMRx_PR)
+Page  359: TMR6_TRGOUT
+Page  359: TMR6_TRGOUT               Ordinary data register                 Preempted data register
+Page  362: 01000                               TMR3_TRGOUT event                11000                          TMR6_TRGOUT event
+Page  363: 01001                TMR4_TRGOUT event              11001          TMR6_TRGOUT event
+Page  392: TMR6_TRGO
+Page  392: TMR6_TRGO
+Page  393: TMR6_TRGOUT                 000
+Page  396: 000: TMR6 TRGOUT event
+Page  397: 000: TMR6 TRGOUT event
+Page  693: DAC2     TMR6
+Page  693: 8           TMR6_OVERFLOW 40                 QSPI1                                72             TMR5_CH1                     104                QSPI2
+Page  714: TMR6 pause control bit
+Page  714: Bit 4        TMR6_PAUSE           0x0         rw     0: TMR6 works normally
+Page  714: 1: TMR6 stops running

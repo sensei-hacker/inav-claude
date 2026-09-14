@@ -1,0 +1,12 @@
+Keyword: temperature sensor
+Occurrences: 8
+================================================================================
+
+Page    1: − Temperature sensor (VTS), internal reference voltage
+Page   16: 18.4.1.1 Internal temperature sensor ................................................... 360
+Page   65: (DA/AD converters), temperature sensor and so on.
+Page  358: 1. ADC2/ADC3 are not connected to the internal temperature sensor (Temp. sensor) and internal
+Page  360: temperature sensor, ADC1_IN17 as an internal reference voltage, and ADC1_IN18 as a battery
+Page  360: 18.4.1.1 Internal temperature sensor
+Page  360: The temperature sensor is connected to ADC1_IN16. Before the temperature sensor channel conversion,
+Page  388: Internal temperature sensor and VINTRV enable

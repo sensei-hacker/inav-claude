@@ -1,0 +1,11 @@
+Keyword: low voltage reset
+Occurrences: 7
+================================================================================
+
+Page    1: − Power-on reset (POR)/ low voltage reset (LVR), and            − Infrared transmitter (IRTMR)
+Page   32: Figure 3-2 Power-on reset/Low voltage reset waveform............................................................................. 64
+Page   63: time, hysteresis occurs in power-on reset (POR) and low voltage reset (LVR).
+Page   64: Figure 3-2 Power-on reset/Low voltage reset waveform
+Page   65: power-saving mode wakeup circuit, watchdog timer (WDT), power-on reset/low voltage reset (POR/LVR),
+Page   65: being at its rising phrase or due to VDD low voltage reset. If the power switch has not been switched to
+Page   73:  LVR reset: low voltage reset

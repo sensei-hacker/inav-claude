@@ -1,0 +1,1341 @@
+Keyword: DMA
+Occurrences: 1337
+================================================================================
+
+Page    1: − 10/100M Ethernet MAC with dedicated DMA and
+Page    1:    DMA:                                                        448 KBytes AT32F435CDT7,AT32F435CDU7, AT32F437ZDT7
+Page    1: − 2 x general-purpose DMAs and 1 x EDMA                                 AT32F435ZCT7, AT32F435VCT7,AT32F435RCT7,
+Page    7: 9        DMA controller (DMA) ................................................................. 154
+Page    7: 9.3.1 DMA configuration ...................................................................... 155
+Page    7: 9.4    DMA multiplexer (DMAMUX) ....................................................... 157
+Page    7: 9.4.1 DMAMUX functional overview ..................................................... 158
+Page    7: 9.4.2 DMAMUX overflow interrupts ...................................................... 160
+Page    7: 9.5    DMA registers ............................................................................ 161
+Page    7: 9.5.1 DMA interrupt status register (DMA_STS) .................................... 162
+Page    7: 9.5.2 DMA interrupt flag clear register (DMA_CLR) ............................... 164
+Page    7: 9.5.3 DMA channel-x configuration register (DMA_CxCTRL)                                  (x = 1…7) 166
+Page    7: 9.5.4 DMA channel-x number of data register (DMA_CxDTCNT) (x = 1…7) 167
+Page    7: 9.5.5 DMA channel-x peripheral address register (DMA_CxPADDR)
+Page    7: 9.5.6 DMA channel-x memory address register (DMA_CxMADDR)
+Page    7: 9.5.7 DMAMUX selection register (DMA_MUXSEL) ............................... 167
+Page    7: 9.5.8 DMAMUX channel-x control register (DMA_MUXCxCTRL) (x = 1…7)167
+Page    7: 9.5.9 DMAMUX generator x control register (DMA_MUXGxCTRL) (x = 1…4) 168
+Page    7: 9.5.10 DMAMUX channel synchronization status register
+Page    7: (DMA_MUXSYNCSTS) ......................................................................... 169
+Page    7: 9.5.11 DMAMUX channel interrupt clear flag register (DMA_ MUXSYNCCLR)169
+Page    7: 9.5.12 DMAMUX generator interrupt status register (DMA_ MUXGSTS) .... 169
+Page    7: 9.5.13 DMAMUX generator interrupt flag clear register (DMA_ MUXGCLR)170
+Page    8: 11.4.8 Data transfer using DMA ............................................................. 198
+Page    9: 12.5 DMA transfer introduction ........................................................... 214
+Page    9: 12.5.1 Transmission using DMA ............................................................ 214
+Page    9: 12.5.2 Reception using DMA ................................................................. 214
+Page   10: 13.2.6 DMA transfer .............................................................................. 232
+Page   10: 13.3.6 DMA transfer .............................................................................. 244
+Page   11: 14.1.4.3 TMR6 and TMR7 DMA/interrupt enable register (TMRx_IDEN) .. 256
+Page   11: 14.2.4.4 TMR2 to TMR5 DMA/interrupt enable register (TMRx_IDEN) .... 275
+Page   12: 14.2.4.17     TMR2 to TMR5 DMA control register (TMRx_DMACTRL) ...... 282
+Page   12: 14.2.4.18     TMR2 to TMR5 DMA data register (TMRx_DMADT) .............. 282
+Page   12: 14.3.4.3 TMR9 and TMR12 DMA/interrupt enable register (TMRx_IDEN) 294
+Page   13: 14.3.5.2 TMR10, TMR11, TMR13 and TMR14 DMA/interrupt enable register
+Page   13: 14.4.4.4 TMR1, TMR8 and TMR20 DMA/interrupt enable register
+Page   14: 14.4.4.19     TMR1, TMR8 and TMR20 DMA control register
+Page   14: (TMRx_DMACTRL) ............................................................................ 333
+Page   14: 14.4.4.20     TMR1, TMR8 and TMR20 DMA data register (TMRx_DMADT) 334
+Page   25: 26.2.3 Ethernet frame transmission and reception using DMA ................. 594
+Page   26: 26.3.21 Ethernet DMA bus mode register (EMAC_DMABM) .................... 628
+Page   26: 26.3.22 Ethernet DMA transmit poll demand register (EMAC_DMATPD) .. 630
+Page   26: 26.3.23 Ethernet DMA receive poll demand register (EMAC_DMARPD) .. 630
+Page   26: 26.3.24 Ethernet DMA receive descriptor list address register
+Page   26: (EMAC_DMARDLADDR) ....................................................................... 630
+Page   26: 26.3.25 Ethernet DMA transmit descriptor list address register
+Page   26: (EMAC_DMATDLADDR) ....................................................................... 631
+Page   26: 26.3.26 Ethernet DMA status register (EMAC_DMASTS) ........................ 631
+Page   26: 26.3.27 Ethernet DMA operation mode register (EMAC_DMAOPM) ......... 634
+Page   26: 26.3.28 Ethernet DMA interrupt enable register (EMAC_DMAIE) ............ 636
+Page   27: 26.3.29 Ethernet DMA missed frame and buffer overflow counter register
+Page   27: (EMAC_DMAMFBOCNT) ....................................................................... 637
+Page   27: 26.3.30 Ethernet DMA current transmit descriptor register
+Page   27: (EMAC_DMACTD) ................................................................................ 638
+Page   27: 26.3.31 Ethernet DMA current receive descriptor register
+Page   27: (EMAC_DMACRD) ............................................................................... 638
+Page   27: 26.3.32 Ethernet DMA current transmit buffer address register
+Page   27: (EMAC_DMACTBADDR) ....................................................................... 638
+Page   27: 26.3.33 Ethernet DMA current receive buffer address reg ister
+Page   27: (EMAC_DMACRBADDR) ....................................................................... 638
+Page   28: 27.4 DMA access interface and data output packing ............................ 652
+Page   28: 27.4.1 DMA access interface ................................................................. 652
+Page   29: 28.3.3 DMA handshake mode ................................................................ 670
+Page   30: 29       EDMA controller (EDMA) ............................................................. 684
+Page   30: 29.4 DMA multiplexer (DMAMUX) ....................................................... 692
+Page   30: 29.4.1 DMAMUX functional overview ..................................................... 692
+Page   30: 29.4.2 DMAMUX overflow interrupts ...................................................... 694
+Page   30: 29.5 EDMA registers ......................................................................... 696
+Page   30: 29.5.1 DMA status register 1 (DMA_STS1) ............................................. 698
+Page   30: 29.5.2 DMA status register 2 (DMA_STS2) ............................................. 699
+Page   30: 29.5.3 DMA flag clear register 1 (DMA_CLR1) ........................................ 700
+Page   30: 29.5.4 DMA flag clear register 2 (DMA_CLR2) ........................................ 701
+Page   30: 29.5.5 DMA stream-x control register (DMA_SxCTRL) (x= 1…8) .............. 702
+Page   30: 29.5.6 DMA stream-x data register (DMA_SxDTCNT) (x= 1…8) ............... 704
+Page   30: 29.5.7 DMA stream-x peripheral address register (DMA_SxPADDR)
+Page   30: 29.5.8 DMA stream-x memory 0 address register (DMA_SxM0ADDR)
+Page   30: 29.5.9 DMA stream-x memory 1 address register (DMA_SxM1ADDR)
+Page   30: 29.5.10 DMA stream-x FIFO control register (DMA_SxFCTRL) (x= 1…8) . 705
+Page   30: 29.5.11 DMA linked table control register (DMA_SxLLCTRL) .................. 706
+Page   30: 29.5.12 DMA linked table pointer register (DMA_SxLLP) ( x = 1…8) ........ 706
+Page   31: 29.5.13 DMA 2D transfer control register (DMA_S2DCTRL) ................... 706
+Page   31: 29.5.14 DMA 2D transfer count register (DMA_S2DCNT) ....................... 706
+Page   31: 29.5.15 DMA 2D transfer stride register (DMA_STRIDE)( x = 1…8) ........ 707
+Page   31: 29.5.16 DMA synchronization enable (DMA_SYNCEN) ........................... 707
+Page   31: 29.5.17 DMAMUX table select (DMA_MUXSEL) ..................................... 708
+Page   31: 29.5.18 DMAMUX channel-x control register (DMA_MUXSxCTRL)
+Page   31: 29.5.19 DMAMUX generator-x control register (DMA_MUXGxCTRL)
+Page   31: 29.5.20 DMAMUX synchronization interrupt status register
+Page   31: (DMA_MUXSYNCSTS) ......................................................................... 709
+Page   31: 29.5.21 DMAMUX synchronization interrupt clear flag register
+Page   31: 29.5.22 DMAMUX generator interrupt status register (DMA_ MUXGSTS) 710
+Page   31: 29.5.23 DMAMUX generator interrupt clear flag register (DMA_ MUXGCLR)710
+Page   32: Figure 9-1 DMA block diagram .................................................................................................................. 154
+Page   32: Figure 9-6 DMAMUX block diagram .......................................................................................................... 158
+Page   32: Figure 9-7 DMAMUX request synchronized mode .................................................................................... 160
+Page   32: Figure 9-8 DMAMUX event generation ..................................................................................................... 161
+Page   36: Figure 18-18 Regular shift mode and DMA mode 2 .................................................................................. 374
+Page   38: Figure 26-12 RXDMA descriptor structure ................................................................................................ 603
+Page   38: Figure 28-2 DMA handshake mode ........................................................................................................... 670
+Page   39: Figure 29-11 DMAMUX block diagram ...................................................................................................... 693
+Page   39: Figure 29-12 DMAMUX synchronized mode ............................................................................................. 695
+Page   39: Figure 29-13 DMAMUX event generation ................................................................................................. 695
+Page   40: Table 9-1 DMA error event ......................................................................................................................... 157
+Page   40: Table 9-2 DMA interrupt requests .............................................................................................................. 157
+Page   40: Table 9-3 Flexible DMA1/DMA2 request mapping .................................................................................... 159
+Page   40: Table 9-4 DMAMUX EXINT LINE for trigger input and synchronized input .............................................. 160
+Page   40: Table 9-5 DMA register map and reset value ............................................................................................ 161
+Page   41: Table 18-4 Master/slave DMA mode.......................................................................................................... 371
+Page   43: Table 29-1 DMA error events ..................................................................................................................... 691
+Page   43: Table 29-2 DMA interrupts ......................................................................................................................... 692
+Page   43: Table 29-3 EDMA flexible request mapping .............................................................................................. 693
+Page   43: Table 29-4 DMAMUX EXINT LINE for trigger input and synchronized input ............................................ 694
+Page   44: 16-bit and 32-bit timers, Infrared Transmitter (IRTMR), DMA controller, EDMA controller, ERTC,
+Page   45: DMA1_2
+Page   45: EDMA
+Page   45: EMAC DMA                                                                                                                  SRAM2
+Page   47: DMA1      DMA2        EDMA    EMAC
+Page   50: 11      18                    EDMA data flow1           EDMA data flow1 global interrupt          0x0000_006C
+Page   50: Configu    EDMA data flow2           EDMA data flow2 global interrupt
+Page   50: Configu    EDMA data flow3           EDMA data flow3 global interrupt
+Page   50: Configu    EDMA data flow4           EDMA data flow4 global interrupt
+Page   51: Configu   EDMA data flow5        EDMA data flow5 global interrupt
+Page   51: Configu   EDMA data flow6        EDMA data flow6 global interrupt
+Page   51: Configu   EDMA data flow7        EDMA data flow7 global interrupt
+Page   51: 47   54             EDMA data flow8        EDMA data flow8 global interrupt       0x0000_00FC
+Page   52: 56   63             DMA1 channel1         DMA1 channel1 global interrupt               0x0000_0120
+Page   52: Configu                         DMA1 channel2 global interrupt
+Page   52: 57   64             DMA1 channel2                                                      0x0000_0124
+Page   52: Configu                         DMA1 channel3 global interrupt
+Page   52: 58   65             DMA1 channel3                                                      0x0000_0128
+Page   52: Configu                         DMA1 channel4 global interrupt
+Page   52: 59   66             DMA1 channel4                                                      0x0000_012C
+Page   52: Configu                         DMA1 channel5 global interrupt
+Page   52: 60   67             DMA1 channel5                                                      0x0000_0130
+Page   52: Configu                         DMA1 channel6 global interrupt
+Page   52: 68   75             DMA1 channel6                                                      0x0000_0150
+Page   52: Configu                         DMA1 channel7 global interrupt
+Page   52: 69   76             DMA1 chaanel7                                                      0x0000_0154
+Page   53: 94      101                DMAMUX                 DMAMUX overflow interrupt            0x0000_01B8
+Page   53: 108     115                DMA2 channel0          DMA2 channel0 global interrupt       0x0000_01F0
+Page   53: Configu   DMA2 channel1          DMA2 channel1 global interrupt
+Page   53: Configu   DMA2 channel2          DMA2 channel2 global interrupt
+Page   53: Configu   DMA2 channel3          DMA2 channel3 global interrupt
+Page   53: Configu   DMA2 channel4          DMA2 channel4 global interrupt
+Page   53: Configu   DMA2 channel5          DMA2 channel5 global interrupt
+Page   53: Configu   DMA2 channel6          DMA2 channel6 global interrupt
+Page   61: 0x4002 6400 - 0x4002 67FF       DMA1_2
+Page   61: 0x4002 6000 - 0x4002 63FF       EDMA
+Page   72: completion of the switch. During this switch period, the DMA remain working, and the interrupt events
+Page   79: DMA2 reset
+Page   79: Bit 24       DMA2RST          0x0              rw          0: Does not reset DMA2
+Page   79: 1: Reset DMA2
+Page   79: DMA1 reset
+Page   79: Bit 22       DMA1RST          0x0              rw          0: Does not reset DMA1
+Page   79: 1: Reset DMA1
+Page   79: EDMA reset
+Page   79: Bit 21       EDMARST          0x0              rw          0: Does not reset EDMA
+Page   79: 1: Reset EDMA
+Page   83: DMA2 clock enable
+Page   83: Bit 24       DMA2EN          0x0             rw          0: Disabled
+Page   83: DMA1 clock enable
+Page   83: Bit 22       DMA1EN          0x0             rw          0: Disabled
+Page   83: EDMA clock enable
+Page   83: Bit 21       EDMAEN          0x0             rw          0: Disabled
+Page   88: DMA2 clock enable in sleep mode
+Page   88: Bit 24       DMA2LPEN    0x1        rw       0: Disabled
+Page   88: DMA1 clock enable in sleep mode
+Page   88: Bit 22       DMA1LPEN    0x1        rw       0: Disabled
+Page   88: EDMA clock enable in sleep mode
+Page   88: Bit 21       EDMALPEN    0x1        rw       0: Disabled
+Page   95: DMA remain working, and the interrupt events are recorded
+Page  154: 9       DMA controller (DMA)
+Page  154: Direct memory access (DMA) controller is designed for 32-bit MCU applications with the aim of
+Page  154: There are two DMA controllers in the microcontroller. Each controller contains 7 DMA channels. Each
+Page  154: coordinating the priority of each DMA request.
+Page  154: Figure 9-1 DMA block diagram
+Page  154: DMA1
+Page  154: ADC1       TMR2                            DMA request                      ch3
+Page  154: ADC3       TMR4   DMA
+Page  154: request                  DMA ack
+Page  154: I2C1       USART1           DMAMUX
+Page  154: DMA2
+Page  154: SDIO1      UART4 DMA ack
+Page  154: DMA request                      ch1      AHB
+Page  154: SPI3       UART8                           DMA ack
+Page  154: Note: The number of DMA peripherals in Figure 9-1 may decrease depending on different models.
+Page  155: 9.3.1       DMA configuration
+Page  155: 1. Set the peripheral address in the DMA_CxPADDR register
+Page  155: 2. Set the memory address in the DMA_CxMADDR register
+Page  155: 3. Configure the amount of data to be transferred in the DMA_CxDTCNT register
+Page  155: 4. Configure the channel setting in the DMA_CxCTRL register
+Page  155: In circular mode, the contents in the DMA_CxDTCNT register is automatically reloaded with the
+Page  155: This mode indicates that DMA channels perform data transfer without requests from peripherals.
+Page  155: 5. Enable DMA transfer by setting the CHEN bit in the DMA_CxCTRL register
+Page  155: In P2M and M2P mode, the peripherals need to send a request signal to the DMA controller. The DMA
+Page  155: completion of peripheral transmission, the DMA controller sends the acknowledge signal to the
+Page  155: the same time, the DMA controller releases the acknowledge signal as well.
+Page  156: dma_req
+Page  156: dma_ack
+Page  156: MWIDTH bits in the DMA_CxCTRL register. When PWIDTH is not equal to MWIDTH, it can be aligned
+Page  157: Table 9-1 DMA error event
+Page  157: Transfer error         AHB response error occurred during DMA read/write access
+Page  157: An interrupt can be generated on a DMA half-transfer, transfer complete and transfer error. Each channel
+Page  157: Table 9-2 DMA interrupt requests
+Page  157: 9.4 DMA multiplexer (DMAMUX)
+Page  157: DMAMUX manages DMA requests/acknowledge between peripherals and DMA controller.
+Page  157: The DMA controller selects the DMA mapping table with the TBL_SEL bit in the DMA_MUXSEL
+Page  157: register. Each DMA controller stream selects only one DMA request from the flexible mapping table. In
+Page  157: peripherals or generators through the REQSEL [6: 0] bit in the DMA_MUXCxCTRL register.
+Page  158: 9.4.1         DMAMUX functional overview
+Page  158: The DMAMUX consists of a request generator and a request multiplexer.
+Page  158: Each of the DMAMUX generator channel x has a GEN enable bit in the DMA_MUXGxCTR register. The
+Page  158: SIGSEL bit is used to select the trigger input of the DMAMUX generator. Typically, the number of DMA
+Page  158: requests equals GREQCNT + 1. The GPOL bit is used in the DMA_MUXGxCTRL register to select a
+Page  158: Each of the DMAMUX stream x comes from all_req [127: 1].
+Page  158: In flexible mapping mode, the SYNCEN bit in the DMA_MUXSxCTRL register is used to synchronize the
+Page  158: selected DMA request input. In synchronous mode, the SYNCSEL bit in the DMA_MUXSxCTRL register
+Page  158: is used to select synchronized input. The selected DMA request input will be transferred to chx_mux_req
+Page  158: DMA_MUXSxCTRL register. In addition, when the EVTGEN bit is set in the DMA_MUXCxCTRL register,
+Page  158: Figure 9-6 DMAMUX block diagram
+Page  158: DMAMUX
+Page  158: DAC1     TMR5                                                        Stream 1               DMAMUX_SEL
+Page  158: {dmamux_evt[x:1], exint_gpio [15:0]}                             dmamux_evt[x:0]
+Page  159: Table 9-3 Flexible DMA1/DMA2 request mapping
+Page  159: DMAMUX                    DMAMUX                       DMAMUX                   DMAMUX
+Page  159: 1           DMA_MUXREQG1 33         UART5_TX           65        TMR3_OVERFLOW 97       reserved
+Page  159: 2           DMA_MUXREQG2 34         reserved           66        TMR3_TRIG      98      reserved
+Page  159: 3           DMA_MUXREQG3 35         reserved           67        TMR4_CH1       99      reserved
+Page  159: 4           DMA_MUXREQG4 36         ADC2               68        TMR4_CH2       100     reserved
+Page  160: Table 9-4 DMAMUX EXINT LINE for trigger input and synchronized input
+Page  160: 0            exint_gpio[0]   8           exint_gpio[8]       16         DMA_MUXevt1   24      reserved
+Page  160: 1            exint_gpio[1]   9           exint_gpio[9]       17         DMA_MUXevt2   25      reserved
+Page  160: 2            exint_gpio[2]   10          exint_gpio[10]      18         DMA_MUXevt3   26      reserved
+Page  160: 3            exint_gpio[3]   11          exint_gpio[11]      19         DMA_MUXevt4   27      reserved
+Page  160: 4            exint_gpio[4]   12          exint_gpio[12]      20         DMA_MUXevt5   28      reserved
+Page  160: 5            exint_gpio[5]   13          exint_gpio[13]      21         DMA_MUXevt6   29      reserved
+Page  160: 6            exint_gpio[6]   14          exint_gpio[14]      22         DMA_MUXevt7   30      reserved
+Page  160: 9.4.2          DMAMUX overflow interrupts
+Page  160: During DMAMUX request generation, when a new trigger input occurs before the GREQCNT underflows,
+Page  160: the TRGOVFx bit will be set in the DMA_MUXGSTS register. It is cleared by setting TRGOVFCx=1 in
+Page  160: the DMA_MUXGCLR register. An interrupt will be generated if the interrupt enable bit TRGOVIEN is set
+Page  160: in the DMA_MUXGxCTRL register.
+Page  160: In DMAMUX synchronous mode, when a new synchronized input occurs before the REQCNT underflows,
+Page  160: the SYNCOVFx bit will be set in the DMA_MUXSYNCSTS register. It is cleared by setting the
+Page  160: SYNCOVFCx bit in the DMA_MUXSYNCCLR register. An interrupt will be generated if the interrupt
+Page  160: enable bit SYNCOVIEN is set in the DMA_MUXSxCTRL register.
+Page  160: Figure 9-7 DMAMUX request synchronized mode
+Page  160: DMA request served
+Page  161: Figure 9-8 DMAMUX event generation
+Page  161: 9.5 DMA registers
+Page  161: Table 9-5 shows DMA register map and their reset values.
+Page  161: Table 9-5 DMA register map and reset value
+Page  161: DMA_STS                            0x00                   0x0000 0000
+Page  161: DMA_CLR                            0x04                   0x0000 0000
+Page  161: DMA_C1CTRL                         0x08                   0x0000 0000
+Page  161: DMA_C1DTCNT                        0x0c                   0x0000 0000
+Page  161: DMA_C1PADDR                        0x10                   0x0000 0000
+Page  161: DMA_C1MADDR                        0x14                   0x0000 0000
+Page  161: DMA_C2CTRL                         0x1c                   0x0000 0000
+Page  161: DMA_C2DTCNT                        0x20                   0x0000 0000
+Page  161: DMA_C2PADDR                        0x24                   0x0000 0000
+Page  161: DMA_C2MADDR                        0x28                   0x0000 0000
+Page  161: DMA_C3CTRL                         0x30                   0x0000 0000
+Page  161: DMA_C3DTCNT                        0x34                   0x0000 0000
+Page  161: DMA_C3PADDR                        0x38                   0x0000 0000
+Page  161: DMA_C3MADDR                        0x3c                   0x0000 0000
+Page  161: DMA_C4CTRL                         0x44                   0x0000 0000
+Page  161: DMA_C4DTCNT                        0x48                   0x0000 0000
+Page  161: DMA_C4PADDR                        0x4c                   0x0000 0000
+Page  161: DMA_C4MADDR                        0x50                   0x0000 0000
+Page  161: DMA_C5CTRL                         0x58                   0x0000 0000
+Page  161: DMA_C5DTCNT                        0x5c                   0x0000 0000
+Page  161: DMA_C5PADDR                        0x60                   0x0000 0000
+Page  161: DMA_C5MADDR                        0x64                   0x0000 0000
+Page  161: DMA_C6CTRL                         0x6c                   0x0000 0000
+Page  162: DMA_C6DTCNT                       0x70                                0x0000 0000
+Page  162: DMA_C6PADDR                       0x74                                0x0000 0000
+Page  162: DMA_C6MADDR                       0x78                                0x0000 0000
+Page  162: DMA_C7CTRL                        0x80                                0x0000 0000
+Page  162: DMA_C7DTCNT                       0x84                                0x0000 0000
+Page  162: DMA_C7PADDR                       0x88                                0x0000 0000
+Page  162: DMA_C7MADDR                       0x8c                                0x0000 0000
+Page  162: DMA_MUXSEL                        0x100                               0x0000 0000
+Page  162: DMA_MUXC1CTRL                     0x104                               0x0000 0000
+Page  162: DMA_MUXC2CTRL                     0x108                               0x0000 0000
+Page  162: DMA_MUXC3CTRL                     0x10c                               0x0000 0000
+Page  162: DMA_MUXC4CTRL                     0x110                               0x0000 0000
+Page  162: DMA_MUXC5CTRL                     0x114                               0x0000 0000
+Page  162: DMA_MUXC6CTRL                     0x118                               0x0000 0000
+Page  162: DMA_MUXC7CTRL                     0x11c                               0x0000 0000
+Page  162: DMA_MUXG1CTRL                     0x120                               0x0000 0000
+Page  162: DMA_MUXG2CTRL                     0x124                               0x0000 0000
+Page  162: DMA_MUXG3CTRL                     0x128                               0x0000 0000
+Page  162: DMA_MUXG4CTRL                     0x12c                               0x0000 0000
+Page  162: DMA_MUXSYNCSTS                    0x130                               0x0000 0000
+Page  162: DMA_MUXSYNCCLR                    0x134                               0x0000 0000
+Page  162: DMA_MUXGSTS                       0x138                               0x0000 0000
+Page  162: DMA_MUXGCLR                       0x13c                               0x0000 0000
+Page  162: 9.5.1         DMA interrupt status register (DMA_STS)
+Page  164: 9.5.2           DMA interrupt flag clear register (DMA_CLR)
+Page  164: 1: Clear the DTERRF flag in the DMA_STS register
+Page  164: 1: Clear the HDTF7 flag in the DMA_STS register
+Page  164: 1: Clear the FDTF7 flag in the DMA_STS register
+Page  164: the DMA_STS register
+Page  164: 1: Clear the DTERRF6 flag in the DMA_STS register
+Page  164: 1: Clear the HDTF6 flag in the DMA_STS register
+Page  164: 1: Clear the FDTF6 flag in the DMA_STS register
+Page  164: the DMA_STS register
+Page  164: 1: Clear the DTERRF5 flag in the DMA_STS register
+Page  165: 1: Clear the HDTF5 flag in the DMA_STS register
+Page  165: 1: Clear the FDTF5 flag in the DMA_STS register
+Page  165: DMA_STS register
+Page  165: 1: Clear the DTERRF4 flag in the DMA_STS register
+Page  165: 1: Clear the HDTF4 flag in the DMA_STS register
+Page  165: 1: Clear the FDTF4 flag in the DMA_STS register
+Page  165: the DMA_STS register
+Page  165: 1: Clear the DTERRF3 flag in the DMA_STS register
+Page  165: 1: Clear the HDTF3 flag in the DMA_STS register
+Page  165: 1: Clear the FDTF3 flag in the DMA_STS register
+Page  165: the DMA_STS register
+Page  165: 1: Clear the DTERRF2 flag in the DMA_STS register
+Page  165: 1: Clear the HDTF2 flag in the DMA_STS register
+Page  165: 1: Clear the FDTF2 flag in the DMA_STS register
+Page  165: DMA_STS register
+Page  165: 1: Clear the DTERRF1 flag in the DMA_STS register
+Page  165: 1: Clear the HDTF1 flag in the DMA_STS register
+Page  165: 1: Clear the FDTF1 flag in the DMA_STS register
+Page  166: DMA_STS register
+Page  166: 9.5.3 DMA channel-x configuration register (DMA_CxCTRL)
+Page  167: 9.5.4 DMA channel-x number of data register (DMA_CxDTCNT)
+Page  167: Bit 15: 0    CNT              0x0000          rw       after each DMA transfer.
+Page  167: 9.5.5 DMA channel-x peripheral address register
+Page  167: (DMA_CxPADDR) (x = 1…7)
+Page  167: 9.5.6 DMA channel-x memory address register
+Page  167: (DMA_CxMADDR) (x = 1…7)
+Page  167: 9.5.7             DMAMUX selection register (DMA_MUXSEL)
+Page  167: 9.5.8 DMAMUX channel-x control register (DMA_MUXCxCTRL)
+Page  168: DMA request count
+Page  168: These bits indicate the number of DMA requests sent to
+Page  168: the DMA controller after synchronization is enabled, and/or
+Page  168: DMA request count before event output is generated.
+Page  168: DMA request select
+Page  168: Bit 6: 0     REQSEL           0x00                     Select DMA request. Refer to DMAMUX table for more
+Page  168: 9.5.9 DMAMUX generator x control register
+Page  168: (DMA_MUXGxCTRL) (x = 1…4)
+Page  168: DMA request generation count
+Page  168: These bits define the number of DMA requests (GNBREQ
+Page  168: DMA request generation polarity
+Page  168: DMA request generation enable
+Page  168: Bit 16       GEN              0x0             rw       0: DMA request generation is disabled
+Page  168: 1: DMA request generation is enabled
+Page  169: Bit 4: 0    SIGSEL            0x00            rw       This field is used to select the DMA trigger input for DMA
+Page  169: 9.5.10 DMAMUX channel synchronization status register
+Page  169: (DMA_MUXSYNCSTS)
+Page  169: Bit 7: 0    SYNCOVF           0x00            ro       When the DMA request count is less than REQCNT, this
+Page  169: 9.5.11 DMAMUX channel interrupt clear flag register
+Page  169: (DMA_MUXSYNCCLR)
+Page  169: 9.5.12 DMAMUX generator interrupt status register
+Page  169: (DMA_MUXGSTS)
+Page  169: Bit 3: 0    TRGOVF            0x00            ro       When the DMA request count is lower than GREQCNT,
+Page  170: 9.5.13 DMAMUX generator interrupt flag clear register
+Page  170: (DMA_MUXGCLR)
+Page  170: flag in the DMA_MUXGSTS register.
+Page  174:     Support DMA transfer
+Page  175: I2C_DMAreq_TX                                                                                                  GPIO     I2C_SDA
+Page  175: I2C_DMAreq_RX                                                Shift register Rx      Digital
+Page  185: ― Write operation through interrupts or DMA: Clear the TXDT register by setting the TDBE bit
+Page  185: or DMA request. At this point, data is written to the TXDT register using DMA or interrupt
+Page  198: 11.4.8 Data transfer using DMA
+Page  198: I2C data transfer can be done using DMA controller so as to reduce the burden on the CPU. The TDIEN
+Page  198: and RDIEN must be set 0 when using DMA for data transfer.
+Page  198: Transmission using DMA (DMATEN=1)
+Page  198: 1. Set the peripheral address (DMA_CxPADDR= I2C_TXDT address);
+Page  198: 2. Set the memory address (DMA_CxMADDR=data memory address);
+Page  198: 3. The transmission direction is set from memory to peripheral (DTD=1 in the DMA_CHCTRL
+Page  198: 4. Configure the total number of bytes to be transferred in the DMA_CxDTCNT register;
+Page  198: interrupts, etc. in the DMA_CHCTRL register;
+Page  198: 6. Enable the DMA channel by setting CHEN=1 in the DMA_CxCTRL register;
+Page  198: 7. Enable I2C DMA request by setting DMAEN=1 in the I2C_CTRL2 register. Once the TDBE bit
+Page  198: register through DMA.
+Page  198: 8. When the number of data transfers, programmed in the DMA controller, is reached
+Page  198: (DMA_CxDTCNT=0), the data transfer is complete (An interrupt is generated if enabled).
+Page  198: Reception using DMA (DMAREN=1)
+Page  198: 1. Set the peripheral address (DMA_CxPADDR = I2C_RXDT address)
+Page  198: 2. Set the memory address (DMA_CxMADDR = memory address)
+Page  198: 3. The transmission directions set from peripheral to memory (DTD=0 in the DMA_CHCTRL
+Page  198: 4. Configure the total number of bytes to be transferred in the DMA_CxDTCNT register
+Page  198: interrupts, etc. in the DMA_CHCTRL register
+Page  198: 6. Enable the DMA channel by setting CHEN=1 in the DMA_CxCTRL register
+Page  198: 7. Enable I2C DMA request by setting DMAEN=1 in the I2C_CTRL2 register. Once the RDBE bit
+Page  198: memory through DMA
+Page  198: 8. When the number of data transfers, programmed in the DMA controller, is reached
+Page  198: (DMA_CxDTCNT=0), the data transfer is complete (An interrupt is generated if enabled).
+Page  201: DMA receive data request enable
+Page  201: Bit 15       DMAREN      0x0             rw       0: DMA receive data request disabled
+Page  201: 1: DMA receive data request enabled
+Page  201: DMA Transmit data request enable
+Page  201: Bit 14       DMATEN      0x0             rw       0: DMA Transmit data request disabled
+Page  201: 1: DMA Transmit data request enabled
+Page  207: DMA.
+Page  208:  Programmable DMA multi-processor communication
+Page  214: 12.5 DMA transfer introduction
+Page  214: Enable transmit data buffer and receive data buffer using DMA to achieve continuous high-speed
+Page  214: transmission for USART, which is detailed in subsequent sections. For more information on specific DMA
+Page  214: configuration, refer to DMA chapter.
+Page  214: 12.5.1 Transmission using DMA
+Page  214: 1.    Select a DMA channel: Select a DMA channel from DMA channel map table described in DMA
+Page  214: 2.    Configure the destination of DMA transfer: Configure the USART_DT register address as the
+Page  214: destination address bit of DMA transfer in the DMA control register. Data will be sent to this address
+Page  214: after transmit request is received by DMA.
+Page  214: 3.    Configure the source of DMA transfer: Configure the memory address as the source of DMA transfer
+Page  214: in the DMA control register. Data will be loaded into the USART_DT register from the memory
+Page  214: address after transmit request is received by DMA.
+Page  214: 4.    Configure the total number of bytes to be transferred in the DMA control register.
+Page  214: 5.    Configure the channel priority of DMA transfer in the DMA control register.
+Page  214: 6.    Configure DMA interrupt generation after half or full transfer in the DMA control register.
+Page  214: 7.    Enable DMA transfer channel in the DMA control register.
+Page  214: 12.5.2 Reception using DMA
+Page  214: 1.    Select a DMA transfer channel: Select a DMA channel from DMA channel map table described in
+Page  214: DMA chapter.
+Page  214: 2.    Configure the destination of DMA transfer: Configure the memory address as the destination of DMA
+Page  214: transfer in the DMA control register. Data will be loaded from the USART_DT register to the
+Page  214: programmed destination after reception request is received by DMA.
+Page  214: 3.    Configure the source of DMA transfer: Configure the USART_DT register address as the source of
+Page  214: DMA transfer in the DMA control register. Data will be loaded from the USART_DT register to the
+Page  214: programmed destination after reception request is received by DMA.
+Page  215: 4.   Configure the total number of bytes to be transferred in the DMA control register.
+Page  215: 5.   Configure the channel priority of DMA transfer in the DMA control register.
+Page  215: 6.   Configure DMA interrupt generation after half or full transfer in the DMA control register.
+Page  215: 7.   Enable a DMA transfer channel in the DMA control register.
+Page  216: 6.  DMA transmission configuration: If the DMA mode is selected, the DMATEN bit (bit 7 in the
+Page  216: USART_CTRL3 register) is set, and configure DMA register accordingly.
+Page  216: USART_DT register (This operation will clear the TDBE bit). Repeat this step in non-DMA mode.
+Page  216: will clear the TDC bit; This bit can also be cleared by writing “0”, but this is valid only in DMA mode.
+Page  217: 6. Reception using DMA: If the DMA mode is selected, the DMAREN bit is set, and configure DMA
+Page  217:  In DMA mode, the RDNE bit is set after every byte is received, and it is cleared when the data
+Page  217: register is read by DMA.
+Page  217:  In non-DMA mode, the RDBF bit is cleared when read access to the USART_DT register by
+Page  218:    In non-DMA mode, both FERR and RDBF are set at the same time. The latter will generate an
+Page  218: interrupt. In DMA mode, an interrupt is generated if the ERRIEN.
+Page  218:  An interrupt is generated if the RDBFIEN is set or both ERRIEN and DMAREN are set.
+Page  219:  No interrupt is generated in non-DMA mode. However, since the NERR bit is set at the same
+Page  219: time as the RDBF bit, the RDBF bit will generate an interrupt. In DMA mode, an interrupt will be
+Page  220: ROERR        DMAREN
+Page  225: DMA transmitter enable
+Page  225: Bit 7         DMATEN        0x0             rw       0: DMA transmitter is disabled.
+Page  225: 1: DMA transmitter is enabled.
+Page  225: DMA receiver enable
+Page  225: Bit 6         DMAREN        0x0             rw       0: DMA receiver is disabled.
+Page  225: 1: DMA receiver is enabled.
+Page  227: reception-only full-duplex and transmission-only/reception-only half-duplex modes, DMA transfer, and
+Page  228:  Support transmission and reception using DMA
+Page  231: the user is reading or writing through DMA or CPU. During the transmission, if the received data is not
+Page  231:  Select if or when the NTC bit is set, depending on DMA or CPU data register. See the following
+Page  231: Transmission using DMA
+Page  231: When DMA is used to write the data to be transmitted, if the CCEN bit is enabled, the hardware calculates
+Page  231: Reception using DMA
+Page  231: When DMA is used to read the data to be received, if the CCEN bit is enabled, the hardware calculates
+Page  232: Unlike DMA mode, after writing the last data to be transmitted, the CPU mode requires the NTC bit to
+Page  232: 13.2.6 DMA transfer
+Page  232: The SPI supports write and read operations with DMA. Refer to the following configuration procedure.
+Page  232: data transferred by DMA is configured as the number of the data to be transferred. The number of data
+Page  232: read with DMA is configured as the number of the data to be received. In this case, the hardware will
+Page  232: set, and the DMA read request will be sent if then DAM transfer is enabled. Hence, it is recommended
+Page  232: Transmission with DMA
+Page  232:  Select DMA channel: Select a DMA channel for the current SPI transfer from DMA flexible
+Page  232: request map table described in DMA chapter.
+Page  232:  Configure the destination of DMA transfer: Configure the SPI_DT register address as the
+Page  232: destination address bit of DMA transfer in the DMA control register. Data will be sent to this
+Page  232: address after transmit request is received by DMA.
+Page  232:  Configure the source of DMA transfer: Configure the memory address as the source of DMA
+Page  232: transfer in the DMA control register. Data will be loaded into the SPI_DT register from the
+Page  232: memory address after transmit request is received by DMA.
+Page  232:  Configure the total number of bytes to be transferred in the DMA control register.
+Page  232:  Configure the channel priority of DMA transfer in the DMA control register.
+Page  232:  Configure DMA interrupt generation after half or full transfer in the DMA control register.
+Page  232:  Enable DMA transfer channel in the DMA control register.
+Page  232: Reception with DMA
+Page  232:  Select DMA transfer channel: Select a DMA channel for the current SPI from DMA flexible
+Page  232: request map table described in DMA chapter.
+Page  232:  Configure the destination of DMA transfer: Configure the memory address as the destination of
+Page  232: DMA transfer in the DMA control register. Data will be loaded from the SPI_DT register to the
+Page  232: programmed destination after reception request is received by DMA.
+Page  232:  Configure the source of DMA transfer: Configure the SPI_DT register address as the source of
+Page  232: DMA transfer in the DMA control register. Data will be loaded from the SPI_DT register to the
+Page  232: programmed destination after reception request is received by DMA.
+Page  232:  Configure the total number of bytes to be transferred in the DMA control register.
+Page  232:  Configure the channel priority of DMA transfer in the DMA control register.
+Page  232:  Configure DMA interrupt generation after half or full transfer in the DMA control register
+Page  232:  Enable DMA transfer channel in the DMA control register.
+Page  233: Both DMA and CPU can be used for write operation. For DMA transfer, refer to DMA transfer section for
+Page  233: the SPI_SCK controller chapter for information on communication clock, and refer to CRC and DMA
+Page  233: transfer chapter to configure CRC and DMA (if necessary). The recommended configuration procedure
+Page  233:  Configure DMA transfer (if necessary)
+Page  233:  If the DMA transfer mode is not used, the software will check whether to enable transmit data
+Page  234: Both DMA and CPU can be used for read operation. For DMA transfer, refer to DMA transfer section for
+Page  234:  Configure DMA transfer (if necessary)
+Page  234:  If the DMA transfer mode is not used, the software will check whether to enable receive data
+Page  238: standard, LSB-aligned standard and PCM standard, respectively. The DMA transfer is also supported.
+Page  239:  DMA transfer
+Page  241: the SPI_DT register, and the number of DMA transfer is 1.
+Page  241: the SPI_DT register, and the number of DMA transfer is 1. The first 16 bits (MSB) are the significant
+Page  241: the SPI_DT register, and the number of DMA transfer is 2. The 16-bit MSB transmits and receives the
+Page  242: the SPI_DT register, and the number of DMA transfer is 2. These 32-bit data are proceeded in two
+Page  242: the SPI_DT register, and the number of DMA transfer is 1. The 16 bits (LSB) are the significant bits
+Page  242: the SPI_DT register, and the number of DMA transfer is 2. For the first 16-bit data, its 8-bit LSB are
+Page  244: 13.3.6 DMA transfer
+Page  244: The SPI supports write and read operations with DMA. Whether used as SPI or I2S, read/write request
+Page  244: using DMA comes from the same peripheral. As a result, their configuration procedure are the same,
+Page  244: Transmission with DMA
+Page  244:  Select DMA channel: Select a DMA channel for the current SPI from DMA channel map table
+Page  244: described in DMA chapter.
+Page  244:  Configure the destination of DMA transfer: Configure the SPI_DT register address as the
+Page  244: destination address bit of DMA transfer in the DMA control register. Data will be sent to this
+Page  244: address after transmit request is received by DMA.
+Page  244:  Configure the source of DMA transfer: Configure the memory address as the source of DMA
+Page  244: transfer in the DMA control register. Data will be loaded into the SPI_DT register from the
+Page  244: memory address after transmit request is received by DMA.
+Page  244:  Configure the total number of bytes to be transferred in the DMA control register.
+Page  244:  Configure the channel priority of DMA transfer in the DMA control register.
+Page  244:  Configure DMA interrupt generation after half or full transfer in the DMA control register.
+Page  244:  Enable DMA transfer channel in the DMA control register.
+Page  244: Reception with DMA
+Page  244:  Select DMA transfer channel: Select a DMA channel for the current SPI from DMA channel map
+Page  244: table described in DMA chapter.
+Page  244:  Configure the destination of DMA transfer: Configure the memory address as the destination of
+Page  244: DMA transfer in the DMA control register. Data will be loaded from the SPI_DT register to the
+Page  244: programmed destination after reception request is received by DMA.
+Page  244:  Configure the source of DMA transfer: Configure the SPI_DT register address as the source of
+Page  244: DMA transfer in the DMA control register. Data will be loaded from the SPI_DT register to the
+Page  244: programmed destination after reception request is received by DMA.
+Page  244:  Configure the total number of bytes to be transferred in the DMA control register.
+Page  244:  Configure the channel priority of DMA transfer in the DMA control register.
+Page  245:       Configure DMA interrupt generation after half or full transfer in the DMA control register
+Page  245:       Enable DMA transfer channel in the DMA control register.
+Page  245:  Configure DMA transfer (if necessary)
+Page  245:  Configure DMA transfer (if necessary)
+Page  249: DMA transmit enable
+Page  249: Bit 1       DMATEN     0x0             rw       0: Disabled
+Page  249: DMA receive enable
+Page  249: Bit 0       DMAREN     0x0             rw       0: Disabled
+Page  252: Counter Count                              DMA        Capture/compare         EXT Brake
+Page  255: This bit is used to configure overflow event or DMA
+Page  256: 14.1.4.3 TMR6 and TMR7 DMA/interrupt enable register (TMRx_IDEN)
+Page  256: Overflow event DMA request enable
+Page  257:       Interrupt/DMA is generated at overflow event, trigger event and channel event
+Page  257:       Support TMR burst DMA transfer
+Page  264: is detected, and the capture compare interrupt flag bit (CxIF) is set to 1. An interrupt or a DMA request
+Page  264:  If needed, enable the relevant interrupt or DMA request by setting the C1IEN bit in the
+Page  267: this, the channel flag bit and DMA request still depend on the compare result.
+Page  273: TMRx_DMACTRL            0x48                              0x0000
+Page  273: TMRx_DMADT              0x4C                              0x0000
+Page  273: Bit 2        OVFS              0x0             rw       This bit is used to select overflow event or DMA request
+Page  274: DMA request source
+Page  275: 14.2.4.4 TMR2 to TMR5 DMA/interrupt enable register (TMRx_IDEN)
+Page  275: Trigger DMA request enable
+Page  275: Channel 4 DMA request enable
+Page  275: Channel 3 DMA request enable
+Page  275: Channel 2 DMA request enable
+Page  275: Channel 1 DMA request enable
+Page  275: Overflow event DMA request enable
+Page  282: 14.2.4.17             TMR2 to TMR5 DMA control register (TMRx_DMACTRL)
+Page  282: DMA transfer bytes
+Page  282: This field defines the number of DMA transfers:
+Page  282: DMA transfer address offset
+Page  282: 14.2.4.18             TMR2 to TMR5 DMA data register (TMRx_DMADT)
+Page  282: DMA data register
+Page  282: A read or write operation to the DMADT register accesses
+Page  282: Bit 15: 0    DMADT       0x0000          rw       the TMR registers at the following address:
+Page  289: is detected, and the capture compare interrupt flag bit (CxIF) is set. An interrupt or a DMA request will
+Page  291: channel flag bit and DMA request still depend on the compare result.
+Page  294: This bit is used to select overflow event or DMA request
+Page  294: 14.3.4.3 TMR9 and TMR12 DMA/interrupt enable register (TMRx_IDEN)
+Page  300: This bit is used to select overflow event or DMA request
+Page  300: 14.3.5.2 TMR10, TMR11, TMR13 and TMR14 DMA/interrupt enable
+Page  304:  Interrupt/DMA is generated at overflow event, trigger event, brake signal input and channel event
+Page  304:  Support TMR burst DMA transfer
+Page  313: is detected, and the capture compare interrupt flag bit (CxIF) is set to 1. An interrupt/DMA request will
+Page  313:  If needed, enable the relevant interrupt or DMA request by setting the C1IEN bit in the
+Page  315: the channel flag bit and DMA request still depend on the compare result.
+Page  318:  If the brake interrupt or DMA request is enabled, the brake statue flag is set, and a brake
+Page  318: interrupt or DMA request can be generated.
+Page  321: TMRx_DMACTRL          0x48                                     0x0000
+Page  321: TMRx_DMADT            0x4C                                     0x0000
+Page  322: This bit is used to select overflow event or DMA request
+Page  323: DMA request source
+Page  324: 14.4.4.4 TMR1, TMR8 and TMR20 DMA/interrupt enable register
+Page  324: Trigger DMA request enable
+Page  324: HALL DMA request enable
+Page  324: Channel 4 DMA request enable
+Page  324: Channel 3 DMA request enable
+Page  324: Channel 2 DMA request enable
+Page  324: Channel 1 DMA request enable
+Page  324: Overflow event DMA request enable
+Page  333: 14.4.4.19 TMR1, TMR8 and TMR20 DMA control register
+Page  333: (TMRx_DMACTRL)
+Page  333: DMA transfer bytes
+Page  333: This field defines the number of DMA transfers:
+Page  333: DMA transfer address offset
+Page  334: 14.4.4.20 TMR1, TMR8 and TMR20 DMA data register
+Page  334: (TMRx_DMADT)
+Page  334: DMA data register
+Page  334: A write/read operation to the DMADT register accesses
+Page  334: Bit 15: 0   DMADT      0x0000          rw       any TMR register located at the following address:
+Page  358:  Regular channels with DMA transfers
+Page  358: ― Master-slave mode with DMA is suited to high-performance requirements
+Page  359: TMR1_TRGOUT                                                                                                      DMA
+Page  361: storage of the calibration value will not set the OCCE flag, or generate interrupts or DMA requests.
+Page  369: Read access to the ADC_ODT register using CPU or DMA gets the converted data of the ordinary group.
+Page  369: When the OCDMAEN bit is set in the ADC_CTRL2 register, the ADC will issue DMA requests each time
+Page  369: When the EOCSFEN or OCDMAEN is set, the ADC will automatically start overflow detection. If an
+Page  369: stored in the data register. If the DMA is used, the DMA request remains set so that the DMA can read
+Page  369: The OCDRCEN bit in the ADC_CTRL2 register can be used to select whether to continually send DMA
+Page  369: requests after the DMA transfer register is reset.
+Page  370: the master/slave mode together with DMA1 or DMA2.
+Page  370: DMA request                                                        Address/Data bus
+Page  371: The MSDMASEL bit in the ADC_CCTRL register can be used to select from five DMA transfer modes,
+Page  371: as shown in Table 18-4. As long as the MSDMASEL is set, the ADC1 DMA channel is used to generate
+Page  371: a DMA request each time the data is ready, and overflow detection on master/salve is also enabled.
+Page  371: Once an overflow event occurs, the ADC will stop conversion, the DMA request is halted, and loss of
+Page  371: Table 18-4 Master/slave DMA mode
+Page  371: MSDMASEL   Master/slave    DMA requests   ADC_CODT[31:0]
+Page  371: MSDRCEN bit in the ADC_CCTRL register can be used to select when to stop DMA request, that is,
+Page  371: when the DMA request remains set until the end of data transfer, or when the DMA transfer register is
+Page  371: The single slave mode can work with the mode 1/2/3 of the transfer mode (MSDMASEL), while the
+Page  373: The single slave mode can work with the transfer mode 1/2/3 (MSDMASEL), while the dual slave
+Page  373: regular shift mode works with DMA mode 2.
+Page  374: Figure 18-18 Regular shift mode and DMA mode 2
+Page  374: DMA request
+Page  376: Overflow detection is applicable to the case of DMA
+Page  379: Ordinary channel DMA request continue enable for
+Page  379: number of DMA transfers, no DMA request generated at
+Page  379: DMA transfers, Each ordinary channel sends DMA
+Page  379: OCDMAEN = 1.
+Page  379: DMA transfer enable of ordinary channels
+Page  379: Bit 8      OCDMAEN     0x0         rw       0: Disabled
+Page  389: Ordinary channel DMA transfer mode select in master/
+Page  389: MSDMASEL[2] is the 28th bit in the ADC_CCTRL register.
+Page  389: MSDMASEL[2: 0] is defined as follows:
+Page  389: 000: No DMA transfer
+Page  389: 001: DMA mode 1
+Page  389: Bit 28                                       010: DMA mode 2
+Page  389: MSDMASEL   0x0         rw
+Page  389: Bit 15: 14                                   011: DMA mode 3
+Page  389: 100: DMA mode 4
+Page  389: 101: DMA mode 5
+Page  389: Section 18.5.1 for details on DMA mode x.
+Page  389: Ordinary channel DMA request continuation enable in
+Page  389: number of DMA transfers, no DMA request generated at
+Page  389: DMA transfers, Each ordinary channel sends DMA
+Page  389: when DMA mode x is selected through the MSDMASEL
+Page  391: Note: The meanings of data in this field vary from DMA
+Page  391: mode to DMA mode. Refer to Section 18.5.1 for details.
+Page  391: Note: The meanings of data in this field vary from DMA
+Page  391: mode to DMA mode. Refer to Section 18.5.1 for details.
+Page  392: DMA. It supports left or right alignment in a single /dual DAC modes. It has two output channels, DAC1
+Page  392: D1DMAEN                                                              转换1   DAC
+Page  392: SWTRIG1                     DMA_req1                                         12                        OUT1
+Page  392: EXINT_9    Select2          D2DMAEN
+Page  392: SWTRIG2                      DMA_req2             Triangle                Clock                  转换2   DAC
+Page  392:    DMA mode for DAC1/DAC2
+Page  392:  DMA capability
+Page  392: The DAC1/DAC2 both have a DMA capability that can be enabled by setting the DxDMAEN bit in
+Page  392: the DAC_CTRL register. One DMA request is generated when a trigger signal is active while the
+Page  392: DxTRGEN bit is set. The DAC DMA request is not added up, meaning the new DAM request will
+Page  392: In dual DAC mode, the application can handle two channels (DAC1/DAC2) by using only one DMA
+Page  392: request and a DMA channel.
+Page  393:    DMA underflow
+Page  393: When the DAC DMA request is enabled, an overflow occurs if a second external trigger arrives before
+Page  393: handled, or no new DMA request is issued, and the DxDMAUDRF bit in the DAC_SR register is set,
+Page  393: reporting the error condition. An interrupt is generated if its corresponding DxDMAUDRIEN bit in the
+Page  393: The software clears the DxDMAUDRF bit by writing 1. The DxDMAEN bit should be cleared in the
+Page  393: DAC_CTRL register before re-starting a DMA transfer and re-initializing DMA and DAC.
+Page  395: DAC2 DMA transfer underrun interrupt enable
+Page  395: Bit 29       D2DMAUDRIEN     0x0              rw
+Page  395: 0: DAC2 DMA transfer underrun interrupt disabled
+Page  395: 1: DAC2 DMA transfer underrun interrupt enabled
+Page  395: DAC2 DMA transfer enable
+Page  395: Bit 28       D2DMAEN         0x0              rw
+Page  395: 0: DAC2 DMA mode disabled
+Page  395: 1: DAC2 DMA mode enabled
+Page  396: DAC1 DMA transfer underrun interrupt enable
+Page  396: Bit 13       D1DMAUDRIEN   0x0         rw
+Page  396: 0: DAC1 DMA transfer underrun interrupt disabled
+Page  396: 1: DAC1 DMA transfer underrun interrupt enabled
+Page  396: DAC1 DMA transfer enable
+Page  396: Bit 12       D1DMAEN       0x0         rw       0: DAC1 DMA transfer disabled
+Page  396: 1: DAC1 DMA transfer enabled
+Page  399: DAC2 DMA transfer underrun flag
+Page  399: 0: No DAC2 DMA transfer underrun
+Page  399: Bit 29       D2DMAUDRF   0x0             w1c
+Page  399: 1: DAC2 DMA transfer underrun occurs
+Page  399: Bit 13       D1DMAUDRF   0x0             w1c      DAC1 DMA transfer underrun flag
+Page  400: 0: No DAC1 DMA transfer underrun
+Page  400: 1: DAC1 DMA transfer underrun occurs
+Page  451: rd_reg(DOEPTSIZn)                                             rd_reg(DOEPDMAn)
+Page  551:  DMA transfer
+Page  564:      AHB interface: generates interrupt and DMA request signals
+Page  565: DMA_req         AHB            Adapter                      Command
+Page  565: DMA_ack
+Page  569: The AHB interface generates the interrupt and DMA requests, and access the SDIO interface registers
+Page  569: SDIO/DMA interface: data transfer process between the SDIO and memory
+Page  569: stored in a memory through the DMA controller.
+Page  569: 4. Enable the DMA2 controller and clear all interrupt flag bits, configure the DMA2 channel4
+Page  569: source address register as the memory buffer’s base address, and the DMA2 channel4
+Page  569: destination address register as the SDIO_BUF register address. Then configure the DMA2
+Page  569: source data width is word width). Finally enable DMA2 channel4.
+Page  570: (block data transfer), DMAEN=1 (enable DMA), BLKSIZE=9 (512 bytes), and wait from
+Page  570: 6.   Check that no channels are still enabled by confirming the DMA channel enable SDIO status
+Page  575: DMA enable bit
+Page  575: Bit 3        DMAEN         0x0             rw
+Page  576: used as DMA request.
+Page  576: be used as DMA request.
+Page  580: MAC DMA MMC          MAC802.3
+Page  580: The Ethernet peripheral contains an EMAC core and a DMA controller. The transmission and reception
+Page  580: of the frame is scheduled by DMA.
+Page  580: DMA features
+Page  581: dedicated DMA controller.
+Page  589: The EMAC frame transmission is controlled by the DMA controller and MAC. Once a transmission
+Page  589: stored into TXFIFO by the DMA. The frames are then popped out and transferred to the MAC core. The
+Page  589: the MAC core and transferred back to the DMA controller.
+Page  590: completes normal transmission and then gives the status of the transmission back to the DMA.
+Page  590: EMAC_DMAOPM register.
+Page  590: The FTF bit (the bit 20 in the EMAC_DMAOPM register) can be set to flush the TXFIFO. If the FTF
+Page  590: corresponding status is given to the DMA core.
+Page  591: been popped towards the MAC core, the FIFO controller will release that space to allow the DMA to
+Page  591: The FTF bit (bit 20) in the EMAC_DMAOPM register is set to flush TXFIFO. The TXFIFO flush operation
+Page  591: and 13). The flush operation is completed when the application (DMA) has received all of the status
+Page  591: words of the frames that were flushed. Then the FTF bit is cleared in the EMAC_DMAOPM register. In
+Page  591: this case, TXFIFO is allowed to receive new frames from the application (DMA). All data that do not start
+Page  591: when the TSF is set in the EMAC_DMAOPM register). If the TXFIFO depth is less than the input Ethernet
+Page  592: The MAC received frames are stored into the RXFIFO and sent out by the DMA using the AHB interface.
+Page  592: (configured with the RTC bit in the EMAC_DMAOPM register) or a full packet of data are received in the
+Page  592: RXFIFO, the data are popped out and the DMA is notified of its availability. The DMA will keep popping
+Page  592: transfer, the status word is popped out and sent to the DMA controller.
+Page  592: In store-and-forward mode (configured by the RSF bit in the EMAC_DMAOPM register), a frame is read
+Page  592: by the DMA only after being written completely into the RXFIFO.
+Page  592: DMA.
+Page  593: (DMA). The detailed information of the receive status is given in the RDES0.
+Page  594: 26.2.3 Ethernet frame transmission and reception using DMA
+Page  594: The transmission and reception of the Ethernet frames are scheduled through DMA.
+Page  594: For transmission, the DMA reads out the Ethernet frames from the user system buffer (such as SRAM)
+Page  594: RXFIFO so that the DMA controller reads out the Ethernet frames from the RXFIFO and transfers them
+Page  594: DMA control and status register and descriptor table are used to manage the whole transmission and
+Page  594: system buffer area (SRAM). When the transmission and reception is enabled, the DMA polls the
+Page  595: DMA AHB host burst access
+Page  595: The DMA executes a fixed-length burst access on the AHB master interface if the FB bit is set in the
+Page  595: EMAC_DMABM register. The maximum burst length is defined by the PBL filed (bit [13: 8] in the
+Page  595: EMAC_DMABM register). The receive and transmit descriptors are always accessed in the maximum
+Page  595: The DMA provides the start address and the number of transfers to the AHB master interface before
+Page  595: The DMA always initiates transfers with address aligned to the bus width. But the start address of the
+Page  595: transferred, then the DMA will read five words (32 bits) from the address 0x2000 0AA0, but when
+Page  595: DMA always ensures that is transfer a 32-bit data to the TXFIFO, unless it is the end of the
+Page  595: transferred, the DMA will read five 32-bit data from the address 0x2000 0BB0. But the first two
+Page  595: For transmission, software needs to calculate the buffer size. The TXDMA transfers the exact number of
+Page  595: the DMA marks the first transfer from the buffer as the start of frame. If the LS bit is set in the TDES0,
+Page  595: the DMA marks the last transfer from the buffer as the end of frame.
+Page  595: The FS bit is set by the DMA controller when an SOF is received. The LS is set when an EOF is received.
+Page  595: DMA arbiter
+Page  595: and fixed-priority. When round-robin is selected (DA bit is set to 0 in the EMAC_DMABM register), the
+Page  595: arbiter allocates the databus according to the ratio set by the PR bit in the EMAC_DMABM register,
+Page  595: when both transmit and RXDMA request access to the AHB bus simultaneously. When the DA bit is set
+Page  595: to 1, the RXDAM always has priority over the TXDMA for data access.
+Page  595: Error response to DMA
+Page  595: If an error response is received during DMA transfer, then the DMA stops all operations and updates the
+Page  595: error bit and the fatal bus error bit in the EMAC_DMASTS register. The DMA can resume operation after
+Page  595: software or hardware resets the Ethernet peripherals and re-initiates the DMA.
+Page  596: DMA initialization
+Page  596: 1. Configure AT32F437xx bus access parameters in the EMAC_DMABM register.
+Page  596: 2. Mask unnecessary interrupt sources in the EMAC_DMAIE register.
+Page  596: addresses of the descriptor lists to both the EMAC_DMARDLADDR and EMAC_DMATDLADDR
+Page  596: 6. Set the bit 13 and bit 1 in the EMAC_DMAOPM register to enable transmission and reception.
+Page  596: TXDMA operation: non-OSF mode
+Page  596: The TXDMA proceeds as follows, in default mode:
+Page  596: 2.      Once the SSTC is set (EMAC_DMAOPM bit [13]), the DMA enables transmission.
+Page  596: 3.      The DMA polls the transmit descriptor to get a frame to be transmitted. If the DMA detects a
+Page  596: suspend state is entered, and both the transmit buffer unavailable (EMAC_DMASTS bit 2) and
+Page  596: normal interrupt summary bit (EMAC_DMASTS bit 16) are set. The transmit controller jumps to
+Page  596: 4.      DMA fetches the data from the AT32F437xx memory based on the transmit descriptor indication
+Page  596: 5.      If the Ethernet frame is stored in multiple descriptors with different descriptor, the DMA will close
+Page  596: stamping was not enabled for the frame, the DMA only updates the status information to the
+Page  596: the transmit interrupt bit (EMAC_DMASTS bit [0]) will be set. The DMA then returns to Step 3
+Page  596: TXDMA operation: OSF mode
+Page  596: In this mode, the OSF bit is set (EMAC_DMAOPM bit 2=1). When the current data frame transmission
+Page  596: is complete, the DMA immediately polls the transmit descriptor for the second frame without the need of
+Page  596: 1.     The DMA operates according to steps 1-6 of the TXDMA.
+Page  596: 2.     The DMA fetches the next descriptor without waiting for the status information update of the last
+Page  596: 3.     If the DMA owns the descriptor, then it will decode the transmit buffer address. If the DMA does
+Page  596: 4.     The DMA fetches the transmit frame data from the AT32F437xx memory and transfer the frame
+Page  596: until the end of frame is transferred. If the frame is split among multiple buffers, the DMA will close
+Page  596: 5.     The DMA waits for the transmit status and time stamp of the previous frame. After the status
+Page  596: information is available, the DMA writes the time stamp to TDES2 and TDES3 if such time stamp
+Page  597: is captured. The DMA then clears the OWN bit and closes the descriptor. If the time stamping was
+Page  597: not enabled for the frame, the DMA will not alter the contents of TDES2 and TDES3.
+Page  597: 6.     If enabled, the transmit interrupt bit is set. The DMA fetches the next descriptor when the status
+Page  597: error, the DMA enters into suspend state and jumps to Step 7.
+Page  597: 7.     In suspend state, when the DMA receives a pending status information and time stamp, if the time
+Page  597: 8.     The DMA can exit suspend state and enter run state only after receiving a transmit poll request
+Page  597: (EMAC_DMACTD register).
+Page  597: the data has been completed, the DMA writes back the final status information to the TDES0. If the
+Page  597: transmit complete interrupt bit (TDES0[30]) is set, the transmit interrupt bit (EMAC_DMASTS bit 0) is
+Page  597: (TDES0[31] is cleared) when the DMA finishes frame transmission.
+Page  597: The DMA detects a descriptor owned by the CPU (TDES0[31]=0), and the DMA enters suspend state.
+Page  597: (EMAC_DMASTS bit 15) and transmit data underflow bit (EMAC_DMASTS bit 5) are set, and the
+Page  597: TXDMA descriptors
+Page  597: initialization. When the DMA updates or writes the descriptor, it clears all the control bits and OWN bit,
+Page  598: 1: The descriptor is owned by the DMA
+Page  598: Bit 31       OWN      rw     This bit is cleared by the DMA when the DMA completes the frame transmission or
+Page  598: Bit 30       IC       rw     When set, this bit sets the transmit interrupt bit (EMAC_DMASTS bit [0]) after the
+Page  598: Bit 21       TER      rw     When set, it indicates that the descriptor list reached its final descriptor. The DMA
+Page  599: Bit 13       FF       rw     When set, this bit indicates that the DMA or MTL flushed the frame in the FIFO due
+Page  599: Bit 1        UF       rw     that the DMA encountered an empty transmit buffer while transmitting the frame.
+Page  599: the EMAC_DMASTS register and the transmit interrupt bit (bit 0 in the
+Page  599: EMAC_DMASTS register ).
+Page  600: Bit 12: 0   TBS1      rw       This field indicates the first data buffer size in bytes. If the field is 0, the DMA ignores
+Page  600: TBAP1/T            1: The application indicates to the DMA the location of the Ethernet data in system
+Page  600: 2: After all data are transferred, the DMA can use these bits to store the time stamp
+Page  600: When the current descriptor is owned by the DMA, these bits indicate the physical
+Page  600: Before it releases the descriptor to the CPU, the DMA writes the 32 least significant
+Page  600: 1: The application indicates to the DMA the location of the Ethernet data in system
+Page  600: 2: After all data are transferred, the DMA can use these bits to store the 32 most
+Page  600: When the current descriptor is owned by the DMA, these bits indicate the physical
+Page  600: The DMA updates these bits with the 32 most significant bits of the time stamp
+Page  600: TXDMA enhanced descriptor
+Page  600: Under the two conditions below, enhanced TXDMA descriptors must be used.
+Page  600: Enahced TXDMA descriptor feature is enabled by setting EDE to 1 in the EMAC_DMABM register.
+Page  600: The DMA updates this field with the 32 least significant bits of the time stamp
+Page  600: Bit 31: 0   TTSL      rw       descriptors to CPU. The DMA updates this field only after the time stamp is enabled
+Page  601: 3          T         rThe DMA updates this field with the 32 most significant bits of the time stamp captured
+Page  601: 1          S         wfor the corresponding transmit frame. The DMA updates this field only after the time
+Page  601: RXDMA configuration
+Page  601: the descriptors to the DMA.
+Page  601: 4.    When the SSR bit (EMAC_DMAOPM[1]) is set, the DMA enters run state and attempts to acquire
+Page  601: receive descriptors. If the fetched descriptor is not free (owned by the CPU), the DMA enters
+Page  601: 5.    The DMA decodes the receive buffer address from the acquired receive descriptors.
+Page  601: 6.    The DMA writes the frame data in the RXFIFO to the receive buffer.
+Page  601: 8.    If the current frame transfer is complete, the DMA jumps to Step 7. If the OWN bit of the next
+Page  601: the frame flushing function is enabled, the DMA sets the descriptor error bit in the RDES0, closes
+Page  601: OWN bit of the next descriptor is set while the current frame transfer is not complete, the DMA
+Page  601: 9.    If IEEE1588 time stamp is enabled, the DMA writes the time stamp to the current descriptor’s
+Page  601: 10. The receive controller checks the latest receive descriptors, if the DMA owns the descriptor, the
+Page  601: receive controller will return to Step 4. If the CPU owns the descriptor, the RXDMA will enter
+Page  601: 11. The DMA exits the suspend state when a receive poll demand is received or the start of the next
+Page  601: The RXDMA always attempts to acquire another descriptor. Receive descriptor is attempted if any of the
+Page  601:  The DMA enters the run state ( SSR=1 in the EMAC_DMAOPM).
+Page  601: threshold is reached, the RXDMA begins transferring the frame data to the receive buffer pointed to by
+Page  601: the current descriptor. The DMA sets the LS bit in the RDES0 to indicate that this is the first segment of
+Page  602: The DMA fetches the next descriptor, sets the LS bit in the previous descriptor, writes the receive status
+Page  602: word to the previous descriptor and then closes the previous descriptor. Then the DMA sets the receive
+Page  602: interrupt bit (EMAC_DMASTS[6]). The same process repeats unless the DMA finds a descriptor as
+Page  602: (EMAC_DMASTS[7]) and then enters the suspend state. Before the suspend state is being entered,
+Page  602: If a new receive frame arrives in the RXFIFO while the RXDMA is in suspend state, the DMA re-fetches
+Page  602: receive process re-enters the run state. If the OWN bit is cleared, the DMA discards the current frame
+Page  602: can be avoided by setting the bit 24 (DFRF bit) in the EMAC_DMAOPM register. In this case, the receive
+Page  602: RXDMA descriptors
+Page  603: Figure 26-12 RXDMA descriptor structure
+Page  603: 1: The descriptor is owned by the DMA
+Page  603: This bit is cleared by the DMA when the DMA completes the frame transmission or
+Page  603: system memory by the DMA. This field is valid only when the LS bit (RESD0[8]) is
+Page  603: with the current descriptor buffers, and that the DMA does not own the next
+Page  605: When set, this bit prevents setting the Ethernet DMA status register’s RECV bit
+Page  605: Bit 31       DIC       rw      (EMAC_DMASTS) for the received frame pointed to by this descriptor. As a result,
+Page  605: list. The DMA returns to the base address to fetch the next descriptor, creating a
+Page  605: This field indicates the receive buffer 1 size, in bytes. If this field is 0, the DMA
+Page  605: RBAP1/R           These bits have two functions. The application uses them to indicate to the DMA
+Page  605: TSL               where to store the data in memory. After completing data reception, the DMA may
+Page  605: When this descriptor is owned by the DMA, these bits indicate the physical address
+Page  605: Before it releases the descriptor, the DMA updates this field with the 32 least
+Page  605: significant bits of the time stamp. The time stamp is written by the DMA only when
+Page  605: TSH               These bits have two functions. The application uses them to indicate to the DMA
+Page  605: where to store the data in memory. After completing data reception, the DMA may
+Page  605: When this descriptor is owned by the DMA, these bits indicate the physical address
+Page  605: Before it releases the descriptor, the DMA updates this field with the 32 most
+Page  605: significant bits of the time stamp. The time stamp is written by the DMA only when
+Page  605: RXDMA enhanced descriptor
+Page  605: Under the two conditions below, enhanced RXDMA descriptors must be used.
+Page  606: Enahced RXDMA descriptor feature is enabled by setting EDE to 1 in the EMAC_DMABM register.
+Page  607: The DMA updates this field with the 32 least significant bits of the time stamp
+Page  607: captured for the corresponding receive frame. The DMA updates this field only when
+Page  607: The DMA updates this field with the 32 most significant bits of the time stamp
+Page  607: captured for the corresponding receive frame. The DMA updates this filed only when
+Page  609: 1.    Disable the TXDMA and wait for all data transmission to complete. These transmissions can be
+Page  609: checked by polling the TI bit in the EMAC_DMASTS register.
+Page  609: 3.    Poll the RI bit in the EMAC_DMASTS register, and wait for the RXDMA to real all the
+Page  609: frames in the RXFIFO, and then disable the RXDMA.
+Page  609: state machine, and the TXDMA and RXDMA.
+Page  613: The first interrupt vector is used for interrupts generated by the MAC and the DMA.
+Page  615: EMAC_DMABM        0x1000              0x0002 0101
+Page  615: EMAC_DMATPD       0x1004              0x0000 0000
+Page  615: EMAC_DMARPD       0x1008              0x0000 0000
+Page  615: EMAC_DMARDLADDR   0x100C              0x0000 0000
+Page  615: EMAC_DMATDLADDR   0x1010              0x0000 0000
+Page  615: EMAC_DMASTS       0x1014              0x0000 0000
+Page  615: EMAC_DMAOPM       0x1018              0x0000 0000
+Page  615: EMAC_DMAIE        0x101C              0x0000 0000
+Page  616: EMAC_DMAMFBOCNT                0x1020                            0x0000 0000
+Page  616: EMAC_DMACTD                    0x1048                            0x0000 0000
+Page  616: EMAC_DMACRD                    0x104C                            0x0000 0000
+Page  616: EMAC_DMACTBADDR                0x1050                            0x0000 0000
+Page  616: EMAC_DMACRBADDR                0x1054                            0x0000 0000
+Page  628: 26.3.21 Ethernet DMA bus mode register (EMAC_DMABM)
+Page  628: The Ethernet DMA bus mode register defines the bus operation modes for the DMA.
+Page  628: DMA transfers data at 8, 16, 32, 64, 128 and 256 beats
+Page  628: When this bit is set, the Rx DMA uses the value
+Page  628: [13: 8] is applicable to Tx DMA operations only.
+Page  628: applicable to both Tx DMA and Rx DMA operations.
+Page  628: Bit 22: 17   RDP             0x01            rw       Rx DMA PBL
+Page  629: transferred in one Rx DMA operation. This is the maximum
+Page  629: The Rx DMA always attempts to perform burst transfer as
+Page  629: arbitration between Rx DMA and Tx DMA. These bits are
+Page  629: transferred in one DMA transaction. This is the maximum
+Page  629: The DMA always attempts to perform burst transfer as
+Page  629: DMA operations only.
+Page  629: as the data bus width on the DMA.
+Page  629: as contiguous by the DMA in ring mode.
+Page  629: DMA Arbitration
+Page  630: When this bit is set, the MAC DMA controller resets all
+Page  630: 26.3.22 Ethernet DMA transmit poll demand register
+Page  630: (EMAC_DMATPD)
+Page  630: The EMAC_DMATPD register enables the Tx DMA to check whether or not the current descriptor is
+Page  630: owned by the DMA. The Transmit Poll Demand is used to wake up the Tx DMA from suspend mode.
+Page  630: The Tx DMA can go into suspend mode due to an underflow error in a transmitted frame or due to the
+Page  630: unavailability of descriptors owned by transmit DMA. The Poll demand can be issued at any time, and
+Page  630: the Tx DMA will reset this command once it starts re-fetching the current descriptor from the host
+Page  630: When these bits are written with any value, the DMA reads
+Page  630: the current descriptor pointed to by the EMAC_DMACTD.
+Page  630: 26.3.23 Ethernet DMA receive poll demand register
+Page  630: (EMAC_DMARPD)
+Page  630: The EMAC_DMARPD register enables the Rx DMA to check new descriptors. The Receive Poll
+Page  630: Demand is used to wake up the Rx DMA from suspend mode. The Rx DMA can enter suspend mode
+Page  630: When these bits are written with any value, the DMA reads
+Page  630: the current descriptor pointed to by the EMAC_DMACRD.
+Page  630: 26.3.24 Ethernet DMA receive descriptor list address register
+Page  630: (EMAC_DMARDLADDR)
+Page  630: The EMAC_DMARDLADDR register points to the start of the receive descriptor list. The descriptor list
+Page  630: is located in the host’s physical memory and must be word-aligned. The DMA enables bus-width aligned
+Page  630: DMA stops. After the Rx DMA stops, this register must be written before the receive start command is
+Page  630: Writing to the register is permitted only when the Rx DMA stops. In other words, the bit 1 (SR) is set 0
+Page  630: in the operation mode register. After the Rx DMA stops, this register can be written with a new descriptor
+Page  630: When the SR bit is set, the DMA uses the newly programmed descriptor base address.
+Page  630: If the SR is cleared and this register remains unchanged, then the DMA will use the previous descriptor
+Page  630: address when the Rx DMA stops.
+Page  631: zero by the DMA. Therefore these LSB bits are read only.
+Page  631: 26.3.25 Ethernet DMA transmit descriptor list address register
+Page  631: (EMAC_DMATDLADDR)
+Page  631: The EMAC_DMATDLADDR register points to the start of the transmit descriptor list. The descriptor list
+Page  631: is located in the host’s physical memory and must be word-aligned. The DMA enables bus-width aligned
+Page  631: Writing to the register is permitted only when the Tx DMA stops. In other words, the bit 13 (ST) is set 0
+Page  631: in the register 6 (operation mode register). After the Tx DMA stops, this register can be written with a
+Page  631: When the SR bit is set, the DMA uses the newly programmed descriptor base address.
+Page  631: If the SR is cleared and this register remains unchanged, then the DMA will use the previous descriptor
+Page  631: address when the Tx DMA stops.
+Page  631: zero by the DMA. Therefore these LSB bits are read only.
+Page  631: 26.3.26 Ethernet DMA status register (EMAC_DMASTS)
+Page  631: The EMAC_DMASTS register contains all the status bits the DMA reports to the host. This register is
+Page  631: 000: Error during data transfer by Rx DMA
+Page  631: 011: Error during read transfer by Tx DMA
+Page  631: 100: Error during Rx DMA descriptor write access
+Page  632: 101: Error during Tx DMA descriptor write access
+Page  632: 110: Error during Rx DMA descriptor read access
+Page  632: 111: Error during Tx DMA descriptor read access
+Page  632: This field indicates the Tx DMA FSM state. This field does
+Page  632: This field indicates the Rx DMA FSM state. This field does
+Page  632: EMAC_DMASTS[0]: Transmit interrupt
+Page  632: EMAC_DMASTS[2]: Transmit buffer unavailable
+Page  632: EMAC_DMASTS[6]: Receive interrupt
+Page  632: EMAC_DMASTS[14]: Early receive interrupt
+Page  632: EMAC_DMASTS[1]: Transmit process stopped
+Page  632: EMAC_DMASTS[3]: Transmit Jabber timeout
+Page  632: EMAC_DMASTS[4]: Receive FIFO overflow
+Page  632: EMAC_DMASTS[5]: Transmit data underflow
+Page  632: EMAC_DMASTS[7]: Receive buffer unavailable
+Page  632: EMAC_DMASTS[8]: Receive process stopped
+Page  632: EMAC_DMASTS[9]: Receive watchdog timeout
+Page  632: EMAC_DMASTS[10]: Early transmit interrupt
+Page  632: EMAC_DMASTS[13]: Fatal bus error
+Page  632: This bit indicates that the DMA has filled the first data
+Page  633: bit [25: 23]. When this bit is set, the corresponding DMA
+Page  633: is owned by the host and cannot be acquired by the DMA.
+Page  633: receive process resumes when the DMA receives the next
+Page  633: receive descriptor is owned by the DMA.
+Page  633: is owned by the host and cannot be acquired by the DMA.
+Page  634: 26.3.27 Ethernet DMA operation mode register (EMAC_DMAOPM)
+Page  634: The EMAC_DMAOPM register defines the receive and transmit operation modes and commands. This
+Page  634: register should be the last CSR to be written during DMA initialization. This register is also applicable
+Page  634: When this bit is set, the Rx DMA does not flush any receive
+Page  634: receive buffers. When this bit is cleared, the DMA will flush
+Page  634: and the DMA checks the transmit list at the current location
+Page  635: and determines the frame to be transmitted. The DMA
+Page  635: descriptor is owned by the DMA, the transmit process
+Page  635: transmit descriptor list address register, the DMA will show
+Page  635: DMA
+Page  635: Transfer to DMA starts when the frame in the Rx FIFO is
+Page  635: When this bit is set, it instructs the DMA to process a
+Page  635: Bit 1       SSR        0x0         rw       state, and the DMA attempts to acquire the descriptor from
+Page  635: the receive list and processes incoming frames. The DMA
+Page  636: descriptor is owned by the DMA, the receive process
+Page  636: receive descriptor list address register, the DMA will show
+Page  636: When this bit is cleared, Rx DMA operation is stopped after
+Page  636: 26.3.28 Ethernet DMA interrupt enable register (EMAC_DMAIE)
+Page  636: The EMAC_DMAIE register enables the interrupts reported by the status register. Setting a bit to 1’b1
+Page  636: EMAC_DMASTS[0]: Transmit interrupt
+Page  636: EMAC_DMASTS[2]: Transmit buffer unavailable
+Page  636: EMAC_DMASTS[6]: Receive interrupt
+Page  636: EMAC_DMASTS[14]: Early receive interrupt
+Page  636: EMAC_DMASTS[1]: Transmit process stopped
+Page  636: EMAC_DMASTS[3]: Transmit Jabber timeout
+Page  636: EMAC_DMASTS[4]: Transmit overflow
+Page  636: EMAC_DMASTS[5]: Transmit data underflow
+Page  636: EMAC_DMASTS[7]: Transmit buffer u unavailable
+Page  636: EMAC_DMASTS[8]: Receive process stopped
+Page  636: EMAC_DMASTS[9]: Receive watchdog timeout
+Page  636: EMAC_DMASTS[10]: Early transmit interrupt
+Page  636: EMAC_DMASTS[13]: Fatal bus error
+Page  637: The Ethernet interrupt is generated only when the TST or PMT bit is set in the DMA status register with
+Page  637: 26.3.29 Ethernet DMA missed frame and buffer overflow counter
+Page  637: register (EMAC_DMAMFBOCNT)
+Page  637: The DMA contains two counters to track the number of missed frames during reception. Tis register
+Page  638: frame counter ([15: 0]), that is, the DMA ignores incoming
+Page  638: This counter is incremented each time the DMA discards
+Page  638: 26.3.30 Ethernet DMA current transmit descriptor register
+Page  638: (EMAC_DMACTD)
+Page  638: The EMAC_DMACTD register points to the start address of the transmit descriptor being read by the
+Page  638: DMA.
+Page  638: Bit 31: 0   HTDAP           0x0000 0000     ro       These bits are cleared when reset. The DMA updates the
+Page  638: 26.3.31 Ethernet DMA current receive descriptor register
+Page  638: (EMAC_DMACRD)
+Page  638: The EMAC_DMACRD register points to the start address of the receive descriptor being read by the
+Page  638: DMA.
+Page  638: Bit 31: 0   HRDAP           0x0000 0000     ro       These bits are cleared when reset. The DMA updates the
+Page  638: 26.3.32 Ethernet DMA current transmit buffer address register
+Page  638: (EMAC_DMACTBADDR)
+Page  638: The EMAC_DMACTBADDR register points to the transmit buffer address being read by the DMA.
+Page  638: Bit 31: 0   HTBAP           0x0000 0000     ro       These bits are cleared when reset. The DMA updates the
+Page  638: 26.3.33 Ethernet DMA current receive buffer address register
+Page  638: (EMAC_DMACRBADDR)
+Page  638: The EMAC_DMACRBADDR register points to the receive buffer address being read by the DMA.
+Page  638: Bit 31: 0   HRBAP           0x0000 0000     ro       These bits are cleared when reset. The DMA updates the
+Page  647: Using the image scaling feature, it is possible to scale down the number of pixels or lines. The DMA
+Page  647: DMA I/F
+Page  647: DMA
+Page  647:     DMA access single or burst transfer
+Page  652: 27.4 DMA access interface and data output packing
+Page  652: 27.4.1 DMA access interface
+Page  652: The captured data can be transferred to memory unit using DMA interface without needing to occupy
+Page  652: CPU resources. After the CAP is set in the DVP_CTRL register, the DMA interface is automatically
+Page  652: activated. The DMA accesses the DVP_DT register through the AHB bus to fetch the DVP-captured data.
+Page  652: A 32-bit data is transferred for each access. The DVP DMA interface supports single or burst transfers,
+Page  652: depending on the DMABT bit in the DVP_ACTRL register.
+Page  652: Burst transfer mode is enabled when setting DMABT=1. A DMA access is triggered each time the DVP
+Page  652: receives four 32-bit data. After receiving a DMA request, the DMA makes four consecutive accesses to
+Page  652: improve bus performance. Only EDMA is supported in burst transfer mode, and the peripheral burst
+Page  652: Single transfer mode is enabled when setting DMABT=0. In this mode, a DMA access request is
+Page  652: triggered each time the DVP receives a 32-bit data. After receiving a DMA request, the DMA interface
+Page  652: accesses the DVP_DT register once. When the DMA interface uses DMA, only single transfer mode is
+Page  652: Note: To ensure correct data acquisition using DMA access interface, the AHB bus clock (AHB_CLK)
+Page  652: The captured data are packed into a 32-bit data register (DVP_DT) and then transferred through a DMA.
+Page  654: output data FIFO becomes full for the reason that the DMA is unable to capture data in time and transfer
+Page  655: Note: As the DVP packs the captured data into a 32-bit word for DMA access, the CHNUM bit has the
+Page  663: The DMA controller and DVP register configurations must
+Page  666: This register is used by the DMA controller to pick up data.
+Page  666: DMA burst transaction
+Page  666: This register works with EDMA’s peripheral transfer
+Page  666: Bit 12       DMABT      0x0             rw
+Page  666: 0: DMA burst transaction disabled. The EDMA’s peripheral
+Page  666: (PBURST=0), or use DMA.
+Page  667: 1: DMA burst transaction enabled. The EDMA’s peripheral
+Page  667: This configuration is enabled only when the EDMA is used
+Page  667: for data transfer. If the DMA is used, this configuration
+Page  669: address mapping. Additionally, the QSPI allows AHB data port to access data in either IPO or DMA mode.
+Page  669:                            DMA handshake and CPU PIO modes
+Page  669: DMA HS                                                                                                     Sync
+Page  669: The data port can be accessed in either PIO or DMA mode. The RxFIFO / TxFIFO registers (0x18)
+Page  670: 28.3.3 DMA handshake mode
+Page  670: The DMA mode can also be used to access data ports. The DMA controller register must be
+Page  670: programmed as DMA handshake mode. In this mode, the host controller sends a DMA request when
+Page  670: the receive/transmit FIFO threshold is reached. The threshold values are in terms of words. The DMA
+Page  670: When DMA is used in P2M mode (peripheral to memory), that is, when QSPI reads data, the minimum
+Page  670: transmit bit is in WORD. Thus DMA length needs to be in the format of WORD unit, and so does the
+Page  670: When 2 DMA are used in M2P mode (memory to peripheral), that is, when QSPI writes data, the
+Page  670: multiple DMA transfers, in the format of Byte unit.
+Page  670: Figure 28-2 DMA handshake mode
+Page  670: dma_req
+Page  670: dma_ack
+Page  680: RxFIFO threshold interrupt for DMA handshake mode. The
+Page  680: TxFIFO threshold interrupt for DMA handshake mode. The
+Page  680: DMA enable
+Page  680: Bit 0        DMAEN            0x0             rw       Note: This bit must be disabled before moving from
+Page  684: 29 EDMA controller (EDMA)
+Page  684: Enhanced direct memory access (EDMA) controller is designed for 32-bit MCU applications with the
+Page  684: This controller offers 8 DMA channels to guarantee data transfers between peripheral-to-memory,
+Page  685: 1. Set the peripheral address in the DMA_CxPADD register
+Page  685: 2. Set the memory address in the DMA_CxMADDR register
+Page  685: 3. Configure the amount of data to be transferred in the DMA_CxDTCNT register
+Page  685: 4. Configure the channel setting in the DMA_CxCTRL register
+Page  685: If PFCTRL = 1 (peripheral flow control is used), the value of the DMA_SxDTCNT register is forced to
+Page  685: 0xFFFF. The dma_ch_lt signal of the peripherals indicates the completion of data transfer. The M2M
+Page  685: In circular mode, the contents in the DMA_CxDTCNT register is automatically reloaded with the
+Page  685: mode. Two memory pointers (DMA_SxM0ADR/ DMA_SxM1ADR) are available in dual memory flow.
+Page  685: process another memory while the DMA is filling up or using the second memory.
+Page  685: 5. FIFO settings through the DMA_SxFCTRL register
+Page  686: 6. Enable DMA transfer through the SEN bit in the DMA_SxCTRL register
+Page  686: The clocks between a peripheral and DMA may be asynchronous. The user can choose whether the
+Page  686: synchronizer of the dma_chx_req is needed.
+Page  686: dma_req_ch8
+Page  686: dma_req_ch7
+Page  686: dma_req_ch6                              dma_req_async
+Page  686: dma_req_ch5
+Page  686: dma_req_ch4                                                                    dma_req
+Page  686: dma_req_ch3
+Page  686: dma_req_ch2
+Page  686: dma_req_ch1
+Page  686: In P2M and M2P mode, the peripherals need to send a request signal to the DMA controller. The DMA
+Page  686: the completion of peripheral transmission, the DMA controller sends an acknowledge signal to the
+Page  686: the same time, the DMA controller releases the acknowledge signal as well.
+Page  686: Figure 29-3 shows the behavior between DMA request/acknowledge and arbiter. Since there is only one
+Page  687: dma_req
+Page  687: dma_ack
+Page  687: MWIDTH bits in the DMA_CxCTRL register. When PWIDTH is not equal to MWIDTH, a packing and
+Page  689: Using this mechanism, it is possible to link several different transfers to strengthen DMA processing
+Page  689: capabilities. Each transfer data can be stored in a descriptor by software, and the DMA loads the
+Page  689: To enable a linked table transfer, set the SxLLSEN (where n is a stream number) bit in the DMA_LLCTRL
+Page  689: Then, the user can continue to set DMA_SxDTCNT=0, write the descriptor address to the DMA_SxLLP
+Page  689: After enabling a stream, the memory controller in DMA issues a few AHB commands to load the descriptor
+Page  689: M0ADDR), the DMA uses these bits for data transfers. When a descriptor transaction is completed (CNT
+Page  689: becomes 0), if the current LLP is not equal to zero, the DMA continues to load the next descriptor. If the
+Page  689: current LLP is zero, it means that the current descriptor is the last one, and the DMA stops loading a new
+Page  690: The 2-dimensional (2D) transfer mechanism makes it easier to block data like images. The DMA
+Page  690:  XCOUNT bit in DMA_Sx2DCNT: Data count to be transmitted before jumping to the next stride
+Page  690:  YCOUTNT bit in DMA_Sx2DCNT: Iteration count
+Page  690:  SRCSTD bit in DMA_Sx2DSTRIDE: Source stride value. This value should be added or
+Page  690:  DSTSTD bit in DMA_Sx2DSTRIDE: Destination stride value. This value should be added or
+Page  690: 4-beat data (4 beat means four words=16 bytes) that is read by DMA before iteration. After reading data
+Page  690: address plus source stride (0x0 + 0x20 = 0x20 byte address=0x8 word address). Therefore, the DMA
+Page  690: between them is the stride value. After the DMA writes 4-word data from 0x0 to 0x3, the next write address
+Page  690: Then the DMA controller can continue a second iteration to write four beats in the word address ranging
+Page  691: Table 29-1 DMA error events
+Page  691: AHB response error during DMA read/write
+Page  691: Direct      mode In the case of FEN = 1 and MINCM = 0, a DMA request is generated before the previous data
+Page  692: An interrupt can be generated on a DMA half-transfer, transfer complete, transfer error, FIFO error and
+Page  692: Table 29-2 DMA interrupts
+Page  692: 29.4 DMA multiplexer (DMAMUX)
+Page  692: DMAMUX manages DMA requests/acknowledge between peripherals and DMA controller.
+Page  692: The DMA controller selects the DMA mapping table with the TBL_SEL bit in the DMA_MUXSEL
+Page  692: register. Each DMA controller stream selects only one DMA request from the flexible mapping table. In
+Page  692: peripherals or generators through the REQSEL [6: 0] bit in the DMA_MUXCxCTRL register.
+Page  692: 29.4.1 DMAMUX functional overview
+Page  692: The DMAMUX consists of a request generator and a request multiplexer.
+Page  692: Each of the DMAMUX generator channel x has a GEN enable bit in the DMA_MUXGxCTR register. The
+Page  692: SIGSEL bit is used to select the trigger input of the DMAMUX generator. Typically, the number of DMA
+Page  692: requests equals GREQCNT + 1. The GPOL bit is used in the DMA_MUXGxCTRL register to select a
+Page  692: Each of the DMAMUX stream x comes from all_req [127: 1].
+Page  692: In flexible mapping mode, the SYNCEN bit in the DMA_MUXSxCTRL register is used to synchronize the
+Page  692: selected DMA request input. In synchronous mode, the SYNCSEL bit in the DMA_MUXSxCTRL register
+Page  692: is used to select synchronized input. The selected DMA request input will be transferred to chx_mux_req
+Page  692: DMA_MUXSxCTRL register. In addition, when the EVTGEN bit is set in the DMA_MUXCxCTRL register,
+Page  693: Figure 29-11 DMAMUX block diagram
+Page  693: DMAMUX
+Page  693: DAC1     TMR5                                                             Stream 1               DMAMUX_SEL
+Page  693: {dmamux_evt[x:1], exint_gpio [15:0]}                             dmamux_evt[x:0]
+Page  693: Table 29-3 EDMA flexible request mapping
+Page  693: DMAMUX                        DMAMUX                                              DMAMUX                                      DMAMUX
+Page  693: 1           DMA_MUXREQG1 33                  UART5_TX                             65             TMR3_OVERFLOW 97                                reserved
+Page  693: 2           DMA_MUXREQG2 34                  reserved                             66             TMR3_TRIG                    98                 reserved
+Page  693: 3           DMA_MUXREQG3 35                  reserved                             67             TMR4_CH1                     99                 reserved
+Page  693: 4           DMA_MUXREQG4 36                  ADC2                                 68             TMR4_CH2                     100                reserved
+Page  694: Table 29-4 DMAMUX EXINT LINE for trigger input and synchronized input
+Page  694: 0              exint_gpio[0]   8          exint_gpio[8]    16          DMA_MUXevt1   24       reserved
+Page  694: 1              exint_gpio[1]   9          exint_gpio[9]    17          DMA_MUXevt2   25       reserved
+Page  694: 2              exint_gpio[2]   10         exint_gpio[10]   18          DMA_MUXevt3   26       reserved
+Page  694: 3              exint_gpio[3]   11         exint_gpio[11]   19          DMA_MUXevt4   27       reserved
+Page  694: 4              exint_gpio[4]   12         exint_gpio[12]   20          DMA_MUXevt5   28       reserved
+Page  694: 5              exint_gpio[5]   13         exint_gpio[13]   21          DMA_MUXevt6   29       reserved
+Page  694: 6              exint_gpio[6]   14         exint_gpio[14]   22          DMA_MUXevt7   30       reserved
+Page  694: 7              exint_gpio[7]   15         exint_gpio[15]   23          DMA_MUXevt8   31       reserved
+Page  694: 29.4.2 DMAMUX overflow interrupts
+Page  694: During DMAMUX request generation, when a new trigger input occurs before the GREQCNT underflows,
+Page  694: the TRGOVFx bit will be set in the DMA_MUXGSTS register. It is cleared by setting TRGOVFCx=1 in
+Page  694: the DMA_MUXGCLR register. An interrupt will be generated if the interrupt enable bit TRGOVIEN is set
+Page  694: in the DMA_MUXGxCTRL register.
+Page  694: In DMAMUX synchronous mode, when a new synchronized input occurs before the REQCNT underflows,
+Page  694: the SYNCOVFx bit will be set in the DMA_MUXSYNCSTS register. It is cleared by setting the
+Page  694: SYNCOVFCx bit in the DMA_MUXSYNCCLR register. An interrupt will be generated if the interrupt
+Page  694: enable bit SYNCOVIEN is set in the DMA_MUXSxCTRL register.
+Page  695: Figure 29-12 DMAMUX synchronized mode
+Page  695: DMA request served
+Page  695: Figure 29-13 DMAMUX event generation
+Page  696: 29.5 EDMA registers
+Page  696: Table 29-5 shows DMA register map and reset values.
+Page  696: EDMA_STS1                       0x00                          0x0000 0000
+Page  696: EDMA_STS2                       0x04                          0x0000 0000
+Page  696: EDMA_CLR1                       0x08                          0x0000 0000
+Page  696: EDMA_CLR2                       0x0c                          0x0000 0000
+Page  696: EDMA_S1CTRL                     0x10                          0x0000 0000
+Page  696: EDMA_S1DTCNT                    0x14                          0x0000 0000
+Page  696: EDMA_S1PADDR                    0x18                          0x0000 0000
+Page  696: EDMA_S1M0ADDR                   0x1c                          0x0000 0000
+Page  696: EDMA_S1M1ADDR                   0x20                          0x0000 0000
+Page  696: EDMA_S1FCTRL                    0x24                          0x0000 0000
+Page  696: EDMA_S2CTRL                     0x28                          0x0000 0000
+Page  696: EDMA_S2DTCNT                    0x2c                          0x0000 0000
+Page  696: EDMA_S2PADDR                    0x30                          0x0000 0000
+Page  696: EDMA_S2M0ADDR                   0x34                          0x0000 0000
+Page  696: EDMA_S2M1ADDR                   0x38                          0x0000 0000
+Page  696: EDMA_S2FCTRL                    0x3c                          0x0000 0000
+Page  696: EDMA_S3CTRL                     0x40                          0x0000 0000
+Page  696: EDMA_S3DTCNT                    0x44                          0x0000 0000
+Page  696: EDMA_S3PADDR                    0x48                          0x0000 0000
+Page  696: EDMA_S3M0ADDR                   0x4c                          0x0000 0000
+Page  696: EDMA_S3M1ADDR                   0x50                          0x0000 0000
+Page  696: EDMA_S3FCTRL                    0x54                          0x0000 0000
+Page  696: EDMA_S4CTRL                     0x58                          0x0000 0000
+Page  696: EDMA_S4DTCNT                    0x5c                          0x0000 0000
+Page  696: EDMA_S4PADDR                    0x60                          0x0000 0000
+Page  696: EDMA_S4M0ADDR                   0x64                          0x0000 0000
+Page  696: EDMA_S4M1ADDR                   0x68                          0x0000 0000
+Page  696: EDMA_S4FCTRL                    0x6c                          0x0000 0000
+Page  696: EDMA_S5CTRL                     0x70                          0x0000 0000
+Page  696: EDMA_S5DTCNT                    0x74                          0x0000 0000
+Page  696: EDMA_S5PADDR                    0x78                          0x0000 0000
+Page  696: EDMA_S5M0ADDR                   0x7c                          0x0000 0000
+Page  696: EDMA_S5M1ADDR                   0x80                          0x0000 0000
+Page  696: EDMA_S5FCTRL                    0x84                          0x0000 0000
+Page  696: EDMA_S6CTRL                     0x88                          0x0000 0000
+Page  696: EDMA_S6DTCNT                    0x8c                          0x0000 0000
+Page  697: EDMA_S6PADDR    0x90               0x0000 0000
+Page  697: EDMA_S6M0ADDR   0x94               0x0000 0000
+Page  697: EDMA_S6M1ADDR   0x98               0x0000 0000
+Page  697: EDMA_S6FCTRL    0x9c               0x0000 0000
+Page  697: EDMA_S7CTRL     0xa0               0x0000 0000
+Page  697: EDMA_S7DTCNT    0xa4               0x0000 0000
+Page  697: EDMA_S7PADDR    0xa8               0x0000 0000
+Page  697: EDMA_S7M0ADDR   0xac               0x0000 0000
+Page  697: EDMA_S7M1ADDR   0xb0               0x0000 0000
+Page  697: EDMA_S7FCTRL    0xb4               0x0000 0000
+Page  697: EDMA_S8CTRL     0xb8               0x0000 0000
+Page  697: EDMA_S8DTCNT    0xbc               0x0000 0000
+Page  697: EDMA_S8PADDR    0xc0               0x0000 0000
+Page  697: EDMA_S8M0ADDR   0xc4               0x0000 0000
+Page  697: EDMA_S8M1ADDR   0xc8               0x0000 0000
+Page  697: EDMA_S8FCTRL    0xcc               0x0000 0000
+Page  697: EDMA_LLCTRL     0xd0               0x0000 0000
+Page  697: EDMA_S1LLP      0xd4               0x0000 0000
+Page  697: EDMA_S2LLP      0xd8               0x0000 0000
+Page  697: EDMA_S3LLP      0xdc               0x0000 0000
+Page  697: EDMA_S4LLP      0xe0               0x0000 0000
+Page  697: EDMA_S5LLP      0xe4               0x0000 0000
+Page  697: EDMA_S6LLP      0xe8               0x0000 0000
+Page  697: EDMA_S7LLP      0xec               0x0000 0000
+Page  697: EDMA_S8LLP      0xf0               0x0000 0000
+Page  697: EDMA_S2DCTRL    0xf4               0x0000 0000
+Page  697: EDMA_S12DCNT    0xf8               0x0000 0000
+Page  697: EDMA_S1STRIDE   0xfc               0x0000 0000
+Page  697: EDMA_S22DCNT    0x100              0x0000 0000
+Page  697: EDMA_S2STRIDE   0x104              0x0000 0000
+Page  697: EDMA_S32DCNT    0x108              0x0000 0000
+Page  697: EDMA_S3STRIDE   0x10c              0x0000 0000
+Page  697: EDMA_S42DCNT    0x110              0x0000 0000
+Page  697: EDMA_S4STRIDE   0x114              0x0000 0000
+Page  697: EDMA_S52DCNT    0x118              0x0000 0000
+Page  697: EDMA_S5STRIDE   0x11c              0x0000 0000
+Page  697: EDMA_S62DCNT    0x120              0x0000 0000
+Page  697: EDMA_S6STRIDE   0x124              0x0000 0000
+Page  697: EDMA_S72DCNT    0x128              0x0000 0000
+Page  697: EDMA_S7STRIDE   0x12c              0x0000 0000
+Page  697: EDMA_S82DCNT    0x130              0x0000 0000
+Page  698: EDMA_S8STRIDE                   0x134                             0x0000 0000
+Page  698: EDMA_SYNCEN                     0x138                             0x0000 0000
+Page  698: EDMA_MUXSEL                     0x13c                             0x0000 0000
+Page  698: EDMA_MUXS1CTRL                  0x140                             0x0000 0000
+Page  698: EDMA_MUXS2TRL                   0x144                             0x0000 0000
+Page  698: EDMA_MUXS3CTRL                  0x148                             0x0000 0000
+Page  698: EDMA_MUXS4CTRL                  0x14c                             0x0000 0000
+Page  698: EDMA_MUXS5CTRL                  0x150                             0x0000 0000
+Page  698: EDMA_MUXS6CTRL                  0x154                             0x0000 0000
+Page  698: EDMA_MUXS7CTRL                  0x158                             0x0000 0000
+Page  698: EDMA_MUXS8CTRL                  0x15c                             0x0000 0000
+Page  698: EDMA_MUXG1CTRL                  0x160                             0x0000 0000
+Page  698: EDMA_MUXG2CTRL                  0x164                             0x0000 0000
+Page  698: EDMA_MUXG3CTRL                  0x168                             0x0000 0000
+Page  698: EDMA_MUXG4CTRL                  0x16c                             0x0000 0000
+Page  698: EDMA_MUXSYNCSTS                 0x170                             0x0000 0000
+Page  698: EDMA_MUXSYNCCLR                 0x174                             0x0000 0000
+Page  698: EDMA_MUXGSTS                    0x178                             0x0000 0000
+Page  698: EDMA_MUXGCLR                    0x17c                             0x0000 0000
+Page  698: 29.5.1 DMA status register 1 (DMA_STS1)
+Page  699: 29.5.2 DMA status register 2 (DMA_STS2)
+Page  700: 29.5.3 DMA flag clear register 1 (DMA_CLR1)
+Page  701: 29.5.4 DMA flag clear register 2 (DMA_CLR2)
+Page  702: 29.5.5 DMA stream-x control register (DMA_SxCTRL) (x= 1…8)
+Page  702: DMA_SxM0ADDR)
+Page  702: DMA_SxM1ADDR)
+Page  703: 0: DMA is the flow controller
+Page  704: -DMA end of transfer
+Page  704: event flags corresponding to the stream in DMA_STS1 or
+Page  704: DMA_STS2 must be cleared.
+Page  704: 29.5.6 DMA stream-x data register (DMA_SxDTCNT) (x= 1…8)
+Page  704: 29.5.7 DMA stream-x peripheral address register
+Page  704: (DMA_SxPADDR) (x= 1…8)
+Page  705: 29.5.8 DMA stream-x memory 0 address register
+Page  705: (DMA_SxM0ADDR) (x= 1…8)
+Page  705: 29.5.9 DMA stream-x memory 1 address register
+Page  705: (DMA_SxM1ADDR) (x= 1…8)
+Page  705: 29.5.10 DMA stream-x FIFO control register (DMA_SxFCTRL) (x=
+Page  706: 29.5.11 DMA linked table control register (DMA_SxLLCTRL)
+Page  706: 29.5.12 DMA linked table pointer register (DMA_SxLLP) (x = 1…8)
+Page  706: 29.5.13 DMA 2D transfer control register (DMA_S2DCTRL)
+Page  706: 29.5.14 DMA 2D transfer count register (DMA_S2DCNT)
+Page  707: 29.5.15 DMA 2D transfer stride register (DMA_STRIDE)( x = 1…8)
+Page  707: 29.5.16 DMA synchronization enable (DMA_SYNCEN)
+Page  708: 29.5.17 DMAMUX table select (DMA_MUXSEL)
+Page  708: 29.5.18 DMAMUX channel-x control register (DMA_MUXSxCTRL)
+Page  708: DMA request count
+Page  708: This field defines the number of DMA requests after
+Page  708: DMA request select
+Page  708: Bit 6: 0       REQSEL         0x00                     Select a DMA request Refer to DMAMUX table for more
+Page  709: 29.5.19 DMAMUX generator-x control register
+Page  709: (DMA_MUXGxCTRL) (x = 1…8)
+Page  709: DMA request generation count
+Page  709: Defines the number of DMA requests (GREQCNT + 1)
+Page  709: DMA request generation polarity
+Page  709: DMA request generation enable
+Page  709: Bit 16       GEN              0x0             rw       0: DMA request generation disabled
+Page  709: 1: DMA request generation enabled
+Page  709: Bit 4: 0     SIGSEL           0x00            rw       This field is used to select DMA signal for DMA request
+Page  709: 29.5.20 DMAMUX synchronization interrupt status register
+Page  709: (DMA_MUXSYNCSTS)
+Page  709: while the DMA request count is below the REQCNT.
+Page  709: 29.5.21 DMAMUX synchronization interrupt clear flag register
+Page  709: overrun flag SYNCOVF in DMA_MUXCSR register.
+Page  710: 29.5.22 DMAMUX generator interrupt status register (DMA_
+Page  710: DMA request count is below the GNBREQ.
+Page  710: 29.5.23 DMAMUX generator interrupt clear flag register (DMA_
+Page  710: TRGOVF in DMA_MUXGS register.
+Page  716: 3. Updated Section 13.2.6 DMA transfer
+Page  716: 3. Updated the descriptions of Section 9.4.1 DMAMUX functional overview
+Page  716: 7. Updated the descriptions of Section 29.4.1 DMAMUX functional overview

@@ -1,0 +1,222 @@
+# Config for AT32F435/437 Reference Manual indexing
+# Usage: ./pdfindexer.py --config at32f435-refman.yaml build-index
+
+pdf_file: ../../docs/targets/at32f435/datasheets_application_notes/reference-manaul-RM_AT32F435_437_EN_V2.06.pdf
+index_dir: AT32F435-RefMan-Index/search-index
+
+keywords:
+  # Core and architecture
+  - Cortex-M4
+  - FPU
+  - floating point
+  - DSP
+  - MPU
+  - memory protection
+  - instruction cache
+  - data cache
+  - AHB
+  - APB
+  - bit-band
+
+  # Memory
+  - flash memory
+  - SRAM
+  - memory map
+  - OTP
+  - sLib
+  - XMC
+
+  # DMA
+  - DMA
+  - DMAMUX
+  - direct memory access
+  - DMA channel
+  - DMA request
+  - EDMA
+  - enhanced DMA
+
+  # Timers — AT32 uses "TMR" not "TIM"
+  - timer
+  - TMR
+  - PWM
+  - pulse width
+  - input capture
+  - output compare
+  - quadrature encoder
+  - motor control
+  - advanced timer
+  - general purpose timer
+  - basic timer
+  - IWDG
+  - WWDT
+  - watchdog
+  - SysTick
+  - TMR1
+  - TMR2
+  - TMR3
+  - TMR4
+  - TMR5
+  - TMR6
+  - TMR7
+  - TMR8
+  - TMR9
+  - TMR10
+  - TMR11
+  - TMR12
+  - TMR13
+  - TMR14
+  - TMR20
+
+  # Communication peripherals
+  - SPI
+  - SPI1
+  - SPI2
+  - SPI3
+  - SPI4
+  - I2C
+  - I2C1
+  - I2C2
+  - I2C3
+  - UART
+  - USART
+  - USART1
+  - USART2
+  - USART3
+  - UART4
+  - UART5
+  - USART6
+  - UART7
+  - UART8
+  - USB
+  - OTGFS
+  - OTG full speed
+  - I2S
+  - CAN
+  - SDIO
+  - QSPI
+  - infrared
+  - IRTMR
+  - LIN
+  - RS485
+  - SmartCard
+  - IrDA
+
+  # Ethernet
+  - EMAC
+  - Ethernet
+  - MII
+  - RMII
+  - IEEE1588
+
+  # Analog
+  - ADC
+  - ADC1
+  - ADC2
+  - ADC3
+  - analog to digital
+  - temperature sensor
+  - VREF
+  - VINTRV
+  - voltage reference
+  - VBAT
+  - DAC
+  - digital to analog
+  - comparator
+
+  # GPIO and alternate functions — AT32 uses IOMUX
+  - GPIO
+  - IOMUX
+  - alternate function
+  - GPIO_MUX
+  - GPIOx_MUXL
+  - GPIOx_MUXH
+  - IOMUX map priority
+  - pins owned by hardware
+  - MUX0
+  - MUX1
+  - MUX2
+  - MUX3
+  - MUX4
+  - MUX5
+  - MUX6
+  - MUX7
+  - MUX8
+  - pull-up
+  - pull-down
+  - open drain
+  - push-pull
+  - 5V tolerant
+  - pin definition
+  - pin configuration
+
+  # Interrupts and NVIC
+  - interrupt
+  - NVIC
+  - EXINT
+  - external interrupt
+  - nested vectored
+  - IRQ
+
+  # Clock and power
+  - clock
+  - PLL
+  - HEXT
+  - HICK
+  - LEXT
+  - LICK
+  - oscillator
+  - CRM
+  - reset
+  - ACC
+  - automatic clock calibration
+  - low power
+  - sleep mode
+  - deepsleep mode
+  - standby mode
+  - power supply
+  - POR
+  - LVR
+  - PVM
+  - power on reset
+  - low voltage reset
+
+  # Boot and DFU
+  - boot mode
+  - BOOT0
+  - BOOT1
+  - bootloader
+  - DFU
+  - system memory
+
+  # RTC
+  - ERTC
+  - real-time clock
+  - backup register
+  - WKUP
+  - tamper
+
+  # Special features
+  - CRC
+  - RNG
+  - random number
+  - DVP
+  - digital video
+  - UID
+  - unique identifier
+
+  # Debug
+  - SWD
+  - JTAG
+  - trace
+  - debug
+
+  # Register-level (RM-specific — not in the datasheet)
+  - register map
+  - bit definition
+  - reserved bits
+  - read-only
+  - write-only
+  - reset value
+  - CRM_CTRL
+  - PWC_CTRLSTS
+  - ERTC_TAMP

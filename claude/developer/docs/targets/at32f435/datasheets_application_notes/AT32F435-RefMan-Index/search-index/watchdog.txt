@@ -1,0 +1,64 @@
+Keyword: watchdog
+Occurrences: 60
+================================================================================
+
+Page    1: − DSP instructions                                              − 2 x Watchdog timers (WDT and WWDT)
+Page   14: 15       Window watchdog timer (WWDT) ................................................ 335
+Page   14: 16       Watchdog timer (WDT) ................................................................ 338
+Page   36: Figure 15-1 Window watchdog block diagram .......................................................................................... 335
+Page   36: Figure 15-2 Window watchdog timing diagram ......................................................................................... 336
+Page   50: 0       7                     WWDT                      Window watchdog timer                     0x0000_0040
+Page   62: 0x4000 3000 - 0x4000 33FF       Watchdog timer (WDT)
+Page   62: 0x4000 2C00 - 0x4000 2FFF       Window watchdog timer (WWDT)
+Page   65: power-saving mode wakeup circuit, watchdog timer (WDT), power-on reset/low voltage reset (POR/LVR),
+Page   71: and Standby mode for watchdog and auto-wakeup unit.
+Page   72: Watchdog is clocked by LICK oscillator. If the watchdog is enabled by either hardware option or software
+Page   72: access, the LICK oscillator is forced ON. The clock is provided to the watchdog only after the LICK
+Page   72:  WDT reset: watchdog overflow
+Page   72:  WWDT reset: window watchdog overflow
+Page   81: Window watchdog reset
+Page   81: Bit 11       WWDTRST          0x0            rw       0: Does not reset Window watchdog
+Page   81: 1: Reset Window watchdog
+Page   86: Window watchdog clock enable
+Page   90: Window watchdog clock enable in sleep mode
+Page   92: Window watchdog timer reset flag
+Page   92: 0: No window watchdog timer reset occurs
+Page   92: 1: Window watchdog timer reset occurs
+Page   93: Watchdog timer reset flag
+Page   93: 0: No watchdog timer reset occurs
+Page   93: 1: Watchdog timer reset occurs.
+Page   99: 0: Watchdog is enabled
+Page   99: 1: Watchdog is disabled
+Page  335: 15 Window watchdog timer (WWDT)
+Page  335: The window watchdog downcounter must be reloaded in a limited time window to prevent the watchdog
+Page  335: The window watchdog timer is clocked by a divided APB1_CLK. The precision of the APB1_CLK enables
+Page  335: the window watchdog to take accurate control of the limited window.
+Page  335:    If the watchdog is enabled, a system reset is generated when the value of the downcounter is less
+Page  335: If the watchdog is enabled, a system reset is generated at the following conditions:
+Page  335: Figure 15-1 Window watchdog block diagram
+Page  335: before the watchdog generates a reset. The WIN[6: 0] bit can be used to configure the window value.
+Page  335: to the WWDT_CTRL register to prevent the occurrence of an immediate reset once the window watchdog
+Page  335: The formula to calculate the window watchdog time out:
+Page  336: Figure 15-2 Window watchdog timing diagram
+Page  336: Window watchdog enable
+Page  338: 16 Watchdog timer (WDT)
+Page  338: enabled by writing 0xCCCC to the WDT_CMD register; or when the user enables the hardware watchdog
+Page  340: 0xCCCC: Enable WDT. If the hardware watchdog has
+Page  593: The EMAC watchdog timer is enabled by default, frames above 2048 bytes (DA + SA + LT + Data + pad
+Page  593: even if the watchdog timer is disabled, frame length greater than 16 KB are cut off and a watchdog
+Page  603: Bit 15       ES     rw       RDES0[4]: Watchdog timeout
+Page  604: Receive watchdog timeout
+Page  604: When set, this bit indicates the receive watchdog timeout has occurred while
+Page  604: receiving the current frame. The current frame is truncated after the watchdog
+Page  616: Watchdog Disable
+Page  616: When this bit is set, the MAC disables the watchdog timer
+Page  632: EMAC_DMASTS[9]: Receive watchdog timeout
+Page  633: Receive Watchdog Timeout
+Page  633: When this bit is set, it indicates that the receive watchdog
+Page  633: the current frame is cut off after the watchdog timeout
+Page  635: Bit 7       FEF        0x0         rw       giant frame, watchdog timeout and overflow). However, if
+Page  636: EMAC_DMASTS[9]: Receive watchdog timeout
+Page  636: Receive Watchdog Timeout Enable
+Page  637: enable bit, the receive watchdog timeout interrupt is
+Page  637: enabled. When this bit is cleared, the receive watchdog
+Page  711: debugging. For timers and watchdogs, the user can select whether or not to stop or continue counting

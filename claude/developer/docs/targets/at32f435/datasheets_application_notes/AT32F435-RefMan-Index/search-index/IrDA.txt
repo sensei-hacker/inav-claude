@@ -1,0 +1,29 @@
+Keyword: IrDA
+Occurrences: 25
+================================================================================
+
+Page    1: bus: supports CF, SRAM, PSRAM, NOR, NAND,                       IrDA capability, modem control and RS485 drive enable,
+Page   33: Figure 12-4 IrDA DATA(3/16) – normal mode ............................................................................................211
+Page  207: Interconnection Network), IrDA (Infrared Data Association) SIRENDEC specification, Asynchronous
+Page  207: Full-                IrDA
+Page  207: IRDALP                                GTPR
+Page  207: SLBEN               IRDAEN DIV[7:0]                                                                                            CK control logic         CK
+Page  207: RTSEN IRDAEN CLKEN
+Page  208: ─ IrDA SIR
+Page  209: In this case, the LINEN, CLKEN, SCMEN and IRDAEN bits must be set 0. RX pin is inactive, while TX
+Page  209: Interconnection Network), IrDA SIR (Serial Infrared), Asynchronous Smartcard protocol in ISO7816-3
+Page  209: IRDAEN=0 and DBN[1: 0]=0.
+Page  210: Parameters configuration: SCMEN=1, LINEN=0, SLBEN=0, IRDAEN=0, CLKEN=1, DBN[1: 0]=1,
+Page  210: Parameters configuration: IRDAEN=1, CLKEN=0, STOPBN[1: 0]=0, SCMEN=0 and SLBEN=0.
+Page  210: The infrared low-power mode can be enabled by setting IRDALP=1. In normal mode the transmitted
+Page  211: Figure 12-4 IrDA DATA(3/16) – normal mode
+Page  225: IrDA low-power mode
+Page  225: This bit is used to configure IrDA low-power mode.
+Page  225: Bit 2         IRDALP        0x0             rw
+Page  225: 0: IrDA low-power mode is disabled.
+Page  225: 1: IrDA low-power mode is enabled.
+Page  225: IrDA enable
+Page  225: Bit 1         IRDAEN        0x0             rw       0: IrDA is disabled.
+Page  225: 1: IrDA is enabled.
+Page  226: IrDA/smartcard division
+Page  226: In IrDA mode:

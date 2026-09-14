@@ -1,0 +1,536 @@
+Keyword: SPI
+Occurrences: 532
+================================================================================
+
+Page    1: dual QSPI, SDRAM, dual OTGFS, Ethernet, camera, 18 timers, 3 ADCs, 23
+Page    1: − Up to 2 x QSPI interfaces for external SPI Flash or           − Up to 4 x SPIs (36 Mbit/s), all with I2S interface
+Page    1: SPI RAM extension, and memory mapping mode                      multiplexed, I2S2/ I2S3 support full-duplex
+Page    9: 13       Serial peripheral interface (SPI) .................................................. 227
+Page   10: 13.1 SPI introduction ......................................................................... 227
+Page   10: 13.2.1 SPI description ........................................................................... 227
+Page   10: 13.2.4 SPI_SCK controller .................................................................... 231
+Page   10: 13.4 SPI registers ............................................................................. 247
+Page   10: 13.4.1 SPI control register 1 (SPI_CTRL1) (Not used in I 2 S mode) .......... 247
+Page   10: 13.4.2 SPI control register 2 (SPI_CTRL2) ............................................. 248
+Page   10: 13.4.3 SPI status register (SPI_STS) ..................................................... 249
+Page   10: 13.4.4 SPI data register (SPI_DT) ......................................................... 250
+Page   10: 13.4.5 SPICRC register (SPI_CPOLY) (Not used in I 2 S mode) ................. 250
+Page   10: 13.4.6 SPIRxCRC register (SPI_RCRC) (Not used in I 2 S mode) .............. 250
+Page   10: 13.4.7 SPITxCRC register (SPI_TCRC) .................................................. 250
+Page   11: 13.4.8 SPI_I2S register (SPI_I2SCTRL) ................................................. 250
+Page   11: 13.4.9 SPI_I2S prescaler register (SPI_I2SCLKP) .................................. 251
+Page   29: 28       Qud-SPI interface (QSPI) ............................................................. 669
+Page   29: 28.2 QSPI main features .................................................................... 669
+Page   29: 28.3 QSPI command slave port .......................................................... 669
+Page   29: 28.3.1 QSPI command slave port ........................................................... 669
+Page   29: 28.3.6 SPI device operation .................................................................. 670
+Page   29: 28.4 QSPI registers ........................................................................... 676
+Page   33: Figure 13-1 SPI block diagram .................................................................................................................. 227
+Page   33: Figure 13-2 SPI two-wire unidirectional full-duplex connection ................................................................ 229
+Page   33: Figure 13-3 Single-wire unidirectional receive only in SPI master mode.................................................. 229
+Page   33: Figure 13-4 Single-wire unidirectional receive only in SPI slave mode .................................................... 229
+Page   33: Figure 13-15 SPI interrupts ....................................................................................................................... 237
+Page   41: Table 13-2 SPI register map and reset value ............................................................................................ 247
+Page   43: Table 28-1 SPI register map and reset values .......................................................................................... 676
+Page   44: communication interfaces such as SPI, QSPI, I2C, USART/UART and SDIO, CAN bus controller,
+Page   45: SRAM 4KB                                                                                                             QSPI1/2
+Page   45: SPI2 / I S2                                                                                                                                   SPI1 / I2S1
+Page   45: SPI3 / I2S3                                                                                                                                   USART1/6
+Page   45: USART2/3                                             ERTC                                                                                 SPI4 / I2S4
+Page   47: QSPI1_
+Page   47: QSPI2_
+Page   51: 35   42             SPI1                   SPI1 global interrupt                  0x0000_00CC
+Page   51: 36   43             SPI2_I2S2EXT           SPI2 and IS2EXT global interrupt       0x0000_00D0
+Page   52: 51   58             SPI3_I2S3EXT          SPI3 and I2S3EXT global interrupt            0x0000_010C
+Page   53: 84      91                 SPI4                   SPI4 global interrupt                0x0000_0190
+Page   53: 91      98                 QSPI2                  QSPI2 global interrupt               0x0000_01AC
+Page   53: 92      99                 QSPI1                  QSPI1 global interrupt               0x0000_01B0
+Page   57: (QSPI2)         0xB000_0000
+Page   57: 0x1FFF_BFFF                                                          XMC and QSPI1/2 Reg
+Page   57: (QSPI1)         0x9000_0000
+Page   60: 0xB000 0000 - 0xBFFF FFFF       QSPI2_MEM
+Page   60: 0x9000 0000 - 0x9FFF FFFF       QSPI1_MEM
+Page   61: 0xA000 2000 - 0xA000 2FFF       QSPI2_REG
+Page   61: 0xA000 1000 - 0xA000 1FFF       QSPI1_REG
+Page   61: 0x4001 3400 - 0x4001 37FF       SPI4/I2S4
+Page   61: 0x4001 3000 - 0x4001 33FF       SPI1/I2S1
+Page   62: 0x4000 3C00 - 0x4000 3FFF       SPI3/I2S3
+Page   62: 0x4000 3800 - 0x4000 3BFF       SPI2/I2S2
+Page   80: QSPI2 reset
+Page   80: Bit 14       QSPI2RST       0x0             rw          0: Does not reset QSPI2
+Page   80: 1: Reset QSPI2
+Page   80: QSPI1 reset
+Page   80: Bit 1        QSPI1RST       0x0             rw          0: Does not reset QSPI1
+Page   80: 1: Reset QSPI1
+Page   81: SPI3 reset
+Page   81: Bit 15       SPI3RST          0x0            rw       0: Does not reset SPI3
+Page   81: 1: Reset SPI3
+Page   81: SPI3 reset
+Page   81: Bit 14       SPI2RST          0x0            rw       0: Does not reset SPI2
+Page   81: 1: Reset SPI2
+Page   82: SPI4 reset
+Page   82: Bit 13       SPI4RST          0x0            rw       0: Does not reset SPI4
+Page   82: 1: Reset SPI4
+Page   82: SPI1 reset
+Page   82: Bit 12       SPI1RST          0x0            rw       0: Does not reset SPI1
+Page   82: 1: Reset SPI1
+Page   84: QSPI2 clock enable
+Page   84: Bit 14       QSPI2EN         0x0            rw        0: Disabled
+Page   84: QSPI1 clock enable
+Page   84: Bit 1        QSPI1EN         0x0            rw        0: Disabled
+Page   85: SPI3 clock enable
+Page   85: Bit 15       SPI3EN          0x0             rw        0: Disabled
+Page   85: SPI2 clock enable
+Page   85: Bit 14       SPI2EN          0x0             rw        0: Disabled
+Page   87: SPI4 clock enable
+Page   87: Bit 13       SPI4EN          0x0              rw          0: Disabled
+Page   87: SPI1 clock enable
+Page   87: Bit 12       SPI1EN          0x0              rw          0: Disabled
+Page   89: QSPI2 clock enable in sleep mode
+Page   89: Bit 14       QSPI2LPEN        0x0            rw       0: Disabled
+Page   89: QSPI1 clock enable in sleep mode
+Page   89: Bit 1        QSPI1LPEN        0x1            rw       0: Disabled
+Page   90: SPI3 clock enable in sleep mode
+Page   90: Bit 15       SPI3LPEN     0x1        rw       0: Disabled
+Page   90: SPI 2 clock enable in sleep mode
+Page   90: Bit 14       SPI2LPEN     0x1        rw       0: Disabled
+Page   91: SPI4 clock enable in sleep mode
+Page   91: Bit 13       SPI4LPEN         0x1            rw       0: Disabled
+Page   91: SPI1 clock enable in sleep mode
+Page   91: Bit 12       SPI1LPEN         0x1            rw       0: Disabled
+Page  100: QSPIKEY0 [7: 0]: QuadSPI (QSPI) ciphertext access area encryption
+Page  100: Both QSPIKEYx and nQSPIKEYx are 0xFF (default erase status)
+Page  100: [7: 0]        Write 0x00 to QSPIKEYx
+Page  100: Write 0xFF to QSPIKEYx
+Page  100: 0x1FFF_C034                         That is, {nQSPIKEYx, QSPIKEYx} are all 0xFFFF, 0xFF00 and
+Page  100: 0x00FF. Among them, QSPIKEY0-QSPIKEY3 are the encrypted key
+Page  100: of QSPI1.
+Page  100: [15: 8]       nQSPIKEY0[7: 0]: Inverse code of QSPIKEY0[7: 0]
+Page  100: [23: 16]      QSPIKEY1[7: 0]: QuadSPI (QSPI) ciphertext encryption key byte 1
+Page  100: [31: 24]      nQSPIKEY1[7: 0]: Inverse code of QSPIKEY1[7: 0]
+Page  100: [7: 0]        QSPIKEY2[7: 0]: QuardSPI (QSPI) ciphertext encryption key byte 2
+Page  100: [15: 8]       nQSPIKEY2[7:0]: Inverse code of QSPIKEY2 [7: 0]
+Page  100: [23: 16]      QSPIKEY3[7: 0]: QuardSPI (QSPI) ciphertext encryption key byte 3
+Page  100: [31: 24]      nQSPIKEY3[7: 0]: Inverse code of QSPIKEY3[7: 0]
+Page  100: [7: 0]        QSPIKEY4[7: 0]: QuardSPI (QSPI) ciphertext encryption key byte 4
+Page  100: [15: 8]       nQSPIKEY4[7: 0]: Inverse code of QSPIKEY4[7: 0]
+Page  100: [23: 16]      QSPIKEY5[7: 0]: QuadSPI (QSPI) ciphertext encryption key byte 5
+Page  100: [31: 24]      nQSPIKEY5[7: 0]: Inverse code of QSPIKEY5[7: 0]
+Page  100: [7: 0]        QSPIKEY6[7: 0]: QuadSPI (QSPI) ciphertext encryption key byte 6
+Page  100: [15: 8]       nQSPIKEY6[7: 0]: Inverse code of QSPIKEY6[7: 0]
+Page  100: [31: 24]      QSPIKEY7[7: 0]: QuadSPI (QSPI) ciphertext encryption key byte 7
+Page  124: SPI4_MOSI               USART2_RTS_D
+Page  124: SPI1_CS     SPI3_CS
+Page  124: TMR2_CH1                                       SPI1_SCK
+Page  124: PA6                TMR1_BRK    TMR3_CH1   TMR8_BRK                SPI1_MISO   I2S2_MCK    USART3_CTS
+Page  124: SPI1_MOSI
+Page  124: SPI2_SCK
+Page  124: SPI2_MOSI
+Page  124: SPI2_CS
+Page  124: PA11               TMR1_CH4                           I2C2_SCL                SPI4_MISO   USART1_CTS
+Page  124: PA12               TMR1_EXT                           I2C2_SDA    SPI2_MISO
+Page  124: PA13               IR_OUT                                                     SPI3_MISO
+Page  124: JTCK                                                                 SPI3_MOSI
+Page  124: TMR2_CH1                                       SPI1_CS     SPI3_CS
+Page  125: PA1    UART4_RX    QSPI1_IO3                                                                      EVENTOUT
+Page  125: PA3                QSPI2_IO3   SDIO2_CMD   EMAC_MII_COL                                XMC_D5     EVENTOUT
+Page  125: PA5    USART6_RX   QSPI2_IO2   SDIO2_D5    SDIO2_D1                                    XMC_D7     EVENTOUT
+Page  125: PA6                TMR13_CH1   QSPI1_IO0   SDIO2_D2
+Page  125: PA7                TMR14_CH1   QSPI1_IO1
+Page  125: PA15   USART2_RX   QSPI2_IO1   QSPI1_IO2                       XMC_NCE                            EVENTOUT
+Page  126: SPI3_MOSI
+Page  126: SPI2_SCK
+Page  126: SPI3_MOSI
+Page  126: JTDO                                                         SPI1_SCK    SPI3_SCK
+Page  126: PB4    JNTRST                  TMR3_CH1                 I2C3_SDA    SPI1_MISO   SPI3_MISO    I2S3_SDEXT
+Page  126: SPI1_MOSI   SPI3_MOSI
+Page  126: SPI4_CS
+Page  126: SPI4_SCK
+Page  126: TMR4_CH3     TMR10_CH1   I2C1_SCL                SPI4_MISO
+Page  126: SPI2_CS     SPI4_MOSI
+Page  126: SPI2_SCK
+Page  126: SPI2_CS     SPI4_CS      SPI3_SCK
+Page  126: SPI2_SCK    SPI4_SCK
+Page  126: PB14               TMR1_CH2C                TMR8_CH2C   I2C3_SDA    SPI2_MISO   I2S2_SDEXT   USART3_RTS_DE
+Page  126: ERTC_REFI                                                    SPI2_MOSI
+Page  127: QSPI1_IO
+Page  127: PB0    USART3_CK       QSPI2_IO0
+Page  127: QSPI2_S
+Page  127: PB1    USART3_RTS_DE   QSPI1_SCK
+Page  127: PB2                    QSPI1_SCK
+Page  127: QSPI1_IO
+Page  127: QSPI1_C                        XMC_SD
+Page  127: PB7                    QSPI2_IO1
+Page  127: QSPI2_C
+Page  127: QSPI1_C
+Page  127: QSPI1_IO
+Page  127: PB10                   QSPI1_CS
+Page  127: QSPI1_IO     EMAC_MII_TX_EN
+Page  128: SPI3_MOSI                 SPI2_MOSI
+Page  128: PC2                     TMR20_CH2                         SPI2_MISO    I2S2_SDEXT
+Page  128: SPI2_MOSI
+Page  128: TMR8_CH               SPI2_SCK
+Page  128: SPI3_SCK
+Page  128: PC11                    TMR5_CH3                          I2S3_SDEXT   SPI3_MISO    USART3_RX
+Page  128: TMR11_C                            SPI3_MOSI
+Page  129: PC3    UART8_RX    QSPI2_IO1   SDIO2_D3
+Page  129: PC4                            QSPI1_IO2     EMAC_RMII_RX    XMC_SDCS0    SDIO2_CK    XMC_NE4   EVENTOUT
+Page  129: PC5                            QSPI1_IO3     EMAC_RMII_RX    XMC_SDCKE0   SDIO2_CMD   XMC_NOE   EVENTOUT
+Page  129: PC8    USART6_CK   QSPI1_IO2   XMC_A2                        SDIO1_D0     DVP_D2                EVENTOUT
+Page  129: PC9                QSPI1_IO0   XMC_A3        OTG2_OE         SDIO1_D1     DVP_D3                EVENTOUT
+Page  129: PC10   UART4_TX    QSPI1_IO1                                 SDIO1_D2     DVP_D8                EVENTOUT
+Page  129: PC11   UART4_RX    QSPI1_CS                                  SDIO1_D3     DVP_D4      XMC_D2    EVENTOUT
+Page  130: SPI3_MOSI    SPI2_CS
+Page  130: PD0                                                         SPI4_MISO
+Page  130: SPI2_SCK     SPI2_CS
+Page  130: SPI2_SCK
+Page  130: SPI2_MISO    USART2_CTS
+Page  130: SPI2_MOSI
+Page  130: SPI3_MOSI
+Page  131: PD3               QSPI1_SCK   XMC_A8                           XMC_CLK     DVP_D5              EVENTOUT
+Page  131: PD11              QSPI1_IO0
+Page  131: PD12              QSPI1_IO1
+Page  131: PD13   UART8_TX   QSPI1_IO3   XMC_SD_CLK                       XMC_A18                         EVENTOUT
+Page  132: TMR3_EX                         SPI4_SCK
+Page  132: CLKOUT               TMR3_CH                         SPI4_CS
+Page  132: PE5                                                         SPI4_MISO    TMR20_CH2C
+Page  132: TMR3_CH   TMR9_CH               SPI4_MOSI
+Page  132: SPI4_CS
+Page  132: SPI1_CS    SPI4_SCK
+Page  132: SPI1_SCK
+Page  132: PE13            TMR1_CH3                                    SPI4_MISO
+Page  132: SPI1_MIS   SPI4_MOSI
+Page  132: SPI1_MOS
+Page  133: PE2               QSPI1_IO2   XMC_SDNCAS      EMAC_MII_TXD3   XMC_A23                      EVENTOUT
+Page  133: PE7    UART7_RX               QSPI2_IO0                       XMC_D4                       EVENTOUT
+Page  133: PE8    UART7_TX               QSPI2_IO1                       XMC_D5                       EVENTOUT
+Page  133: PE9                           QSPI2_IO2                       XMC_D6                       EVENTOUT
+Page  133: PE10   UART5_TX               QSPI2_IO3                       XMC_D7                       EVENTOUT
+Page  135: PF6    UART7_RX   QSPI1_IO3                            XMC_NIORD                      EVENTOUT
+Page  135: PF7    UART7_TX   QSPI1_IO2                            XMC_NREG                       EVENTOUT
+Page  135: PF8               TMR13_CH1   QSPI1_IO0                XMC_NIOWR                      EVENTOUT
+Page  135: PF9               TMR14_CH1   QSPI1_MOSI_IO1           XMC_CD                         EVENTOUT
+Page  135: PF10              QSPI1_SCK                            XMC_INTR     DVP_D11           EVENTOUT
+Page  136: PG0                       TMR20_CH1C                     SPI1_MISO
+Page  136: SPI1_MOSI
+Page  136: PG8                                                      QSPI2_CS
+Page  136: PG10                                                     QSPI2_IO2
+Page  136: SPI4_SCK
+Page  136: PG11                                                     QSPI2_IO3
+Page  136: PG12                                                     QSPI2_IO1         SPI4_MISO
+Page  136: SPI4_MOSI
+Page  136: PG13                                                     QSPI2_SCK
+Page  136: SPI4_CS
+Page  136: PG14                                                     QSPI2_IO0
+Page  137: PG6                                QSPI1_CS                      XMC_INT2     DVP_D12          EVENTOUT
+Page  137: PG9    USART6_RX       QSPI1_IO2
+Page  137: PG14   USART6_TX       QSPI1_IO3                                 XMC_A25                       EVENTOUT
+Page  138: PH2      UART4_RX              QSPI1_IO0                                                      EVENTOUT
+Page  138: PH3      UART4_TX              QSPI1_IO1                                                      EVENTOUT
+Page  143: Bit 11: 10   SWAP_XMC          0x0             rw       10: QSPI2 memory addresses are mapped at 0x8000
+Page  143: 0xD000 0000. QSPI2 memory addresses are mapped at
+Page  154: SPI1       USART6                                                           ch2     Master
+Page  154: SPI2       UART7                                                            ch3
+Page  154: SPI3       UART8                           DMA ack
+Page  154: SPI4       QSPI1                                                            ch7
+Page  154: TMR1       QSPI2
+Page  158: SPI1     USART6          Req_gen1
+Page  158: SPI2     UART7           Req_gen2
+Page  158: SPI3     UART8
+Page  158: SPI4     QSPI1           Req_gen3
+Page  158: TMR1     QSPI2
+Page  159: 8           TMR6_OVERFLOW 40        QSPI1              72        TMR5_CH1       104     QSPI2
+Page  159: 10          SPI1_RX       42        TMR1_CH1           74        TMR5_CH3       106     SPI4_RX
+Page  159: 11          SPI1_TX       43        TMR1_CH2           75        TMR5_CH4       107     SPI4_TX
+Page  159: 12          SPI2_RX       44        TMR1_CH3           76        TMR5_OVERFLOW 108      reserved
+Page  159: 13          SPI2_TX       45        TMR1_CH4           77        TMR5_TRIG      109     reserved
+Page  159: 14          SPI3_RX       46        TMR1_OVERFLOW 78             reserved       110     I2S2_EXT_RX
+Page  159: 15          SPI3_TX       47        TMR1_TRIG          79        reserved       111     I2S2_EXT_TX
+Page  227: 13 Serial peripheral interface (SPI)
+Page  227: 13.1 SPI introduction
+Page  227: The SPI interface supports either the SPI protocol or the I2S protocol, depending on software
+Page  227: configuration. This chapter gives an introduction of the main features and configuration procedure of SPI
+Page  227: used as SPI or I 2 S.
+Page  227: 13.2.1 SPI description
+Page  227: The SPI can be configured as host or slave based on software configuration, supporting full-duplex,
+Page  227: automatic CRC function of SPI internal hardware. In the meantime, the SPI interface can be compatible
+Page  227: SPI block diagram:
+Page  227: Figure 13-1 SPI block diagram
+Page  227: SPIEN
+Page  227: SPIEN
+Page  227: SPI_SCK controller
+Page  227: SPI_STS                                                                     SWCSEN
+Page  227: Main features as SPI:
+Page  228: SPI_CTRL1 register. The CLKPOL (clock polarity) bit controls the steady state value of the clock
+Page  228: 8 bits or 16 bits depends on the FBN bit in the SPI_CTRL1 register
+Page  228: 8 bits or 16 bits depends on the FBN bit in the SPI_CTRL1 register
+Page  228: Note: these timings are shown with LTF=0 in the SPI_CTRL1 register.
+Page  229: When used as an SPI interface, it supports four synchronous modes: two-wire unidirectional full-duplex,
+Page  229: Figure 13-3 shows the two-wire unidirectional full-duplex mode and SPI IO connection:
+Page  229: The SPI operates in two-wire unidirectional full-duplex mode when the SLBEN bit and the ORA bit is
+Page  229: both 0. In this case, the SPI supports data transmission and reception at the same time. IO connection
+Page  229: Figure 13-3 SPI two-wire unidirectional full-duplex connection
+Page  229: SPI master                SPI slave
+Page  229: before disabling the SPI or entering power-saving mode (or disabling SPI system clock).
+Page  229: Figure 13-4 shows the single-wire unidirectional receive-only mode and SPI IO connection
+Page  229: The SPI operates in single-wire unidirectional receive-only mode when the SLBEN is 0 and the ORA is
+Page  229: set. In this case, the SPI can be used only for data reception (transmission is not supported). The MISO
+Page  229: Figure 13-4 Single-wire unidirectional receive only in SPI master mode
+Page  229: SPI master                   SPI slave
+Page  229: Figure 13-5 Single-wire unidirectional receive only in SPI slave mode
+Page  229: SPI master                      SPI slave
+Page  230: In master mode, it is necessary to wait until the second-to-last RDBF bit is set and then another SPI_CPK
+Page  230: period before disabling the SPI. The last RDBF must be set before entering power-saving mode (or
+Page  230: disabling SPI system clock).
+Page  230: In slave mode, there is no need to check any flag before disabling the SPI. However, it is required to
+Page  230: Figure 13-6 shows single-wire bidirectional half-duplex mode and SPI IO connection
+Page  230: When the SLBEN is set, the SPI operates in single-wire bidirectional half-duplex mode. In this case,
+Page  230: the SPI supports data reception and transmission alternately. In master mode, the MOSI pin transmits
+Page  230: The SLBTD bit is used by software to configure transfer direction. When the SLBTD bit is set, the SPI
+Page  230: can be used only for data transmission; when the SLBTD bit is 0, the SPI can be used only for data
+Page  230: SPI master                         SPI slave
+Page  230: When the SPI is selected for data transmission in single-wire bidirectional half-duplex mode (master or
+Page  230: slave), the TDBE bit must be set, and the BF must be 0 before disabling the SPI. The power-saving
+Page  230: mode (or disabling SPI system clock) cannot be entered unless the SPI is disabled.
+Page  230: In master mode, when the SPI is selected for data reception in single-wire bidirectional half-duplex mode,
+Page  230: it is required to wait until the second-to-last RDBF is set and then another SPI_SCK period before
+Page  230: disabling the SPI. And the last RDBF must be set before entering power-saving mode (or disabling SPI
+Page  230: In slave mode, when the SPI is selected for data reception in single-wire bidirectional half-duplex mode,
+Page  230: there is no need to check any flags before disabling the SPI. However, the BT must be 0 before entering
+Page  230: power-saving mode (or disabling SPI system clock).
+Page  230: enabled. If the SPI is enabled, low level is output on the CS pin. The CS signal is then released after the
+Page  230: SPI is disabled and the transmission is complete.
+Page  230: enabled. At this point, the SPI is automatically disabled by hardware and enters slave mode as soon as
+Page  230: the CS pin low is detected by master SPI. The mode error flag (MMERR bit) is set at the same time. An
+Page  230: interrupt is generated if ERRIE=1. When the MMERR is set, the SPIEN and MSTEN cannot be set by
+Page  231: software. The MMERR is cleared by read or write access to the SPI_STS register followed by write
+Page  231: operation to the SPI_CTRL1 register.
+Page  231: SWCSIL=0, the SPI is automatically disabled by hardware and enters slave mode. The mode error flag
+Page  231: SPIEN and MSTEN bits cannot be set by software. The MMERR bit is cleared by read or write access
+Page  231: to the SPI_STS register followed by write operation to the SPI_CTRL1 register.
+Page  231: In slave mode with CS being as an input, SWCSEN=1, the CS software control is enabled. The SPI
+Page  231: 13.2.4 SPI_SCK controller
+Page  231: The SPI protocol adopts synchronous transmission. In master mode with the SPI being used as SPI, it
+Page  231: is required to generate a communication clock for data reception and transmission on the SPI, and the
+Page  231: mode, the communication clock is provided by peripherals, and is input to the SPI via IO. In all, the
+Page  231: SPI_SCK controller is used for the generation and distribution of SPI_SCK, with the configuration
+Page  231: SPI_SCK controller configuration procedure:
+Page  231:  Master/slave selection: Select SPI as master or slave by setting the MSTEN bit.
+Page  231: Note that the clock output is activated after the SPI is enabled in master reception-only mode, and it
+Page  231: remains output until when the SPI is disabled and the reception is complete.
+Page  231: There is an independent transmission and reception CRC calculation unit in the SPI. When used as SPI
+Page  231: through software configuration, the SPI enables CRC calculation and CRC check automatically while
+Page  231: consistent with, detected by hardware, the data in the SPI_RCRC register, and such data is exactly the
+Page  231: The CRC function and configuration procedure of the SPI are described as follows.
+Page  231:  CRC calculation polynomial is configured by setting the SPI_CPOLY register.
+Page  231: the SPI_RCRC and SPI_TCRC registers.
+Page  231: the CRC value automatically according to the value in the SPI_CPOLY register and each transmitted
+Page  231: value of the SPI_TCRC register.
+Page  231: the CRC value automatically according to the value in the SPI_CPOLY register and each received data,
+Page  232: comparing the received CRC value with the value of the SPI_RCRC register. If check error occurs, the
+Page  232: The SPI supports write and read operations with DMA. Refer to the following configuration procedure.
+Page  232: that the received CRC data will be moved into the SPI_DT register by hardware, with the RDBF being
+Page  232: to read the SPI_DT register to get the CRC value at the end of CRC reception in order to avoid the
+Page  232:  Select DMA channel: Select a DMA channel for the current SPI transfer from DMA flexible
+Page  232:  Configure the destination of DMA transfer: Configure the SPI_DT register address as the
+Page  232: transfer in the DMA control register. Data will be loaded into the SPI_DT register from the
+Page  232:  Select DMA transfer channel: Select a DMA channel for the current SPI from DMA flexible
+Page  232: DMA transfer in the DMA control register. Data will be loaded from the SPI_DT register to the
+Page  232:  Configure the source of DMA transfer: Configure the SPI_DT register address as the source of
+Page  232: DMA transfer in the DMA control register. Data will be loaded from the SPI_DT register to the
+Page  233: The SPI interface is compatible with the TI protocol. The TI mode is enabled by setting the TIEN bit.
+Page  233: In this mode, the SPI interface will generates a communication clock SPI_CLK in accordance with the
+Page  233: TI protocol. This means that the SPI_CLK polarity and phase are forced to conform to the TI protocol
+Page  233: CLKPHA bits cannot be used to change the polarity and phase of the SPI_CLK either.
+Page  233: In this mode, the SPI interface will generate a CS signal in accordance with the TI protocol, meaning
+Page  233: In slave mode, once the TI mode is enabled, the SPI slave controls the MISO pin only during data
+Page  233: In slave mode, once the TI mode is enabled, the SPI interface is capable of detecting CS pulse errors
+Page  233: during data transmission, and setting the CSPAS bit (It is cleared by reading the SPI_STS) as soon as
+Page  233: a CS pulse error is detected. At this point, the detected pulse error will be discarded by the SPI. However,
+Page  233: since there is something wrong with the CS signal, the software should disable the SPI slave and re-
+Page  233: configure the SPI master before re-enabling the SPI slave for communication.
+Page  233: The SPI transmitter is clocked by SPI_SCK controller. It can output different data frame formats,
+Page  233: depending on software configuration. There is a SPI_DT register available in the SPI that is used to be
+Page  233: written with the data to be transmitted. When the transmitter is clocked, the contents in the SPI_DT
+Page  233: register are copied into the data buffer (Unlike SPI_DT, it is driven by SPI_SCK, and controlled by
+Page  233: indicating that the SPI_DT register is empty. If the TDBEIE bit is set, an interrupt is generated. After the
+Page  233: After the transmitter is configured and the SPI is enabled, the SPI is ready for data transmission. Before
+Page  233: the SPI_SCK controller chapter for information on communication clock, and refer to CRC and DMA
+Page  233:  Configure SPI_SCK controller
+Page  233:  Enable SPI by setting the SPIEN
+Page  233: The SPI receiver is clocked by the SPI_SCK controller. It can output different data frame formats through
+Page  233: software configuration. There is a receive data buffer register, driven by the SPI_SCK, in the SPI receiver.
+Page  234: register. Then the transmitter sets the receive data complete flag to the SPI logic. When the flag is
+Page  234: detected by the SPI logic, the data in the receive data buffer is copied into the SPI_DT register, with the
+Page  234: RDBF being set. This means that the data is received, and it is already stored into the SPI_DT. In this
+Page  234: case, read access to the SPI_DT register will clear the RDBF bit.
+Page  234: indicating that the SPI_DT register is empty. If the data is received and moved into the SPI_DT, the
+Page  234: RDBF is set, meaning that there are some data to be read in the SPI_DT register. An interrupt is
+Page  234: When the next received data is ready to be moved to the SPI_DT register, if the previous received data
+Page  234: Read SPI_DT register and then the SPI_STS register will clear the ROERR bit. The recommended
+Page  234:  Configure SPI_SCK controller
+Page  234:  Enable SPI by setting the SPIEN
+Page  234: This section describes the SPI communication timings, which includes full-duplex and half-duplex
+Page  236: The SPI interface supports TI mode. The TIEN bit can be set to enable SPI TI mode.
+Page  237: Figure 13-17 SPI interrupts
+Page  237: SPI interrupt
+Page  238: Usually, the SPI is connected to external devices through four pins.
+Page  238:  SCK: SPI communication clock. The pin serves as output in master mode, and input in slave
+Page  238: Note: Some of SPI1/I2S1 and SPI3/I2S3 are shared with JTAG pins (SPIx_CS/I2Sx_WS shared
+Page  238: with JTDI, SPIx_SCK/I2Sx_CK with JTDO), so these pins are not controlled by IO
+Page  238: SPIx/I2Sx, the JTAG should be disabled (during debugging) and switched to SWD
+Page  238:    In the case of CPOL=1 and CPHA=1, the clock divided by 3 that is generated inside the SPI
+Page  238: a clock divided by 2, and adjust the corresponding HCLK and PCLK frequencies. The SPI
+Page  238: SPI_STS
+Page  239: Main features when the SPI is used as I2S:
+Page  239: SPI/I2S                 SPIx_MOSI/I2Sx_SD(in/out)
+Page  239: The SPI, used as I2S selector, offers multiple operating modes for selection, namely, slave device
+Page  241: While being used as I2S, the SPI supports multiple audio protocols. The user can control the audio
+Page  241: the SPI_DT register, and the number of DMA transfer is 1.
+Page  241: the SPI_DT register, and the number of DMA transfer is 1. The first 16 bits (MSB) are the significant
+Page  241: the SPI_DT register, and the number of DMA transfer is 2. The 16-bit MSB transmits and receives the
+Page  242: the SPI_DT register, and the number of DMA transfer is 2. These 32-bit data are proceeded in two
+Page  242: the SPI_DT register, and the number of DMA transfer is 1. The 16 bits (LSB) are the significant bits
+Page  242: the SPI_DT register, and the number of DMA transfer is 2. For the first 16-bit data, its 8-bit LSB are
+Page  242: The audio protocols the SPI supports adopts synchronous transmission. In master mode, it is required
+Page  242: to generate a communication clock for data reception and transmission on the SPI, and the
+Page  242: mode, the communication clock is provided by master, and is input to the SPI via IO. In all, the I2S_SCK
+Page  242: When used as I2S master, the SPI can provide communication clock (CK) and main peripheral clock
+Page  244: The SPI supports write and read operations with DMA. Whether used as SPI or I2S, read/write request
+Page  244:  Select DMA channel: Select a DMA channel for the current SPI from DMA channel map table
+Page  244:  Configure the destination of DMA transfer: Configure the SPI_DT register address as the
+Page  244: transfer in the DMA control register. Data will be loaded into the SPI_DT register from the
+Page  244:  Select DMA transfer channel: Select a DMA channel for the current SPI from DMA channel map
+Page  244: DMA transfer in the DMA control register. Data will be loaded from the SPI_DT register to the
+Page  244:  Configure the source of DMA transfer: Configure the SPI_DT register address as the source of
+Page  244: DMA transfer in the DMA control register. Data will be loaded from the SPI_DT register to the
+Page  245: Whether being used as SPI or I2S, there is no difference for CPU. The SPI (in whatever mode) shares
+Page  245: the same base address, the same SPI_DT register, the same transmitter and receiver. The SPI
+Page  245:  Read/write operation to the SPI_DT register is different under different audio protocols, data bits
+Page  246: required if need to provide main clock for peripherals. The I 2S shares some pins with the SPI,
+Page  247: 13.4 SPI registers
+Page  247: Table 13-2 SPI register map and reset value
+Page  247: SPI_CTRL1                      0x00                              0x0000
+Page  247: SPI_CTRL2                      0x04                              0x0000
+Page  247: SPI_STS                        0x08                              0x0002
+Page  247: SPI_DT                         0x0C                              0x0000
+Page  247: SPI_CPOLY                      0x10                              0x0007
+Page  247: SPI_RCRC                       0x14                              0x0000
+Page  247: SPI_TCRC                       0x18                              0x0000
+Page  247: SPI_I2SCTRL                    0x1C                              0x0000
+Page  247: SPI_I2SCLKP                    0x20                              0x0002
+Page  247: 13.4.1 SPI control register 1 (SPI_CTRL1) (Not used in I 2 S mode)
+Page  248: SPI enable
+Page  248: Bit 6        SPIEN          0x0             rw       0: Disabled
+Page  248: prescaler is used as SPI clock. The MDIV[3] bit is in the
+Page  248: SPI_CTRL2 register, MDIV[3: 0]:
+Page  248: Note: The SPI_CTRL1 register must be 0 in I2S mode.
+Page  248: 13.4.2 SPI control register 2 (SPI_CTRL2)
+Page  248: invalid, and the SPI clock is forced to be PCLK/3.
+Page  248: Refer to the MDIV[2: 0] of the SPI_CTRL1 register.
+Page  249: 13.4.3 SPI status register (SPI_STS)
+Page  249: Bit 7       BF         0x0             ro       0: SPI is not busy.
+Page  249: 1: SPI is busy.
+Page  249: (read/write access to the SPI_STS register, followed by
+Page  249: Bit 5       MMERR      0x0             ro       write operation to the SPI_CTRL1 register)
+Page  249: SPI_STS register).
+Page  250: 13.4.4 SPI data register (SPI_DT)
+Page  250: 13.4.5 SPICRC register (SPI_CPOLY) (Not used in I 2 S mode)
+Page  250: Note: This register is valid only in SPI mode.
+Page  250: 13.4.6 SPIRxCRC register (SPI_RCRC) (Not used in I 2 S mode)
+Page  250: Bit 15: 0    RCRC       0x0000          ro       SPI_CTRL1 register is cleared.
+Page  250: Note: This register is only used in SPI mode.
+Page  250: 13.4.7 SPITxCRC register (SPI_TCRC)
+Page  250: Bit 15: 0    TCRC       0x0000          ro       SPI_CTRL1 register is cleared.
+Page  250: Note: This register is only used in SPI mode.
+Page  250: 13.4.8 SPI_I2S register (SPI_I2SCTRL)
+Page  250: Bit 11       I2SMSEL    0x0             rw       0: SPI mode
+Page  251: 13.4.9 SPI_I2S prescaler register (SPI_I2SCLKP)
+Page  267: the CxORAW is forced to be the programmed level, irrespective of the counter value. Despite
+Page  291: the CxORAW is forced to be the programmed level, irrespective of the counter value. Despite this, the
+Page  315: CxORAW is forced to be the programmed level, irrespective of the counter value. Despite this,
+Page  346:  Select a time stamp in by setting the TSPIN bit
+Page  346: ERTC_MUX2 through the TSPIN bit, while the TAMP2 can only select ERTC_MUX2.
+Page  355: Bit 17        TSPIN           0x0            rw        0: ERTC_MUX1
+Page  551: Note: The SDIO is not compatible with SPI communication mode. It supports only one
+Page  598: Bit 26       DP       rw     CRC field is added despite the state of the DC (TDES0[27]). This bit is valid only
+Page  669: 28 Qud-SPI interface (QSPI)
+Page  669: The QSPI interface consists of a command-based slave port, an XIP port (direct address mapping
+Page  669: access) and QSPI interface controller used for SPI Flash command execution. The command-based
+Page  669: address mapping. Additionally, the QSPI allows AHB data port to access data in either IPO or DMA mode.
+Page  669: 28.2 QSPI main features
+Page  669:                            SPI mode, dual/quad output mode, dual/quad I/O mode and DPI/QPI mode
+Page  669: SPI      DI
+Page  669: CTRL                        SPI
+Page  669: 28.3 QSPI command slave port
+Page  669: 28.3.1 QSPI command slave port
+Page  669: The QSPI has a command slave interface that contains register and data ports. The users can access
+Page  670: When DMA is used in P2M mode (peripheral to memory), that is, when QSPI reads data, the minimum
+Page  670: When 2 DMA are used in M2P mode (memory to peripheral), that is, when QSPI writes data, the
+Page  670: The QSPI offers a XIP slave port (direct address mapping read/write) for users to perform a direct access
+Page  670: 28.3.6 SPI device operation
+Page  670: The QSPI operations are conducted through commands, which are used to indicate the intent of the
+Page  670: operation and SPI operating mode (multiple-line communication).
+Page  670: The host controller supports a SPI protocol (mode 0 and mode 3). The command queue register must
+Page  670: be programmed according to SPI device specification. Refer to Figure 28-3 and Figure 28-10 for more
+Page  676: 28.4 QSPI registers
+Page  676: Table 28-1 QSPI register map and reset values
+Page  676: SPI Flash address
+Page  676: This register defines the values of SPI Flash addresses,
+Page  676: Bit 31: 0      SPIADR          0x0             rw
+Page  676: and sends them to SPI Flash. The address byte is based
+Page  677: Instruction code is required for SPI Flash command
+Page  677: execution. The instruction code length varies from SPI
+Page  677: Flash supplier to SPI Flash supplier. Thus this register can
+Page  677: Bit 23: 16   DUM2             0x0             rw       between the address and data status in SPI Flash
+Page  677: SPI address length
+Page  677: This field defines the number of bytes of the SPI Flash
+Page  677: This code is set to enable SPI Flash command.
+Page  678: SPI Operation mode
+Page  678: Read SPI status configuration
+Page  678: The user must send a SPI read state command.
+Page  678: Read SPI status enable
+Page  678: Bit 2        RSTSEN           0x0             rw       SPI read status command.
+Page  678: 0: Read SPI status disabled
+Page  678: 1: Read SPI status enabled
+Page  678: This bit is used to enable SPI write data, excluding read
+Page  678: set write enable bit=1 for other SPI commands.
+Page  678: SPI data encryption key enable
+Page  678: 0: SPI data encryption key disabled
+Page  678: 1: SPI data encryption key enabled
+Page  678: ciphertext and written into the QSPI peripheral through
+Page  678: QSPIKEY. While read, data is decrypted into plaintext
+Page  678: Read SPI Flash data from the following ports:
+Page  678: When this bit is switched, the QSPI sends automatically
+Page  679: Busy bit of SPI status
+Page  679: This field is used to divide the spi_clk.
+Page  680: SPI Read status
+Page  680: The host sends a read SPI Flash status command and
+Page  680: Bit 7: 0     SPISTS           0x00            ro
+Page  680: user can check the status of SPI Flash.
+Page  680: SPI Flash Size
+Page  680: Bit 31: 0    SPIFSIZE         0xF000 0000     rw
+Page  680: greater than that of SPI Flash. The user must mask the
+Page  680: upper bits of the system address to match SPI Flash size.
+Page  681: Bit 19: 12   XIPR_INSC        0x03            rw       This field is set to execute SPI Flash command of XPI
+Page  681: This bit defines the number of bytes of SPI Flash address.
+Page  681: address and data status in SPI Flash specification. The
+Page  681: Bit 19: 12   XIPW_INSC        0x02            rw       The user can set this field to enable a SPI Flash command
+Page  681: This bit defines the number of bytes of SPI Flash address.
+Page  682: address and data status in SPI Flash specification. The
+Page  683: Bit 8       ISPC              0x0             rw       input sampling phase delay and SPI Flash output timing.
+Page  693: SPI1     USART6               Req_gen1
+Page  693: SPI2     UART7                Req_gen2
+Page  693: SPI3     UART8
+Page  693: SPI4     QSPI1                Req_gen3
+Page  693: TMR1     QSPI2
+Page  693: 8           TMR6_OVERFLOW 40                 QSPI1                                72             TMR5_CH1                     104                QSPI2
+Page  693: 10          SPI1_RX           42             TMR1_CH1                             74             TMR5_CH3                     106                SPI4_RX
+Page  693: 11          SPI1_TX           43             TMR1_CH2                             75             TMR5_CH4                     107                SPI4_TX
+Page  693: 12          SPI2_RX           44             TMR1_CH3                             76             TMR5_OVERFLOW 108                               reserved
+Page  693: 13          SPI2_TX           45             TMR1_CH4                             77             TMR5_TRIG                    109                reserved
+Page  693: 14          SPI3_RX           46             TMR1_OVERFLOW 78                                    reserved                     110                I2S2_EXT_RX
+Page  693: 15          SPI3_TX           47             TMR1_TRIG                            79             reserved                     111                I2S2_EXT_TX
+Page  716: 1. Updated Section 13 Serial peripheral interface (SPI) by adding SPI timing
+Page  716: 7. Updated the descriptions of Section 28 Qud-SPI interface (QSPI)
+Page  716: 6. Updated the descriptions of Section 28 Qud-SPI interface (QSPI)

@@ -1,0 +1,23 @@
+Keyword: output compare
+Occurrences: 19
+================================================================================
+
+Page  257:       4 independent channels for input capture, output compare, PWM generation and one-pulse
+Page  266: Output compare modes include:
+Page  267:  Output compare mode: Set CxOCTRL=3’b001/010/011 to enable output compare mode. In this
+Page  267: Figure 27 gives an example of output compare mode (toggle) with C1DT=0x3. When the counter value
+Page  277: Output compare mode:
+Page  279: Output compare mode:
+Page  283:  2 independent channels for input capture, output compare, PWM generation and one-pulse
+Page  284:  1 independent channel for input capture, output compare, PWM generation
+Page  290: Output compare modes include:
+Page  291:  Output compare mode: Set CxOCTRL=2’b001/010/011 to enable output compare mode. In this
+Page  291: Figure 53 gives an example of output compare mode (toggle) with C1DT=0x3. When the counter value
+Page  296: Output compare mode:
+Page  301: Output compare mode:
+Page  304:  Five independent channels for input capture, output compare, PWM generation, one-pulse mode
+Page  314: Output compare modes include:
+Page  315:  Output compare mode: Set CxOCTRL=3’b001/010/011 to enable output compare mode. In this
+Page  315: Figure 14-81 gives an example of output compare mode (toggle) with C1DT=0x3. When the counter
+Page  326: Output compare mode:
+Page  328: Output compare mode:

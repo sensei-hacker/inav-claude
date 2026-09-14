@@ -1,0 +1,711 @@
+Keyword: OTGFS
+Occurrences: 707
+================================================================================
+
+Page    1: dual QSPI, SDRAM, dual OTGFS, Ethernet, camera, 18 timers, 3 ADCs, 23
+Page   19: 21       Universal serial bus full-seed device interface (OTGFS) ............. 424
+Page   19: 21.2 OTGFS functional description ..................................................... 424
+Page   19: 21.3 OTGFS clock and pin configuration ............................................. 425
+Page   19: 21.3.1 OTGFS clock configuration ......................................................... 425
+Page   19: 21.3.2 OTGFS pin configuration ............................................................ 425
+Page   19: 21.4 OTGFS interrupts ...................................................................... 426
+Page   19: 21.5 OTGFS functional description ..................................................... 426
+Page   19: 21.5.1 OTGFS initialization ................................................................... 426
+Page   19: 21.5.2 OTGFS FIFO configuration ......................................................... 427
+Page   19: 21.5.3 OTGFS host mode ...................................................................... 429
+Page   19: 21.5.3.2 OTGFS channel initialization .................................................. 430
+Page   20: 21.5.4 OTGFS device mode .................................................................. 445
+Page   20: 21.6 OTGFS control and status registers ............................................. 461
+Page   20: 21.6.2 OTGFS register address map ...................................................... 462
+Page   20: 21.6.3 OTGFS global registers .............................................................. 466
+Page   20: 21.6.3.1 OTGFS status and control register ( OTGFS_GOTGCTL) .......... 466
+Page   20: 21.6.3.2 OTGFS interrupt status control register ( OTGFS_GOTGINT) .... 466
+Page   20: 21.6.3.3 OTGFS AHB configuration register ( OTGFS_GAHBCFG) .......... 466
+Page   21: 21.6.3.4 OTGFS USB configuration register ( OTGFS_GUSBCFG) .......... 467
+Page   21: 21.6.3.5 OTGFS reset register (OTGFS_GRSTCTL).............................. 468
+Page   21: 21.6.3.6 OTGFS interrupt register ( OTGFS_GINTSTS) .......................... 470
+Page   21: 21.6.3.7 OTGFS interrupt mask register ( OTGFS_GINTMSK) ................ 473
+Page   21: 21.6.3.8 OTGFS receive status debug read/OTG status read and POP registers
+Page   21: (OTGFS_GRXSTSR / OTGFS_GRXSTSP )............................................ 474
+Page   21: 21.6.3.9 OTGFS receive FIFO size register ( OTGFS_GRXFSIZ) ............ 475
+Page   21: 21.6.3.10     OTGFS non-periodic Tx FIFO size (OTGFS_GNPTXFSIZ)/Endpoint 0
+Page   21: Tx FIFO size registers (OTGFS_DIEPTXF0) ......................................... 475
+Page   21: 21.6.3.11     OTGFS non-periodic Tx FIFO size/request queue status register
+Page   21: (OTGFS_GNPTXSTS) ........................................................................ 476
+Page   21: 21.6.3.12     OTGFS general controller configuration register
+Page   21: (OTGFS_GCCFG) .............................................................................. 476
+Page   21: 21.6.3.13     OTGFS controller ID register (OTGFS_GUID) ...................... 477
+Page   21: 21.6.3.14     OTGFS host periodic Tx FIFO size register
+Page   21: (OTGFS_HPTXFSIZ) .......................................................................... 477
+Page   21: 21.6.3.15     OTGFS device IN endpoint Tx FIFO size register
+Page   21: (OTGFS_DIEPTXFn) (x=1…7, where n is the FIFO number) .................. 477
+Page   21: 21.6.4.1 OTGFS host mode configuration register ( OTGFS_HCFG) ........ 477
+Page   21: 21.6.4.2 OTGFS host frame interval register ( OTGFS_HFIR) ................. 478
+Page   21: 21.6.4.3 OTGFS host frame number/frame time remaining register
+Page   21: (OTGFS_HFNUM) .............................................................................. 478
+Page   21: 21.6.4.4 OTGFS host periodic Tx FIFO/request queue register
+Page   21: (OTGFS_HPTXSTS) ........................................................................... 479
+Page   21: 21.6.4.5 OTGFS host all channels interrupt register ( OTGFS_HAINT) .... 479
+Page   21: 21.6.4.6 OTGFS host all channels inte rrupt mask register
+Page   21: (OTGFS_HAINTMSK) ......................................................................... 479
+Page   21: 21.6.4.7 OTGFS host port control and status register ( OTGFS_HPRT) ... 480
+Page   21: 21.6.4.8 OTGFS host channelx characteristics register ( OTGFS_HCCHARx)
+Page   21: 21.6.4.9 OTGFS host channelx interrupt register ( OTGFS_HCINTx)
+Page   21: 21.6.4.10     OTGFS host channelx interrupt mask register ( OTGFS_HCINTMSKx)
+Page   21: 21.6.4.11     OTGFS host channelx transfer size register ( OTGFS_HCTSIZx)
+Page   21: 21.6.5.1 OTGFS device configure register ( OTGFS_DCFG) ................... 484
+Page   21: 21.6.5.2 OTGFS device control register ( OTGFS_DCTL) ....................... 484
+Page   22: 21.6.5.3 OTGFS device status register ( OTGFS_DSTS) ........................ 486
+Page   22: 21.6.5.4 OTGFS device OTGFSIN endpoint common interrupt mask register
+Page   22: (OTGFS_DIEPMSK) ........................................................................... 486
+Page   22: 21.6.5.5 OTGFS device OUT endpoint common interrupt mask register
+Page   22: (OTGFS_DOEPMSK) .......................................................................... 487
+Page   22: 21.6.5.6 OTGFS device all endpoints interrupt mask register
+Page   22: (OTGFS_DAINT) ................................................................................ 488
+Page   22: 21.6.5.7 OTGFS all endpoints interrupt mask register (OTGFS_ DAINTMSK)488
+Page   22: 21.6.5.8 OTGFS device IN endpoint FIFO empty interrupt mask register
+Page   22: (OTGFS_DIEPEMPMSK) .................................................................... 488
+Page   22: 21.6.5.9 OTGFS device control IN endpoint 0 control register
+Page   22: (OTGFS_DIEPCTL0) .......................................................................... 488
+Page   22: 21.6.5.10     OTGFS device IN endpoint -x control register (OTGFS_ DIEPCTLx)
+Page   22: 21.6.5.11     OTGFS device control OUT endpoint 0 control register
+Page   22: (OTGFS_DOEPCTL0) ......................................................................... 492
+Page   22: 21.6.5.12     OTGFS device control OUT endpoint -x control register
+Page   22: (OTGFS_DOEPCTLx) (x= x=1…7, where x if endpoint number ) ............. 493
+Page   22: 21.6.5.13     OTGFS device IN endpoint -x interrupt register (OTGFS_ DIEPINTx)
+Page   22: 21.6.5.14     OTGFS device OUT endpoint -x interrupt register
+Page   22: (OTGFS_DOEPINTx) (x=0…7, where x if endpoint number ) ................... 495
+Page   22: 21.6.5.15     OTGFS device IN endpoint 0 transfer size register
+Page   22: (OTGFS_DIEPTSIZ0) ......................................................................... 496
+Page   22: 21.6.5.16     OTGFS device OUT endpoint 0 transfer size register
+Page   22: (OTGFS_DOEPTSIZ0) ........................................................................ 496
+Page   22: 21.6.5.17     OTGFS device IN endpoint -x transfer size register
+Page   22: (OTGFS_DIEPTSIZx) (x=1…7, where x is endpoint number ) .................. 497
+Page   22: 21.6.5.18     OTGFS device IN endpoint transmit FIFO status regi ster
+Page   22: (OTGFS_DTXFSTSx) (x=1…7, where x is endpoint number ) .................. 497
+Page   22: 21.6.5.19     OTGFS device OUT endpoint -x transfer size register
+Page   22: (OTGFS_DOEPTSIZx) (x=1…7, where x is endpoint number ) ................ 498
+Page   22: 21.6.6.1 OTGFS power and clock gating control register
+Page   22: (OTGFS_PCGCCTL) .......................................................................... 498
+Page   36: Figure 21-1 Block diagram of OTGFS structure ........................................................................................ 424
+Page   36: Figure 21-2 OTGFS interrupt hierarchy..................................................................................................... 426
+Page   41: Table 21-1 OTGFS input/output pins ......................................................................................................... 425
+Page   41: Table 21-2 OTGFS transmit FIFO SRAM allocation ................................................................................. 427
+Page   41: Table 21-3 OTGFS internal storage space allocation ............................................................................... 429
+Page   41: Table 21-4 OTGFS register map and reset values ................................................................................... 462
+Page   45: OTGFS1/2                                                                         SRAM1
+Page   51: Configu                          OTGFS1 standby wakeup through
+Page   51: 42   49             OTGFS1 wakeup                                                 0x0000_00E8
+Page   52: 67   74             OTGFS1                OTGFS1 CAN2 status error interrupt           0x0000_014C
+Page   52: Configu                         OTGFS2 standby wakeup interrupt
+Page   52: 76   83             OTGFS2 wakeup                                                      0x0000_0170
+Page   52: 77   84             OTGFS2                OTGFS2 global interrupt                      0x0000_0174
+Page   79: OTGFS2 reset
+Page   79: Bit 29       OTGFS2RST        0x0              rw          0: Does not reset the OTGFS2
+Page   79: 1: Reset the OTGFS2
+Page   80: OTGFS1 reset
+Page   80: Bit 7        OTGFS1RST      0x0             rw          0: Does not reset OTGFS1
+Page   80: 1: Reset OTGFS1
+Page   83: OTGFS2 clock enable
+Page   83: Bit 29       OTGFS2EN        0x0             rw          0: Disabled
+Page   84: OTGFS1 clock enable
+Page   84: Bit 7        OTGFS1EN        0x0            rw        0: Disabled
+Page   87: OTGFS2 clock enable in sleep mode
+Page   87: Bit 29       OTGFS2LPEN       0x1            rw       0: Disabled
+Page   89: OTGFS1 clock enable in sleep mode
+Page   89: Bit 7        OTGFS1LPEN       0x1            rw       0: Disabled
+Page  138:  For USB OTGFS_ID pin, configure corresponding IOMUX and enable corresponding clocks in CRM,
+Page  151: OTGFS1 wakeup EXINT_LINE[18]
+Page  151: OTGFS2 wakeup EXINT_LINE[20]
+Page  151: events, ERTC wakeup events, OTGFS1/OTGFS2 events and Ethernet wakeup events through edge
+Page  424: interface (OTGFS)
+Page  424: As a full-speed dual-role device, the OTGFS is fully compliant with the Universal Serial Bus Specification
+Page  424: Figure 21-1 shows the block diagram of the OTGFS structure. The OTGFS module is connected to the
+Page  424: Figure 21-1 Block diagram of OTGFS structure
+Page  424: OTGFS         USB 2.0 I/F                 USB2.0 FS
+Page  424: 21.2 OTGFS functional description
+Page  424: Two independent OTGFS modules are embedded in the device. The OTGFS module consists of an
+Page  424: OTGFS controller, PHY and 1280-byte SRAM.
+Page  424: The OTGFS supports control transfer, bulk transfer, interrupt transfer and synchronous transfer.
+Page  424: The OTGFS is a USB full-speed dual role device controller. The status of the ID line determines whether
+Page  424: the OTGFS acts as a host or device. When the ID line is floating, the OTGFS is used as a device. It is
+Page  424: In device mode, the OTGFS supports one bidirectional control endpoint, 7 IN endpoints, and 7 OUT
+Page  424: endpoints; in hose mode, the OTGFS supports 16 host channels.
+Page  425: The OTGFS supports SOF and OE pulse features: a SOF pulse generates at a SOF packet, the pulse
+Page  425: can output to pins and the timer 2; an OE pulse generates when the OTGFS outputs data, the pulse can
+Page  425: Suspend mode is supported. The OTGFS goes into power-saving mode after Suspend mode is entered.
+Page  425: If the STOPPCLK is set in the OTGFS_PCGCCTL register, the OTGFS enters Suspend mode when the
+Page  425: bus signal is not received for 3ms. The LP_MODE bit in the OTGFS_GCCFG register can be used to
+Page  425: 21.3 OTGFS clock and pin configuration
+Page  425: 21.3.1 OTGFS clock configuration
+Page  425: The OTGFS interface has two clocks: USB control clock and APB bus clock. The USB full-speed device
+Page  425: bus speed standard is 12Mb/s±0.25%, so it is necessary to supply 48MHz±0.25% for the OTGFS to
+Page  425: Note: The APB clock frequency must be greater than 30MHz when OTGFS is enabled.
+Page  425: 21.3.2 OTGFS pin configuration
+Page  425: The OTGFS input/output pins are multiplexed with GPIOs. The GPIOs are used as OTGFS in one of
+Page  425: Table 21-1 OTGFS input/output pins
+Page  425: OTGFS1_SOF           PA8
+Page  425: OTGFS1_VBUS          PA9
+Page  425: OTGFS1_ID            PA10
+Page  425: OTGFS1_D-            PA11
+Page  425: OTGFS1_D+            PA12
+Page  425: OTGFS1_OE            PA13
+Page  425: OTGFS2_SOF           PA4
+Page  425: OTGFS2_VBUS          PB13
+Page  425: OTGFS2_ID            PB12
+Page  425: OTGFS2_D-            PB14
+Page  425: OTGFS2_D+            PB15          Enable OTG2 in CRM, configure PB15 multiplexed function register
+Page  426: OTGFS2_OE                       PC9
+Page  426: 21.4 OTGFS interrupts
+Page  426: Figure 21-2 shows the OTGFS interrupt hierarchy. Refer to the OTGFS interrupt register
+Page  426: (OTGFS_GINTSTS) and OTGFS interrupt mask register (OTGFS_GINTMSK).
+Page  426: Figure 21-2 OTGFS interrupt hierarchy
+Page  426: 21.5 OTGFS functional description
+Page  426: 21.5.1 OTGFS initialization
+Page  426: interrupt register indicates the mode. The OTGFS controller enters host mode when A-type plug is
+Page  426: This section explains the initialization of the OTGFS controller after power-on. The application must
+Page  427:  OTGFS_GINTMSK.RXFLVLMSK = 0x0
+Page  427: 3. Program the following fields in the OTGFS_GUSBCFG register:
+Page  427: 4. The software must unmask the following bits in the OTGFS_GINTMSK register:
+Page  427: 5. The software can read the CURMOD bit in the OTGFS_GINTSTS register to determine whether the
+Page  427: OTGFS controller is operating in host or device mode.
+Page  427: 21.5.2 OTGFS FIFO configuration
+Page  427:  OTGFS_DIEPCTLx/ OTGFS_DOEPCTLx.EPENA = 0x0
+Page  427:  OTGFS_DIEPCTLx/ OTGFS_DOEPCTLx.NAKSTS = 0x1
+Page  427: The TXFNUM bit in the OTGFS_GRSTCTL register is used to refresh the controller transmit FIFO. Refer
+Page  427: Table 21-2 OTGFS transmit FIFO SRAM allocation
+Page  427: 1. OTGFS receive FIFO size register (OTGFS_GRXFSIZ)
+Page  428:  OTGFS_GRXFSIZ.RXFDEP = rx_fifo_size
+Page  428: 2. Endpoint 0 TX FIFO size register (OTGFS_DIEPTXF0)
+Page  428:  OTGFS_DIEPTXF0.INEPT0TXDEP = tx_fifo_size[0]
+Page  428:  OTGFS_DIEPTXF0.INEPT0TXSTADDR = rx_fifo_size
+Page  428: 3. Device IN endpoint transmit FIFO#1 size register (OTGFS_DIEPTXF1)
+Page  428:  OTGFS_DIEPTXF1.INEPTXFSTADDR = OTGFS_DIEPTXF0.INEPT0TXSTADDR +
+Page  428: 4. Device IN endpoint transmit FIFO#2 size register (OTGFS_DIEPTXF2)
+Page  428:  OTGFS_DIEPTXF2.INEPTXFSTADDR = OTGFS_DIEPTXF1.INEPTXFSTADDR +
+Page  428: 5. Device IN endpoint transmit FIFO#i size register (OTGFS_DIEPTXFi)
+Page  428:  OTGFS_DIEPTXFi.INEPTXFSTADDR = OTGFS_DIEPTXFi-1.INEPTXFSTADDR +tx_fifo_size[i-
+Page  428:  OTGFS_GRSTCTL.TXFNUM = 0x10
+Page  428:  OTGFS_GRSTCTL.TXFFLSH = 0x1
+Page  428:  OTGFS_GRSTCTL.RXFFLSH = 0x1
+Page  428: the TXFNUM bit in the OTGFS_GRSTCTL register.
+Page  429: Table 21-3 OTGFS internal storage space allocation
+Page  429: 1. OTGFS receive FIFO size register (OTGFS_GRXFSIZ)
+Page  429:  OTGFS_GRXFSIZ.RXFDEP = rx_fifo_size
+Page  429: 2. OTGFS Non-periodic TX FIFO size register (OTGFS_GNPTXFSIZ)
+Page  429:  OTGFS_GNPTXFSIZ.NPTXFDEP = tx_fifo_size[0]
+Page  429:  OTGFS_GNPTXFSIZ. NPTXFSTADDR = rx_fifo_size
+Page  429: 3. OTGFS host periodic transmit FIFO size register (OTGFS_HPTXFSIZ)
+Page  429:  OTGFS_HPTXFSIZ.PTXFSIZE = tx_fifo_size[1]
+Page  429:  OTGFS_HPTXFSIZ.PTXFSTADDR = OTGFS_GNPTXFSIZ.NPTXFSTADDR + tx_fifo_size[0]
+Page  429:  OTGFS_GRSTCTL.TXFNUM = 0x10
+Page  429:  OTGFS_GRSTCTL.TXFFLSH = 0x1
+Page  429:  OTGFS_GRSTCTL.RXFFLSH = 0x1
+Page  429: The application refreshes all transmit FIFOs through the TXFFLSH bit in the OTGFS_GRSTCTL register:
+Page  429:  Check whether GINNAKEFF=0 or not in the OTGFS_GINTSTS register. If this bit has been
+Page  429: cleared, write 0x1 to the OTGFS_DCTL.SGNPINNAK register. When the NACK valid interrupt is set,
+Page  429:  Wait until GINNAKEFF = 0x1 in the OTGFS_GINTSTS register, indicating that the NAK
+Page  429:  Poll the OTGFS_GRSTCTL register and wait until AHBIDLE=1. AHBIDLE = H indicates that the
+Page  429:  Confirm whether TXFFLSH = 0x0 or not in the OTGFS_GRSTCTL register. If TXFFLSH is
+Page  429: cleared, write the transmit FIFO number to be refreshed into the OTGFS_GRSTCTL.TXFNUM
+Page  429:  Set TXFFLSH = 0x1 in the OTGFS_GRSTCTL register, and wait until it is cleared.
+Page  429:  Set the CGNPINNAK bit in the OTGFS_DCTL register.
+Page  429: 21.5.3 OTGFS host mode
+Page  429: 1. Unmask interrupt through the PRTINTMSK bit in the OTGFS_GINTMSK register
+Page  429: 2. Program the OTGFS_HCFG register
+Page  429: 3. Set PRTPWR = 0x1 in the OTGFS_HPRT register to drive VBUS supply on the USB
+Page  429: 4. Wait until that the PRTCONDETbit is set in the OTGFS_HPRT0 register, indicating that the device
+Page  429: 5. Set PRTRST = 0x1 in the OTGFS_HPRT register to issue a reset operation
+Page  429: 7. Set PRTRST = 0x0 in the OTGFS_HPRT register
+Page  429: 8. Wait for the interrupt (PRTENCHNG bit in the OTGFS_HPRT register)
+Page  429: 9. Read the PRTSPD bit in the OTGFS_HPRT register to get the enumeration speed
+Page  430: 11. Select the size of the receive FIFO by setting the OTGFS_GRXFSIZ register
+Page  430: OTGFS_GNPTXFSIZ register
+Page  430: 13. Select the start address and size of the periodic transmit FIFO by setting the OTGFS_HPTXFSIZ
+Page  430: to OTGFS channel initialization requirements.
+Page  430: 21.5.3.2 OTGFS channel initialization
+Page  430: 1. Unmask the following interrupts by setting the OTGFS_GINTMSK register:
+Page  430: 2. Unmask the interrupts of the selected channels by setting the OTGFS_HAINTMSK register
+Page  430: OTGFS_HCINTMSKx register
+Page  430: packets) for the OTGFS_HCTSIZx register of the selected channel. The application must configure
+Page  430: 6. Configure the OTGFS_HCCHARx register of the selected channel according to the device endpoint
+Page  430: OTGFS_HCCHARx register. This enables the host to refresh the summited requests (if any) and
+Page  430: until an interrupt is generated in the OTGFS_HCINTx register (CHHLTD bit). Those transactions that
+Page  430: OTGFS_HCCHARx register.
+Page  430: application must generate a channel halted interrupt through the OTGFS_GRXSTSP register.
+Page  430:  When an interrupt (XFERC bit) is received in the OTGFS_HCINTx register during a non-periodic
+Page  430:  When an STALL , XACTERR , BBLERR or DTGLERR interrupt in the OTGFS_HCINTx register
+Page  430:  When a DISCONINT (device disconnected) interrupt event is received in the OTGFS_GINTSTS
+Page  430: register, the application must check the PRTCONSTS bit in the OTGFS_HPRT register. This is
+Page  430: OTGFS_HPRT register. The application must initiate a software reset to ensure that all channels
+Page  431: Figure 21-3 shows the flow chart of writing the transmit FIFO. The OTGFS host automatically writes a
+Page  431: The OTGFS host determines the actual packet size according to the programmed maximum packet size
+Page  432: The OTGFS controller handles two cases of babble: packet babble and port babble. Packet babble
+Page  432: When the OTGFS controller detects a packet babble, it stops writing data to the receiver buffer and waits
+Page  432: for the completion of packet. When it detects the end of packet, the OTGFS flushes the data already
+Page  432: When the OTGFS controller detects a port babble, it flushes the receive FIFO and disables the port.
+Page  432: by checking the PRTOVRCACT bit in the OTGFS_HPRT register, then perform a software reset. The
+Page  432: in the OTGFS_GINTSTS register). Upon receiving this interrupt, the application must start a software
+Page  432: reset through the CSFTRST in the OTGFS_GRSTCTL register.
+Page  433: Figure 21-5 shows the HFIR behavior when the HFIRRLDCTRL is set to 0x0 in the OTGFS_HFIR
+Page  433: Figure 21-6 shows the HFIR behavior when HFIRRLDCTRL=0x1 in the OTGFS_HFIR register.
+Page  434: 1. Initialize channel 2 (according to OTGFS channel initialization requirements)
+Page  434: 2. Set the CHENA bit in the OTGFS_HCCHAR2 register to write an IN request to the non-periodic
+Page  435: OTGFS_HCCHAR2 register. The controller writes a channel halted request to the non-periodic
+Page  435: request queue once the OTGFS_HCCHAR2 register is written
+Page  436: 1. Initialize channel 1 (according to OTGFS channel initialization requirements)
+Page  438: the NPTXFEMP bit in the OTGFS_GINTSTS register.
+Page  438: 1. Initialize channel 2 (according to OTGFS channel initialization requirements). The application must
+Page  438: set the ODDFRM bit in the OTGFS_HCCHAR2 register
+Page  438: 2. Set the CHENA bit in the OTGFS_HCCHAR2 register to write an IN request to the periodic request
+Page  438: 3. The OTGFS host writes an IN request to the periodic request queue each time the CHENA is set in
+Page  438: the OTGFS_HCCHAR2 register
+Page  439: 4. The OTGFS host attempts to send an IN token in the next frame (odd)
+Page  439: 5. The OTGFS host generates a RXFLVL interrupt as soon as an IN packet is received and written to
+Page  439: 9. To handle the XFERC interrupt, read the PKTCN bit in the OTGFS_HCTSIZ2 register. If the PKTCNT
+Page  439: bit in the OTGFS_HCTSIZ2 is not equal to 0, disable the channel before re-initializing the channel
+Page  439: for the next transfer. If PKTCNT == 0 in the OTGFS_HCTSIZ2 register, re-initialize the channel for
+Page  439: the next transfer. In this case, the application must reset the ODDFRM bit in the OTGFS_HCCHAR2
+Page  440: 1. Initialize channel 1 (according to OTGFS channel initialization requirements). The application must
+Page  440: set the ODDFRM bit in the OTGFS_HCCHAR2 register.
+Page  442: in the OTGFS_GINTSTS register.
+Page  442: 1. Initialize channel 2 (according to OTGFS channel initialization requirements). The application must
+Page  442: set the ODDFRM bit in the OTGFS_HCCHAR2 register
+Page  442: 2. Set the CHENA bit in the OTGFS_HCCHAR2 register to write an IN request to the periodic request
+Page  442: 3. The OTGFS host writes an IN request to the periodic request queue each time the CHENA is set in
+Page  442: the OTGFS_HCCHAR2 register
+Page  442: 4. The OTGFS host attempts to send an IN token in the next frame (odd)
+Page  442: 5. The OTGFS host generates a RXFLVL interrupt as soon as an IN packet is received and written to
+Page  443: 9. To handle the XFERC interrupt, read the PKTCN bit in the OTGFS_HCTSIZ2 register. If the PKTCNT
+Page  443: bit in the OTGFS_HCTSIZ2 is not equal to 0, disable the channel before re-initializing the channel
+Page  443: for the next transfer. If PKTCNT == 0 in the OTGFS_HCTSIZ2 register, re-initialize the channel for
+Page  443: the next transfer. In this case, the application must reset the ODDFRM bit in the OTGFS_HCCHAR2
+Page  444: 1. Initialize channel 1 (according to OTGFS channel initialization requirements). The application must
+Page  444: set the ODDFRM bit in the OTGFS_HCCHAR2 register
+Page  444: 4. The OTGFS host sends an OUT token in the next frame (odd)
+Page  445: 21.5.4 OTGFS device mode
+Page  445: 1. Program the following fields in the OTGFS_DCFG register
+Page  445: 2. Clear the SFTDISCON bit in the OTGFS_DCTL register. The controller will start connection after
+Page  445: 3. Program the OTGFS_GINTMSK register to unmask the following interrupts:
+Page  445: 4. Wait for the USBRESET interrupt in the OTGFS_GINTSTS register. It indicates that a reset signal has
+Page  445: 5. Wait for the ENUMDONE interrupt in the OTGFS_GINTSTS register. It indicates the end of USB reset.
+Page  445: Upon receiving this interrupt, the application must read the OTGFS_DSTS register to determine the
+Page  445:  OTGFS_DOEPCTLx.SNAK = 0x1(for all OUT endpoints)
+Page  445:  OTGFS_DAINTMSK.INEP0 = 0x1(control IN endpoint 0)
+Page  445:  OTGFS_DAINTMSK.OUTEP0 = 0x1(control OUT endpoint 0)
+Page  445:  OTGFS_DOEPMSK.SETUP = 0x1
+Page  445:  OTGFS_DOEPMSK.XFERC = 0x1
+Page  445:  OTGFS_DIEPMSK.XFERC = 0x1
+Page  445:  OTGFS_DIEPMSK.TIMEOUT = 0x1
+Page  445:  Program the OTGFS_GRXFSIZ register to be able to receive control OUT data and SETUP data.
+Page  445:  Program the OTGFS_DIEPTXF0 register to be able to transmit control IN data. The allocated
+Page  446:    OTGFS_DOEPTSIZ0.SUPCNT = 0x3(to receive up to 3 consecutive SETUP packets)
+Page  446:  Upon detecting the enumeration completion interrupt signal, read the OTGFS_DSTS register to
+Page  446:  Program the MPS bit in the OTGFS_DIEPCTL0 register to set the maximum packet size. This
+Page  446:  Program the OTGFS_DCFG register with the device address received in the SetAddress
+Page  446:  Refer to OTGFS FIFO configuration for more information on how to program SRAM for each
+Page  446: 1.Program the following bits in the OTGFS_DIEPCTLx register (for IN or bidirectional endpoints) or the
+Page  446: OTGFS_DOEPCTLx register (for OUT or bidirectional endpoints)
+Page  447:  Clear the USB valid endpoint bit in the OTGFS_DIEPCTLx register (for IN or bidirectional
+Page  447: endpoints) or the OTGFS_DOEPCTLx register (for OUT or bidirectional endpoints)
+Page  447: 1. When the SETUP bit is set in the OTGFS_DOEPINTx register, it indicates that a valid SETUP packet
+Page  447: SETUP stage, the application must rewrite 3 to the SUPCNT bit in the OTGFS_DOEPTSIZx register to
+Page  447: 4. When the XFERC interrupt is set in the OTGFS_DOEPINTx register during the last OUT transfer, it
+Page  447: OTGFS_DOEPCTLx.EPENA = 0x1
+Page  447: 7. When the XFERC interrupt is set in the OTGFS_DOEPINTx register is set, it indicates that the status
+Page  447: complete interrupt can be cleared through the XFERC bit in the OTGFS_DOEPINTx register
+Page  447: Repeat above-mentioned steps until an interrupt (XFERC bit in the OTGFS_DIEPINTx register) is
+Page  447:  When the SETUP bit is set in the OTGFS_DOEPINTx register, it indicates that a valid SETUP
+Page  447: OTGFS_DOEPTSIZx register to receive the subsequent SETUP packet
+Page  448:  Repeat above-mentioned steps until the XFERC interrupt is generated in the OTGFS_DIEPINTx
+Page  448:  When the XFERC interrupt is set in the OTGFS_DOEPINTx register during the last IN transfer, it
+Page  448: The application must program the NZSTSOUTHSHK bit in the OTGFS_DCFG register, and then
+Page  448: The XFERC interrupt bit is set in the OTGFS_DOEPINTx register to indicate the end of status OUT
+Page  448: 1. When the SETUP bit is set in the OTGFS_DOEPINTx register, it indicates that a valid SETUP packet
+Page  448: the SETUP stage, the application must rewrite 3 to the SUPCNT bit in the OTGFS_DOEPTSIZx
+Page  448:  Set OTGFS_DOEPCTLx.EPENA = 0x1
+Page  448: 4. The XFERC interrupt bit is set in the OTGFS_DIEPINTx register to indicate the end of status IN
+Page  448: 1. The application must read the OTGFS_GRXSTSP register as soon as the RXFLVL interrupt bit is
+Page  448: detected in the OTGFS_GINTSTS register
+Page  448: 2. The application can mask the RXFLVL interrupt bit in the OTGFS_GINTSTS register by setting
+Page  448: RXFLVL = 0x0 in the OTGFS_GINTMSK register, until it has read the data packets from the receive
+Page  449: specified OUT endpoint. PKTSTS code can be found in the OTGFS_GRXSTSR / OTGFS_GRXSTSP
+Page  449: OTGFS_GINTSTS register must be unmasked
+Page  449: in the OTGFS_GINTSTS register. Reading an empty receive FIFO will result in unexpected behavior.
+Page  450: handling SETUP transfers. After power-on reset, the application must follow the OTGFS Initialization
+Page  450: 1. To receive a SETUP packet, the SUPCNT bit (OTGFS_DOEPTSIZx) on a control OUT endpoint
+Page  450: of the NAK status bit and EPENA bit in the OTGFS_DOEPCTLx register. The SUPCNT bit is
+Page  450:  OTGFS_DOEPTSIZx.SUPCNT = 0x3
+Page  450: interrupts the application through the SETUP interrupt bit in the OTGFS_DOEPINTx register, indicating
+Page  450: 1. Program the OTGFS_DOEPTSIZx register
+Page  451:  OTGFS_DOEPTSIZx.SUPCNT = 0x3
+Page  451: 2. Wait for the RXFLVL interrupt bit in the OTGFS_GINTSTS register and read and empty the data
+Page  451: 3. When the SETUP interrupt bit is set in the OTGFS_DOEPINTx register, it indicates that the SETUP
+Page  451: OTGFS_DOEPTSIZx register to determine the number of SETUP packets received, and process the
+Page  451: condition occurs, the OTGFS controller generates an interrupt (B2BSTUP bit in the OTGFS_DOEPINTx
+Page  452: reading the OTGFS_DTXFSTSx register to determine whether there is enough space in the data
+Page  452: OTGFS_DIEPINTx register, and then read the OTGFS_DTXFSTSx register to determine whether
+Page  452: OTGFS_DIEPCTLx register to avoid modifying the contents of the register. If the space is enough, the
+Page  452: To initialize the controller after power-on reset, the application must perform the steps list in OTGFS
+Page  453: 1. Program the OTGFS_DIEPTSIZx register according to the transfer size and the corresponding packet
+Page  453: 2. Program the OTGFS_DIEPCTLx register according to the endpoint characteristics and set the CNAK
+Page  453: 3. While sending non-zero-length data packets, the application must poll the OTGFS_DTXFSTSx
+Page  453: space in the data FIFO. The application can also use the TXFEMP bit in the OTGFS_DIEPINTx register
+Page  453: To initialize the controller after power-on reset, the application must perform the steps list in “OTGFS
+Page  454: 1. Program the OTGFS_DOEPTSIZx register with the transfer size and the corresponding packet count.
+Page  454: 2. Program the OTGFS_DOEPCTLx register with the endpoint characteristics, and set the endpoint
+Page  454:  OTGFS_DOEPCTLx.EPENA = 0x1
+Page  454: 3. Wait for the RXFLVL interrupt in the OTGFS_GINTSTS register, and read out all data packets from
+Page  454: 4. When the XFERC interrupt is set in the OTGFS_DOEPINTx register, it indicates a successful
+Page  454: completion of the non-synchronous OUT data transfer. Read the OTGFS_DOEPTSIZx register to
+Page  455: and PKTCNT bits in the OTGFS_DOEPTSIZx register.
+Page  455: bit in the OTGFS_GINTSTS register.
+Page  455: interrupt in the OTGFS_DOEPINTx register.
+Page  455: 7. The application processes the interrupt and uses the XFERC bit in the OTGFS_DOEPINTx register
+Page  455: To initialize the controller after power-on reset, the application must perform the steps list in “OTGFS
+Page  456: OTGFS_GINTSTS register)
+Page  456: generation of the EOPF and SOF interrupt in the OTGFS_GINTSTS register.
+Page  456:  Even/Odd microframe (OTGFS_DOEPCTLx) =SOFFN[0] (OTGFS_DSTS)
+Page  456: receive FIFO, the controller updates the RXDPID bit in the OTGFS_DOEPTSIZx register based on the
+Page  456: 1. Program the transfer size and the corresponding packet count of the OTGFS_DOEPTSIZx register
+Page  456: 2. Program the OTGFS_DOEPCTLx register with the endpoint enable, ClearNAK and Even/Odd frame
+Page  456: 3. Wait for the RXFLVL interrupt in the OTGFS_GINTSTS register, and read all the data packets from
+Page  456: 4. When the XFERC interrupt is set in the OTGFS_DOEPINTx register, it indicates the completion of the
+Page  456: application can detect the INCOMPISOOUT interrupt in the OTGFS_GINTSTS register. See “Incomplete
+Page  456: 6. Read the OTGFS_DOEPTSIZx register to determine the received transfer size and to determine
+Page  456:  OTGFS_DOEPTSIZx.RxDPID = 0xD0 and the USB packet count in which the payload was
+Page  456:  OTGFS_DOEPTSIZx.RxDPID = 0xD1 and the USB packet count in which the payload was
+Page  456:  OTGFS_DOEPTSIZx.RxDPID = 0xD2 and the USB packet count in which the payload was
+Page  456: Instead, synchronous support in the OTGFS controller is based on a single-transfer level. The application
+Page  456: must re-configure the controller on every frame. The OTGFS controller enables the synchronous
+Page  457: For example, to send data on the frame n, enable the endpoint of the frame n-1. Additionally, the OTGFS
+Page  457:  XFERC interrupt in the OTGFS_DIEPINTx register (for endpoints)
+Page  457:  OTG INCOMPISOIN interrupt in the OTGFS_GINTSTS register (for global interrupts)
+Page  457: 1. Unmask the incompISOOUT interrupt in the OTGFS_GINTSTS register by setting the
+Page  457: INCOMISOINMSK interrupt bit in the OTGFS_GINTMSK register
+Page  457: 2. Unmask the XFERC interrupt in the OTGFS_DIEPINTx register by setting the XFERCMSK bit in the
+Page  457: OTGFS_DIEPMSK register
+Page  457:  Program the OTGFS_DIEPTSIZx register
+Page  457: OTGFS_DIEPTSIZx.XFERSIZE= n * OTGFS_DIEPCTLx.MPS + sp, where 0 <= n <= 3 and 0 <=
+Page  457: sp <OTGFS_DIEPCTLx.MPS. When the transfer size in a frame is less than that of the MPS bit in the
+Page  457: OTGFS_DIEPCTLx register, n=0; When the transfer size in a frame is a multiple of that of the MPS bit
+Page  457: in the OTGFS_DIEPCTLx register, sp=0.
+Page  457: OTGFS_DIEPTSIZx.PKTCNT = 0x1
+Page  457: The MC bit in the OTGFS_DIEPTSIZx register is set the same value as that of the PKTCNT bit in
+Page  457: the OTGFS_DIEPTSIZx register.
+Page  457:  Program the OTGFS_DIEPCTLx register
+Page  457: Read the OTGFS_DSTS register to determine the current frame number
+Page  457: Program the OTGFS_DIEPCTLx with the maximum packet size (MPS bit)
+Page  457: Set USBACTEP = 0x1 in the OTGFS_DIEPCTLx register
+Page  457: Set EPTYPE = 0x1 in the OTGFS_DIEPCTLx register, marking synchronization
+Page  457: Set the FIFO number of the endpoint through the TXFNUM bit in the OTGFS_DIEPCTLx register
+Page  457: Set CNAK = 0x1 in the OTGFS_DIEPCTLx register
+Page  457: If.SOFFN[0] = 0x0 in OTGFS_DSTS, then SETEVENFR = 0x1 in OTGFS_DIEPCTLx (otherwise,
+Page  457: SETEVENFR = 0x1 in OTGFS_DIEPCTLx)
+Page  457: If SOFFN[0] = 0x1 in OTGFS_DSTS, then SETODDFR = 0x1 in OTGFS_DIEPCTLx (otherwise,
+Page  457: SETODDFR = 0x0 in OTGFS_DIEPCTLx)
+Page  457: Set EPENA = 0x1 in OTGFS_DIEPCTLx
+Page  457:  When an interrupt is generated (XFERC bit in OTGFS_DIEPINTx register), clear the XFERC
+Page  457:  When an interrupt is generated (INCOMPISOIN bit in OTGFS_GINTSTS register), clear the
+Page  458: The INCOMPISOIN interrupt in the OTGFS_GINTSTS register is a global interrupt. Therefore, when
+Page  458: has been enabled, and the read value of the SOFFN bit in the OTGFS_DSTS register is equal to the
+Page  458: (1) When the DPID is set to 1 (an odd frame) in the OTGFS_DIEPCTLx register, write 1 to the
+Page  458: SETD0PID bit in the OTGFS_DIEPCTLx register makes it an even frame, then data transmission starts
+Page  458: (2) When the DPID is set to 0 in the OTGFS_DIEPCTLx register, write 1 to the SETD1PID bit in the
+Page  458: OTGFS_DIEPCTLx register makes it an odd frame, then data transmission starts when there is an IN
+Page  458: To initialize the controller after power-on reset, the application must perform the steps list in OTGFS
+Page  458: 1. For synchronous OUT endpoints, the XFERC interrupt (in the OTGFS_DOEPINTx register) may not
+Page  458: detect the XFERC interrupt in the OTGFS_DOEPINTx register.
+Page  458: XFERC interrupt in the OTGFS_DOEPINTx register is not set on at least one of the synchronous OUT
+Page  458: the OTGFS_DOEPINTx register. In this case, the application must re-enable the endpoint to receive
+Page  458:  OTGFS_DOEPCTLx. Even/Odd frame bit= OTGFS_DSTS.SOFFN[0]
+Page  458:  OTGFS_DOEPCTLx. Endpoint enable = 0x1
+Page  458: memory, and disable the endpoint through the endpoint disable bit in the OTGFS_DOEPCTLx register.
+Page  459: 6. Wait for the endpoint disable interrupt in the OTGFS_DOEPINTx register, and enable the endpoint to
+Page  459: interrupt in the OTGFS_DIEPINTx register. The application ignores this interrupt, which will result in
+Page  459: the generation of the incomplete synchronous IN transfer interrupt (in OTGFS_GINTSTS register).
+Page  459: OTGFS_DIEPINTx register) from any synchronous IN endpoint because this can trigger the incomplete
+Page  459: 2. The incomplete synchronous IN transfer interrupt (in the OTGFS_GINTSTS register) indicates that at
+Page  459: 5. Disable theses endpoints by setting the following bits in the OTGFS_DIEPCTLx register
+Page  459:  OTGFS_DIEPCTLx.SETNAK = 0x1
+Page  459:  OTGFS_DIEPCTLx. endpoint enable = 0x1
+Page  459: must refresh the data through the OTGFS_GRSTCTL register.
+Page  459: To initialize the controller after power-on reset, the application must perform the steps list in OTGFS
+Page  460:     (OTGFS_DIEPTSIZx.MC – 1) * OTGFS_DIEPCTLx.MPS ≤OTGFS_DIEPTSIZx.XFERSIZ
+Page  460: ≤OTGFS_DIEPTSIZx.MC * OTGFS_DIEPCTLx.MPS
+Page  460:  OTGFS_DIEPTSIZx.PKTCNT = OTGFS_DIEPTSIZx.MC
+Page  460:  If OTGFS_DIEPTSIZx.XFERSIZ < OTGFS_DIEPTSIZx.MC * OTGFS_DIEPCTLx.MPS, the last
+Page  460: 6. In the “Periodic frame interval” (by the PERFRINT bit in the OTGFS_DCFG register), when the
+Page  460: the controller generates an INCOMPISOIN interrupt in the OTGFS_GINTSTS register.
+Page  460: 1. Program the OTGFS_DIEPTSIZx register
+Page  460: 2. Program the OTGFS_DIEPCTLx register based on endpoint characteristics, and set the CNAK and
+Page  460: application can never detect the TIMEOUT interrupt (in the OTGFS_DIEPINTx register) on the periodic
+Page  460: 7. The assertion of the XFERC interrupt in the OTGFS_DIEPINTx register but without the
+Page  460: reading the OTGFS_DIEPTSIZx register, only transfer size =0 and packet count =0 indicate that all data
+Page  461: 8. The assertion of the XFERC interrupt in the OTGFS_DIEPINTx register, with or without the
+Page  461: the OTGFS_DIEPTSIZx register, only transfer size =0 and packet count =0 indicate that all data are
+Page  461: 21.6 OTGFS control and status registers
+Page  461: The application controls the OTGFS controller by reading from and writing to the control and status
+Page  461: registers are active in both host and device modes. When the OTGFS controller operates in either host
+Page  461: access occurs, a mode mismatch interrupt is generated and the MODMIS bit (in the OTGFS_GINTSTS
+Page  462: The OTGFS control and status registers contain OTGFS global register, host mode register, device mode
+Page  462: 1. OTGFS global registers: They are active in both host and device modes. The register acronym is G.
+Page  462: 21.6.2 OTGFS register address map
+Page  462: Table 21-4 OTGFS register map and reset values
+Page  462: OTGFS_GOTGCTL                         0x000                         0x0001 0000
+Page  462: OTGFS_GOTGINT                         0x004                         0x0000 0000
+Page  462: OTGFS_GAHBCFG                         0x008                         0x0000 0000
+Page  462: OTGFS_GUSBCFG                         0x00C                         0x0000 1440
+Page  462: OTGFS_GRSTCTL                         0x010                         0x8000 0000
+Page  462: OTGFS_GINTSTS                         0x014                         0x0400 0020
+Page  462: OTGFS_GINTMSK                         0x018                         0x0000 0000
+Page  462: OTGFS_GRXSTSR                         0x01C                         0x0000 0000
+Page  462: OTGFS_GRXSTSP                         0x020                         0x0000 0000
+Page  462: OTGFS_GRXFSIZ                         0x024                         0x0000 0200
+Page  462: OTGFS_GNPTXFSIZ/
+Page  462: OTGFS_DIEPTXF0
+Page  462: OTGFS_GNPTXSTS                        0x02C                         0x0008 0200
+Page  462: OTGFS_GCCFG                           0x038                         0x0000 0000
+Page  462: OTGFS_GUID                            0x03C                         0x0000 1000
+Page  462: OTGFS_HPTXFSIZ                        0x100                         0x0200 0400
+Page  462: OTGFS_DIEPTXF1                        0x104                         0x0000 0000
+Page  462: OTGFS_DIEPTXF2                        0x108                         0x0000 0000
+Page  462: OTGFS_DIEPTXF3                        0x10C                         0x0000 0000
+Page  462: OTGFS_DIEPTXF4                        0x110                         0x0000 0000
+Page  462: OTGFS_DIEPTXF5                        0x114                         0x0000 0000
+Page  462: OTGFS_DIEPTXF6                        0x118                         0x0000 0000
+Page  462: OTGFS_DIEPTXF7                        0x11C                         0x0000 0000
+Page  462: OTGFS_HCFG                            0x400                         0x0000 0000
+Page  462: OTGFS_HFIR                            0x404                         0x0000 EA60
+Page  462: OTGFS_HFNUM                           0x408                         0x0000 3FFF
+Page  463: OTGFS_HPTXSTS     0x410              0x0008 0100
+Page  463: OTGFS_HAINT       0x414              0x0000 0000
+Page  463: OTGFS_HAINTMSK    0x418              0x0000 0000
+Page  463: OTGFS_HPRT        0x440              0x0000 0000
+Page  463: OTGFS_HCCHAR0     0x500              0x0000 0000
+Page  463: OTGFS_HCINT0      0x508              0x0000 0000
+Page  463: OTGFS_HCINTMSK0   0x50C              0x0000 0000
+Page  463: OTGFS_HCTSIZ0     0x510              0x0000 0000
+Page  463: OTGFS_HCCHAR1     0x520              0x0000 0000
+Page  463: OTGFS_HCINT1      0x528              0x0000 0000
+Page  463: OTGFS_HCINTMSK1   0x52C              0x0000 0000
+Page  463: OTGFS_HCTSIZ1     0x530              0x0000 0000
+Page  463: OTGFS_HCCHAR2     0x540              0x0000 0000
+Page  463: OTGFS_HCINT2      0x548              0x0000 0000
+Page  463: OTGFS_HCINTMSK2   0x54C              0x0000 0000
+Page  463: OTGFS_HCTSIZ2     0x550              0x0000 0000
+Page  463: OTGFS_HCCHAR3     0x560              0x0000 0000
+Page  463: OTGFS_HCINT3      0x568              0x0000 0000
+Page  463: OTGFS_HCINTMSK3   0x56C              0x0000 0000
+Page  463: OTGFS_HCTSIZ3     0x570              0x0000 0000
+Page  463: OTGFS_HCCHAR4     0x580              0x0000 0000
+Page  463: OTGFS_HCINT4      0x588              0x0000 0000
+Page  463: OTGFS_HCINTMSK4   0x58C              0x0000 0000
+Page  463: OTGFS_HCTSIZ4     0x590              0x0000 0000
+Page  463: OTGFS_HCCHAR5     0x5A0              0x0000 0000
+Page  463: OTGFS_HCINT5      0x5A8              0x0000 0000
+Page  463: OTGFS_HCINTMSK5   0x5AC              0x0000 0000
+Page  463: OTGFS_HCTSIZ5     0x5B0              0x0000 0000
+Page  463: OTGFS_HCCHAR6     0x5C0              0x0000 0000
+Page  463: OTGFS_HCINT6      0x5C8              0x0000 0000
+Page  463: OTGFS_HCINTMSK6   0x5CC              0x0000 0000
+Page  463: OTGFS_HCTSIZ6     0x5D0              0x0000 0000
+Page  463: OTGFS_HCCHAR7     0x5E0              0x0000 0000
+Page  463: OTGFS_HCINT7      0x5E8              0x0000 0000
+Page  463: OTGFS_HCINTMSK7   0x5EC              0x0000 0000
+Page  463: OTGFS_HCTSIZ7     0x5F0              0x0000 0000
+Page  463: OTGFS_HCCHAR8     0x600              0x0000 0000
+Page  463: OTGFS_HCINT8      0x608              0x0000 0000
+Page  463: OTGFS_HCINTMSK8   0x60C              0x0000 0000
+Page  463: OTGFS_HCTSIZ8     0x610              0x0000 0000
+Page  463: OTGFS_HCCHAR9     0x620              0x0000 0000
+Page  464: OTGFS_HCINT9       0x628              0x0000 0000
+Page  464: OTGFS_HCINTMSK9    0x62C              0x0000 0000
+Page  464: OTGFS_HCTSIZ9      0x630              0x0000 0000
+Page  464: OTGFS_HCCHAR10     0x640              0x0000 0000
+Page  464: OTGFS_HCINT10      0x648              0x0000 0000
+Page  464: OTGFS_HCINTMSK10   0x64C              0x0000 0000
+Page  464: OTGFS_HCTSIZ10     0x650              0x0000 0000
+Page  464: OTGFS_HCCHAR11     0x660              0x0000 0000
+Page  464: OTGFS_HCINT11      0x668              0x0000 0000
+Page  464: OTGFS_HCINTMSK11   0x66C              0x0000 0000
+Page  464: OTGFS_HCTSIZ11     0x670              0x0000 0000
+Page  464: OTGFS_HCCHAR12     0x680              0x0000 0000
+Page  464: OTGFS_HCINT12      0x688              0x0000 0000
+Page  464: OTGFS_HCINTMSK12   0x68C              0x0000 0000
+Page  464: OTGFS_HCTSIZ12     0x690              0x0000 0000
+Page  464: OTGFS_HCCHAR13     0x6A0              0x0000 0000
+Page  464: OTGFS_HCINT13      0x6A8              0x0000 0000
+Page  464: OTGFS_HCINTMSK13   0x6AC              0x0000 0000
+Page  464: OTGFS_HCTSIZ13     0x6B0              0x0000 0000
+Page  464: OTGFS_HCCHAR14     0x6C0              0x0000 0000
+Page  464: OTGFS_HCINT14      0x6C8              0x0000 0000
+Page  464: OTGFS_HCINTMSK14   0x6CC              0x0000 0000
+Page  464: OTGFS_HCTSIZ14     0x6D0              0x0000 0000
+Page  464: OTGFS_HCCHAR15     0x6E0              0x0000 0000
+Page  464: OTGFS_HCINT15      0x6E8              0x0000 0000
+Page  464: OTGFS_HCINTMSK15   0x6EC              0x0000 0000
+Page  464: OTGFS_HCTSIZ15     0x6F0              0x0000 0000
+Page  464: OTGFS_DCFG         0x800              0x0820 0000
+Page  464: OTGFS_DCTL         0x804              0x0000 0002
+Page  464: OTGFS_DSTS         0x808              0x0000 0010
+Page  464: OTGFS_DIEPMSK      0x810              0x0000 0000
+Page  464: OTGFS_DOEPMSK      0x814              0x0000 0000
+Page  464: OTGFS_DAINT        0x818              0x0000 0000
+Page  464: OTGFS_DAINTMSK     0x81C              0x0000 0000
+Page  464: OTGFS_DIEPEMPMSK   0x834              0x0000 0000
+Page  464: OTGFS_DIEPCTL0     0x900              0x0000 0000
+Page  464: OTGFS_DIEPINT0     0x908              0x0000 0080
+Page  464: OTGFS_DIEPTSIZ0    0x910              0x0000 0000
+Page  464: OTGFS_DTXFSTS0     0x918              0x0000 0200
+Page  464: OTGFS_DIEPCTL1     0x920              0x0000 0000
+Page  464: OTGFS_DIEPINT1     0x928              0x0000 0080
+Page  465: OTGFS_DIEPTSIZ1   0x930              0x0000 0000
+Page  465: OTGFS_DTXFSTS1    0x938              0x0000 0200
+Page  465: OTGFS_DIEPCTL2    0x940              0x0000 0000
+Page  465: OTGFS_DIEPINT2    0x948              0x0000 0080
+Page  465: OTGFS_DIEPTSIZ2   0x950              0x0000 0000
+Page  465: OTGFS_DTXFSTS2    0x958              0x0000 0200
+Page  465: OTGFS_DIEPCTL3    0x960              0x0000 0000
+Page  465: OTGFS_DIEPINT3    0x968              0x0000 0080
+Page  465: OTGFS_DIEPTSIZ3   0x970              0x0000 0000
+Page  465: OTGFS_DTXFSTS3    0x978              0x0000 0200
+Page  465: OTGFS_DIEPCTL4    0x980              0x0000 0000
+Page  465: OTGFS_DIEPINT4    0x988              0x0000 0080
+Page  465: OTGFS_DIEPTSIZ4   0x990              0x0000 0000
+Page  465: OTGFS_DTXFSTS4    0x998              0x0000 0200
+Page  465: OTGFS_DIEPCTL5    0x9A0              0x0000 0000
+Page  465: OTGFS_DIEPINT5    0x9A8              0x0000 0080
+Page  465: OTGFS_DIEPTSIZ5   0x9B0              0x0000 0000
+Page  465: OTGFS_DTXFSTS5    0x9B8              0x0000 0200
+Page  465: OTGFS_DIEPCTL6    0x9C0              0x0000 0000
+Page  465: OTGFS_DIEPINT6    0x9C8              0x0000 0080
+Page  465: OTGFS_DIEPTSIZ6   0x9D0              0x0000 0000
+Page  465: OTGFS_DTXFSTS6    0x9D8              0x0000 0200
+Page  465: OTGFS_DIEPCTL7    0x9E0              0x0000 0000
+Page  465: OTGFS_DIEPINT7    0x9E8              0x0000 0080
+Page  465: OTGFS_DIEPTSIZ7   0x9F0              0x0000 0000
+Page  465: OTGFS_DTXFSTS7    0x9F8              0x0000 0200
+Page  465: OTGFS_DOEPCTL0    0xB00              0x0000 8000
+Page  465: OTGFS_DOEPINT0    0xB08              0x0000 0000
+Page  465: OTGFS_DOEPTSIZ0   0xB10              0x0000 0000
+Page  465: OTGFS_DOEPCTL1    0xB20              0x0000 0000
+Page  465: OTGFS_DOEPINT1    0xB28              0x0000 0000
+Page  465: OTGFS_DOEPTSIZ1   0xB30              0x0000 0000
+Page  465: OTGFS_DOEPCTL2    0xB40              0x0000 0000
+Page  465: OTGFS_DOEPINT2    0xB48              0x0000 0000
+Page  465: OTGFS_DOEPTSIZ2   0xB50              0x0000 0000
+Page  465: OTGFS_DOEPCTL3    0xB60              0x0000 0000
+Page  465: OTGFS_DOEPINT3    0xB68              0x0000 0000
+Page  465: OTGFS_DOEPTSIZ3   0xB70              0x0000 0000
+Page  465: OTGFS_DOEPCTL4    0xB80              0x0000 0000
+Page  465: OTGFS_DOEPINT4    0xB88              0x0000 0000
+Page  465: OTGFS_DOEPTSIZ4   0xB90              0x0000 0000
+Page  466: OTGFS_DOEPCTL5                        0xBA0                             0x0000 0000
+Page  466: OTGFS_DOEPINT5                        0xBA8                             0x0000 0000
+Page  466: OTGFS_DOEPTSIZ5                       0xBB0                             0x0000 0000
+Page  466: OTGFS_DOEPCTL6                        0xBC0                             0x0000 0000
+Page  466: OTGFS_DOEPINT6                        0xBC8                             0x0000 0000
+Page  466: OTGFS_DOEPTSIZ6                       0xBD0                             0x0000 0000
+Page  466: OTGFS_DOEPCTL7                        0xBE0                             0x0000 0000
+Page  466: OTGFS_DOEPINT7                        0xBE8                             0x0000 0000
+Page  466: OTGFS_DOEPTSIZ7                       0xBF0                             0x0000 0000
+Page  466: OTGFS_PCGCCTL                         0xE00                             0x0000 0000
+Page  466: 21.6.3 OTGFS global registers
+Page  466: 21.6.3.1 OTGFS status and control register (OTGFS_GOTGCTL)
+Page  466: 0: OTGFS controller is in A-device mode
+Page  466: 1: OTGFS controller is in B-device mode
+Page  466: 21.6.3.2 OTGFS interrupt status control register (OTGFS_GOTGINT)
+Page  466: 21.6.3.3 OTGFS AHB configuration register (OTGFS_GAHBCFG)
+Page  467: 21.6.3.4 OTGFS USB configuration register (OTGFS_GUSBCFG)
+Page  468: 21.6.3.5 OTGFS reset register (OTGFS_GRSTCTL)
+Page  470: 21.6.3.6 OTGFS interrupt register (OTGFS_GINTSTS)
+Page  472: OTGFS_GOTGINT register to determine the exact source
+Page  472: corresponding status bit in the OTGFS_GOTGINT
+Page  473: 21.6.3.7 OTGFS interrupt mask register (OTGFS_GINTMSK)
+Page  474: 21.6.3.8 OTGFS receive status debug read/OTG status read and POP
+Page  474: registers (OTGFS_GRXSTSR / OTGFS_GRXSTSP)
+Page  475: 21.6.3.9 OTGFS receive FIFO size register (OTGFS_GRXFSIZ)
+Page  475: 21.6.3.10 OTGFS non-periodic Tx FIFO size
+Page  475: (OTGFS_GNPTXFSIZ)/Endpoint 0 Tx FIFO size registers
+Page  475: (OTGFS_DIEPTXF0)
+Page  476: 21.6.3.11 OTGFS non-periodic Tx FIFO size/request queue status
+Page  476: register (OTGFS_GNPTXSTS)
+Page  476: 21.6.3.12 OTGFS general controller configuration register
+Page  476: (OTGFS_GCCFG)
+Page  476: When this bit is set, the OTGFS controller does not
+Page  477: 21.6.3.13 OTGFS controller ID register (OTGFS_GUID)
+Page  477: 21.6.3.14 OTGFS host periodic Tx FIFO size register
+Page  477: (OTGFS_HPTXFSIZ)
+Page  477: 21.6.3.15 OTGFS device IN endpoint Tx FIFO size register
+Page  477: (OTGFS_DIEPTXFn) (x=1…7, where n is the FIFO number)
+Page  477: 21.6.4.1 OTGFS host mode configuration register (OTGFS_HCFG)
+Page  478: 21.6.4.2 OTGFS host frame interval register (OTGFS_HFIR)
+Page  478: 21.6.4.3 OTGFS host frame number/frame time remaining register
+Page  478: (OTGFS_HFNUM)
+Page  479: 21.6.4.4 OTGFS host periodic Tx FIFO/request queue register
+Page  479: (OTGFS_HPTXSTS)
+Page  479: 21.6.4.5 OTGFS host all channels interrupt register (OTGFS_HAINT)
+Page  479: 21.6.4.6 OTGFS host all channels interrupt mask register
+Page  479: (OTGFS_HAINTMSK)
+Page  480: 21.6.4.7 OTGFS host port control and status register ( OTGFS_HPRT)
+Page  481: 21.6.4.8 OTGFS host channelx characteristics register
+Page  481: (OTGFS_HCCHARx) (x = 0...15, where x= channel number)
+Page  482: 21.6.4.9 OTGFS host channelx interrupt register (OTGFS_HCINTx) (x
+Page  482: clear the corresponding bit in this register to clear the corresponding bits in the OTGFS_HAIN and
+Page  482: OTGFS_GINTSTS registers.
+Page  483: 21.6.4.10 OTGFS host channelx interrupt mask register
+Page  483: (OTGFS_HCINTMSKx) (x = 0...15, where x= channel number)
+Page  483: 21.6.4.11 OTGFS host channelx transfer size register
+Page  483: (OTGFS_HCTSIZx) (x = 0...15, where x= channel number)
+Page  484: 21.6.5.1 OTGFS device configure register (OTGFS_DCFG)
+Page  484: 21.6.5.2 OTGFS device control register (OTGFS_DCTL)
+Page  485: The application uses this bit to indicate the OTGFS
+Page  486: 21.6.5.3 OTGFS device status register (OTGFS_DSTS)
+Page  486: This register indicates the status of the controller related to OTGFS events. It must be read on interrupt
+Page  486: events from the device all interrupts register (OTGFS_DAINT).
+Page  486: 21.6.5.4 OTGFS device OTGFSIN endpoint common interrupt mask
+Page  486: register (OTGFS_DIEPMSK)
+Page  486: an IN endpoint interrupt. The IN endpoint interrupt for a specific status in the OTGFS_DIEPINTx
+Page  486: register can be masked by writing to the corresponding bit in the OTGFS_DIEPMSK register. Status
+Page  487: 21.6.5.5 OTGFS device OUT endpoint common interrupt mask register
+Page  487: (OTGFS_DOEPMSK)
+Page  487: This register works with each of the OTGFS_DOEPINTx registers for all endpoints to generate an OUT
+Page  487: endpoint interrupt. Each of the bits in the OTGFS_DOEPINTx registers can be masked by writing to the
+Page  488: 21.6.5.6 OTGFS device all endpoints interrupt mask register
+Page  488: (OTGFS_DAINT)
+Page  488: 21.6.5.7 OTGFS all endpoints interrupt mask register
+Page  488: (OTGFS_DAINTMSK)
+Page  488: 21.6.5.8 OTGFS device IN endpoint FIFO empty interrupt mask
+Page  488: register (OTGFS_DIEPEMPMSK)
+Page  488: This register works with the TXFE_OTGFS_DIEPINTx register to generate an interrupt.
+Page  488: 21.6.5.9 OTGFS device control IN endpoint 0 control register
+Page  488: (OTGFS_DIEPCTL0)
+Page  490: 21.6.5.10 OTGFS device IN endpoint-x control register
+Page  490: (OTGFS_DIEPCTLx) (x=x=1…7, where x is endpoint number)
+Page  492: 21.6.5.11 OTGFS device control OUT endpoint 0 control register
+Page  492: (OTGFS_DOEPCTL0)
+Page  493: 21.6.5.12 OTGFS device control OUT endpoint-x control register
+Page  493: (OTGFS_DOEPCTLx) (x= x=1…7, where x if endpoint number)
+Page  495: 21.6.5.13 OTGFS device IN endpoint-x interrupt register
+Page  495: (OTGFS_DIEPINTx) (x=0…7, where x if endpoint number)
+Page  495: Figure 21-2 When the IEPINT bit of the OTGFS_GINTSTS register is set, the application must first read
+Page  495: the OTGFS_DAINT register to get the exact endpoint number in which the event occurs, before reading
+Page  495: corresponding bits in the OTGFS_DAINT and OTGFS_GINTST registers.
+Page  495: 21.6.5.14 OTGFS device OUT endpoint-x interrupt register
+Page  495: (OTGFS_DOEPINTx) (x=0…7, where x if endpoint number)
+Page  495: in Figure 21-2. When the OEPINT bit of the OTGFS_GINTSTS register is set, the application must first
+Page  495: read the OTGFS_DAINT register to get the exact endpoint number in which the event occurs, before
+Page  495: clear the corresponding bits in the OTGFS_DAINT and OTGFS_GINTST registers.
+Page  496: 21.6.5.15 OTGFS device IN endpoint 0 transfer size register
+Page  496: (OTGFS_DIEPTSIZ0)
+Page  496: 21.6.5.16 OTGFS device OUT endpoint 0 transfer size register
+Page  496: (OTGFS_DOEPTSIZ0)
+Page  497: 21.6.5.17 OTGFS device IN endpoint-x transfer size register
+Page  497: (OTGFS_DIEPTSIZx) (x=1…7, where x is endpoint number)
+Page  497: 21.6.5.18 OTGFS device IN endpoint transmit FIFO status register
+Page  497: (OTGFS_DTXFSTSx) (x=1…7, where x is endpoint number)
+Page  498: 21.6.5.19 OTGFS device OUT endpoint-x transfer size register
+Page  498: (OTGFS_DOEPTSIZx) (x=1…7, where x is endpoint number)
+Page  498: 21.6.6.1 OTGFS power and clock gating control register
+Page  498: (OTGFS_PCGCCTL)

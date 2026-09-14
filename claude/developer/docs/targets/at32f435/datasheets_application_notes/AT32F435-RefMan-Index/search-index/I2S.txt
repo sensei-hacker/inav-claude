@@ -1,0 +1,224 @@
+Keyword: I2S
+Occurrences: 220
+================================================================================
+
+Page    1: − Up to 2 x QSPI interfaces for external SPI Flash or           − Up to 4 x SPIs (36 Mbit/s), all with I2S interface
+Page    1: SPI RAM extension, and memory mapping mode                      multiplexed, I2S2/ I2S3 support full-duplex
+Page   10: 13.3.5 I2S_CLK controller ..................................................................... 242
+Page   11: 13.4.8 SPI_I2S register (SPI_I2SCTRL) ................................................. 250
+Page   11: 13.4.9 SPI_I2S prescaler register (SPI_I2SCLKP) .................................. 251
+Page   33: Figure 13-16 I2S block diagram ................................................................................................................. 238
+Page   33: Figure 13-17 I2S full-duplex structure ........................................................................................................ 239
+Page   33: Figure 13-18 I2S slave device transmission .............................................................................................. 240
+Page   33: Figure 13-19 I2S slave device reception .................................................................................................... 240
+Page   33: Figure 13-20 I2S master device transmission............................................................................................ 240
+Page   33: Figure 13-21 I2S master device reception ................................................................................................. 241
+Page   34: Figure 13-24 I2S interrupts......................................................................................................................... 246
+Page   45: SPI2 / I S2                                                                                                                                   SPI1 / I2S1
+Page   45: SPI3 / I2S3                                                                                                                                   USART1/6
+Page   45: USART2/3                                             ERTC                                                                                 SPI4 / I2S4
+Page   45: I2S2/3ext
+Page   51: 36   43             SPI2_I2S2EXT           SPI2 and IS2EXT global interrupt       0x0000_00D0
+Page   52: 51   58             SPI3_I2S3EXT          SPI3 and I2S3EXT global interrupt            0x0000_010C
+Page   61: 0x4001 7C00 - 0x4001 7FFF       I2S3EXT
+Page   61: 0x4001 7800 - 0x4001 7BFF       I2S2EXT
+Page   61: 0x4001 3400 - 0x4001 37FF       SPI4/I2S4
+Page   61: 0x4001 3000 - 0x4001 33FF       SPI1/I2S1
+Page   62: 0x4000 3C00 - 0x4000 3FFF       SPI3/I2S3
+Page   62: 0x4000 3800 - 0x4000 3BFF       SPI2/I2S2
+Page  124: I2S4_SD
+Page  124: PA3                TMR2_CH4    TMR5_CH4   TMR9_CH2                I2S2_MCK                USART2_RX
+Page  124: I2S1_WS     I2S3_WS
+Page  124: TMR2_EXT                                       I2S1_CK
+Page  124: PA6                TMR1_BRK    TMR3_CH1   TMR8_BRK                SPI1_MISO   I2S2_MCK    USART3_CTS
+Page  124: I2S1_SD
+Page  124: I2S2_CK
+Page  124: PA10               TMR1_CH3                                                   I2S4_MCK    USART1_RX
+Page  124: I2S2_SD
+Page  124: I2S2_WS
+Page  124: SWCLK                                                                I2S3_SD
+Page  124: TMR2_EXT                                       I2S1_WS     I2S3_WS
+Page  126: PB0                TMR1_CH2C   TMR3_CH3     TMR8_CH2C               I2S1_MCK    USART2_RX
+Page  126: I2S3_SD
+Page  126: I2S2_CK
+Page  126: I2S3_SD
+Page  126: I2S1_CK     I2S3_CK
+Page  126: PB4    JNTRST                  TMR3_CH1                 I2C3_SDA    SPI1_MISO   SPI3_MISO    I2S3_SDEXT
+Page  126: I2S1_SD     I2S3_SD
+Page  126: PB6                            TMR4_CH1                 I2C1_SCL    I2S1_MCK
+Page  126: I2S4_WS
+Page  126: I2S4_CK
+Page  126: I2S2_WS     I2S4_SD
+Page  126: I2S2_CK
+Page  126: I2S3_MCK     USART3_TX
+Page  126: I2S2_WS     I2S4_WS      I2S3_CK
+Page  126: I2S2_CK     I2S4_CK
+Page  126: PB14               TMR1_CH2C                TMR8_CH2C   I2C3_SDA    SPI2_MISO   I2S2_SDEXT   USART3_RTS_DE
+Page  126: I2S2_SD
+Page  128: I2S3_SDEXT                I2S2_SDEXT
+Page  128: PC2                     TMR20_CH2                         SPI2_MISO    I2S2_SDEXT
+Page  128: PC3                                                       I2S2_SDEXT
+Page  128: I2S1_MCK                  USART3_TX
+Page  128: I2C1_SCL    I2S2_MCK
+Page  128: I2S2_CK
+Page  128: I2S3_MCK
+Page  128: I2S4_MCK     TMR20_CH3    UART8_TX
+Page  128: I2S3_CK
+Page  128: PC11                    TMR5_CH3                          I2S3_SDEXT   SPI3_MISO    USART3_RX
+Page  128: I2S3_SDEXT
+Page  130: I2S3_SDEXT   I2S2_WS
+Page  130: PD1                                                                      I2S2_CK      I2S2_WS
+Page  130: PD3                                                         I2S2_CK
+Page  130: PD4                                                                      I2S2_SDEXT
+Page  130: PD6                                                         I2S3_SDEXT
+Page  132: T                               I2S4_CK
+Page  132: 1                    2                               I2S4_WS
+Page  132: 4         2                     I2S4_SDEXT
+Page  132: I2S4_WS
+Page  132: I2S1_WS    I2S4_CK
+Page  132: I2S1_CK
+Page  132: O          I2S4_SDEXT
+Page  132: I2S1_SDE
+Page  136: I2S1_SDEXT
+Page  136: I2S4_CK
+Page  136: I2S4_SDEXT
+Page  136: I2S4_WS
+Page  154: I2S2_EXT   TMR8                                   AHB             Arbiter
+Page  154: I2S3_EXT   TMR20                                  Slave
+Page  158: I2S2_EXT TMR8
+Page  158: I2S3_EXT TMR20                                                                 REQID                                 2          chx_mux_req
+Page  159: 14          SPI3_RX       46        TMR1_OVERFLOW 78             reserved       110     I2S2_EXT_RX
+Page  159: 15          SPI3_TX       47        TMR1_TRIG          79        reserved       111     I2S2_EXT_TX
+Page  159: 16          I2C1_RX       48        TMR1_HALL          80        reserved       112     I2S3_EXT_RX
+Page  159: 17          I2C1_TX       49        TMR8_CH1           81        reserved       113     I2S3_EXT_TX
+Page  227: The SPI interface supports either the SPI protocol or the I2S protocol, depending on software
+Page  238: Note: Some of SPI1/I2S1 and SPI3/I2S3 are shared with JTAG pins (SPIx_CS/I2Sx_WS shared
+Page  238: with JTDI, SPIx_SCK/I2Sx_CK with JTDO), so these pins are not controlled by IO
+Page  238: SPIx/I2Sx, the JTAG should be disabled (during debugging) and switched to SWD
+Page  238: The I2S can be configured by software as master reception/transmission, and slave
+Page  238: A single I2S supports half-duplex. However, it can work with two additional instantiated I2S modules
+Page  238: (I2S2EXT and I2S3EXT) to achieve full-duplex mode. In other words, combining the I2S2 with the
+Page  238: I2S2EXT enables the I2S2 to support full-duplex mode. This is true for the I2S3 through the combination
+Page  238: of the I2S3 with the I2S3EXT. Refer to I2S full-duplex section for more information.
+Page  238: Figure 13-18 I2S block diagram
+Page  238: I2SDBN
+Page  238: I2SCBN
+Page  238: I2SCLKPOL
+Page  238: I2SDIV[9:0]
+Page  238: CK                                           I2SMCLKOE
+Page  238: I2S_CLK controller              I2SODD                        Communication controller
+Page  239: Main features when the SPI is used as I2S:
+Page  239: ─ I2S Philips standard
+Page  239:  I2S full-duplex
+Page  239: Two extra I2S modules (I2S2EXT and I2S3EXT) are used to support I2S full-duplex mode. Combine
+Page  239: the I2S2 with the I2S2EXT, and I2S3 with I2S3EXT to support full-duplex mode.
+Page  239: Note: I2S2EXT and I2S3EXT only used for I2S full-duplex mode.
+Page  239: Figure 13-19 I2S full-duplex structure
+Page  239: SPI/I2S                 SPIx_MOSI/I2Sx_SD(in/out)
+Page  239: I2Sx_SCK
+Page  239: I2Sx_WS
+Page  239: I2SxEXT                  I2Sx_SDext(in/out)
+Page  239: I2Sx can be used as master, where x should be 2 or 3
+Page  239:  In half-duplex mode, only I2Sx can output SCK and WS
+Page  239:  In full-duplex mode, only I2Sx can output SCK and WS
+Page  239: I2SxEXT is only used for full-duplex mode, and I2SxEXT only for slave mode
+Page  239: Both the I2Sx and I2SxEXT can be configured as transmit or receive mode.
+Page  239: The SPI, used as I2S selector, offers multiple operating modes for selection, namely, slave device
+Page  239: Set the I2SMSEL bit, and OPERSEL[1:0] =00, the I2S will work in slave device transmission mode.
+Page  240: Figure 13-20 I2S slave device transmission
+Page  240: I2S master                    I2S slave
+Page  240: Set the I2SMSEL bit, and OPERSEL[1:0]=01, the I2S will work in slave device reception mode.
+Page  240: Figure 13-21 I2S slave device reception
+Page  240: I2S master                     I2S slave
+Page  240: Set the I2SMSEL bit, and OPERSEL[1:0]=10, the I2S will work in master device transmission mode.
+Page  240: Figure 13-22 I2S master device transmission
+Page  240: I2S master                       I2S slave
+Page  240: Set the I2SMSEL bit, and OPERSEL[1: 0]=11, the I2S will work in master device reception mode.
+Page  241: Figure 13-23 I2S master device reception
+Page  241: I2S master                         I2S slave
+Page  241: While being used as I2S, the SPI supports multiple audio protocols. The user can control the audio
+Page  241:  Select data bits by setting the I2SDBN bit
+Page  241: I2SDBN=00: 16 bits
+Page  241: I2SDBN =01: 24 bits
+Page  241: I2SDBN =10: 32 bits
+Page  241:  Select channel bits by setting the I2SCBN bit
+Page  241: I2SCBN =0: 16 bits
+Page  241: I2SCBN =1: 32 bits
+Page  242: 13.3.5 I2S_CLK controller
+Page  242: mode, the communication clock is provided by master, and is input to the SPI via IO. In all, the I2S_SCK
+Page  242: controller is used for the generation and distribution of I2S_SCK, with the configuration procedure
+Page  242: When used as I2S master, the SPI can provide communication clock (CK) and main peripheral clock
+Page  242: the MCK determined by I2SDIV and I2SODD. The calculation formula is seen in Figure 13-24.
+Page  242: taken into account. When the main clock is needed, the CK should be divided by 8 (I2SCBN=0) or 4
+Page  242: (I2SCBN=1), then divided again by the same prescaler as that of the MCK, that is the final
+Page  242: I2SDIV and I2SODD, shown in Figure 13-24.
+Page  242: (2xI2SDIV[9:0]+I
+Page  242: 2SODD)                                   I2SMCLKOE
+Page  242: ~I2SCBN                          0
+Page  242: SCLK                 Divided by 8        (2xI2SDIV[9:0]+I
+Page  242: I2SCBN
+Page  242: Divided by                        I2SMCLKOE
+Page  242: Divided by 4        (2xI2SDIV[9:0]+I
+Page  242: Apart from the above-mentioned configuration, the following table lists the values of I2SDIV and I2SODD
+Page  242: the I2SDIV and I2SODD.
+Page  243: Fs       I2S                                  I2S
+Page  243: (MHz)     K                       I2S_ODD   RealFs     Error           I2S_ODD   RealFs     Error
+Page  244: The SPI supports write and read operations with DMA. Whether used as SPI or I2S, read/write request
+Page  245: Whether being used as SPI or I2S, there is no difference for CPU. The SPI (in whatever mode) shares
+Page  245:  CRC check is not available on the I2S. Any operation linked to CRC, including CCERR flag and
+Page  245:  I2S protocol needs decode the current channel status. The ACS bit is used to judge whether the
+Page  245:  Pay more attention to the I2S disable operation under different configurations, shown as follows:
+Page  245: ─ I2SDBN=00, I2SCBN=1, STDSLE=10: wait for the second-to-last RDBF=1 and 17 CK periods
+Page  245: before disabling the I2S.
+Page  245: ─ I2SDBN=00, I2SCBN=1, STDSLE=00 or STDSLE=01 or STDSLE=11: wait for the last RDBF=1
+Page  245: and one CK period before the I2S.
+Page  245: ─ I2SDBN, I2SCBN,STDSLE combination: wait for the second-to-last RDBF=1 and one CK period
+Page  245: before disabling the I2S.
+Page  245: I2S transmitter configuration procedure:
+Page  245:  Configure I2S_SCK controller
+Page  245:  Set the I2SEN bit to enable I2S
+Page  245:  Follow above steps to configure the I2SxEXT (For I2S full-duplex mode )
+Page  245: I2S receiver configuration procedure:
+Page  245:  Configure I2S_SCK controller
+Page  245:  Set the I2SEN bit to enable I2S
+Page  245:  Follow above steps to configure the I2SxEXT (For I2S full-duplex mode )
+Page  245: I2S can address four different audio standards: Philips standard, the most significant byte (left-aligned)
+Page  246: Figure 13-26 I2S interrupts
+Page  246: I2S中断
+Page  246: The I2S needs three pins for transfer operation, namely, the SD, WS and CK. The MCLK pin is also
+Page  247: SPI_I2SCTRL                    0x1C                              0x0000
+Page  247: SPI_I2SCLKP                    0x20                              0x0002
+Page  248: Note: The SPI_CTRL1 register must be 0 in I2S mode.
+Page  248: Note: This mode is not used in I2S mode. It must be 0 in
+Page  249: I2S mode.
+Page  249: Note: This bit is only used in I2S mode.
+Page  249: Note: This bit is only used in I2S mode.
+Page  250: 13.4.8 SPI_I2S register (SPI_I2SCTRL)
+Page  250: I2S mode select
+Page  250: Bit 11       I2SMSEL    0x0             rw       0: SPI mode
+Page  250: 1: I2S mode
+Page  250: I2S enable
+Page  250: Bit 10       I2SEN      0x0             rw       0: Disabled
+Page  250: I2S operation mode select
+Page  251: I2S standard select
+Page  251: I2S clock polarity
+Page  251: Bit 3        I2SCLKPOL   0x0             rw       state.
+Page  251: I2S data bit num
+Page  251: Bit 2: 1     I2SDBN      0x0             rw       01: 24-bit data length
+Page  251: I2S channel bit num
+Page  251: This bit can be configured only when the I2S is set to 16-
+Page  251: Bit 0        I2SCBN      0x0             rw       bit data; otherwise, it is fixed to 32-bit by hardware.
+Page  251: 13.4.9 SPI_I2S prescaler register (SPI_I2SCLKP)
+Page  251: I2S Master clock output enable
+Page  251: Bit 9        I2SMCLKOE   0x0             rw       0: Disabled
+Page  251: Odd factor for I2S division
+Page  251: Bit 8        I2SODD      0x0             rw       0: Actual divider factor =I2SDIV*2
+Page  251: 1: Actual divider factor =(I2SDIV*2)+1
+Page  251: I2S division
+Page  251: I2SDIV      0x02            rw       It is not allowed to configure I2SDIV[9: 0]=0 or I2SDIV[9:
+Page  693: I2S2_EXT TMR8
+Page  693: I2S3_EXT TMR20                                                                      REQID                                 2          chx_mux_req
+Page  693: 14          SPI3_RX           46             TMR1_OVERFLOW 78                                    reserved                     110                I2S2_EXT_RX
+Page  693: 15          SPI3_TX           47             TMR1_TRIG                            79             reserved                     111                I2S2_EXT_TX
+Page  693: 16          I2C1_RX           48             TMR1_HALL                            80             reserved                     112                I2S3_EXT_RX
+Page  693: 17          I2C1_TX           49             TMR8_CH1                             81             reserved                     113                I2S3_EXT_TX

@@ -1,0 +1,7 @@
+Keyword: comparator
+Occurrences: 3
+================================================================================
+
+Page  266: The TMR output consists of a comparator and an output controller. It is used to program the period, duty
+Page  290: The TMR output consists of a comparator and an output controller. It is used to program the period, duty
+Page  314: The TMR output consists of a comparator and an output controller. It is used to program the period, duty

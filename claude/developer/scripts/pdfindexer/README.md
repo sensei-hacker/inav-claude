@@ -303,6 +303,17 @@ project/
 - **Use meaningful keywords** — choose terms you'll actually look up
 - **For one-off searches** on non-indexed terms, `pdfgrep -n "term" document.pdf` is faster than `pdfindexer.py search`
 - **Page numbers** in index output make it easy to reference the original PDF
+- **Extracting a borderless per-row/per-column table (not just keyword search)?**
+  Don't reconstruct it from `pdftotext -layout` — a table with multi-line wrapped
+  cells commonly renders a cell's first text line *above* the row label it belongs
+  to (confirmed while extracting the AT32F435 Reference Manual's per-pin IOMUX
+  tables), silently misattributing data to the wrong row. Use `pdfplumber.extract_words()`
+  instead: get each word's real `(x0, top)` position, cluster words into row anchors
+  by whichever label word (e.g. a pin name) sits nearest vertically, and assign
+  columns by nearest header `x0`. See `claude/developer/docs/targets/at32f435/parse_refman_iomux.py`
+  for a working example, including guards for trailing note/heading text bleeding
+  into the last row (filter cell tokens to only accept plausible-looking values,
+  and never let a row label go "backwards" except at a genuine table/header boundary).
 
 ## See Also
 

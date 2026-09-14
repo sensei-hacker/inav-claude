@@ -1,0 +1,13 @@
+Keyword: IRTMR
+Occurrences: 9
+================================================================================
+
+Page    1: − Power-on reset (POR)/ low voltage reset (LVR), and            − Infrared transmitter (IRTMR)
+Page   23: 23       Infrared timer (IRTMR) ................................................................ 505
+Page   37: Figure 23-1 IRTMR block diagram ............................................................................................................ 505
+Page   44: 16-bit and 32-bit timers, Infrared Transmitter (IRTMR), DMA controller, EDMA controller, ERTC,
+Page  143:  Manage IRTMR/EMAC GPIO configurations
+Page  505: 23 Infrared timer (IRTMR)
+Page  505: The IRTMR (Infrared Timer) is used to generate the IR_OUT signal that drives the infrared LED so as to
+Page  505: Figure 23-1 IRTMR block diagram
+Page  716: 5. Updated the descriptions of Section 23 Infrared timer (IRTMR)

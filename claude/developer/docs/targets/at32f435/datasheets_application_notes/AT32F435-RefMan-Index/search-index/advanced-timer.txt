@@ -1,0 +1,5 @@
+Keyword: advanced timer
+Occurrences: 1
+================================================================================
+
+Page  252: AT32F435 timers include basic timers, general-purpose timers, and advanced timers.

@@ -1,0 +1,137 @@
+Keyword: CRM
+Occurrences: 133
+================================================================================
+
+Page    1:    Clock and reset management (CRM)                               CRC Calculation Unit
+Page    2: 4        Clock and reset manage (CRM) ..................................................... 70
+Page    3: 4.3   CRM registers ............................................................................. 73
+Page    3: 4.3.1 Clock control register (CRM_CTRL) .............................................. 74
+Page    3: 4.3.2 PLL clock configuration register (CRM_PLLCFG) .......................... 75
+Page    3: 4.3.3 Clock configuration register (CRM_CFG) ...................................... 76
+Page    3: 4.3.4 Clock interrupt register (CRM_CLKINT) ........................................ 78
+Page    3: 4.3.5 APB peripheral reset register 1 (CRM_APBRST1) ......................... 79
+Page    3: 4.3.6 APB peripheral reset register 2 (CRM_APBRST2) ......................... 80
+Page    3: 4.3.7 APB peripheral reset register 3 (CRM_APBRST3) ......................... 80
+Page    3: 4.3.8 APB1 peripheral reset register (CRM_APB1RST) .......................... 81
+Page    3: 4.3.9 APB2 peripheral reset register (CRM_APB2RST) .......................... 82
+Page    3: 4.3.10 APB peripheral clock enable register 1 (CRM_AHBEN1) ................ 83
+Page    3: 4.3.11 APB peripheral clock enable register 2 (CRM_AHBEN2) ................ 84
+Page    3: 4.3.12 APB1 peripheral clock enable register 3 (CRM_AHBEN3) .............. 84
+Page    3: 4.3.13 APB1 peripheral clock enable register (CRM_APB1EN) ................. 85
+Page    3: 4.3.14 APB2 peripheral clock enable register (CRM_AHB2EN) ................. 86
+Page    3: (CRM_AHBLPEN1) ................................................................................ 87
+Page    3: (CRM_AHBLPEN2) ................................................................................ 89
+Page    3: (CRM_AHBLPEN3) ................................................................................ 89
+Page    3: (CRM_AHB1LPEN) ................................................................................ 89
+Page    4: (CRM_AHB2LPEN) ................................................................................ 91
+Page    4: 4.3.20 Battery powered domain control register (CRM_BPD C).................. 92
+Page    4: 4.3.21 Control/status register (CRM_CTRLSTS) ...................................... 92
+Page    4: 4.3.22 Additional register 1 (CRM_MISC1) .............................................. 93
+Page    4: 4.3.23 Additional register 2 (CRM_MISC2) .............................................. 94
+Page   40: Table 4-1 CRM register map and reset values ............................................................................................ 73
+Page   45: NVIC                                                                                           CRC                                 CRM                HCLK
+Page   50: -2         Fixed      NMI                       CRM clock fail detector (CFD) is linked   0x0000_0008
+Page   50: Configu                              Clock and     Reset      manage   (CRM)
+Page   50: 5       12                    CRM                                                                 0x0000_0054
+Page   61: 0x4002 3800 - 0x4002 3BFF       Clock and reset manage (CRM)
+Page   63: BPR              CRM BPDC
+Page   70: 4       Clock and reset manage (CRM)
+Page   70: EMACRMIICLK                  1
+Page   73: registers to their reset values except the clock control/status register (CRM_CTRLSTS) and the battery
+Page   73: register (CRM_BPDC)
+Page   73: 4.3 CRM registers
+Page   73: Table 4-1 CRM register map and reset values
+Page   73: CRM_CTRL                          0x000                        0x0000 XX83
+Page   73: CRM_PLLCFG                        0x004                        0x0003 3002
+Page   73: CRM_CFG                           0x008                        0x0000 0000
+Page   73: CRM_CLKINT                        0x00C                        0x0000 0000
+Page   73: CRM_AHBRST1                       0x010                        0x0000 0000
+Page   73: CRM_AHBRST2                       0x014                        0x0000 0000
+Page   73: CRM_AHBRST3                       0x018                        0x0000 0000
+Page   73: CRM_APB1RST                       0x020                        0x0000 0000
+Page   73: CRM_APB2RST                       0x024                        0x0000 0000
+Page   73: CRM_AHBEN1                        0x030                        0x0000 0000
+Page   73: CRM_AHBEN2                        0x034                        0x0000 0000
+Page   73: CRM_AHBEN3                        0x038                        0x0000 0000
+Page   73: CRM_APB1EN                        0x040                        0x0000 0000
+Page   73: CRM_APB2EN                        0x044                        0x0000 0000
+Page   73: CRM_AHBLPEN1                      0x050                        0x3F63 90FF
+Page   74: CRM_AHBLPEN2                   0x054                           0x0000 8081
+Page   74: CRM_AHBLPEN3                   0x058                           0x0000 C003
+Page   74: CRM_APB1LPEN                   0x060                           0xF6FE E9FF
+Page   74: CRM_APB2LPEN                   0x064                           0x2017 7733
+Page   74: CRM_BPDC                       0x070                           0x0000 0000
+Page   74: CRM_CTRLSTS                    0x074                           0x0C00 0000
+Page   74: CRM_MISC1                      0x0A0                           0x0000 0000
+Page   74: CRM_MISC2                      0x0A4                           0x0000 000D
+Page   74: 4.3.1         Clock control register (CRM_CTRL)
+Page   75: 4.3.2           PLL clock configuration register (CRM_PLLCFG)
+Page   76: 4.3.3         Clock configuration register (CRM_CFG)
+Page   76: CLKOUT2_SEL2 bit in the CRM_MISC1 register
+Page   78: 4.3.4           Clock interrupt register (CRM_CLKINT)
+Page   79: 4.3.5           APB peripheral reset register 1 (CRM_APBRST1)
+Page   80: 4.3.6             APB peripheral reset register 2 (CRM_APBRST2)
+Page   80: 4.3.7             APB peripheral reset register 3 (CRM_APBRST3)
+Page   81: 4.3.8           APB1 peripheral reset register (CRM_APB1RST)
+Page   82: 4.3.9           APB2 peripheral reset register (CRM_APB2RST)
+Page   83: 4.3.10 APB peripheral clock enable register 1 (CRM_AHBEN1)
+Page   84: 4.3.11 APB peripheral clock enable register 2 (CRM_AHBEN2)
+Page   84: 4.3.12 APB1 peripheral clock enable register 3 (CRM_AHBEN3)
+Page   85: 4.3.13 APB1 peripheral clock enable register (CRM_APB1EN)
+Page   86: 4.3.14 APB2 peripheral clock enable register (CRM_AHB2EN)
+Page   87: (CRM_AHBLPEN1)
+Page   89: (CRM_AHBLPEN2)
+Page   89: (CRM_AHBLPEN3)
+Page   89: (CRM_AHB1LPEN)
+Page   91: (CRM_AHB2LPEN)
+Page   92: 4.3.20 Battery powered domain control register (CRM_BPDC)
+Page   92: register CRM_BDC) are in the battery powered domain. As a result, these bits are write protected after
+Page   92: 11: Divided HEXT (with the ERTC_DIV bit in the CRM_CFG)
+Page   92: 4.3.21 Control/status register (CRM_CTRLSTS)
+Page   93: 4.3.22 Additional register 1 (CRM_MISC1)
+Page   94: 4.3.23 Additional register 2 (CRM_MISC2)
+Page  138:  For USB OTGFS_ID pin, configure corresponding IOMUX and enable corresponding clocks in CRM,
+Page  138: PC14        CRM_BPDC[0]=1                  Once enabled, PC14 pin acts as LEXT channel.
+Page  138: CRM_BPDC[0]=1 &
+Page  138: CRM_BPDC[2]=0
+Page  138: PH0         CRM_CTRL[16]=1                 Once enabled, PH0 pin acts as HEXT channel.
+Page  138: CRM_CTRL[16]=1&
+Page  138: CRM_CTRL[18]=0
+Page  231:  Clock prescaler selection: Select the desired PCLK frequency by setting the CRM bit. Select the
+Page  253: TMRxCLK from CRM
+Page  257: CK_INT(from CRM)
+Page  258: CK_INT(form CRM)
+Page  283: CK_INT(from CRM)
+Page  284: CK_INT(from CRM)                  DIV counter       CNT counter                                    Overflow event
+Page  284: CK_INT(form CRM)
+Page  304: CK_INT(from CRM)
+Page  305: CK_INT(form CRM)
+Page  342: clock (By setting the ERTCSEL[1: 0] in the CRM_BPDC register). The HEXT divider value is configured
+Page  342: through the ERTC_DIV[4: 0] bit in the CRM_CFG register.
+Page  342: 1. Enable power interface clock by setting PWCEN=1 in the CRM_APB1EN register.
+Page  361: Set the ADCxEN bit in the CRM_APB2EN register to enable ADC clocks: PCLK2 and ADCCLK.
+Page  425: The PLL output frequency must ensure that the USBDIV (see CRM_CFG register) can be divided
+Page  425: When the USB module is enabled in the CRM, PA11 and PA12 can be multiplexed as DP/DM; PA8 can
+Page  425: Enable OTG1 in CRM, and configure PA8 multiplexed function register
+Page  425: Enable OTG1 in CRM, configure PA10 as multiplexed function mode
+Page  425: Enable OTG1 in CRM, configure PA11 multiplexed function register
+Page  425: Enable OTG1 in CRM, configure PA12 multiplexed function register
+Page  425: Enable OTG1 in CRM, and configure PA13 multiplexed function
+Page  425: Enable OTG2 in CRM, and configure PA4 multiplexed function
+Page  425: Enable OTG2 in CRM, configure PB12 as multiplexed function mode
+Page  425: Enable OTG2 in CRM, configure PB14 multiplexed function register
+Page  425: OTGFS2_D+            PB15          Enable OTG2 in CRM, configure PB15 multiplexed function register
+Page  426: Enable OTG2 in CRM, and configure PC9 multiplexed function
+Page  499: The signals of the module are connected to the CRM and HICK inside the microcontroller instead of
+Page  500:  CRM_HICKCAL: the HICKCAL bit in the CRM module. This signal is used to calibrate the HICK
+Page  500: in bypass mode. The value is defined by the HICKCAL[7: 0] in the CRM_CTRL register.
+Page  500:  CRM_HICKTRIM: the HICKTRIM bit in the CRM module. This signal is used to calibrate the
+Page  500: HICK in bypass mode. The value is defined by the HICKTRIM[5: 0] in the CRM_CTRL register.
+Page  500: can be adjusted by 20kHz (design value) each time when the CRM_HICKTRIM value changes. In
+Page  500: other words, the HICK output frequency will increase by 20kHz each time the CRM_HICKTRIM value
+Page  500: CRM_HICKTRIM value is decremented by one.
+Page  500: CRM_HICKCAL                                                               0
+Page  500: CRM_HICKTRIM                                                              0
+Page  584: pin. Refer to CRM section for more information.
+Page  613: CRM_MISC2 register.
+Page  645: (bit 15 in the CRM_MISC2 register)

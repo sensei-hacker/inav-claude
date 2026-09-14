@@ -1,0 +1,5 @@
+Keyword: DFU
+Occurrences: 1
+================================================================================
+
+Page   96: uses USART1, USART2 or USB (DFU) serial interface for ISP programming.

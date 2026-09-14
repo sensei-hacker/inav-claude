@@ -1,0 +1,5 @@
+Keyword: boot mode
+Occurrences: 1
+================================================================================
+
+Page   55: to select another boot mode, even after a system reset. A new boot mode can be selected only after

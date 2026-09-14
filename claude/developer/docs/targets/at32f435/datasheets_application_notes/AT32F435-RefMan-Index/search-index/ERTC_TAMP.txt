@@ -1,0 +1,16 @@
+Keyword: ERTC_TAMP
+Occurrences: 12
+================================================================================
+
+Page   15: 17.4.17 ERTC tamper configuration register (ERTC_TAMP) ................... 355
+Page  138: ERTC_TAMP[17]=1)|
+Page  138: PA0         (ERTC_TAMP[0]=1&               Once enabled, PA0 pin is used as TAMPER2_BPR.
+Page  138: ERTC_TAMP[16]=1)|
+Page  138: (ERTC_TAMP[3]=1)
+Page  138: ERTC_TAMP[17]=0)|
+Page  138: (ERTC_TAMP[0]=1&
+Page  138: ERTC_TAMP[16]=0)
+Page  342: by the system reset. Write access to the ERTC registers (except the ERTC_STS[14: 8], ERTC_TAMP
+Page  343: ERTC_TAMP                   N                    N                                -
+Page  349: ERTC_TAMP                  0x40                                   0x0000 0000
+Page  355: 17.4.17 ERTC tamper configuration register (ERTC_TAMP)

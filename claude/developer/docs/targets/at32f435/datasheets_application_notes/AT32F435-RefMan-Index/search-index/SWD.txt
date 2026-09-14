@@ -1,0 +1,12 @@
+Keyword: SWD
+Occurrences: 8
+================================================================================
+
+Page    1: − SWD and JTAG interfaces
+Page  110: Security library cannot be read or deleted (including ISP/IAP/SWD) but only executed unless code
+Page  124: SWDIO
+Page  238: SPIx/I2Sx, the JTAG should be disabled (during debugging) and switched to SWD
+Page  238: interface, or both the JTAG and SWD are disabled (during normal run)
+Page  711: implemented with two interfaces: serial wire debug (SWD) and JTAG debug port. Trace information is
+Page  711: bus. These codes are accessible using the JTAG debug port or the SWD debug port or by the user
+Page  711: internal pull-up or pull-down feature, NJTRST, JTDI and JTMS/SWDIO with internal pull-up feature, and

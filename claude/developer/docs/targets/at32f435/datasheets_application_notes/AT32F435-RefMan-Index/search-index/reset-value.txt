@@ -1,0 +1,619 @@
+Keyword: reset value
+Occurrences: 615
+================================================================================
+
+Page   40: Table 3-1 PW register map and reset values .............................................................................................. 67
+Page   40: Table 4-1 CRM register map and reset values ............................................................................................ 73
+Page   40: Table 5-8 Flash memory interface—Register map and reset value ........................................................... 111
+Page   40: Table 6-10 GPIO register map and reset values ....................................................................................... 139
+Page   40: Table 7-1 SCFG register map and reset values ........................................................................................ 143
+Page   40: Table 8-1 External interrupt/Event controller register map and reset value .............................................. 152
+Page   40: Table 9-5 DMA register map and reset value ............................................................................................ 161
+Page   40: Table 10-1 CRC register map and reset value .......................................................................................... 172
+Page   40: Table 11-8 I2C register map and reset values ........................................................................................... 200
+Page   41: Table 12-5 USART register map and reset value ...................................................................................... 221
+Page   41: Table 13-2 SPI register map and reset value ............................................................................................ 247
+Page   41: Table 14-2 TMR6 and TMR7— register table and reset value .................................................................. 255
+Page   41: Table 14-5 TMRx register map and reset value ........................................................................................ 272
+Page   41: Table 14-8 TMRx register map and reset value ........................................................................................ 293
+Page   41: Table 14-10 TMRx register map and reset value ...................................................................................... 299
+Page   41: Table 14-14 TMR1 and TMR8 register map and reset value .................................................................... 321
+Page   41: Table 15-2 WWDT register map and reset value ...................................................................................... 336
+Page   41: Table 16-2 WDT register and reset value .................................................................................................. 339
+Page   41: Table 17-1 RTC register map and reset values ......................................................................................... 342
+Page   41: Table 17-4 ERTC register map and reset values ...................................................................................... 348
+Page   41: Table 18-5 ADC register map and reset values ......................................................................................... 374
+Page   41: Table 19-2 DAC register map and reset values ........................................................................................ 395
+Page   41: Table 20-1 CAN register map and reset values ........................................................................................ 410
+Page   41: Table 21-4 OTGFS register map and reset values ................................................................................... 462
+Page   41: Table 22-2 ACC register map and reset values ......................................................................................... 502
+Page   43: Table 26-8 Ethernet register map and its reset values .............................................................................. 614
+Page   43: Table 27-5 DVP register map and reset values ......................................................................................... 661
+Page   43: Table 28-1 SPI register map and reset values .......................................................................................... 676
+Page   43: Table 29-5 BPR register map and reset values ......................................................................................... 696
+Page   43: Table 30-1 DEBUG register address and reset value ................................................................................711
+Page   56: wo                         Software can only write to the bit. Reading it returns its reset value.
+Page   56: Register abbr.                           Base address                          Reset value
+Page   56: Bit          Abbr.                  Reset value      Type        Description
+Page   56: Bit          Abbr.                  Reset value           Type     Description
+Page   56: Bit          Abbr.                  Reset value           Type     Description
+Page   57: Bit         Abbr.                    Reset value     Type    Description
+Page   67: Table 3-1 PWC register map and reset values
+Page   67: Register                       Offset                    Reset value
+Page   68: Bit          Name            Reset value    Type     Description
+Page   68: Bit          Name            Reset value    Type     Description
+Page   69: Bit         Name       Reset value    Type     Description
+Page   73: registers to their reset values except the clock control/status register (CRM_CTRLSTS) and the battery
+Page   73: sets all registers to their reset values except the battery powered domain registers.
+Page   73: Table 4-1 CRM register map and reset values
+Page   73: Register                          Offset                       Reset value
+Page   74: Bit          Name       Reset value    Type      Description
+Page   75: Bit         Name             Reset value    Type       Description
+Page   76: Bit              Name           Reset value    Type     Description
+Page   78: Bit           Name               Reset value        Type       Description
+Page   79: Bit          Name             Reset value      Type        Description
+Page   80: Bit          Name           Reset value     Type        Description
+Page   80: Bit          Name           Reset value     Type        Description
+Page   81: Bit          Name             Reset value    Type     Description
+Page   82: Bit          Name             Reset value    Type     Description
+Page   83: Bit          Name            Reset value     Type        Description
+Page   84: Bit          Name            Reset value    Type      Description
+Page   84: Bit          Name            Reset value    Type      Description
+Page   85: Bit          Name            Reset value     Type      Description
+Page   86: Bit          Name            Reset value     Type      Description
+Page   87: Bit          Name             Reset value    Type     Description
+Page   89: Bit          Name             Reset value    Type     Description
+Page   89: Bit          Name             Reset value    Type     Description
+Page   89: Bit          Name             Reset value    Type     Description
+Page   91: Bit          Name             Reset value    Type     Description
+Page   92: Bit           Name            Reset value   Type      Description
+Page   92: Bit          Name            Reset value    Type      Description
+Page   93: Bit         Name             Reset value   Type      Description
+Page   94: Bit         Name           Reset value   Type      Description
+Page  111: Table 5-8 lists Flash register map and their reset values.
+Page  111: Table 5-8 Flash memory interface—Register map and reset value
+Page  111: Register                         Offset                        Reset value
+Page  112: Bit          Name              Reset value     Type     Description
+Page  112: Bit          Name              Reset value     Type     Description
+Page  112: Bit          Name              Reset value Type         Description
+Page  112: Bit          Name              Reset value     Type     Description
+Page  113: Bit          Name           Reset value     Type     Description
+Page  113: Bit          Name           Reset value     Type     Description
+Page  113: Bit          Name           Reset value     Type     Description
+Page  114: Bit         Name               Reset value     Type     Description
+Page  114: Bit         Name               Reset value     Type     Description
+Page  114: Bit         Name               Reset value     Type     Description
+Page  114: Bit         Name               Reset value     Type     Description
+Page  115: Bit          Name           Reset value     Type     Description
+Page  115: Bit          Name           Reset value     Type     Description
+Page  115: Bit          Name           Reset value     Type     Description
+Page  116: Bit          Name              Reset value     Type     Description
+Page  116: Bit          Name              Reset value     Type     Description
+Page  116: Bit          Name              Reset value     Type     Description
+Page  116: Bit          Name              Reset value     Type     Description
+Page  117: Bit          Name              Reset value     Type     Description
+Page  117: Bit          Name              Reset value     Type     Description
+Page  117: Bit          Name              Reset value     Type     Description
+Page  117: Bit          Name              Reset value     Type     Description
+Page  118: Bit          Name                Reset value     Type     Description
+Page  118: Bit          Name                Reset value     Type     Description
+Page  118: Bit          Name                Reset value     Type     Description
+Page  119: Bit          Name                 Reset value     Type     Description
+Page  139: Table 6-10 lists GPIO register map and their reset values. These peripheral registers must be
+Page  139: Table 6-10 GPIO register map and reset values
+Page  139: Register                        Offset                           Reset value
+Page  139: Reset values: 0xa8000000 for port A, 0x0000 0280 for port B, 0x00000000 for other ports
+Page  139: Bit          Name             Reset value     Type     Description
+Page  139: Bit          Name             Reset value     Type     Description
+Page  140: Reset values: 0x0000 00C0 for port B    0x00000000 for other ports
+Page  140: Bit          Name            Reset value     Type     Description
+Page  140: Reset values: 0x6400 0000 for port A, 0x0000 0100 for port B, 0x0000000 for other ports
+Page  140: Bit          Name            Reset value     Type     Description
+Page  140: Bit          Name            Reset value     Type     Description
+Page  140: Bit          Name            Reset value     Type     Description
+Page  140: Bit          Name            Reset value     Type     Description
+Page  141: Bit          Name         Reset value     Type     Description
+Page  141: Reset value: 0x00000000
+Page  141: Bit          Name         Reset value     Type     Description
+Page  142: Bit          Name       Reset value     Type     Description
+Page  142: Bit          Name       Reset value     Type     Description
+Page  142: Bit          Name       Reset value     Type     Description
+Page  143: Table 7-1 shows SCFG register map and their reset values.
+Page  143: Table 7-1 SCFG register map and reset values
+Page  143: Register                         Offset                            Reset value
+Page  143: Bit          Name              Reset value     Type     Description
+Page  143: 0000. After reset, the reset value of this field is the same
+Page  144: Bit          Name           Reset value     Type     Description
+Page  144: Bit          Name           Reset value     Type     Description
+Page  145: Bit          Name       Reset value     Type     Description
+Page  146: Bit          Name       Reset value     Type     Description
+Page  147: Bit          Name       Reset value     Type     Description
+Page  149: Bit          Name       Reset value     Type     Description
+Page  152: Table 8-1 shows EXINT register map and their reset value.
+Page  152: Table 8-1 External interrupt/Event controller register map and reset value
+Page  152: Register                    Offset                        Reset value
+Page  152: Bit          Name             Reset value     Type     Description
+Page  152: Bit          Name             Reset value     Type     Description
+Page  152: Bit          Name             Reset value     Type     Description
+Page  153: Bit          Name       Reset value     Type     Description
+Page  153: Bit          Name       Reset value     Type     Description
+Page  153: Bit          Name       Reset value     Type     Description
+Page  161: Table 9-5 shows DMA register map and their reset values.
+Page  161: Table 9-5 DMA register map and reset value
+Page  161: Register                           Offset                 Reset value
+Page  162: Bit       Name                Reset value     Type     Description
+Page  164: Bit        Name               Reset value     Type     Description
+Page  166: Bit          Name             Reset value     Type     Description
+Page  167: Bit          Name             Reset value     Type     Description
+Page  167: Bit          Name             Reset value     Type     Description
+Page  167: Bit          Name             Reset value     Type     Description
+Page  167: Bit      Name             Reset value     Type     Description
+Page  167: Bit      Name             Reset value     Type     Description
+Page  168: Bit      Name             Reset value     Type     Description
+Page  169: Bit     Name              Reset value     Type     Description
+Page  169: Bit         Name              Reset value     Type     Description
+Page  169: Bit         Name              Reset value     Type     Description
+Page  170: Bit        Register           Reset value     Type     Description
+Page  172: Table 10-1 CRC register map and reset value
+Page  172: Register                            Offset                            Reset value
+Page  172: Bit            Name               Reset value     Type     Description
+Page  172: Bit            Name               Reset value     Type     Description
+Page  173: Bit         Name        Reset value     Type     Description
+Page  173: Bit         Name        Reset value     Type     Description
+Page  173: Bit         Name        Reset value     Type     Description
+Page  200: Table 11-8 I2C register map and reset values
+Page  200: Register                                Offset                 Reset value
+Page  201: Bit          Name        Reset value     Type     Description
+Page  202: Bit          Name          Reset value     Type     Description
+Page  203: Bit              Name              Reset value     Type     Description
+Page  203: Bit              Name              Reset value     Type     Description
+Page  203: Bit          Name              Reset value     Type     Description
+Page  203: Bit               Name              Reset value     Type     Description
+Page  204: Bit          Name           Reset value     Type      Description
+Page  205: Bit          Name       Reset value       Type   Description
+Page  206: Bit          Name           Reset value     Type     Description
+Page  206: Bit         Name           Reset value     Type     Description
+Page  206: Bit         Name           Reset value     Type     Description
+Page  221: Table 12-6 USART register map and reset value
+Page  221: Register                           Offset                            Reset value
+Page  221: Bit          Name            Reset value      Type     Description
+Page  222: Bit          Name            Reset value     Type     Description
+Page  222: Bit          Name            Reset value     Type     Description
+Page  222: Bit          Name            Reset value     Type     Description
+Page  224: Bit          Name       Reset value     Type     Description
+Page  225: Bit           Name          Reset value     Type     Description
+Page  226: Bit          Name       Reset value     Type     Description
+Page  233: more details. For CPU transfer, attention should be paid to the TDBE bit. The reset value of this bit is 1,
+Page  234: more details. For CPU transfer, attention should be paid to the RDBE bit. The reset value of this bit is 0,
+Page  247: Table 13-2 SPI register map and reset value
+Page  247: Register                       Offset                            Reset value
+Page  247: Bit         Name             Reset value     Type     Description
+Page  248: Bit          Name           Reset value     Type     Description
+Page  249: Bit         Name       Reset value     Type     Description
+Page  250: Bit          Name       Reset value     Type     Description
+Page  250: Bit          Name       Reset value     Type     Description
+Page  250: Bit          Name       Reset value     Type     Description
+Page  250: Bit          Name       Reset value     Type     Description
+Page  250: Bit          Name       Reset value     Type     Description
+Page  251: Bit          Name        Reset value     Type     Description
+Page  255: Table 14-2 TMR6 and TMR7 register map and reset value
+Page  255: Register                            Offset                               Reset value
+Page  255: Bit         Name              Reset value      Type     Description
+Page  256: Bit         Name       Reset value     Type     Description
+Page  256: Bit         Name       Reset value     Type     Description
+Page  256: Bit         Name       Reset value     Type     Description
+Page  256: Bit         Name       Reset value     Type     Description
+Page  256: Bit         Name       Reset value     Type     Description
+Page  257: Bit              Name                                          Reset value                   Type               Description
+Page  257: Bit              Name                                          Reset value                   Type              Description
+Page  272: Table 14-5 TMR2 and TMR 5 register map and reset value
+Page  272: Register                  Offset                             Reset value
+Page  273: Bit          Name              Reset value     Type     Description
+Page  274: Bit          Name       Reset value     Type     Description
+Page  274: Bit          Name       Reset value     Type     Description
+Page  275: Bit        Name       Reset value     Type     Description
+Page  276: Bit          Name       Reset value     Type     Description
+Page  277: Bit          Name       Reset value     Type     Description
+Page  277: Bit          Name       Reset value     Type     Description
+Page  278: Bit          Name     Reset value     Type     Description
+Page  279: Bit          Name      Reset value     Type     Description
+Page  279: Bit          Name      Reset value     Type     Description
+Page  280: Bit          Name                Reset value     Type     Description
+Page  281: Bit          Name        Reset value     Type     Description
+Page  281: Bit          Name        Reset value     Type     Description
+Page  281: Bit          Name        Reset value     Type     Description
+Page  281: Bit          Name        Reset value     Type     Description
+Page  281: Bit          Name        Reset value     Type     Description
+Page  282: Bit          Name        Reset value     Type     Description
+Page  282: Bit          Name        Reset value     Type     Description
+Page  282: Bit          Name        Reset value     Type     Description
+Page  282: Bit          Name        Reset value     Type     Description
+Page  283: Bit              Name                                    Reset value                  Type                Description
+Page  283: Bit              Name                                    Reset value                  Type                Description
+Page  293: Table 14-8 TMR9 and TMR12 register map and reset value
+Page  293: Register                                 Offset                                           Reset value
+Page  293: Bit               Name             Reset value          Type     Description
+Page  294: Bit        Name       Reset value     Type     Description
+Page  294: Bit        Name       Reset value     Type     Description
+Page  295: Bit          Name       Reset value     Type     Description
+Page  295: Bit          Name       Reset value     Type     Description
+Page  296: Bit          Name              Reset value     Type     Description
+Page  297: Bit          Name     Reset value     Type     Description
+Page  298: Bit          Name              Reset value     Type     Description
+Page  298: Bit          Name              Reset value     Type     Description
+Page  298: Bit          Name              Reset value     Type     Description
+Page  298: Bit          Name              Reset value     Type     Description
+Page  298: Bit          Name              Reset value     Type     Description
+Page  299: Bit          Name           Reset value      Type     Description
+Page  299: Table 14-10 TMR10, TMR11, TMR13 and TMR14 register map and reset value
+Page  299: Register                          Offset                               Reset value
+Page  299: Bit          Name           Reset value      Type     Description
+Page  300: Bit          Name       Reset value     Type     Description
+Page  300: Bit          Name       Reset value     Type     Description
+Page  300: Bit          Name       Reset value     Type     Description
+Page  301: Bit        Name                Reset value     Type     Description
+Page  302: Bit         Name       Reset value     Type     Description
+Page  302: Bit         Name       Reset value     Type     Description
+Page  303: Bit         Name              Reset value     Type     Description
+Page  303: Bit         Name              Reset value     Type     Description
+Page  303: Bit         Name              Reset value     Type     Description
+Page  303: Bit         Name              Reset value     Type     Description
+Page  321: Table 14-14 TMR1, TMR8 and TMR20 register map and reset value
+Page  321: Register              Offset                                   Reset value
+Page  321: Bit            Name                Reset value     Type     Description
+Page  322: Bit          Name        Reset value     Type     Description
+Page  323: Bit          Name       Reset value     Type     Description
+Page  324: Bit        Name       Reset value     Type     Description
+Page  325: Bit          Name       Reset value     Type     Description
+Page  326: Bit          Name               Reset value     Type     Description
+Page  326: Bit          Name               Reset value     Type     Description
+Page  327: Bit          Name      Reset value     Type     Description
+Page  328: Bit          Name               Reset value     Type     Description
+Page  329: Bit          Name       Reset value     Type     Description
+Page  329: Bit          Name       Reset value     Type     Description
+Page  331: Bit         Name            Reset value       Type   Description
+Page  331: Bit         Name            Reset value       Type   Description
+Page  331: Bit         Name            Reset value       Type   Description
+Page  331: Bit         Name            Reset value       Type   Description
+Page  331: Bit         Name            Reset value       Type   Description
+Page  332: Bit         Name        Reset value     Type     Description
+Page  332: Bit         Name        Reset value     Type     Description
+Page  332: Bit         Name        Reset value     Type     Description
+Page  332: Bit         Name        Reset value     Type     Description
+Page  333: Bit         Name           Reset value     Type     Description
+Page  334: Bit         Name       Reset value     Type     Description
+Page  334: Bit         Name       Reset value     Type     Description
+Page  334: Bit         Register   Reset value     Type     Description
+Page  336: Table 15-2 WWDT register map and reset value
+Page  336: Register                                  Offset                                     Reset value
+Page  336: Bit           Name                  Reset value            Type    Description
+Page  336: Bit           Name                  Reset value            Type    Description
+Page  337: Bit         Name       Reset value     Type     Description
+Page  339: Table 16-2 WDT register and reset value
+Page  339: Register                                Offset                                       Reset value
+Page  340: Bit          Name         Reset value     Type     Description
+Page  340: Bit          Name         Reset value     Type     Description
+Page  340: Bit          Name         Reset value     Type     Description
+Page  340: Bit          Name         Reset value     Type     Description
+Page  340: Bit          Name         Reset value     Type     Description
+Page  342: Table 17-1 RTC register map and reset values
+Page  346: reset value (0x7F and 0xFF respectively). The clock synchronization cannot be used in conjunction with
+Page  348: Table 17-4 ERTC register map and reset values
+Page  348: Register                           Offset                               Reset value
+Page  349: Bit          Name       Reset value    Type      Description
+Page  349: Bit          Name       Reset value    Type      Description
+Page  349: Bit          Name       Reset value    Type      Description
+Page  351: Bit          Name       Reset value   Type       Description
+Page  352: Bit           Name       Reset value   Type       Description
+Page  352: Bit          Name        Reset value   Type       Description
+Page  352: Bit          Name        Reset value   Type       Description
+Page  353: Bit          Name    Reset value   Type       Description
+Page  353: Bit          Name    Reset value   Type       Description
+Page  354: Bit          Name             Reset value    Type      Description
+Page  354: Bit          Name             Reset value    Type      Description
+Page  354: Bit          Name             Reset value    Type      Description
+Page  354: Bit          Name             Reset value    Type      Description
+Page  355: Bit          Name             Reset value    Type      Description
+Page  355: Bit          Name             Reset value    Type      Description
+Page  355: Bit           Name            Reset value    Type      Description
+Page  355: Bit           Name            Reset value    Type      Description
+Page  357: Bit         Name      Reset value   Type       Description
+Page  357: Bit         Name      Reset value   Type       Description
+Page  357: Bit         Name      Reset value   Type       Description
+Page  374: Table 18-5 lists ADC register map and their reset values.
+Page  374: Table 18-5 ADC register map and reset values
+Page  374: Register                         Offset                              Reset value
+Page  376: Bit         Name       Reset value     Type     Description
+Page  377: Bit          Name       Reset value     Type     Description
+Page  378: Bit          Name       Reset value     Type     Description
+Page  380: Bit          Name       Reset value     Type     Description
+Page  382: Bit          Name       Reset value     Type     Description
+Page  384: Bit          Name       Reset value     Type     Description
+Page  384: Bit          Name       Reset value     Type     Description
+Page  384: Bit          Name       Reset value     Type     Description
+Page  384: Bit          Name       Reset value     Type     Description
+Page  384: Bit          Name       Reset value     Type     Description
+Page  385: Bit          Name       Reset value     Type     Description
+Page  385: Bit          Name       Reset value     Type     Description
+Page  385: Bit          Name       Reset value     Type     Description
+Page  386: Bit          Name       Reset value     Type     Description
+Page  386: Bit          Name       Reset value     Type     Description
+Page  387: Bit          Name       Reset value     Type     Description
+Page  387: Bit          Name       Reset value     Type     Description
+Page  388: Bit          Name       Reset value     Type     Description
+Page  391: Bit          Name    Reset value    Type      Description
+Page  395: Table 19-2 DAC register map and reset values
+Page  395: Register                           Offset                            Reset value
+Page  395: Bit          Name            Reset value      Type     Description
+Page  398: Bit          Name       Reset value     Type     Description
+Page  398: Bit          Name       Reset value     Type     Description
+Page  398: Bit          Name       Reset value     Type     Description
+Page  398: Bit          Name       Reset value     Type     Description
+Page  398: Bit          Name       Reset value     Type     Description
+Page  398: Bit          Name       Reset value     Type     Description
+Page  399: Bit          Name        Reset value     Type     Description
+Page  399: Bit          Name        Reset value     Type     Description
+Page  399: Bit          Name        Reset value     Type     Description
+Page  399: Bit          Name        Reset value     Type     Description
+Page  399: Bit          Name        Reset value     Type     Description
+Page  399: Bit          Name        Reset value     Type     Description
+Page  399: Bit          Name        Reset value     Type     Description
+Page  410: Table 20-1 CAN register map and reset values
+Page  410: Register                         Offset                      Reset value
+Page  411: Bit          Name       Reset value       Type   Description
+Page  412: Bit          Name       Reset value     Type     Description
+Page  413: Bit      Name     Reset value     Type     Description
+Page  416: Bit         Name       Reset value     Type     Description
+Page  416: Bit         Name       Reset value     Type     Description
+Page  417: Bit          Name       Reset value     Type     Description
+Page  418: Bit          Name       Reset value     Type     Description
+Page  419: Bit          Name            Reset value     Type     Description
+Page  420: 2.This register implements the Transmit Request control (bit 0) — reset value 0.
+Page  420: Bit          Name               Reset value      Type     Description
+Page  420: Bit          Name               Reset value      Type     Description
+Page  421: Bit          Name               Reset value     Type     Description
+Page  421: Bit          Name               Reset value     Type     Description
+Page  421: Bit          Name               Reset value     Type     Description
+Page  421: Bit          Name               Reset value     Type     Description
+Page  422: Bit          Name              Reset value     Type     Description
+Page  422: Bit          Name              Reset value     Type     Description
+Page  422: Bit          Name              Reset value     Type     Description
+Page  422: Bit          Name              Reset value     Type     Description
+Page  422: Bit          Name              Reset value     Type     Description
+Page  423: Bit          Name              Reset value     Type     Description
+Page  423: Bit          Name              Reset value     Type     Description
+Page  423: Bit          Name              Reset value     Type     Description
+Page  462: Table 21-4 shows the USB OTG register map and their reset values.
+Page  462: Table 21-4 OTGFS register map and reset values
+Page  462: Register                              Offset                        Reset value
+Page  466: Bit          Name              Reset value     Type     Description
+Page  466: Bit          Name              Reset value     Type     Description
+Page  466: Bit          Name              Reset value     Type     Description
+Page  467: Bit          Name            Reset value     Type     Description
+Page  468: Bit          Name              Reset value     Type     Description
+Page  470: Bit          Name              Reset value     Type     Description
+Page  473: Bit          Name               Reset value     Type     Description
+Page  474: Bit          Name              Reset value     Type     Description
+Page  474: Reset value: 0
+Page  474: Reset value: 0
+Page  474: Bit          Name              Reset value     Type     Description
+Page  475: Bit          Name             Reset value     Type     Description
+Page  475: The power-on reset value of this register is defined as the
+Page  475: Bit          Name             Reset value     Type     Description
+Page  475: Bit          Name             Reset value     Type     Description
+Page  476: Bit          Name             Reset value     Type     Description
+Page  476: Reset value: Configurable
+Page  476: Reset value: Configurable
+Page  476: Bit          Name             Reset value     Type     Description
+Page  477: Bit          Name              Reset value     Type     Description
+Page  477: Bit          Name              Reset value     Type     Description
+Page  477: The power-on reset value of this register is the sum of the
+Page  477: Bit          Name              Reset value     Type     Description
+Page  477: The reset value is the maximum possible IN endpoint
+Page  477: Bit          Name              Reset value     Type     Description
+Page  478: Bit          Name              Reset value     Type     Description
+Page  478: Bit          Name              Reset value     Type     Description
+Page  479: Bit          Name               Reset value     Type     Description
+Page  479: Bit          Name               Reset value     Type     Description
+Page  479: Bit          Name               Reset value     Type     Description
+Page  480: Bit          Name                Reset value     Type     Description
+Page  481: Bit      Name          Reset value     Type     Description
+Page  482: Bit          Name              Reset value     Type     Description
+Page  483: Bit          Name             Reset value     Type     Description
+Page  483: Bit          Name             Reset value     Type     Description
+Page  484: Bit          Name             Reset value     Type     Description
+Page  484: Bit          Name             Reset value     Type     Description
+Page  486: Bit            Name            Reset value       Type     Description
+Page  486: Bit            Name            Reset value       Type     Description
+Page  487: Bit         Name             Reset value     Type     Description
+Page  488: Bit          Name               Reset value     Type     Description
+Page  488: Bit          Name               Reset value     Type     Description
+Page  488: Bit          Name               Reset value     Type     Description
+Page  488: Bit          Name               Reset value     Type     Description
+Page  490: Bit          Name              Reset value     Type     Description
+Page  492: Bit          Name            Reset value     Type     Description
+Page  493: Bit          Name              Reset value     Type     Description
+Page  495: Bit         Name                Reset value     Type     Description
+Page  495: Bit         Name                Reset value     Type     Description
+Page  496: Bit          Name               Reset value     Type     Description
+Page  496: Bit          Name               Reset value     Type     Description
+Page  497: Bit          Name               Reset value     Type     Description
+Page  497: Bit          Name               Reset value     Type     Description
+Page  498: Bit          Name               Reset value     Type     Description
+Page  498: Bit          Name               Reset value     Type     Description
+Page  502: Table 22-2 ACC register map and reset values
+Page  502: Register                      Offset                            Reset value
+Page  502: Bit            Name            Reset value     Type     Description
+Page  502: Bit            Name            Reset value     Type     Description
+Page  503: Bit          Name       Reset value     Type     Description
+Page  503: Bit          Name       Reset value     Type     Description
+Page  504: Bit          Name       Reset value     Type     Description
+Page  504: Bit          Name       Reset value     Type     Description
+Page  536: Register                      Offset                        Reset value
+Page  537: Bit          Name       Reset value     Type     Description
+Page  538: Bit          Name       Reset value     Type     Description
+Page  540: Bit          Name       Reset value     Type     Description
+Page  540: Bit          Name       Reset value     Type     Description
+Page  541: Bit          Name        Reset value     Type     Description
+Page  542: Bit          Name       Reset value     Type     Description
+Page  542: Bit          Name       Reset value     Type     Description
+Page  543: Bit          Name      Reset value     Type     Description
+Page  543: Bit          Name      Reset value     Type     Description
+Page  544: Bit         Name       Reset value     Type     Description
+Page  544: Bit         Name       Reset value     Type     Description
+Page  544: Bit         Name       Reset value     Type     Description
+Page  545: Bit          Name      Reset value     Type     Description
+Page  545: Bit          Name      Reset value     Type     Description
+Page  546: Bit          Name           Reset value     Type     Description
+Page  546: Bit          Name           Reset value     Type     Description
+Page  547: Bit          Name            Reset value     Type     Description
+Page  549: Bit             Name            Reset value     Type     Description
+Page  549: Bit         Name            Reset value     Type     Description
+Page  550: Bit         Name         Reset value     Type     Description
+Page  571: Register                         Offset                           Reset value
+Page  571: Bit         Name               Reset value     Type     Description
+Page  572: Bit          Name            Reset value     Type     Description
+Page  573: Bit          Name            Reset value     Type     Description
+Page  573: Bit          Name            Reset value     Type     Description
+Page  574: Bit          Name             Reset value     Type         Description
+Page  574: Bit          Name             Reset value     Type       Description
+Page  574: Bit          Name             Reset value     Type       Description
+Page  574: Bit          Name             Reset value     Type       Description
+Page  575: Bit          Name          Reset value     Type     Description
+Page  576: Bit          Name              Reset value     Type     Description
+Page  576: Bit          Name              Reset value     Type     Description
+Page  577: Bit          Name            Reset value     Type     Description
+Page  577: Bit          Name            Reset value     Type     Description
+Page  579: Bit          Name            Reset value     Type     Description
+Page  579: Bit          Name            Reset value     Type     Description
+Page  614: Table 26-8 shows the Ethernet register map and its reset values.
+Page  614: Table 26-8 Ethernet register map and its reset values
+Page  614: Register                           Offset                      Reset value
+Page  616: Bit          Name            Reset value     Type     Description
+Page  618: Bit          Name              Reset value     Type     Description
+Page  620: Bit          Name              Reset value     Type     Description
+Page  620: Bit          Name              Reset value     Type     Description
+Page  620: Bit          Name              Reset value     Type     Description
+Page  621: Bit          Name              Reset value     Type     Description
+Page  621: Bit          Name              Reset value     Type     Description
+Page  623: Bit          Name              Reset value     Type     Description
+Page  624: Bit          Name              Reset value     Type     Description
+Page  624: Bit          Name              Reset value     Type     Description
+Page  625: Bit          Name               Reset value     Type     Description
+Page  625: Bit          Name               Reset value     Type     Description
+Page  626: Bit          Name               Reset value     Type     Description
+Page  626: Bit          Name               Reset value     Type     Description
+Page  626: Bit          Name               Reset value     Type     Description
+Page  627: Bit          Name               Reset value     Type     Description
+Page  627: Bit          Name               Reset value     Type     Description
+Page  627: Bit          Name               Reset value     Type     Description
+Page  628: Bit          Name            Reset value     Type     Description
+Page  628: Bit          Name            Reset value     Type     Description
+Page  630: Bit         Name               Reset value     Type     Description
+Page  630: Bit         Name               Reset value     Type     Description
+Page  630: Bit         Name               Reset value     Type     Description
+Page  631: Bit          Name               Reset value     Type     Description
+Page  631: Bit          Name               Reset value     Type     Description
+Page  634: Bit          Name              Reset value     Type     Description
+Page  636: Bit          Name             Reset value     Type     Description
+Page  637: Bit          Name              Reset value     Type     Description
+Page  638: Bit         Name            Reset value     Type     Description
+Page  638: Bit         Name            Reset value     Type     Description
+Page  638: Bit         Name            Reset value     Type     Description
+Page  638: Bit         Name            Reset value     Type     Description
+Page  638: Bit         Name            Reset value     Type     Description
+Page  639: Bit          Name              Reset value     Type     Description
+Page  639: Bit          Name              Reset value     Type     Description
+Page  640: Bit          Name             Reset value     Type     Description
+Page  640: Bit          Name             Reset value     Type     Description
+Page  640: Bit          Name             Reset value     Type     Description
+Page  641: Bit          Name             Reset value     Type     Description
+Page  641: Bit          Name             Reset value     Type     Description
+Page  641: Bit          Name             Reset value     Type     Description
+Page  641: Bit          Name             Reset value     Type     Description
+Page  641: Bit          Name             Reset value     Type     Description
+Page  641: Bit          Name             Reset value     Type     Description
+Page  643: Bit          Name              Reset value     Type     Description
+Page  643: Bit          Name              Reset value     Type     Description
+Page  644: Bit         Name               Reset value     Type     Description
+Page  644: Bit         Name               Reset value     Type     Description
+Page  644: Bit         Name               Reset value     Type     Description
+Page  644: Bit         Name               Reset value     Type     Description
+Page  645: Bit         Name              Reset value     Type     Description
+Page  645: Bit         Name              Reset value     Type     Description
+Page  645: Bit         Name              Reset value     Type     Description
+Page  645: Bit         Name              Reset value     Type     Description
+Page  650: behavior of decoder for the misappropriated bits of the synchronization code. The reset value 0x00
+Page  661: Table 27-5 shows the DVP register map and its reset values.
+Page  661: Table 27-5 DVP register map and reset values
+Page  661: Register                       Offset                              Reset value
+Page  661: Bit            Name             Reset value        Type     Description
+Page  663: Bit         Name       Reset value     Type     Description
+Page  663: Bit         Name       Reset value     Type     Description
+Page  664: Bit         Name       Reset value     Type     Description
+Page  664: Bit         Name       Reset value     Type     Description
+Page  664: Bit         Name       Reset value     Type     Description
+Page  665: Bit          Name    Reset value     Type     Description
+Page  665: Bit          Name    Reset value     Type     Description
+Page  666: Bit          Name       Reset value     Type     Description
+Page  666: Bit          Name       Reset value     Type     Description
+Page  666: Bit          Name       Reset value     Type     Description
+Page  666: Bit          Name       Reset value     Type     Description
+Page  668: Bit          Name       Reset value     Type     Description
+Page  668: Bit          Name       Reset value     Type     Description
+Page  668: Bit          Name       Reset value     Type     Description
+Page  668: Bit          Name       Reset value     Type     Description
+Page  676: Table 28-1 QSPI register map and reset values
+Page  676: Register                     Offset                              Reset value
+Page  676: Bit            Name            Reset value     Type     Description
+Page  676: Bit            Name            Reset value     Type     Description
+Page  677: Bit          Name             Reset value     Type     Description
+Page  677: Bit          Name             Reset value     Type     Description
+Page  678: Bit          Name             Reset value     Type     Description
+Page  679: Bit          Name             Reset value     Type     Description
+Page  679: Bit          Name             Reset value     Type     Description
+Page  680: Bit          Name             Reset value     Type     Description
+Page  680: Bit          Name             Reset value     Type     Description
+Page  680: Bit          Name             Reset value     Type     Description
+Page  681: Bit          Name             Reset value     Type     Description
+Page  681: Bit          Name             Reset value     Type     Description
+Page  682: Bit          Name             Reset value     Type     Description
+Page  683: Bit         Name              Reset value     Type     Description
+Page  683: Bit         Name              Reset value     Type     Description
+Page  683: Bit         Name              Reset value     Type     Description
+Page  683: Bit         Name              Reset value     Type     Description
+Page  696: Table 29-5 shows DMA register map and reset values.
+Page  696: Table 29-5 BPR register map and reset values
+Page  696: Register                        Offset                        Reset value
+Page  698: Bit          Name             Reset value     Type     Description
+Page  699: Bit          Name             Reset value     Type     Description
+Page  700: Bit          Name             Reset value     Type     Description
+Page  701: Bit          Name             Reset value     Type     Description
+Page  702: Bit          Name             Reset value     Type     Description
+Page  704: Bit          Name             Reset value     Type     Description
+Page  704: Bit          Name             Reset value     Type     Description
+Page  705: Bit         Name              Reset value     Type     Description
+Page  705: Bit         Name              Reset value     Type     Description
+Page  705: Bit         Name              Reset value     Type     Description
+Page  706: Bit          Name             Reset value     Type     Description
+Page  706: Bit          Name             Reset value     Type     Description
+Page  706: Bit          Name             Reset value     Type     Description
+Page  706: Bit          Name             Reset value     Type     Description
+Page  707: Bit          Name             Reset value     Type     Description
+Page  707: Bit          Name             Reset value     Type     Description
+Page  708: Bit            Name           Reset value     Type     Description
+Page  708: Bit            Name           Reset value     Type     Description
+Page  709: Bit          Name             Reset value     Type     Description
+Page  709: Bit          Name             Reset value     Type     Description
+Page  709: Bit          Name             Reset value     Type     Description
+Page  710: Bit         Name              Reset value     Type     Description
+Page  710: Bit         Name              Reset value     Type     Description
+Page  711: Table 30-1 shows DEBUG register map and reset values.
+Page  711: Table 30-1 DEBUG register address and reset value
+Page  711: Register                         Offset                         Reset value
+Page  712: Bit         Name      Reset value          Type   Description
+Page  713: Bit          Name               Reset value   Type Description
+Page  713: Bit           Name                 Reset value Type       Description
+Page  715: Bit          Name              Reset value     Type     Description
+Page  715: Bit          Name              Reset value     Type     Description
+Page  716: 2. Modified the reset value of section 22.6.4 Control register 2 (ACC_CTRL2)

@@ -1,0 +1,113 @@
+Keyword: PLL
+Occurrences: 109
+================================================================================
+
+Page    1: − PLL with configurable frequency multiplication and
+Page    3: 4.3.2 PLL clock configuration register (CRM_PLLCFG) .......................... 75
+Page   45: ARM                                                                                                                                            PLL
+Page   63: Wake Up Logic        deepsleep       CPU          PLL
+Page   64: (PLL). Such power domain is supplied by LDO (voltage regulator).
+Page   65: 4) Set the targeted frequency for PLL-related registers, enable PLL, and wait for PLL_STBL
+Page   65: 6) Enable auto step-by-step frequency switch when the PLL frequency is greater than 108 MHz
+Page   65: 7) Switch the system clock to PLL
+Page   66: 8) If the HEXT is used as PLL clock, enable HEXT and wait for HEXTSTBL
+Page   66: 9) Set the targeted frequency for PLL-related registers
+Page   66: 10) Enable PLL and wait for PLL_STBL
+Page   66: 12) Enable auto step-by-step frequency switch when the PLL frequency is greater than 108 MHz
+Page   66: 13) Switch the system clock to the PLL
+Page   66: disabled. The whole 1.2 V domain, PLL, HICK and HEXT oscillators are also powered off. SRAM and
+Page   70:  PLL (phased-locked loops)
+Page   70: PLLCLK                                                                      CPU FCLK
+Page   70: ACC                                   PLLRCS
+Page   70: PLL clock source, do not modify                                                                                                                                   Max.
+Page   70: HICKDIV while PLL is enabled.                      PLLCLK                                                                                              x1,x 2
+Page   70: 32.768 kHz                                                                                                                        PLLCLK
+Page   70: HICK                        PLLCLK                                                                CLKOUT2
+Page   71:  PLL clock
+Page   71: The HICK or HEXT clock can be used as an input clock source of the PLL. The PLL input clock, after
+Page   71: between 500 MHz and 1200 MHz. The PLL must be configured before enabling it. The reason is that
+Page   71: the configuration parameters cannot be changed once PLL is enabled. The PLL clock signal is not
+Page   71: PLL formula:
+Page   71: PLL output clock = PLL input clock x PLL frequency multiplication factor / (PLL pre-divider factor x PLL
+Page   71: 500 MHz <= PLL input clock x PLL frequency multiplication factor / PLL pre-divider factor <= 1200 MHz
+Page   71: 2 MHz <= PLL input clock / PLL pre-divider factor <= 16 MHz
+Page   71: For example, when the PLL input clock is 25 MHz, the PLL output frequency equals 25 x 192 / (5 x 4) =
+Page   71: switch among HICK oscillator, HEXT oscillator and PLL clock. However, a switch from one clock source
+Page   71: directly or indirectly through the PLL as the system clock, it cannot be stopped.
+Page   71: The USB clock source can be switched between HICK and PLL frequency divider. If the HICK is selected
+Page   71: as a clock source, the USB clock should be set as 48 MHz; If the PLL frequency divider is selected as a
+Page   71: clock source, the USB frequency divider provides 48 MHz USBCLK, and thus the PLL must be set as
+Page   72: CFD to be disabled, HEXT clock to be stopped, and even PLL to be disabled if the HEXT clock is selected
+Page   72: as the system clock through PLL.
+Page   72: when the system clock source is switched from others to the PLL or when the AHB prescaler factor is
+Page   72: Note that when system clock source is switched to PLL (>108MHz), proceed as per the steps below:
+Page   72: 2) Select PLL clock as system clock source
+Page   72: 4) Check if the system clock source has switched to PLL clock
+Page   72: ADCCLK, USB48M, SCLK, LICK, LEXT, HICK, HEXT, PLLCLK can be used as CLKOUT1/2 clocks.
+Page   73: CRM_PLLCFG                        0x004                        0x0003 3002
+Page   74: PLL clock stable
+Page   74: This bit is set by hardware after PLL is ready.
+Page   74: Bit 25       PLLSTBL    0x0            ro
+Page   74: 0: PLL clock is not ready.
+Page   74: 1: PLL clock is ready.
+Page   74: PLL enable
+Page   74: Bit 24       PLLEN      0x0            rw        mode. When the PLL clock is used as the system clock,
+Page   74: 0: PLL is OFF
+Page   74: 1: PLL is ON.
+Page   75: 4.3.2           PLL clock configuration register (CRM_PLLCFG)
+Page   75: PLL reference clock select
+Page   75: The PLL reference clock source is selected by setting or
+Page   75: resetting this bit. This bit can be written only when the PLL
+Page   75: Bit 22      PLLRCS           0x0            rw
+Page   75: 0: HICK is used as PLL reference clock
+Page   75: 1: HEXT is used as PLL reference clock
+Page   75: PLL post-division
+Page   75: PLL_FR range (2~5)
+Page   75: 010: PLL post-division=4
+Page   75: Bit 18: 16 PLL_FR            0x3            rw         011: PLL post-division=8
+Page   75: 100: PLL post-division=16
+Page   75: 101: PLL post-division=32
+Page   75: PLL_FR value and post-division factor.
+Page   75: PLL multiplication factor
+Page   75: PLL_NS range (31~500)
+Page   75: Bit 14: 6   PLL_NS           0x0C0          rw
+Page   76: PLL pre-division
+Page   76: PLL_MS range (1~15)
+Page   76: Bit 3: 0     PLL_MS            0x2             rw       0010: 2
+Page   76: Note: PLL clock formulas:
+Page   76: PLL output clock = PLL input clock x PLL frequency multiplication factor / (PLL pre-divider factor x PLL
+Page   76: 500 MHz <= PLL input clock x PLL frequency multiplication factor / PLL pre-divider factor <= 1200 MHz
+Page   76: 2 MHz <= PLL input clock / PLL pre-divider factor <= 16 MHz
+Page   76: 11: PLL clock output
+Page   76: Bit 22: 21       CLKOUT1_SEL 0x0               rw       11: PLL selected
+Page   77: 10: PLL
+Page   77: 10: PLL
+Page   78: PLL stable flag clear
+Page   78: Writing 1 by software to clear PLLSTBLF.
+Page   78: Bit 20        PLLSTBLFC          0x0                wo
+Page   78: PLL stable interrupt enable
+Page   78: Bit 12        PLLSTBLIEN         0x0                rw         0: Disabled
+Page   79: PLL stable flag
+Page   79: Bit 4            PLLSTBLF        0x0                  ro
+Page   79: 0: PLL is not ready.
+Page   79: 1: PLL is ready.
+Page   94: 0: PLL or PLL division
+Page   94: Note: When HICK is used as PLL clock source, do not
+Page   94: modify HICKDIV while PLL is enabled.
+Page   94: The PLL clock frequency, after being divided, is used as
+Page   94: 0000: PLL clock divided by 1.5
+Page   94: 0001: PLL clock not divided
+Page   94: 0010: PLL clock divided by 2.5
+Page   94: 0011: PLL clock divided by 2
+Page   94: 0100: PLL clock divided by 3.5
+Page   94: Bit 15: 12 USBDIV          0x0           rw        0101: PLL clock divided by 3
+Page   94: 0110: PLL clock divided by 4.5
+Page   94: 0111: PLL clock divided by 4
+Page   94: 1000: PLL clock divided by 5.5
+Page   94: 1001: PLL clock divided by 5
+Page   94: 1010: PLL clock divided by 6.5
+Page   94: 1011: PLL clock divided by 6
+Page   94: 1100: PLL clock divided by 7
+Page   95: the PLL or when the AHB prescaler is changed from large
+Page  425:  Divided by PLL
+Page  425: The PLL output frequency must ensure that the USBDIV (see CRM_CFG register) can be divided

@@ -1,0 +1,12 @@
+Keyword: basic timer
+Occurrences: 8
+================================================================================
+
+Page   11: 14.1 Basic timer (TMR6 and TMR7) .................................................... 253
+Page   34: Figure 14-1 Basic timer block diagram ...................................................................................................... 253
+Page  252: AT32F435 timers include basic timers, general-purpose timers, and advanced timers.
+Page  252: Basic timer         16        Up           X           1~65535 O             X                X      X       X
+Page  253: 14.1 Basic timer (TMR6 and TMR7)
+Page  253: Each of the basic timers (TMR6 and TMR7) includes a 16-bit upcounter and the corresponding control
+Page  253: Figure 14-1 Basic timer block diagram
+Page  253: The basic timer only supports upcounting mode, and it has an internal 16-bit counter.

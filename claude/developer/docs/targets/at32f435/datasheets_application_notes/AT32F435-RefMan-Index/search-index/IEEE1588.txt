@@ -1,0 +1,17 @@
+Keyword: IEEE1588
+Occurrences: 13
+================================================================================
+
+Page    1: − Low power: Sleep, Deepsleep, and Standby modes                  SRAM(4 Kbytes): IEEE1588 hardware support, MII/RMII
+Page   26: 26.2.5 IEEE1588 precision time protocol ................................................ 609
+Page  592: If IEEE1588 time stamping is enabled, a snapshot of the system time is taken when any frame’s SFD is
+Page  596: 6.      When the frame transmission is complete, if IEEE1588 time stamping was enabled for the frame
+Page  598: When this bit is set, the IEEE1588 hardware time stamp is activated for the transmit
+Page  601: 9.    If IEEE1588 time stamp is enabled, the DMA writes the time stamp to the current descriptor’s
+Page  609: 26.2.5 IEEE1588 precision time protocol
+Page  609: (not limited to Ethernet). Refer to IEEE1588 standard for more information.
+Page  610: defined in IEEE1588) is corrected over a period of time. An accumulator sums up the value of the addend
+Page  625: the IEEE1588 time stamp is enabled. This bit is reserved
+Page  631: This bit is applicable only when the IEEE1588 time stamp
+Page  643: This register is present only when the IEEE1588 time stamp function is selected without an external
+Page  644: This register is present only when the IEEE1588 time stamp function is selected without an external

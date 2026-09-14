@@ -1,30 +1,11 @@
 # AT32F435/437 Alternate Function / IOMUX Mapping
 
-Sources: AT32F437VGT7 Datasheet (Table 8) + INAV timer_def_at32f43x.h
+Source: AT32F435/437 Reference Manual, chapter 6.2.9 (per-pin ground truth) + INAV timer_def_at32f43x.h
 
 **Note:** AT32 uses GPIO_MUX_n (MUX0–MUX15) instead of STM32's AF0–AF15.
-See `mux-groups.md` for the full MUX number → peripheral group reference.
-
-## MUX Quick Reference
-
-| MUX# | Peripheral Group |
-|------|------------------|
-| MUX 0 | SYS (SWD/JTAG, TRACE, MCO, CLKOUT) |
-| MUX 1 | TMR1 / TMR2 |
-| MUX 2 | TMR3 / TMR4 / TMR5 / TMR20 (partial) |
-| MUX 3 | TMR8 / TMR9 / TMR10 / TMR11 |
-| MUX 4 | I2C1 / I2C2 / I2C3 |
-| MUX 5 | SPI1 / SPI2 / I2S1 / I2S2 |
-| MUX 6 | SPI3 / SPI4 / I2S3 / I2S4 / TMR20 (partial) |
-| MUX 7 | USART1 / USART2 / USART3 |
-| MUX 8 | UART4 / UART5 / USART6 / UART7 / UART8 |
-| MUX 9 | CAN1 / CAN2 / TMR12 / TMR13 / TMR14 |
-| MUX10 | OTGFS1 / OTGFS2 |
-| MUX11 | EMAC (Ethernet MII/RMII) |
-| MUX12 | SDIO1 / XMC (external memory) |
-| MUX13 | DVP (digital video) / SDIO2 |
-| MUX14 | QSPI1 / QSPI2 |
-| MUX15 | EVENTOUT |
+The MUX number for a given peripheral **varies by pin** — see
+`mux-groups.md` for the observed distribution and why there is no
+fixed peripheral→MUX table.
 
 ---
 
@@ -34,148 +15,154 @@ See `mux-groups.md` for the full MUX number → peripheral group reference.
 
 | Pin | MUX0 | MUX1 | MUX2 | MUX3 | MUX4 | MUX5 | MUX6 | MUX7 | MUX8 | MUX9 | MUX10 | MUX11 | MUX12 | MUX13 | MUX14 | MUX15 |
 |-----|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|
-| **PA0** | - | TMR2_CH1 | TMR5_CH1 | - | I2C2_SCL | - | - | USART2_CTS | UART4_TX | - | - | EMAC_MII_CRS | - | - | - | - |
-| **PA1** | - | TMR2_CH2 | TMR5_CH2 | - | I2C2_SDA | - | I2S4_SD/SPI4_MOSI | USART2_RTS_DE | UART4_RX | - | - | EMAC_MII_RX_CLK/EMAC_RMII_REF_CLK | - | - | QSPI1_IO3 | - |
-| **PA2** | - | TMR2_CH3 | TMR5_CH3 | TMR9_CH1 | - | - | - | USART2_TX | - | - | - | EMAC_MDIO | - | SDIO2_CK | - | - |
-| **PA3** | - | TMR2_CH4 | TMR5_CH4 | TMR9_CH2 | - | I2S2_MCK | - | USART2_RX | - | - | - | EMAC_MII_COL | - | SDIO2_CMD | QSPI2_IO3 | - |
-| **PA4** | - | - | - | - | - | I2S1_WS/SPI1_CS | I2S3_WS/SPI3_CS | USART2_CK | USART6_TX | - | OTGFS2_SOF | - | - | DVP_HSYNC/SDIO2_D0/SDIO2_D4 | - | - |
-| **PA5** | - | TMR2_CH1 | - | TMR8_CH1C/TMR8_CH1N | - | I2S1_CK/SPI1_SCK | - | - | USART6_RX | - | - | - | - | SDIO2_D1/SDIO2_D5 | QSPI2_IO2 | - |
-| **PA6** | - | - | TMR3_CH1 | - | - | I2S2_MCK/SPI1_MISO | - | USART3_CTS | - | TMR13_CH1 | - | - | SDIO1_CMD | DVP_PCLK/SDIO2_D2/SDIO2_D6 | QSPI1_IO0 | - |
-| **PA7** | - | TMR1_CH1C/TMR1_CH1N | TMR3_CH2 | TMR8_CH1C/TMR8_CH1N | - | I2S1_SD/SPI1_MOSI | - | - | - | TMR14_CH1 | - | EMAC_MII_RX_DV/EMAC_RMII_CRS_DV | - | SDIO2_D3/SDIO2_D7 | QSPI1_IO1 | - |
-| **PA8** | CLKOUT1 | TMR1_CH1 | - | - | I2C3_SCL | - | - | USART1_CK/USART2_TX | - | - | OTGFS1_SOF | - | SDIO1_D1 | - | - | - |
-| **PA9** | - | TMR1_CH2 | - | - | I2C1_SCL/I2C3_SMBA | I2S2_CK/SPI2_SCK | - | USART1_TX | - | - | OTGFS1_VBUS | - | SDIO1_D2 | DVP_D0 | - | - |
-| **PA10** | - | TMR1_CH3 | - | - | I2C1_SDA | I2S2_SD/SPI2_MOSI | I2S4_MCK | USART1_RX | - | - | OTGFS1_ID | - | - | DVP_D1 | - | - |
-| **PA11** | - | TMR1_CH4 | - | - | I2C2_SCL | I2S2_WS/SPI2_CS | SPI4_MISO | USART1_CTS | USART6_TX | CAN1_RX | OTGFS1_D | - | - | DVP_D2 | - | - |
-| **PA12** | - | - | - | - | I2C2_SDA | SPI2_MISO | - | USART1_RTS_DE | USART6_RX | CAN1_TX | OTGFS1_D | - | - | DVP_D3 | - | - |
-| **PA13** | IR_OUT/JTMS/SWDIO | - | - | - | - | - | SPI3_MISO | - | - | - | OTGFS1_OE | - | - | - | - | - |
-| **PA14** | JTCK/SWCLK | - | - | - | - | - | I2S3_SD/SPI3_MOSI | USART2_TX | - | - | - | - | - | - | - | - |
-| **PA15** | JTDI | TMR2_CH1 | - | - | - | I2S1_WS/SPI1_CS | I2S3_WS/SPI3_CS | USART1_TX/USART2_RX | - | - | - | - | - | - | QSPI1_IO2/QSPI2 | - |
+| **PA0** | - | TMR2_CH1/TMR2_EXT | TMR5_CH1 | TMR8_EXT | I2C2_SCL | - | - | USART2_CTS | UART4_TX | - | - | EMAC_MII_CRS | - | - | - | EVENTOUT |
+| **PA1** | - | TMR2_CH2 | TMR5_CH2 | - | I2C2_SDA | I2S4_SD/SPI4_MOSI | - | USART2_RTS_D | UART4_RX | QSPI1_IO3 | - | EMAC_MII_RX_CLK/EMAC_RMII_REF_CLK | - | - | - | EVENTOUT |
+| **PA2** | - | TMR2_CH3 | TMR5_CH3 | TMR9_CH1 | - | - | - | USART2_TX | - | - | SDIO2_CK | EMAC_MDIO | - | - | XMC_D4 | EVENTOUT |
+| **PA3** | - | TMR2_CH4 | TMR5_CH4 | TMR9_CH2 | - | I2S2_MCK | - | USART2_RX | - | QSPI2_IO3 | SDIO2_CMD | EMAC_MII_COL | - | - | XMC_D5 | EVENTOUT |
+| **PA4** | - | - | - | - | - | I2S1_WS/SPI1_CS | I2S3_WS/SPI3_CS | USART2_CK | USART6_TX | - | SDIO2_D4 | SDIO2_D0 | OTG2_SO | DVP_HSYNC | XMC_D6 | EVENTOUT |
+| **PA5** | - | TMR2_CH1/TMR2_EXT | - | TMR8_CH1C/TMR8_CH1N | - | I2S1_CK/SPI1_SCK | - | - | USART6_RX | QSPI2_IO2 | SDIO2_D5 | SDIO2_D1 | - | - | XMC_D7 | EVENTOUT |
+| **PA6** | - | TMR1_BRK | TMR3_CH1 | TMR8_BRK | - | SPI1_MISO | I2S2_MCK | USART3_CTS | - | TMR13_CH1 | QSPI1_IO0 | SDIO2_D2 | SDIO1_C | DVP_PIXCLK | SDIO2_D6 | EVENTOUT |
+| **PA7** | - | TMR1_CH1C/TMR1_CH1N | TMR3_CH2 | TMR8_CH1C/TMR8_CH1N | - | I2S1_SD/SPI1_MOSI | - | - | - | TMR14_CH1 | QSPI1_IO1 | EMAC_MII_RX_DV/EMAC_RMII_CRS_DV | XMC_SDN | SDIO2_D3 | SDIO2_D7 | EVENTOUT |
+| **PA8** | CLKOUT1 | TMR1_CH1 | - | - | I2C3_SCL | - | - | USART1_CK | USART2_TX | - | OTG1_SOF | - | SDIO1_D1 | - | XMC_A4 | EVENTOUT |
+| **PA9** | - | TMR1_CH2 | - | - | I2C3_SMBA | I2S2_CK/SPI2_SCK | - | USART1_TX | I2C1_SCL | - | OTG1_VBU | - | SDIO1_D2 | DVP_D0 | - | EVENTOUT |
+| **PA10** | - | TMR1_CH3 | - | - | - | I2S2_SD/SPI2_MOSI | I2S4_MCK | USART1_RX | I2C1_SDA | - | OTG1_ID | - | - | DVP_D1 | - | EVENTOUT |
+| **PA11** | - | TMR1_CH4 | - | - | I2C2_SCL | I2S2_WS/SPI2_CS | SPI4_MISO | USART1_CTS | USART6_TX | CAN1_RX | OTG1_D- | - | - | DVP_D2 | - | EVENTOUT |
+| **PA12** | - | TMR1_EXT | - | - | I2C2_SDA | SPI2_MISO | - | USART1_RTS_D | USART6_RX | CAN1_TX | OTG1_D+ | - | - | DVP_D3 | - | EVENTOUT |
+| **PA13** | JTMS/SWDIO | IR_OUT | - | - | - | - | SPI3_MISO | - | - | - | OTG1_OE | - | - | - | - | EVENTOUT |
+| **PA14** | JTCK/SWCLK | - | - | - | - | - | I2S3_SD/SPI3_MOSI | - | USART2_TX | - | - | - | - | - | - | EVENTOUT |
+| **PA15** | JTDI | TMR2_CH1/TMR2_EXT | - | - | - | I2S1_WS/SPI1_CS | I2S3_WS/SPI3_CS | USART1_TX | USART2_RX | QSPI2_IO1 | QSPI1_IO2 | - | XMC_NCE/XMC_NE2 | - | - | EVENTOUT |
 
 ### Port B
 
 | Pin | MUX0 | MUX1 | MUX2 | MUX3 | MUX4 | MUX5 | MUX6 | MUX7 | MUX8 | MUX9 | MUX10 | MUX11 | MUX12 | MUX13 | MUX14 | MUX15 |
 |-----|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|
-| **PB0** | - | TMR1_CH2C/TMR1_CH2N | TMR3_CH3 | TMR8_CH2C/TMR8_CH2N | - | I2S1_MCK | I2S3_SD/SPI3_MOSI | USART2_RX/USART3_CK | - | - | - | EMAC_MII_RXD2 | SDIO1_D1 | - | QSPI1_IO0/QSPI2_IO0 | - |
-| **PB1** | - | TMR1_CH3C/TMR1_CH3N | TMR3_CH4 | TMR8_CH3C/TMR8_CH3N | - | I2S2_CK/SPI2_SCK | - | USART3_RTS_DE | - | - | - | EMAC_MII_RXD3 | SDIO1_D2 | - | QSPI1_SCK/QSPI2_SCK | - |
-| **PB2** | - | TMR2_CH4 | TMR20_CH1 | - | I2C3_SMBA | - | I2S3_SD/SPI3_MOSI | - | - | - | - | - | SDIO1_CK | - | QSPI1_SCK | - |
-| **PB3** | JTDO | TMR2_CH2 | - | - | I2C2_SDA | I2S1_CK/SPI1_SCK | I2S3_CK/SPI3_SCK | USART1_RX | UART7_RX | - | - | - | - | DVP_D4 | QSPI1_IO3 | - |
-| **PB4** | - | - | TMR3_CH1 | - | I2C3_SDA | SPI1_MISO | I2S3_SDEXT/SPI3_MISO | - | UART7_TX | - | - | - | SDIO1_D0 | DVP_D5 | - | - |
-| **PB5** | - | - | TMR3_CH2 | - | I2C1_SMBA | I2S1_SD/SPI1_MOSI | I2S3_SD/SPI3_MOSI | USART1_CK | UART5_RX | CAN2_RX | - | EMAC_PPS_OUT | SDIO1_D3 | DVP_D10 | - | - |
-| **PB6** | - | - | TMR4_CH1 | - | I2C1_SCL | I2S1_MCK | I2S4_WS/SPI4_CS | USART1_TX | UART5_TX | CAN2_TX | - | - | SDIO1_D0 | DVP_D5 | QSPI1_CS | - |
-| **PB7** | - | - | TMR4_CH2 | - | I2C1_SDA | - | I2S4_CK/SPI4_SCK | USART1_RX | - | - | - | - | SDIO1_D0 | DVP_VSYNC | QSPI2_IO1 | - |
-| **PB8** | - | TMR2_CH1 | TMR4_CH3 | TMR10_CH1 | I2C1_SCL | - | SPI4_MISO | - | UART5_RX | CAN1_RX | - | EMAC_MII_TXD3 | SDIO1_D4 | DVP_D6 | QSPI2_CS | - |
-| **PB9** | IR_OUT | TMR2_CH2 | TMR4_CH4 | TMR11_CH1 | I2C1_SDA/I2C2_SDA | I2S2_WS/SPI2_CS | I2S4_SD/SPI4_MOSI | - | UART5_TX | CAN1_TX | - | - | SDIO1_D5 | DVP_D7 | QSPI1_CS | - |
-| **PB10** | - | TMR2_CH3 | - | - | I2C2_SCL | I2S2_CK/SPI2_SCK | I2S3_MCK | USART3_TX | - | - | - | EMAC_MII_RX_ER | SDIO1_D7 | - | QSPI1_CS/QSPI1_IO1 | - |
-| **PB11** | - | TMR2_CH4 | TMR5_CH4 | - | I2C2_SDA | - | - | USART3_RX | - | - | - | EMAC_MII_TX_EN/EMAC_RMII_TX_EN | - | - | QSPI1_IO0 | - |
-| **PB12** | - | - | TMR5_CH1 | - | I2C2_SMBA | I2S2_WS/SPI2_CS | I2S3_CK/I2S4_WS/SPI3_SCK/SPI4_CS | USART3_CK | - | CAN2_RX | OTGFS2_ID | EMAC_MII_TXD0/EMAC_RMII_TXD0 | - | - | - | - |
-| **PB13** | - | TMR1_CH1C/TMR1_CH1N | - | - | I2C3_SCL/I2C3_SMBA | I2S2_CK/SPI2_SCK | I2S4_CK/SPI4_SCK | USART3_CTS | - | CAN2_TX | OTGFS2_VBUS | EMAC_MII_TXD1/EMAC_RMII_TXD1 | - | - | - | - |
-| **PB14** | - | TMR1_CH2C/TMR1_CH2N | - | TMR8_CH2C/TMR8_CH2N | I2C3_SDA | I2S2_SDEXT/SPI2_MISO | - | USART3_RTS_DE | - | TMR12_CH1 | OTGFS2_D | - | SDIO1_D6 | - | - | - |
-| **PB15** | - | TMR1_CH3C/TMR1_CH3N | - | TMR8_CH3C/TMR8_CH3N | I2C3_SCL | I2S2_SD/SPI2_MOSI | - | - | - | TMR12_CH2 | OTGFS2_D | - | SDIO1_CK | - | - | - |
+| **PB0** | - | TMR1_CH2C/TMR1_CH2N | TMR3_CH3 | TMR8_CH2C/TMR8_CH2N | - | I2S1_MCK | USART2_RX | I2S3_SD/SPI3_MOSI | USART3_CK | QSPI2_IO0 | QSPI1_IO | EMAC_MII_RXD2 | SDIO1_D1 | - | - | EVENTOUT |
+| **PB1** | - | TMR1_CH3C/TMR1_CH3N | TMR3_CH4 | TMR8_CH3C/TMR8_CH3N | - | - | I2S2_CK/SPI2_SCK | - | USART3_RTS_DE | QSPI1_SCK | QSPI2_S | EMAC_MII_RXD3 | SDIO1_D2 | - | - | EVENTOUT |
+| **PB2** | - | TMR2_CH4 | TMR20_CH1 | - | I2C3_SMBA | - | - | I2S3_SD/SPI3_MOSI | - | QSPI1_SCK | - | - | SDIO1_C | - | - | EVENTOUT |
+| **PB3** | JTDO/SWO | TMR2_CH2 | - | - | I2C2_SDA | I2S1_CK/SPI1_SCK | I2S3_CK/SPI3_SCK | USART1_RX | UART7_RX | - | QSPI1_IO | - | - | DVP_D4 | - | EVENTOUT |
+| **PB4** | - | - | TMR3_CH1 | - | I2C3_SDA | SPI1_MISO | SPI3_MISO | I2S3_SDEXT | UART7_TX | - | - | - | SDIO1_D0 | DVP_D5 | - | EVENTOUT |
+| **PB5** | - | - | TMR3_CH2 | - | I2C1_SMBA | I2S1_SD/SPI1_MOSI | I2S3_SD/SPI3_MOSI | USART1_CK | UART5_RX | CAN2_RX | - | EMAC_PPS_OUT | CKE1/XMC_SD | DVP_D10 | SDIO1_D3 | EVENTOUT |
+| **PB6** | - | - | TMR4_CH1 | - | I2C1_SCL | I2S1_MCK | I2S4_WS/SPI4_CS | USART1_TX | UART5_TX | CAN2_TX | QSPI1_C | - | CS1/XMC_SD | DVP_D5 | SDIO1_D0 | EVENTOUT |
+| **PB7** | - | - | TMR4_CH2 | TMR8_BRK | I2C1_SDA | - | I2S4_CK/SPI4_SCK | USART1_RX | - | QSPI2_IO1 | - | - | XMC_NA | DVP_VSYN | SDIO1_D0 | EVENTOUT |
+| **PB8** | - | TMR2_CH1/TMR2_EXT | TMR4_CH3 | TMR10_CH1 | I2C1_SCL | - | SPI4_MISO | - | UART5_RX | CAN1_RX | QSPI2_C | EMAC_MII_TXD3 | SDIO1_D4 | DVP_D6 | - | EVENTOUT |
+| **PB9** | IR_OUT | TMR2_CH2 | TMR4_CH4 | TMR11_CH1 | I2C1_SDA | I2S2_WS/SPI2_CS | I2S4_SD/SPI4_MOSI | I2C2_SDA | UART5_TX | CAN1_TX | QSPI1_C | - | SDIO1_D5 | DVP_D7 | - | EVENTOUT |
+| **PB10** | - | TMR2_CH3 | - | - | I2C2_SCL | I2S2_CK/SPI2_SCK | I2S3_MCK | USART3_TX | - | QSPI1_CS | QSPI1_IO | EMAC_MII_RX_ER | SDIO1_D7 | - | XMC_NOE | EVENTOUT |
+| **PB11** | - | TMR2_CH4 | TMR5_CH4 | - | I2C2_SDA | - | - | USART3_RX | - | - | QSPI1_IO | EMAC_MII_TX_EN/EMAC_RMII_TX_EN | - | - | - | EVENTOUT |
+| **PB12** | - | TMR1_BRK | TMR5_CH1 | - | I2C2_SMBA | I2S2_WS/SPI2_CS | I2S4_WS/SPI4_CS | I2S3_CK/SPI3_SCK | USART3_CK | CAN2_RX | - | EMAC_MII_TXD0/EMAC_RMII_TXD0 | OTG2_ID | - | XMC_D13 | EVENTOUT |
+| **PB13** | - | TMR1_CH1C/TMR1_CH1N | - | - | I2C3_SMBA | I2S2_CK/SPI2_SCK | I2S4_CK/SPI4_SCK | I2C3_SCL | USART3_CTS | CAN2_TX | - | EMAC_MII_TXD1/EMAC_RMII_TXD1 | OTG2_VB | - | - | EVENTOUT |
+| **PB14** | - | TMR1_CH2C/TMR1_CH2N | - | TMR8_CH2C/TMR8_CH2N | I2C3_SDA | SPI2_MISO | I2S2_SDEXT | USART3_RTS_DE | - | TMR12_CH1 | - | - | OTG2_D- | SDIO1_D6 | XMC_D0 | EVENTOUT |
+| **PB15** | ERTC_REFI | TMR1_CH3C/TMR1_CH3N | - | TMR8_CH3C/TMR8_CH3N | I2C3_SCL | I2S2_SD/SPI2_MOSI | - | - | - | TMR12_CH2 | - | - | OTG2_D+ | SDIO1_CK | - | EVENTOUT |
 
 ### Port C
 
 | Pin | MUX0 | MUX1 | MUX2 | MUX3 | MUX4 | MUX5 | MUX6 | MUX7 | MUX8 | MUX9 | MUX10 | MUX11 | MUX12 | MUX13 | MUX14 | MUX15 |
 |-----|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|
-| **PC0** | - | - | - | - | I2C3_SCL | - | - | - | UART7_TX | - | - | - | - | SDIO2_D0 | - | - |
-| **PC1** | - | - | - | - | I2C3_SDA | I2S2_SD/SPI2_MOSI | I2S3_SD/SPI3_MOSI | - | UART7_RX | - | - | EMAC_MDC | - | SDIO2_D1 | - | - |
-| **PC2** | - | - | TMR20_CH2 | - | - | I2S2_SDEXT/SPI2_MISO | - | - | UART8_TX | - | - | EMAC_MII_TXD2 | - | SDIO2_D2 | - | - |
-| **PC3** | - | - | - | - | - | I2S2_SD/SPI2_MOSI | - | - | UART8_RX | - | - | EMAC_MII_TX_CLK | - | SDIO2_D3 | QSPI2_IO1 | - |
-| **PC4** | - | - | - | TMR9_CH1 | - | I2S1_MCK | - | USART3_TX | - | - | - | EMAC_MII_RXD0/EMAC_RMII_RXD0 | - | SDIO2_CK | QSPI1_IO2 | - |
-| **PC5** | - | - | - | TMR9_CH2 | I2C1_SMBA | - | - | USART3_RX | - | - | - | EMAC_MII_RXD1/EMAC_RMII_RXD1 | - | SDIO2_CMD | QSPI1_IO3 | - |
-| **PC6** | - | - | TMR3_CH1 | TMR8_CH1 | I2C1_SCL | I2S2_MCK | - | - | USART6_TX | - | - | - | SDIO1_D6 | DVP_D0 | - | - |
-| **PC7** | - | - | TMR3_CH2 | TMR8_CH2 | I2C1_SDA | I2S2_CK/SPI2_SCK | I2S3_MCK | - | USART6_RX | - | - | - | SDIO1_D7 | DVP_D1 | - | - |
-| **PC8** | - | - | TMR3_CH3 | TMR8_CH3 | - | - | I2S4_MCK | - | UART8_TX/USART6_CK | - | - | - | SDIO1_D0 | DVP_D2 | QSPI1_IO2 | - |
-| **PC9** | CLKOUT2 | - | TMR3_CH4 | TMR8_CH4 | I2C3_SDA | - | - | - | UART8_RX | - | OTGFS2_OE | - | SDIO1_D1 | DVP_D3 | QSPI1_IO0 | - |
-| **PC10** | - | - | TMR5_CH2 | - | - | - | I2S3_CK/SPI3_SCK | USART3_TX | UART4_TX | - | - | - | SDIO1_D2 | DVP_D8 | QSPI1 | - |
-| **PC11** | - | - | TMR5_CH3 | - | - | - | I2S3_SDEXT/SPI3_MISO | USART3_RX | UART4_RX | - | - | - | SDIO1_D3 | DVP_D4 | QSPI1_CS | - |
-| **PC12** | - | - | - | TMR11_CH1 | I2C2_SDA | - | I2S3_SD/SPI3_MOSI | USART3_CK | UART5_TX | - | - | - | SDIO1_CK | DVP_D9 | - | - |
+| **PC0** | - | - | - | - | I2C3_SCL | - | - | - | UART7_TX | - | SDIO2_D0 | - | XMC_SDNWE | - | - | EVENTOUT |
+| **PC1** | - | - | - | - | I2C3_SDA | I2S3_SDEXT/SPI3_MOSI | - | I2S2_SDEXT/SPI2_MOSI | UART7_RX | - | SDIO2_D1 | EMAC_MDC | - | - | - | EVENTOUT |
+| **PC2** | - | - | TMR20_CH2 | - | - | SPI2_MISO | I2S2_SDEXT | - | UART8_TX | - | SDIO2_D2 | EMAC_MII_TXD2 | XMC_SDCS0 | - | XMC_NWE | EVENTOUT |
+| **PC3** | - | - | - | - | - | I2S2_SDEXT/SPI2_MOSI | - | - | UART8_RX | QSPI2_IO1 | SDIO2_D3 | EMAC_MII_TX_C | XMC_SDCKE0 | - | XMC_A0 | EVENTOUT |
+| **PC4** | - | - | - | TMR9_CH | - | I2S1_MCK | - | USART3_TX | - | - | QSPI1_IO2 | D0/EMAC_MII_RXD0/EMAC_RMII_RX | XMC_SDCS0 | SDIO2_CK | XMC_NE4 | EVENTOUT |
+| **PC5** | - | - | - | TMR9_CH | I2C1_SMBA | - | - | USART3_RX | - | - | QSPI1_IO3 | D1/EMAC_MII_RXD1/EMAC_RMII_RX | XMC_SDCKE0 | SDIO2_CMD | XMC_NOE | EVENTOUT |
+| **PC6** | - | - | TMR3_CH1 | TMR8_CH | I2C1_SCL | I2S2_MCK | - | - | USART6_TX | - | XMC_A0 | - | SDIO1_D6 | DVP_D0 | XMC_D1 | EVENTOUT |
+| **PC7** | - | - | TMR3_CH2 | TMR8_CH | I2C1_SDA | I2S2_CK/SPI2_SCK | I2S3_MCK | - | USART6_RX | - | XMC_A1 | - | SDIO1_D7 | DVP_D1 | - | EVENTOUT |
+| **PC8** | - | - | TMR3_CH3 | TMR8_CH | - | I2S4_MCK | TMR20_CH3 | UART8_TX | USART6_CK | QSPI1_IO2 | XMC_A2 | - | SDIO1_D0 | DVP_D2 | - | EVENTOUT |
+| **PC9** | CLKOUT2 | - | TMR3_CH4 | TMR8_CH | I2C3_SDA | - | - | UART8_RX | - | QSPI1_IO0 | XMC_A3 | OTG2_OE | SDIO1_D1 | DVP_D3 | - | EVENTOUT |
+| **PC10** | - | - | TMR5_CH2 | - | - | - | I2S3_CK/SPI3_SCK | USART3_TX | UART4_TX | QSPI1_IO1 | - | - | SDIO1_D2 | DVP_D8 | - | EVENTOUT |
+| **PC11** | - | - | TMR5_CH3 | - | - | I2S3_SDEXT | SPI3_MISO | USART3_RX | UART4_RX | QSPI1_CS | - | - | SDIO1_D3 | DVP_D4 | XMC_D2 | EVENTOUT |
+| **PC12** | - | - | - | H1/TMR11_C | I2C2_SDA | - | I2S3_SDEXT/SPI3_MOSI | USART3_CK | UART5_TX | - | - | - | SDIO1_CK | DVP_D9 | XMC_D3 | EVENTOUT |
+| **PC13** | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | EVENTOUT |
+| **PC14** | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | EVENTOUT |
+| **PC15** | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | EVENTOUT |
 
 ### Port D
 
 | Pin | MUX0 | MUX1 | MUX2 | MUX3 | MUX4 | MUX5 | MUX6 | MUX7 | MUX8 | MUX9 | MUX10 | MUX11 | MUX12 | MUX13 | MUX14 | MUX15 |
 |-----|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|
-| **PD0** | - | - | - | - | - | I2S2_WS/SPI2_CS | I2S3_SD/SPI3_MOSI/SPI4_MISO | - | - | CAN1_RX | - | - | - | - | - | - |
-| **PD1** | - | - | - | - | - | I2S2_CK/I2S2_WS/SPI2_CS/SPI2_SCK | - | - | - | CAN1_TX | - | - | - | - | - | - |
-| **PD2** | - | - | - | - | - | - | - | USART3_RTS_DE | UART5_RX | - | - | - | SDIO1_CMD | DVP_D11 | - | - |
-| **PD3** | - | - | - | - | - | I2S2_CK/SPI2_MISO/SPI2_SCK | - | USART2_CTS | - | - | - | - | - | DVP_D5 | QSPI1_SCK | - |
-| **PD4** | - | - | - | - | - | I2S2_SD/SPI2_MOSI | - | USART2_RTS_DE | - | - | - | - | - | - | - | - |
-| **PD5** | - | - | - | - | - | - | - | USART2_TX | - | - | - | - | - | - | - | - |
-| **PD6** | - | - | - | - | - | - | I2S3_SD/SPI3_MOSI | USART2_RX | - | - | - | - | - | DVP_D10 | - | - |
-| **PD7** | - | - | - | - | - | - | - | USART2_CK | - | - | - | - | - | - | - | - |
-| **PD8** | - | - | - | - | - | - | - | USART3_TX | - | - | - | EMAC_MII_RX_DV/EMAC_RMII_CRS_DV | - | - | - | - |
-| **PD9** | - | - | - | - | - | - | - | USART3_RX | - | - | - | EMAC_MII_RXD0 | - | - | - | - |
-| **PD10** | - | - | - | - | - | - | - | USART3_CK | - | - | - | EMAC_MII_RXD1/EMAC_RMII_RXD1 | - | - | - | - |
-| **PD11** | - | - | - | - | I2C2_SMBA | - | - | USART3_CTS | - | - | - | EMAC_MII_RXD2 | - | - | QSPI1 | - |
-| **PD12** | - | - | TMR4_CH1 | - | I2C2_SCL | - | - | USART3_RTS_DE | - | - | - | EMAC_MII_RXD3 | - | - | QSPI1 | - |
-| **PD13** | - | - | TMR4_CH2 | - | I2C2_SDA | - | - | - | UART8_TX | - | - | - | - | - | QSPI1_IO3 | - |
-| **PD14** | - | - | TMR4_CH3 | - | I2C3_SCL | - | - | - | UART8_RX | - | - | - | - | - | - | - |
-| **PD15** | - | - | TMR4_CH4 | - | I2C3_SDA | - | - | - | - | - | - | - | - | - | - | - |
+| **PD0** | - | - | - | - | - | SPI4_MISO | I2S3_SDEXT/SPI3_MOSI | I2S2_WS/SPI2_CS | - | CAN1_RX | XMC_A5 | - | XMC_D2 | - | - | EVENTOUT |
+| **PD1** | - | - | - | - | - | - | I2S2_CK/SPI2_SCK | I2S2_WS/SPI2_CS | - | CAN1_TX | XMC_A6 | - | XMC_D3 | - | - | EVENTOUT |
+| **PD2** | - | - | TMR3_EXT | - | - | - | - | USART3_RTS_DE | UART5_RX | - | XMC_A7 | - | SDIO1_CMD | DVP_D11 | XMC_NWE | EVENTOUT |
+| **PD3** | - | - | - | - | - | I2S2_CK/SPI2_SCK | SPI2_MISO | USART2_CTS | - | QSPI1_SCK | XMC_A8 | - | XMC_CLK | DVP_D5 | - | EVENTOUT |
+| **PD4** | - | - | - | - | - | - | I2S2_SDEXT/SPI2_MOSI | USART2_RTS_DE | - | - | XMC_A9 | - | XMC_NOE | - | - | EVENTOUT |
+| **PD5** | - | - | - | - | - | - | - | USART2_TX | - | - | XMC_A10 | - | XMC_NWE | - | - | EVENTOUT |
+| **PD6** | - | - | - | - | - | I2S3_SDEXT/SPI3_MOSI | - | USART2_RX | - | - | XMC_A11 | - | XMC_NWAIT | DVP_D10 | - | EVENTOUT |
+| **PD7** | - | - | - | - | - | - | - | USART2_CK | - | - | XMC_A12 | - | XMC_NCE2/XMC_NE1 | - | - | EVENTOUT |
+| **PD8** | - | - | - | - | - | - | - | USART3_TX | - | - | - | EMAC_MII_RX_DV/EMAC_RMII_CRS_DV | XMC_D13 | - | - | EVENTOUT |
+| **PD9** | - | - | - | - | - | - | - | USART3_RX | - | - | - | EMAC_MII_RXD0/EMAC_RMII_RXD0 | XMC_D14 | - | - | EVENTOUT |
+| **PD10** | - | - | - | - | - | - | - | USART3_CK | - | - | - | EMAC_MII_RXD1/EMAC_RMII_RXD1 | XMC_D15 | - | - | EVENTOUT |
+| **PD11** | - | - | - | - | I2C2_SMBA | - | - | USART3_CTS | - | QSPI1_IO0 | XMC_A14/XMC_SDBA0 | EMAC_MII_RXD2 | XMC_A16 | - | - | EVENTOUT |
+| **PD12** | - | - | TMR4_CH1 | - | I2C2_SCL | - | - | USART3_RTS_DE | - | QSPI1_IO1 | XMC_A15/XMC_SDBA1 | EMAC_MII_RXD3 | XMC_A17 | - | - | EVENTOUT |
+| **PD13** | - | - | TMR4_CH2 | - | I2C2_SDA | - | - | - | UART8_TX | QSPI1_IO3 | XMC_SD_CLK | - | XMC_A18 | - | - | EVENTOUT |
+| **PD14** | - | - | TMR4_CH3 | - | I2C3_SCL | - | - | - | UART8_RX | - | - | - | XMC_D0 | - | - | EVENTOUT |
+| **PD15** | - | - | TMR4_CH4 | - | I2C3_SDA | - | - | - | - | - | - | - | XMC_D1 | - | - | EVENTOUT |
 
 ### Port E
 
 | Pin | MUX0 | MUX1 | MUX2 | MUX3 | MUX4 | MUX5 | MUX6 | MUX7 | MUX8 | MUX9 | MUX10 | MUX11 | MUX12 | MUX13 | MUX14 | MUX15 |
 |-----|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|
-| **PE0** | - | - | - | - | - | - | - | - | UART8_RX | - | - | - | - | DVP_D2 | - | - |
-| **PE1** | - | - | - | - | - | - | TMR20_CH4 | - | UART8_TX | - | - | - | - | DVP_D3 | - | - |
-| **PE2** | - | - | - | - | - | - | I2S4_CK/SPI4_SCK/TMR20_CH1 | - | - | - | - | EMAC_MII_TXD3 | - | - | QSPI1_IO2 | - |
-| **PE3** | - | - | - | TMR3_CH1 | - | - | TMR20_CH2 | - | - | - | - | - | - | DVP_D9 | - | - |
-| **PE4** | CLKOUT1 | - | - | TMR3_CH2 | - | - | I2S4_WS/SPI4_CS/TMR20_CH1C/TMR20_CH1N | - | - | - | - | - | - | DVP_D4 | - | - |
-| **PE5** | - | - | - | TMR3_CH3/TMR9_CH1 | - | - | SPI4_MISO/TMR20_CH2C/TMR20_CH2N | - | - | - | - | - | - | DVP_D6 | - | - |
-| **PE6** | - | - | - | TMR3_CH4/TMR9_CH2 | - | - | I2S4_SD/SPI4_MOSI/TMR20_CH3C/TMR20_CH3N | - | - | - | - | - | - | DVP_D7 | - | - |
-| **PE7** | - | - | - | - | - | - | - | - | UART7_RX | - | - | - | - | - | QSPI2_IO0 | - |
-| **PE8** | - | TMR1_CH1C/TMR1_CH1N | - | - | - | - | - | - | UART4_TX/UART7_TX | - | - | - | - | - | QSPI2_IO1 | - |
-| **PE9** | - | TMR1_CH1 | - | - | - | - | - | - | UART4_RX | - | - | - | - | - | QSPI2_IO2 | - |
-| **PE10** | - | TMR1_CH2C/TMR1_CH2N | - | - | - | - | - | - | UART5_TX | - | - | - | - | - | QSPI2_IO3 | - |
-| **PE11** | - | TMR1_CH2 | - | - | - | - | I2S4_WS/SPI4_CS | - | UART5_RX | - | - | - | - | - | - | - |
-| **PE12** | - | TMR1_CH3C/TMR1_CH3N | - | - | - | I2S1_WS/SPI1_CS | I2S4_CK/SPI4_SCK | - | - | - | - | - | - | - | - | - |
-| **PE13** | - | TMR1_CH3 | - | - | - | I2S1_CK/SPI1_SCK | SPI4_MISO | - | - | - | - | - | - | - | - | - |
-| **PE14** | - | TMR1_CH4 | - | - | - | SPI1_MISO | I2S4_SD/SPI4_MOSI | - | - | - | - | - | - | - | - | - |
-| **PE15** | - | - | - | - | - | I2S1_SD/SPI1_MOSI | - | - | - | - | - | - | - | - | - | - |
+| **PE0** | - | - | TMR4_EX | - | - | - | TMR20_EXT | - | UART8_RX | - | - | - | C_SDDQML/XMC_LB/XM | DVP_D2 | - | EVENTOUT |
+| **PE1** | - | TMR1_CH2C | - | - | - | - | TMR20_CH4 | - | UART8_TX | - | - | - | C_SDDQMH/XMC_UB/XM | DVP_D3 | - | EVENTOUT |
+| **PE2** | - | - | TMR3_EX | - | - | I2S4_CK/SPI4_SCK | TMR20_CH1 | - | - | QSPI1_IO2 | XMC_SDNCAS | EMAC_MII_TXD3 | XMC_A23 | - | - | EVENTOUT |
+| **PE3** | - | - | TMR3_CH | - | - | - | TMR20_CH2 | - | - | - | - | - | XMC_A19 | DVP_D9 | - | EVENTOUT |
+| **PE4** | - | - | TMR3_CH | - | - | I2S4_WS/SPI4_CS | TMR20_CH1C/TMR20_CH1N | - | - | - | - | - | XMC_A20 | DVP_D4 | - | EVENTOUT |
+| **PE5** | - | - | TMR3_CH | TMR9_CH | - | SPI4_MISO | TMR20_CH2C/TMR20_CH2N | - | - | - | - | - | XMC_A21 | DVP_D6 | - | EVENTOUT |
+| **PE6** | - | - | TMR3_CH | TMR9_CH | - | I2S4_SDEXT/SPI4_MOSI | TMR20_CH3C/TMR20_CH3N | - | - | - | XMC_SDNRAS | - | XMC_A22 | DVP_D7 | - | EVENTOUT |
+| **PE7** | - | TMR1_EXT | - | - | - | - | - | - | UART7_RX | - | QSPI2_IO0 | - | XMC_D4 | - | - | EVENTOUT |
+| **PE8** | - | TMR1_CH1C/TMR1_CH1N | - | - | - | - | - | UART4_TX | UART7_TX | - | QSPI2_IO1 | - | XMC_D5 | - | - | EVENTOUT |
+| **PE9** | - | TMR1_CH1 | - | - | - | - | - | UART4_RX | - | - | QSPI2_IO2 | - | XMC_D6 | - | - | EVENTOUT |
+| **PE10** | - | TMR1_CH2C/TMR1_CH2N | - | - | - | - | - | - | UART5_TX | - | QSPI2_IO3 | - | XMC_D7 | - | - | EVENTOUT |
+| **PE11** | - | TMR1_CH2 | - | - | - | I2S4_WS/SPI4_CS | - | - | UART5_RX | - | - | - | XMC_D8 | - | - | EVENTOUT |
+| **PE12** | - | TMR1_CH3C/TMR1_CH3N | - | - | I2S1_WS/SPI1_CS | I2S4_CK/SPI4_SCK | - | - | - | - | - | - | XMC_D9 | - | - | EVENTOUT |
+| **PE13** | - | TMR1_CH3 | - | - | I2S1_CK/SPI1_SCK | SPI4_MISO | - | - | - | - | - | - | XMC_D10 | - | - | EVENTOUT |
+| **PE14** | - | TMR1_CH4 | - | - | SPI1_MIS | I2S4_SDEXT/SPI4_MOSI | - | - | - | - | - | - | XMC_D11 | - | - | EVENTOUT |
+| **PE15** | - | TMR1_BRK | - | - | I2S1_SDE/SPI1_MOS | - | - | - | - | - | - | - | XMC_D12 | - | - | EVENTOUT |
 
 ### Port F
 
 | Pin | MUX0 | MUX1 | MUX2 | MUX3 | MUX4 | MUX5 | MUX6 | MUX7 | MUX8 | MUX9 | MUX10 | MUX11 | MUX12 | MUX13 | MUX14 | MUX15 |
 |-----|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|
-| **PF0** | - | - | - | - | I2C2_SDA | - | - | - | - | - | - | - | - | - | - | - |
-| **PF1** | - | - | - | - | I2C2_SCL | - | - | - | - | - | - | - | - | - | - | - |
-| **PF2** | - | - | TMR20_CH3 | - | I2C2_SMBA | - | - | - | - | - | - | - | - | - | - | - |
-| **PF3** | - | - | TMR20_CH4 | - | - | - | - | - | - | - | - | - | - | - | - | - |
-| **PF4** | - | - | TMR20_CH1C/TMR20_CH1N | - | - | - | - | - | - | - | - | - | - | - | - | - |
-| **PF5** | - | - | TMR20_CH2C/TMR20_CH2N | - | - | - | - | - | - | - | - | - | - | - | - | - |
-| **PF6** | - | - | TMR20_CH4 | TMR10_CH1 | - | - | - | - | UART7_RX | - | - | - | - | - | QSPI1_IO3 | - |
-| **PF7** | - | - | - | TMR11_CH1 | - | - | - | - | UART7_TX | - | - | - | - | - | QSPI1_IO2 | - |
-| **PF8** | - | - | - | - | - | - | - | - | - | TMR13_CH1 | - | - | - | - | QSPI1_IO0 | - |
-| **PF9** | - | - | - | - | - | - | - | - | - | TMR14_CH1 | - | - | - | - | QSPI1_IO1 | - |
-| **PF10** | - | - | TMR5_CH4 | - | - | - | - | - | - | - | - | - | - | DVP_D11 | QSPI1_SCK | - |
-| **PF11** | - | - | - | - | - | - | - | - | - | - | - | - | - | DVP_D12 | - | - |
-| **PF12** | - | - | TMR20_CH1 | - | - | - | - | - | - | - | - | - | - | - | - | - |
-| **PF13** | - | - | TMR20_CH2 | - | I2C3_SMBA | - | - | - | - | - | - | - | - | - | - | - |
-| **PF14** | - | - | TMR20_CH3 | - | I2C3_SCL | - | - | - | - | - | - | - | - | - | - | - |
-| **PF15** | - | - | TMR20_CH4 | - | I2C3_SDA | - | - | - | - | - | - | - | - | - | - | - |
+| **PF0** | - | - | - | - | I2C2_SDA | - | - | - | - | - | - | - | XMC_A0 | - | - | EVENTOUT |
+| **PF1** | - | - | - | - | I2C2_SCL | - | - | - | - | - | - | - | XMC_A1 | - | - | EVENTOUT |
+| **PF2** | - | - | TMR20_CH3 | - | I2C2_SMBA | - | - | - | - | - | - | - | XMC_A2 | - | - | EVENTOUT |
+| **PF3** | - | - | TMR20_CH4 | - | - | - | - | - | - | - | - | - | XMC_A3 | - | - | EVENTOUT |
+| **PF4** | - | - | TMR20_CH1C/TMR20_CH1N | - | - | - | - | - | - | - | - | - | XMC_A4 | - | - | EVENTOUT |
+| **PF5** | - | - | TMR20_CH2C/TMR20_CH2N | - | - | - | - | - | - | - | - | - | XMC_A5 | - | - | EVENTOUT |
+| **PF6** | - | - | TMR20_CH4 | TMR10_CH1 | - | - | - | - | UART7_RX | QSPI1_IO3 | - | - | XMC_NIORD | - | - | EVENTOUT |
+| **PF7** | - | - | TMR20_BRK | TMR11_CH1 | - | - | - | - | UART7_TX | QSPI1_IO2 | - | - | XMC_NREG | - | - | EVENTOUT |
+| **PF8** | - | - | - | - | - | - | - | - | - | TMR13_CH1 | QSPI1_IO0 | - | XMC_NIOWR | - | - | EVENTOUT |
+| **PF9** | - | - | TMR20_BRK | - | - | - | - | - | - | TMR14_CH1 | QSPI1_MOSI_IO1 | - | XMC_CD | - | - | EVENTOUT |
+| **PF10** | - | TMR1_EXT | TMR5_CH4 | - | - | - | - | - | - | QSPI1_SCK | - | - | XMC_INTR | DVP_D11 | - | EVENTOUT |
+| **PF11** | - | - | TMR20_EXT | TMR8_EXT | - | - | - | - | - | - | - | - | XMC_SDNRAS | DVP_D12 | - | EVENTOUT |
+| **PF12** | - | - | TMR20_CH1 | TMR8_BRK | - | - | - | - | - | - | - | - | XMC_A6 | - | - | EVENTOUT |
+| **PF13** | - | - | TMR20_CH2 | - | I2C3_SMBA | - | - | - | - | - | - | - | XMC_A7 | - | - | EVENTOUT |
+| **PF14** | - | - | TMR20_CH3 | - | I2C3_SCL | - | - | - | - | - | - | - | XMC_A8 | - | - | EVENTOUT |
+| **PF15** | - | - | TMR20_CH4 | - | I2C3_SDA | - | - | - | - | - | - | - | XMC_A9 | - | - | EVENTOUT |
 
 ### Port G
 
 | Pin | MUX0 | MUX1 | MUX2 | MUX3 | MUX4 | MUX5 | MUX6 | MUX7 | MUX8 | MUX9 | MUX10 | MUX11 | MUX12 | MUX13 | MUX14 | MUX15 |
 |-----|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|
-| **PG0** | - | - | TMR20_CH1C/TMR20_CH1N | - | - | SPI1_MISO | - | - | - | CAN1_RX | - | - | - | - | - | - |
-| **PG1** | - | - | TMR20_CH2C/TMR20_CH2N | - | - | I2S1_SD/SPI1_MOSI | - | - | - | CAN1_TX | - | - | - | - | - | - |
-| **PG2** | - | - | TMR20_CH3C/TMR20_CH3N | - | - | - | - | - | - | - | - | - | - | - | - | - |
-| **PG6** | - | - | - | - | - | - | - | - | - | - | - | - | - | DVP_D12 | QSPI1_CS | - |
-| **PG7** | - | - | - | - | - | - | - | - | USART6_CK | - | - | - | - | DVP_D13 | - | - |
-| **PG8** | - | - | - | - | - | - | - | - | USART6_RTS_DE | - | - | EMAC_PPS_OUT | - | - | QSPI2_CS | - |
-| **PG9** | - | - | - | - | - | - | - | - | USART6_RX | - | - | - | - | DVP_VSYNC | QSPI1_IO2 | - |
-| **PG10** | - | - | - | - | - | - | - | - | - | - | - | - | - | DVP_D2 | QSPI2_IO2 | - |
-| **PG11** | - | - | - | - | - | - | I2S4_CK/SPI4_SCK | - | - | CAN2_RX | - | EMAC_MII_TX_EN/EMAC_RMII_TX_EN | - | DVP_D3 | QSPI2_IO3 | - |
-| **PG12** | - | - | - | - | - | - | SPI4_MISO | - | USART6_RTS_DE | CAN2_TX | - | - | - | - | QSPI2_IO1 | - |
-| **PG13** | - | - | - | - | - | - | I2S4_SD/SPI4_MOSI | - | USART6_CTS | - | - | EMAC_MII_TXD0/EMAC_RMII_TXD0 | - | - | QSPI2_SCK | - |
-| **PG14** | - | - | - | - | - | - | I2S4_WS/SPI4_CS | - | USART6_TX | - | - | EMAC_MII_TXD1/EMAC_RMII_TXD1 | - | - | QSPI1_IO3/QSPI2_ | - |
-| **PG15** | - | - | - | - | - | - | - | - | USART6_CTS | - | - | - | - | DVP_D13 | - | - |
+| **PG0** | - | - | TMR20_CH1C/TMR20_CH1N | - | - | SPI1_MISO | - | - | - | CAN1_RX | - | - | XMC_A10 | - | - | EVENTOUT |
+| **PG1** | - | - | TMR20_CH2C/TMR20_CH2N | - | - | I2S1_SDEXT/SPI1_MOSI | - | - | - | CAN1_TX | - | - | XMC_A11 | - | - | EVENTOUT |
+| **PG2** | - | - | TMR20_CH3C/TMR20_CH3N | - | - | - | - | - | - | - | - | - | XMC_A12 | - | - | EVENTOUT |
+| **PG3** | - | - | TMR20_BRK | - | - | - | - | - | - | - | - | - | XMC_A13 | - | - | EVENTOUT |
+| **PG4** | - | - | - | - | - | - | - | - | - | - | - | - | XMC_A14/XMC_SDBA0 | - | - | EVENTOUT |
+| **PG5** | - | - | TMR20_EXT | - | - | - | - | - | - | - | - | - | XMC_A15/XMC_SDBA1 | - | - | EVENTOUT |
+| **PG6** | - | - | - | - | - | - | - | - | - | - | QSPI1_CS | - | XMC_INT2 | DVP_D12 | - | EVENTOUT |
+| **PG7** | - | - | - | - | - | - | - | - | USART6_CK | - | - | - | XMC_INT3 | DVP_D13 | - | EVENTOUT |
+| **PG8** | - | - | - | - | - | QSPI2_CS | - | - | USART6_RTS_DE | - | - | EMAC_PPS_OUT | XMC_SDCLK | - | - | EVENTOUT |
+| **PG9** | - | - | - | - | - | - | - | - | USART6_RX | QSPI1_IO2 | - | - | XMC_NCE3/XMC_NE2 | DVP_VSY | - | EVENTOUT |
+| **PG10** | - | - | - | - | - | QSPI2_IO2 | - | - | - | - | - | - | XMC_NCE4_1/XMC_NE3 | DVP_D2 | - | EVENTOUT |
+| **PG11** | - | - | - | - | - | QSPI2_IO3 | I2S4_CK/SPI4_SCK | - | - | CAN2_RX | - | EMAC_MII_TX_EN/EMAC_RMII_TX_EN | XMC_NCE4_2 | DVP_D3 | - | EVENTOUT |
+| **PG12** | - | - | - | - | - | QSPI2_IO1 | SPI4_MISO | - | USART6_RTS_DE | CAN2_TX | - | - | XMC_NE4 | - | - | EVENTOUT |
+| **PG13** | - | - | - | - | - | QSPI2_SCK | I2S4_SDEXT/SPI4_MOSI | - | USART6_CTS | - | - | EMAC_MII_TXD0/EMAC_RMII_TXD0 | XMC_A24 | - | - | EVENTOUT |
+| **PG14** | - | - | - | - | - | QSPI2_IO0 | I2S4_WS/SPI4_CS | - | USART6_TX | QSPI1_IO3 | - | EMAC_MII_TXD1/EMAC_RMII_TXD1 | XMC_A25 | - | - | EVENTOUT |
+| **PG15** | - | - | - | - | - | - | - | - | USART6_CTS | - | - | - | XMC_SDNCAS | DVP_D13 | - | EVENTOUT |
 
 ### Port H
 
 | Pin | MUX0 | MUX1 | MUX2 | MUX3 | MUX4 | MUX5 | MUX6 | MUX7 | MUX8 | MUX9 | MUX10 | MUX11 | MUX12 | MUX13 | MUX14 | MUX15 |
 |-----|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|
-| **PH0** | - | - | - | - | I2C1_SDA | - | - | - | - | - | - | - | - | - | - | - |
-| **PH1** | - | - | - | - | I2C1_SCL | - | - | - | - | - | - | - | - | - | - | - |
-| **PH2** | - | - | TMR5_CH1 | - | I2C2_SCL | - | - | - | UART4_RX | - | - | - | - | - | QSPI1_IO0 | - |
-| **PH3** | - | - | TMR5_CH2 | - | I2C2_SDA | - | - | - | UART4_TX | - | - | - | - | - | QSPI1_IO1 | - |
+| **PH0** | - | - | - | - | I2C1_SDA | - | - | - | - | - | - | - | - | - | - | EVENTOUT |
+| **PH1** | - | - | - | - | I2C1_SCL | - | - | - | - | - | - | - | - | - | - | EVENTOUT |
+| **PH2** | - | - | TMR5_CH1 | - | I2C2_SCL | - | - | - | UART4_RX | - | QSPI1_IO0 | - | - | - | - | EVENTOUT |
+| **PH3** | - | - | TMR5_CH2 | - | I2C2_SDA | - | - | - | UART4_TX | - | QSPI1_IO1 | - | - | - | - | EVENTOUT |

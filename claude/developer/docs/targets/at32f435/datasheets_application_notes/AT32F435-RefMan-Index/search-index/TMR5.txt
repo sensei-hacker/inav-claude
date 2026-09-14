@@ -1,0 +1,126 @@
+Keyword: TMR5
+Occurrences: 122
+================================================================================
+
+Page   11: 14.2 General-purpose timer (TMR2 to TMR5) ...................................... 257
+Page   11: 14.2.1 TMR2 to TMR5 introduction ........................................................ 257
+Page   11: 14.2.2 TMR2 to TMR5 main features ...................................................... 257
+Page   11: 14.2.3 TMR2 to TMR5 functional overview ............................................. 258
+Page   11: 14.2.4.1 TMR2 to TMR5 control register 1 (TMRx_CTRL1) .................... 273
+Page   11: 14.2.4.2 TMR2 to TMR5 control register 2 (TMRx_CTRL2) .................... 274
+Page   11: 14.2.4.3 TMR2 to TMR5 slave timer control register (TMRx_STCTRL) .... 274
+Page   11: 14.2.4.4 TMR2 to TMR5 DMA/interrupt enable register (TMRx_IDEN) .... 275
+Page   11: 14.2.4.5 TMR2 to TMR5 interrupt status register (TMRx_ISTS) .............. 276
+Page   11: 14.2.4.6 TMR2 to TMR5 software event register (TMRx_SW E VT) .......... 277
+Page   12: 14.2.4.7 TMR2 to TMR5 channel mode register 1 (TMRx_CM1) ............. 277
+Page   12: 14.2.4.8 TMR2 to TMR5 channel mode register 2 (TMRx_CM2) ............. 279
+Page   12: 14.2.4.9 TMR2 to TMR5 channel control register (TMRx_CCTRL) .......... 280
+Page   12: 14.2.4.10     TMR2 to TMR5 counter value (TMRx_CVAL) ....................... 281
+Page   12: 14.2.4.11     TMR2 to TMR5 division value (TMRx_DIV) .......................... 281
+Page   12: 14.2.4.12     TMR2 to TMR5 period register (TMRx_PR) ......................... 281
+Page   12: 14.2.4.13     TMR2 to TMR5 channel 1 data register (TMRx_C1DT) ......... 281
+Page   12: 14.2.4.14     TMR2 to TMR5 channel 2 data register (TMRx_C2DT) ......... 281
+Page   12: 14.2.4.15     TMR2 to TMR5 channel 3 data register (TMRx_C3DT) ......... 282
+Page   12: 14.2.4.16     TMR2 to TMR5 channel 4 data register (TMRx_C4DT) ......... 282
+Page   12: 14.2.4.17     TMR2 to TMR5 DMA control register (TMRx_DMACTRL) ...... 282
+Page   12: 14.2.4.18     TMR2 to TMR5 DMA data register (TMRx_DMADT) .............. 282
+Page   12: 14.2.4.19     TMR5 channel input remapping register (TMR2_RMP) ......... 283
+Page   12: 14.2.4.20     TMR2 channel input remapping register (TMR5_RMP) ......... 283
+Page   52: 50   57             TMR5                  TMR5 global interrupt                        0x0000_0108
+Page   62: 0x4000 0C00 - 0x4000 0FFF       TMR5 timer
+Page   82: Bit 3        TMR5RST          0x0            rw       0: Does not reset Timer5
+Page   86: Bit 3        TMR5EN          0x0             rw        0: Disabled
+Page   90: Bit 3        TMR5LPEN     0x1        rw       0: Disabled
+Page  124: PA0                            TMR5_CH1   TMR8_EXT    I2C2_SCL                            USART2_CTS
+Page  124: PA1                TMR2_CH2    TMR5_CH2               I2C2_SDA
+Page  124: PA2                TMR2_CH3    TMR5_CH3   TMR9_CH1                                        USART2_TX
+Page  124: PA3                TMR2_CH4    TMR5_CH4   TMR9_CH2                I2S2_MCK                USART2_RX
+Page  126: PB11               TMR2_CH4    TMR5_CH4                 I2C2_SDA                             USART3_RX
+Page  126: PB12               TMR1_BRK    TMR5_CH1                 I2C2_SMBA
+Page  128: PC10                    TMR5_CH2
+Page  128: PC11                    TMR5_CH3                          I2S3_SDEXT   SPI3_MISO    USART3_RX
+Page  134: PF10            TMR1_EXT   TMR5_CH4
+Page  138: PH2                                 TMR5_CH1                 I2C2_SCL
+Page  138: PH3                                 TMR5_CH2                 I2C2_SDA
+Page  154: DAC1       TMR5                                                             ch7
+Page  158: DAC1     TMR5                                                        Stream 1               DMAMUX_SEL
+Page  159: 8           TMR6_OVERFLOW 40        QSPI1              72        TMR5_CH1       104     QSPI2
+Page  159: 9           TMR7_OVERFLOW 41        DAC2               73        TMR5_CH2       105     DVP
+Page  159: 10          SPI1_RX       42        TMR1_CH1           74        TMR5_CH3       106     SPI4_RX
+Page  159: 11          SPI1_TX       43        TMR1_CH2           75        TMR5_CH4       107     SPI4_TX
+Page  159: 12          SPI2_RX       44        TMR1_CH3           76        TMR5_OVERFLOW 108      reserved
+Page  159: 13          SPI2_TX       45        TMR1_CH4           77        TMR5_TRIG      109     reserved
+Page  252: TMR5
+Page  252: TMR5
+Page  257: 14.2 General-purpose timer (TMR2 to TMR5)
+Page  257: 14.2.1 TMR2 to TMR5 introduction
+Page  257: The general-purpose timer (TMR2 to TMR5) consists of a 16-bit counter supporting up, down, up/down
+Page  257: 14.2.2 TMR2 to TMR5 main features
+Page  258: 14.2.3 TMR2 to TMR5 functional overview
+Page  258: The count clock of TMR2~TMR5 can be provided by the internal clock (CK_INT), external clock (external
+Page  260: Each timer (TMR2 to TMR5) consists of a 16-bit prescaler, which is used to generate the CK_CNT that
+Page  260: TMR3                                   TMR1                          TMR2                         TMR5               TMR4
+Page  260: TMR5                                   TMR2                          TMR3                         TMR4               TMR8
+Page  261: The timer (TMR2 to TMR5) supports several counting modes to meet different application scenarios.
+Page  263: Each of TMR2~TMR5 timers has four independent channels, with each channel being configured as
+Page  265: The TMR2 IS1 (internal trigger input 1) and TMR5 channel 4 are mappable through the TMRx_RMP
+Page  265: OTG2_FS_SOF. TMR5 channel 4 input can be configured as GPIO, LICK, LEXT or ERTC.
+Page  272: All TMR2 and TMR5 registers are mapped into a 16-bit addressable space.
+Page  273: TMR5_RMP                0x50                              0x0000
+Page  273: 14.2.4.1 TMR2 to TMR5 control register 1 (TMRx_CTRL1)
+Page  273: Note: This function is only valid for TMR2 and TMR5. It is
+Page  274: 14.2.4.2 TMR2 to TMR5 control register 2 (TMRx_CTRL2)
+Page  274: 14.2.4.3 TMR2 to TMR5 slave timer control register (TMRx_STCTRL)
+Page  275: 14.2.4.4 TMR2 to TMR5 DMA/interrupt enable register (TMRx_IDEN)
+Page  276: 14.2.4.5 TMR2 to TMR5 interrupt status register (TMRx_ISTS)
+Page  277: 14.2.4.6 TMR2 to TMR5 software event register (TMRx_SWEVT)
+Page  277: 14.2.4.7 TMR2 to TMR5 channel mode register 1 (TMRx_CM1)
+Page  279: 14.2.4.8 TMR2 to TMR5 channel mode register 2 (TMRx_CM2)
+Page  280: 14.2.4.9 TMR2 to TMR5 channel control register (TMRx_CCTRL)
+Page  281: 14.2.4.10             TMR2 to TMR5 counter value (TMRx_CVAL)
+Page  281: When TMR2 or TMR5 enables plus mode (the PMEN bit
+Page  281: 14.2.4.11             TMR2 to TMR5 division value (TMRx_DIV)
+Page  281: 14.2.4.12             TMR2 to TMR5 period register (TMRx_PR)
+Page  281: When TMR2 or TMR5 enables plus mode (the PMEN bit
+Page  281: 14.2.4.13             TMR2 to TMR5 channel 1 data register (TMRx_C1DT)
+Page  281: When TMR2 or TMR5 enables plus mode (the PMEN bit
+Page  281: 14.2.4.14             TMR2 to TMR5 channel 2 data register (TMRx_C2DT)
+Page  281: When TMR2 or TMR5 enables plus mode (the PMEN bit
+Page  282: 14.2.4.15             TMR2 to TMR5 channel 3 data register (TMRx_C3DT)
+Page  282: When TMR2 or TMR5 enables plus mode (the PMEN bit
+Page  282: 14.2.4.16             TMR2 to TMR5 channel 4 data register (TMRx_C4DT)
+Page  282: When TMR2 or TMR5 enables plus mode (the PMEN bit
+Page  282: 14.2.4.17             TMR2 to TMR5 DMA control register (TMRx_DMACTRL)
+Page  282: 14.2.4.18             TMR2 to TMR5 DMA data register (TMRx_DMADT)
+Page  283: 14.2.4.19              TMR5 channel input remapping register (TMR2_RMP)
+Page  283: 14.2.4.20              TMR2 channel input remapping register (TMR5_RMP)
+Page  283: TMR5 channel 4 input remap
+Page  283: 00: TMR5 channel 4 input connected to GPIO
+Page  283: Bit 7: 6         TMR5_CH4_IRMP                           0x0                          rw                  01: Internal clock LICK
+Page  286: TMR12                              TMR4_TRGOUT                    TMR5_TRGOUT           TMR13_OC       TMR14_OC
+Page  307: TMR1                          TMR5                                   TMR2                    TMR3              TMR4
+Page  307: TMR8                          TMR1                                   TMR2                    TMR4              TMR5
+Page  307: TMR20                         TMR8                                   TMR2                    TMR4              TMR5
+Page  359: TMR5_CH1
+Page  359: TMR5_CH2                                                                                                                   ADCx_IN0
+Page  359: TMR5_CH3                  Trigger
+Page  359: TMR5_CH4                                                                                                         ADC
+Page  359: TMR5_TRGOUT                                                                                                    interrupt
+Page  362: 01010                               TMR5_CH1 event                   11010                          TMR4_CH1 event
+Page  362: 01011                               TMR5_CH2 event                   11011                          TMR1_TRGOUT event
+Page  362: 01100                               TMR5_CH3 event                   11100                          TMR2_CH1 event
+Page  363: 01010                TMR5_CH4 event                 11010          TMR4_CH4 event
+Page  363: 01011                TMR5_TRGOUT event              11011          TMR1_CH3 event
+Page  393: TMR5_TRGOUT                  011
+Page  396: 011: TMR5 TRGOUT event
+Page  397: 011: TMR5 TRGOUT event
+Page  693: DAC1     TMR5                                                             Stream 1               DMAMUX_SEL
+Page  693: 8           TMR6_OVERFLOW 40                 QSPI1                                72             TMR5_CH1                     104                QSPI2
+Page  693: 9           TMR7_OVERFLOW 41                 DAC2                                 73             TMR5_CH2                     105                DVP
+Page  693: 10          SPI1_RX           42             TMR1_CH1                             74             TMR5_CH3                     106                SPI4_RX
+Page  693: 11          SPI1_TX           43             TMR1_CH2                             75             TMR5_CH4                     107                SPI4_TX
+Page  693: 12          SPI2_RX           44             TMR1_CH3                             76             TMR5_OVERFLOW 108                               reserved
+Page  693: 13          SPI2_TX           45             TMR1_CH4                             77             TMR5_TRIG                    109                reserved
+Page  714: TMR5 pause control bit
+Page  714: Bit 3        TMR5_PAUSE           0x0         rw     0: TMR5 works normally
+Page  714: 1: TMR5 stops running

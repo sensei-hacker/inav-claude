@@ -1,0 +1,348 @@
+Keyword: timer
+Occurrences: 344
+================================================================================
+
+Page    1: dual QSPI, SDRAM, dual OTGFS, Ethernet, camera, 18 timers, 3 ADCs, 23
+Page    1: Protection Unit (MPU), single-cycle multiplication           Up to 18 Timers (TMR)
+Page    1: − Up to 13 x 16-bit timers + 2 x 32-bit timers, each with 4
+Page    1: − DSP instructions                                              − 2 x Watchdog timers (WDT and WWDT)
+Page    1:    Memories                                                        − SysTick timer: 24-bit downcounter
+Page   11: 14       Timer .......................................................................................... 252
+Page   11: 14.1 Basic timer (TMR6 and TMR7) .................................................... 253
+Page   11: 14.2 General-purpose timer (TMR2 to TMR5) ...................................... 257
+Page   11: 14.2.4.3 TMR2 to TMR5 slave timer control register (TMRx_STCTRL) .... 274
+Page   12: 14.3 General-purpose timer (TMR9 to TMR14) .................................... 283
+Page   12: 14.3.4.2 TMR9 and TMR12 slave timer control register (TMRx_STCTRL) 294
+Page   13: 14.4 Advanced-control timers (TMR1, TMR8 and TMR20) ..................... 304
+Page   13: 14.4.4.3 TMR1, TMR8 and TMR20 slave timer control register
+Page   14: 15       Window watchdog timer (WWDT) ................................................ 335
+Page   14: 16       Watchdog timer (WDT) ................................................................ 338
+Page   15: 17.4.6 ERTC wakeup timer register (ERTC_WAT) .................................. 352
+Page   23: 23       Infrared timer (IRTMR) ................................................................ 505
+Page   24: 24.8.4.4 SDRAM refresh timer register (SDRAM_RCNT) ....................... 549
+Page   25: 25.4.7 SDIO data timer register (SDIO_DTTMR) ..................................... 574
+Page   34: Figure 14-1 Basic timer block diagram ...................................................................................................... 253
+Page   34: Figure 14-7 General-purpose timer block diagram ................................................................................... 257
+Page   34: Figure 14-35 Master/slave timer connection ............................................................................................. 271
+Page   34: Figure 14-36 Using master timer to start slave timer ................................................................................ 271
+Page   34: Figure 14-37 Starting master and slave timers synchronously by an external trigger .............................. 272
+Page   35: Figure 14-59 Block diagram of advanced-control timer ............................................................................ 304
+Page   44: 16-bit and 32-bit timers, Infrared Transmitter (IRTMR), DMA controller, EDMA controller, ERTC,
+Page   50: 6                     SysTick                   System tick timer                         0x0000_003C
+Page   50: 0       7                     WWDT                      Window watchdog timer                     0x0000_0040
+Page   61: 0x4001 4C00 - 0x4001 73FF       TMR20 timer
+Page   61: 0x4001 4800 - 0x4001 4BFF       TMR11 timer
+Page   61: 0x4001 4400 - 0x4001 47FF       TMR10 timer
+Page   61: 0x4001 4000 - 0x4001 43FF       TMR9 timer
+Page   61: 0x4001 0400 - 0x4001 07FF       TMR8 timer
+Page   61: 0x4001 0000 - 0x4001 03FF       TMR1 timer
+Page   62: 0x4000 3000 - 0x4000 33FF       Watchdog timer (WDT)
+Page   62: 0x4000 2C00 - 0x4000 2FFF       Window watchdog timer (WWDT)
+Page   62: 0x4000 2000 - 0x4000 23FF       TMR14 timer
+Page   62: 0x4000 1C00 - 0x4000 1FFF       TMR13 timer
+Page   62: 0x4000 1800 - 0x4000 1BFF       TMR12 timer
+Page   62: 0x4000 1400 - 0x4000 17FF       TMR7 timer
+Page   62: 0x4000 1000 - 0x4000 13FF       TMR6 timer
+Page   62: 0x4000 0C00 - 0x4000 0FFF       TMR5 timer
+Page   62: 0x4000 0800 - 0x4000 0BFF       TMR4 timer
+Page   62: 0x4000 0400 - 0x4000 07FF       TMR3 timer
+Page   62: 0x4000 0000 - 0x4000 03FF       TMR2 timer
+Page   65: power-saving mode wakeup circuit, watchdog timer (WDT), power-on reset/low voltage reset (POR/LVR),
+Page   71: System Tick timer (SysTick) is clocked by CPU FCLK(HCLK) or CPU systick(HCLK/8)
+Page   71: The timers are clocked by APB1/2. In particular, if the APB prescaler is 1, the timer clock frequency is
+Page   71: equal to that of APB1/2; otherwise, the timer clock frequency doubles that of the APB1/2 frequency.
+Page   81: Timer14 reset
+Page   81: Bit 8        TMR14RST         0x0            rw       0: Does not reset Timer14
+Page   81: 1: Reset Timer14
+Page   81: Timer13 reset
+Page   81: 0: Does not reset Timer13
+Page   82: 1: Reset Timer13
+Page   82: Timer12 reset
+Page   82: Bit 6        TMR12RST         0x0            rw       0: Does not reset Timer12
+Page   82: 1: Reset Timer12
+Page   82: Timer7 reset
+Page   82: Bit 5        TMR7RST          0x0            rw       0: Does not reset Timer7
+Page   82: 1: Reset Timer7
+Page   82: Timer6 reset
+Page   82: Bit 4        TMR6RST          0x0            rw       0: Does not reset Timer6
+Page   82: 1: Reset Timer6
+Page   82: Timer5 reset
+Page   82: Bit 3        TMR5RST          0x0            rw       0: Does not reset Timer5
+Page   82: 1: Reset Timer5
+Page   82: Timer4 reset
+Page   82: Bit 2        TMR4RST          0x0            rw       0: Does not reset Timer4
+Page   82: 1: Reset Timer4
+Page   82: Timer3 reset
+Page   82: Bit 1        TMR3RST          0x0            rw       0: Does not reset Timer3
+Page   82: 1: Reset Timer3
+Page   82: Timer2 reset
+Page   82: Bit 0        TMR2RST          0x0            rw       0: Does not reset Timer2
+Page   82: 1: Reset Timer2
+Page   82: Timer20 reset
+Page   82: Bit 20       TMR20RST         0x0            rw       0: Does not reset Timer20
+Page   82: 1: Reset Timer20
+Page   82: Timer11 reset
+Page   82: Bit 18       TMR11RST         0x0            rw       0: Does not reset Timer11
+Page   82: 1: Reset Timer11
+Page   82: Timer10 reset
+Page   82: Bit 17       TMR10RST         0x0            rw       0: Does not reset Timer10
+Page   82: 1: Reset Timer10
+Page   82: Timer9 reset
+Page   82: Bit 16       TMR9RST          0x0            rw       0: Does not reset Timer9
+Page   82: 1: Reset Timer9
+Page   83: TMR8 timer reset
+Page   83: TMR1 timer reset
+Page   86: Timer14 clock enable
+Page   86: Timer13 clock enable
+Page   86: Timer12 clock enable
+Page   86: Timer7 clock enable
+Page   86: Timer6 clock enable
+Page   86: Timer5 clock enable
+Page   86: Timer4 clock enable
+Page   86: Timer3 clock enable
+Page   86: Timer2 clock enable
+Page   86: Timer20 clock enable
+Page   86: Timer11 clock enable
+Page   86: Timer10 clock enable
+Page   86: Timer9 clock enable
+Page   87: Timer8 clock enable
+Page   87: Timer1 clock enable
+Page   90: Timer14 clock enable in sleep mode
+Page   90: Timer13 clock enable in sleep mode
+Page   90: Timer12 clock enable in sleep mode
+Page   90: Timer 7 clock enable in sleep mode
+Page   90: Timer 6 clock enable in sleep mode
+Page   90: Timer 5 clock enable in sleep mode
+Page   90: Timer 4 clock enable in sleep mode
+Page   90: Timer 3 clock enable in sleep mode
+Page   90: Timer 2 clock enable in sleep mode
+Page   91: Timer20 clock enable in sleep mode
+Page   91: Timer11 clock enable during sleep mode
+Page   91: Timer10 clock enable in sleep mode
+Page   91: Timer9 clock enable in sleep mode
+Page   91: TMR8 timer clock enable in sleep mode
+Page   91: TMR1 timer clock enable in sleep mode
+Page   92: Window watchdog timer reset flag
+Page   92: 0: No window watchdog timer reset occurs
+Page   92: 1: Window watchdog timer reset occurs
+Page   93: Watchdog timer reset flag
+Page   93: 0: No watchdog timer reset occurs
+Page   93: 1: Watchdog timer reset occurs.
+Page   94: CLKOUT1 internal connected to timer 10 channel 1
+Page  252: 14 Timer
+Page  252: AT32F435 timers include basic timers, general-purpose timers, and advanced timers.
+Page  252: timers are shown in the following tables.
+Page  252: Timer type Timer                           Repetition Prescaler                              input
+Page  252: timer     TMR20               Up/Down
+Page  252: timer          TMR12
+Page  252: Basic timer         16        Up           X           1~65535 O             X                X      X       X
+Page  252: Timer                 Counter Count    PWM           Complementary Dead-                        Linkage
+Page  252: Timer                           pulse                      interface with hall
+Page  252: Advanced- TMR1               Up                                                                      Timer
+Page  252: timer     TMR20              Up/Down                                                                 ADC/DAC
+Page  252: Up                                                                      Timer
+Page  252: Up                                                                      Timer
+Page  252: purpose       TMR9                                                                                   Timer
+Page  252: timer         TMR12                                                                                  synchronization
+Page  252: timer         TMR7
+Page  253: 14.1 Basic timer (TMR6 and TMR7)
+Page  253: Each of the basic timers (TMR6 and TMR7) includes a 16-bit upcounter and the corresponding control
+Page  253: Figure 14-1 Basic timer block diagram
+Page  253: The basic timer only supports upcounting mode, and it has an internal 16-bit counter.
+Page  254: timer controller in reset mode trigger the generation of an overflow event. When the OVFS bit is set, only
+Page  254: Setting the TMREN bit (TMREN=1) enables the timer to start counting. Base on synchronization logic,
+Page  256: be sent to slave timers.
+Page  257: timer stops working when the period value is 0.
+Page  257: 14.2 General-purpose timer (TMR2 to TMR5)
+Page  257: The general-purpose timer (TMR2 to TMR5) consists of a 16-bit counter supporting up, down, up/down
+Page  257:       Synchronization control between master and slave timers
+Page  257: Figure 14-7 General-purpose timer block diagram
+Page  257: Trigger                                            TMREN              To other timers
+Page  260: Timer synchronization allows interconnection between several timers. The TMR_CLK of one timer can
+Page  260: be provided by the TRGOUT signal output by another timer. Set the STIS[2: 0] bit to select internal
+Page  260: Each timer (TMR2 to TMR5) consists of a 16-bit prescaler, which is used to generate the CK_CNT that
+Page  260: Note: If there is no corresponding timer in a device, the corresponding trigger signal ISx is not present.
+Page  261: The timer (TMR2 to TMR5) supports several counting modes to meet different application scenarios.
+Page  261: Each timer has an internal 16-bit upcounter, downcounter, upcounter/downcounter. TMR2/5 can be
+Page  261: timer controller in reset mode trigger the generation of an overflow event. When the OVFS bit is set, only
+Page  261: Setting the TMREN bit (TMREN=1) enables the timer to start counting. Base on synchronization logic,
+Page  263: Each of TMR2~TMR5 timers has four independent channels, with each channel being configured as
+Page  264: through channel 2 edge detection). The STCI comes from slave timer controller, and its source is
+Page  265: Timer Input XOR function
+Page  265: The 3 timer input pins (TMRx_CH1, TMRx_CH2 and TMRx_CH3) are connected to the channel 1
+Page  265: to the same TMRx_CHx, and configure the CxIFPx of channel 1/2 to trigger slave timer controller reset.
+Page  265:  Set STIS=3’b101 to set C1IFP1 as the slave timer trigger signal;
+Page  265:  Set SMSEL=3‘b110 to set the slave timer in reset mode;
+Page  269: Master timer event output
+Page  269: When TMR is selected as the master timer, the following signal sources can be selected as TRGOUT
+Page  269: signal to output to the slave timer, by setting the PTOS bit in the TMRxCTRL2 register.
+Page  269: The timers are linked together internally for timer synchronization. Master timer is selected by setting the
+Page  269: PTOS[2: 0] bit; Slave timer is selected by setting the SMSEL[2: 0] bit.
+Page  271: Master/slave timer interconnection
+Page  271: Both Master and slave timer can be configured in different master and slave modes respectively. The
+Page  271: interconnection between master timer and slave timer.
+Page  271: Figure 14-35 Master/slave timer connection
+Page  271: Master Timer                                                                              Slave Timer
+Page  271: Using master timer to clock the slave timer:
+Page  271:  Configure master timer output signal TRGOUT as an overflow event (PTOS[2: 0]=3’b010). The
+Page  271: master timer outputs a pulse signal at each counter overflow event, which is used as the
+Page  271: counting clock of the slave timer.
+Page  271:  Configure the master timer counting period (TMRx_PR registers).
+Page  271:  Configure the slave timer trigger input signal TRGIN as master timer output (STIS[2: 0] in the
+Page  271:  Configure the slave timer to use external clock mode A (SMSEL[2: 0]=3’b111 in the
+Page  271:  Set TMREN =1 in both master timer and slave timer to enable them.
+Page  271: Using master timer to start slave timer:
+Page  271:  Configure master timer output signal TRGOUT as an overflow event (PTOS[2: 0]=3’b010). The
+Page  271: master timer outputs a pulse signal at each counter overflow event, which is used as the
+Page  271: counting clock of the slave timer.
+Page  271:  Configure master timer counting period (TMRx_PR registers).
+Page  271:  Configure slave timer trigger input signal TRGIN as master timer input.
+Page  271:  Configure slave timer as trigger mode (SMSEL=3’b110 in the TMR2_STCTRL register).
+Page  271:  Set TMREN=1 to enable master timer.
+Page  271: Figure 14-36 Using master timer to start slave timer
+Page  272: Starting master and slave timers synchronously by an external trigger:
+Page  272: In this example, configure the master timer as master/slave mode synchronously and enable its slave
+Page  272: timer synchronization function. This mode is used for synchronization between master timer and slave
+Page  272: timer.
+Page  272:  Set the STS bit of the master timer.
+Page  272:  Configure master timer output signal TRGOUT as an overflow event (PTOS[2: 0]=3’b010). The
+Page  272: master timer outputs a pulse signal at each counter overflow event, which is used as the
+Page  272: counting clock of the slave timer.
+Page  272:  Configure the slave timer mode of the master timer as trigger mode, and select C1IN as trigger
+Page  272:  Configure slave timer trigger input signal TRGIN as master timer output.
+Page  272:  Configure slave timer as trigger mode (SMSEL=3’b110 in the TMR2_STCTRL register).
+Page  272: Figure 14-37 Starting master and slave timers synchronously by an external trigger
+Page  273: filter sampling frequency (fDT) and timer clock frequency
+Page  274: event generated by slave timer controller
+Page  274: slave timer.
+Page  274: 14.2.4.3 TMR2 to TMR5 slave timer control register (TMRx_STCTRL)
+Page  275: If enabled, master and slave timer can be synchronized.
+Page  275: on ISx for each timer.
+Page  281: timer stops working when the period value is 0.
+Page  283: 14.3 General-purpose timer (TMR9 to TMR14)
+Page  283: The general-purpose timer (TMR9 to TMR14) consists of a 16-bit counter supporting upcounting mode.
+Page  283: These timers can be synchronized.
+Page  283:  Synchronization control between master and slave timers
+Page  284:  Synchronization control between master and slave timers
+Page  284: The count clock of general-purpose timers can be provided by the internal clock (CK_INT), external clock
+Page  286: Timer synchronization allows interconnection between several timers. The TMR_CLK of one timer can
+Page  286: be provided by the TRGOUT signal output by another timer. Set the STIS[2: 0] bit to select internal
+Page  286: Each timer (TMR9 ~TMR14) consists of a 16-bit prescaler, which is used to generate the CK_CNT that
+Page  286: Note: If there is no corresponding timer in a device, the corresponding trigger signal ISx is not present.
+Page  287: The general-purpose timer only supports upcounting mode, and it consists of a 16-bit counter.
+Page  287: timer controller in reset mode trigger the generation of an overflow event. When the OVFS bit is set, only
+Page  287: Setting TMREN=1 to enable the timer to start counting. Base on synchronization logic, however, the
+Page  288: Each timer of TMR9 and TMR12 has two independent channels, while each of TMR10, TMR11, TMR13
+Page  288: through channel 2 edge detection). The STCI comes from slave timer controller, and its source is
+Page  289: to the same TMRx_CHx, and configure the CxIFPx of channel 1/2 to trigger slave timer controller reset.
+Page  289:  Set STIS=3’b101 to set C1IFP1 as the slave timer trigger signal;
+Page  289:  Set SMSEL=3‘b110 to set the slave timer in reset mode;
+Page  292: TMR9 and TMR12 are linked together internally for timer synchronization. Slave timer is selected by
+Page  293: digital filter sampling frequency (fDTS) and timer clock
+Page  294: event generated by slave timer controller
+Page  294: 14.3.4.2 TMR9 and TMR12 slave timer control register
+Page  294: each timer.
+Page  298: timer stops working when the period value is 0.
+Page  299: digital filter sampling frequency (fDTS) and timer clock
+Page  300: event generated by slave timer controller
+Page  303: timer stops working when the period value is 0.
+Page  304: 14.4 Advanced-control timers (TMR1, TMR8 and TMR20)
+Page  304: Each of the advanced-control timer (TMR1, TMR8 and TMR20) consists of a 16-bit counter supporting
+Page  304:  Synchronization control between master and slave timers
+Page  304: Figure 14-59 Block diagram of advanced-control timer
+Page  304: Trigger                                            TMREN                  To other timers
+Page  307: Timer synchronization allows interconnection between several timers. The TMR_CLK of one timer can
+Page  307: be provided by the TRGOUT signal output by another timer. Set the STIS[2: 0] bit to select internal
+Page  307: Each timer consists of a 16-bit prescaler, which is used to generate the CK_CNT that enables the counter
+Page  307: Slave timer                  IS0 (STIS=000)                   IS1 (STIS=001)                IS2 (STIS=010)    IS3 (STIS=011)
+Page  308: The advanced-control timer consists of an internal 16-bit counter supporting up, down, up/down counting
+Page  308: timer controller in reset mode trigger the generation of an overflow event. When the OVFS bit is set, only
+Page  308: Setting TMREN=1 to enable the timer to start counting. Base on synchronization logic, however, the
+Page  312: Each timer of TMR1, TMR8 and TMR20 has four independent channels. Each channel can be configured
+Page  312: through channel 2 edge detection). The STCI comes from slave timer controller, and its source is
+Page  313: Timer input XOR function
+Page  313: The timer input pins (TMRx_CH1, TMRx_CH2 and TMRx_CH3) are connected to the channel 1
+Page  313: to the same TMRx_CHx, and configure the CxIFPx of channel 1/2 to trigger slave timer controller reset.
+Page  313:  Set STIS=3’b101 to set C1IFP1 as the slave timer trigger signal;
+Page  313:  Set SMSEL=3‘b110 to set the slave timer in reset mode;
+Page  314: cycle and polarity of the output signal. The advanced-control timer output function varies from one
+Page  316: Master timer event output
+Page  316: When TMR is selected as the master timer, the following signal sources can be selected as TRGOUT
+Page  316: signal to output to the slave timer, by setting the PTOS bit in the TMRxCTRL2 register.
+Page  317: The channel 1 to 3 of the advanced-control timers contains a set of reverse channel output. This function
+Page  318:  Once OEN=0, the channel output level is defined by the CxIOS bit. If FCSODIS=0, the timer
+Page  318: is done asynchronously so that it works even if no clock is provided to the timer.
+Page  318: ― If the timer clock is still active, then the dead-time generator is activated. The CxIOS and
+Page  318: ― If FCSODIS=0, the timer releases the enable output; otherwise, it keeps the enable output; the
+Page  319: The timers are linked together internally for timer synchronization. Master timer is selected by setting the
+Page  319: PTOS[2: 0] bit; Slave timer is selected by setting the SMSEL[2: 0] bit.
+Page  321: digital filter sampling frequency (fDTS) and timer clock
+Page  321: relationship between dead time base (TDTS) and timer
+Page  322: event generated by slave timer controller
+Page  322: slave timer.
+Page  323: 14.4.4.3 TMR1, TMR8 and TMR20 slave timer control register
+Page  323: If enabled, master and slave timer can be synchronized.
+Page  324: on ISx for each timer.
+Page  330: 0              0      0            (no driven by the timer)    (no driven by the timer)
+Page  330: 0              0      1            (no driven by the timer)    CxCOUT= CxORAW xor
+Page  330: 0              1      0            CxOUT= CxORAW xor CxP, (no driven by the timer)
+Page  330: (no driven by the timer)
+Page  330: 1              0      0            (no driven by the timer)
+Page  331: (the corresponding IO disconnected from timer, IO
+Page  331: IO disconnected from timer, IO floating)
+Page  331: timer stops working when the period value is 0.
+Page  333: output. It is used to set the channel state when the timer
+Page  333: output. It is used to set the channel state when the timer
+Page  335: 15 Window watchdog timer (WWDT)
+Page  335: The window watchdog timer is clocked by a divided APB1_CLK. The precision of the APB1_CLK enables
+Page  338: 16 Watchdog timer (WDT)
+Page  344: The WATCLK[2: 0] bit can be used to select a wakeup timer clock, including ERTC_CLK/16,
+Page  344: timer clocks and wakeup counter values enable users to adjust the wakeup period freely.
+Page  344: 2. Wait until WATWF=1 to enable write access to the wakeup reload timer and WATCLK[2: 0]
+Page  344: 3. Configure the wakeup timer counter value and wakeup timer through VAL[15: 0] and WATCLK[2: 0]
+Page  344: 4. Enable a timer by setting WATEN=1
+Page  344: Note: A wakeup timer is not affected by a system reset and low power consumption modes (Sleep,
+Page  344: Note: In DEBUG mode, if ERTC_CLK is selected as the wakeup timer, the counter for periodic wakeup
+Page  350: Wakeup timer interrupt enable
+Page  350: Bit 14   WATIEN    0x0       rw         0: Wakeup timer interrupt disable
+Page  350: 1: Wakeup timer interrupt enabled
+Page  350: Wakeup timer enable
+Page  350: Bit 10   WATEN     0x0       rw         0: Wakeup timer disabled
+Page  350: 1: Wakeup timer enabled
+Page  351: Wakeup timer clock selection
+Page  351: Wakeup timer flag
+Page  351: 0: No wakeup timer event
+Page  351: Bit 10       WATF       0x0           rw0c       1: Wakeup timer event occurs
+Page  352: Wakeup timer register allows write flag
+Page  352: Bit 2         WATWF      0x1           ro         0: Wakeup timer register configuration not allowed
+Page  352: 1: Wakeup timer register configuration allowed
+Page  352: 17.4.6 ERTC wakeup timer register (ERTC_WAT)
+Page  352: Bit 15: 0    VAL         0xFFFF        rw         Wakeup timer reload value
+Page  362: the ADC_CTRL2 register, or by an external event. The external events include timer and pin triggers.
+Page  379: repetition is done each timer when a trigger event arrives.
+Page  393: external event (timer counter, external interrupt line) or by software. The DxTRGSEL[2: 0] is used to
+Page  400:  16-bit timers
+Page  404: The timer triggered communication is used to improve the real-time performance so as to avoid
+Page  404: bit timer is incremented each CAN bit time, and is sampled on the Start Of Frame bit to generate
+Page  420: Bit 31: 16   TMTS               0xXXXX           rw       Note: This field contains the value of the CAN timer
+Page  421: Bit 31: 16   RFTS               0xXXXX          ro       Note: This field contains the value of the CAN timer
+Page  425: can output to pins and the timer 2; an OE pulse generates when the OTGFS outputs data, the pulse can
+Page  505: 23 Infrared timer (IRTMR)
+Page  505: The IRTMR (Infrared Timer) is used to generate the IR_OUT signal that drives the infrared LED so as to
+Page  549: 24.8.4.4 SDRAM refresh timer register (SDRAM_RCNT)
+Page  567:      When the wait state is entered, the command timer is enabled. If the NCR timeout (response
+Page  567: If the interrupt bit is set in the command register, the timer is disabled and the CCSM waits for an interrupt
+Page  574: 25.4.7 SDIO data timer register (SDIO_DTTMR)
+Page  590: Jabber timer
+Page  590: The EMAC jabber timer is enabled (set EMAC_MACCTRL[20]=0) to prevent certain station on the LAN
+Page  593: The EMAC watchdog timer is enabled by default, frames above 2048 bytes (DA + SA + LT + Data + pad
+Page  593: even if the watchdog timer is disabled, frame length greater than 16 KB are cut off and a watchdog
+Page  612: interrupt latency can be calculated since the clock of the timer and PTP reference clock are
+Page  616: When this bit is set, the MAC disables the watchdog timer
+Page  616: When this bit is set, the MAC disables the Jabber timer on
+Page  621: This field defines the threshold of the Pause timer.
+Page  633: Bit 9        RWT        0x0         rw1c     timer timeout occurs while receiving the current frame, and
+Page  633: This bit indicates that the transmit Jabber timer will expire
+Page  711: debugging. For timers and watchdogs, the user can select whether or not to stop or continue counting
+Page  716: 1. Updated the descriptions of Section 14 Timer
+Page  716: 5. Updated the descriptions of Section 23 Infrared timer (IRTMR)

@@ -1,0 +1,17 @@
+Keyword: VREF
+Occurrences: 13
+================================================================================
+
+Page   63: (From 2.4 V up to VDDA) VREF+
+Page   63: (VSSA) VREF-
+Page   65: external reference voltage VREF+ and VREF- are connected to the VDDA pin and VSSA pin, respectively.
+Page  358:  ADC input range: VREF- ≤ VIN ≤ VREF+
+Page  359: TMR3_CH4                                                                                                                   VREF+
+Page  359:  VREF+: Analog reference positive, high/positive reference voltage for the ADC
+Page  359:  VREF-: Analog reference negative, low/negative reference voltage for the ADC
+Page  360: ADC2_IN17 as Vss, and ADC1_IN18 as VREF-.
+Page  360: input, and ADC3_IN16 and ADC3_IN17 as Vss, and ADC3_IN18 as VREF-.
+Page  392: simultaneously in dual DAC mode. The input reference voltage VREF+ makes conversion more accuracy.
+Page  392:    Input reference voltage VREF+
+Page  393: and VREF+. The analog DAC module is supplied by VDDA. The positive analog reference voltage
+Page  393: DAC output = VREF+ x (DxODT[11: 0]/4095)

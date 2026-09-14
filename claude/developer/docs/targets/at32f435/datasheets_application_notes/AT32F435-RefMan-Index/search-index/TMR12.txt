@@ -1,0 +1,52 @@
+Keyword: TMR12
+Occurrences: 48
+================================================================================
+
+Page   12: 14.3.2.1 TMR9 and TMR12 main features ............................................ 283
+Page   12: 14.3.4 TMR9 and TMR12 registers ........................................................ 293
+Page   12: 14.3.4.1 TMR9 and TMR12 control register 1 (TMRx_CTRL1) ................ 293
+Page   12: 14.3.4.2 TMR9 and TMR12 slave timer control register (TMRx_STCTRL) 294
+Page   12: 14.3.4.3 TMR9 and TMR12 DMA/interrupt enable register (TMRx_IDEN) 294
+Page   12: 14.3.4.4 TMR9 and TMR12 interrupt status register (TMRx_ISTS) ......... 295
+Page   12: 14.3.4.5 TMR9 and TMR12 software event register (TM Rx_SW EVT) ...... 295
+Page   12: 14.3.4.6 TMR9 and TMR12 channel mode register1 (TMRx_CM1) .......... 296
+Page   12: 14.3.4.7 TMR9 and TMR12 channel control register (TMRx_CCTRL) ...... 298
+Page   12: 14.3.4.8 TMR9 and TMR12 counter value (TMRx_CVAL) ....................... 298
+Page   12: 14.3.4.9 TMR9 and TMR12 division value (TMRx_DIV) ......................... 298
+Page   12: 14.3.4.10     TMR9 and TMR12 period register (TMRx_PR) ..................... 298
+Page   12: 14.3.4.11     TMR9 and TMR12 channel 1 data register (TMRx_C1DT) ..... 298
+Page   13: 14.3.4.12      TMR9 and TMR12 channel 2 data register (TMRx_C2DT) ..... 299
+Page   45: TMR12/13/14                                                                                                                                TMR1/8/20
+Page   51: Configu                          TMR8 break interrupt and TMR12
+Page   51: 43   50             TMR8_BRK_TMR12                                                0x0000_00EC
+Page   62: 0x4000 1800 - 0x4000 1BFF       TMR12 timer
+Page   82: Bit 6        TMR12RST         0x0            rw       0: Does not reset Timer12
+Page   86: Bit 6        TMR12EN         0x0             rw        0: Disabled
+Page   90: Bit 6        TMR12LPEN    0x1        rw       0: Disabled
+Page  127: PB14                   TMR12_CH1                                  OTG2_D-    SDIO1_D6   XMC_D0     EVENTOUT
+Page  127: PB15                   TMR12_CH2                                  OTG2_D+    SDIO1_CK              EVENTOUT
+Page  252: timer          TMR12
+Page  252: timer         TMR12                                                                                  synchronization
+Page  283: 14.3.2.1 TMR9 and TMR12 main features
+Page  283: The main functions of general-purpose TMR9 and TMR12 include:
+Page  286: TMR12                              TMR4_TRGOUT                    TMR5_TRGOUT           TMR13_OC       TMR14_OC
+Page  288: Each timer of TMR9 and TMR12 has two independent channels, while each of TMR10, TMR11, TMR13
+Page  292: TMR9 and TMR12 are linked together internally for timer synchronization. Slave timer is selected by
+Page  293: 14.3.4 TMR9 and TMR12 registers
+Page  293: All TMR9 and TMR12 registers are mapped into a 16-bit addressable space.
+Page  293: Table 14-8 TMR9 and TMR12 register map and reset value
+Page  293: 14.3.4.1 TMR9 and TMR12 control register 1 (TMRx_CTRL1)
+Page  294: 14.3.4.2 TMR9 and TMR12 slave timer control register
+Page  294: 14.3.4.3 TMR9 and TMR12 DMA/interrupt enable register (TMRx_IDEN)
+Page  295: 14.3.4.4 TMR9 and TMR12 interrupt status register (TMRx_ISTS)
+Page  295: 14.3.4.5 TMR9 and TMR12 software event register (TMRx_SWEVT)
+Page  296: 14.3.4.6 TMR9 and TMR12 channel mode register1 (TMRx_CM1)
+Page  298: 14.3.4.7 TMR9 and TMR12 channel control register (TMRx_CCTRL)
+Page  298: 14.3.4.8 TMR9 and TMR12 counter value (TMRx_CVAL)
+Page  298: 14.3.4.9 TMR9 and TMR12 division value (TMRx_DIV)
+Page  298: 14.3.4.10             TMR9 and TMR12 period register (TMRx_PR)
+Page  298: 14.3.4.11             TMR9 and TMR12 channel 1 data register (TMRx_C1DT)
+Page  299: 14.3.4.12             TMR9 and TMR12 channel 2 data register (TMRx_C2DT)
+Page  714: TMR12 pause control bit
+Page  714: Bit 6        TMR12_PAUSE          0x0         rw     0: TMR12 works normally
+Page  714: 1: TMR12 stops running

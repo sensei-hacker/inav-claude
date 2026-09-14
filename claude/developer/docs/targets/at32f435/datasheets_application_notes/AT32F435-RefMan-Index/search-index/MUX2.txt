@@ -1,0 +1,20 @@
+Keyword: MUX2
+Occurrences: 16
+================================================================================
+
+Page  124: Pin      MUX0      MUX1        MUX2       MUX3        MUX4        MUX5        MUX6        MUX7
+Page  126: Pin    MUX0        MUX1        MUX2         MUX3        MUX4        MUX5        MUX6         MUX7
+Page  128: Pin    MUX0      MUX1   MUX2        MUX3      MUX4        MUX5         MUX6         MUX7
+Page  130: Pin    MUX0     MUX1      MUX2        MUX3      MUX4        MUX5         MUX6         MUX7
+Page  132: Pin    MUX0     MUX1        MUX2      MUX3       MUX4       MUX5         MUX6         MUX7
+Page  134: Pin    MUX0     MUX1       MUX2            MUX3        MUX4        MUX5    MUX6   MUX7
+Page  136: Pin    MUX0     MUX1      MUX2            MUX3    MUX4   MUX5              MUX6         MUX7
+Page  138: Pin      MUX0          MUX1         MUX2          MUX3       MUX4         MUX5       MUX6          MUX7
+Page  141: 0010: MUX2
+Page  142: 0010: MUX2
+Page  341: ERTC_MUX2                                 TAMP2                              TSF
+Page  346: ERTC_MUX2 through the TSPIN bit, while the TAMP2 can only select ERTC_MUX2.
+Page  346: 4. To use TAMP1 mode, select ERTC_MUX1 or ERTC_MUX2 (through the TP1PIN bit), and enable
+Page  347: 7. To use TAMP1 mode, select ERTC_MUX1 or ERTC_MUX2 (through the TP1PIN bit), and enable
+Page  355: 1: ERTC_MUX2
+Page  355: 1: ERTC_MUX2

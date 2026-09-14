@@ -1,0 +1,10 @@
+Keyword: SysTick
+Occurrences: 6
+================================================================================
+
+Page    1:    Memories                                                        − SysTick timer: 24-bit downcounter
+Page    2: 1.1.5 System Tick (SysTick) ................................................................. 53
+Page   50: 6                     SysTick                   System tick timer                         0x0000_003C
+Page   53: 1.1.5            System Tick (SysTick)
+Page   70: 4-25 MHz                                                                                                                                           CPU SysTick
+Page   71: System Tick timer (SysTick) is clocked by CPU FCLK(HCLK) or CPU systick(HCLK/8)

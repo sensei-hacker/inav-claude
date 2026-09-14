@@ -1,0 +1,9 @@
+Keyword: bootloader
+Occurrences: 5
+================================================================================
+
+Page   55: Boot code memory contains an embedded bootloader program that provides not only Flash
+Page   58: 16 KB bootloader                0x1FFF 0000 - 0x1FFF 3FFF
+Page   59: 16 KB bootloader                0x1FFF 0000 - 0x1FFF 3FFF
+Page   96:  Information block consists of 16 KB bootloader and the user system data area. The bootloader
+Page   98: memory, if there is no bootloader in the

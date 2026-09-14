@@ -1,0 +1,1135 @@
+Keyword: clock
+Occurrences: 1131
+================================================================================
+
+Page    1:    Clock and reset management (CRM)                               CRC Calculation Unit
+Page    1: − Internal 48 MHz factory-trimmed clock (HICK),                Debug mode
+Page    1: +105 °C, with automatic clock calibration (ACC)
+Page    2: 4        Clock and reset manage (CRM) ..................................................... 70
+Page    3: 4.1   Clock .......................................................................................... 70
+Page    3: 4.1.1 Clock sources ............................................................................. 70
+Page    3: 4.1.2 System clock ............................................................................... 71
+Page    3: 4.1.3 Peripheral clock .......................................................................... 71
+Page    3: 4.1.4 Clock fail detector ....................................................................... 72
+Page    3: 4.1.5 Auto step-by-step system clock switch .......................................... 72
+Page    3: 4.1.6 Clock output ................................................................................ 72
+Page    3: 4.3.1 Clock control register (CRM_CTRL) .............................................. 74
+Page    3: 4.3.2 PLL clock configuration register (CRM_PLLCFG) .......................... 75
+Page    3: 4.3.3 Clock configuration register (CRM_CFG) ...................................... 76
+Page    3: 4.3.4 Clock interrupt register (CRM_CLKINT) ........................................ 78
+Page    3: 4.3.10 APB peripheral clock enable register 1 (CRM_AHBEN1) ................ 83
+Page    3: 4.3.11 APB peripheral clock enable register 2 (CRM_AHBEN2) ................ 84
+Page    3: 4.3.12 APB1 peripheral clock enable register 3 (CRM_AHBEN3) .............. 84
+Page    3: 4.3.13 APB1 peripheral clock enable register (CRM_APB1EN) ................. 85
+Page    3: 4.3.14 APB2 peripheral clock enable register (CRM_AHB2EN) ................. 86
+Page    3: 4.3.15 APB peripheral clock enable in low power mode register1
+Page    3: 4.3.16 APB peripheral clock enable in low power mode register2
+Page    3: 4.3.17 APB peripheral clock enable in low power mode register3
+Page    3: 4.3.18 APB1 peripheral clock enable in low power mode register
+Page    4: 4.3.19 APB2 peripheral clock enable in low power mode register
+Page   11: 14.1.3.1 Counting clock ...................................................................... 253
+Page   11: 14.2.3.1 Counting clock ...................................................................... 258
+Page   12: 14.3.3.1 Counting clock ...................................................................... 284
+Page   13: 14.4.3.1 Counting clock ...................................................................... 304
+Page   15: 17       Enhanced real-time clock (ERTC) ............................................... 341
+Page   15: 17.3.1 ERTC clock ................................................................................ 342
+Page   15: 17.3.5 Reference clock detection ........................................................... 346
+Page   15: 17.4.8 ERTC alarm clock A register (ERTC_ALA) ................................... 353
+Page   15: 17.4.9 ERTC alarm clock B register (ERTC_ALB) ................................... 353
+Page   16: 17.4.18 ERTC alarm clock A subsecond register (ERTC_ ALASBS) ......... 357
+Page   16: 17.4.19 ERTC alarm clock B subsecond register (ERTC_ALBSBS) ......... 357
+Page   19: 21.3 OTGFS clock and pin configuration ............................................. 425
+Page   19: 21.3.1 OTGFS clock configuration ......................................................... 425
+Page   22: 21.6.6 Power and clock control registers ................................................ 498
+Page   22: 21.6.6.1 OTGFS power and clock gating control register
+Page   22: 22       HICK auto clock calibration (ACC) .............................................. 499
+Page   25: 25.4.2 SDIO clock control register (SDIO_ CLKCTRL) ............................ 572
+Page   32: Figure 4-1 AT32F435/437 clock tree ........................................................................................................... 70
+Page   34: Figure 14-6 Counter timing diagram with internal clock divided by 4 ....................................................... 254
+Page   34: Figure 14-8 Count clock............................................................................................................................. 258
+Page   34: Figure 14-10 Block diagram of external clock mode A .............................................................................. 259
+Page   34: Figure 14-11 Counting in external clock mode A, with PR=0x32 and DIV=0x0 ........................................ 259
+Page   34: Figure 14-12 Block diagram of external clock mode B.............................................................................. 259
+Page   34: Figure 14-13 Counting in external clock mode B, with PR=0x32 and DIV=0x0 ....................................... 260
+Page   34: Figure 14-18 Counter timing diagram with internal clock divided by 4 ..................................................... 262
+Page   34: Figure 14-19 Counter timing diagram with internal clock divided by 1 and TMRx_PR=0x32................... 262
+Page   34: Figure 14-40 Count clock........................................................................................................................... 284
+Page   34: Figure 14-42 Block diagram of external clock mode A .............................................................................. 285
+Page   34: Figure 14-43 Counting in external clock mode A, with PR=0x32 and DIV=0x0 ........................................ 286
+Page   35: Figure 14-60 Count clock........................................................................................................................... 305
+Page   35: Figure 14-62 Block diagram of external clock mode A .............................................................................. 306
+Page   35: Figure 14-63 Counting in external clock mode A, with PR=0x32 and DIV=0x0........................................ 306
+Page   35: Figure 14-64 Block diagram of external clock mode B.............................................................................. 306
+Page   35: Figure 14-65 Counting in external clock mode B, with PR=0x32 and DIV=0x0 ....................................... 307
+Page   35: Figure 14-70 Counter timing diagram with internal clock divided by 4 ..................................................... 309
+Page   35: Figure 14-71 Counter timing diagram with internal clock divided by 1 and TMRx_PR=0x32................... 309
+Page   38: Figure 26-5 MII clock sources (provided by CLKOUT pin)........................................................................ 585
+Page   38: Figure 26-6 MII clock sources (provided by an external oscillator) ........................................................... 585
+Page   38: Figure 26-7 RMII clock sources (provided by an external crystal oscillator)............................................. 585
+Page   41: Table 13-1 Audio frequency precision using system clock ........................................................................ 243
+Page   43: Table 26-1 shows the clock range. ............................................................................................................ 582
+Page   44: interface, HICK with automatic clock calibration (ACC), 12-bit ADC, 12-bit DAC, programmable voltage
+Page   50: -2         Fixed      NMI                       CRM clock fail detector (CFD) is linked   0x0000_0008
+Page   50: Configu                              Clock and     Reset      manage   (CRM)
+Page   53: System Tick clock is set to 9 MHz.
+Page   61: 0x4002 3800 - 0x4002 3BFF       Clock and reset manage (CRM)
+Page   65: for details. The LDO output voltage is changeable only when the HEXT or HICK is used as system clock.
+Page   65: 1) Select HICK or HEXT as system clock
+Page   65: 7) Switch the system clock to PLL
+Page   65: I/O, tamper pin, ERTC calibration clock, ERTC alarm or second output, while the PC14 and PC15
+Page   65: clocks or gating the clocks to the APB and AHB peripherals when they are not used.
+Page   66: In Sleep mode, all clocks and LDO work normally except CPU clocks (stopped), and all I/O pins keep
+Page   66: In Deepsleep mode, all clocks in 1.2 V domain are stopped, and both HICK and HEXT oscillators are
+Page   66: clock after stabilization. When the LDO operates in low-power mode, an additional wakeup delay is
+Page   66: 1) Select HICK as system clock
+Page   66: 8) If the HEXT is used as PLL clock, enable HEXT and wait for HEXTSTBL
+Page   66: 13) Switch the system clock to the PLL
+Page   66: Note: If the clock, after low-power mode is waken up, needs to keep the same state as in low-power
+Page   67: debugging. The reason is that the Cortex®-M4F core is no longer clocked. However, the software can
+Page   68: Clear the SWEF flag after two system clock cycles.
+Page   70: 4       Clock and reset manage (CRM)
+Page   70: 4.1 Clock
+Page   70: AT32F435/437 series provide different clock sources:
+Page   70:  HICK (high speed internal clock)
+Page   70:  LICK (low speed internal clock)
+Page   70: Figure 4-1 AT32F435/437 clock tree
+Page   70: CFD                         clock enable             12S1/2/3/4 CLK
+Page   70: HICK8M                                                                                                          clock enable
+Page   70: HICKDIV                                                                                                                               Clock enable
+Page   70: PLL clock source, do not modify                                                                                                                                   Max.
+Page   70: To USB interface                              clock enable
+Page   70: 4.1.1       Clock sources
+Page   70: The HEXT includes two clock sources: crystal/ceramic resonator and bypass clock.
+Page   70: a highly accurate clock for the system. The HEXT clock signal is not released until it becomes stable.
+Page   70: An external clock source can be provided by HEXT bypass. Its frequency can be up to 25 MHz. The
+Page   70: external clock signal should be connected to the HEXT_IN pin while the HEXT_OUT pin should be left
+Page   70:  High speed internal clock (HICK)
+Page   70: The HICK oscillator is clocked by a high-speed RC in the microcontroller. The internal frequency of the
+Page   70: HICK clock is 48 MHz. Although it is less accurate, its startup time is shorter than the HEXT crystal
+Page   70: oscillator. The HICK clock frequency of each device is calibrated by ARTERY to ±1% accuracy (TA=25°C)
+Page   70: in factory. The factory calibration value is loaded in the HICKCAL[7: 0] bit of the clock control register.
+Page   71: can be trimmed using the HICKTRIM[5: 0] bit in the clock control register.
+Page   71: The HICK clock signal is not released until it becomes stable.
+Page   71:  PLL clock
+Page   71: The HICK or HEXT clock can be used as an input clock source of the PLL. The PLL input clock, after
+Page   71: output frequency is output after being divided by a post-divider. At the same time, the clock after pre-
+Page   71: the configuration parameters cannot be changed once PLL is enabled. The PLL clock signal is not
+Page   71: PLL output clock = PLL input clock x PLL frequency multiplication factor / (PLL pre-divider factor x PLL
+Page   71: 500 MHz <= PLL input clock x PLL frequency multiplication factor / PLL pre-divider factor <= 1200 MHz
+Page   71: 2 MHz <= PLL input clock / PLL pre-divider factor <= 16 MHz
+Page   71: For example, when the PLL input clock is 25 MHz, the PLL output frequency equals 25 x 192 / (5 x 4) =
+Page   71: The LEXT oscillator provides two clock sources: LEXT crystal/ceramic resonator and LEXT bypass.
+Page   71: The LEXT crystal/ceramic resonator provides a 32.768 KHz low-speed clock source. The LEXT clock
+Page   71:  LEXT bypass clock
+Page   71: In this mode, an external clock source with a frequency of 32.768 kHz can be provided. The external
+Page   71: clock signal should be connected to the LEXT_IN pin while the LEXT_OUT can be released for GPI
+Page   71: The LICK oscillator is clocked by an internal low-speed RC oscillator. The clock frequency is between
+Page   71: 30 kHz and 60 kHz. It acts as a low-power clock source that can be kept running in Deepsleep mode
+Page   71: The LICK clock signal is not released before it becomes stable.
+Page   71: 4.1.2       System clock
+Page   71: After a system reset, the HICK oscillator is selected as system clock. The system clock can make flexible
+Page   71: switch among HICK oscillator, HEXT oscillator and PLL clock. However, a switch from one clock source
+Page   71: to another occurs only if the target clock source becomes stable. When the HICK oscillator is used
+Page   71: directly or indirectly through the PLL as the system clock, it cannot be stopped.
+Page   71: 4.1.3       Peripheral clock
+Page   71: Most peripherals use HCLK, PCLK1 or PCLK2 clock. The individual peripherals have their dedicated
+Page   71: clocks.
+Page   71: System Tick timer (SysTick) is clocked by CPU FCLK(HCLK) or CPU systick(HCLK/8)
+Page   71: ADCs are clocked by APB2 divided by 2, 3, 4, 5…17
+Page   71: The timers are clocked by APB1/2. In particular, if the APB prescaler is 1, the timer clock frequency is
+Page   71: equal to that of APB1/2; otherwise, the timer clock frequency doubles that of the APB1/2 frequency.
+Page   71: The USB clock source can be switched between HICK and PLL frequency divider. If the HICK is selected
+Page   71: as a clock source, the USB clock should be set as 48 MHz; If the PLL frequency divider is selected as a
+Page   71: clock source, the USB frequency divider provides 48 MHz USBCLK, and thus the PLL must be set as
+Page   71: ERTC clock sources: divided HEXT oscillator, LEXT oscillator and LICK oscillator. Once the clock source
+Page   72: ERTC clock, the ERTC is not affected when the VDD is powered off. If the HEXT or LICK is selected as
+Page   72: an ERTC clock, the ERTC state is not guaranteed when both HEXT and LICK are powered off.
+Page   72: Watchdog is clocked by LICK oscillator. If the watchdog is enabled by either hardware option or software
+Page   72: access, the LICK oscillator is forced ON. The clock is provided to the watchdog only after the LICK
+Page   72: 4.1.4       Clock fail detector
+Page   72: The clock fail detector (CFD) is designed to respond to HEXT clock failure when the HEXT is used as a
+Page   72: system clock, directly or indirectly. If a failure is detected on the HEXT clock, a clock failure event is sent
+Page   72: service routine. The HEXT clock failure will result in a switch of the system clock to the HICK clock, the
+Page   72: CFD to be disabled, HEXT clock to be stopped, and even PLL to be disabled if the HEXT clock is selected
+Page   72: as the system clock through PLL.
+Page   72: 4.1.5       Auto step-by-step system clock switch
+Page   72: when the system clock source is switched from others to the PLL or when the AHB prescaler factor is
+Page   72: Note that when system clock source is switched to PLL (>108MHz), proceed as per the steps below:
+Page   72: 2) Select PLL clock as system clock source
+Page   72: 4) Check if the system clock source has switched to PLL clock
+Page   72: 4.1.6       Clock output
+Page   72: The microcontroller allows the internal clock signal to be output to external CLKOUT1/2 pins. That is,
+Page   72: ADCCLK, USB48M, SCLK, LICK, LEXT, HICK, HEXT, PLLCLK can be used as CLKOUT1/2 clocks.
+Page   72: When being used as the CLKOUT1/2 clock output pin, the corresponding GPIO port registers must be
+Page   72: The microcontroller specifies a stable flag for each clock source. As a result, when a clock source is
+Page   72: enabled, it is possible to determine if the clock is stable by checking the flag pertaining to the clock
+Page   72: source. An interrupt request is generated when the interrupt corresponding to the clock source is enabled.
+Page   72: If a failure is detected on the HEXT clock, the CFD interrupt is generated. Such interrupt is directly linked
+Page   73: registers to their reset values except the clock control/status register (CRM_CTRLSTS) and the battery
+Page   74: 4.3.1         Clock control register (CRM_CTRL)
+Page   74: PLL clock stable
+Page   74: 0: PLL clock is not ready.
+Page   74: 1: PLL clock is ready.
+Page   74: Bit 24       PLLEN      0x0            rw        mode. When the PLL clock is used as the system clock,
+Page   74: Clock failure detector enable
+Page   74: Bit 16       HEXTEN     0x0            rw        mode. When the HEXT clock is used as the system clock,
+Page   74: High speed internal clock calibration
+Page   75: High speed internal clock trimming
+Page   75: High speed internal clock stable
+Page   75: High speed internal clock enable
+Page   75: a HEXT clock failure occurs. This bit can also be set. When
+Page   75: Bit 0         HICKEN       0x1             rw        the HICK is used as the system clock, this bit cannot be
+Page   75: 4.3.2           PLL clock configuration register (CRM_PLLCFG)
+Page   75: PLL reference clock select
+Page   75: The PLL reference clock source is selected by setting or
+Page   75: 0: HICK is used as PLL reference clock
+Page   75: 1: HEXT is used as PLL reference clock
+Page   76: Note: PLL clock formulas:
+Page   76: PLL output clock = PLL input clock x PLL frequency multiplication factor / (PLL pre-divider factor x PLL
+Page   76: 500 MHz <= PLL input clock x PLL frequency multiplication factor / PLL pre-divider factor <= 1200 MHz
+Page   76: 2 MHz <= PLL input clock / PLL pre-divider factor <= 16 MHz
+Page   76: 4.3.3         Clock configuration register (CRM_CFG)
+Page   76: Access: 0 to 2 wait states. 1 or 2 wait states are inserted only when the access occurs during a clock
+Page   76: Clock output2 selection 1
+Page   76: 00: System clock (SCLK) selected
+Page   76: 01: Secondary clock output selected by the
+Page   76: 10: External oscillator clock (HEXT) selected
+Page   76: 11: PLL clock output
+Page   76: Note: This clock out may be cut off during the startup and
+Page   76: switch of CLKOUT2 clock source. While being used as an
+Page   76: output to the CLKOUT2 pin, the system clock output
+Page   76: Clock output2 division1
+Page   76: Clock output1 division1
+Page   76: Clock output1 selection
+Page   76: Note: This clock out may be cut off during the startup and
+Page   76: switch of CLKOUT1 clock source. While being used as an
+Page   76: output to the CLKOUT1 pin, the system clock output
+Page   77: HEXT division for ERTC clock
+Page   77: for ERTC clock.
+Page   77: clock source.
+Page   77: The divided HCLK is used as APB2 clock.
+Page   77: that the APB2 clock frequency does not exceed 144 MHz.
+Page   77: The divided HCLK is used as APB1 clock.
+Page   77: that the APB1 clock frequency does not exceed 144 MHz
+Page   77: System clock select status
+Page   77: System clock select
+Page   78: 4.3.4           Clock interrupt register (CRM_CLKINT)
+Page   78: Clock failure detection flag clear
+Page   78: Clock Failure Detection flag
+Page   78: Bit 7         CFDF               0x0                ro         clock failure occurs.
+Page   78: 0: No clock failure
+Page   78: 1: Clock failure
+Page   83: 4.3.10 APB peripheral clock enable register 1 (CRM_AHBEN1)
+Page   83: OTGFS2 clock enable
+Page   83: EMAC PTP clock enable
+Page   83: EMAC RX clock enable
+Page   83: Note: In RMII mode, if this clock is enabled, then MAC
+Page   83: RMII clock is enabled as well.
+Page   83: EMAC TX clock enable
+Page   83: Note: In RMII mode, if this clock is enabled, then MAC
+Page   83: RMII clock is enabled as well.
+Page   83: EMAC clock enable
+Page   83: DMA2 clock enable
+Page   83: DMA1 clock enable
+Page   83: EDMA clock enable
+Page   83: CRC clock enable
+Page   83: IO port H clock enable
+Page   83: IO port G clock enable
+Page   84: IO port F clock enable
+Page   84: IO port E clock enable
+Page   84: IO port D clock enable
+Page   84: IO port C clock enable
+Page   84: IO port B clock enable
+Page   84: IO port A clock enable
+Page   84: 4.3.11 APB peripheral clock enable register 2 (CRM_AHBEN2)
+Page   84: SDIO1 clock enable
+Page   84: OTGFS1 clock enable
+Page   84: DVP clock enable
+Page   84: 4.3.12 APB1 peripheral clock enable register 3 (CRM_AHBEN3)
+Page   84: SDIO2 clock enable
+Page   84: QSPI2 clock enable
+Page   84: QSPI1 clock enable
+Page   84: XMC clock enable
+Page   85: 4.3.13 APB1 peripheral clock enable register (CRM_APB1EN)
+Page   85: UART8 clock enable
+Page   85: UART7 clock enable
+Page   85: DAC interface clock enable
+Page   85: Power interface clock enable
+Page   85: CAN2 clock enable
+Page   85: CAN1 clock enable
+Page   85: I2C3 clock enable
+Page   85: I2C2 clock enable
+Page   85: I2C1 clock enable
+Page   85: UART5 clock enable
+Page   85: UART4 clock enable
+Page   85: USART3 clock enable
+Page   85: USART2 clock enable
+Page   85: SPI3 clock enable
+Page   85: SPI2 clock enable
+Page   86: Window watchdog clock enable
+Page   86: Timer14 clock enable
+Page   86: Timer13 clock enable
+Page   86: Timer12 clock enable
+Page   86: Timer7 clock enable
+Page   86: Timer6 clock enable
+Page   86: Timer5 clock enable
+Page   86: Timer4 clock enable
+Page   86: Timer3 clock enable
+Page   86: Timer2 clock enable
+Page   86: 4.3.14 APB2 peripheral clock enable register (CRM_AHB2EN)
+Page   86: ACC clock enable
+Page   86: Timer20 clock enable
+Page   86: Timer11 clock enable
+Page   86: Timer10 clock enable
+Page   86: Timer9 clock enable
+Page   87: SCFG clock enable
+Page   87: SPI4 clock enable
+Page   87: SPI1 clock enable
+Page   87: ADC3 interface clock enable
+Page   87: ADC2 interface clock enable
+Page   87: ADC1 interface clock enable
+Page   87: USART6 clock enable
+Page   87: USART1 clock enable
+Page   87: Timer8 clock enable
+Page   87: Timer1 clock enable
+Page   87: 4.3.15 APB peripheral clock enable in low power mode register1
+Page   87: OTGFS2 clock enable in sleep mode
+Page   87: EMAC PTP clock enable in sleep mode
+Page   87: EMAC RX clock enable in sleep mode
+Page   87: Note: In RMII mode, if this clock is enabled, then the MAC
+Page   87: RMII clock is enabled as well.
+Page   87: EMAC TX clock enable in sleep mode
+Page   88: Note: In RMII mode, if this clock is enabled, then the MAC
+Page   88: RMII clock is enabled as well.
+Page   88: EMAC clock enable during sleep mode
+Page   88: DMA2 clock enable in sleep mode
+Page   88: DMA1 clock enable in sleep mode
+Page   88: EDMA clock enable in sleep mode
+Page   88: SRAM2 clock enable in sleep mode
+Page   88: SRAM1 clock enable in sleep mode
+Page   88: FLASH clock enable during sleep mode
+Page   88: CRC clock enable during sleep mode
+Page   88: O port H clock enable in sleep mode
+Page   88: IO port G clock enable in sleep mode
+Page   88: IO port F clock enable in sleep mode
+Page   88: IO port E clock enable in sleep mode
+Page   88: IO port D clock enable in sleep mode
+Page   88: IO port C clock enable in sleep mode
+Page   88: IO port B clock enable in sleep mode
+Page   88: IO port A clock enable in sleep mode
+Page   89: 4.3.16 APB peripheral clock enable in low power mode register2
+Page   89: SDIO1 clock enable in sleep mode
+Page   89: OTGFS1 clock enable in sleep mode
+Page   89: DVP clock enable in sleep mode
+Page   89: 4.3.17 APB peripheral clock enable in low power mode register3
+Page   89: SDIO2 clock enable in sleep mode
+Page   89: QSPI2 clock enable in sleep mode
+Page   89: QSPI1 clock enable in sleep mode
+Page   89: XMC clock enable in sleep mode
+Page   89: 4.3.18 APB1 peripheral clock enable in low power mode register
+Page   89: UART8 clock enable in sleep mode
+Page   89: UART7 clock enable in sleep mode
+Page   89: DAC interface clock enable in sleep mode
+Page   89: Power interface clock enable in sleep mode
+Page   89: CAN2 clock enable in sleep mode
+Page   89: CAN1 clock enable in sleep mode
+Page   90: I2C3 clock enable in sleep mode
+Page   90: I2C2 clock enable in sleep mode
+Page   90: I2C1 clock enable in sleep mode
+Page   90: UART5 clock enable in sleep mode
+Page   90: UART4 clock enable in sleep mode
+Page   90: USART3 clock enable in sleep mode
+Page   90: USART2 clock enable in sleep mode
+Page   90: SPI3 clock enable in sleep mode
+Page   90: SPI 2 clock enable in sleep mode
+Page   90: Window watchdog clock enable in sleep mode
+Page   90: Timer14 clock enable in sleep mode
+Page   90: Timer13 clock enable in sleep mode
+Page   90: Timer12 clock enable in sleep mode
+Page   90: Timer 7 clock enable in sleep mode
+Page   90: Timer 6 clock enable in sleep mode
+Page   90: Timer 5 clock enable in sleep mode
+Page   90: Timer 4 clock enable in sleep mode
+Page   90: Timer 3 clock enable in sleep mode
+Page   90: Timer 2 clock enable in sleep mode
+Page   91: 4.3.19 APB2 peripheral clock enable in low power mode register
+Page   91: ACC clock enable in sleep mode
+Page   91: Timer20 clock enable in sleep mode
+Page   91: Timer11 clock enable during sleep mode
+Page   91: Timer10 clock enable in sleep mode
+Page   91: Timer9 clock enable in sleep mode
+Page   91: SCFG clock enable in sleep mode
+Page   91: SPI4 clock enable in sleep mode
+Page   91: SPI1 clock enable in sleep mode
+Page   91: ADC3 interface clock enable in sleep mode
+Page   91: DC2 interface clock enable in sleep mode
+Page   91: ADC1 interface clock enable in sleep mode
+Page   91: USART6 clock enable in sleep mode
+Page   91: USART1 clock enable in sleep mode
+Page   91: TMR8 timer clock enable in sleep mode
+Page   91: TMR1 timer clock enable in sleep mode
+Page   92: ERTC clock enable
+Page   92: eRTC clock selection
+Page   92: Once the ERTC clock source is selected, it cannot be
+Page   92: Bit 9: 8      eRTCSEL         0x0           rw        00: No clock
+Page   93: Clock output2 division2
+Page   93: 0xxx: Clock output
+Page   93: 1000: Clock output divided by 2
+Page   93: 1001: Clock output divided by 4
+Page   93: 1010: Clock output divided by 8
+Page   93: 1011: Clock output divided by 16
+Page   93: 1100: Clock output divided by 64
+Page   93: 1101: Clock output divided by 128
+Page   93: 1110: Clock output divided by 256
+Page   93: 1111: Clock output divided by 512
+Page   93: Clock output1 division2
+Page   93: 0xxx: Clock output
+Page   93: 1000: Clock output divided by 2
+Page   93: 1001: Clock output divided by 4
+Page   93: 1010: Clock output divided by 8
+Page   93: 1011: Clock output divided by 16
+Page   93: 1100: Clock output divided by 64
+Page   93: 1101: Clock output divided by 128
+Page   93: 1110: Clock output divided by 256
+Page   93: 1111: Clock output divided by 512
+Page   94: Clock output2 sel2
+Page   94: 0000: USB clock output
+Page   94: 0001: ADC clock output
+Page   94: 0010: Internal RC oscillator clock (HICK) output frequency
+Page   94: 0011: LICK clock output
+Page   94: 0100: LEXT clock output
+Page   94: HICK as system clock frequency select
+Page   94: When the HICK is selected as the clock source of
+Page   94: USB 48 MHz clock source select
+Page   94: as the clock source of USB 48 MHz.
+Page   94: selected, the clock frequency is 8 MHz. Otherwise, the clock
+Page   94: Note: When HICK is used as PLL clock source, do not
+Page   94: The PLL clock frequency, after being divided, is used as
+Page   94: USB clock.
+Page   94: 0000: PLL clock divided by 1.5
+Page   94: 0001: PLL clock not divided
+Page   94: 0010: PLL clock divided by 2.5
+Page   94: 0011: PLL clock divided by 2
+Page   94: 0100: PLL clock divided by 3.5
+Page   94: Bit 15: 12 USBDIV          0x0           rw        0101: PLL clock divided by 3
+Page   94: 0110: PLL clock divided by 4.5
+Page   94: 0111: PLL clock divided by 4
+Page   94: 1000: PLL clock divided by 5.5
+Page   94: 1001: PLL clock divided by 5
+Page   94: 1010: PLL clock divided by 6.5
+Page   94: 1011: PLL clock divided by 6
+Page   94: 1100: PLL clock divided by 7
+Page   94: 1: Pulse width is 1 system clock.
+Page   94: Bit 5: 4    AUTO_STEP_EN   0x0           rw        Auto step-by-step system clock switch enable
+Page   95: When the system clock source is switched from others to
+Page   95: recommended to enable the auto step-by-step system clock
+Page   95: auto step-by-step system clock switch is activated
+Page  116: Note: The Flash interface clock is not greater than
+Page  138:  For USB OTGFS_ID pin, configure corresponding IOMUX and enable corresponding clocks in CRM,
+Page  174: ― Clock stretching capability
+Page  174: I2C bus consists of a data line (SDA) and clock line (SCL). It can achieve a maximum of 100 kHz speed
+Page  175: Clock Control
+Page  175: TIMEOUT_Frozen                                 Master clock       I2C_SCL_out
+Page  175: Slave clock
+Page  176: 5. Clock stretching capability
+Page  176: Clock stretching is enabled by default (STRETCH=0 in the I2C_CTRL1 register). The slave can hold the
+Page  176: SCL line low for software operation. If the clock stretching capability is not supported by master, then
+Page  176: the STRETCH must be set in the I2C_CTRL1 register. It should be noted that the clock stretching
+Page  176: Clock stretching capability enabled
+Page  176: I2C slave stretches the SCL clock in one of the following conditions:
+Page  176: Clock stretching capability disabled
+Page  176: The SCL clock is disabled when STRETCH=1 in the I2C_CTRL1 register, with the following conditions
+Page  177:     Address reception: The SCL clock is not stretched when the address received by slave matches
+Page  177: I2C core is clocked by I2C_CLK whereas the I2C_CLK is clocked by PCLK1. The PCLK1 should be set
+Page  177: — DIV[7: 0]: I2C clock divider
+Page  178: low mode, laying the foundation for clock synchronization.
+Page  178: fSCL (kHz)         SCL clock frequency             100            400              1000             100
+Page  178: tLOW (us)            SCL clock low        4.7            1.3               0.5            4.7
+Page  178: tHIGH (us)           SCL clock high       4.0            0.6              0.26            4.0      50
+Page  179: SCL bus low between the 8th and 9th clock edges. At this point, the user can read the RXDT
+Page  179: It should be noted that the clock stretching capability must be enabled (STRETCH=0 in the I2C_CTRL1
+Page  179: 1.     I2C clock initialization (by setting the I2C_CLKCTRL register)
+Page  179: ― I2C clock divider: DIV[7: 0]
+Page  184: 1.   I2C clock initialization (by setting the I2C_CLKCTRL register)
+Page  184: ― I2C clock divider: DIV[7: 0]
+Page  184: 5.    Data transfer (slave transmission, clock stretching enabled, STRETCH=0)
+Page  184: In the case of the clock stretching being disabled (STRETCH=1), if data has not yet been written to
+Page  185: 6.    Data transfer (slave receive, clock stretching enabled, STRETCH=0)
+Page  185: Note that the slave must read the received data in the case of the clock stretching being disabled
+Page  189: ― TOTIME: This is used for clock level timeout detection, selected through the TOMODE bit.
+Page  190: 1. I2C clock initialization (by setting the I2C_CLKCTRL register)
+Page  190: ― I2C clock divider: DIV[7: 0]
+Page  194: 1. I2C clock initialization (by setting the I2C_CLKCTRL register)
+Page  194: ― I2C clock divider: DIV[7: 0]
+Page  195: 5.    Data transfer (slave transmission, clock stretching enabled, STRETCH=0)
+Page  195: 6.    Data transfer (slave receive, clock stretching enabled, STRETCH=0)
+Page  199: In slave mode, an underrun/overrun may appear if the clock stretching feature is disabled (STRETCH=1
+Page  199: In slave receive mode: The slave must read the received data in the case of the clock stretching being
+Page  201: Clock stretching mode
+Page  201: 0: Clock stretching mode enabled
+Page  201: 1: Clock stretching mode disabled
+Page  203: Bit 31: 28   DIVL[3: 0]        0x0             rw       Low 4 bits of clock divider value
+Page  203: High 4 bits of clock divider value
+Page  203: Cumulative clock low extend timeout enable
+Page  203: 0: Cumulative clock low extend timeout disabled
+Page  203: 1: Cumulative clock low extend timeout enabled
+Page  203: Cumulative clock low extend timeout value
+Page  203: Detect clock low/high timeout enable
+Page  203: Bit 15            TOEN              0x0             rw       0: Clock low/high timeout detection disabled
+Page  203: 1: clock low/high timeout detection enabled
+Page  204: Clock timeout detection mode
+Page  204: Bit 12        TOMODE         0x0                 rw    0: Clock low level detection
+Page  204: 1: Clock high level detection
+Page  204: Clock timeout detection time
+Page  204: For clock low level detection (TOMODE = 0):
+Page  204: For clock high level detection (TOMODE = 1):
+Page  205: When the clock stretching mode is disabled, a TDIS event
+Page  210: The polarity, phase and pulse number of the clock can be configured by setting the CLKPOL,
+Page  212: By setting the CLKEN bit to 1, synchronous mode and clock pin output are enabled. Select CK pin
+Page  212: or first edge of the clock depends on the CLKPHA bit (1 or 0). The LBCP bit (1 or 0) is used to select
+Page  212: whether to output clock on the last data bit. And the ISDIV[4: 0] is used to select the required clock
+Page  213: Clock                                                                          **
+Page  213: Clock                                                                  **
+Page  213: Clock                                                          **
+Page  214: Clock                                                                     **
+Page  215: User can program the desired baud rate by setting different system clocks and writing different values
+Page  215: Where, 𝑓𝐶𝐾 refers to the system clock of USART (i.e. PCLK1/PCLK2 )
+Page  216: If synchronous transfer or clock output is selected, the clock pulse is output on the CK pin. If the hardware
+Page  216: clock = 72MHz, and clock period = 13.88ns, after the completion of the stop bit of the last data, the TX pin is able
+Page  220: CK: Transmitter clock output. The output CLK phase, polarity and frequency can be programmable.
+Page  224: Clock enable
+Page  224: This bit is used to enable the clock pin for synchronous
+Page  224: 0: Clock is disabled.
+Page  224: 1: Clock is enabled.
+Page  224: Clock polarity
+Page  224: to select the polarity of the clock output on the clock pin in
+Page  224: 0: Clock output low
+Page  224: 1: Clock output high
+Page  224: Clock phase
+Page  224: This bit is used to select the phase of the clock output on
+Page  224: Bit 9        CLKPHA     0x0             rw       the clock pin in synchronous mode or Smartcard mode.
+Page  224: 0: Data capture is done on the first clock edge.
+Page  224: 1: Data capture is done on the second clock edge.
+Page  224: Last bit clock pulse
+Page  224: This bit is used to select whether the clock pulse of the last
+Page  224: data bit transmitted is output on the clock pin in
+Page  224: 0: The clock pulse of the last data bit is no output on the
+Page  224: clock pin.
+Page  224: 1: The clock pulse of the last data bit is output on the clock
+Page  226: peripheral clock to serve as the period base of the pulse
+Page  226: the peripheral clock to provide clock for the Smartcard.
+Page  228:      Programmable clock polarity and phase
+Page  228: Clock phase and clock polarity
+Page  228: SPI_CTRL1 register. The CLKPOL (clock polarity) bit controls the steady state value of the clock
+Page  228: If the CLKPHA (clock phase) bit is set to 1, the second edge on the SCK pin (falling edge if the
+Page  228: latched on the occurrence of the first clock transition.
+Page  228: Figure 13-2 Data clock timing diagram
+Page  229: before disabling the SPI or entering power-saving mode (or disabling SPI system clock).
+Page  230: disabling SPI system clock).
+Page  230: mode (or disabling SPI system clock) cannot be entered unless the SPI is disabled.
+Page  230: system clock).
+Page  230: power-saving mode (or disabling SPI system clock).
+Page  231: is required to generate a communication clock for data reception and transmission on the SPI, and the
+Page  231: communication clock should be output to the slave via IO for data reception and transmission. In slave
+Page  231: mode, the communication clock is provided by peripherals, and is input to the SPI via IO. In all, the
+Page  231:  Clock polarity and clock phase selection: It is selected by setting the CLKPOL and CLKPHA bit.
+Page  231:  Clock prescaler selection: Select the desired PCLK frequency by setting the CRM bit. Select the
+Page  231: Note that the clock output is activated after the SPI is enabled in master reception-only mode, and it
+Page  233: In this mode, the SPI interface will generates a communication clock SPI_CLK in accordance with the
+Page  233: The SPI transmitter is clocked by SPI_SCK controller. It can output different data frame formats,
+Page  233: written with the data to be transmitted. When the transmitter is clocked, the contents in the SPI_DT
+Page  233: the SPI_SCK controller chapter for information on communication clock, and refer to CRC and DMA
+Page  233: The SPI receiver is clocked by the SPI_SCK controller. It can output different data frame formats through
+Page  237: the current transmit frame, the host always issues a valid SCK clock after 1T SCK + 4T PCLK. If the
+Page  238:  SCK: SPI communication clock. The pin serves as output in master mode, and input in slave
+Page  238:    In the case of CPOL=1 and CPHA=1, the clock divided by 3 that is generated inside the SPI
+Page  238: a clock divided by 2, and adjust the corresponding HCLK and PCLK frequencies. The SPI
+Page  239:  Programmable clock polarity
+Page  239:  Programmable clock frequency (8 KHz to 192 KHz)
+Page  239:  Main peripheral clock with a fixed frequency of 256x Fs (audio sampling frequency)
+Page  242: to generate a communication clock for data reception and transmission on the SPI, and the
+Page  242: communication clock should be output to the slave via IO for data reception and transmission. In slave
+Page  242: mode, the communication clock is provided by master, and is input to the SPI via IO. In all, the I2S_SCK
+Page  242: When used as I2S master, the SPI can provide communication clock (CK) and main peripheral clock
+Page  242: The prescaler of the CK depends on whether to provide the main clock for peripherals. To ensure that
+Page  242: the main clock is always 256 times larger than the audio sampling frequency, the channel bits should be
+Page  242: taken into account. When the main clock is needed, the CK should be divided by 8 (I2SCBN=0) or 4
+Page  242: communication clock; When the main clock is not needed, the prescaler of the CK is determined by
+Page  243: Table 13-1 Audio frequency precision using system clock
+Page  246: required if need to provide main clock for peripherals. The I 2S shares some pins with the SPI,
+Page  246:  CK: Communication clock (mapped on the SCK pin) as clock signal output in master mode, and
+Page  246:  MCLK: Master clock (mapped independently) is used to provide main clock for peripherals. The
+Page  246: frequency of output clock signal is set to 256x Fs (audio sampling frequency).
+Page  248: Master clock frequency division
+Page  248: In master mode, the peripheral clock divided by the
+Page  248: prescaler is used as SPI clock. The MDIV[3] bit is in the
+Page  248: Clock polarity
+Page  248: Indicates the polarity of clock output in idle state.
+Page  248: Clock phase
+Page  248: Bit 0        CLKPHA         0x0             rw       0: Data capture starts from the first clock edge
+Page  248: 1: Data capture starts from the second clock edge
+Page  248: Master clock frequency divided by 3 enable
+Page  248: invalid, and the SPI clock is forced to be PCLK/3.
+Page  248: Master clock frequency division
+Page  251: I2S clock polarity
+Page  251: This bit indicates the clock polarity on the clock pin in idle
+Page  251: I2S Master clock output enable
+Page  253: logic. without being connected to external I/Os, they can be used for a basic timing and providing clocks
+Page  253: 14.1.3.1 Counting clock
+Page  253: The counter clock of TMR6 and TMR7 is provided by the internal clock source (CK_INT) divided by
+Page  253: prescaler. When TMR’s APB clock prescaler factor is 1, the CK_INT frequency is equal to that of APB;
+Page  253: otherwise, it doubles the APB clock frequency.
+Page  253: clock period (DIV[15:0]+1). Similar to the TMRx_PR register, when the periodic buffer is enabled, the
+Page  254: however, the actual enable signal TMR_EN is set 1 clock cycle after the TMREN is set.
+Page  254: Figure 14-6 Counter timing diagram with internal clock divided by 4
+Page  257: The counter clock frequency f CK_CNT = fTMR_CLK / (DIV[15:
+Page  257:       Source of count clock is selectable : internal clock, external clock and internal trigger
+Page  258: 14.2.3.1 Counting clock
+Page  258: The count clock of TMR2~TMR5 can be provided by the internal clock (CK_INT), external clock (external
+Page  258: clock mode A and B) and internal trigger input (ISx).
+Page  258: Figure 14-8 Count clock
+Page  258: CI1FP1/CI2FP2               STIS[1:0]                                 External clock mode A
+Page  258: ESP                                                                                                        External clock mode B
+Page  258: Internal clock (CK_INT)
+Page  258: APB clock prescaler factor is 1, the CK_INT frequency is equal to that of APB; otherwise, it doubles the
+Page  258: APB clock frequency.
+Page  258: External clock (TRGIN/EXT)
+Page  258: The counter clock can be provided by two external clock sources, namely, TRGIN and EXT signals.
+Page  258: SMSEL=3’b111: External clock mode A is selected. Select an external clock source TRGIN signal by
+Page  258: setting the STIS[2:0] bit to drive the counter to start counting. The external clock sources include: C1INC
+Page  258: ECMBEN=1: External clock mode B is selected. The counter is driven by external input that has gone
+Page  258: through polarity selection, frequency division and filtering. The external clock mode B is equivalent to
+Page  258: the external clock mode A which selects EXT signal as an external force TRGIN.
+Page  258: To use external clock mode A, follow the steps below:
+Page  259: -   Enable external clock mode A by setting SMSEL=3’b111 in TMRx_STCTR register;
+Page  259: To use external clock mode B, follow the steps below:
+Page  259: -   Enable external clock mode B through the ECMBEN bit in TMRx_STCTR register;
+Page  259: Figure 14-10 Block diagram of external clock mode A
+Page  259: External clock
+Page  259: Note: The delay between the signal on the input side and the actual clock of the counter is due to the
+Page  259: Figure 14-11 Counting in external clock mode A, with PR=0x32 and DIV=0x0
+Page  259: Figure 14-12 Block diagram of external clock mode B
+Page  259: ESDIV   prescaler                                                 External clock mode B
+Page  259: Note: The delay between the EXT signal on the input side and the actual clock of the counter is due to
+Page  260: Figure 14-13 Counting in external clock mode B, with PR=0x32 and DIV=0x0
+Page  260: - Set SMSEL[2:0]=3’b111 in the TMRx_STCTRL register and select external clock mode A;
+Page  261: count clock period (DIV[15:0]+1). Similar to TMRx_PR register, when the periodic buffer is enabled, the
+Page  261: however, the actual enable signal TMR_EN is set 1 clock cycle after the TMREN is set.
+Page  262: Figure 14-18 Counter timing diagram with internal clock divided by 4
+Page  262: Figure 14-19 Counter timing diagram with internal clock divided by 1 and TMRx_PR=0x32
+Page  271: Using master timer to clock the slave timer:
+Page  271: counting clock of the slave timer.
+Page  271:  Configure the slave timer to use external clock mode A (SMSEL[2: 0]=3’b111 in the
+Page  271: counting clock of the slave timer.
+Page  272: counting clock of the slave timer.
+Page  273: Clock division
+Page  273: filter sampling frequency (fDT) and timer clock frequency
+Page  274: External clock mode B enable
+Page  274: This bit is used to enable external clock mode B
+Page  275: 111: External clock mode A — Rising edge of the TRGIN
+Page  275: input clocks the counter
+Page  281: The counter clock frequency f CK_CNT = fTMR_CLK /(DIV[15:
+Page  283: Bit 7: 6         TMR5_CH4_IRMP                           0x0                          rw                  01: Internal clock LICK
+Page  283: 10: Internal clock LEXT
+Page  283:  Source of counter clock: internal clock and external clock
+Page  284:  Source of counter clock: internal clock
+Page  284: 14.3.3.1 Counting clock
+Page  284: The count clock of general-purpose timers can be provided by the internal clock (CK_INT), external clock
+Page  284: (external clock mode A) and internal trigger input (ISx).
+Page  284: Figure 14-40 Count clock
+Page  284: CI1FP1/CI2FP2                 STIS[1:0]                                    External clock mode A
+Page  284: Internal clock (CK_INT)
+Page  284: TMR’s APB clock prescaler factor is 1, the CK_INT frequency is equal to that of APB; otherwise, it
+Page  284: doubles the APB clock frequency.
+Page  285: External clock (TMR9/12 only)
+Page  285: The counter clock can be provided by TRGIN signal.
+Page  285: SMSEL=3’b111: External clock mode A is selected. Select an external clock source TRGIN signal by
+Page  285: setting the STIS[2:0] bit to drive the counter to start counting. The external clock sources include: C1INC
+Page  285: To use external clock mode A, follow the steps below:
+Page  285: -   Enable external clock mode A by setting SMSEL=3’b111 in TMRx_STCTR register
+Page  285: Figure 14-42 Block diagram of external clock mode A
+Page  285: External clock
+Page  285: Note: The delay between the signal on the input side and the actual clock of the counter is due to the
+Page  286: Figure 14-43 Counting in external clock mode A, with PR=0x32 and DIV=0x0
+Page  286: - Set SMSEL[2:0]=3’b111 in the TMRx_STCTRL register and select external clock mode A;
+Page  287: count clock period (DIV[15:0]+1). Similar to the TMRx_PR register, when the periodic buffer is enabled,
+Page  287: actual enable signal TMR_EN is set 1 clock cycle after the TMREN is set.
+Page  293: Clock divider
+Page  293: digital filter sampling frequency (fDTS) and timer clock
+Page  294: 111: External clock mode A — Rising edge of the TRGIN
+Page  294: input clocks the counter
+Page  298: The counter clock frequency f CK_CNT = fTMR_CLK /(DIV[15:
+Page  299: Clock divider
+Page  299: digital filter sampling frequency (fDTS) and timer clock
+Page  303: The counter clock frequency f CK_CNT = fTMR_CLK /(DIV[15:
+Page  304:  Source of counter clock: internal clock, external clock an internal trigger input
+Page  304: Clock failure event
+Page  304: From clock control CSS(Clock Security System)
+Page  304: 14.4.3.1 Counting clock
+Page  304: The count clock of TMR1, TMR8 and TMR20 can be provided by the internal clock (CK_INT), external
+Page  304: clock (external clock mode A and B) and internal trigger input (ISx).
+Page  305: Figure 14-60 Count clock
+Page  305: CI1FP1/CI2FP2               STIS[1:0]                                External clock mode A
+Page  305: ESP                                                                                                        External clock mode B
+Page  305: Internal clock (CK_INT)
+Page  305: TMR’s APB clock prescaler factor is 1, the CK_INT frequency is equal to that of APB; otherwise, it
+Page  305: doubles the APB clock frequency.
+Page  305: External clock (TRGIN/EXT)
+Page  305: The counter clock can be provided by two external clock sources, namely, TRGIN and EXT signals.
+Page  305: SMSEL=3’b111: External clock mode A is selected. Select an external clock source TRGIN signal by
+Page  305: setting the STIS[2:0] bit to drive the counter to start counting. The external clock sources include: C1INC
+Page  305: ECMBEN=1: External clock mode B is selected. The counter is driven by external input that has gone
+Page  305: through polarity selection, frequency division and filtering. The external clock mode B is equivalent to
+Page  305: the external clock mode A which selects EXT signal as an external force TRGIN.
+Page  305: To use external clock mode A, follow the steps below:
+Page  306: -   Enable external clock mode A by setting SMSEL=3’b111 in TMRx_STCTR register.
+Page  306: To use external clock mode B, follow the steps below:
+Page  306: -   Enable external clock mode B through the ECMBEN bit in TMRx_STCTR register.
+Page  306: Figure 14-62 Block diagram of external clock mode A
+Page  306: External clock
+Page  306: Note: The delay between the signal on the input side and the actual clock of the counter is due to the
+Page  306: Figure 14-63 Counting in external clock mode A, with PR=0x32 and DIV=0x0
+Page  306: Figure 14-64 Block diagram of external clock mode B
+Page  306: ESDIV      prescaler                                                External clock mode B
+Page  306: Note: The delay between the signal on the input side and the actual clock of the counter is due to
+Page  307: Figure 14-65 Counting in external clock mode B, with PR=0x32 and DIV=0x0
+Page  307: -   Set SMSEL[2:0]=3’b111 in the TMRx_STCTRL register and select external clock mode A.
+Page  308: count clock period (DIV[15:0]+1). Similar to the TMRx_PR register, when the periodic buffer is enabled,
+Page  308: actual enable signal TMR_EN is set 1 clock cycle after the TMREN is set.
+Page  309: Figure 14-70 Counter timing diagram with internal clock divided by 4
+Page  309: Figure 14-71 Counter timing diagram with internal clock divided by 1 and TMRx_PR=0x32
+Page  318: The brake source can be the brake input pin or a clock failure event. The polarity is controlled by the
+Page  318: is done asynchronously so that it works even if no clock is provided to the timer.
+Page  318: ― If the timer clock is still active, then the dead-time generator is activated. The CxIOS and
+Page  318: clk_tmr clock cycles)
+Page  318: Clock failure event
+Page  318: From clock control CSS(Clock Security System)                               break enable
+Page  318: Clock failure event
+Page  318: From clock control CSS(Clock Security System)
+Page  321: Clock division
+Page  321: digital filter sampling frequency (fDTS) and timer clock
+Page  321: clock period (TCK_INT)
+Page  323: External clock mode B enable
+Page  323: This bit is used to enable external clock mode B
+Page  324: 111: External clock mode A — Rising edge of the TRGIN
+Page  324: input clocks the counter
+Page  331: If the clock is present: after a dead-time,
+Page  331: If the clock is present: after a dead-time,
+Page  331: The counter clock frequency f CK_CNT = fTMR_CLK / (DIV[15:
+Page  335: The window watchdog timer is clocked by a divided APB1_CLK. The precision of the APB1_CLK enables
+Page  335: The WWDT counter is clocked by a divided APB1_CLK, with the division factor being defined by the
+Page  335: Where: TPCLK1 refers to APB1 clock period, in ms.
+Page  336: Clock division value
+Page  338: The WDT is driven by a dedicated low-speed clock (LICK). Due to the lower clock accuracy of LICK, the
+Page  338:    The counter is clocked by LICK (can work in Stop and Standby modes)
+Page  338: WDT clock:
+Page  338: The WDT counter is clocked by the LICK. The LICK is an internal RC clock with a typical value of
+Page  340: Clock division value
+Page  341: 17 Enhanced real-time clock (ERTC)
+Page  341: The real-time clock provides a calendar clock function. The time and date can be modified by modifying
+Page  341:    Reference clock detection
+Page  341:    Multiplexed function output, calibration clock output, alarm event or wakeup event
+Page  341:    Multiplexed function input, reference clock input, two-way tamper detection and time stamp
+Page  342: 17.3.1 ERTC clock
+Page  342: ERTC clock source (ERTC_CLK) is selected via clock controller from a LEXT, LICK, and a divided HEXT
+Page  342: clock (By setting the ERTCSEL[1: 0] in the CRM_BPDC register). The HEXT divider value is configured
+Page  342: After being divided by prescaler A and B, the ERTC_CLK generates ck_a and ck_b clocks, respectively.
+Page  342: wakeup. The clock frequency of ck_a and ck_b can be obtained from the following equation:
+Page  342: switching a clock source to the HEXT.
+Page  342: 1. Enable power interface clock by setting PWCEN=1 in the CRM_APB1EN register.
+Page  343: Clock and calendar initialization
+Page  343: After the register write protection is unlocked, follow the procedure below for clock and calendar
+Page  343: 4. Configure the clock and calendar values.
+Page  343: The ERTC also allows the fine-tuning for daylight saving time and clock.
+Page  343: Clock calibration: It is used for the fine calibration of the current clock. If only DECSBS[14: 0] is
+Page  343: configured, the value will be added to the DIVB counter and a clock latency will be generated. If only
+Page  343: ADD1S bit is set, the current clock will increase by one second. If both DECSBS[14: 0] and ADDIS bit
+Page  343: are configured, the clock will increase by a fraction of a second.
+Page  343: Reference clock detection and coarse digital calibration cannot be used at the same time. Thus when
+Page  343: In the case of DREN=0, the clock and calendar values can be obtained by reading a synchronous
+Page  343: In the case of DREN=1, the ERTC will perform direct read access to the ERTC clock and calendar
+Page  344: when reading clock and calendar, the software must read the clock and calendar registers twice, and
+Page  344: Alarm clock initialization
+Page  344: The ERTC contains two programmable alarm clocks: alarm clock A and alarm clock B, and their
+Page  344: The    alarm      clock    value      is   programmed      with     the    ERTC_ALASBS/ERTC_ALA
+Page  344: alarm event is generated if an alarm clock is enabled. The MASKx bit can be used to selectively mask
+Page  344: calendar fields. The calendar fields, which are masked, are not allocated with an alarm clock.
+Page  344: To configure the alarm clocks, the following steps should be respected:
+Page  344: 1. Disable alarm clock A or alarm clock B (by setting ALAEN=0 or ALBEN=0)
+Page  344: 2. Wait until the ALAWF or ALBWF bit is set to enable write access to the alarm clock A or B
+Page  344: 3. Configure alarm clock A or B registers (ERTC_ALA/ERTC_ALASBS and
+Page  344: 4. Enable alarm clock A or B by setting ALAEN=1 or ALBEN=1
+Page  344: Note: If MASK1=0 in the ERTC_ALA or ERTC_ALB, the alarm clock can work normally only when
+Page  344: The WATCLK[2: 0] bit can be used to select a wakeup timer clock, including ERTC_CLK/16,
+Page  344: timer clocks and wakeup counter values enable users to adjust the wakeup period freely.
+Page  346: 17.3.5 Reference clock detection
+Page  346: The calendar update can be synchronized (not used in low-power modes) to a reference clock (usually
+Page  346: the mains 50 or 60 Hz) with a higher precision. This reference clock is used to calibrate the precision of
+Page  346: When it is enabled, the reference clock edge detection is performed during the first 7 ck_a periods
+Page  346: 3 ck_a periods are used for subsequent calendar updates. Each time the reference clock edge is
+Page  346: detected, the divider A value is forced to reload, making the reference clock and the 1 Hz clock are
+Page  346: aligned. If the 1 Hz clock has a slight shift, a more accurate reference clock can be used to fine-tune the
+Page  346: 1 Hz clock so that it is aligned with the reference clock. If no reference clock edge is detected, the
+Page  346: calendar is updated based on ERTC’s original clock source.
+Page  346: Note: Once the reference clock detection is enabled, the DIVA and DIVB must be kept at its respective
+Page  346: reset value (0x7F and 0xFF respectively). The clock synchronization cannot be used in conjunction with
+Page  347: 1. Clocks calibrated (OUTSEL=0 and CALOEN=1)
+Page  347: 2. Alarm clock A (OUTSEL=1)
+Page  347: 3. Alarm clock B (OUTSEL=2)
+Page  347: When alarm clock or wakeup events are selected (OUTSEL≠0), it is possible to select output type (open-
+Page  347: ERTC can be woken up by alarm clocks, periodic auto wakeup feature, time stamps or tamper
+Page  347: Table 17-2 lists the ERTC clock sources, events and interrupts that are able to wakeup low-power
+Page  348: Clock sources          Events               Wake up Sleep                             Wakeup Standby
+Page  348: Alarm clock A        √                     ×                   ×
+Page  348: Alarm clock B        √                     ×                   ×
+Page  348: Alarm clock A        √                     √                   √
+Page  348: Alarm clock B        √                     √                   √
+Page  348: Alarm clock A        √                     √                   √
+Page  348: Alarm clock B        √                     √                   √
+Page  348: Alarm clock A               ALAF                       ALAIEN                    17
+Page  348: Alarm clock B               ALBF                       ALBIEN                    17
+Page  349: Bit 22: 21   OUTSEL     0x0            rw        01: Alarm clock A
+Page  349: 10: Alarm clock B
+Page  350: Reference clock detection enable
+Page  350: Bit 4    RCDEN     0x0       rw         0: Reference clock detection disabled
+Page  350: 1: Reference clock detection enabled
+Page  351: Wakeup timer clock selection
+Page  351: Alarm clock B flag
+Page  351: 0: No alarm clock event
+Page  351: Bit 9        ALBF       0x0           rw0c       1: Alarm clock event occurs
+Page  351: Alarm clock A flag
+Page  351: 0: No alarm clock event
+Page  351: Bit 8        ALAF       0x0           rw0c       1: Alarm clock event occurs
+Page  352: Calendar clock = ERTC_CLK/((DIVA+1)x(DIVB+1))
+Page  353: 17.4.8 ERTC alarm clock A register (ERTC_ALA)
+Page  353: 1: Alarm clock doesn’t care about date/week day
+Page  353: 1: Alarm clock doesn’t care about hours
+Page  353: 1: Alarm clock doesn’t care about minutes
+Page  353: 1: Alarm clock doesn’t care about seconds
+Page  353: 17.4.9 ERTC alarm clock B register (ERTC_ALB)
+Page  353: 1: Alarm clock doesn’t care about date/week day
+Page  353: 1: Alarm clock doesn’t care about hours
+Page  354: 1: Alarm clock doesn’t care about minutes
+Page  354: 1: Alarm clock doesn’t care about seconds
+Page  354: Bit 15: 0    SBS              0x0000         ro        Subsecond is the value in the DIVB counter. Clock
+Page  355: Add ERTC clock
+Page  355: Bit 15        ADD             0x0            rw        0: No ERTC clock added
+Page  355: Decrease ERTC clock
+Page  357: 17.4.18 ERTC alarm clock A subsecond register (ERTC_ ALASBS)
+Page  357: 17.4.19 ERTC alarm clock B subsecond register (ERTC_ALBSBS)
+Page  358:  Self-calibration time: 205 ADC clock cycles
+Page  361: Set the ADCxEN bit in the CRM_APB2EN register to enable ADC clocks: PCLK2 and ADCCLK.
+Page  389: The clock divided by this field are used by all ADCs.
+Page  392: Clock
+Page  392: SWTRIG2                      DMA_req2             Triangle                Clock                  转换2   DAC
+Page  396: Bit 18       D2TRGEN       0x0         rw       DAC_D2ODT register after one APB1 clock cycle.
+Page  396: D2ODT register after three APB1 clock cycles.
+Page  396: If the software trigger is selected, it takes one APB1 clock
+Page  397: Bit 2      D1TRGEN    0x0         rw       DAC_D1ODT register after one APB1 clock cycle.
+Page  397: D1ODT register after three APB1 clock cycles
+Page  397: If the software trigger is selected, it takes one APB1 clock
+Page  398: Note: This bit is cleared by hardware (one APB1 clock
+Page  398: Note: This bit is cleared by hardware (one APB1 clock
+Page  405: After a system reset, the CAN controller is in Sleep mode. In this mode, the CAN clock is stopped
+Page  425: 21.3 OTGFS clock and pin configuration
+Page  425: 21.3.1 OTGFS clock configuration
+Page  425: The OTGFS interface has two clocks: USB control clock and APB bus clock. The USB full-speed device
+Page  425: USBFS 48M clock has two sources:
+Page  425: When the HICK 48M clock is used as a USB control clock, it is recommended to enable ACC feature.
+Page  425: Note: The APB clock frequency must be greater than 30MHz when OTGFS is enabled.
+Page  430: 10. Configure the HFIR register according to the selected PHY clock value
+Page  432: or Keep-Alive tokens. This field contains the number of PHY clock for the required frame interval. This
+Page  432: is mainly used to adjust the SOF duration based on PHY clock frequencies.
+Page  461: Only the controller global, power and clock control, data FIFO access and host port control and status
+Page  461: clock domain
+Page  461: Power and clock control CSRs (512 byte)
+Page  462: register, data FIFO register, power and clock control register.
+Page  462: 5. Power and clock control register: There is only one register for power and clock control. It is valid in
+Page  467: This field sets the turnaround time in PHY clocks. It
+Page  468: The number of PHY clocks that the application programs
+Page  468: of bit times added per PHY clock is 0.25 bit times.
+Page  468: operations. It takes 8 clocks to clear this bit (slowest of
+Page  469: bit, before performing other operations. It takes 8 clocks
+Page  469: read the value, because this bit is cleared after a few clock
+Page  469: Resets the hclk and phy_clock domain as follows:
+Page  469: clocks to clear this bit, depending on the current state of
+Page  469: wait at least 3 PHY clocks before accessing the PHY
+Page  469: corresponding PHY clock is selected and used in the PHY
+Page  469: domain. After a new clock is selected, the PHY domain
+Page  478: FS/LS PHY clock select
+Page  478: 01: PHY clock is running at 48MHz
+Page  478: 01: PHY clock is running at 48 MHz
+Page  478: 10: PHY clock is running at 6 MHz. If 6 MHz clock is
+Page  478: value based on the PHY clock frequency defined in the
+Page  478: FS/LS PHY clock select bit of the host configuration
+Page  478: 1 ms * (FS/LS PHY clock frequency)
+Page  478: terms of the number of PHY clocks).
+Page  478: in terms of the number of PHY clocks. This field
+Page  478: Bit 31: 16   FTREM             0x0000          ro       decrements with the number of PHY clocks. When it
+Page  480: The application must set the port clock stop bit in order to
+Page  480: disable the PHY clock.
+Page  484: 11: Full speed (USB1.1 transceiver, clock is 48MHz)
+Page  485: states for the USB host to detect a device disconnect. To accommodate clock jitter, it is advised that
+Page  486: 11: Full speed (PHY clock is running at 48MHz)
+Page  498: 21.6.6 Power and clock control registers
+Page  498: 21.6.6.1 OTGFS power and clock gating control register
+Page  498: Stop PHY clock
+Page  498: The application uses this bit to stop PHY clock when the
+Page  499: 22 HICK auto clock calibration (ACC)
+Page  499: HICK auto clock calibration (HICK ACC), which uses the SOF signal (1 ms of period) generated as a
+Page  499: reference signal, implements the sampling and calibration for the HICK clocks.
+Page  499: The main purpose of this module is to provide a clock of 48MHz±0.25% for the USB device.
+Page  499: Auto clock calibration (HICK ACC), which uses the SOF signal (1 ms of period) generated as a reference
+Page  499: signal, implements the sampling and calibration for the HICK clocks. In particular, the HICK clock
+Page  499: frequency can be calibrated to a precision of ±0.25% so as to meet the needs of the high-precision clock
+Page  500: clock cycles, a pulse signal of 1 ms.
+Page  500:  HICKCLK: HICK clock. The original HICK output frequency is 48MHz, but the sampling clock
+Page  500: used by the HICK calibration module is frequency divider (1/6) clock, about 8MHz.
+Page  500:  HICKCAL: HICK module calibration signal. For the HICK clock after frequency division (1/6), the
+Page  500: HICK clock frequency will change by 40KHz (design value) each time the HICKCAL changes, which
+Page  500: is positively correlated. In other words, the HICK clock frequency will increase by 40KHz (design
+Page  500: value) each time the HICKCAL is incremented by one; the HICK clock frequency will reduce by
+Page  500:  HICKTRIM: HICK module calibration signal. For the HICK clock after frequency division (1/6), the
+Page  500: HICK clock frequency will change by 20KHz (design value) each time the HICKCAL changes, which
+Page  502: detected; otherwise, the internal clock sample counter
+Page  502: Internal high-speed clock calibration ready
+Page  503: accuracy of the HICK clock, it is unnecessary to enable
+Page  503: Internal high-speed auto clock trimming
+Page  503: Internal high-speed clock is adjusted by ACC module,
+Page  503: Internal high-speed auto clock calibration
+Page  503: Internal high-speed clock is adjusted by ACC module.
+Page  503: and its default value is 7980. When the number of clocks
+Page  503: When the actual sampling value (number of clocks in 1ms)
+Page  504: This value defines the number of clocks sampled for 8MHz
+Page  504: (ideal frequency) clock in 1ms period , and its default value
+Page  504: When the number of clock sampled by ACC in 1ms period
+Page  504: When the actual sampling value (number of clocks in 1ms
+Page  506:  SDRAM clock sources: HCLK/2, HCLK/3 or HCLK/4
+Page  507:    CAS latency can be configured 1/2/3 SDRAM clock cycles
+Page  508: XMC_CLK                                 Output                              Clock
+Page  509: XMC_SDCKE0               Output                    DEVICE0 clock enable
+Page  509: XMC_SDCKE1               Output                    DEVICE1 clock enable
+Page  509: XMC_SDCLK               Output                          Clock signal
+Page  512: XMC_CLK                     Clock (synchronous mode)                     Clock (synchronous mode)
+Page  513:       Clock-based synchronous mode
+Page  514: CLKPSC           Clock prescaler              Synchronous                          HCLK cycle
+Page  514: Bit 23: 20   CLKPSC: Clock prescale               0x0
+Page  516: Bit 23: 20              CLKPSC: Clock prescale                 0x0
+Page  518: Bit 23: 20        CLKPSC: Clock prescale                   0x0
+Page  520: Bit 23: 20        CLKPSC: Clock prescale                    0x0
+Page  522: Bit 23: 20        CLKPSC: Clock prescale                     0x0
+Page  524: Bit 23: 20         CLKPSC: Clock prescale                       0x0
+Page  526: Bit 23: 20         CLKPSC: Clock prescale                     0x0
+Page  527: only wait (DTLAT+1) CLK clock cycles but also have to take into account the XMC_NWAIT signal. During
+Page  528: Bit 23: 20         CLKPSC: Clock prescale
+Page  528: Clock                  XMC_CLK
+Page  529: Clock                   XMC_CLK
+Page  533: 3.     Set CMD=001 to start providing the clock to the memory.
+Page  536: The SDRAM clock stops running after a TRAS delay. The internal refresh time stops counting if one of
+Page  540: Clock prescaler
+Page  540: frequency of the XMC_CLK clock.
+Page  540: 0001: XMC_CLK cycle= 2 x HCLK clock cycles
+Page  540: 0010: XMC_CLK cycle =3 x HCLK clock cycles
+Page  546: This field defines the delay (in HCLK clock cycles) for
+Page  546: 00: No HCLK clock cycle delay
+Page  546: Bit 14: 13   RD             0x0             rw       01: 1 HCLK clock cycle delay
+Page  546: 10: 2 HCLK clock cycle delay
+Page  547: Clock division configuration
+Page  547: SDRAM clock configuration.
+Page  547: 00: SDCLK clock disabled
+Page  547: and a read/write command in number of clock cycles.
+Page  547: command and another command in number of clock
+Page  548: a precharge command in number of clock cycles.
+Page  548: of clock cycles.
+Page  548: clock cycles.
+Page  548: of clock cycles.
+Page  549: 001: Clock configuration enable
+Page  549: This register is used to set the refresh rate of the SDRAM, in number of SDRAM CLK clock cycles.
+Page  549: device. It is expressed in number of clock cycles. It must
+Page  549: be set at least to 41 clock cycles.
+Page  549: Refresh rate = (RC + 1) x SDRAM clock frequency
+Page  550: TWR+TRP+TRC+TRCD+4 memory clock cycles.
+Page  554: 1. The bus is activated to confirm whether the card is connected or not. The clock frequency is at 0-
+Page  564: functions specific to the MMC/SD/SD I/O card such as the clock generation, command and data
+Page  564: ―   Control unit: manages and generates clock signals
+Page  565: SDIO_CK is a clock to the MultiMedia/SD/SDIO car provided by the host. One bit of command or data
+Page  565: is transferred on both command and data lines with each clock cycle. The clock frequency can very
+Page  565: MultiMedia card/SD/SDIO card clock. This pin is the clock from the
+Page  565: The control unit consists of a power management sub-unit and a clock management sub-unit. The power
+Page  565: disable the card bus output signals. The clock management subunit is controlled by the SDIO_CLKCTRL
+Page  566: output clock. If BYPSEN = 0, the SDIO_CK output signal is driven by the SDIOCLK divided according
+Page  568: line is used for transfer. Only one bit of data is transferred with each clock cycle. If the 4-bit wide bus
+Page  568: mode is selected, four bits are transferred per clock cycle over the SDIO_D [3:0] signal line. If the 8-bit
+Page  568: wide bus mode is selected, eight bits are transferred per clock cycle over the SDIO_D [7: 0] signal line.
+Page  568: DCSM must remain in the Wait_S state for at least two clock periods to meet the NWR timing
+Page  569: Because the data BUF operates in the AHB clock domain (HCLK), all signals connected to the SDIO
+Page  569: clock domain (SDIOCLK) are resynchronized.
+Page  570: SDIO read wait operation by stopping clock
+Page  570: The DCSM stops the clock two SDIO_CK cycles after the end bit of the current received data block and
+Page  570: starts the clock again after the read wait end bit is set.
+Page  571: to define the current status of the card clock.
+Page  571: Bit 1: 0    PS                 0x0             rw       00: Power-off, the card clock is stopped.
+Page  571: 11: Power-on, the card clock is started.
+Page  571: Note: Write access to this register is not allowed within seven HCLK clock periods after data is written.
+Page  572: 25.4.2 SDIO clock control register (SDIO_ CLKCTRL)
+Page  572: The SDIO_CLKCTRL register controls the SDIO_CK output clock.
+Page  572: Clock division
+Page  572: This field is set or cleared by software. It defines the clock
+Page  572: clock SDIOCLK
+Page  572: clock SDIOCLK
+Page  572: Clock divider bypass enable bit
+Page  572: 0: Clock divider bypass disabled
+Page  572: 1: Clock divider bypass enabled
+Page  572: Clock output enable
+Page  572: 0: Clock output disabled
+Page  572: 1: Clock output enabled
+Page  572: Clock division
+Page  572: This field is set or cleared by software. It defines the clock
+Page  572: 2. When all card are assigned with relative card addresses, the clock frequency can be changed
+Page  572: 3. This register cannot be written within seven HCLK clock periods after data is written. The
+Page  573: Note: 1.This register cannot be written within seven HCLK clock periods after data is written.
+Page  574: The SDIO_DTTMR register contains the data timeout period in the unit of card bus clock periods. A
+Page  574: Data timeout period in card bus clock cycles.
+Page  576: Note: This register cannot be written within seven HCLK clock periods after data is written.
+Page  577: clock periods.
+Page  581: The PHY management interface (SMI) accesses PHY registers through a clock and data line. It
+Page  581: MDC: PHY configures clock signals, at the maximum frequency of 2.5 MHz. The minimum high and
+Page  581: low times for MDC must be 160ns, and the minimum period is 400ns. In idle state, the MDC clock signal
+Page  582: The SMI clock source is a divided AHB clock. The divide factor depends on the ABH clock frequency.
+Page  582: Table 26-1 shows the clock range.
+Page  582: Selection bit                AHB clock              MDC clock
+Page  582: 0000                     60~100MHz             AHB clock/42
+Page  582: 0001                     100~150MHz            AHB clock/62
+Page  582: 0010                     20~35MHz              AHB clock/16
+Page  582: 0011                     35~60MHz              AHB clock/26
+Page  582: 0100                     150~250MHz            AHB clock/102
+Page  582: 0101                     250~288MHz            AHB clock/124
+Page  583: MII_TX_CLK: Transmit data clock signal. This clock is 2.5MHz at 10Mbps speed; 25MHz at 100Mbps
+Page  583: MII_RX_CLK: Receive data clock signal. This clock is 2.5MHz at 10Mbps speed; 25MHz at 100Mbps
+Page  583: condition. This signal is not required to be synchronized with the TX and RX clocks.
+Page  583: the TX and RX clocks.
+Page  583: and must remain enabled until data transfer is fully completed. It must be cleared prior to the first clock
+Page  583: MII_RX_ER: Receive error signal. It must be active for one or more clock periods (MII_RX_CLK) to
+Page  584: CLOCK
+Page  584: MII/RMII selection and clock sources
+Page  584: the clock is enabled.
+Page  584: MII clock sources
+Page  584: The EMAC TX_CLK and RX_CLK clock signals are provided by the PHY. External PHY module is
+Page  584: driven by an external 25MHz clock, which can be provided by either an oscillator or the MCU CLKOUT
+Page  585: Figure 26-5 MII clock sources (provided by CLKOUT pin)
+Page  585: Figure 26-6 MII clock sources (provided by an external oscillator)
+Page  585: RMII clock sources
+Page  585: As shown in Figure 26-7, both the EMAC and PHY require 50MHz clock sources, which can be done
+Page  585: Figure 26-7 RMII clock sources (provided by an external crystal oscillator)
+Page  599: Bit 11       LOC      rw     transmission (The MII_CRS signal is active for one or more transmit clock periods).
+Page  609: 11. Configure the MCU system clock.
+Page  609: The PTP is used to synchronize systems that include clocks of varying precision, resolution and stability
+Page  610: Reference clock source
+Page  610: The PTP reference clock is used to generate the system time and to capture time stamps. The
+Page  610: frequency of this reference clock must be greater or equal to the resolution of time stamp counter. The
+Page  610: The time synchronization accuracy depends on the PTP reference clock input period, the frequency
+Page  610: The PTP input reference clock is the system clock SYSCLK, which is used to update the 64-bit time
+Page  610: register, an initialization process starts, and system clock counter is updated with the value in the time
+Page  610: Fine correction: the slave clock (reference clock) frequency drift with respect to the master clock (as
+Page  610: used to increment the system time counter. The addend register value depends on the system clock
+Page  611: clock update circuit. Therefore, if the system clock frequency is 70 MHz, the ratio is calculated as
+Page  611: The value in the addend register has to be updated according to the drift of the system clock frequency.
+Page  611: accumulator register accordingly. Initially, the slave clock addend register is programmed to be
+Page  611: Sync cycles, the frequency is locked. The slave clock can then determine an accurate
+Page  611: MasterToSlaveDela value and synchronize the master with the salve clock using the new value. The
+Page  611: When the master clock is MasterSyncTimen, the master node sends the slave node a Sync message.
+Page  611: The slave node receives this message when its local clock is SlaveClockTimen, and computes
+Page  611: MasterClockTimen as
+Page  611: MasterClockTimen = MasterSyncTimen + MasterToSlaveDelayn
+Page  611: The master clock count for the current Sync cycle, MasterClockCountn is:
+Page  611: MasterClockCountn = MasterClockTimen - MasterClockTimen-1, assuming that the
+Page  611: The slave clock count for the current Sync cycle, SlaveClockCountn is:
+Page  611: SlaveClockCount n = SlaveClockTimen - SlaveClockTime n-1
+Page  611: The difference between the master clock count and slave clock count for the current Sync cycle,
+Page  611: ClockDiffCountn is
+Page  611: ClockDiffCountn= MasterClockCountn - SlaveClockCount n
+Page  611: The frequency-ratio factor for a slave clock, FreqScaleFactorn is
+Page  611: FreqScaleFactorn = (MasterClockCountn+ ClockDiffCountn) / SlaveClockCountn
+Page  612: interrupt latency can be calculated since the clock of the timer and PTP reference clock are
+Page  617: mode. The MII receive clock input (clk_rx_i) is required for
+Page  617: the loopback mode to work normally, for the transmit clock
+Page  620: Clock Range
+Page  620: The CSR clock range selection determines the MDC clock
+Page  620: frequency based on the used CSR clock frequency.
+Page  620: clock frequency range in order to ensure that the MDC
+Page  620: clock frequency is roughly between 1.0 MHz and 2.5 MHz.
+Page  620: 0000: CSR clock frequency is 60–100 MHz, and MDC
+Page  620: clock frequency is CSR clock/42
+Page  620: 0001: CSR clock frequency is 100–150 MHz, and MDC
+Page  620: Bit 5: 2     CR                0x0             rw       clock frequency is CSR clock/62
+Page  620: 0010: CSR clock frequency is 20–35 MHz, and MDC clock
+Page  620: frequency is CSR clock/16
+Page  620: 0011: CSR clock frequency is 35–60 MHz, and MDC clock
+Page  620: frequency is CSR clock/26
+Page  620: 0100: CSR clock frequency is 150–250 MHz, and MDC
+Page  620: clock frequency is CSR clock/102
+Page  620: 0101: CSR clock frequency is 250–288 MHz, and MDC
+Page  620: clock frequency is CSR clock/124
+Page  621: Bit 31: 16   PT                0x0000          rw       configured to be double-synchronized to the MII clock
+Page  621: should be performed only after at least four clock cycles in
+Page  621: the destination clock domain.
+Page  623: If the EMAC_MACVLT register is configured to be double-synchronized to the (G)MII clock domain,
+Page  623: then consecutive write operations to this register should be performed at least four clock cycles in the
+Page  623: destination clock domain.
+Page  624: one clock cycle.
+Page  625: operations to this address low register must be performed after at least 4 cycles in the destination clock
+Page  626: operations to this address low register must be performed after at least 4 cycles in the destination clock
+Page  627: operations to this address low register must be performed after at least 4 cycles in the destination clock
+Page  627: operations to this address low register must be performed after at least 4 cycles in the destination clock
+Page  639: cleared automatically after 1 clock cycle.
+Page  641: 00: Normal clock
+Page  641: Bit 17: 16   SPPFTS           0x0             rw       01: Boundary clock
+Page  641: 10: End-to-End Transparent Clock
+Page  641: 11: Point-to-Point Transparent Clock
+Page  642: configured according to PTP reference clock frequency
+Page  643: system time every clk_ptp_ref_i clock cycle. In Fine Update mode, the value in this register is added to
+Page  643: value of the subsecond register at every clock cycle (of
+Page  643: clk_ptp_i). For example, if the PTP clock is 50 MHz (20
+Page  644: value is added to a 32-bit accumulator at every clock cycle (of clk_ptp_ref_i). The system time is
+Page  648: The digital video parallel interface uses the DVP pixel clock (DVP_PCLK) to capture the pixel parallel
+Page  649: DVP_PCLK                  Input                         DVP pixel clock
+Page  650: DVP_PCLK                  Input                     DVP pixel clock
+Page  652: Note: To ensure correct data acquisition using DMA access interface, the AHB bus clock (AHB_CLK)
+Page  652: must be higher than 2.5 DVP_PCLK clocks.
+Page  652: When the PDL is programmed to 0, the DVP captures an 8-bit data every DVP_PCLK clock, and packs
+Page  652: When the PDL is programmed to 1, the DVP captures a 10-bit data is captured every DVP_PCLK clock,
+Page  652: When the PDL bit is programmed to 2, the DVP captures a 12-bit data every DVP_PCLK clock, and
+Page  653: When the PDL bit is programmed to 3, the DVP captures a 14-bit data every DVP_PCLK clock, and
+Page  658: In this format, one half-word data pixel (16 bit) is output every two pixel clocks. Each half-word data
+Page  658: 6-bit and 5-bit format respectively. The first pixel clock outputs the lower part of R and G components,
+Page  658: the second pixel clock outputs the upper part of G component, and B component. Or the first pixel clock
+Page  658: outputs the lower part of B and G components, and the second pixel clock outputs the upper part of G
+Page  658: In this format, one half-word data pixel (16 bit) is output every two pixel clocks. Each half-word data
+Page  658: format. The first pixel clock outputs the lower part of R and G components, the second pixel clock outputs
+Page  658: the upper part of G component, and B component. Or the first pixel clock outputs the lower part of B and
+Page  658: G components, and the second pixel clock outputs the upper part of G component, and R component.
+Page  658: As the valid data has a total of 15 bits, the upper part of the second pixel clock are not actually used.
+Page  659: In this format, one half-word data pixel (16 bit) is output every two pixel clocks. Each half-word data
+Page  659: chroma components. The camera outputs a group of pixel components every pixel clock, with Y
+Page  659: component output on the first pixel clock, and U or V component output on the second pixel clock. Or
+Page  659: the first pixel clock outputs U or V component, and the second pixel clock outputs Y component. Figure
+Page  660: In this format, one-byte pixel (8-bit) Y (luminance) is output every pixel clock, which is encoded in 8-bit
+Page  660: data is output every pixel clock. It can be 8-bit, 10-bit, 12-bit or 14-bit. Refer to Section 27.4.2 for more
+Page  672: Dummy Clocks                                                                                      IO Switches from Input to Output
+Page  673: Dummy Clocks                                                              IO Switches from Input to Output
+Page  686: The clocks between a peripheral and DMA may be asynchronous. The user can choose whether the
+Page  711: In addition, code debugging is supported in Low-power mode. In Sleep mode, the clock programmed by
+Page  713: Standby mode, and the system clock is provided by the
+Page  713: 0: In Deepsleep mode, all clocks in the 1.2V domain are
+Page  713: system clock source, and the software must reprogram
+Page  713: Bit 1        DEEPSLEEP_DEBUG    0x0           rw       the system clock according to application requirements.
+Page  713: 1: In Deepsleep mode, system clock is provided by the
+Page  713: Deepsleep mode, HICK is used as the system clock
+Page  713: clock. According to application requirements.
+Page  713: 0: When entering Sleep mode, CPU HCLK clock is
+Page  713: disabled, but other clocks remain active. When exiting
+Page  713: clock system.
+Page  713: 1: When entering Sleep mode, all clocks keep running.
+Page  714: ERTC 512Hz output clock pause control bit
+Page  714: Bit 15       ERTC_512_PAUSE       0x0         rw     0: ERTC 512Hz output clock works normally
+Page  714: 1: Froze 512Hz output clock

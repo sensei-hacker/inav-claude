@@ -1,0 +1,133 @@
+Keyword: flash memory
+Occurrences: 129
+================================================================================
+
+Page    1: − 256 to 4032 KBytes of Flash memory                           ERTC: enhanced RTC with auto wakeup, alarm,
+Page    2: 1.3.1 Flash memory size register .......................................................... 56
+Page    2: 2.2   Flash memory .............................................................................. 57
+Page    4: 5        Flash memory controller (FLASH) ................................................. 96
+Page    4: 5.2   Flash memory operation ............................................................. 102
+Page    4: 5.4   Flash memory protection ............................................................ 109
+Page    4: 5.6   Flash memory registers .............................................................. 111
+Page   32: Figure 5-1 Flash memory sector erase process ........................................................................................ 103
+Page   32: Figure 5-2 Flash memory block erase process ......................................................................................... 104
+Page   32: Figure 5-3 Flash memory mass erase process ......................................................................................... 105
+Page   32: Figure 5-4 Flash memory programming process ...................................................................................... 106
+Page   40: Table 5-1 Flash memory architecture (4032 K) ........................................................................................... 96
+Page   40: Table 5-2 Flash memory architecture (1024 K) ........................................................................................... 97
+Page   40: Table 5-3 Flash memory architecture (448 K) ............................................................................................. 97
+Page   40: Table 5-4 Flash memory architecture (256 K) ............................................................................................. 98
+Page   40: Table 5-7 Flash memory access limit ........................................................................................................ 109
+Page   40: Table 5-8 Flash memory interface—Register map and reset value ........................................................... 111
+Page   55: In the AT32F435/437 series, the main Flash memory, Boot code or SRAM can be remapped to the
+Page   55: {BOOT1, BOOT0}=00/10, CODE starts from the main Flash memory
+Page   56: 1.3.1          Flash memory size register
+Page   56: This register contains the information about Flash memory size.
+Page   56: in the information block of the Flash memory. The 96-bit ID is unique for any device, and cannot be
+Page   57: Flash memory
+Page   57: 2.2 Flash memory
+Page   57: AT32F435/437 series provide up to 4032 KB of on-chip Flash memory, supporting a 0-wait state single
+Page   57: Refer to Chapter 5 for more details about Flash memory controller and register configuration.
+Page   57: Flash memory organization (4032K)
+Page   59: Flash memory organization (1024K)
+Page   59: Flash memory organization (448K)
+Page   59: Main Flash memory (448 KB) has only bank 1, which is divided into 7 blocks that include 16 sectors in
+Page   60: Flash memory organization (256K)
+Page   60: Main Flash memory (256 KB) has only bank 1, which is divided into 4 blocks that include 32 sectors in
+Page   60: is done by setting the EOPB0 bit. In 512 KB mode, Flash memory size (zero wait sate) is limited to 128
+Page   61: 0x4002 3C00 - 0x4002 3FFF       Flash memory interface (FLASH)
+Page   96: 5       Flash memory controller (FLASH)
+Page   96: Flash memory is divided into three parts: main Flash memory, information block and Flash memory
+Page   96:  Main Flash memory is up to 4032 KB, including bank 1 and bank 2.
+Page   96: Main Flash memory (4032 KB) is divided into bank 1 and bank 2.
+Page   96: Table 5-1 Flash memory architecture (4032 K)
+Page   96: Flash memory
+Page   97: Main Flash memory (1024 KB) is divided into bank 1 and bank 2 with 512 KB in each. Each bank is sub-
+Page   97: Table 5-2 Flash memory architecture (1024 K)
+Page   97: Flash memory
+Page   97: Main Flash memory (448 KB) has only bank 1, which id divided into 7 blocks that include 16 sectors in
+Page   97: Table 5-3 Flash memory architecture (448 K)
+Page   97: Flash memory 448 KB           Block 1         …               …
+Page   98: Main Flash memory (256 KB) has only bank 1, which is divided into 4 blocks that include 32 sectors in
+Page   98: Table 5-4 Flash memory architecture (256 K)
+Page   98: Flash memory 256 KB                              Sector 63           0x0801 F800 - 0x0801 FFFF
+Page   98: The system data will be read from the information block of Flash memory whenever a system reset
+Page   98: FAP[7:0]: Flash memory access protection (Access protection
+Page   99: This field is used to protect the 1st~32nd KB of main Flash memory.
+Page   99: This field is used to protect the 33rd~64th KB of main Flash memory.
+Page   99: This field is used to protect the 65th~96th KB of main Flash memory.
+Page   99: This field is used to protect the 97th~128th KB of main Flash memory.
+Page  100: 1. For 1024 KB Flash memory and 256 KB Flash memory, there are 256 bytes of user system data, ranging
+Page  101: 2. For 4032 KB Flash memory and 448 KB Flash memory, there are 2048 bytes of user system data, ranging
+Page  101: 3. For 448 KB Flash memory, only EPP0[7:0], EPP1[7:0], EPP2[7:0], EPP3[7:0] and EPP4[2:0] bits are
+Page  102: 5.2 Flash memory operation
+Page  102: After reset, Flash memory is protected, by default. FLASH_CTRLx cannot be written. Write and erase
+Page  102: operation can be performed only when the Flash memory is unlocked.
+Page  102: Flash memory block can be unlocked by writing KEY1 (0x45670123) and KEY2 (0xCDEF89AB) to the
+Page  102: Note: Writing an incorrect key sequence leads to a bus error and the Flash memory is also locked
+Page  102: Flash memory block can be locked by setting the OPLK bit in the FLASH_CTRLx register.
+Page  102: Erase operation must be done before programming. Flash memory erase includes sector erase, block
+Page  102: Any sector in the Flash memory can be erased with sector erase function independently. Below should
+Page  103: Figure 5-1 Flash memory sector erase process
+Page  103: Any block of Flash memory can be erased independently.
+Page  104: Figure 5-2 Flash memory block erase process
+Page  104: Mass erase function can erase all the Flash memory.
+Page  104: Note: Read operation to the Flash memory during erase will halt CPU until the completion of
+Page  105: Figure 5-3 Flash memory mass erase process
+Page  105: The Flash memory can be programmed with 32 bits, 16 bits or 8 bits at a time.
+Page  105:  Set the FPRGM bit in the FLASH_CTRLx register, so that the Flash memory programming
+Page  105: 2. Read operation to the Flash memory during programming will halt CPU until the completion of
+Page  106: Figure 5-4 Flash memory programming process
+Page  106: Flash memory can be accessed through AHB bus of the CPU.
+Page  106: only after the Flash memory is unlocked before the unlock operation for the user system data area.
+Page  106: Flash memory block can be unlocked by writing KEY1 (0x45670123) and KEY2 (0xCDEF89AB) to the
+Page  106: Note: Writing an incorrect key sequence leads to bus error and the Flash memory is also locked until
+Page  107: Note: Read operation to the Flash memory during programming will halt CPU until the completion
+Page  108: Note:    1. Read operation to the Flash memory during programming will halt CPU until the
+Page  109: 5.4 Flash memory protection
+Page  109: Flash memory includes access and erase/program protection.
+Page  109: When the contents in the nFAP and FAP byte are different from 0x5A and 0xA5, the Flash memory will
+Page  109: Flash memory data. This read operation is not permitted in debug mode or by booting from non-Flash
+Page  109: system data loader will be reloaded with system data and updated with Flash memory access protection
+Page  109: instead of system reset in order to resume access to Flash memory data.
+Page  109: Table 5-7 shows Flash memory access limits when Flash access protection is enabled.
+Page  109: Table 5-7 Flash memory access limit
+Page  109: Boot from main Flash memory
+Page  109: Main Flash memory                Not allowed                               Accessible
+Page  109: (1)Main Flash memory is cleared automatically by hardware only when the access protection is disabled;
+Page  109: This is used to protect the contents in the Flash memory against inadvertent operation when the program
+Page  109:  When the Flash access protection is enabled, the first 4 KB in the main Flash memory will be
+Page  109:  Once the Flash access protection is enabled, the main Flash memory is protected against
+Page  109: erase/program when it is in debug mode or when it is started from non-main Flash memory.
+Page  110: Note: Security library can only be located in the main Flash memory;
+Page  111:  Check that no Flash memory operation is ongoing by checking the OBF bit in the FLASH_STS
+Page  111: 5.6 Flash memory registers
+Page  111: Table 5-8 Flash memory interface—Register map and reset value
+Page  112: of non-zero wait state Flash memory, but the system
+Page  112: Only used in Flash memory bank 1.
+Page  112: This is used to unlock Flash memory bank 1.
+Page  112: Only used in Flash memory bank 1.
+Page  112: Bit 5        ODF               0x0             rw       This bit is set by hardware when Flash memory operations
+Page  112: erase/program-protected Flash memory address. It is
+Page  112: When this bit is set, it indicates that Flash memory
+Page  113: Only used in Flash memory bank 1.
+Page  113: This bit is set by default, indicating that Flash memory is
+Page  113: operation to Flash memory is allowed. Writing “1” can re-
+Page  113: lock Flash memory operations.
+Page  113: Only used in Flash memory bank 1.
+Page  114: Access to Flash memory is not allowed when this bit is set.
+Page  114: Only used in Flash memory bank 2.
+Page  114: This register is used to unlock Flash memory bank 2.
+Page  114: Only used in Flash memory bank 2.
+Page  114: Bit 5       ODF                0x0             rw       This bit is set by hardware when Flash memory operations
+Page  114: erase/program-protected Flash memory address. It is
+Page  114: Bit 0       OBF                0x0             ro       When this bit is set, it indicates that Flash memory
+Page  115: Only used in Flash memory bank 2.
+Page  115: This bit is set by default, indicating that Flash memory is
+Page  115: operation to Flash memory is allowed. Writing “1” can re-
+Page  115: lock Flash memory operations.
+Page  115: Only used in Flash memory bank 2.
+Page  118: Only used in main Flash memory.
+Page  144: 000: Main Flash memory mapped at 0x0000 0000
+Page  670: that port switch must be performed in sequence. The user’s system must have a main Flash memory, in
+Page  716: 1. Added Table-3 448KB Flash memory architecture in Section 5.1 FLASH

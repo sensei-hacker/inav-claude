@@ -1,0 +1,37 @@
+Keyword: pull-down
+Occurrences: 33
+================================================================================
+
+Page    6: 6.3.4 GPIO pull-up/pull-down register (GPIOx_PULL) (x=A..H) .............. 140
+Page   68: Bit 9        SWPEN2          0x0            rw       1: Enabled (this pin is forced in input pull-down mode, and
+Page   68: Bit 8        SWPEN1          0x0            rw       1: Enabled (this pin is forced in input pull-down mode, and
+Page  120:  Each pin with individual weak pull-up/pull-down capability.
+Page  120:  PA14/JTCK in multiplexed pull-down mode;
+Page  120:  PB3/TDO in multiplexed mode without pull-up/pull-down capability
+Page  121: Pull-down input             00             10
+Page  121:  Pull-up/pull-down configuration is invalid.
+Page  121: pull-up/pull-down
+Page  121: pull-down                                   001: Output mode, large sourcing/sinking strength
+Page  121: pull-up/pull-down
+Page  121: pull-down
+Page  121: down; or the pin is pulled up to 1 or pulled down to 0 if there is an internal pull-up or pull-down.
+Page  122: GPIOx_CFGR register, and it can be configured as floating, pull-up/pull-down by setting the
+Page  122: GPIOx_OMODE register or pull-up/pull-down by setting the GPIOx_PULL register according to the
+Page  123: pull-up/pull-down
+Page  123: Push-pull with pull-down     10        0                                                                10
+Page  123: pull-up/pull-down                              010: output mode, normal sourcing/sinking strength
+Page  123: Open-drain with pull-down    10        1                                                                10
+Page  123: pull-up/pull-down
+Page  123: Input with pull-down         10        x                                                                10
+Page  123: 1, the pin is in high-impedance state if there is no internal pull-up/pull-down, or it is pulled up to 1
+Page  123: or pulled down to 0 if there is an internal pull-up or pull-down.
+Page  138:  To use a peripheral pin in MUX input, it is configured as multiplexed input (floating/pull-up/pull-down).
+Page  140: 6.3.4         GPIO pull-up/pull-down register (GPIOx_PULL) (x=A..H)
+Page  140: GPIOx pull-up/pull-down configuration (y=0…15)
+Page  140: This field is used to configure the pull-up/pull-down of the
+Page  140: 2y+1: 2y                                              00: No pull-up, pull-down
+Page  140: 10: Pull-down
+Page  211: RTS: the RTS becomes active (pull-down means low) as soon as the USART receiver is ready to
+Page  424: used as a host while the ID line is grounded. The internal 1.5KΩ pull-up resistor and 1.5KΩ pull-down
+Page  711: internal pull-up or pull-down feature, NJTRST, JTDI and JTMS/SWDIO with internal pull-up feature, and
+Page  711: JTCK/SWCLK with internal pull-down feature.

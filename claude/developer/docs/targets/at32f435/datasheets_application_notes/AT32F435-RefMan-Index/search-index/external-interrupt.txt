@@ -1,0 +1,46 @@
+Keyword: external interrupt
+Occurrences: 42
+================================================================================
+
+Page    1:    Core: ARM®32-bit Cortex®-M4F CPU with FPU                       − All mappable to 16 external interrupt vectors
+Page    5: 6.2.12 External interrupt/wake-up lines .................................................. 139
+Page    6: 7.2.3 SCFG external interrupt configuration register 1
+Page    6: 7.2.4 SCFG external interrupt configuration register 2
+Page    6: 7.2.5 SCFG external interrupt configuration register 3
+Page    6: 7.2.6 SCFG external interrupt configuration register 4
+Page    6: 8        External interrupt/Event controller (EXINT) ................................ 151
+Page   32: Figure 8-1 External interrupt/Event controller block diagram .................................................................... 151
+Page   40: Table 8-1 External interrupt/Event controller register map and reset value .............................................. 152
+Page   66: external interrupt line in Interrupt mode can wake up the system from Deepsleep mode.
+Page   66: external interrupt line in Event mode can wake up the system from Deepsleep mode.
+Page  120:  Each pin can be configured as external interrupt input.
+Page  139: 6.2.12 External interrupt/wake-up lines
+Page  139: Each pin can be used as an external interrupt input. The corresponding pin should be configured as
+Page  143:  Manage the external interrupts connected to the GPIOs
+Page  144: 7.2.3 SCFG external interrupt configuration register 1
+Page  144: EXINT3 external interrupt.
+Page  144: EXINT2 external interrupt.
+Page  144: EXINT1 external interrupt.
+Page  145: EXINT0 external interrupt.
+Page  145: 7.2.4 SCFG external interrupt configuration register 2
+Page  145: EXINT7 external interrupt.
+Page  145: EXINT6 external interrupt.
+Page  146: EXINT5 external interrupt.
+Page  146: EXINT4 external interrupt.
+Page  146: 7.2.5 SCFG external interrupt configuration register 3
+Page  146: EXINT11 external interrupt.
+Page  146: Bit 11: 8    EXINT10    0x0000          rw       EXINT10 external interrupt.
+Page  147: EXINT9 external interrupt.
+Page  147: EXINT8 external interrupt.
+Page  147: 7.2.6 SCFG external interrupt configuration register 4
+Page  147: EXINT15 external interrupt.
+Page  148: EXINT14 external interrupt.
+Page  148: EXINT13 external interrupt.
+Page  148: EXINT12 external interrupt.
+Page  151: 8       External interrupt/Event controller (EXINT)
+Page  151: Figure 8-1 External interrupt/Event controller block diagram
+Page  151: With up to 23 interrupt lines EXINT_LINE[22:0], EXINT can detect not only GPIO external interrupt
+Page  152: Table 8-1 External interrupt/Event controller register map and reset value
+Page  393: external event (timer counter, external interrupt line) or by software. The DxTRGSEL[2: 0] is used to
+Page  396: 110: External interrupt line 9
+Page  397: 110: External interrupt line 9

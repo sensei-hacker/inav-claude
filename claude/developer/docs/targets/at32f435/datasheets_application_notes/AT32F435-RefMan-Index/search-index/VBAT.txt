@@ -1,0 +1,27 @@
+Keyword: VBAT
+Occurrences: 23
+================================================================================
+
+Page    1: − VBAT supply for LEXT, ERTC and 20 x 32-bit battery              available (For AT32F437 only)
+Page    1: (VINTR), VBAT battery voltage monitor (VBAT/4)            1024 KBytes AT32F435CGT7, AT32F435CGU7, AT32F437ZGT7
+Page   45: @VBAT
+Page   63: VDD/VDDA domain, and the battery powered domain is supplied through a VBAT pin.
+Page   63: VBAT
+Page   63:    The battery powered domain is powered by VBAT when VDD is powered off
+Page   65: powered by either VDD or VBAT pin. When the VDD is cut off, the battery powered domain is
+Page   65: automatically switched to VBAT pin to ensure that ERTC can work normally.
+Page   65: 2) When the battery powered domain is powered by VBAT, the PC13 can be used as a tamper pin,
+Page   65: The switch of the battery powered domain will not be disconnected from VBAT because of the VDD
+Page   65: between VDD and VBAT in order to prevent the currents of VDD from being injected to VBAT. If there is
+Page   65: no external battery in the application, it is better to connect the VBAT to a 100 nF ceramic filter capacitor
+Page   73:  VDD or VBAT power on, if both supplies have been powered off.
+Page  341: influence of system reset and VDD power off as long as VBAT is powered.
+Page  341: VBAT domain
+Page  357: Bit 31: 0   DT        0x0000 0000   rw         BPR_DTx registers are powered on by VBAT so that they are
+Page  359: TMR8_TRGOUT2                                                                                               VBAT
+Page  360: VBAT is higher than VDDA. Thus the VBAT must be divided by 4 before being connected to the ADC1_IN18.
+Page  360: The conversion of battery voltage channels starts only when the VBATEN bit is set in the ADC_CCTRL
+Page  360: Note: When the ADC is used for sampling VBAT voltage, the VBAT keeps consuming as along as the
+Page  360: VBATEN is set. Thus it is recommended to enable VBAT only during the sampling period, and disable it
+Page  388: VBAT enable
+Page  388: Bit 22       VBATEN     0x0             rw       0: Disabled

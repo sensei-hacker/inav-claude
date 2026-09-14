@@ -1,0 +1,344 @@
+Keyword: SDIO
+Occurrences: 340
+================================================================================
+
+Page    1: − 2.6 V ~ 3.6 V application supply                              − Up to 2 x SDIO interfaces
+Page   24: 25       SDIO interface ............................................................................. 551
+Page   24: 25.1 SDIO introduction ...................................................................... 551
+Page   24: 25.2 SDIO main features .................................................................... 551
+Page   25: 25.3.3 SDIO functional description ........................................................ 564
+Page   25: 25.3.3.1 SDIO adapter ....................................................................... 565
+Page   25: 25.3.3.3 SDIO AHB interface .............................................................. 569
+Page   25: 25.3.4 SDIO I/O card-specific operations ............................................... 570
+Page   25: 25.4 SDIO registers ........................................................................... 571
+Page   25: 25.4.1 SDIO power control register (SDIO_ PWRCTRL) .......................... 571
+Page   25: 25.4.2 SDIO clock control register (SDIO_ CLKCTRL) ............................ 572
+Page   25: 25.4.3 SDIO argument register (SDIO_ARG) .......................................... 573
+Page   25: 25.4.4 SDIO command register (SDIO_CMD) ......................................... 573
+Page   25: 25.4.5 SDIO command response register (SDIO_RSPCMD) .................... 574
+Page   25: 25.4.6 SDIO response 1..4 register (SDIO_RSPx) .................................. 574
+Page   25: 25.4.7 SDIO data timer register (SDIO_DTTMR) ..................................... 574
+Page   25: 25.4.8 SDIO data length register (SDIO_DTLEN) .................................... 574
+Page   25: 25.4.9 SDIO data control register (SDIO_DTCTRL) ................................. 575
+Page   25: 25.4.10 SDIO data counter register (SDIO_DTCNTR) ............................ 576
+Page   25: 25.4.11 SDIO status register (SDIO_STS) ............................................. 576
+Page   25: 25.4.12 SDIO clear interrupt register (SDIO_INTCLR) ............................ 577
+Page   25: 25.4.13 SDIO interrupt mask register (SDIO_INTEN) ............................. 577
+Page   25: 25.4.14 SDIOBUF counter register (SDIO_BUFCNTR) ........................... 579
+Page   25: 25.4.15 SDIO data BUF register (SDIO_BUF) ........................................ 579
+Page   37: Figure 25-1 SDIO “no response” and “response” operations.................................................................... 552
+Page   37: Figure 25-2 SDIO multiple block read operation ....................................................................................... 552
+Page   37: Figure 25-3 SDIO multiple block write operation ....................................................................................... 552
+Page   37: Figure 25-4 SDIO sequential read operation............................................................................................. 553
+Page   37: Figure 25-5 SDIO sequential write operation ............................................................................................ 553
+Page   37: Figure 25-6 SDIO block diagram ............................................................................................................... 565
+Page   38: Figure 25-8 SDIO command transfer ........................................................................................................ 568
+Page   43: Table 25-18 SDIO pin definitions ............................................................................................................... 565
+Page   43: Table 25-24 A summary of the SDIO registers .......................................................................................... 571
+Page   43: Table 25-25 Response type and SDIO_RSPx register ............................................................................. 574
+Page   44: communication interfaces such as SPI, QSPI, I2C, USART/UART and SDIO, CAN bus controller,
+Page   45: Cortex-M4F                                                                           SDIO1/2                                                  Max.288 MHz
+Page   47: SDIO1
+Page   47: SDIO2
+Page   52: 49   56             SDIO1                 SDIO1 global interrupt                       0x0000_0104
+Page   53: 102     109                SDIO2                  SDIO2 global interrupt               0x0000_01D8
+Page   60: 0x5006 1000 - 0x5006 13FF       SDIO2
+Page   60: 0x4002 C400 - 0x4002 C7FF       SDIO1
+Page   80: SDIO1 reset
+Page   80: Bit 15       SDIO1RST       0x0             rw          0: Does not reset SDIO1
+Page   80: 1: Reset SDIO1
+Page   80: SDIO2 reset
+Page   80: Bit 15       SDIO2RST       0x0             rw          0: Does not reset SDIO2
+Page   80: 1: Reset SDIO2
+Page   84: SDIO1 clock enable
+Page   84: Bit 15       SDIO1EN         0x0            rw        0: Disabled
+Page   84: SDIO2 clock enable
+Page   84: Bit 15       SDIO2EN         0x0            rw        0: Disabled
+Page   89: SDIO1 clock enable in sleep mode
+Page   89: Bit 15       SDIO1LPEN        0x1            rw       0: Disabled
+Page   89: SDIO2 clock enable in sleep mode
+Page   89: Bit 15       SDIO2LPEN        0x0            rw       0: Disabled
+Page  125: PA2                            SDIO2_CK    EMAC_MDIO                                   XMC_D4     EVENTOUT
+Page  125: PA3                QSPI2_IO3   SDIO2_CMD   EMAC_MII_COL                                XMC_D5     EVENTOUT
+Page  125: PA4    USART6_TX               SDIO2_D4    SDIO2_D0
+Page  125: PA5    USART6_RX   QSPI2_IO2   SDIO2_D5    SDIO2_D1                                    XMC_D7     EVENTOUT
+Page  125: SDIO1_C
+Page  125: PA6                TMR13_CH1   QSPI1_IO0   SDIO2_D2
+Page  125: DVP_PIXCLK   SDIO2_D6   EVENTOUT
+Page  125: SDIO2_D3     SDIO2_D7   EVENTOUT
+Page  125: PA8    USART2_TX               OTG1_SOF                        SDIO1_D1                XMC_A4     EVENTOUT
+Page  125: SDIO1_D2   DVP_D0                  EVENTOUT
+Page  127: EMAC_MII_RXD2     SDIO1_D1                         EVENTOUT
+Page  127: EMAC_MII_RXD3     SDIO1_D2                         EVENTOUT
+Page  127: SDIO1_C
+Page  127: PB4    UART7_TX                                                   SDIO1_D0   DVP_D5                EVENTOUT
+Page  127: DVP_D10    SDIO1_D3   EVENTOUT
+Page  127: DVP_D5     SDIO1_D0   EVENTOUT
+Page  127: SDIO1_D0   EVENTOUT
+Page  127: EMAC_MII_TXD3     SDIO1_D4   DVP_D6                EVENTOUT
+Page  127: SDIO1_D5   DVP_D7                EVENTOUT
+Page  127: EMAC_MII_RX_ER    SDIO1_D7              XMC_NOE    EVENTOUT
+Page  127: PB14                   TMR12_CH1                                  OTG2_D-    SDIO1_D6   XMC_D0     EVENTOUT
+Page  127: PB15                   TMR12_CH2                                  OTG2_D+    SDIO1_CK              EVENTOUT
+Page  129: PC0    UART7_TX                SDIO2_D0                      XMC_SDNWE                          EVENTOUT
+Page  129: PC1    UART7_RX                SDIO2_D1      EMAC_MDC                                           EVENTOUT
+Page  129: PC2    UART8_TX                SDIO2_D2      EMAC_MII_TXD2   XMC_SDCS0                XMC_NWE   EVENTOUT
+Page  129: PC3    UART8_RX    QSPI2_IO1   SDIO2_D3
+Page  129: PC4                            QSPI1_IO2     EMAC_RMII_RX    XMC_SDCS0    SDIO2_CK    XMC_NE4   EVENTOUT
+Page  129: PC5                            QSPI1_IO3     EMAC_RMII_RX    XMC_SDCKE0   SDIO2_CMD   XMC_NOE   EVENTOUT
+Page  129: PC6    USART6_TX               XMC_A0                        SDIO1_D6     DVP_D0      XMC_D1    EVENTOUT
+Page  129: PC7    USART6_RX               XMC_A1                        SDIO1_D7     DVP_D1                EVENTOUT
+Page  129: PC8    USART6_CK   QSPI1_IO2   XMC_A2                        SDIO1_D0     DVP_D2                EVENTOUT
+Page  129: PC9                QSPI1_IO0   XMC_A3        OTG2_OE         SDIO1_D1     DVP_D3                EVENTOUT
+Page  129: PC10   UART4_TX    QSPI1_IO1                                 SDIO1_D2     DVP_D8                EVENTOUT
+Page  129: PC11   UART4_RX    QSPI1_CS                                  SDIO1_D3     DVP_D4      XMC_D2    EVENTOUT
+Page  129: PC12   UART5_TX                                              SDIO1_CK     DVP_D9      XMC_D3    EVENTOUT
+Page  131: PD2    UART5_RX               XMC_A7                           SDIO1_CMD   DVP_D11   XMC_NWE   EVENTOUT
+Page  154: SDIO1      UART4 DMA ack
+Page  154: SDIO2      UART5
+Page  158: SDIO1    UART4                                                                         SYNC
+Page  158: SDIO2    UART5
+Page  159: 7           reserved      39        SDIO1              71        TMR4_OVERFLOW 103      SDIO2
+Page  551: 25 SDIO interface
+Page  551: 25.1 SDIO introduction
+Page  551: The SD/SDIO MMC card host interface (SDIO) provides an interface between the AHB peripheral bus
+Page  551: and MultiMediaCards (MMC), SD memory cards and SDIO cards.
+Page  551: 25.2 SDIO main features
+Page  551: Note: The SDIO is not compatible with SPI communication mode. It supports only one
+Page  551: SD/SDIO/MMC 4.2 card at any one time.
+Page  551: the SDIO_D data line.
+Page  551: Data transfers to/from SD/SDIO memory cards are done in data blocks. Data blocks are always followed
+Page  552: Figure 25-1 SDIO “no response” and “response” operations
+Page  552: SDIO_CMD                                     Command                                                               Command                                              Response
+Page  552: SDIO_D
+Page  552: Figure 25-2 SDIO multiple block read operation
+Page  552: SDIO_CMD
+Page  552: SDIO_D
+Page  552: Figure 25-3 SDIO multiple block write operation
+Page  552: SDIO_CMD                              Command                           Response                                                                                 Command                       Response
+Page  552: SDIO_D                                                                             Busy              Data blcok           crc          Busy               Data block           crc                  Busy
+Page  552: Note: The SDIO will not send any data as long as the Busy signal is set (SDIO_D0 pulled low).
+Page  553: Figure 25-4 SDIO sequential read operation
+Page  553: SDIO_CMD               Command    Response                                           Command                   Response
+Page  553: SDIO_D                                                         Data stream
+Page  553: Figure 25-5 SDIO sequential write operation
+Page  553: SDIO_CMD               Command     Response                                           Command                     Response
+Page  553: SDIO_D                                                           Data stream
+Page  554: 2. The SDIO host sends a SD card, SDI/O card or MMC card.
+Page  554: ―     SD card: The SDIO host sends CMD2 (ALL_SEND_CID) to obtain its unique CID number.
+Page  554: ―     SDI/O card: The SDIO host sends CMD3 (SEND_RELATIVE_ADDR) to instruct the card to
+Page  554: ― MMC card: The SDIO host sends CMD1 (SEND_OP_COND), followed by CMD2 and CMD3.
+Page  554: configured by the TFRMODE bit in the SDIO_DTCTRL register. In the data stream mode, data is
+Page  555: a CRC appended to the end of each block. If the CRC failed, the card indicates a failure on the SDIO_D
+Page  555: ADDRESS_ERROR bit in the SDIO_STS register and waits the stop command in a receive state while
+Page  555: check, the card begins writing and holds the SDIO_D signal line low if its write buffer is full and unable
+Page  555: will place the card in the disconnect state and release the SDIO_D line without interrupting the write
+Page  555: operation. When reselecting the card, it will reactivate busy indication by pulling SDIO_D line to low if
+Page  555: Three write protection methods are supported in the SDIO card host module to ensure that the protected
+Page  556: The password protection function enables the SDIO card host to lock and unlock a card with a password.
+Page  556: defined by the SDIO card host module before it sends the card lock/unlock command. The lock/unlock
+Page  557: content), the LOCK_UNLOCK_FAILED error bit is set in the SDIO_STS register, and the old
+Page  557: SDIO_STS register, and the password is not changed.
+Page  557: SDIO_STS register. If the password sent does not correspond to the expected password (in
+Page  557: size and/or content), the LOCK_UNLOCK_FAILED error bit is set in the SDIO_STS register,
+Page  557: LOCK_UNLOCK_FAILED error bit is set in the SDIO_STS register.
+Page  557: the SDIO_STS register. If the password sent does not correspond to the expected password
+Page  557: (in size and/or content), the LOCK_UNLOCK_FAILED error bit is set in the SDIO_STS
+Page  557: SDIO_STS register.
+Page  558: not zero, the LOCK_UNLOCK_FAILED error bit is set in the SDIO_STS register, and the
+Page  558: SDIO_STS register.
+Page  558: 3. Addressed command: sent to the selected card, and no data transfer on the SDIO_D line
+Page  558: SDIO_D line
+Page  558: The SDIO host module system is designed to provide a standard interface for a variety of application
+Page  558: To use the application-specific commands, the SDIO host must send CMD55(APP_CMD) first, and waits
+Page  563: For SD I/O only, an SDIO card will respond with a unique SDIO response R4 after receiving the CMD5.
+Page  564: 25.3.3 SDIO functional description
+Page  564: SDIO consists of four parts:
+Page  564:  SDIO adapter block: contains a control unit, command path and data path that provides all
+Page  565: Figure 25-6 SDIO block diagram
+Page  565: SDIO Adapter
+Page  565: AHB Bus                                                   Control unit                      SDIO_CK
+Page  565: Interface        Register                                               SDIO_CMD
+Page  565: SDIO_INT                                                         Data
+Page  565: BUF                                                  SDIO_D [ 7:0 ]
+Page  565: HCLK                               SDIOCLK
+Page  565: 25.3.3.1 SDIO adapter
+Page  565: SDIO_CK is a clock to the MultiMedia/SD/SDIO car provided by the host. One bit of command or data
+Page  565: SDIO_CMD is a bidirectional command channel and used for the initialization of a card and command
+Page  565: SDIO_CMD has two operational modes:
+Page  565: SDIO_D [7:0] is a bidirectional data channel. After initialization, the host can change the width of the
+Page  565: data bus. After reset, the SDIO_D0 is used for data transfer by default. MMCV3.31 or previous supports
+Page  565: only one bit of data line, so only SDIO_DO can be used.
+Page  565: Table 25-18 SDIO pin definitions
+Page  565: MultiMedia card/SD/SDIO card clock. This pin is the clock from the
+Page  565: SDIO_CK                   Output
+Page  565: MultiMedia card/SD/SDIO card command. This pin is the
+Page  565: SDIO_CMD                  Bidirectional
+Page  565: MultiMedia card/SD/SDIO card data. This pin is the
+Page  565: SDIO_D[7: 0]              Bidirectional
+Page  565: management subunit is controlled by the SDIO_PWRCTRL register. The PS bit is used to define power-
+Page  565: disable the card bus output signals. The clock management subunit is controlled by the SDIO_CLKCTRL
+Page  566: register where the CLKDIV bit is used to define the divider factor between the SDIOCLK and the SDIO
+Page  566: output clock. If BYPSEN = 0, the SDIO_CK output signal is driven by the SDIOCLK divided according
+Page  566: to the CLKDIV bit; if BYPSEN = 1, the SDIO_CK output signal is directly driven by the SDIOCLK. The
+Page  566: save mode, and the SDIO_CK can be output only when the bus is active.
+Page  566: CCSMEN bit is set in the SDIO_CMDCTRL register, a command transfer starts. First sends a command
+Page  566: to a card by the SDIO_CMD, the command length is 48 bits. The data on the SDIO_CMD is synchronized
+Page  566: with the rising edge of the SDIO_CK. A block of data is transferred with each SDIO_CK, including start
+Page  566: bit, transfer bit, command index defined by the SDIO_CMDCTRL_CMDIDX bit, parameters defined by
+Page  566: the SDIO_ARG, 7-bit CRC and end bit. Then receives responses from the card. There are two response
+Page  566: responses are saved in the area from SDIO_RSP1 to SDIO_RSP4. The command path can generate
+Page  566: command flag, which can be defined by the SDIO_STS register.
+Page  567: CMDTIMEOUT                                                           Command response timeout (64 SDIO_CK cycles)
+Page  567: When the CCSMEN bit is set in the SDIO_CMDCTR register, command transfer starts. When the
+Page  567:      The CCSM remains in the idle state for at least 8 SDIO_CK cycles to meet the Ncc (the
+Page  567: time to a command), that is, 64 SDIO_CK periods, is reached before the CCSM moves to the
+Page  568: Figure 25-8 SDIO command transfer
+Page  568: SDIO_CK cycles
+Page  568: SDIO_CMD                                    CMD                                          Response                                       CMD
+Page  568: configured using the BUSWS bit in the SDIO_CLKCTRL register. By default, only the SDIO_DO signal
+Page  568: mode is selected, four bits are transferred per clock cycle over the SDIO_D [3:0] signal line. If the 8-bit
+Page  568: wide bus mode is selected, eight bits are transferred per clock cycle over the SDIO_D [7: 0] signal line.
+Page  568: The TFRDIR bit is set in the SDIO_DTCTR register to define the transfer direction. If TFRDIR=0, it
+Page  568: stream, depending on the SDIO_DTCTRL_TFRMODE bit. If an overflow error occurred, the DCSM
+Page  569: either block or stream, depending on the SDIO_DTCTRL _TFRMODE bit. If an overflow error occurs,
+Page  569: Because the data BUF operates in the AHB clock domain (HCLK), all signals connected to the SDIO
+Page  569: clock domain (SDIOCLK) are resynchronized.
+Page  569:  Transmit BUF: Data can be written to the transmit BUF via the AHB interface when the SDIO
+Page  569: 25.3.3.3 SDIO AHB interface
+Page  569: The AHB interface generates the interrupt and DMA requests, and access the SDIO interface registers
+Page  569: SDIO interrupts
+Page  569: SDIO_INTEN register is used to select the conditions that will generate an interrupt.
+Page  569: SDIO/DMA interface: data transfer process between the SDIO and memory
+Page  569: In the following examples, data is transferred from the host to the card. The SDIO BUF is filled with data
+Page  569: 2. Increase the SDIO_CK frequency
+Page  569: destination address register as the SDIO_BUF register address. Then configure the DMA2
+Page  569: Program the SDIO data length register (SDIO_DTLEN), the BLKSIZE bit in the SDIO data
+Page  569: control register (SDIO_DTCTRL), and the SDIO parameter register (SDIO_ARG) with the
+Page  569: address of the card where data is to be transferred, and program the SDIO command register
+Page  569: (SDIO_CMD), enable the CCSMEN bit, wait for SDIO_STS [6]=CMDRSPCMPL interrupt,
+Page  570: and then program the SDIO data control register (SDIO_DTCTRL): TFREN=1 (enable the
+Page  570: SDIO card host to send data), TFRDIR=0 (from the controller to the card), TFRMODE=0
+Page  570: SDIO_STS [10]=DTBLKCMPL.
+Page  570: 6.   Check that no channels are still enabled by confirming the DMA channel enable SDIO status
+Page  570: register (SDIO_STS)
+Page  570: The HFCEN bit is set in the SDIO_CLKCTRL register to enable hardware flow control, which is sued to
+Page  570: 25.3.4 SDIO I/O card-specific operations
+Page  570: The SDIO can support the following operations (except read suspend, for it does not require specific
+Page  570: hardware operation) when the SDIO_DTCTRL [11] is set.
+Page  570: SDIO read wait operation by SDIO_D2 signal lines
+Page  570:  Enable data path (SDIO_DTCTRL [0] = 1)
+Page  570:  Enable SDIO-specific operation (SDIO_DTCTRL [11] = 1)
+Page  570:  Start read wait (SDIO_DTCTRL [10]=0 and SDIO_DTCTRL [8]=1)
+Page  570:  Data direction is from a card to the SDIO host (SDIO_DTCTRL [1]=1)
+Page  570:  The data unit in the SDIO adapter will enter read wait state, and drive the SDIO_D2 to 0 after 2
+Page  570: SDIO_CK cycles
+Page  570: During the read wait period, the SDIO host can detect the SDIO interrupts over the SDIO_D1.
+Page  570: SDIO read wait operation by stopping clock
+Page  570: If the SDIO card does not support the mentioned above read wait operation, the SDIO can enter a read
+Page  570: wait by stopping SDIO_CK, described as follows:
+Page  570:  Enable data path (SDIO_DTCTRL [0] = 1)
+Page  570:  Enable SDIO-specific operation (SDIO_DTCTRL [11] = 1)
+Page  570:  Start read wait (SDIO_DTCTRL [10]=0 and SDIO_DTCTRL [8]=1)
+Page  570: The DCSM stops the clock two SDIO_CK cycles after the end bit of the current received data block and
+Page  570: Note that as the SDIO_CK is stopped, the SDIO host cannot send any command to the card. The SDIO
+Page  570: host can detect the SDIO interrupt over the SDIO_D1.
+Page  570: SDIO suspend/resume operation (write and read operation suspend)
+Page  570: While sending data to a card, the SDIO can suspend the write operation. The SDIO_CMD [11] bit is set
+Page  571: SDIO interrupts
+Page  571: the MultiMedia card/SD module. In 4-bit SD mode, this pin is SDIO_D1. The SD I/O interrupts are
+Page  571: When the SDIO_DTCTRL [11] bit is set, the SDIO interrupts are detected on the SDIO_D1 signal line.
+Page  571: 25.4 SDIO registers
+Page  571: Table 25-24 A summary of the SDIO registers
+Page  571: SDIO_PWRCTRL                     0x00                             0x0000 0000
+Page  571: SDIO_CLKCTRL                     0x04                             0x0000 0000
+Page  571: SDIO_ARG                         0x08                             0x0000 0000
+Page  571: SDIO_CMD                         0x0C                             0x0000 0000
+Page  571: SDIO_RSPCMD                      0x10                             0x0000 0000
+Page  571: SDIO_RSP1                        0x14                             0x0000 0000
+Page  571: SDIO_RSP2                        0x18                             0x0000 0000
+Page  571: SDIO_RSP3                        0x1C                             0x0000 0000
+Page  571: SDIO_RSP4                        0x20                             0x0000 0000
+Page  571: SDIO_DTTMR                       0x24                             0x0000 0000
+Page  571: SDIO_DTLEN                       0x28                             0x0000 0000
+Page  571: SDIO_DTCTRL                      0x2C                             0x0000 0000
+Page  571: SDIO_DTCNTR                      0x30                             0x0000 0000
+Page  571: SDIO_STS                         0x34                             0x0000 0000
+Page  571: SDIO_INTCLR                      0x38                             0x0000 0000
+Page  571: SDIO_INTEN                       0x3C                             0x0000 0000
+Page  571: SDIO_BUFCNTR                     0x48                             0x0000 0000
+Page  571: SDIO_BUF                         0x80                             0x0000 0000
+Page  571: 25.4.1 SDIO power control register (SDIO_ PWRCTRL)
+Page  572: 25.4.2 SDIO clock control register (SDIO_ CLKCTRL)
+Page  572: The SDIO_CLKCTRL register controls the SDIO_CK output clock.
+Page  572: Bit 16: 15   CLKDIV          0x0             rw       division relations between the SDIOCLK and the
+Page  572: SDIO_CK: SDIO_CK frequency=SDIOCLK / [CLKDIV[9:
+Page  572: SDIO_STS register for the meaning of the TXBUF_E and
+Page  572: SDIO_CK edge selection
+Page  572: 0: SDIO_CK generated on the rising edge of the master
+Page  572: clock SDIOCLK
+Page  572: 1: SDIO_CK generated on the falling edge of the master
+Page  572: clock SDIOCLK
+Page  572: Bit 12: 11   BUSWS           0x0             rw       00: Default bus mode, SDIO_D0 used
+Page  572: 01: 4-bit bus mode,SDIO_D[3: 0] used
+Page  572: 10: 8-bit bus mode, SDIO_D[7: 0] used
+Page  572: SDIO_CK output signal is driven by the SDIOCLK that is
+Page  572: the SDIO_CK output signal is directly driven by the
+Page  572: SDIOCLK.
+Page  572: SDIO_CK is always output; when enabled, the SDIO_CK
+Page  572: Bit 7: 0     CLKDIV          0x00            rw       division relations between the SDIOCLK and the
+Page  572: SDIO_CK: SDIO_CK frequency=SDIOCLK / [CLKDIV[9:
+Page  572: Note: 1. While the SD/SDIO card or MultiMedia car is in identification mode, the SDIO_CK frequency
+Page  572: SDIO_CK can be stopped during the read wait period for SD I/O cards. In this case, the SDIO_
+Page  572: CLKCTRL register does not control the SDIO_CK.
+Page  573: 25.4.3 SDIO argument register (SDIO_ARG)
+Page  573: The SDIO_ARG register contains 32-bit command argument, which is sent to a card as part of a
+Page  573: 25.4.4 SDIO command register (SDIO_CMD)
+Page  573: The SDIO_CMD register contains the command index and command type bits. The command index is
+Page  573: SDIO only).
+Page  574: 25.4.5 SDIO command response register (SDIO_RSPCMD)
+Page  574: The SDIO_RSPCMD register contains the command index of the last command response received. If
+Page  574: SDIO_RSPCMD field is unknown, although it should have contained 111111b (the value of the reserved
+Page  574: 25.4.6 SDIO response 1..4 register (SDIO_RSPx)
+Page  574: The SDIO_RSPx (x=1..4) register contains the status of a card, which is part of the response received.
+Page  574: Table 25-25 Response type and SDIO_RSPx register
+Page  574: SDIO_RSP1                            Card status [31: 0]               Card status [127: 96]
+Page  574: SDIO_RSP2                                 Unused                        Card status [95: 64]
+Page  574: SDIO_RSP3                                 Unused                        Card status [63: 32]
+Page  574: SDIO_RSP4                                 Unused                         Card status [31: 1]
+Page  574: SDIO_RSP4 register is always 0.
+Page  574: 25.4.7 SDIO data timer register (SDIO_DTTMR)
+Page  574: The SDIO_DTTMR register contains the data timeout period in the unit of card bus clock periods. A
+Page  574: counter loads the value from the SDIO_DTTMR register and starts decrementing when the DCSM enters
+Page  574: Note: A data transfer must be written to the SDIO_DTCNTR and the SDIO_DTLEN register before being
+Page  574: written to the SDIO data control register (SDIO_DTCTRL).
+Page  574: 25.4.8 SDIO data length register (SDIO_DTLEN)
+Page  574: The SDIO_DTLEN register contains the number of data bytes to be transferred. The value is loaded into
+Page  574: Note: For a block data transfer, the value in the SDIO_DTLEN must be a multiple of the block data size.
+Page  574: A data transfer must be written to the SDIO_DTCNTR and the SDIO_DTLEN register before being
+Page  574: written to the SDIO data control register (SDIO_DTCTRL).
+Page  575: 25.4.9 SDIO data control register (SDIO_DTCTRL)
+Page  575: The SDIO_DTCTRL register controls the data channel statue machine (DCSM).
+Page  575: SDIO_D2 controls the read wait; if enabled, the SDIO_CK
+Page  576: SDIO_DTCTRL must be updated to enable a new data
+Page  576: 25.4.10 SDIO data counter register (SDIO_DTCNTR)
+Page  576: The SDIO_DTCNTR register loads the value from the SDIO_DTLEN register when the DCSM moves
+Page  576: 25.4.11 SDIO status register (SDIO_STS)
+Page  576: The SDIO_STS is a read-only register, containing two types of flags:
+Page  576:  Static flags (bits [23: 22, 10: 0]): These bits can be cleared by writing to the SDIO_INTCLR
+Page  576: Bit 8        DTCMPL            0x0             ro       Data end (data counter, SDIO CNT, is zero)
+Page  577: Bit 2        CMDTIMEOUT      0x0             ro       The command timeout is a fixed value of 64 SDIO_CK
+Page  577: 25.4.12 SDIO clear interrupt register (SDIO_INTCLR)
+Page  577: The SDIO_INTCLR is a read-only register. Writing 1 to the corresponding register bit will clear the
+Page  577: correspond bit in the SDIO_STS register.
+Page  577: 25.4.13 SDIO interrupt mask register (SDIO_INTEN)
+Page  577: The SDIO_INTEN register determines which status bit generates an interrupt by setting the
+Page  579: 25.4.14 SDIOBUF counter register (SDIO_BUFCNTR)
+Page  579: The SDIO_BUFCNTR register contains the number of words to be written to or read from the BUF. The
+Page  579: BUF counter loads the value from the SDIO_DTLEN register when the data transfer bit TFREN is set in
+Page  579: the SDIO_DTCTRL register. If the data length is not word-aligned, the remaining 1 to 3 bytes are
+Page  579: 25.4.15 SDIO data BUF register (SDIO_BUF)
+Page  579: SDIO base + 0x80 to SDIO base + 0xFC
+Page  693: SDIO1    UART4                                                                              SYNC
+Page  693: SDIO2    UART5
+Page  693: 7           reserved          39             SDIO1                                71             TMR4_OVERFLOW 103                               SDIO2

@@ -1,0 +1,286 @@
+Keyword: ERTC
+Occurrences: 282
+================================================================================
+
+Page    1: − 256 to 4032 KBytes of Flash memory                           ERTC: enhanced RTC with auto wakeup, alarm,
+Page    1: − VBAT supply for LEXT, ERTC and 20 x 32-bit battery              available (For AT32F437 only)
+Page    1: power register (ERTC_BPR)                                    8~14 bit parallel digital camera interface (DVP)
+Page   15: 17       Enhanced real-time clock (ERTC) ............................................... 341
+Page   15: 17.1 ERTC introduction...................................................................... 341
+Page   15: 17.2 ERTC main features ................................................................... 341
+Page   15: 17.3 ERTC function overview ............................................................. 342
+Page   15: 17.3.1 ERTC clock ................................................................................ 342
+Page   15: 17.3.2 ERTC initialization ...................................................................... 342
+Page   15: 17.3.4 ERTC calibration ........................................................................ 345
+Page   15: 17.3.9 ERTC wakeup ............................................................................ 347
+Page   15: 17.4 ERTC registers .......................................................................... 348
+Page   15: 17.4.1 ERTC time register (ERTC_TIME) ............................................... 349
+Page   15: 17.4.2 ERTC date register (ERTC_DATE) .............................................. 349
+Page   15: 17.4.3 ERTC control register (ERTC_CTRL) ........................................... 349
+Page   15: 17.4.4 ERTC initialization and status register (ERTC_STS) ..................... 351
+Page   15: 17.4.5 ERTC divider register (ERTC_DIV) .............................................. 352
+Page   15: 17.4.6 ERTC wakeup timer register (ERTC_WAT) .................................. 352
+Page   15: 17.4.7 ERTC coarse calibration register (ERTC_CCAL) .......................... 352
+Page   15: 17.4.8 ERTC alarm clock A register (ERTC_ALA) ................................... 353
+Page   15: 17.4.9 ERTC alarm clock B register (ERTC_ALB) ................................... 353
+Page   15: 17.4.10 ERTC write protection register (ERTC_WP) .............................. 354
+Page   15: 17.4.11 ERTC subsecond register (ERTC_SBS) .................................... 354
+Page   15: 17.4.12 ERTC time adjustment register (ERTC_TADJ) ........................... 354
+Page   15: 17.4.13 ERTC time stamp time register (ERTC_TSTM) .......................... 354
+Page   15: 17.4.14 ERTC time stamp date register (ERTC_TSDT) .......................... 355
+Page   15: 17.4.15 ERTC time stamp subsecond register (ERTC_TSSBS) ............... 355
+Page   15: 17.4.16 ERTC smooth calibration register (ERTC_SCAL) ....................... 355
+Page   15: 17.4.17 ERTC tamper configuration register (ERTC_TAMP) ................... 355
+Page   16: 17.4.18 ERTC alarm clock A subsecond register (ERTC_ ALASBS) ......... 357
+Page   16: 17.4.19 ERTC alarm clock B subsecond register (ERTC_ALBSBS) ......... 357
+Page   16: 17.4.20 ERTC battery powered domain data register (ERTC_BPRx) ....... 357
+Page   36: Figure 17-1 ERTC block diagram .............................................................................................................. 341
+Page   41: Table 17-2 ERTC low-power mode wakeup .............................................................................................. 348
+Page   41: Table 17-4 ERTC register map and reset values ...................................................................................... 348
+Page   44: 16-bit and 32-bit timers, Infrared Transmitter (IRTMR), DMA controller, EDMA controller, ERTC,
+Page   45: USART2/3                                             ERTC                                                                                 SPI4 / I2S4
+Page   50: 3       10                    ERTC_WKUP                 ERTC wakeup interrupt                     0x0000_004C
+Page   51: 41   48             ERTCAlarm              ERTC alarm through EXINT interrupt     0x0000_00E4
+Page   62: 0x4000 2800 - 0x4000 2BFF       ERTC
+Page   63: LEXT           ERTC       POR_BPD
+Page   65: The battery powered domain contains ERTC circuit, LEXT oscillator, PC13, PC14 and PC15, which is
+Page   65: automatically switched to VBAT pin to ensure that ERTC can work normally.
+Page   65: I/O, tamper pin, ERTC calibration clock, ERTC alarm or second output, while the PC14 and PC15
+Page   65: ERTC alarm or second output, while the PC14 and PC15 can only be used as a LEXT pin.
+Page   67: The MCU leaves the Standby mode when an external reset (NRST pin), a WDT reset, ERTC periodic
+Page   67: wakeup, ERTC timestamp, ERTC tamper event, a rising edge on the WKUP pin or the rising edge of an
+Page   67: ERTC alarm event occurs.
+Page   69: When the ERTC alarm event occurs;
+Page   71: ERTC clock sources: divided HEXT oscillator, LEXT oscillator and LICK oscillator. Once the clock source
+Page   72: ERTC clock, the ERTC is not affected when the VDD is powered off. If the HEXT or LICK is selected as
+Page   72: an ERTC clock, the ERTC state is not guaranteed when both HEXT and LICK are powered off.
+Page   77: HEXT division for ERTC clock
+Page   77: for ERTC clock.
+Page   77: These bits must be configured before selecting the ERTC
+Page   77: Bit 20: 16   ERTCDIV    0x00       rw       00001: Forbidden
+Page   92: Note: LEXTEN, LEXTBYPS, ERTCSEL, and ERTCEN bits of the battery powered domain control
+Page   92: ERTC clock enable
+Page   92: Bit 15        ERTCEN          0x0           rw
+Page   92: eRTC clock selection
+Page   92: Once the ERTC clock source is selected, it cannot be
+Page   92: Bit 9: 8      eRTCSEL         0x0           rw        00: No clock
+Page   92: 11: Divided HEXT (with the ERTC_DIV bit in the CRM_CFG)
+Page  126: ERTC_REFI                                                    SPI2_MOSI
+Page  138: (ERTC_CTRL[11]=1&
+Page  138: ERTC_TAMP[17]=1)|
+Page  138: PA0         (ERTC_TAMP[0]=1&               Once enabled, PA0 pin is used as TAMPER2_BPR.
+Page  138: ERTC_TAMP[16]=1)|
+Page  138: (ERTC_TAMP[3]=1)
+Page  138: (ERTC_CTRL[23]=1)|
+Page  138: (ERTC_CTRL[22:21]!=00)|
+Page  138: (ERTC_CTRL[11]=1&
+Page  138: ERTC_TAMP[17]=0)|
+Page  138: (ERTC_TAMP[0]=1&
+Page  138: ERTC_TAMP[16]=0)
+Page  151: ERTC alarm event EXINT_LINE[17]
+Page  151: ERTC tamper and time stamp EXINT_LINE[21]
+Page  151: ERTC wakeup EXINT_LINE[22]
+Page  151: sources but also seven internal sources such as PVM output, ERTC alarm events and time stamp
+Page  151: events, ERTC wakeup events, OTGFS1/OTGFS2 events and Ethernet wakeup events through edge
+Page  198: SMBus alert             ALERTF                    ERRIEN                    ALERTC
+Page  205: Bit 13       ALERTC     0x0               w
+Page  265: OTG2_FS_SOF. TMR5 channel 4 input can be configured as GPIO, LICK, LEXT or ERTC.
+Page  283: 11: ERTC wakeup interrupt
+Page  341: 17 Enhanced real-time clock (ERTC)
+Page  341: 17.1 ERTC introduction
+Page  341: the ERTC_TIME and ERTC_DATE register.
+Page  341: 17.2 ERTC main features
+Page  341: Figure 17-1 ERTC block diagram
+Page  341: ERTC registers                                            Not powered in
+Page  341: LICK               ERTC_CLK         Smooth
+Page  341: ERTCSEL
+Page  341: calibration                                 Value       ALAF                                                    ERTC_MUX1
+Page  341: ERTC_ALARM
+Page  341: ck_b                                                     ERTC Output
+Page  341: ERTC_OUT
+Page  341: ERTC_CAL
+Page  341: ERTC_MUX1                                 TAMP1                              TP1F
+Page  341: ERTC_MUX2                                 TAMP2                              TSF
+Page  342: 17.3 ERTC function overview
+Page  342: 17.3.1 ERTC clock
+Page  342: ERTC clock source (ERTC_CLK) is selected via clock controller from a LEXT, LICK, and a divided HEXT
+Page  342: clock (By setting the ERTCSEL[1: 0] in the CRM_BPDC register). The HEXT divider value is configured
+Page  342: through the ERTC_DIV[4: 0] bit in the CRM_CFG register.
+Page  342: The ERTC embeds two dividers: A and B, programmed by the DIVA[6: 0] and DIVB[14: 0] respectively.
+Page  342: After being divided by prescaler A and B, the ERTC_CLK generates ck_a and ck_b clocks, respectively.
+Page  342: fERTC_CLK
+Page  342: Fck_b =           fERTC_CLK
+Page  342: Note: To use a divided HEXT by the ERTC_CLK, it is necessary to configure a HEXT divider value before
+Page  342: 17.3.2 ERTC initialization
+Page  342: ERTC register write protection
+Page  342: After a power-on reset, all ERTC registers are write protected. Such protection mechanism is not affected
+Page  342: by the system reset. Write access to the ERTC registers (except the ERTC_STS[14: 8], ERTC_TAMP
+Page  342: and ERTC_BPRx registers) can be enabled by unlocking it.
+Page  342: To unlick the write protection of ERTC registers, the steps below should be respected:
+Page  342: 3. Write 0xCA and 0x53 to the ERTC_WP register in sequence. Writing an incorrect key will activate
+Page  342: Table 17-1 lists the ERTC registers that can be configured only after the write protection is unlocked and
+Page  342: Register                    ERTC_WP enabled                                                 Others
+Page  342: ERTC_TIME                   Y                         Y                                 -
+Page  342: ERTC_DATE                   Y                         Y                                 -
+Page  342: ERTC_CTRL                   Y                         Bit 7, bit 6 and 4 only           -
+Page  342: ERTC_STS                    Y, except [14: 8]         -                                 -
+Page  342: ERTC_DIV                    Y                         Y                                 -
+Page  342: ERTC_WAT                    Y                         N                                 when
+Page  342: ERTC_CCAL                   Y                         Y                                 -
+Page  342: ERTC_ALA                                              N                                 when
+Page  342: ERTC_ALB                                              N                                 when
+Page  343: ERTC_WP                     -                    -                                -
+Page  343: ERTC_SBS                    -                    -                                -
+Page  343: ERTC_TADJ                   Y                    N                                when
+Page  343: ERTC_TSTM                   -                    -                                -
+Page  343: ERTC_TSDT                   -                    -                                -
+Page  343: ERTC_TSSBS                  -                    -                                -
+Page  343: ERTC_SCAL                   Y                    N                                when
+Page  343: ERTC_TAMP                   N                    N                                -
+Page  343: ERTC_ALASBS                 Y                    N                                when
+Page  343: ERTC_ALBSBS                 Y                    N                                when
+Page  343: ERTC_BPRx                   N                    N                                -
+Page  343: The ERTC also allows the fine-tuning for daylight saving time and clock.
+Page  343: Note: To avoid subsecond overflow, SBS[15]=0 must be asserted before setting the ERTC_TADJ register.
+Page  343: The ERTC offers two different ways to read the calendar, that is, synchronous read (DREN=0) and
+Page  343: the ERTC calendar value located in the battery powered domain. The synchronization is performed every
+Page  343: two ERTC_CLK. The shadow register is reset by a system reset. To ensure consistency between the 3
+Page  343: values (ERTC_SBS, ERTC_TIME and ERTC_DATE registers), reading lower-order registers will lock
+Page  343: the values in the higher-order registers until the ERTC_DATE register is read. For example, reading the
+Page  343: ERTC_SBS register will lock the values in the ERTC_TIME and ERTC_DATE registers.
+Page  343: In the case of DREN=1, the ERTC will perform direct read access to the ERTC clock and calendar
+Page  344: the frequency of the PCLK1 must be at least seven times the ERTC_CLK frequency. In asynchronous
+Page  344: The ERTC contains two programmable alarm clocks: alarm clock A and alarm clock B, and their
+Page  344: The    alarm      clock    value      is   programmed      with     the    ERTC_ALASBS/ERTC_ALA
+Page  344: (ERTC_ALBSBS/ERTC_ALB). When the programmed alarm value matches the calendar value, an
+Page  344: 3. Configure alarm clock A or B registers (ERTC_ALA/ERTC_ALASBS and
+Page  344: ERTC_ALB/ERTC_ALBSBS)
+Page  344: Note: If MASK1=0 in the ERTC_ALA or ERTC_ALB, the alarm clock can work normally only when
+Page  344: Periodic automatic wakeup unit is used to wake up ERTC from low power consumption modes
+Page  344: The WATCLK[2: 0] bit can be used to select a wakeup timer clock, including ERTC_CLK/16,
+Page  344: ERTC_CLK/8, ERTC_CLK/4, ERTC_CLK/2 and ck_b (usually 1Hz). The cooperation between wakeup
+Page  344: Note: In DEBUG mode, if ERTC_CLK is selected as the wakeup timer, the counter for periodic wakeup
+Page  345: 17.3.4 ERTC calibration
+Page  345: calibration. The calibration is performed by increasing or decreasing ERTC_CLK in an evenly manner.
+Page  345: The smooth digital calibration period is around 220 ERTC_CLK (32 seconds) when the ERTC_CLK is
+Page  345: 32.768 kHz. The DEC[8: 0] bit specifies the number of pulses to be masked during the 220 ERTC_CLK
+Page  345: during the 220 ERTC_CLK cycles. When DEC[8: 0] and ADD are sued together, a deviation ranging
+Page  345: from -511 to +512 ERTC_CLK cycles can be added during the 220 ERTC_CLK cycles.
+Page  345: FSCAL = FERTC_CLK × [ 1 +     ADD x 512  DEC   ]
+Page  345: should be reduced so that each second is accelerated by 8 ERTC_CLK cycles, which means that 256
+Page  345: ERTC_CLK cycles are added every 32 seconds. When DEC[8: 0] and ADD are sued together, a
+Page  345: deviation ranging from -255 to +256 ERTC_CLK cycles can be added during the 220 ERTC_CLK cycles.
+Page  345: FSCAL = FERTC_CLK × [ 1 +     256  DEC   ]
+Page  345: The CALUPDF flag in the ERTC indicates the calibration status. During the configuration of ERTC_SCAL
+Page  346: calendar is updated based on ERTC’s original clock source.
+Page  346: When a time stamp event occurs, the time stamp flag bit (TSF) in the ERTC_STS register will be set. If
+Page  346: The ERTC has two tamper detection modes: TAMP1 and TAMP2. They can be configured as a level
+Page  346: detection with filter or edge detection respectively. TAMP1 can select either ERTC_MUX or
+Page  346: ERTC_MUX2 through the TSPIN bit, while the TAMP2 can only select ERTC_MUX2.
+Page  346: 4. To use TAMP1 mode, select ERTC_MUX1 or ERTC_MUX2 (through the TP1PIN bit), and enable
+Page  347: 7. To use TAMP1 mode, select ERTC_MUX1 or ERTC_MUX2 (through the TP1PIN bit), and enable
+Page  347: ERTC provides a set of multiplexed function output for the following events:
+Page  347: 17.3.9 ERTC wakeup
+Page  347: ERTC can be woken up by alarm clocks, periodic auto wakeup feature, time stamps or tamper
+Page  347: events. To enable an ERTC interrupt, configure as follows:
+Page  347: 1. Configure the EXINT line corresponding to ERTC interrupts as an interrupt mode and enable it,
+Page  347: 2. Enable a NVIC channel corresponding to ERTC interrupts
+Page  347: 3. Enable an ERTC interrupt
+Page  347: Table 17-2 lists the ERTC clock sources, events and interrupts that are able to wakeup low-power
+Page  348: Table 17-2 ERTC low-power mode wakeup
+Page  348: 17.4 ERTC registers
+Page  348: ERTC registers are 32-bit addressable registers.
+Page  348: Table 17-4 ERTC register map and reset values
+Page  348: ERTC_TIME                          0x00                                 0x0000 0000
+Page  348: ERTC_DATE                          0x04                                 0x0000 2101
+Page  348: ERTC_CTRL                          0x08                                 0x0000 0000
+Page  348: ERTC_STS                           0x0C                                 0x0000 0007
+Page  348: ERTC_DIV                           0x10                                 0x007F 00FF
+Page  348: ERTC_WAT                           0x14                                 0x0000 FFFF
+Page  348: ERTC_CCAL                          0x18                                 0x0000 0000
+Page  348: ERTC_ALA                           0x1C                                 0x0000 0000
+Page  348: ERTC_ALB                           0x20                                 0x0000 0000
+Page  348: ERTC_WP                            0x24                                 0x0000 0000
+Page  348: ERTC_SBS                           0x28                                 0x0000 0000
+Page  348: ERTC_TADJ                          0x2C                                 0x0000 0000
+Page  348: ERTC_TSTM                          0x30                                 0x0000 0000
+Page  348: ERTC_TSDT                          0x34                                 0x0000 000D
+Page  348: ERTC_TSSBS                         0x38                                 0x0000 0000
+Page  348: ERTC_SCAL                          0x3C                                 0x0000 0000
+Page  349: ERTC_TAMP                  0x40                                   0x0000 0000
+Page  349: ERTC_ALASBS                0x44                                   0x0000 0000
+Page  349: ERTC_ALBSBS                0x48                                   0x0000 0000
+Page  349: ERTC_BPRx                  0x50-0x9C                              0x0000 0000
+Page  349: 17.4.1 ERTC time register (ERTC_TIME)
+Page  349: 17.4.2 ERTC date register (ERTC_DATE)
+Page  349: 17.4.3 ERTC control register (ERTC_CTRL)
+Page  350: 0: Date/time register direct read disabled. ERTC_TIME,
+Page  350: ERTC_DATE and ERTC_SBS values are taken from the
+Page  350: ERTC_CLK cycles
+Page  350: 1: Date/time register direct read enabled. ERTC_TIME,
+Page  350: ERTC_DATE and ERTC_SBS values are taken from the
+Page  351: 000: ERTC_CLK/16
+Page  351: 001: ERTC_CLK/8
+Page  351: 010: ERTC_CLK/4
+Page  351: 011: ERTC_CLK/2
+Page  351: value, and wakeup time =ERTC_WAT+216.
+Page  351: 17.4.4 ERTC initialization and status register (ERTC_STS)
+Page  351: ERTC_SCAL register. It is automatically cleared when a
+Page  351: set, the write access to the ERTC_SCAL register is not
+Page  352: The ERTC_TIME, ERTC_DATE and ERTC_DIV registers
+Page  352: synchronized with the ERTC calendar value located in the
+Page  352: every two ERTC_CLK.
+Page  352: This bit is set when the calendar year filed (ERTC_DATE)
+Page  352: ERTC_TADJ register is performed. It is automatically
+Page  352: 17.4.5 ERTC divider register (ERTC_DIV)
+Page  352: Calendar clock = ERTC_CLK/((DIVA+1)x(DIVB+1))
+Page  352: 17.4.6 ERTC wakeup timer register (ERTC_WAT)
+Page  352: 17.4.7 ERTC coarse calibration register (ERTC_CCAL)
+Page  353: 17.4.8 ERTC alarm clock A register (ERTC_ALA)
+Page  353: 17.4.9 ERTC alarm clock B register (ERTC_ALB)
+Page  354: 17.4.10 ERTC write protection register (ERTC_WP)
+Page  354: Bit 7: 0     CMD              0x00           wo        All ERTC register write protection is unlocked by writing
+Page  354: 17.4.11 ERTC subsecond register (ERTC_SBS)
+Page  354: frequency = ERTC_CLK/(DIVA+1)
+Page  354: 17.4.12 ERTC time adjustment register (ERTC_TADJ)
+Page  354: 17.4.13 ERTC time stamp time register (ERTC_TSTM)
+Page  354: Note: The content of this register is valid only when the TSF is set in the ERTC_STS register. It is cleared
+Page  355: 17.4.14 ERTC time stamp date register (ERTC_TSDT)
+Page  355: Note: The content of this register is valid only when the TSF is set in the ERTC_STS register. It is cleared
+Page  355: 17.4.15 ERTC time stamp subsecond register (ERTC_TSSBS)
+Page  355: Note: The content of this register is valid only when the TSF is set in the ERTC_STS register. It is cleared
+Page  355: 17.4.16 ERTC smooth calibration register (ERTC_SCAL)
+Page  355: Add ERTC clock
+Page  355: Bit 15        ADD             0x0            rw        0: No ERTC clock added
+Page  355: 1: One ERTC_CLK is inserted every 211 ERTC_CLK cycles
+Page  355: Decrease ERTC clock
+Page  355: DEC out of ERTC_CLK cycles are masked during the 220
+Page  355: Bit 8: 0      DEC             0x000          rw        ERTC_CLK periods. This bit is usually used with ADD.
+Page  355: When the ADD is set, the actual number of ERTC_CLK is
+Page  355: equal to 220+512-DEC during the 220 ERTC_CLK periods.
+Page  355: 17.4.17 ERTC tamper configuration register (ERTC_TAMP)
+Page  355: Bit 17        TSPIN           0x0            rw        0: ERTC_MUX1
+Page  355: 1: ERTC_MUX2
+Page  355: Bit 16        TP1PIN          0x0            rw        0: ERTC_MUX1
+Page  355: 1: ERTC_MUX2
+Page  356: 0: 1 ERTC_CLK cycle
+Page  356: Bit 14: 13   TPPR       0x0       rw         1: 2 ERTC_CLK cycles
+Page  356: 2: 4 ERTC_CLK cycles
+Page  356: 3: 8 ERTC_CLK cycles
+Page  356: 0: ERTC_CLK/32768
+Page  356: 1: ERTC_CLK/16384
+Page  356: 2: ERTC_CLK/8192
+Page  356: Bit 10: 8    TPFREQ     0x0       rw         3: ERTC_CLK/4096
+Page  356: 4: ERTC_CLK/2048
+Page  356: 5: ERTC_CLK/1024
+Page  356: 6: ERTC_CLK/512
+Page  356: 7: ERTC_CLK/256
+Page  357: 17.4.18 ERTC alarm clock A subsecond register (ERTC_ ALASBS)
+Page  357: 17.4.19 ERTC alarm clock B subsecond register (ERTC_ALBSBS)
+Page  357: 17.4.20 ERTC battery powered domain data register
+Page  357: (ERTC_BPRx)
+Page  714: ERTC 512Hz output clock pause control bit
+Page  714: Bit 15       ERTC_512_PAUSE       0x0         rw     0: ERTC 512Hz output clock works normally
+Page  714: ERTC pause control bit
+Page  714: Bit 10       ERTC_PAUSE           0x0         rw     0: ERTC works normally
+Page  714: 1: ERTC stops running

@@ -1,0 +1,117 @@
+Keyword: debug
+Occurrences: 113
+================================================================================
+
+Page    1: − Internal 48 MHz factory-trimmed clock (HICK),                Debug mode
+Page    8: 11.6 I 2 C debug mode ......................................................................... 200
+Page   11: 14.1.3.3 Debug mode ......................................................................... 255
+Page   11: 14.2.3.6 Debug mode ......................................................................... 272
+Page   12: 14.3.3.6 Debug mode ......................................................................... 293
+Page   13: 14.4.3.7 Debug mode ......................................................................... 320
+Page   14: 15.4 Debug mode .............................................................................. 336
+Page   14: 16.4 Debug mode .............................................................................. 339
+Page   21: 21.6.3.8 OTGFS receive status debug read/OTG status read and POP registers
+Page   31: 30       Debug (DEBUG) .......................................................................... 711
+Page   31: 30.1 Debug introduction ..................................................................... 711
+Page   31: 30.2 Debug and Trace ....................................................................... 711
+Page   31: 30.4.1 DEBUG device ID (DEBUG_IDCODE) .......................................... 712
+Page   31: 30.4.2 DEBUG control register (DEBUG_CTRL) ..................................... 713
+Page   31: 30.4.3 DEBUG APB1 pause register (DEBUG_ APB1_PAUSE) ................ 713
+Page   31: 30.4.4 DEBUG APB2 pause register (DEBUG_ APB2_PAUSE) ................ 715
+Page   31: 30.4.5 DEBUG SERIES ID register (DEBUG_ SER_ID) ........................... 715
+Page   43: Table 30-1 DEBUG register address and reset value ................................................................................711
+Page   46: latency, and low-cost debug. It supports DSP instruction set and FPU, and is applicable to deeply-embedded
+Page   50: 4                     Debug Monitor             Debug monitor                             0x0000_0030
+Page   67: Debug mode
+Page   67: By default, the debug connection is lost if the MCU enters Deepsleep mode or Standby mode while
+Page   67: debugging. The reason is that the Cortex®-M4F core is no longer clocked. However, the software can
+Page   67: be debugged even in the low-power mode by setting some configuration bits in the DEBUG register
+Page   67: (DEBUG_CTRL).
+Page  109: Flash memory data. This read operation is not permitted in debug mode or by booting from non-Flash
+Page  109: Note: If the access protection bit is set in debug mode, then the debug mode has to be cleared by POR
+Page  109: In debug mode or boot from SRAM and
+Page  109: erase/program when it is in debug mode or when it is started from non-main Flash memory.
+Page  200: 11.6 I 2 C debug mode
+Page  200: When the microcontroller enters debug mode (Cortex®-M4 halted), the SMBUS timeout either continues
+Page  200: to work or stops, depending on the I2Cx_SMBUS_TIMEOUT configuration bit in the DEBUG module.
+Page  238: SPIx/I2Sx, the JTAG should be disabled (during debugging) and switched to SWD
+Page  255: 14.1.3.3 Debug mode
+Page  255: When the microcontroller enters debug mode (Cortex ®-M4F core halted), the TMRx counter stops
+Page  272: 14.2.3.6 Debug mode
+Page  272: When the microcontroller enters debug mode (Cortex®-M4F core halted), the TMRx counter stops
+Page  272: counting by setting the TMRx_PAUSE in the DEBUG module. Refer to Chapter 30.2 for more information.
+Page  293: 14.3.3.6 Debug mode
+Page  293: When the microcontroller enters debug mode (Cortex®-M4F core halted), the TMRx counter stops
+Page  293: counting by setting the TMRx_PAUSE in the DEBUG module. Refer to Chapter 30.2 for more information.
+Page  320: 14.4.3.7 Debug mode
+Page  320: When the microcontroller enters debug mode (Cortex®-M4F core halted), the TMRx counter stops
+Page  320: counting by setting the TMRx_PAUSE in the DEBUG module. Refer to Chapter 30.2 for more information.
+Page  336: 15.4 Debug mode
+Page  336: When the microcontroller enters debug mode (Cortex®-M4F core halted), the WWDT counter stops
+Page  336: counting by setting the WWDT_PAUSE in the DEBUG module. Refer to Chapter 30.2 for more
+Page  339: 16.4 Debug mode
+Page  339: When the microcontroller enters debug mode (Cortex®-M4F core halted), the WDT counter stops
+Page  339: counting by setting the WDT_PAUSE in the DEBUG module. Refer to Chapter 30.2 for more information.
+Page  344: Note: In DEBUG mode, if ERTC_CLK is selected as the wakeup timer, the counter for periodic wakeup
+Page  404:  Debug control
+Page  404: When the system enters the debug mode, the CAN controller stops or continues to work normally,
+Page  404: depending on the CANx_PAUSE bit in the DEBUG_CTRL register or the PTD bit in the
+Page  411: Prohibit trans when debug
+Page  411: 0: Transmission works during debug
+Page  411: 1: Transmission is prohibited during debug. Receive FIFO
+Page  411: CANx_PAUSE bits in the DEBUG_CTRL register are set
+Page  461: Data directly accessed during debugging FIFO RAM
+Page  461: 3FFFFh                                                                    debugging
+Page  467: This bit is for debug purpose only. Do not set this bit to 1.
+Page  474: 21.6.3.8 OTGFS receive status debug read/OTG status read and POP
+Page  474: A read to the Receive Status Debug Read register returns the data of the top of the Receive FIFO. A
+Page  479: debugging.
+Page  581:    Supports loopback mode on the MII interface for debugging
+Page  593: to debug the Ethernet communication. This feature is enabled by setting the LM bit in the
+Page  711: 30 Debug (DEBUG)
+Page  711: 30.1 Debug introduction
+Page  711: Cortex®-M4F core provides powerful debugging features including halt and single step support, as well
+Page  711: as trace function that is used for checking the details of the program execution. The debug features are
+Page  711: implemented with two interfaces: serial wire debug (SWD) and JTAG debug port. Trace information is
+Page  711: bandwidth is needed. Trace and debugging interfaces can be combined into one interface.
+Page  711:  ARM Debug Interface V5
+Page  711: 30.2 Debug and Trace
+Page  711: It is possible to support debugging for different peripherals, and configure the status of peripherals during
+Page  711: debugging. For timers and watchdogs, the user can select whether or not to stop or continue counting
+Page  711: during debugging; For CAN, the user can select whether or not to stop or continue updating receive
+Page  711: registers during debugging; For I2C, the user can select whether or not to stop or continue SMBUS
+Page  711: In addition, code debugging is supported in Low-power mode. In Sleep mode, the clock programmed by
+Page  711: There are several ID codes inside the MCU, which is accessible by the debugger using the
+Page  711: DEBUG_IDCODE at address 0xE0042000. It is part of the DEBUG and is mapped on the external PPB
+Page  711: bus. These codes are accessible using the JTAG debug port or the SWD debug port or by the user
+Page  711: SWJ-DP debug is supported in different packages of AT32F435/437. It uses 5 general-purpose I/O ports.
+Page  711: After reset, the SWJ-DP can be immediately used by the debugger as a default function. To ensure that
+Page  711: GPIO and IOMUX registers can be configured to allow users to switch between debug ports or disable
+Page  711: debug feature.
+Page  711: Table 30-1 shows DEBUG register map and reset values.
+Page  711: Table 30-1 DEBUG register address and reset value
+Page  711: DEBUG_IDCODE                     0xE004 2000                    0xXXXX XXXX
+Page  711: DEBUG_CTRL                       0xE004 2004                    0x0000 0000
+Page  711: DEBUG_APB1_PAUSE                 0xE004 2008                    0x0000 0000
+Page  711: DEBUG_APB2_PAUSE                 0xE004 200C                    0x0000 0000
+Page  711: DEBUG_SER_ID                     0xE004 2020                    0x0000 XX0X
+Page  712: 30.4.1 DEBUG device ID (DEBUG_IDCODE)
+Page  712: MCU integrates an ID code that is used to identify MCU’s revision code. The DEBUG_IDCODE register
+Page  712: is mapped on the external PPB bus at address 0xE0042000. This code is accessible by the JTAG debug
+Page  712: port or SW debug port or by the user code.
+Page  713: 30.4.2 DEBUG control register (DEBUG_CTRL)
+Page  713: debugger under reset.
+Page  713: Debug Standby mode control bit
+Page  713: Bit 2        STANDBY_DEBUG      0x0           rw
+Page  713: Debug Deepsleep mode control bit
+Page  713: Bit 1        DEEPSLEEP_DEBUG    0x0           rw       the system clock according to application requirements.
+Page  713: Debug Sleep mode control bit
+Page  713: Bit 0        SLEEP_DEBUG        0x0           rw
+Page  713: 30.4.3 DEBUG APB1 pause register (DEBUG_ APB1_PAUSE)
+Page  713: debugger under reset.
+Page  715: 30.4.4 DEBUG APB2 pause register (DEBUG_ APB2_PAUSE)
+Page  715: debugger under reset.
+Page  715: 30.4.5 DEBUG SERIES ID register (DEBUG_ SER_ID)
+Page  715: DEBUG_SIE_ID register is used to identify MCU part number and its revision code. The
+Page  715: DEBUG_IDCODE register is mapped on the external PPB bus. This register is asynchronously reset by
+Page  715: POR Reset (not reset by system reset). This code is accessible by the JTAG debug port or SW debug

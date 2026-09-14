@@ -1,0 +1,17 @@
+Keyword: MPU
+Occurrences: 13
+================================================================================
+
+Page    1: Protection Unit (MPU), single-cycle multiplication           Up to 18 Timers (TMR)
+Page   23: 24.5.3 ECC computation ....................................................................... 531
+Page   46: FPB                      MPU                 DWT
+Page  250: the CRC value computed based on the received data.
+Page  250: the CRC value computed based on the transmitted data.
+Page  531: 24.5.3 ECC computation
+Page  531: The NAND interface contains ECC computation module so that the data will be used for ECC
+Page  531: computation when the NAND interface access the NAND Flash. The computed value is stored into the
+Page  531: To perform an ECC computation:
+Page  531: 1. Configure the ECCPGS bit to select the number of bytes to be computed by ECC module: 256,
+Page  531: XMC will store the ECC computed value into the XMC_BKxECC registers.
+Page  544: This field contains the computed ECC value.
+Page  611: The slave node receives this message when its local clock is SlaveClockTimen, and computes

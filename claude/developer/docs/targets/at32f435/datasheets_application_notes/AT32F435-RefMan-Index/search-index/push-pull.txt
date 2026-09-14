@@ -1,0 +1,28 @@
+Keyword: push-pull
+Occurrences: 24
+================================================================================
+
+Page  120: analog mode. In general-purpose output or MUX mode, each pin can be configured as push-pull
+Page  121: Push-pull without
+Page  121: Push-pull with pull-up    01          0                                                           01
+Page  121: Push-pull with                              000: Output mode, normal sourcing/sinking strength
+Page  121:  In push-pull mode, output data register is used to output 0/1.
+Page  122: mode by setting the GPIOx_CFGR register, as push-pull/open-drain mode by setting the
+Page  123: Push-pull without
+Page  123: Push-pull with pull-up       10        0                                                                01
+Page  123: Push-pull with pull-down     10        0                                                                10
+Page  123:  In push-pull output mode, output 0/1 according to the peripheral output.
+Page  138:  To use a peripheral pin in MUX output, it is configured as multiplexed push-pull/open-drain.
+Page  139: 0: Push-pull (reset state)
+Page  347: drain or push-pull) with the OUTTYPE bit, and output polarity with the OUTP bit.
+Page  355: 1: Push-pull output
+Page  425: be multiplexed as SOF output and configured as a push-pull multiplexed output feature.
+Page  565:  Push-pull mode for command transfer (SD/SD I/O card and MMC V4.2 also use push-pull
+Page  586: EMAC_MDC                   MDC          MDC           PC1     Multiplexed push-pull output
+Page  586: EMAC_MII_TXD2                TXD2              -        PC2     Multiplexed push-pull output
+Page  586: EMAC_MDIO                  MDIO         MDIO          PA2     Multiplexed push-pull output
+Page  586: EMAC_MII_TX_EN                                                  Multiplexed push-pull output
+Page  586: EMAC_MII_TXD0 EMAC_RMII_TXD0        TXD0         TXD0         PB12     Multiplexed push-pull output
+Page  586: EMAC_MII_TXD1 EMAC_RMII_TXD1        TXD1         TXD1         PB13     Multiplexed push-pull output
+Page  586: EMAC_PPS_OUT               PPS_OUT      PPS_OUT         PB5     Multiplexed push-pull output
+Page  586: EMAC_MII_TXD3                TXD3              -        PB8     Multiplexed push-pull output

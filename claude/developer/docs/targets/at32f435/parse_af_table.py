@@ -1,38 +1,49 @@
 #!/usr/bin/env python3
 """
-Extract alternate function / MUX mapping for AT32F435/437 series.
+Generate alternate function / MUX mapping reference files for AT32F435/437.
 
-Two data sources are combined:
-  1. INAV's timer_def_at32f43x.h  — exact MUX numbers for every timer pin
-  2. AT32F437VGT7-datasheet.pdf   — pin definitions with IOMUX function lists
-     (Section 3, "Table 8. AT32F435/437 series pin definitions")
-     Extracted via pdfplumber table mode for accurate multi-line cell handling.
+Authoritative source: refman-iomux.json, produced by parse_refman_iomux.py
+directly from the AT32F435/437 Reference Manual's own per-pin IOMUX tables
+(chapter 6.2.9, Tables 6-1..6-8). Run that script first if the file is
+missing or the Reference Manual PDF has been updated.
+
+Earlier versions of this script derived MUX numbers by assuming a single
+fixed MUX number per peripheral (e.g. "I2C is always MUX4"), sourced from
+INAV driver code rather than the datasheet or Reference Manual. Comparing
+that assumption against the real per-pin Reference Manual data shows it
+was wrong for about 1 in 5 signals checked — the MUX number for a given
+peripheral signal varies by pin. For example I2C1_SCL is MUX4 on most
+pins but MUX8 on PA9, and I2C3_SCL is MUX7 on PB13 but MUX4 on PA8. There
+is no substitute for the per-pin table; this script no longer guesses.
+
+INAV's timer_def_at32f43x.h is still read, but only to add the 'N'-suffix
+complementary-channel alias (TMR8_CH1N) INAV's own code uses next to the
+Reference Manual's 'C'-suffix name (TMR8_CH1C) for the same signal, and to
+cross-check that INAV's own MUX number for each timer channel agrees with
+the Reference Manual (a mismatch is printed as a warning, and the
+Reference Manual's value is what's kept).
 
 Output files (written next to this script):
   alternate-functions.tsv    Tab-separated: Pin, MUX0..MUX15 (full table)
   alternate-functions.md     Markdown reference table by port
   af-by-function.txt         Inverted index: function → PIN(MUXn) list
-  mux-groups.md              Reference: MUX number → peripheral group
+  mux-groups.md              Reference: which MUX numbers each peripheral
+                              prefix actually uses, computed from the data
+                              (not a fixed peripheral→MUX table — see above)
 
 Usage:
-    pip install pdfplumber
+    python3 parse_refman_iomux.py   # once, or after an RM update
     python3 parse_af_table.py
-
-Notes:
-- AT32F435 uses "IOMUX" (GPIOx_MUXx registers) with MUX0-MUX15 per pin,
-  equivalent to STM32's AF0-AF15 naming.
-- Timer MUX numbers come from INAV's timer_def_at32f43x.h (authoritative).
-- SPI/UART/I2C MUX numbers come from known peripheral→MUX-group assignments
-  confirmed in INAV driver source (bus_spi_at32f43x.c, serial_uart_at32f43x.c,
-  bus_i2c_at32f43x.c).
 """
 
+import json
 import re
 import sys
+from collections import Counter
 from pathlib import Path
 
 HERE = Path(__file__).parent
-PDF = (HERE / "datasheets_application_notes/AT32F437VGT7-datasheet.pdf").resolve()
+REFMAN_JSON = HERE / "refman-iomux.json"
 
 # Find INAV repo root by walking up
 _here = HERE
@@ -51,88 +62,31 @@ MD_OUT   = HERE / "alternate-functions.md"
 INV_OUT  = HERE / "af-by-function.txt"
 MUX_OUT  = HERE / "mux-groups.md"
 
-# ─────────────────────────────────────────────────────────────────────────────
-# Known AT32F435/437 MUX group → peripheral mapping
-# Source: AT32F435/437 Reference Manual + INAV driver source
-# ─────────────────────────────────────────────────────────────────────────────
-MUX_GROUPS = {
-    0:  "SYS (SWD/JTAG, TRACE, MCO, CLKOUT)",
-    1:  "TMR1 / TMR2",
-    2:  "TMR3 / TMR4 / TMR5 / TMR20 (partial)",
-    3:  "TMR8 / TMR9 / TMR10 / TMR11",
-    4:  "I2C1 / I2C2 / I2C3",
-    5:  "SPI1 / SPI2 / I2S1 / I2S2",
-    6:  "SPI3 / SPI4 / I2S3 / I2S4 / TMR20 (partial)",
-    7:  "USART1 / USART2 / USART3",
-    8:  "UART4 / UART5 / USART6 / UART7 / UART8",
-    9:  "CAN1 / CAN2 / TMR12 / TMR13 / TMR14",
-    10: "OTGFS1 / OTGFS2",
-    11: "EMAC (Ethernet MII/RMII)",
-    12: "SDIO1 / XMC (external memory)",
-    13: "DVP (digital video) / SDIO2",
-    14: "QSPI1 / QSPI2",
-    15: "EVENTOUT",
-}
-
-# ─────────────────────────────────────────────────────────────────────────────
-# Peripheral signal → MUX number mapping (confirmed from INAV driver source)
-# ─────────────────────────────────────────────────────────────────────────────
-SIGNAL_TO_MUX = {
-    # SPI1/SPI2 (MUX5) — from bus_spi_at32f43x.c
-    "SPI1": 5, "SPI2": 5, "I2S1": 5, "I2S2": 5,
-    # SPI3/SPI4 (MUX6) — from bus_spi_at32f43x.c
-    "SPI3": 6, "SPI4": 6, "I2S3": 6, "I2S4": 6,
-    # I2C (MUX4) — from bus_i2c_at32f43x.c
-    "I2C1": 4, "I2C2": 4, "I2C3": 4,
-    # USART1/2/3 (MUX7) — from serial_uart_at32f43x.c
-    "USART1": 7, "USART2": 7, "USART3": 7,
-    # UART4/5 + USART6 + UART7/8 (MUX8)
-    "UART4": 8, "UART5": 8, "USART6": 8, "UART7": 8, "UART8": 8,
-    # CAN1/2 (MUX9)
-    "CAN1": 9, "CAN2": 9,
-    # USB OTG (MUX10)
-    "OTGFS1": 10, "OTGFS2": 10,
-    # Ethernet (MUX11)
-    "EMAC": 11,
-    # SDIO1 / XMC (MUX12)
-    "SDIO1": 12, "XMC": 12,
-    # DVP / SDIO2 (MUX13)
-    "DVP": 13, "SDIO2": 13,
-    # QSPI (MUX14)
-    "QSPI1": 14, "QSPI2": 14,
-    # System (MUX0)
-    "JTMS": 0, "JTCK": 0, "JTDI": 0, "JTDO": 0, "JTRST": 0,
-    "SWDIO": 0, "SWCLK": 0, "SWO": 0,
-    "CLKOUT1": 0, "CLKOUT2": 0, "IR_OUT": 0,
-    # EVENTOUT (MUX15)
-    "EVENTOUT": 15,
-}
-
-PIN_RE = re.compile(r'^P([A-I]\d{1,2})$')
-FUNC_PAT = re.compile(
-    r'\b(TMR\d+[_\w]*|SPI\d+[_\w]*|I2S\d+[_\w]*|I2C\d+[_\w]*|'
-    r'USART\d+[_\w]*|UART\d+[_\w]*|CAN\d+[_\w]*|'
-    r'OTGFS\d+[_\w]*|EMAC[_\w]+|SDIO\d+[_\w]*|'
-    r'QSPI\d+[_\w]*|DVP[_\w]+|ADC\w+|DAC\w+|'
-    r'ERTC[_\w]*|CLKOUT\d*|IR_OUT|WKUP\d*|'
-    r'JTMS|JTCK|JTDI|JTDO|JTRST|SWDIO|SWCLK)\b'
+PREFIX_RE = re.compile(
+    r'^(TMR\d+|SPI\d+|I2S\d+|I2C\d+|USART\d+|UART\d+|CAN\d+|'
+    r'OTG\d*FS\d*|OTG\d+|EMAC|SDIO\d+|QSPI\d+|DVP|ERTC|XMC|'
+    r'CLKOUT\d*|IR|WKUP\d*|EVENTOUT|JT\w+|SW\w+)'
 )
 
 
-def lookup_mux(func_token: str) -> int | None:
-    """Return MUX number for a function token, using peripheral prefix matching."""
-    if func_token in SIGNAL_TO_MUX:
-        return SIGNAL_TO_MUX[func_token]
-    # Match by peripheral prefix (e.g. "SPI1_SCK" → "SPI1" → 5)
-    for prefix, mux in SIGNAL_TO_MUX.items():
-        if func_token.startswith(prefix + "_") or func_token.startswith(prefix + "/"):
-            return mux
-    return None
+def load_refman_iomux() -> dict:
+    """
+    Load the authoritative per-pin IOMUX table extracted from the
+    Reference Manual. Returns { 'PA5': {1: {'TMR2_CH1'}, 5: {'SPI1_SCK'}, ...}, ... }
+    """
+    if not REFMAN_JSON.exists():
+        sys.exit(f"{REFMAN_JSON.name} not found in {HERE} — "
+                  f"run parse_refman_iomux.py first.")
+    raw = json.loads(REFMAN_JSON.read_text())
+    return {pin: {int(mux_s): set(funcs) for mux_s, funcs in mux_map.items()}
+            for pin, mux_map in raw.items()}
 
 
 def parse_timer_def(path: Path) -> dict:
     """
-    Parse timer_def_at32f43x.h to get exact timer MUX assignments.
+    Parse timer_def_at32f43x.h to get INAV's own timer MUX assignments,
+    used only for the 'N'-suffix alias and as a cross-check against the
+    Reference Manual (see module docstring).
     Returns: { 'PA5': {'TMR2_CH1': 1, 'TMR8_CH1N': 3, ...}, ... }
     """
     if not path.exists():
@@ -150,95 +104,36 @@ def parse_timer_def(path: Path) -> dict:
         pin_suf, func, mux_n = m.group(1), m.group(2), int(m.group(3))
         pin = f"P{pin_suf}"
         result.setdefault(pin, {})[func] = mux_n
-        # Also add the _CH1C alias (complementary — datasheet uses CHxC, INAV uses CHxN)
-        func_ds = func.replace('CH1N', 'CH1C').replace('CH2N', 'CH2C').replace('CH3N', 'CH3C')
-        if func_ds != func:
-            result[pin][func_ds] = mux_n
     return result
 
 
-def parse_pdf_pins() -> dict:
+def add_timer_n_aliases(all_pins: dict, timer_data: dict) -> None:
     """
-    Extract pin IOMUX function lists from Table 8 in the datasheet PDF.
-    Uses pdfplumber table extraction for accurate multi-line cell handling.
-    Returns: { 'PA5': ['SPI1_SCK', 'TMR2_CH1', ...], ... }
+    Add INAV's 'N'-suffix complementary-channel names (TMR8_CH1N) next to
+    the Reference Manual's 'C'-suffix name (TMR8_CH1C) for the same pin
+    and MUX slot. Warns (but trusts the Reference Manual) if INAV's own
+    MUX number for that channel disagrees with the Reference Manual.
     """
-    try:
-        import pdfplumber
-    except ImportError:
-        sys.exit("pdfplumber not installed. Run: pip install pdfplumber")
-
-    result: dict[str, list[str]] = {}
-    # Table 8 spans PDF pages 34-44 (0-indexed: 33-43)
-    TABLE_PAGES = range(33, 44)
-
-    print(f"  Extracting pin table from PDF pages 34–44 using pdfplumber table mode...")
-    with pdfplumber.open(PDF) as pdf:
-        for page_idx in TABLE_PAGES:
-            if page_idx >= len(pdf.pages):
-                break
-            page = pdf.pages[page_idx]
-            tables = page.find_tables()
-            if not tables:
-                continue
-            tbl = max(tables, key=lambda t: len(t.extract()))
-            rows = tbl.extract()
-
-            for row in rows:
-                # Find the pin name cell
-                pin = None
-                pin_col = None
-                for col_idx, cell in enumerate(row):
-                    if not cell:
-                        continue
-                    for word in re.split(r'[\s/\n(]+', str(cell)):
-                        if PIN_RE.match(word):
-                            pin = word
-                            pin_col = col_idx
-                            break
-                    if pin:
-                        break
-
-                if not pin or pin_col is None:
-                    continue
-
-                # Collect all function tokens from cells after pin name
-                result.setdefault(pin, [])
-                for col_offset in range(1, min(5, len(row) - pin_col)):
-                    cell = row[pin_col + col_offset]
-                    if not cell:
-                        continue
-                    cell_text = re.sub(r'\s+', ' ', str(cell)).strip()
-                    for m in FUNC_PAT.finditer(cell_text):
-                        tok = m.group(0)
-                        if tok not in result[pin]:
-                            result[pin].append(tok)
-
-    return {p: funcs for p, funcs in result.items() if funcs}
-
-
-def build_pin_table(timer_data: dict, pdf_data: dict) -> dict:
-    """
-    Merge timer MUX data and PDF IOMUX function lists into:
-    { 'PA5': {0: ['CLKOUT1'], 1: ['TMR2_CH1'], 5: ['SPI1_SCK','I2S1_CK'], ...}, ... }
-    """
-    all_pins: dict[str, dict[int, set]] = {}
-
-    # Timer data (authoritative MUX numbers)
     for pin, funcs in timer_data.items():
-        for func, mux_n in funcs.items():
-            all_pins.setdefault(pin, {}).setdefault(mux_n, set()).add(func)
-
-    # PDF data with MUX lookup
-    for pin, funcs in pdf_data.items():
-        for func_token in funcs:
-            mux_n = lookup_mux(func_token)
-            if mux_n is not None:
-                all_pins.setdefault(pin, {}).setdefault(mux_n, set()).add(func_token)
-
-    # Convert sets to sorted lists
-    return {pin: {k: sorted(v) for k, v in mux_map.items()}
-            for pin, mux_map in all_pins.items()}
+        for func, inav_mux in funcs.items():
+            if 'N' not in func:
+                continue
+            func_c = (func.replace('CH1N', 'CH1C')
+                          .replace('CH2N', 'CH2C')
+                          .replace('CH3N', 'CH3C'))
+            if func_c == func:
+                continue
+            pin_muxes = all_pins.get(pin, {})
+            rm_mux = next((m for m, fs in pin_muxes.items() if func_c in fs), None)
+            if rm_mux is None:
+                print(f"  WARNING: {pin} {func_c} (INAV: {func}) not found "
+                      f"in Reference Manual data", file=sys.stderr)
+                continue
+            if rm_mux != inav_mux:
+                print(f"  WARNING: {pin} {func} — timer_def says MUX{inav_mux}, "
+                      f"Reference Manual says MUX{rm_mux} (using Reference Manual)",
+                      file=sys.stderr)
+            pin_muxes[rm_mux].add(func)
 
 
 def sort_pin(pin: str) -> tuple:
@@ -246,62 +141,65 @@ def sort_pin(pin: str) -> tuple:
     return (ord(m.group(1)), int(m.group(2))) if m else (0, 0)
 
 
-def format_cell(funcs: list) -> str:
-    return '/'.join(funcs) if funcs else '-'
+def format_cell(funcs) -> str:
+    return '/'.join(sorted(funcs)) if funcs else '-'
+
+
+def peripheral_prefix(func: str) -> str:
+    m = PREFIX_RE.match(func)
+    return m.group(1) if m else func
 
 
 def main():
-    if not PDF.exists():
-        sys.exit(f"PDF not found: {PDF}")
+    print("Step 1: Loading Reference Manual IOMUX ground truth...")
+    all_pins = load_refman_iomux()
+    total_entries = sum(len(v) for v in all_pins.values())
+    print(f"  Loaded {len(all_pins)} pins, {total_entries} pin/MUX-slot entries")
 
-    print("Step 1: Parsing INAV timer_def_at32f43x.h...")
+    print("Step 2: Cross-checking INAV timer_def_at32f43x.h, adding 'N' aliases...")
     timer_data = parse_timer_def(INAV_TIMER_DEF)
-    print(f"  Found {sum(len(v) for v in timer_data.values())} timer entries "
-          f"across {len(timer_data)} pins")
+    add_timer_n_aliases(all_pins, timer_data)
 
-    print("Step 2: Extracting pin data from datasheet PDF...")
-    pdf_data = parse_pdf_pins()
-    print(f"  Found {len(pdf_data)} pins with IOMUX functions")
-
-    print("Step 3: Building combined pin→MUX table...")
-    all_pins = build_pin_table(timer_data, pdf_data)
     sorted_pins = sorted(all_pins.keys(), key=sort_pin)
-    print(f"  Total pins with AF data: {len(sorted_pins)}")
-
     mux_nums = list(range(16))
 
-    # ── MUX Groups Reference ──────────────────────────────────────────────────
+    # ── Compute the real per-prefix MUX distribution (replaces the old,
+    #    incorrect one-MUX-per-peripheral table) ─────────────────────────
+    prefix_mux_counts: dict[str, Counter] = {}
+    for pin in sorted_pins:
+        for mux_n, funcs in all_pins[pin].items():
+            for func in funcs:
+                prefix = peripheral_prefix(func)
+                prefix_mux_counts.setdefault(prefix, Counter())[mux_n] += 1
+
+    # ── MUX distribution reference ───────────────────────────────────────
     with MUX_OUT.open('w') as f:
-        f.write("# AT32F435/437 MUX Group Reference\n\n")
-        f.write("Source: AT32F435/437 Reference Manual + INAV driver source\n\n")
-        f.write("The AT32F435 uses GPIO_MUXx registers (MUX0–MUX15) to select alternate\n")
-        f.write("functions per pin. This is equivalent to STM32's AF0–AF15 numbering.\n\n")
-        f.write("| MUX# | Peripheral Group |\n|------|------------------|\n")
-        for n, grp in MUX_GROUPS.items():
-            f.write(f"| MUX{n:>2} | {grp} |\n")
-        f.write("\n## Key Differences from STM32\n\n")
-        f.write("- Called 'IOMUX' / 'GPIO_MUX_n' instead of 'AFn'\n")
-        f.write("- AT32 has **4 SPI** peripherals (vs 3 on F405/F722)\n")
-        f.write("- AT32 has **4 USART + 4 UART = 8** serial ports (vs 6 on F405)\n")
-        f.write("- AT32 has **TMR20** (extra advanced timer) on MUX2 or MUX6 depending on pin\n")
-        f.write("- AT32 has **QSPI1/QSPI2** on MUX14 (not available on STM32F4)\n")
-        f.write("- AT32 DMA uses **DMAMUX** — any DMA channel can serve any peripheral\n")
-        f.write("  (no fixed DMA stream/channel conflicts like STM32F4)\n\n")
-        f.write("## INAV Default MUX Values\n\n")
-        f.write("In INAV target.h, MUX values are NOT specified for standard pin assignments;\n")
-        f.write("INAV uses these defaults from the driver source:\n\n")
-        f.write("| Peripheral | Default MUX | Override in target.h |\n")
-        f.write("|------------|-------------|----------------------|\n")
-        f.write("| SPI1, SPI2 | GPIO_MUX_5 | `SPI1_SCK_AF`, `SPI1_MISO_AF`, `SPI1_MOSI_AF` |\n")
-        f.write("| SPI3, SPI4 | GPIO_MUX_6 | `SPI3_SCK_AF`, etc. |\n")
-        f.write("| I2C1/2/3   | GPIO_MUX_4 | (always MUX4 for I2C) |\n")
-        f.write("| USART1/2/3 | GPIO_MUX_7 | `UART1_AF` or `UART1_TX_AF`/`UART1_RX_AF` |\n")
-        f.write("| UART4–8    | GPIO_MUX_8 | `UART4_AF` etc. |\n\n")
-        f.write("## Timer DEF_TIM() Notes\n\n")
+        f.write("# AT32F435/437 MUX Distribution Reference\n\n")
+        f.write("Source: AT32F435/437 Reference Manual, chapter 6.2.9 "
+                "(Tables 6-1..6-8), read directly per pin —\n")
+        f.write("see `refman-iomux.json` and `parse_refman_iomux.py`.\n\n")
+        f.write("**The MUX number for a peripheral is not fixed — it varies by pin.**\n")
+        f.write("An earlier version of this file listed one MUX number per peripheral\n")
+        f.write("(e.g. \"I2C is always MUX4\"); checking that assumption against the\n")
+        f.write("Reference Manual's real per-pin tables found it wrong for about 1 in 5\n")
+        f.write("signals. For example `I2C1_SCL` is MUX4 on most pins but MUX8 on PA9,\n")
+        f.write("and `I2C3_SCL` is MUX7 on PB13 but MUX4 on PA8. **Always look up the\n")
+        f.write("specific pin** in `alternate-functions.tsv` / `af-by-function.txt` —\n")
+        f.write("never assume a peripheral's MUX number from its name alone.\n\n")
+        f.write("## MUX numbers observed per peripheral prefix\n\n")
+        f.write("| Prefix | MUX numbers used (occurrence count) |\n"
+                "|--------|---------------------------------------|\n")
+        for prefix in sorted(prefix_mux_counts):
+            counts = prefix_mux_counts[prefix]
+            dist = ", ".join(f"MUX{m} ({n})" for m, n in sorted(counts.items()))
+            f.write(f"| {prefix} | {dist} |\n")
+        f.write("\n## Timer DEF_TIM() Notes\n\n")
         f.write("In `target.c`, `DEF_TIM(TMR3, CH3, PB0, ...)` automatically resolves\n")
         f.write("the correct MUX number from the `DEF_TIM_AF__PB0__TCH_TMR3_CH3` macro\n")
         f.write("defined in `timer_def_at32f43x.h`. The `af` (flags) parameter in\n")
-        f.write("`DEF_TIM` is unused for AT32 (pass 0).\n")
+        f.write("`DEF_TIM` is unused for AT32 (pass 0). `parse_af_table.py` cross-checks\n")
+        f.write("this file's MUX numbers against the Reference Manual on every run and\n")
+        f.write("prints a warning for any disagreement.\n")
     print(f"Written: {MUX_OUT.name}")
 
     # ── TSV ───────────────────────────────────────────────────────────────────
@@ -318,14 +216,13 @@ def main():
     # ── Markdown ─────────────────────────────────────────────────────────────
     with MD_OUT.open('w') as f:
         f.write("# AT32F435/437 Alternate Function / IOMUX Mapping\n\n")
-        f.write("Sources: AT32F437VGT7 Datasheet (Table 8) + INAV timer_def_at32f43x.h\n\n")
+        f.write("Source: AT32F435/437 Reference Manual, chapter 6.2.9 "
+                "(per-pin ground truth) + INAV timer_def_at32f43x.h\n\n")
         f.write("**Note:** AT32 uses GPIO_MUX_n (MUX0–MUX15) instead of STM32's AF0–AF15.\n")
-        f.write("See `mux-groups.md` for the full MUX number → peripheral group reference.\n\n")
-        f.write("## MUX Quick Reference\n\n")
-        f.write("| MUX# | Peripheral Group |\n|------|------------------|\n")
-        for n, grp in MUX_GROUPS.items():
-            f.write(f"| MUX{n:>2} | {grp} |\n")
-        f.write("\n---\n\n## Pin Alternate Functions\n")
+        f.write("The MUX number for a given peripheral **varies by pin** — see\n")
+        f.write("`mux-groups.md` for the observed distribution and why there is no\n")
+        f.write("fixed peripheral→MUX table.\n\n")
+        f.write("---\n\n## Pin Alternate Functions\n")
 
         current_port = None
         for pin in sorted_pins:
@@ -352,7 +249,8 @@ def main():
 
     with INV_OUT.open('w') as f:
         f.write("# AT32F435/437 — Function to Pin Mapping (IOMUX)\n")
-        f.write("# Sources: Datasheet Table 8 + INAV timer_def_at32f43x.h\n")
+        f.write("# Source: AT32F435/437 Reference Manual (per-pin ground truth) "
+                "+ INAV timer_def_at32f43x.h\n")
         f.write("# MUX number = GPIO_MUX_n value for gpio_pin_mux_config()\n\n")
         f.write(f"{'Function':<40} Pins\n")
         f.write("-" * 90 + "\n")

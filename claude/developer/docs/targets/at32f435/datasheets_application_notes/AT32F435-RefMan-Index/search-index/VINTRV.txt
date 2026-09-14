@@ -1,0 +1,5 @@
+Keyword: VINTRV
+Occurrences: 1
+================================================================================
+
+Page  388: Internal temperature sensor and VINTRV enable

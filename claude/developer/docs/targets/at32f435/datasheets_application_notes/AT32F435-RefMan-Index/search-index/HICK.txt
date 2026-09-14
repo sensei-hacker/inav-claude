@@ -1,0 +1,149 @@
+Keyword: HICK
+Occurrences: 145
+================================================================================
+
+Page    1: − Internal 48 MHz factory-trimmed clock (HICK),                Debug mode
+Page   22: 22       HICK auto clock calibration (ACC) .............................................. 499
+Page   44: interface, HICK with automatic clock calibration (ACC), 12-bit ADC, 12-bit DAC, programmable voltage
+Page   45: SWJTAG                                                                                                                              XMC            HICK 48 MHz
+Page   63: POR          PVM          LDO              HICK
+Page   65: for details. The LDO output voltage is changeable only when the HEXT or HICK is used as system clock.
+Page   65: 1) Select HICK or HEXT as system clock
+Page   66: In Deepsleep mode, all clocks in 1.2 V domain are stopped, and both HICK and HEXT oscillators are
+Page   66: When the MCU exits the Deepsleep mode, the HICK RC oscillator is enabled and selected as a system
+Page   66: 1) Select HICK as system clock
+Page   66: disabled. The whole 1.2 V domain, PLL, HICK and HEXT oscillators are also powered off. SRAM and
+Page   70:  HICK (high speed internal clock)
+Page   70: HICK8M                                                                                                          clock enable
+Page   70: HICK
+Page   70: HICK RC                     HICK48M                                                                                                                     APB1/2        144 MHz
+Page   70: HICK_TO_SCLK
+Page   70: HICKDIV                                                                                                                               Clock enable
+Page   70: Note: When HICK is used as
+Page   70: HICKDIV while PLL is enabled.                      PLLCLK                                                                                              x1,x 2
+Page   70: HICK_TO_USB
+Page   70: HICK
+Page   70: HICK                        PLLCLK                                                                CLKOUT2
+Page   70:  High speed internal clock (HICK)
+Page   70: The HICK oscillator is clocked by a high-speed RC in the microcontroller. The internal frequency of the
+Page   70: HICK clock is 48 MHz. Although it is less accurate, its startup time is shorter than the HEXT crystal
+Page   70: oscillator. The HICK clock frequency of each device is calibrated by ARTERY to ±1% accuracy (TA=25°C)
+Page   70: in factory. The factory calibration value is loaded in the HICKCAL[7: 0] bit of the clock control register.
+Page   71: The RC oscillator speed may be affected by voltage or temperature variations. Thus the HICK frequency
+Page   71: can be trimmed using the HICKTRIM[5: 0] bit in the clock control register.
+Page   71: The HICK clock signal is not released until it becomes stable.
+Page   71: The HICK or HEXT clock can be used as an input clock source of the PLL. The PLL input clock, after
+Page   71: After a system reset, the HICK oscillator is selected as system clock. The system clock can make flexible
+Page   71: switch among HICK oscillator, HEXT oscillator and PLL clock. However, a switch from one clock source
+Page   71: to another occurs only if the target clock source becomes stable. When the HICK oscillator is used
+Page   71: The USB clock source can be switched between HICK and PLL frequency divider. If the HICK is selected
+Page   72: service routine. The HEXT clock failure will result in a switch of the system clock to the HICK clock, the
+Page   72: ADCCLK, USB48M, SCLK, LICK, LEXT, HICK, HEXT, PLLCLK can be used as CLKOUT1/2 clocks.
+Page   74: When the HICK output frequency is 48 MHz, it needs
+Page   74: Bit 15: 8    HICKCAL    0xXX           rw
+Page   74: each HICKCAL value change; when HICK output frequency
+Page   74: this frequency for each HICKCAL value change.
+Page   74: Note: This bit can be written only if the HICKCAL_KEY[7: 0]
+Page   75: These bits work with the HICKCAL[7: 0] to determine the
+Page   75: Bit 7: 2      HICKTRIM     0x20            rw
+Page   75: HICK oscillator frequency. The default value is 32, which
+Page   75: can trim the HICK to be ±1%.
+Page   75: This bit is set by hardware after the HICK is ready.
+Page   75: Bit 1         HICKSTBL     0x1             ro
+Page   75: Bit 0         HICKEN       0x1             rw        the HICK is used as the system clock, this bit cannot be
+Page   75: 0: HICK is used as PLL reference clock
+Page   76: 00: HICK selected
+Page   77: 00: HICK
+Page   77: 00: HICK
+Page   78: HICK stable flag clear
+Page   78: Writing 1 by software to clear HICKSTBLF.
+Page   78: Bit 18        HICKSTBLFC         0x0                wo
+Page   78: HICK stable interrupt enable
+Page   78: Bit 10        HICKSTBLIEN        0x0                rw         0: Disabled
+Page   79: HICK stable flag
+Page   79: Bit 2            HICKSTBLF       0x0                  ro
+Page   79: 0: HICK is not ready.
+Page   79: 1: HICK is ready.
+Page   94: 0010: Internal RC oscillator clock (HICK) output frequency
+Page   94: HICK as system clock frequency select
+Page   94: When the HICK is selected as the clock source of
+Page   94: Bit 14      HICK_TO_SCLK   0x0           rw        SCLKSEL, the frequency of SCLK is:
+Page   94: 0: Fixed 8 MHz, that is, HICK/6
+Page   94: 1: 48 MHz or 8 MHz, depending on the HICKDIV
+Page   94: 1: HICK or HICK/6
+Page   94: Bit 13      HICK_TO_USB    0x0           rw
+Page   94: Note: Since USB must work at 48 MHz, HICKDIV=1 must
+Page   94: be guaranteed to ensure that the HICK 48 MHz is selected
+Page   94: HICK 6 divider selection
+Page   94: This bit is used to select HICK or HICK /6. If the HICK/6 is
+Page   94: Bit 12      HICKDIV        0x0           rw
+Page   94: 0: HICK/6
+Page   94: 1: HICK
+Page   94: Note: When HICK is used as PLL clock source, do not
+Page   94: modify HICKDIV while PLL is enabled.
+Page   94: HICK calibration key
+Page   94: Bit 7: 0    HICKCAL_KEY    0x00          rw        The HICKCAL [7:0] can be written only when this field is set
+Page  425:  HICK 48M
+Page  425: When the HICK 48M clock is used as a USB control clock, it is recommended to enable ACC feature.
+Page  499: 22 HICK auto clock calibration (ACC)
+Page  499: HICK auto clock calibration (HICK ACC), which uses the SOF signal (1 ms of period) generated as a
+Page  499: reference signal, implements the sampling and calibration for the HICK clocks.
+Page  499: Auto clock calibration (HICK ACC), which uses the SOF signal (1 ms of period) generated as a reference
+Page  499: signal, implements the sampling and calibration for the HICK clocks. In particular, the HICK clock
+Page  499: The signals of the module are connected to the CRM and HICK inside the microcontroller instead of
+Page  500:  CRM_HICKCAL: the HICKCAL bit in the CRM module. This signal is used to calibrate the HICK
+Page  500: in bypass mode. The value is defined by the HICKCAL[7: 0] in the CRM_CTRL register.
+Page  500:  CRM_HICKTRIM: the HICKTRIM bit in the CRM module. This signal is used to calibrate the
+Page  500: HICK in bypass mode. The value is defined by the HICKTRIM[5: 0] in the CRM_CTRL register.
+Page  500: The default value of the HICK is 32, which can be calibrated to 8MHz±0.25%. The HICK frequency
+Page  500: can be adjusted by 20kHz (design value) each time when the CRM_HICKTRIM value changes. In
+Page  500: other words, the HICK output frequency will increase by 20kHz each time the CRM_HICKTRIM value
+Page  500: is decremented by one; the HICK output frequency will reduce by 20kHz each time the
+Page  500: CRM_HICKTRIM value is decremented by one.
+Page  500:  HICKCLK: HICK clock. The original HICK output frequency is 48MHz, but the sampling clock
+Page  500: used by the HICK calibration module is frequency divider (1/6) clock, about 8MHz.
+Page  500:  HICKCAL: HICK module calibration signal. For the HICK clock after frequency division (1/6), the
+Page  500: HICK clock frequency will change by 40KHz (design value) each time the HICKCAL changes, which
+Page  500: is positively correlated. In other words, the HICK clock frequency will increase by 40KHz (design
+Page  500: value) each time the HICKCAL is incremented by one; the HICK clock frequency will reduce by
+Page  500: 40KHz each time the HICKCAL is decremented by one.
+Page  500:  HICKTRIM: HICK module calibration signal. For the HICK clock after frequency division (1/6), the
+Page  500: HICK clock frequency will change by 20KHz (design value) each time the HICKCAL changes, which
+Page  500: CRM_HICKCAL                                                               0
+Page  500: HICKCAL
+Page  500: CRM_HICKTRIM                                                              0
+Page  500: HICKTRIM
+Page  500: ACC_HICKCAL
+Page  500: ACC_HICKTRIM
+Page  500: HICKCLK
+Page  501: From the above figure, auto calibration function will adjust the HICKCAL or HICKTRIM according to the
+Page  501: When this value is less than C2, the auto calibration module will start increasing either the HICKCAL or
+Page  501: HICKTRIM according to the step definition until the actual sampling value is greater than C2. In this way,
+Page  501: When this value is greater than C2, the auto calibration module will start decrease either the HICKCAL
+Page  501: or HICKTRIM according to the step definition until the actual sampling value become less than C1. In
+Page  501: crossing C2 so as to get the best calibration value HICKCAL or HICKTRIM.
+Page  501: calibration module can also be activated so that the HICK frequency can be adjusted to be within a range
+Page  501: Under one of the above-mentioned circumstances, the HICK frequency can be calibrated to be within
+Page  501: step as 1 (default value). If the step is set to 0, either HICKCAL or HICKTRIM will not be able to be
+Page  502: the HICKCAL is calibrated. If the step is incremented or
+Page  502: decremented by one, the HICKCAL will be incremented or
+Page  502: decremented by one accordingly, and the HICK frequency
+Page  502: While ENTRIM=1, only the HICKTRIM is calibrated. If the
+Page  502: HICKTRIM will be incremented or decremented by one
+Page  502: accordingly, and the HICK frequency will increase or
+Page  503: 0: HICKCAL is calibrated.
+Page  503: 1: HICKTRIM is calibrated.
+Page  503: accuracy of the HICK clock, it is unnecessary to enable
+Page  503: which is added to the ACC_HICKCAL[7: 0] bit. These bits
+Page  503: Bit 13: 8    HICKTRIM   0x20            ro
+Page  503: frequency of the HICKRC oscillator according to the
+Page  503: The default value is 32, which can trim the HICK to
+Page  503: between two consecutive ACC_HICKTRIM steps.
+Page  503: Bit 7: 0     HICKCAL    0x80            ro       adjust the frequency of the HICKPC oscillator according to
+Page  503: The default value is 128, which can trim the HICK to
+Page  503: between two consecutive ACC_HICKCAL steps.
+Page  711: code remains active for HCLK and FCLK to continue to work. In DeepSleep mode, HICK oscillator is
+Page  713: internal RC oscillator (HICK)
+Page  713: RC oscillator (HICK) is enabled, and HICK is used as the
+Page  713: internal RC oscillator (HICK). When exiting from
+Page  713: Deepsleep mode, HICK is used as the system clock

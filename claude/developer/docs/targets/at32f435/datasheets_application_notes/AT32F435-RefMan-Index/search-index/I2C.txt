@@ -1,0 +1,583 @@
+Keyword: I2C
+Occurrences: 579
+================================================================================
+
+Page    1: − 384 to 512 KBytes of SRAM                                     − Up to 3 x I2C interfaces (SMBus/PMBus)
+Page    8: 11.7.1 Control register 1 (I2C_CTRL1) ................................................... 201
+Page    8: 11.7.2 Control register 2 (I2C_CTRL2) ................................................... 202
+Page    8: 11.7.3 Address register 1 (I2C_OADDR1) .............................................. 203
+Page    8: 11.7.4 Own address register 2 (I2C_OADDR2) ....................................... 203
+Page    8: 11.7.5 Timing register (I2C_CLKCTRL) .................................................. 203
+Page    8: 11.7.6 Timeout register (I2C_TIMEOUT) ................................................ 203
+Page    8: 11.7.7 Status register (I2C_STS) ........................................................... 204
+Page    8: 11.7.8 Status clear register (I2C_CLR) .................................................. 205
+Page    8: 11.7.9 PEC register (I2C_PEC) ............................................................. 206
+Page    8: 11.7.10 Receive data register (I2C_RXDT) ............................................ 206
+Page    9: 11.7.11 Transmit data register (I2C_TXDT) ........................................... 206
+Page   32: Figure 11-1 I2C bus protocol ...................................................................................................................... 174
+Page   32: Figure 11-2 I2C function block diagram ..................................................................................................... 175
+Page   32: Figure 11-4 I2C master transmission flow .................................................................................................. 181
+Page   32: Figure 11-5 Transfer sequence of I2C master transmitter ......................................................................... 182
+Page   32: Figure 11-6 I2C master receive flow .......................................................................................................... 182
+Page   32: Figure 11-7 Transfer sequence of I2C master receiver ............................................................................. 183
+Page   32: Figure 11-10 I2C slave transmission flow .................................................................................................. 186
+Page   32: Figure 11-11 I2C slave transmission timing ............................................................................................... 186
+Page   33: Figure 11-12 I2C slave receive flow ........................................................................................................... 187
+Page   33: Figure 11-13 I2C slave receive timing ........................................................................................................ 187
+Page   40: Table 11-1 I2C timing specifications ........................................................................................................... 178
+Page   40: Table 11-2 I2C configuration table .............................................................................................................. 179
+Page   40: Table 11-6 I2C error events ........................................................................................................................ 198
+Page   40: Table 11-7 I2C interrupt requests ............................................................................................................... 200
+Page   40: Table 11-8 I2C register map and reset values ........................................................................................... 200
+Page   44: communication interfaces such as SPI, QSPI, I2C, USART/UART and SDIO, CAN bus controller,
+Page   45: I2C1/2/3                                            32KHz
+Page   51: 31   38             I2C1_EVT               I C1 event interrupt                   0x0000_00BC
+Page   51: 32   39             I2C1_ERR               I C1 error interrupt                   0x0000_00C0
+Page   51: 33   40             I2C2_EVT               I C2 event interrupt                   0x0000_00C4
+Page   51: 34   41             I2C2_ERR               I C2 error interrupt                   0x0000_00C8
+Page   52: 72   79             I2C3_EVT              I2C2 event interrupt                         0x0000_0160
+Page   52: 73   80             I2C3_ERR              I2C2 error interrupt                         0x0000_0164
+Page   62: 0x4000 5C00 - 0x4000 5FFF       I2C3
+Page   62: 0x4000 5800 - 0x4000 5BFF       I2C2
+Page   62: 0x4000 5400 - 0x4000 57FF       I2C1
+Page   81: I2C3 reset
+Page   81: Bit 23       I2C3RST          0x0            rw       0: Does not reset I2C3
+Page   81: 1: Reset I2C3
+Page   81: I2C2 reset
+Page   81: Bit 22       I2C2RST          0x0            rw       0: Does not reset I2C2
+Page   81: 1: Reset I2C2
+Page   81: I2C1 reset
+Page   81: Bit 21       I2C1RST          0x0            rw       0: Does not reset I2C1
+Page   81: 1: Reset I2C1
+Page   85: I2C3 clock enable
+Page   85: Bit 23       I2C3EN          0x0             rw        0: Disabled
+Page   85: I2C2 clock enable
+Page   85: Bit 22       I2C2EN          0x0             rw        0: Disabled
+Page   85: I2C1 clock enable
+Page   85: Bit 21       I2C1EN          0x0             rw        0: Disabled
+Page   90: I2C3 clock enable in sleep mode
+Page   90: Bit 23       I2C3LPEN     0x1        rw       0: Disabled
+Page   90: I2C2 clock enable in sleep mode
+Page   90: Bit 22       I2C2LPEN     0x1        rw       0: Disabled
+Page   90: I2C1 clock enable in sleep mode
+Page   90: Bit 21       I2C1LPEN     0x1        rw       0: Disabled
+Page  124: PA0                            TMR5_CH1   TMR8_EXT    I2C2_SCL                            USART2_CTS
+Page  124: PA1                TMR2_CH2    TMR5_CH2               I2C2_SDA
+Page  124: PA8      CLKOUT1   TMR1_CH1                           I2C3_SCL                            USART1_CK
+Page  124: PA9                TMR1_CH2                           I2C3_SMBA                           USART1_TX
+Page  124: PA11               TMR1_CH4                           I2C2_SCL                SPI4_MISO   USART1_CTS
+Page  124: PA12               TMR1_EXT                           I2C2_SDA    SPI2_MISO
+Page  125: PA9    I2C1_SCL
+Page  125: PA10   I2C1_SDA                OTG1_ID                                    DVP_D1                  EVENTOUT
+Page  126: PB2                TMR2_CH4    TMR20_CH1                I2C3_SMBA
+Page  126: TMR2_CH2                             I2C2_SDA
+Page  126: PB4    JNTRST                  TMR3_CH1                 I2C3_SDA    SPI1_MISO   SPI3_MISO    I2S3_SDEXT
+Page  126: PB5                            TMR3_CH2                 I2C1_SMBA
+Page  126: PB6                            TMR4_CH1                 I2C1_SCL    I2S1_MCK
+Page  126: PB7                            TMR4_CH2     TMR8_BRK    I2C1_SDA
+Page  126: TMR4_CH3     TMR10_CH1   I2C1_SCL                SPI4_MISO
+Page  126: PB9    IR_OUT      TMR2_CH2    TMR4_CH4     TMR11_CH1   I2C1_SDA
+Page  126: I2C2_SDA
+Page  126: PB10               TMR2_CH3                             I2C2_SCL
+Page  126: PB11               TMR2_CH4    TMR5_CH4                 I2C2_SDA                             USART3_RX
+Page  126: PB12               TMR1_BRK    TMR5_CH1                 I2C2_SMBA
+Page  126: PB13               TMR1_CH1C                            I2C3_SMBA
+Page  126: I2C3_SCL
+Page  126: PB14               TMR1_CH2C                TMR8_CH2C   I2C3_SDA    SPI2_MISO   I2S2_SDEXT   USART3_RTS_DE
+Page  126: TMR1_CH3C                TMR8_CH3C   I2C3_SCL
+Page  128: PC0                                           I2C3_SCL
+Page  128: PC1                                           I2C3_SDA
+Page  128: I2C1_SMBA                             USART3_RX
+Page  128: I2C1_SCL    I2S2_MCK
+Page  128: I2C1_SDA
+Page  128: I2C3_SDA                              UART8_RX
+Page  128: I2C2_SDA
+Page  130: PD11                                            I2C2_SMBA                             USART3_CTS
+Page  130: PD12                      TMR4_CH1              I2C2_SCL                              USART3_RTS_DE
+Page  130: PD13                      TMR4_CH2              I2C2_SDA
+Page  130: PD14                      TMR4_CH3              I2C3_SCL
+Page  130: PD15                      TMR4_CH4              I2C3_SDA
+Page  134: PF0                                                    I2C2_SDA
+Page  134: PF1                                                    I2C2_SCL
+Page  134: PF2                        TMR20_CH3                   I2C2_SMBA
+Page  134: PF13                       TMR20_CH2                   I2C3_SMBA
+Page  134: PF14                       TMR20_CH3                   I2C3_SCL
+Page  134: PF15                       TMR20_CH4                   I2C3_SDA
+Page  138: PH0                                                          I2C1_SDA
+Page  138: PH1                                                          I2C1_SCL
+Page  138: PH2                                 TMR5_CH1                 I2C2_SCL
+Page  138: PH3                                 TMR5_CH2                 I2C2_SDA
+Page  138:  For I2C peripherals that intend to use pins as bidirectional functions, open-drain mode is required.
+Page  154: I2C1       USART1           DMAMUX
+Page  154: I2C2       USART2
+Page  154: I2C3       USART3
+Page  158: I2C1     USART1
+Page  158: I2C2     USART2
+Page  158: I2C3     USART3
+Page  159: 16          I2C1_RX       48        TMR1_HALL          80        reserved       112     I2S3_EXT_RX
+Page  159: 17          I2C1_TX       49        TMR8_CH1           81        reserved       113     I2S3_EXT_TX
+Page  159: 18          I2C2_RX       50        TMR8_CH2           82        reserved       114     USART6_RX
+Page  159: 19          I2C2_TX       51        TMR8_CH3           83        reserved       115     USART6_TX
+Page  159: 20          I2C3_RX       52        TMR8_CH4           84        reserved       116     UART7_RX
+Page  159: 21          I2C3_TX       53        TMR8_OVERFLOW 85             reserved       117     UART7_TX
+Page  174: 11 I2C interface
+Page  174: I2C (inter-integrated circuit) bus interface manages the communication between the microcontroller and
+Page  174: serial I2C bus. It supports master and slave modes, with up to 1 Mbit/s of communication speed
+Page  174:     I2C bus
+Page  174: I2C bus consists of a data line (SDA) and clock line (SCL). It can achieve a maximum of 100 kHz speed
+Page  174: Figure 11-1 I2C bus protocol
+Page  175: Figure 11-2 shows the block diagram of I2C function.
+Page  175: Figure 11-2 I2C function block diagram
+Page  175: I2CCLK
+Page  175: TIMEOUT_Frozen                                 Master clock       I2C_SCL_out
+Page  175: CPU_Halt_en                                                                                   GPIO    I2C_SCL
+Page  175: stretching                        I2C_SCL_in
+Page  175: I2C_SDA_out
+Page  175: I2C_DMAreq_TX                                                                                                  GPIO     I2C_SDA
+Page  175: I2C_DMAreq_RX                                                Shift register Rx      Digital
+Page  175: Genaration          SMBUS                                                I2C_SDA_in
+Page  175: I2C_EV_Intr                                Alert
+Page  175: I2C_ER_Intr                               Control            SMBUS PEC
+Page  175: I2C_SMBA_in
+Page  175: I2C_SMBA_out
+Page  175: I2C bus interface can operate both in master mode and slave mode. Switching from master mode to
+Page  175: GENSTART=1 is set (Start condition is activated), the I2C bus interface switches from slave mode to
+Page  175: the I2C_CTRL1 register to reduce noise on bus on a large scale. The filter time is DLFT x tI2C_CLK.
+Page  175: The digital filter is not allowed to be altered when the I2C is enabled.
+Page  176: ― 7: All addresses, excluding those reserved by I2C
+Page  176: Clock stretching is enabled by default (STRETCH=0 in the I2C_CTRL1 register). The slave can hold the
+Page  176: the STRETCH must be set in the I2C_CTRL1 register. It should be noted that the clock stretching
+Page  176: capability of I2C slave must be configured before the I2C peripherals are enabled.
+Page  176: I2C slave stretches the SCL clock in one of the following conditions:
+Page  176: (ADDRF=1 in the I2C_STS), the SCL line is pulled down until the ADDRF is cleared by setting
+Page  176: the ADDRC in the I2C_CLR.
+Page  176: I2C_RXDT register is read, the I2C will hold the SCL bus low to wait for the software to read
+Page  176: I2C_RXDT register.
+Page  176:  Data transmission: If no data is written when the ADDRF is cleared, TDBE= 1 in the I2C_STS,
+Page  176: then the SCL line will be pulled down until the data is written to the I2C_TXDT.
+Page  176:  Data transmission: If no data is written to the I2C_TXDT after the completion of the previous data
+Page  176: transfer, the SCL line will be pulled down until data is written to the I2C_TXDT.
+Page  176:  When slave data control mode is selected (SCTRL=1 in the I2C_CTRL1) and RLDEN=1 in the
+Page  176: I2C_CTRL2 register, if TCRLD = 1, indicating the completion of the last data transfer, then the
+Page  176: written to the CNT bit in the I2C_CTRL2 register.
+Page  176: The SCL clock is disabled when STRETCH=1 in the I2C_CTRL1 register, with the following conditions
+Page  177: the local address enabled (ADDRF=1 in the I2C_STS).
+Page  177:     Data reception: If there is data to be read in the I2C_RXDT register before the next ACK signal,
+Page  177: an overflow will occur, and the OUF bit will also be set in the I2C_STS register.
+Page  177:     Data transmission: If no data is written to the I2C_TXDT register after the completion of the
+Page  177: previous data transfer, an underflow will occur, and the OUF will also be set in the I2C_STS
+Page  177: I2C core is clocked by I2C_CLK whereas the I2C_CLK is clocked by PCLK1. The PCLK1 should be set
+Page  177: The corresponding bits in the I2C_CLKCTRL register are used for timing configuration.
+Page  177: — DIV[7: 0]: I2C clock divider
+Page  177: Note: Timing configuration cannot be modified once the I2C is enabled.
+Page  177: 0], SDAD[3: 0] and SCLD[3: 0] in the I2C_CLKCTRL register.
+Page  177: tSDAD = SDAD x (DIV + 1) x tI2C_CLK
+Page  177: tSYNC = (DLFT + 3) x tI2C_CLK - tf
+Page  177: ― Digital filter input latency (DLFT x tI2C_CLK)
+Page  177: ― Synchronization delay between SCL and I2C_CLK (2~3 I2C_CLK cycles)
+Page  177: tSU;DAT = SCLD x (DIV+1) x tI2C_CLK – tr
+Page  178: 0], SCLH[7: 0] and SCLL[7: 0] in the I2C_CLKCTRL register.
+Page  178: tHIGH = (SCLH + 1) x (DIV + 1) x tI2C_CLK
+Page  178: TLow = (SCLL + 1) x (DIV + 1) x tI2C_CLK
+Page  178: Table 11-1 I2C timing specifications
+Page  178: Data transfer counter is available in the I2C interface to control communication flow. It is mainly used for:
+Page  178: Generally, the data transfer management counter (by setting the CNT[7:0] in the I2C_CTRL2 ) is
+Page  178: counter with the SCTRL bit in the I2C_CTRL2 register.
+Page  178: The CNT[7:0] bit in the I2C_CTRL2 register is used to configure the number of bytes to be transferred,
+Page  178: has to be set in the I2C_CTRL2 register to enable reload mode. The following configuration processes
+Page  178: ― Step 3: After the completion of 255-byte data transfer, the TCRLD is set in the I2C_STS register,
+Page  179: I2C_STS register, and then set RLDEN=0 to disable reload mode before setting CNT[7:0]=90
+Page  179:  Stop data transfer automatically (ASTOPEN=1 in the I2C_CTRL2)
+Page  179:       Stop data transfer by software (ASTOPEN=0 in the I2C_CTRL2)
+Page  179: be set in the I2C_STS register, and the SCL, at this point, will be pulled low, an interrupt
+Page  179: GENSTOP=1 in the I2C_CTRL2 register, or send a RESTART condition by setting
+Page  179: GENSTART=1 in the I2C_CTRL2 register, before clearing TDC flag by software.
+Page  179: This feature is enabled by setting the SCTRL bit in the I2C_CTRL2 register so that the slave is able to
+Page  179: ― When a byte is received, the TCRLD is set in the I2C_STS register, and the slave will pull the
+Page  179: register and generate an ACK or NACK signal through the NACKEN bit in the I2C_CTRL2
+Page  179: It should be noted that the clock stretching capability must be enabled (STRETCH=0 in the I2C_CTRL1
+Page  179: Table 11-2 I2C configuration table
+Page  179: 1.     I2C clock initialization (by setting the I2C_CLKCTRL register)
+Page  179: ― I2C clock divider: DIV[7: 0]
+Page  180: Artery_I2C_Timing_Configuration can be used to configure this register.
+Page  180: Disable reload mode by setting RLDEN=0 in the I2C_CTRL2 register
+Page  180: Set CNT[7:0]=N in the I2C_CTRL2 register
+Page  180: Enable reload mode by setting RLDEN=1 in the I2C_CTRL register
+Page  180: Set CNT[7:0]=255 in the I2C_CTRL2 register
+Page  180: set in the I2C_STS register, and GENSTOP=1 or GENSTART=1 is written by software to send
+Page  180: ― Set slave address value (by setting the SADDR bit in the I2C_CTRL2 register)
+Page  180: ― Set slave address mode (by setting the ADDR10 bit in the I2C_CTRL2 register)
+Page  180: 5.    Set transfer direction (by setting the DIR bit in the I2C_CTRL2 register)
+Page  180: When GENSTART=1 in the I2C_CTRL2 register, the master starts sending a START condition and
+Page  180: slave address. After receiving the ACK from the slave, ADDRF=1 is asserted in the I2C_STS
+Page  180: register. The ADDRF flag can be cleared by setting ADDRC=1 in the I2C_CLR register, and then
+Page  180: 1. I2C_TXDT data register is empty, the shift register is empty, TDIS=1 in the I2C_STS register;
+Page  180: 6. If TCRLD=1 (reload mode) in the I2C_STS register, the following two circumstances should
+Page  180: 1. After the slave address is matched, ADDRF=1 in the I2C_STS register, clear ADDRF flag by
+Page  180: setting ADDRC=1 in the I2C_CLR register, and then it starts sending data;
+Page  180: 4. If TCRLD=1 (reload mode) in the I2C_STS, the following two circumstances should be noted:
+Page  180: ASTOPEN=0: TDC=1 in the I2C_STS register, set GENSTOP=1 to generate a STOP condition
+Page  181: is asserted in the I2C_STS register. The STOPF flag can be cleared by setting STOPC=1 in
+Page  181: the I2C_CLR register, and then transfer stops.
+Page  181: When the host receives an NACK signal during transmission, then ACKFAIL is set in the I2C_STS
+Page  181: Figure 11-4 I2C master transmission flow
+Page  181: Set I2C_CTRL2_CNT = N,
+Page  181: Yes             Wait I2C_STS_STOPF=1
+Page  181: I2C_STS_ACKFAIL=1?                             Set I2C_CLR_STOPC=1
+Page  181: I2C_CLR_ACKFAILC=1
+Page  181: I2C_STS_TDIS=1?
+Page  181: Write I2C_TXDT_DT
+Page  181: Set I2C_CTRL2_GENSTOP = 1
+Page  181: Wait I2C_STS_STOPF=1
+Page  181: Set I2C_CLR_STOPC=1
+Page  181: I2C_STS_TDC = 1 ?                                                                 Restart ?
+Page  181: Wait I2C_STS_STOPF=1
+Page  181: I2C_STS_TCRLD = 1 ?
+Page  181: Set I2C_CLR_STOPC=1
+Page  182: Figure 11-5 Transfer sequence of I2C master transmitter
+Page  182: I2C master transmitter N bytes
+Page  182: 1. I2C_CTRL2_CNT = N
+Page  182: 2. I2C_CTRL2_SADDR = slave address
+Page  182: 3. I2C_CTRL2_ASTOPEN = 1
+Page  182: 4. I2C_CTRL2_GENSTART = 1
+Page  182: EV1. I2C_STS_ADDRF=1,set I2C_CLR_ADDRC=1
+Page  182: EV2. I2C_STS_TDIS = 1, write Data1
+Page  182: EV3. I2C_STS_TDIS = 1, write Data2                                                                                  A = Acknowledge
+Page  182: EV4. I2C_STS_TDIS = 1, write Data3                                                                                  P = Stop
+Page  182: EV5. I2C_STS_TDIS = 1, write DataN                                                          Slave to Master
+Page  182: EV6. I2C_STS_STOPF =1, set I2C_CLR_STOPC =1
+Page  182: Figure 11-6 I2C master receive flow
+Page  182: Set I2C_CTRL2_CNT = N ,
+Page  182: I2C_STS_RDBF=1?
+Page  182: Read I2C_RXDT_DT
+Page  182: Set I2C_CTRL2_GENSTOP = 1
+Page  182: Wait I2C_STS_STOPF=1
+Page  182: Set I2C_CLR_STOPC=1
+Page  182: I2C_STS_TDC = 1 ?                                                                           Restart ?
+Page  182: Wait I2C_STS_STOPF=1
+Page  182: I2C_STS_TCRLD = 1 ?
+Page  182: Set I2C_CLR_STOPC=1
+Page  183: Figure 11-7 Transfer sequence of I2C master receiver
+Page  183: I2C master receiver N bytes
+Page  183: 1. I2C_CTRL2_CNT = N
+Page  183: 2. I2C_CTRL2_SADDR = slave address
+Page  183: 3. I2C_CTRL2_ASTOPEN = 1
+Page  183: 4. I2C_CTRL2_GENSTART = 1
+Page  183: EV1. I2C_STS_ADDRF = 1, set I2C_CLR_ADDRC                                                                                                                            S = Start
+Page  183: EV2. I2C_STS_RDBF = 1, read Data1                                                                                                                                    A = Acknowledge
+Page  183: EV3. I2C_STS_RDBF = 1, read Data2                                                                                                                                    P = Stop
+Page  183: EV4. I2C_STS_RDBF = 1, read DataN                                                                                                    Slave to Master
+Page  183: EV5. I2C_STS_STOPF=1, set I2C_CLR_STOPC
+Page  183: In 10-bit addressing mode, the READH10 bit of the I2C_CTRL2 register is used to generate a special
+Page  184: 1.   I2C clock initialization (by setting the I2C_CLKCTRL register)
+Page  184: ― I2C clock divider: DIV[7: 0]
+Page  184: This register can be configured by means of Artery_I2C_Timing_Configuration tool.
+Page  184: 7-bit address: by setting ADDR1MODE = 0 in the I2C_OADDR register
+Page  184: 10-bit address: by setting ADDR1MODE = 1 in the I2C_OADDR register
+Page  184: ― Set address 1: by setting the ADDR1 bit in the I2C_OADDR1 register
+Page  184: ― Enable address 1: by setting ADDR1EN=1 in the I2C_OADDR1 register
+Page  184: ― Set address 2: by setting the ADDR2 bit in the I2C_OADDR2 register
+Page  184: ― Set address 2 mask bit: by setting the ADDR2MASK bit in the I2C_OADDR2 register
+Page  184: ― Enable address 2: by setting ADDR2EN=1 in the I2C_OADDR2 register
+Page  184: When the local address is received, the ADDRF bit is set in the I2C_STS register. The data transfer
+Page  184: direction can be obtained by read access to the SDIR bit in the I2C_STS register. When SDIR=0,
+Page  184: data. The ADDR[6:0] bit of the I2C_STS register indicates what kind of address has been received,
+Page  184: Data transfer starts when the ADDRF is cleared by setting ADDRC=1 of the I2C_CLR register.
+Page  184: 1. I2C_TXDT data register becomes empty, the shift register becomes empty, and TDIS=1 in the
+Page  184: I2C_STS register;
+Page  184: 6. Wait for the generation of an NACK signal. Once received, the ACKFAILF is set in the I2C_STS
+Page  184: 7. Wait for the generation of a STOP condition. Once received, the STOPF is set in the I2C_STS
+Page  184: the generation of SDA edge), an underrun error may occur, and the OUF bit is set in the I2C_STS
+Page  185: 1. I2C_RXDT register becomes empty, the shift register becomes empty, and RDBF=0 in the
+Page  185: I2C_STS register;
+Page  185: 4. Wait for the generation of a STOP condition. Once received, the STOPF is set in the I2C_STS
+Page  185: register. The STOPF can be cleared by writing 1 to the STOPC bit in the I2C_CLR register,
+Page  185: next data reception, an overrun error occurs, setting the OUF bit in the I2C_STS register, and
+Page  186: Figure 11-10 I2C slave transmission flow
+Page  186: I2C_TXDT_DT )
+Page  186: I2C_STS_ADDRF=1?
+Page  186: Read I2C_STS_ADDR
+Page  186: Read I2C_STS_SDIR
+Page  186: Set I2C_CLR_ADDRC =1
+Page  186: I2C_STS_ACKFAIL=1?
+Page  186: Write I2C_CLR_ACKFAILC                                                                                     No
+Page  186: I2C_STS_TDIS=1?
+Page  186: I2C_STS_STOPF=1?
+Page  186: Yes                                            Write I2C_TXDT_DT
+Page  186: Set I2C_STS_TDBE = 1
+Page  186: and I2C_CLR_TDIS = 1
+Page  186: Set I2C_CLR_STOPC = 1
+Page  186: Figure 11-11 I2C slave transmission timing
+Page  186: I2C Slave transfer N bytes to I2C master
+Page  186: EV1. I2C_STS1_ADDRF = 1, set I2C_CLR_ADDRC = 1                                         Master to Slave     S = Start
+Page  186: EV2. write Data1, I2C_STS1_TDIS = 0                                                                        A = Acknowledge
+Page  186: EV3. write Data2, I2C_STS1_TDIS = 0                                                                        P = Stop
+Page  186: EV4. write Data3, I2C_STS1_TDIS = 0                                                    Slave to Master
+Page  186: EV5. write DataN, I2C_STS1_TDIS = 0
+Page  186: EV6. I2C_STS_STOPF, set I2C_CLR_STOPC
+Page  187: Figure 11-12 I2C slave receive flow
+Page  187: I2C_STS_ADDRF=1?
+Page  187: Read I2C_STS_ADDR
+Page  187: Read I2C_STS_SDIR
+Page  187: Set I2C_CLR_ADDRC =1
+Page  187: I2C_STS_STOPF=1?                                              Set I2C_CLR_STOPC=1
+Page  187: I2C_STS_RDBF=1?
+Page  187: Read I2C_RXDT_DT
+Page  187: Figure 11-13 I2C slave receive timing
+Page  187: I2C Slave receiver N bytes from I2C master
+Page  187: EV1. I2C_STS_ADDRF = 1, set I2C_CLR_ADDRC                                              Master to Slave        S = Start
+Page  187: EV2. I2C_STS_RDBF = 1, read Data1                                                                             A = Acknowledge
+Page  187: EV3. I2C_STS_RDBF = 1, read Data2                                                                             P = Stop
+Page  187: EV4. I2C_STS_RDBF = 1, read DataN                                                      Slave to Master
+Page  187: EV5. I2C_STS_STOPF = 1, set I2C_CLR_STOPC
+Page  188: communicate with each other. It is based on I2C. With SMBus, the device can provide manufacturer
+Page  188: Differences between SMBus and I2C
+Page  188: another, or even keeping STOP and other parameter monitor. There is no limit for I2C.
+Page  188: 2. SMBus transmission speed ranges from 10 kHz to 100 kHz. In contrast, I2C has no minimum
+Page  188: 3. After reset, SMBus needs timeout, but there is no limit for I2C in this regard.
+Page  188: Setting the DEVADDREN bit in the I2C_CTRL1 register can enable the I2C interface to recognize the
+Page  188: In host mode (HADDREN =1), the I2C interface is enabled to recognize the 0b0001000x (default host
+Page  189: ― Host: PEC transfer is enabled by setting PECTEN=1 in the I2C_CTRL2 register. The host sends
+Page  189: ― Slave: PEC transfer is enabled by setting PECTEN=1 in the I2C_CTRL2 register. When the
+Page  189: in the I2C_STS register. In case of slave transmission mode, a NACK must follow the PEC
+Page  189: The I2C peripherals embeds two counters for timeout detection, which can be configured through the
+Page  189: I2C_TIMEOUT register. When a timeout event occurs, the TMOUT is set in the I2C_STS register. The
+Page  189: TMOUT bit can be cleared by writing 1 to the TMOUTC bit in the I2C_CLR register.
+Page  189: Timeout duration= (EXTTIME + 1) x 2048 x TI2C_CLK
+Page  189: TOMODE=0: Low level timeout detection, timeout duration =(TOTIME + 1) x 2048 x TI2C_CLK
+Page  189: TOMODE=1: High level timeout detection, timeout duration =(TOTIME + 1) x 4 x TI2C_CLK
+Page  189: tTIMEOUT          TOMODE=0                    TOEN=1          (TOTIME + 1) x 2048 x TI2C_CLK
+Page  189: tLOW:SEXT         -                           EXTEN=1         (EXTTIME + 1) x 2048 x TI2C_CLK
+Page  189: tLOW:MEXT         -                           EXTEN=1         (EXTTIME + 1) x 2048 x TI2C_CLK
+Page  190: 3. Slave receive byte control mode can be enabled (with SCTRL bit in the I2C_CTRL1) in slave mode,
+Page  190: 4. Other configurations follow the I2C
+Page  190: However, the detailed SMBus protocol implementation should be handled by software, since the I2C
+Page  190: The SMBus is similar to the I2C in terms of master communication flow.
+Page  190: 1. I2C clock initialization (by setting the I2C_CLKCTRL register)
+Page  190: ― I2C clock divider: DIV[7: 0]
+Page  190: The register can be configured by means of Artery_I2C_Timing_Configuration tool.
+Page  190: ― Enable PEC calculation: Set PECEN=1 in the I2C_CTRL1 register
+Page  190: ― Enable PEC transfer: Set PECTEN=1 in the I2C_CTRL2 register
+Page  190: ― Disable reload mode by setting RLDEN=0 in the I2C_CTRL2 register.
+Page  190: ― Set CNT[7:0]=N in the I2C_CTRL2 register.
+Page  190: set in the I2C_STS register, and GENSTOP=1 or GENSTART=1 is written by software to send
+Page  190: ― Set slave address value (by setting the SADDR bit in the I2C_CTRL2 register)
+Page  191: ― Set 7-bit slave address mode (by setting the ADDR10=0 in the I2C_CTRL2 register)
+Page  191: 6.   Set transfer direction (by setting the DIR bit in the I2C_CTRL2 register)
+Page  191: In case of GENSTART=1 in the I2C_CTRL2 register, the master starts sending a START condition
+Page  191: and slave address. After receiving the ACK from the slave, ADDRF=1 is asserted in the I2C_STS
+Page  191: register. The ADDRF flag can be cleared by setting ADDRC=1 in the I2C_CLR register, and then
+Page  191: 1. I2C_TXDT data register is empty, the shift register is empty, TDIS=1 in the I2C_STS register;
+Page  191: ASTOPEN=0: TDC=1 in the I2C_STS register, set GENSTOP=1 to generate a STOP condition.
+Page  191: is asserted in the I2C_STS register. The STOPF flag can be cleared by setting STOPC=1 in
+Page  191: the I2C_CLR register, and then transfer stops.
+Page  192: Set I2C_CTRL2_CNT = N+1
+Page  192: I2C_CT RL1_PE CEN=1
+Page  192: I2C_CT RL2_PE CTEN=1
+Page  192: Yes           Wait I2C_STS_STOPF=1
+Page  192: I2C_STS_ACKFAIL=1?                             Set I2C_CLR_STOPC=1
+Page  192: I2C_CLR_ACKFAILC=1
+Page  192: I2C_STS_TDIS=1?
+Page  192: Write I2C_TXDT_DT
+Page  192: Wait I2C_STS_STOPF=1
+Page  192: Set I2C_CLR_STOPC=1
+Page  192: I2C_STS_TDC = 1 ?
+Page  192: Set I2C_CTRL2_GENSTOP = 1
+Page  192: Restart ?                                  Wait I2C_STS_STOPF=1
+Page  192: Set I2C_CLR_STOPC=1
+Page  193: 1. I2C_CTRL2_CNT = N+ 1
+Page  193: 2. I2C_CTRL2_SADDR = slave address
+Page  193: 3. I2C_CTRL2_ASTOPEN = 1
+Page  193: 4. I2C_CTRL1_PECEN = 1
+Page  193: 5. I2C_CTRL2_PECTEN = 1
+Page  193: 6. I2C_CTRL2_GENSTART = 1
+Page  193: EV1. I2C_STS_ADDRF=1, set I2C_CLR_ADDRC=1
+Page  193: EV2. I2C_STS_TDIS = 1 , write Data1                                                                    S = Start
+Page  193: EV3. I2C_STS_TDIS = 1 , write Data2                                                                    A = Acknowledge
+Page  193: EV4. I2C_STS_TDIS = 1 , write Data3                                                                    P = Stop
+Page  193: EV5. I2C_STS_TDIS = 1 , write DataN                                                 Slave to Master
+Page  193: EV6. I2C_STS_STOPF =1,set I2C_CLR_STOPC =1
+Page  193: Set I2C_CTRL2_CNT = N+1
+Page  193: I2C_CT RL1_PE CEN=1
+Page  193: I2C_CT RL2_PE CTEN=1
+Page  193: I2C_STS_RDBF=1?
+Page  193: Read I2C_RXDT_DT
+Page  193: Set I2C_CTRL2_GENSTOP = 1
+Page  193: Wait I2C_STS_STOPF=1
+Page  193: Set I2C_CLR_STOPC=1
+Page  193: I2C_STS_TDC = 1 ?                                                           Restart ?
+Page  193: Wait I2C_STS_STOPF=1                                            Configure CNT and slave address
+Page  193: Set I2C_CLR_STOPC=1                                                     GENSTART = 1
+Page  194: 1. I2C_CTRL2_CNT = N+ 1
+Page  194: 2. I2C_CTRL2_SADDR = slave address
+Page  194: 3. I2C_CTRL2_ASTOPEN = 1
+Page  194: 4. I2C_CTRL1_PECEN = 1
+Page  194: 5. I2C_CTRL2_PECTEN = 1
+Page  194: 6. I2C_CTRL2_GENSTART = 1
+Page  194: EV1. I2C_STS_ADDRF = 1, set I2C_CLR_ADDRC
+Page  194: EV2. I2C_STS_RDBF, read Data1                                                                   S = Start
+Page  194: EV3. I2C_STS_RDBF, read Data2                                                                   A = Acknowledge
+Page  194: EV4. I2C_STS_RDBF, read DataN                                                                   P = Stop
+Page  194: EV5. I2C_STS_RDBF, read PEC                                                 Slave to Master
+Page  194: EV6. I2C_STS_STOPF=1, set I2C_CLR_STOPC
+Page  194: The SMBus is similar to the I2C in terms of slave communication flow.
+Page  194: 1. I2C clock initialization (by setting the I2C_CLKCTRL register)
+Page  194: ― I2C clock divider: DIV[7: 0]
+Page  194: The register can be configured by means of Artery_I2C_Timing_Configuration tool.
+Page  194: ― Set 7-bit address mode: by setting ADDR1MODE = 0 in the I2C_OADDR register;
+Page  194: ― Set address 1: by setting the ADDR1 bit in the I2C_OADDR1 register;
+Page  194: ― Enable address 1: by setting ADDR1EN=1 in the I2C_OADDR1 register.
+Page  194: ― Enable PEC calculation: Set PECEN=1 in the I2C_CTRL1 register;
+Page  194: Slave transmit: disable byte control mode by setting SCTRL=0 in the I2C_CTRL1 register.
+Page  194: Slave receive: enable byte control mode by setting SCTRL=1 in the I2C_CTRL1 register.
+Page  194: When the local address is received, the ADDRF bit is set in the I2C_STS register. The data transfer
+Page  194: direction can be obtained by read access to the SDIR bit in the I2C_STS register. When SDIR=0,
+Page  194: data. The ADDR[6:0 bit of the I2C_STS register indicates what kind of address has been received,
+Page  194: Enable PEC transfer: by setting PECTEN=1 in the I2C_CTRL2 register.
+Page  194: ― Slave transmit: by setting CNT=N in the I2C_CTRL2 register
+Page  194: ― Slave receive: by setting CNT=1 in the I2C_CTRL2 register
+Page  194: ― Slave transmit: by setting RLDEN=0 in the I2C_CTRL2 register
+Page  194: ― Slave receive: by setting RLDEN=1 in the I2C_CTRL2 register
+Page  195: The ADDRF flag can be cleared by setting ADDRC=1 in the I2C_CLR register, and then data
+Page  195: 1. I2C_TXDT data register becomes empty, the shift register becomes empty, and TDIS=1 in the
+Page  195: I2C_STS register;
+Page  195: 7. Wait for the generation of an NACK signal. Once received, the ACKFAILF is set in the I2C_STS
+Page  195: 8. Wait for the generation of a STOP condition. Once received, the STOPF is set in the I2C_STS
+Page  195: 1. I2C_RXDT register becomes empty, the shift register becomes empty, and RDBF=0 in the
+Page  195: I2C_STS register;
+Page  195: 4. NACKEN bit of the I2C_CTRL register can be configured to generate an ACK or NACK, if
+Page  195: 6. Set RLDEN=0 of the I2C_CTRL2 register to disable reload mode. Set CNT=1 to repeat step
+Page  195: 7. Wait for the generation of a STOP condition. Once received, the STOPF is set in the I2C_STS
+Page  195: register. The STOPF can be cleared by writing 1 to the STOPC bit in the I2C_CLR register,
+Page  196: I2C_CTRL1_PECEN = 1
+Page  196: I2C_STS_ADDRF=1?
+Page  196: Set I2C_CTRL2_CNT =N+ 1
+Page  196: I2C_CTRL2_PECTEN = 1
+Page  196: I2C_CLR_ADDRC =1
+Page  196: I2C_STS_ACKFAIL=1?
+Page  196: Write I2C_CLR_ACKFAILC                                                                                                No
+Page  196: I2C_STS_TDIS=1?
+Page  196: I2C_STS_STOPF=1?
+Page  196: Yes                                                Write I2C_TXDT_DT
+Page  196: Set I2C_STS_TDBE = 1
+Page  196: and I2C_CLR_TDIS = 1
+Page  196: Set I2C_CLR_STOPC = 1
+Page  196: EV1.I2C_STS_ADDRF = 1, set I2C_CTRL2 CNT = N+1, PECTEN = 1,
+Page  196: I2C_CLR_ADDRC = 1                                                                Master to Slave     S = Start
+Page  196: EV2. I2C_STS_TDIS, write Data1                                                                       A = Acknowledge
+Page  196: EV3. I2C_STS_TDIS, write Data2                                                                       P = Stop
+Page  196: EV4. I2C_STS_TDIS, write Data3                                                   Slave to Master
+Page  196: EV5. I2C_STS_TDIS, write DataN
+Page  196: EV6. I2C_STS_STOPF =1, set I2C_CLR_STOPC =1
+Page  197: I2C_CTRL1_PECEN = 1
+Page  197: Read I2C_RXDT_DT
+Page  197: No                                        Set I2C_CTRL2_NACKEN = 0
+Page  197: I2C_CTRL2_RLDEN =0
+Page  197: I2C_STS_ADDRF=1?                                                                         I2C_CTRL2_CNT = 1
+Page  197: Set I2C_CTRL2, CNT = 1,                                                                                                         No
+Page  197: RLDEN=1 , PECTEN = 1                                                                    I2C_STS_RDBF = 1?
+Page  197: Set I2C_CLR_ADDRC =1
+Page  197: Read I2C_RXDT_DT
+Page  197: I2C_STS_RDBF=1?                                                                                                           No
+Page  197: I2C_STS_STOPF=1?
+Page  197: I2C_STS_TCRLD=1?
+Page  197: Set I2C_CLR_STOPC = 1
+Page  197: Read I2C_RXDT_DT
+Page  197: Set I2C_CTRL2_NACKEN =0
+Page  197: I2C_CTRL2_CNT =1
+Page  197: EV1. I2C_STS_ADDR =1, Set I2C_CTRL2 CNT = N+1 ,PECTEN = 1,and set               Master to Slave        S = Start
+Page  197: I2C_CLR_ADDRC =1                                                                                       A = Acknowledge
+Page  197: EV2. I2C_STS_RDBF, read Data1                                                                          P = Stop
+Page  197: EV3. I2C_STS_RDBF, read Data2                                                   Slave to Master
+Page  197: EV4. I2C_STS_RDBF, read DataN
+Page  197: EV5. I2C_STS_RDBF, read PEC
+Page  197: EV6. I2C_STS_STOPF = 1, set I2C_CLR_STOPC
+Page  198: I2C data transfer can be done using DMA controller so as to reduce the burden on the CPU. The TDIEN
+Page  198: 1. Set the peripheral address (DMA_CxPADDR= I2C_TXDT address);
+Page  198: 7. Enable I2C DMA request by setting DMAEN=1 in the I2C_CTRL2 register. Once the TDBE bit
+Page  198: in the I2C_STS1 register is set, the data is loaded from the programmed memory to the I2C_DT
+Page  198: 9. Master transmitter: Refer to I2C master communication flow for the generation of STOP
+Page  198: Slave transmitter: Refer to I2C slave communication flow for the generation of STOP condition.
+Page  198: 1. Set the peripheral address (DMA_CxPADDR = I2C_RXDT address)
+Page  198: 7. Enable I2C DMA request by setting DMAEN=1 in the I2C_CTRL2 register. Once the RDBE bit
+Page  198: in the I2C_STS1 register is set, the data is loaded from the I2C_DT register to the programmed
+Page  198: 9. Master receiver: Refer to I2C master communication flow for the generation of STOP condition.
+Page  198: Slave receiver: Refer to I2C slave communication flow for the generation of STOP condition.
+Page  198: The error management feature included in the I2C provides a guarantee for the reliability of
+Page  198: Table 11-6 I2C error events
+Page  199: in the I2C_CTRL1 register).
+Page  199: may occur, and the OUF bit is set in the I2C_STS register, sending 0xFF to the bus.
+Page  199: the next data reception, an overrun error occurs, setting the OUF bit in the I2C_STS register, and
+Page  199: Once an arbitration lost is detected, the ARLOST is set by hardware in the I2C_STS register. The SCL
+Page  199: in the I2C_STS register.
+Page  199: bit is set by hardware in the I2C_STS register
+Page  199: to low), the ALERTF bit is set by hardware in the I2C_STS register.
+Page  199: chapter) is detected, the TMOUT is set by hardware in the I2C_STS register. If a timeout error occurs in
+Page  200: The following table lists all the I2C interrupt requests.
+Page  200: Table 11-7 I2C interrupt requests
+Page  200: to work or stops, depending on the I2Cx_SMBUS_TIMEOUT configuration bit in the DEBUG module.
+Page  200: Table 11-8 I2C register map and reset values
+Page  200: I2C_CTRL1                               0x00                   0x00000000
+Page  200: I2C_CTRL2                               0x04                   0x00000000
+Page  200: I2C_OADDR1                              0x08                   0x00000000
+Page  200: I2C_OADDR2                              0x0C                   0x00000000
+Page  200: I2C_CLKCTRL                             0x10                   0x00000000
+Page  200: I2C_TIMEOUT                             0x14                   0x00000000
+Page  200: I2C_STS                                 0x18                   0x00000000
+Page  200: I2C_CLR                                 0x1C                   0x00000000
+Page  200: I2C_PEC                                 0x20                   0x00000000
+Page  200: I2C_RXDT                                0x24                   0x00000000
+Page  200: I2C_TXDT                                0x28                   0x00000000
+Page  201: 11.7.1 Control register 1 (I2C_CTRL1)
+Page  201: Filter time = DFLT x TI2C_CLK
+Page  202: I2C peripheral enable
+Page  202: Bit 0        I2CEN         0x0             rw       0: Disabled
+Page  202: 11.7.2 Control register 2 (I2C_CTRL2)
+Page  203: 11.7.3 Address register 1 (I2C_OADDR1)
+Page  203: 11.7.4 Own address register 2 (I2C_OADDR2)
+Page  203: I2C
+Page  203: 11.7.5 Timing register (I2C_CLKCTRL)
+Page  203: TSCLD = (SCLD + 1) x (DIV + 1) x TI2C_CLK
+Page  203: TSDAD = (SDAD + 1) x (DIV + 1) x TI2C_CLK
+Page  203: TSCLH = (SCLH + 1) x (DIV + 1) x TI2C_CLK
+Page  203: TSCLL = (SCLL + 1) x (DIV + 1) x TI2C_CLK
+Page  203: 11.7.6 Timeout register (I2C_TIMEOUT)
+Page  203: Timeout duration = (EXTTIME + 1) x 2048 x TI2C_CLK.
+Page  204: Bit 11: 0     TOTIME[11:0]   0x000               rw    Timeout duration = (TOTIME + 1) x 2048 x TI2C_CLK
+Page  204: Timeout duration = (TOTIME + 1) x 4 x TI2C_CLK
+Page  204: 11.7.7 Status register (I2C_STS)
+Page  205: 0: Data has been written to the I2C_TXDT
+Page  205: 1: Data has been sent from the I2C_TXDT to the shift
+Page  205: register. I2C_TXDT become empty, and thus the to-be-
+Page  205: transferred data must be written to the I2C_TXDT.
+Page  205: I2C_TXDT register in advance.
+Page  205: 0: I2C_TXDT not empty
+Page  205: 1: I2C_TXDT empty
+Page  205: I2C_TXDT register. The I2C_TXDT register can be cleared
+Page  205: 11.7.8 Status clear register (I2C_CLR)
+Page  206: 11.7.9 PEC register (I2C_PEC)
+Page  206: 11.7.10 Receive data register (I2C_RXDT)
+Page  206: 11.7.11 Transmit data register (I2C_TXDT)
+Page  693: I2C1     USART1
+Page  693: I2C2     USART2
+Page  693: I2C3     USART3
+Page  693: 16          I2C1_RX           48             TMR1_HALL                            80             reserved                     112                I2S3_EXT_RX
+Page  693: 17          I2C1_TX           49             TMR8_CH1                             81             reserved                     113                I2S3_EXT_TX
+Page  693: 18          I2C2_RX           50             TMR8_CH2                             82             reserved                     114                USART6_RX
+Page  693: 19          I2C2_TX           51             TMR8_CH3                             83             reserved                     115                USART6_TX
+Page  693: 20          I2C3_RX           52             TMR8_CH4                             84             reserved                     116                UART7_RX
+Page  694: 21              I2C3_TX               53        TMR8_OVERFLOW 85               reserved          117     UART7_TX
+Page  711: registers during debugging; For I2C, the user can select whether or not to stop or continue SMBUS
+Page  713: I2C3 pause control bit
+Page  713: Bit 28        I2C3_SMBUS_TIMEOUT   0x0          rw        0: I2C3 SMBUS timeout control works normally
+Page  713: 1: I2C3 SMBUS timeout control stops running
+Page  713: I2C2 pause control bit
+Page  713: Bit 27        I2C2_SMBUS_TIMEOUT   0x0          rw        0: I2C2 SMBUS timeout control works normally
+Page  713: 1: I2C2 SMBUS timeout control stops running
+Page  714: I2C1 pause control bit
+Page  714: Bit 24       I2C1_SMBUS_TIMEOUT   0x0         rw     0: I2C1 SMBUS timeout control works normally
+Page  714: 1: I2C1 SMBUS timeout control stops running
+Page  716: 2021.12.01    2.01     Updated I2C description, and revised some typos.
+Page  716: 4. Updated Section 11.7.2 Control register 2 (I2C_CTRL2)
+Page  716: 12. Updated 11.7.1 Control register 1 (I2C_CTRL1)
+Page  716: 5. Updated the descriptions of Section 11 I2C interface

@@ -1,0 +1,6 @@
+Keyword: automatic clock calibration
+Occurrences: 2
+================================================================================
+
+Page    1: +105 °C, with automatic clock calibration (ACC)
+Page   44: interface, HICK with automatic clock calibration (ACC), 12-bit ADC, 12-bit DAC, programmable voltage

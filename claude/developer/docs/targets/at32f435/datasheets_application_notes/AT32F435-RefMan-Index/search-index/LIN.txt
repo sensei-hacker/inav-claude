@@ -1,0 +1,594 @@
+Keyword: LIN
+Occurrences: 590
+================================================================================
+
+Page    1: − External memory controller (XMC) with 16-bit data             − Up to 4 x USARTs/4 x UARTs (ISO7816 interface, LIN,
+Page    1: resolution, hardware oversampling up to equivalent
+Page    5: 6.2.12 External interrupt/wake-up lines .................................................. 139
+Page   16: 18.4.2.3 Sampling and conversion sequence ........................................ 363
+Page   16: 18.4.5 Oversampling ............................................................................. 366
+Page   16: 18.4.5.1 Oversampling of ordinary group of channels ............................ 367
+Page   16: 18.4.5.2 Oversampling of preempted group of channels ........................ 368
+Page   17: 18.6.4 ADC sampling time register 1 (ADC_SPT1) .................................. 380
+Page   17: 18.6.5 ADC sampling time register 2 (ADC_SPT2) .................................. 382
+Page   17: 18.6.15 ADC oversampling register (ADC_ OVSP) ................................. 386
+Page   29: 27.8.13 DVP enhanced horizontal scaling factor register (DVP_HSCF) ... 668
+Page   29: 27.8.14 DVP enhanced vertical scaling factor register (DVP_VSCF) ....... 668
+Page   30: 29.3.7 Linked table transfer mechanism ................................................. 689
+Page   30: 29.5.11 DMA linked table control register (DMA_SxLLCTRL) .................. 706
+Page   30: 29.5.12 DMA linked table pointer register (DMA_SxLLP) ( x = 1…8) ........ 706
+Page   33: Figure 12-2 BFF and FERR detection in LIN mode .................................................................................. 210
+Page   33: Figure 12-6 Mute mode using Idle line or Address mark detection ........................................................... 212
+Page   33: Figure 12-11 Data sampling for noise detection ........................................................................................ 219
+Page   36: Figure 18-9 Ordinary oversampling restart mode selection ...................................................................... 367
+Page   36: Figure 18-10 Ordinary oversampling trigger mode ................................................................................... 368
+Page   36: Figure 18-11 Oversampling of preempted group of channels ................................................................... 368
+Page   38: Figure 27-13 PCDC/PCDS and line structure ........................................................................................... 657
+Page   39: Figure 29-8 Linked list pointers ................................................................................................................. 689
+Page   40: Table 9-4 DMAMUX EXINT LINE for trigger input and synchronized input .............................................. 160
+Page   41: Table 12-2 Data sampling over start bit and noise detection .................................................................... 218
+Page   41: Table 12-3 Data sampling over valid data and noise detection................................................................. 218
+Page   41: Table 18-3 Correlation between maximum cumulative data, oversampling multiple and shift digits ........ 366
+Page   43: Table 29-4 DMAMUX EXINT LINE for trigger input and synchronized input ............................................ 694
+Page   50: -2         Fixed      NMI                       CRM clock fail detector (CFD) is linked   0x0000_0008
+Page   50: 6       13                    EXINT0                    EXINT line0 interrupt                     0x0000_0058
+Page   50: 7       14                    EXINT1                    EXINT line1 interrupt                     0x0000_005C
+Page   50: 8       15                    EXINT2                    EXINT line2 interrupt                     0x0000_0060
+Page   50: 9       16                    EXINT3                    EXINT line3 interrupt                     0x0000_0064
+Page   50: 10      17                    EXINT4                    EXINT line4 interrupt                     0x0000_0068
+Page   51: 23   30             EXINT9_5               EXINT line[9: 5] interrupt             0x0000_009C
+Page   51: 40   47             EXINT15_10             EXINT line[15: 10] global interrupt    0x0000_00E0
+Page   53: decremented to zero. It can generate periodic interrupts, so it is often used as multi-task scheduling
+Page   64: The PVM interrupt will be generated through the EXTI line 16 when VDD rises above the PVM threshold.
+Page   66:  Enabling a peripheral interrupt (it is not enabled in the NVIC) and enabling the SEVONPEND bit.
+Page   66:  Configuring an internal EXINT line as an event mode to generate a wakeup event.
+Page   66: external interrupt line in Interrupt mode can wake up the system from Deepsleep mode.
+Page   66: external interrupt line in Event mode can wake up the system from Deepsleep mode.
+Page   71: between 500 MHz and 1200 MHz. The PLL must be configured before enabling it. The reason is that
+Page   72: to the break input of TMR1 and TMR8 and an interrupt is generated. This interrupt is directly linked to
+Page   72: If a failure is detected on the HEXT clock, the CFD interrupt is generated. Such interrupt is directly linked
+Page  110: Note: Disabling the security library will automatically perform mass erase for the main memory and for
+Page  112: Enabling this feature will increase the operating efficiency
+Page  124: The multiplexed function of each IO port line is configured through the GPIOx_MUXL (for pin 0 to 7)
+Page  139: 6.2.12 External interrupt/wake-up lines
+Page  151: EXINT consists of 23 interrupt lines EXINT_LINE[22:0], each of which can generate an interrupt or
+Page  151: falling edge or both edges) as well as trigger modes (edge detection, software trigger or both triggers)
+Page  151: PCx(x=0~15)                    EXINT_LINE[15:0]         EXINT_LINE[22:0]
+Page  151: PEx(x=0~15)                                                                   Falling
+Page  151: PVM output EXINT_LINE[16]        EXINT_LINE[22:16]
+Page  151: ERTC alarm event EXINT_LINE[17]
+Page  151: OTGFS1 wakeup EXINT_LINE[18]
+Page  151: Ethernet wakeup EXINT_LINE[19]
+Page  151: OTGFS2 wakeup EXINT_LINE[20]
+Page  151: ERTC tamper and time stamp EXINT_LINE[21]
+Page  151: ERTC wakeup EXINT_LINE[22]
+Page  151:       Independent trigger selection on each interrupt line
+Page  151: With up to 23 interrupt lines EXINT_LINE[22:0], EXINT can detect not only GPIO external interrupt
+Page  151: It should be noted that these input sources are mutually exclusive. For example, EXINT_LINE0 is
+Page  151: EXINT supports multiple edge detection modes, including rising edge, falling edge or both edges,
+Page  151: interrupt line can be used to generate an event or interrupt.
+Page  152: Interrupt enable or disable on line x
+Page  152: Event enable or disable on line x
+Page  152: Rising polarity configuration bit on line x
+Page  152: interrupt and event on line x.
+Page  152: Bit 22: 0    RPx              0x00000         rw       0: Rising trigger on line x is disabled.
+Page  152: 1: Rising trigger on line x is enable.
+Page  153: Falling polarity configuration bit on line x
+Page  153: These bits are used to select a falling edge to trigger an
+Page  153: interrupt and event on line x.
+Page  153: Bit 22: 0    FPx        0x00000         rw       0: Falling trigger on line x is disabled.
+Page  153: 1: Falling trigger on line x is enabled.
+Page  153: Software trigger on line x
+Page  153: Bit 22: 0    SWTx       0x00000         rw       event on the corresponding interrupt line automatically.
+Page  153: Line x status bit
+Page  153: Bit 22: 0    LINEx      0x00000         Rw1c     1: Interrupt occurred.
+Page  157: EXINT LINE is used as the trigger input for request generators and the synchronized input for requests.
+Page  158: trigger event that can be on a rising edge, falling edge or either of them.
+Page  160: Table 9-4 DMAMUX EXINT LINE for trigger input and synchronized input
+Page  160: LINE                         LINE                            LINE                     LINE
+Page  168: 0x2: Falling edge
+Page  168: 0x3: Rising edge and falling edge
+Page  168: 0x2: Falling edge
+Page  168: 0x3: Rising and falling edges
+Page  174: I2C bus consists of a data line (SDA) and clock line (SCL). It can achieve a maximum of 100 kHz speed
+Page  175: The digital filter is available on both SCL and SDA lines. It is enabled by setting the DFLT[3: 0] bit in
+Page  176: SCL line low for software operation. If the clock stretching capability is not supported by master, then
+Page  176: (ADDRF=1 in the I2C_STS), the SCL line is pulled down until the ADDRF is cleared by setting
+Page  176: then the SCL line will be pulled down until the data is written to the I2C_TXDT.
+Page  176: transfer, the SCL line will be pulled down until data is written to the I2C_TXDT.
+Page  176: TCRLD will be cleared by hardware so as to release the SCL line before a non-zero value is
+Page  177: SCL falling edge             SCL high level detected
+Page  177:  Data hold time (tHD;DAT): refers to the duration from SCL falling edge to SDA output
+Page  177: ― SCL falling edge time tf
+Page  178: the SCLL value. At this point, the SCL line is released and become high.
+Page  178: counter value reaches the SCLH value, the SCL line is pulled low. In the process of SCL remaining high,
+Page  178: tf (ns)          SCL/SDA falling edge            300            300              120              300
+Page  199: An arbitration lost may occur when the device controls the SDA line to output high level but the actual
+Page  199: The SDA line, during a data transfer, must be kept in a stable state when the SCL is in high level. The
+Page  207: protocols, USART also supports widely-used serial communication protocols such as LIN (Local
+Page  207: nCTS                                                                                                         LINEN SCMEN CTSEN
+Page  208: ─ LIN (Local Interconnection Network)
+Page  208: ─ LIN break detection
+Page  209: In this case, the LINEN, CLKEN, SCMEN and IRDAEN bits must be set 0. RX pin is inactive, while TX
+Page  209: USART supports NRZ standard format (Mark/Space), by default. It also supports LIN (Local
+Page  209: 1. LIN mode:
+Page  209: Parameters configuration: LINEN=1, CLKEN=0, STOPBN[1:0]=0, SCMEN=0, SLBEN=0,
+Page  209: LIN master has break frame transmission capability, and thus it is able to send 13-bit low-level LIN
+Page  209: Similarly, LIN slave has break frame detection capability, and thus it is able to detect 11-bit or 12-bit
+Page  210: Figure 12-2 BFF and FERR detection in LIN mode
+Page  210: Parameters configuration: SCMEN=1, LINEN=0, SLBEN=0, IRDAEN=0, CLKEN=1, DBN[1: 0]=1,
+Page  212: Figure 12-6 Mute mode using Idle line or Address mark detection
+Page  212: Idle line detection(WUM = 0)：                             frame2 3 4
+Page  212: In non-LIN mode, a break frame transmission and detection must be in line with this rule. For instance,
+Page  212: stop bit. In LIN mode, refer to Mode selector and configuration process for more details.
+Page  215: data bit into 16 equal parts to achieve oversampling, so the data bit width should not be less than 16
+Page  217:  Non-LIN mode: It is handled as a framing error, and the FERR is set. An interrupt is generated if
+Page  217:  LIN mode: It is handled as a break frame, and the BFF bit is set. An interrupt is generated if the
+Page  218: A start bit detection occurs when the REN bit is set. With the oversampling techniques, the USART
+Page  218: Table 12-2 shows the data sampling over start bit and noise detection.
+Page  218: Table 12-2 Data sampling over start bit and noise detection
+Page  218: Note: If the sampling values on the 3rd, 5th, 7th, 8th, 9th, and 10th bits do not match the above
+Page  218: falling edge.
+Page  218: samples data on the 7th, 8th and 9th bits, with its oversampling techniques, to distinguish valid data input
+Page  218: from noise based on different sampling values, and recover data as well as set NERR (Noise Error Flag)
+Page  218: Table 12-3 Data sampling over valid data and noise detection
+Page  219: Figure 12-11 Data sampling for noise detection
+Page  219: Oversampling
+Page  221: This bit is set by hardware when the CTS status line
+Page  221: 0: No change on the CTS status line
+Page  221: 1: A change occurs on the CTS status line.
+Page  221: This bit is set by hardware when an idle line is detected.
+Page  221: 0: No idle line is detected.
+Page  221: 1: Idle line is detected.
+Page  223: 0: Waken up by idle line
+Page  223: It is set or cleared by software. When the idle line is used
+Page  224: LIN mode enable
+Page  224: Bit 14       LINEN      0x0             rw       0: LIN mode is disabled.
+Page  224: 1: LIN mode is enabled.
+Page  228: If the CLKPHA (clock phase) bit is set to 1, the second edge on the SCK pin (falling edge if the
+Page  228: (falling edge if CLKPOL bit is set, rising edge if CLKPOL bit is reset) will sample data bits. Data are
+Page  229: before disabling the SPI or entering power-saving mode (or disabling SPI system clock).
+Page  230: period before disabling the SPI. The last RDBF must be set before entering power-saving mode (or
+Page  230: disabling SPI system clock).
+Page  230: In slave mode, there is no need to check any flag before disabling the SPI. However, it is required to
+Page  230: slave), the TDBE bit must be set, and the BF must be 0 before disabling the SPI. The power-saving
+Page  230: mode (or disabling SPI system clock) cannot be entered unless the SPI is disabled.
+Page  230: disabling the SPI. And the last RDBF must be set before entering power-saving mode (or disabling SPI
+Page  230: there is no need to check any flags before disabling the SPI. However, the BT must be 0 before entering
+Page  230: power-saving mode (or disabling SPI system clock).
+Page  230: mode, and to avoid conflicts on the data lines by enabling the SCK signal output followed by CS signal.
+Page  233: configure the SPI master before re-enabling the SPI slave for communication.
+Page  234: CLKPOL=0, CLKPHA=0: SCK idle output low, use the first edge for sampling
+Page  234: Sampling     Drive
+Page  235: CLKPOL=0, CLKPHA=0: SCK idle output low, use the first edge for sampling
+Page  235: Sampling     Drive
+Page  235: SLBEN=1: Single line bidirectional mode
+Page  235: CLKPOL=0, CLKPHA=0: SCK idle output low, use the first edge for sampling
+Page  235: SLBEN=1: Single line bidirectional mode
+Page  235: CLKPOL=0, CLKPHA=0: SCK idle output low, use the first edge for sampling
+Page  236: SLBEN=1: Single line bidirectional mode
+Page  236: CLKPOL=0, CLKPHA=0: SCK idle output low, use the first edge for sampling
+Page  236: SLBEN=1: Single line bidirectional mode
+Page  236: CLKPOL=0, CLKPHA=0: SCK idle output low, use the first edge for sampling
+Page  236: Sampling
+Page  237: When the to-be-transmitted data is written between the rising and falling SCK edge corresponding to
+Page  237: When the to-be-transmitted data is written after the falling SCK edge corresponding to the last data of
+Page  239:  Main peripheral clock with a fixed frequency of 256x Fs (audio sampling frequency)
+Page  242: the main clock is always 256 times larger than the audio sampling frequency, the channel bits should be
+Page  245:  CRC check is not available on the I2S. Any operation linked to CRC, including CCERR flag and
+Page  245: before disabling the I2S.
+Page  245: before disabling the I2S.
+Page  246: frequency of output clock signal is set to 256x Fs (audio sampling frequency).
+Page  247: Single line bidirectional half-duplex enable
+Page  247: Single line bidirectional half-duplex transmission direction
+Page  247: output direction in “Single line bidirectional half-duplex”
+Page  252: Timer                 Counter Count    PWM           Complementary Dead-                        Linkage
+Page  258: (STIS=3’b100, channel 1 rising edge and falling edge), C1IFP1 (STIS=3’b101, channel 1 signal with
+Page  263: Encoder mode A: SMSEL=3’b001. The counter counts on the selected C1IFP1 edge (rising and falling
+Page  263: Encoder mode B: SMSEL=3’b010. The counter counts on the selected C2IFP2 edge (rising and falling
+Page  263: falling edges). The counting direction is dependent on the C1IFP1 edge direction and C2IFP2 level, and
+Page  263: to C1IFP1)                      Rising             Falling        Rising          Falling
+Page  264: program sampling frequency and sampling times.
+Page  264: depends on both CxP and CxCP bits. It is possible to select input rising edge, falling edge or both
+Page  265:  Set C2P=1’b1 to set C1IFP2 falling edge active;
+Page  265: values to the C1DT register, and channel 1 input signal rising edge resets the counter. The falling edge
+Page  267: high (CxOCTRL=3’b001), low (CxOCTRL=3’b010) or toggling (CxOCTRL=3’b011).
+Page  269: The timers are linked together internally for timer synchronization. Master timer is selected by setting the
+Page  273: filter sampling frequency (fDT) and timer clock frequency
+Page  274: 1: Low or falling edge
+Page  274: 0000: No filter, sampling by f𝐷𝑇𝑆
+Page  278: 0000: No filter, sampling is done at f𝐷𝑇𝑆
+Page  280: 1: C1IN active edge is on its falling edge. When used as
+Page  285: (STIS=3’b100, channel 1 rising edge and falling edge), C1IFP1 (STIS=3’b101, channel 1 signal with
+Page  285: C2IF_Falling                                                                control
+Page  288: program sampling frequency and sampling times.
+Page  288: depends on both CxP and CxCP bits. It is possible to select input rising edge, falling edge or both
+Page  289:  Set C2P=1’b1 to set C1IFP2 falling edge active;
+Page  289: values to the C1DT register, and channel 1 input signal rising edge resets the counter. The falling
+Page  291: (CxOCTRL=3’b001), low (CxOCTRL=3’b010) or toggling (CxOCTRL=3’b011).
+Page  292: TMR9 and TMR12 are linked together internally for timer synchronization. Slave timer is selected by
+Page  293: digital filter sampling frequency (fDTS) and timer clock
+Page  297: 0000: No filter, sampling is done at f𝐷𝑇𝑆
+Page  298: 1: C1IN active edge is on its falling edge. When used as
+Page  299: digital filter sampling frequency (fDTS) and timer clock
+Page  302: 0000: No filter, sampling is done at f𝐷𝑇𝑆
+Page  302: 1: C1IN active edge is on its falling edge. When used as
+Page  305: (STIS=3’b100, channel 1 rising edge and falling edge), C1IFP1 (STIS=3’b101, channel 1 signal with
+Page  311: Encoder mode A: SMSEL=3’b001. The counter counts on the selected C1IFP1 edge (rising and falling
+Page  311: Encoder mode B: SMSEL=3’b010. The counter counts on the selected C2IFP2 edge (rising and falling
+Page  311: falling edges). The counting direction is dependent on the C1IFP1 edge direction and C2IFP2 level, and
+Page  311: C1IFP1)                     Rising          Falling          Rising             Falling
+Page  312: program sampling frequency and sampling times.
+Page  312: depends on both CxP and CxCP bits. It is possible to select input rising edge, falling edge or both
+Page  313:  Set C2P=1’b1 to set C1IFP2 falling edge active;
+Page  313: values to the C1DT register, and channel 1 input signal rising edge resets the counter. The falling edge
+Page  315: high (CxOCTRL=3’b001), low (CxOCTRL=3’b010) or toggling (CxOCTRL=3’b011).
+Page  317: The dead-time is activated when switching to IDLEF state (OEN falling down to 0).
+Page  317: the reference signal; the rising edge of the CxCOU is delayed compared to the falling edge of the
+Page  319: The timers are linked together internally for timer synchronization. Master timer is selected by setting the
+Page  321: digital filter sampling frequency (fDTS) and timer clock
+Page  322: falling edge
+Page  323: 1: Low or falling edge
+Page  323: 0000: No filter, sampling by f𝐷𝑇𝑆
+Page  328: 0000: No filter, sampling is done at f𝐷𝑇𝑆
+Page  330: 1: C1IN active edge is on its falling edge. When used as
+Page  335:    The downcounter can be reloaded by enabling the counter interrupt.
+Page  338: 40kHz, with its range falling between 30kHz and 60kHz. The timeout period is also within a certain
+Page  346:  Select a rising edge or falling edge to trigger time stamp by setting the TSEDG bit
+Page  346: 1. Select level detection with filter, and valid level sampling times (TPFLT≠00)
+Page  346: 3. Select tamper detection sampling frequency (through the TPFREQ bit )
+Page  347: 2. If a falling edge is configured to enable tamper detection, and the tamper detection pin turns to low
+Page  347: 1. Configure the EXINT line corresponding to ERTC interrupts as an interrupt mode and enable it,
+Page  348: Interrupt events            Event flag                 Interrupt enable bit      EXINT line
+Page  351: 1: Falling edge
+Page  356: Bit 4        TP2EDG     0x0       rw         1: Falling edge
+Page  356: Bit 1        TP1EDG     0x0       rw         1: Falling edge
+Page  358: Its sampling rate is as high as 5.33 MSPS. Each ADC has up to 19 channels (internal + external) for
+Page  358: sampling and conversion, totaling 24 external channel sources for three ADCs.
+Page  358:  Each channel can independently define its own sampling time
+Page  358:  Oversampling: hardware oversampling up to 16-bit resolution
+Page  360: Note: When the ADC is used for sampling VBAT voltage, the VBAT keeps consuming as along as the
+Page  360: VBATEN is set. Thus it is recommended to enable VBAT only during the sampling period, and disable it
+Page  360: at the end of the sampling in order to lower power consumption.
+Page  360: the initial power-on in order to improve the accuracy of sampling and conversion. After the calibration,
+Page  360: trigger is used to enable ADC sampling and conversion. Read data at the end of the conversion.
+Page  362: 01111                               EXINT line11 External pin        11111                          Reserved
+Page  363: 01111                EXINT line15 External pin      11111          Reserved
+Page  363: 18.4.2.3 Sampling and conversion sequence
+Page  363: The sampling period can be configured by setting the CSPTx bit in the ADC_SPT1 and ADC_SPT2
+Page  363: registers. Channels 0/1/10/11/12/13 are fast channels with a minimum of 2.5 sampling cycles, and others
+Page  363: represent slow ones supporting a minimum of 6.5 sampling cycles.
+Page  363: A single one conversion time (ADCCLK period) = sampling time + resolution bits + 0.5
+Page  364: Sampling
+Page  364: OCLEN=2, OSN1=ADC_IN5, OSN2=ADC_IN0, OSN3=ADC_IN5                           Sampling
+Page  365: Sampling
+Page  365: Sampling
+Page  366: 18.4.5 Oversampling
+Page  366: A single oversampling converted data can be done through multiple conversions of the same channel in
+Page  366:      Oversampling ratio is selected through the OSRSEL bit in the ADC_OVSP register. This bit is used
+Page  366: to specify the oversampling multiple, which is performed by converting the same channel several
+Page  366:      Oversampling shift is selected through the OSSSEL bit in the ADC_OVSP register, which is
+Page  366: If 4x oversampling is selected through the OSRSEL bit, then the same channel is converted by four
+Page  366: times in a single oversampling conversion, and the converted data derived from 4 conversions is put
+Page  366: Table 18-3 Correlation between maximum cumulative data, oversampling multiple and shift digits
+Page  366: Oversampling             2x        4x          8x         16x          32x            64x        128x          256x
+Page  366: When using oversampling conversion mode, the DTALIGN and PCDTOx are ignored, and data must be
+Page  366: right aligned. The CRSEL bit is used to select the desired oversampling resolution only, without changing
+Page  367: 18.4.5.1 Oversampling of ordinary group of channels
+Page  367: The OOSRSEL bit in the ADC_OVSP register can be used to resume ordinary oversampling mode.
+Page  367: by preempted group of channels during oversampling, will retain the converted data and resume
+Page  367: group of channels during oversampling, will be reset and restart the ordinary conversion.
+Page  367: oversampling rate and sequential mode.
+Page  367: Figure 18-9 Ordinary oversampling restart mode selection
+Page  367: Sampling
+Page  367: Oversampling                    Oversampling                     OCCE flag set
+Page  367: Oversampling                    Oversampling
+Page  367: oversampling rate and sequential mode.
+Page  368: Figure 18-10 Ordinary oversampling trigger mode
+Page  368: Sampling
+Page  368: Non-triggered oversampling mode：OOSEN = 1, POSEN = 0, OOSRSEL= 0, OOSTREN=0
+Page  368: Triggered oversampling mode：OOSEN = 1, POSEN = 0, OOSRSEL= 0, OOSTREN=1
+Page  368: 18.4.5.2 Oversampling of preempted group of channels
+Page  368: It is possible to use both the preempted oversampling and ordinary oversampling simultaneously or
+Page  368: individually. The oversampling of the preempted group of channels does not affect the ordinary
+Page  368: oversampling modes. Figure 18-11 shows the behavior when the preempted oversampling and ordinary
+Page  368: oversampling trigger mode are used simultaneously in 4x oversampling rate and auto-conversion of
+Page  368: Figure 18-11 Oversampling of preempted group of channels
+Page  368: OCLEN=0, OSN1=ADC_IN0                                             Sampling
+Page  371: the regular channels simultaneously. In this mode, it is required to configure the same sampling time and
+Page  372: ADC2: OCLEN=2, OSN1=ADC2_IN5, OSN2=ADC2_IN4, OSN3=ADC2_IN3                 Sampling
+Page  372: ADC2: PCLEN=2, PSN2=ADC2_IN5, PSN3=ADC2_IN4, PSN4=ADC2_IN3                  Sampling
+Page  373: ADC2: PCLEN=2, PSN2=ADC2_IN5, PSN3=ADC2_IN4, PSN4=ADC2_IN3                                      Sampling
+Page  373: In this mode, the sampling interval between ADCs is configured to be at least 2.5 ADCCLK cycles
+Page  373: by hardware. Thus the ASISEL bit becomes invalid when it cannot meet such sampling interval.
+Page  373: causing the overlapped sampling time.
+Page  373: Sampling
+Page  374: Sampling
+Page  378: 01: Falling edge
+Page  378: 01: Falling edge
+Page  379: Bit 3      ADCALINIT   0x0         rw       cleared after the calibration registers are initialized.
+Page  380: 18.6.4 ADC sampling time register 1 (ADC_SPT1)
+Page  382: 18.6.5 ADC sampling time register 2 (ADC_SPT2)
+Page  386: 18.6.15 ADC oversampling register (ADC_ OVSP)
+Page  386: Ordinary oversampling restart mode select
+Page  386: When the ordinary oversampling is interrupted by
+Page  386: Bit 10       OOSRSEL    0x0             rw       0: Continuous mode (ordinary oversampling buffer will be
+Page  386: 1: Restart mode (ordinary oversampling buffer will be
+Page  386: Ordinary oversampling trigger mode enable
+Page  386: 0: Disabled (only one trigger is needed for all oversampling
+Page  386: 1: Enabled (Each oversampling conversion needs a
+Page  386: Oversampling shift select
+Page  386: the oversampling results.
+Page  386: Oversampling ratio select
+Page  386: Preempted oversampling enable
+Page  386: Bit 1        POSEN      0x0             rw       0: Preempted oversampling disabled
+Page  386: 1: Preempted oversampling enabled
+Page  387: Ordinary oversampling enable
+Page  387: Bit 0        OOSEN      0x0             rw       0:Ordinary oversampling disabled
+Page  387: 1: Ordinary oversampling enabled
+Page  389: Adjacent ADC sampling interval select in ordinary shift
+Page  393: The digital inputs are linearly converted to analog voltage outputs by the DAC, and it is between 0
+Page  393: external event (timer counter, external interrupt line) or by software. The DxTRGSEL[2: 0] is used to
+Page  396: 110: External interrupt line 9
+Page  397: 110: External interrupt line 9
+Page  401: sampling is performed at the edge location of bit segment 1 and big segment 2 simultaneously.
+Page  401: communication, the start-bit edge and its subsequent falling edge can be synchronized or
+Page  424: The OTGFS is a USB full-speed dual role device controller. The status of the ID line determines whether
+Page  424: the OTGFS acts as a host or device. When the ID line is floating, the OTGFS is used as a device. It is
+Page  424: used as a host while the ID line is grounded. The internal 1.5KΩ pull-up resistor and 1.5KΩ pull-down
+Page  425: perform USB bus sampling.
+Page  427: better the USB performance, and this helps to avoid latency on the AHB line.
+Page  428: USB performance, and this helps to avoid latency on the AHB line. Typically, two largest packet sizes of
+Page  430: have already been started on the USB line are not interrupted by the host.
+Page  430: Before disabling a channel, the application must ensure that there is at least one free space available in
+Page  430: the non-periodic request queue (when disabling a non-period channel) or the periodic request queue
+Page  430: (when disabling a periodic channel). The application can refresh the submitted requests when the
+Page  430: request queue is full (before disabling the channel) by setting CHDIS=0x1, and CHENA=0 in the
+Page  432: (1) Handling babble conditions
+Page  432: (2) Handling device disconnected conditions
+Page  435: (2) Handling interrupts
+Page  437: (2) Handling interrupts
+Page  439: (2) Handling interrupts
+Page  440: (2) Handling interrupts
+Page  443: (2) Handling interrupts
+Page  444: (2) Handling interrupts
+Page  449: 8. Step 1-5 must be repeated each time the application detects the interrupt line due to the RXFLVL bit
+Page  450: handling SETUP transfers. After power-on reset, the application must follow the OTGFS Initialization
+Page  450: 2. For every SETUP packet received on the USB line, 3 WORDs of data are written to the receive FIFO,
+Page  451: (2) Handling more than three consecutive SETUP packets
+Page  451: 1. The application can either select a polling or an interrupt mode.
+Page  452:  In polling mode, the application monitors the status of the endpoint transmit data FIFO by
+Page  452: size register to determine how much data in the transmit FIFO have already been sent on the USB line.
+Page  454: long as there is available space in the receive FIFO. For each data packet received on the USB line, the
+Page  457: The following interrupts must be processed to ensure successful scheduling of the synchronous
+Page  457: [Handling synchronous IN transfers]
+Page  459: existing data in the FIFO by enabling the endpoint for a new transfer in the next frame. The application
+Page  460: frame. This can be done by enabling periodic IN endpoint 1 frame before the scheduling of the frame to
+Page  461: are transmitted on the USB line.
+Page  461: transmitted on the USB line.
+Page  467: interrupts sent by the interrupt line to itself.
+Page  467: program the register before handling any transaction on either the AHB or USB. Do not change this
+Page  468: the line state condition can vary from one PHY to another.
+Page  470: The application must clear the GINTSTS register at initialization before enabling an interrupt bit to avoid
+Page  480: Port line status
+Page  480: Indicates the current logic status of the USB data lines.
+Page  481: The application sets this bit to drive resume signaling on
+Page  481: driving resume signaling without the intervention of the
+Page  481: is currently driving resume signaling.
+Page  485: Remote wakeup signaling
+Page  495: is sent on the USB line. A STALL bit has priority over a
+Page  496: The application must set this register before enabling endpoint 0. Once the endpoint 0 is enabled using
+Page  496: The application must set this register before enabling endpoint 0. Once the endpoint 0 is enabled using
+Page  497: The application must set this register before enabling endpoint x. Once the endpoint x is enabled using
+Page  498: The application must set this register before enabling endpoint x. Once the endpoint x is enabled using
+Page  499: reference signal, implements the sampling and calibration for the HICK clocks.
+Page  499: ACC interrupt events are linked to the same interrupt vector (see Figure 25-1). Interrupt events include:
+Page  499: signal, implements the sampling and calibration for the HICK clocks. In particular, the HICK clock
+Page  500:  HICKCLK: HICK clock. The original HICK output frequency is 48MHz, but the sampling clock
+Page  501: If the auto calibration condition is met, the actual sampling data in the first 1ms period will be either less
+Page  501: HICKTRIM according to the step definition until the actual sampling value is greater than C2. In this way,
+Page  501: or HICKTRIM according to the step definition until the actual sampling value become less than C1. In
+Page  501: difference (calculated as absolute value) between the actual sampling value and C2 before and after
+Page  501: Four conditions for enabling auto calibration function are as follows:
+Page  501: Even though the sampling counter is between C1 and C3, at the rising edge the CANLON, the auto
+Page  503: When the actual sampling value (number of clocks in 1ms)
+Page  504: When the actual sampling value (number of clocks in 1ms
+Page  511: HADDR (AHB internal address line)
+Page  512: HADDR (AHB address line)
+Page  513: HADDR[25: 0] is linked to XMC_A[25: 0].
+Page  513:       Multiplexed address data lines
+Page  514: Bit 19: 16   BUSLAT: Bus latency                  falling edge. Configure according to needs and memory
+Page  516: Bit 19: 16              BUSLAT: Bus latency                    the falling edge. Configure according to needs and
+Page  518: Bit 19: 16        BUSLAT: Bus latency                      falling edge. Configure according to needs and memory
+Page  518: Bit 19: 16        BUSLAT: Bus latency                      falling edge. Configure according to needs and memory
+Page  520: Bit 19: 16        BUSLAT: Bus latency                       falling edge. Configure according to needs and memory
+Page  520: Bit 19: 16        BUSLAT: Bus latency                       falling edge. Configure according to needs and memory
+Page  522: Bit 19: 16        BUSLAT: Bus latency                        falling edge. Configure according to needs and memory
+Page  522: Bit 19: 16       BUSLAT: Bus latency                         falling edge. Configure according to needs and memory
+Page  524: Bit 19: 16         BUSLAT: Bus latency                          falling edge. Configure according to needs and memory
+Page  524: Bit 19: 16        BUSLAT: Bus latency                          falling edge. Configure according to needs and memory
+Page  526: Bit 19: 16         BUSLAT: Bus latency                        falling edge. Configure according to needs and memory
+Page  528: Bit 19: 16         BUSLAT: Bus latency                           falling edge. Configure according to needs and memory
+Page  531: the XMC_NWE to the falling edge of the XMC_NWAIT into a SPHT register, and write the last address
+Page  535: stored into the read FIFO. Each line of the read FIFO has its address tag. The number of the anticipated
+Page  542: This field specifies the delay from the falling edge of the
+Page  542: This field specifies the delay from the falling edge of the
+Page  542: Falling edge interrupt enable
+Page  542: Bit 5        FEIEN      0x0             rw       0: Falling edge interrupt disabled
+Page  542: 1: Falling edge interrupt enabled
+Page  543: Falling edge status
+Page  543: 0: No falling edge interrupt generated
+Page  543: 1: Falling edge interrupt generated
+Page  544: Falling edge interrupt enable
+Page  544: Bit 5       FEIEN      0x0             rw       0: Falling edge interrupt disabled
+Page  544: 1: Falling edge interrupt enabled
+Page  545: Falling edge status
+Page  545: 0: No falling edge interrupt generated
+Page  545: 1: Falling edge interrupt generated
+Page  551: Commands are transferred serially on the CMD line.
+Page  551: previously received command. Responses are transferred serially on the CMD line.
+Page  551: the SDIO_D data line.
+Page  553: identification mode use the command line (CMD).
+Page  555: signal line and the transferred data are discarded and not written, and all transmitted data blocks are
+Page  555: check, the card begins writing and holds the SDIO_D signal line low if its write buffer is full and unable
+Page  555: will place the card in the disconnect state and release the SDIO_D line without interrupting the write
+Page  555: operation. When reselecting the card, it will reactivate busy indication by pulling SDIO_D line to low if
+Page  556: 3. Send CMD42(LOCK/UNLOCK) with the appropriate data block size on the data line including
+Page  557: 3. Send CMD42(LOCK/UNLOCK) with the appropriate data block size on the data line including
+Page  557: 3. Send CMD42(LOCK/UNLOCK) with the appropriate data block size on the data line including
+Page  557: 3. Send CMD42(LOCK/UNLOCK) with the appropriate data block size on the data line including
+Page  558: 3. Send CMD42(LOCK/UNLOCK) with the appropriate data block size on the data line including
+Page  558: 3. Addressed command: sent to the selected card, and no data transfer on the SDIO_D line
+Page  558: SDIO_D line
+Page  562: Note that if it involves a data transfer to a card, a busy signal may appear on the data line after each
+Page  562: It is the same as R1 with an optional busy signal transmitted on the data line. The card may become
+Page  565: is transferred on both command and data lines with each clock cycle. The clock frequency can very
+Page  565: only one bit of data line, so only SDIO_DO can be used.
+Page  566: serially on the CMD line.
+Page  568: line is used for transfer. Only one bit of data is transferred with each clock cycle. If the 4-bit wide bus
+Page  568: mode is selected, four bits are transferred per clock cycle over the SDIO_D [3:0] signal line. If the 8-bit
+Page  568: wide bus mode is selected, eight bits are transferred per clock cycle over the SDIO_D [7: 0] signal line.
+Page  570: SDIO read wait operation by SDIO_D2 signal lines
+Page  571: detected when the level is active. In other words, the interrupt signal line must be active (low) before it
+Page  571: When the SDIO_DTCTRL [11] bit is set, the SDIO interrupts are detected on the SDIO_D1 signal line.
+Page  572: 1: SDIO_CK generated on the falling edge of the master
+Page  581: ― Handling of source and destination addresses
+Page  581: The PHY management interface (SMI) accesses PHY registers through a clock and data line. It
+Page  581: MDIO: Bidirectional port, data input/output lines.
+Page  591: When a frame is being transferred to the MAC, a collision event may occur on the MAC line in half-
+Page  593: Receive operation multiframe handling
+Page  597: A frame can be stored in multiple buffers that are linked in chain structure. When the transmission starts,
+Page  597: Transmit polling suspend
+Page  597: Transmit polling can be suspended by one of the following conditions:
+Page  606: 0111: Pdelay_Resp_Follow_Up/Signaling
+Page  609: checked by polling the TI bit in the EMAC_DMASTS register.
+Page  612: 7. Set the bit 2 in the EMAC_PTPTSCTRL register, and start initializing the time stamp and polling
+Page  613: line 19.
+Page  613: When an Ethernet wakeup event is mapped on the EXINT line19 and the EMAC PMT interrupt is
+Page  613: enabled and the EXINT line 19 interrupt, detected on its rising edge, is also enabled, both interrupts are
+Page  619: matches the source address register is marked as failing
+Page  619: failing the source address filter.
+Page  619: The following conditions must be met when dealing with a
+Page  626: used for controlling the mask of the bytes as follows:
+Page  627: used for controlling the mask of the bytes as follows:
+Page  628: used for controlling the mask of the bytes as follows:
+Page  631: read by the software driver during an interrupt service routine or polling. Most of the bits in this register
+Page  639: When the counter stops rolling, an interrupt is set but the counter is still all 1. The EMAC_MMCRI is a
+Page  639: 0xFFFF). When the counter stops rolling, an interrupt is set but the counter is still all 1. The
+Page  642: Announce, Management and Signaling.
+Page  642: When this bit is set, time stamp low register starts rolling
+Page  647: camera. It is possible to perform frame/line synchronization in either hardware or embedded
+Page  647: Using the image scaling feature, it is possible to scale down the number of pixels or lines. The DMA
+Page  647:     mage scaling resize
+Page  648: camera. Data can be captured on either the rising or the falling edge of the DVP_PCLK by setting the
+Page  648: blanking periods, and it is activated by the DVP_HSYNC pin to enable DVP to split lines and fetch valid
+Page  649: pixels, signaling the start of a new frame. The data following the FS is the valid pixel data of line 0. For
+Page  649: the remaining lines other than line 0, the LS (Line Start) synchronization code is used to indicate the end
+Page  649: of blanking area and the start of a valid pixel. At the end of the last valid pixel data of each line, the LE
+Page  649: code (Line End) is embedded indicating that the subsequent data are horizontal blanking. At the end of
+Page  649: the line, the LE is replaced with the FE (Frame End), indicating the end of the current frame. Figure 27-
+Page  649: FS                       DataLine 0
+Page  649: DataLine 1
+Page  649: DataLine N-1                         FE
+Page  650: synchronization information. The line within a frame uses the active SAV code to indicate the end of
+Page  650: blanking area and the start of a valid pixel. At the end of the last valid pixel data of each line, the
+Page  650: active SAV code is embedded signaling that the data following this are vertical blanking. The vertical
+Page  650: code is still based on the line level. The blanking SAV code indicates the start of the line, while the
+Page  650: blanking EAV indicates the end of the line. Figure 27-5 shows the relationship between blanking area,
+Page  650: DataLine 0
+Page  650: DataLine 1
+Page  650: DataLine N-1
+Page  651: CAP bit is set in the DVP_CTR register, the DVP interface starts sampling data on the next frame start
+Page  651: synchronization information, starts sampling data on the start of the next frame start. This process
+Page  651: sampling data until the end of the current frame. At this point, the DVP interface resets the CAP bit and
+Page  651: stops data sampling.
+Page  653: course of sampling. The DVP_IENA is used to control interrupt signals, and it can be programmed to
+Page  653: synchronization can be defined as the start or end of a line, depending on the HSEID bit in the
+Page  655: The image resizing feature can be used to scale down the pixels or lines of an image. It consists of a
+Page  655: DVP_CTRL register. After the LCDC bit is set to 1, drop one out of every two captured image lines to
+Page  656: Captured line                 Dropped line
+Page  657: Figure 27-13 PCDC/PCDS and line structure
+Page  657: The advanced image reduction feature can be used to obtain a fine image scaling. To enable this
+Page  660: synchronization signal is used as a data enable signal, without line separation information. Because
+Page  660: Note: The crop feature and image scaling feature must not be used in the JPEG format.
+Page  660: Enhanced image scaling resize and monochrome image binarization are handled in different ways,
+Page  660: image scaling resize    image binarization
+Page  661: Basic line capture/drop selection
+Page  661: 0: Capture the first line and drop the next
+Page  661: 1: Drop the first line and capture the next
+Page  661: Basic line capture/drop control
+Page  661: 0: All frames are captured or use enhanced image scaling
+Page  662: lines
+Page  662: 0: All frames are captured or use enhanced image scaling
+Page  662: enabling DVP.
+Page  662: is a valid pixel data, and Line start signal on the rising edge
+Page  662: is a valid pixel data, and Line start signal on the falling
+Page  662: 1: DVP_PCLK falling edge active
+Page  663: be programmed before enabling this bit.
+Page  665: Line end synchronization 4th code
+Page  665: Line end delimiter 4th data (LE4) is composed of LNEC.
+Page  665: Line start synchronization 4th code
+Page  665: Line start delimiter 4th data (LS4) is composed of LNSC.
+Page  665: The first occurrence of line start synchronization code after
+Page  665: Line end synchronization code unmask
+Page  665: the line end synchronization.
+Page  665: Line start synchronization code unmask
+Page  665: the line end synchronization.
+Page  666: the line end synchronization.
+Page  666: Crop window vertical start line
+Page  666: Bit 28: 16   CVSTR      0x00            rw       vertical axis. The first line data captured after the Frame
+Page  666: start is line 0, the second line data captured is line 1, and
+Page  666: Frame start is data 0, the second line data captured is data
+Page  666: Crop window vertical line number minus one
+Page  666: This field specifies the number of lines of a crop window
+Page  666: Bit 16       HSEID      0x0             rw       0: HSES and HEIS indicates line end event and interrupt
+Page  666: 1: HSES and HEIS indicates line start event and interrupt
+Page  667: enabled before enabling the enhanced image scaling
+Page  667: Enhanced image scaling resize enable
+Page  667: 0: Enhanced image scaling resize disabled
+Page  667: 1: Enhanced image scaling resize enabled
+Page  668: 27.8.13 DVP enhanced horizontal scaling factor register
+Page  668: Horizontal scaling resize target factor
+Page  668: Horizontal scaling resize source factor
+Page  668: 27.8.14 DVP enhanced vertical scaling factor register
+Page  668: Vertical scaling resize target factor
+Page  668: Vertical scaling resize source factor
+Page  669: data. When the TxFIFO is ready, it can be written with the entire data. The polling state must be
+Page  670: operation and SPI operating mode (multiple-line communication).
+Page  674: second dummy cycle, select serial/two-line/two-line IO/four-line/four-line IO or DPI/QPI mode, and to set
+Page  675: second dummy cycle, select serial/two-line/two-line IO/four-line/four-line IO or DPI/QPI mode, and to set
+Page  678: 0: Hardware read. The controller keeps polling until the
+Page  683: Input sampling phase correction enable
+Page  683: This bit is used to correct sampling phase according to
+Page  683: Bit 8       ISPC              0x0             rw       input sampling phase delay and SPI Flash output timing.
+Page  683: 0: Fixed sampling phase
+Page  683: 1: Input sampling phase correction is enabled
+Page  683: Input sampling phase delay
+Page  685: process another memory while the DMA is filling up or using the second memory.
+Page  688: enabling a stream, causing that a stream is automatically disabled.
+Page  689: 29.3.7 Linked table transfer mechanism
+Page  689: Using this mechanism, it is possible to link several different transfers to strengthen DMA processing
+Page  689: To enable a linked table transfer, set the SxLLSEN (where n is a stream number) bit in the DMA_LLCTRL
+Page  689: After enabling a stream, the memory controller in DMA issues a few AHB commands to load the descriptor
+Page  689: linked table transfer. It should be noted that the TC is generated at the last descriptor.
+Page  689: Figure 29-8 Linked list pointers
+Page  691:  Linked table transfer is not supported
+Page  692: EXINT LINE is used as the trigger input for request generators and the synchronized input for requests.
+Page  692: trigger event that can be on a rising edge, falling edge or either of them.
+Page  694: Table 29-4 DMAMUX EXINT LINE for trigger input and synchronized input
+Page  694: LINE                           LINE                        LINE                      LINE
+Page  706: 29.5.11 DMA linked table control register (DMA_SxLLCTRL)
+Page  706: Bit 7        S8LLEN           0x0             rw       Stream8 link list enable
+Page  706: Bit 6        S7LLEN           0x0             rw       Stream7 link list enable
+Page  706: Bit 5        S6LLEN           0x0             rw       Stream6 link list enable
+Page  706: Bit 4        S5LLEN           0x0             rw       Stream5 link list enable
+Page  706: Bit 3        S4LLEN           0x0             rw       Stream4 link list enable
+Page  706: Bit 2        S3LLEN           0x0             rw       Stream3 link list enable
+Page  706: Bit 1        S2LLEN           0x0             rw       Stream2 link list enable
+Page  706: Bit 0        S1LLEN           0x0             rw       Stream1 link list enable
+Page  706: 29.5.12 DMA linked table pointer register (DMA_SxLLP) (x = 1…8)
+Page  706: link list pointer
+Page  708: 0x2: Falling edge
+Page  708: 0x3: Rising and falling edge
+Page  709: 0x2: Falling edge
+Page  709: 0x3: Rising and falling edge

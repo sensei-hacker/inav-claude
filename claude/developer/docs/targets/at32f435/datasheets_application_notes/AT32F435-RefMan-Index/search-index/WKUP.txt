@@ -1,0 +1,30 @@
+Keyword: WKUP
+Occurrences: 26
+================================================================================
+
+Page   50: 3       10                    ERTC_WKUP                 ERTC wakeup interrupt                     0x0000_004C
+Page   52: 62   69             EMAC_WKUP2                                                         0x0000_0138
+Page   53: Note: AT32F437 supports EMAC and EMAC_WKUP interrupts, but AT32F435 does not.
+Page   67: wakeup, ERTC timestamp, ERTC tamper event, a rising edge on the WKUP pin or the rising edge of an
+Page  138: PA0         PWC_CTRLSTS[8] =1              Once enabled, PA0 pin acts as WKUP1 function of PWC.
+Page  138: PC13        PWC_CTRLSTS[9] = 1             Once enabled, PC13 pin acts as WKUP2 function of PWC.
+Page  139: Note: Either PA0 or PC13 cannot be used as TAMPER_BPR and WKUP of PWC simultaneously.
+Page  470: Bit 31       WKUPINT           0x0             rw1c
+Page  473: Bit 31       WKUPINTMSK         0x0             rw
+Page  485: Bit 0      RWKUPSIG            0x0           rw      application must set this bit to indicate the controller to exit
+Page  608: Wkuppktfilter_reg0                                    Filter 0 Byte Mask
+Page  608: Wkuppktfilter_reg1                                   Filter 1 Byte Mask
+Page  608: Wkuppktfilter_reg2                                   Filter 2 Byte Mask
+Page  608: Wkuppktfilter_reg3                                   Filter 3 Byte Mask
+Page  608: Wkuppktfilter_reg4    RESD                RESD                  RESD                  RESD
+Page  608: Wkuppktfilter_reg5     Filter 3 Offset      Filter 2 Offset      Filter 1 Offset       Filter 0 Offset
+Page  608: Wkuppktfilter_reg6                 Filter 1 CRC-16                           Filter 0 CRC-16
+Page  608: Wkuppktfilter_reg7                 Filter 3 CRC-16                           Filter 2 CRC-16
+Page  623: Wkuppktfilter_reg0                                    Filter 0 Byte Mask
+Page  623: Wkuppktfilter_reg1                                   Filter 1 Byte Mask
+Page  623: Wkuppktfilter_reg2                                   Filter 2 Byte Mask
+Page  623: Wkuppktfilter_reg3                                   Filter 3 Byte Mask
+Page  623: Wkuppktfilter_reg4   RESD                 RESD                    RESD                    RESD
+Page  623: Wkuppktfilter_reg5    Filter 3 Offset      Filter 2 Offset         Filter 1 Offset         Filter 0 Offset
+Page  623: Wkuppktfilter_reg6                Filter 1 CRC-16                              Filter 0 CRC-16
+Page  623: Wkuppktfilter_reg7                Filter 3 CRC-16                              Filter 2 CRC-16

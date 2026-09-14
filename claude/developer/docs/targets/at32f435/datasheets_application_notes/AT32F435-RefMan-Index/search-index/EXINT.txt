@@ -1,0 +1,180 @@
+Keyword: EXINT
+Occurrences: 176
+================================================================================
+
+Page    6: (SCFG_ EXINTC1) ............................................................................... 144
+Page    6: (SCFG_ EXINTC2) ............................................................................... 145
+Page    6: (SCFG_ EXINTC3) ............................................................................... 146
+Page    6: (SCFG_ EXINTC4) ............................................................................... 147
+Page    6: 8        External interrupt/Event controller (EXINT) ................................ 151
+Page    6: 8.1   EXINT introduction ..................................................................... 151
+Page    6: 8.3   EXINT registers ......................................................................... 152
+Page    6: 8.3.1 Interrupt enable register (EXINT_INTEN) ..................................... 152
+Page    6: 8.3.2 Event enable register (EXINT_EVTEN) ........................................ 152
+Page    6: 8.3.3 Polarity configuration register 1 (EXINT_ POLCFG1) .................... 152
+Page    6: 8.3.4 Polarity configuration register 2 (EXINT_ POLCFG2) .................... 153
+Page    6: 8.3.5 Software trigger register (EXINT_ SWTRG) .................................. 153
+Page    7: 8.3.6 Interrupt status register (EXINT_ INTSTS) ................................... 153
+Page   40: Table 9-4 DMAMUX EXINT LINE for trigger input and synchronized input .............................................. 160
+Page   43: Table 29-4 DMAMUX EXINT LINE for trigger input and synchronized input ............................................ 694
+Page   45: TMR3/4                                                                                                                                         EXINT
+Page   50: 1       8                     PVM                       PVM from EXINT interrupt                  0x0000_0044
+Page   50: 6       13                    EXINT0                    EXINT line0 interrupt                     0x0000_0058
+Page   50: 7       14                    EXINT1                    EXINT line1 interrupt                     0x0000_005C
+Page   50: 8       15                    EXINT2                    EXINT line2 interrupt                     0x0000_0060
+Page   50: 9       16                    EXINT3                    EXINT line3 interrupt                     0x0000_0064
+Page   50: 10      17                    EXINT4                    EXINT line4 interrupt                     0x0000_0068
+Page   51: 23   30             EXINT9_5               EXINT line[9: 5] interrupt             0x0000_009C
+Page   51: 40   47             EXINT15_10             EXINT line[15: 10] global interrupt    0x0000_00E0
+Page   51: 41   48             ERTCAlarm              ERTC alarm through EXINT interrupt     0x0000_00E4
+Page   51: rable                            EXINT interrupt
+Page   52: rable                           EXINT
+Page   52: rable                           through EXINT
+Page   61: 0x4001 3C00 - 0x4001 3FFF       EXINT
+Page   66:  Configuring an internal EXINT line as an event mode to generate a wakeup event.
+Page  143: SCFG_EXINTC1                     0x08                              0x0000 0000
+Page  143: SCFG_EXINTC2                     0x0C                              0x0000 0000
+Page  143: SCFG_EXINTC3                     0x10                              0x0000 0000
+Page  143: SCFG_EXINTC4                     0x14                              0x0000 0000
+Page  144: (SCFG_ EXINTC1)
+Page  144: EXINT3 input source configuration
+Page  144: EXINT3 external interrupt.
+Page  144: Bit 15: 12   EXINT3         0x0000          rw       0011: GPIOD pin3
+Page  144: EXINT2 input source configuration
+Page  144: EXINT2 external interrupt.
+Page  144: Bit 11: 8    EXINT2         0x0000          rw       0011: GPIOD pin2
+Page  144: EXINT1 input source configuration
+Page  144: Bit 7: 4     EXINT1         0x0000          rw       These bits are used to select the input source for the
+Page  144: EXINT1 external interrupt.
+Page  145: EXINT0 input source configuration
+Page  145: EXINT0 external interrupt.
+Page  145: Bit 3: 0     EXINT0     0x0000          rw       0011: GPIOD pin0
+Page  145: (SCFG_ EXINTC2)
+Page  145: EXINT7 input source configuration
+Page  145: EXINT7 external interrupt.
+Page  145: Bit 15: 12   EXINT7     0x0000          rw       0011: GPIOD pin7
+Page  145: EXINT6 input source configuration
+Page  145: EXINT6 external interrupt.
+Page  145: Bit 11: 8    EXINT6     0x0000          rw       0010: GPIOC pin6
+Page  146: EXINT5 input source configuration
+Page  146: EXINT5 external interrupt.
+Page  146: Bit 7: 4     EXINT5     0x0000          rw       0011: GPIOD pin5
+Page  146: EXINT4 input source configuration
+Page  146: EXINT4 external interrupt.
+Page  146: Bit 3: 0     EXINT4     0x0000          rw       0011: GPIOD pin4
+Page  146: (SCFG_ EXINTC3)
+Page  146: EXINT11 input source configuration
+Page  146: EXINT11 external interrupt.
+Page  146: Bit 15: 12   EXINT11    0x0000          rw
+Page  146: EXINT10 input source configuration
+Page  146: Bit 11: 8    EXINT10    0x0000          rw       EXINT10 external interrupt.
+Page  147: EXINT9 input source configuration
+Page  147: EXINT9 external interrupt.
+Page  147: Bit 7: 4     EXINT9     0x0000          rw
+Page  147: EXINT8 input source configuration
+Page  147: EXINT8 external interrupt.
+Page  147: Bit 3: 0     EXINT8     0x0000          rw
+Page  147: (SCFG_ EXINTC4)
+Page  147: EXINT15 input source configuration
+Page  147: EXINT15 external interrupt.
+Page  147: Bit 15: 12   EXINT15    0x0000          rw
+Page  148: EXINT14 input source configuration
+Page  148: EXINT14 external interrupt.
+Page  148: Bit 11: 8   EXINT14   0x0000     rw
+Page  148: EXINT13 input source configuration
+Page  148: EXINT13 external interrupt.
+Page  148: Bit 7:4     EXINT13   0x0000     rw
+Page  148: EXINT12 input source configuration
+Page  148: EXINT12 external interrupt.
+Page  148: Bit 3: 0    EXINT12   0x0000     rw
+Page  151: 8       External interrupt/Event controller (EXINT)
+Page  151: 8.1 EXINT introduction
+Page  151: EXINT consists of 23 interrupt lines EXINT_LINE[22:0], each of which can generate an interrupt or
+Page  151: event by edge detection trigger or software trigger. EXINT can enable or disable an interrupt or event
+Page  151: EXINTx(x=0~15)
+Page  151: EXINT_POLCFG1[22:0]
+Page  151: PBx(x=0~15)                                                                                                                       EXINT_INTEN[22:0]
+Page  151: EXINT_SWTRG[22:0]                       Interrupt 0~22
+Page  151: PCx(x=0~15)                    EXINT_LINE[15:0]         EXINT_LINE[22:0]
+Page  151: EXINT_POLCFG2[22:0]
+Page  151: edge                                               EXINT_EVTEN[22:0]     Event 0~22
+Page  151: PVM output EXINT_LINE[16]        EXINT_LINE[22:16]
+Page  151: ERTC alarm event EXINT_LINE[17]
+Page  151: OTGFS1 wakeup EXINT_LINE[18]
+Page  151: Ethernet wakeup EXINT_LINE[19]
+Page  151: OTGFS2 wakeup EXINT_LINE[20]
+Page  151: ERTC tamper and time stamp EXINT_LINE[21]
+Page  151: ERTC wakeup EXINT_LINE[22]
+Page  151:       EXINT 0~15 mapping IO can be configured independently
+Page  151: With up to 23 interrupt lines EXINT_LINE[22:0], EXINT can detect not only GPIO external interrupt
+Page  151: detection mechanism, where, GPIO interrupt sources can be selected with IOMUX_EXINTCx register.
+Page  151: It should be noted that these input sources are mutually exclusive. For example, EXINT_LINE0 is
+Page  151: EXINT supports multiple edge detection modes, including rising edge, falling edge or both edges,
+Page  151: selected by EXINT_POLCFG1 and EXINT_POLCFG2 register. Active edge trigger detected on the
+Page  151: In addition, EXINT supports independent software trigger for the generation of an event or interrupt. This
+Page  151: is achieved by setting the corresponding bits in the EXINT_SWTRG register.
+Page  151: EXINT can enable or disable an interrupt or event individually through software configuration such as
+Page  151: EXINT_INTEN and EXINT_EVTEN register, indicating that the corresponding interrupt or event must be
+Page  151: EXINT also features an independent interrupt status bit. Reading access to EXINT_INTSTS register can
+Page  151:  Select an interrupt source by setting IOMUX_EXINTCx register (This is required if GPIO is used
+Page  151:  Select an trigger mode by setting EXINT_POLCFG1 and EXINT_POLCFG2 register.
+Page  152:     Enable interrupt or event by setting EXINT_INTEN and EXINT_EVTEN register.
+Page  152:     Generate software trigger by setting EXINT_SWTRG register (This is applied to only software
+Page  152:  Writing “1” to the EXINT_INTSTS register to clear the interrupts generated, and the
+Page  152: corresponding bits in the EXINT_SWTRG register.
+Page  152: 8.3 EXINT registers
+Page  152: Table 8-1 shows EXINT register map and their reset value.
+Page  152: EXINT_INTEN                 0x00                          0x0000 0000
+Page  152: EXINT_EVTEN                 0x04                          0x0000 0000
+Page  152: EXINT_ POLCFG1              0x08                          0x0000 0000
+Page  152: EXINT_ POLCFG2              0x0C                          0x0000 0000
+Page  152: EXINT_ SWTRG                0x10                          0x0000 0000
+Page  152: EXINT_ INTSTS               0x14                          0x0000 0000
+Page  152: 8.3.1        Interrupt enable register (EXINT_INTEN)
+Page  152: 8.3.2        Event enable register (EXINT_EVTEN)
+Page  152: 8.3.3        Polarity configuration register 1 (EXINT_ POLCFG1)
+Page  153: 8.3.4        Polarity configuration register 2 (EXINT_ POLCFG2)
+Page  153: 8.3.5        Software trigger register (EXINT_ SWTRG)
+Page  153: If the corresponding bit in EXINT_INTEN register is 1, the
+Page  153: corresponding bit in the EXINT_INTSTS automatically to
+Page  153: If the corresponding bit in the EXINT_EVTEN register is 1,
+Page  153: bit in the EXINT_INTSTS register.
+Page  153: 8.3.6        Interrupt status register (EXINT_ INTSTS)
+Page  157: EXINT LINE is used as the trigger input for request generators and the synchronized input for requests.
+Page  158: EXINT[x+15:0]
+Page  158: {dmamux_evt[x:1], exint_gpio [15:0]}                             dmamux_evt[x:0]
+Page  160: Table 9-4 DMAMUX EXINT LINE for trigger input and synchronized input
+Page  160: EXINT                        EXINT                           EXINT                    EXINT
+Page  160: 0            exint_gpio[0]   8           exint_gpio[8]       16         DMA_MUXevt1   24      reserved
+Page  160: 1            exint_gpio[1]   9           exint_gpio[9]       17         DMA_MUXevt2   25      reserved
+Page  160: 2            exint_gpio[2]   10          exint_gpio[10]      18         DMA_MUXevt3   26      reserved
+Page  160: 3            exint_gpio[3]   11          exint_gpio[11]      19         DMA_MUXevt4   27      reserved
+Page  160: 4            exint_gpio[4]   12          exint_gpio[12]      20         DMA_MUXevt5   28      reserved
+Page  160: 5            exint_gpio[5]   13          exint_gpio[13]      21         DMA_MUXevt6   29      reserved
+Page  160: 6            exint_gpio[6]   14          exint_gpio[14]      22         DMA_MUXevt7   30      reserved
+Page  160: 7            exint_gpio[7]   15          exint_gpio[15]      23         reserved      31      reserved
+Page  347: 1. Configure the EXINT line corresponding to ERTC interrupts as an interrupt mode and enable it,
+Page  348: Interrupt events            Event flag                 Interrupt enable bit      EXINT line
+Page  359: EXINT11                                Ordinary
+Page  359: EXINT15
+Page  362: 01111                               EXINT line11 External pin        11111                          Reserved
+Page  363: 01111                EXINT line15 External pin      11111          Reserved
+Page  392: EXINT_9    Select1                                Triangle
+Page  392: EXINT_9    Select2          D2DMAEN
+Page  393: EXINT_9                   110             External signals
+Page  613: Ethernet wakeup event (remote wakeup frame or Magic Packet detection) when it is mapped on EXINT
+Page  613: When an Ethernet wakeup event is mapped on the EXINT line19 and the EMAC PMT interrupt is
+Page  613: enabled and the EXINT line 19 interrupt, detected on its rising edge, is also enabled, both interrupts are
+Page  692: EXINT LINE is used as the trigger input for request generators and the synchronized input for requests.
+Page  693: EXINT[x+15:0]
+Page  693: {dmamux_evt[x:1], exint_gpio [15:0]}                             dmamux_evt[x:0]
+Page  694: Table 29-4 DMAMUX EXINT LINE for trigger input and synchronized input
+Page  694: EXINT                          EXINT                       EXINT                     EXINT
+Page  694: 0              exint_gpio[0]   8          exint_gpio[8]    16          DMA_MUXevt1   24       reserved
+Page  694: 1              exint_gpio[1]   9          exint_gpio[9]    17          DMA_MUXevt2   25       reserved
+Page  694: 2              exint_gpio[2]   10         exint_gpio[10]   18          DMA_MUXevt3   26       reserved
+Page  694: 3              exint_gpio[3]   11         exint_gpio[11]   19          DMA_MUXevt4   27       reserved
+Page  694: 4              exint_gpio[4]   12         exint_gpio[12]   20          DMA_MUXevt5   28       reserved
+Page  694: 5              exint_gpio[5]   13         exint_gpio[13]   21          DMA_MUXevt6   29       reserved
+Page  694: 6              exint_gpio[6]   14         exint_gpio[14]   22          DMA_MUXevt7   30       reserved
+Page  694: 7              exint_gpio[7]   15         exint_gpio[15]   23          DMA_MUXevt8   31       reserved

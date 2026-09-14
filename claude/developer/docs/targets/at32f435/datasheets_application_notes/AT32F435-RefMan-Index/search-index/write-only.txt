@@ -1,0 +1,12 @@
+Keyword: write-only
+Occurrences: 8
+================================================================================
+
+Page  112: Note: All these bits are write-only, and return 0 when being read.
+Page  112: Note: All these bits are write-only, and return 0 when being read.
+Page  114: Note: All these bits are write-only, and return 0 when being read.
+Page  117: Note: All these bits are write-only, and return 0 when being read.
+Page  118: Note: All these bits are write-only, and return 0 when being read.
+Page  118: Note: All these bits are write-only, and return 0 when being read.
+Page  118: Note: All these bits are write-only, and return 0 when being read.
+Page  653: bit in the DVP_ICLR register. The DVP_ICLR is a write-only register and does not need to be cleared.

@@ -1,0 +1,83 @@
+Keyword: ADC3
+Occurrences: 79
+================================================================================
+
+Page   45: DAC                                                                                                                                                       ADC3
+Page   51: 18   25             ADC1_2_3               ADC1, ADC2 and ADC3 global interrupt   0x0000_0088
+Page   87: ADC3 interface clock enable
+Page   87: Bit 10       ADC3EN          0x0              rw          0: Disabled
+Page   91: ADC3 interface clock enable in sleep mode
+Page   91: Bit 10       ADC3LPEN         0x1            rw       0: Disabled
+Page  154: ADC3       TMR4   DMA
+Page  158: ADC3     TMR4                                                     Stream 2
+Page  159: 5           ADC1          37        ADC3               69        TMR4_CH3       101     reserved
+Page  358: Differences between ADC2/ADC3 and ADC1:
+Page  358: 1. ADC2/ADC3 are not connected to the internal temperature sensor (Temp. sensor) and internal
+Page  360:  ADC3_IN0 to ADC3_IN3, and ADC3_IN10 to ADC3_IN13 are referred to as the external analog
+Page  360: input, and ADC3_IN16 and ADC3_IN17 as Vss, and ADC3_IN18 as VREF-.
+Page  370: with ADC2 and ADC3.
+Page  370: In a single master/slave mode, ADC1 acts as a master while ADC2 as a slave, and ADC3 behaves
+Page  370: independently. In dual master/slave mode, ADC1 acts as a master, while both ADC2 and ADC3 act as
+Page  370: Preempted             ADC1                                 ADC2                                   ADC3
+Page  371: 3rd        16 bit 0, ADC3_ODT[15:0]
+Page  371: 2nd        ADC1_ODT[15:0], ADC3_ODT[15:0]
+Page  371: 3rd        ADC3_ODT[15:0], ADC2_ODT[15:0]
+Page  371: 2nd        16 bit 0, ADC1_ODT[7:0], ADC3_ODT[7:0]
+Page  371: 3rd        16 bit 0, ADC3_ODT[7:0], ADC2_ODT[7:0]
+Page  371: 100                          1st        8 bit 0, ADC3_ODT[7:0], ADC2_ODT[7:0], ADC1_ODT[7:0]
+Page  371: 2nd        8 bit 0, ADC3_ODT[7:0], ADC2_ODT[7:0], ADC1_ODT[7:0]
+Page  371: Dual slave         2nd        16 bit 0, ADC3_ODT[15:0]
+Page  372: ADC3: OCLEN=2, OSN1=ADC3_IN7, OSN2=ADC3_IN8, OSN3=ADC3_IN9                         Conversion
+Page  372: ADC3        ADC3_IN7      ADC3_IN8      ADC3_IN9                 ADC3_IN7     ADC3_IN8   ADC3_IN9
+Page  372: ADC3: PCLEN=2, PSN2=ADC3_IN7, PSN3=ADC3_IN8, PSN4=ADC3_IN9                         Conversion
+Page  372: ADC3        ADC3_IN7      ADC3_IN8      ADC3_IN9                 ADC3_IN7     ADC3_IN8   ADC3_IN9
+Page  373: ADC3: PCLEN=2, PSN2=ADC3_IN7, PSN3=ADC3_IN8, PSN4=ADC3_IN9                                           Conversion
+Page  373: ADC3                                    ADC3_IN7      ADC3_IN8       ADC3_IN9                               ADC3_IN7       ADC3_IN8        ADC3_IN9
+Page  373: ADC3                                                                ADC3
+Page  373: ADC3: SQEN=0, OSN1=ADC3_IN3, RPEN=1, CSPTx=0
+Page  373: ADC3                                          ADC3_IN3                     ADC3_IN3                          ADC3_IN3
+Page  373: 5 ADCCLK                                                               ADC3 EC flag set
+Page  374: trigger        ADC3: SQEN=1, OSN1=ADC3_IN3, RPEN=1
+Page  374: ADC3                         ADC3_IN3             ADC3_IN3             ADC3_IN3
+Page  374: ADC3_ODT                                       ADC3_DT1              ADC3_DT2
+Page  374: ADC2_DT1,     ADC1_DT2,     ADC3_DT2,    ADC2_DT3,
+Page  374: ADC1_DT1      ADC3_DT1      ADC2_DT2
+Page  375: ADC3_STS      0x200              0x0000 0000
+Page  375: ADC3_CTRL1    0x204              0x0000 0000
+Page  375: ADC3_CTRL2    0x208              0x0000 0000
+Page  375: ADC3_SPT1     0x20C              0x0000 0000
+Page  375: ADC3_SPT2     0x210              0x0000 0000
+Page  375: ADC3_PCDTO1   0x214              0x0000 0000
+Page  375: ADC3_PCDTO2   0x218              0x0000 0000
+Page  375: ADC3_PCDTO3   0x21C              0x0000 0000
+Page  375: ADC3_PCDTO4   0x220              0x0000 0000
+Page  375: ADC3_VMHB     0x224              0x0000 FFFF
+Page  375: ADC3_VMLB     0x228              0x0000 0000
+Page  375: ADC3_OSQ1     0x22C              0x0000 0000
+Page  375: ADC3_OSQ2     0x230              0x0000 0000
+Page  375: ADC3_OSQ3     0x234              0x0000 0000
+Page  375: ADC3_PSQ      0x238              0x0000 0000
+Page  375: ADC3_PDT1     0x23C              0x0000 0000
+Page  375: ADC3_PDT2     0x240              0x0000 0000
+Page  375: ADC3_PDT3     0x244              0x0000 0000
+Page  375: ADC3_PDT4     0x248              0x0000 0000
+Page  376: ADC3_ODT                0x24C                              0x0000 0000
+Page  376: ADC3_OVSP               0x280                              0x0000 0000
+Page  376: ADC3_CALVAL             0x2B4                              0x0000 0000
+Page  386: ro       These bits are reserved in ADC2 and ADC3.
+Page  387: ADC3 conversion ready flag
+Page  387: Bit 22       RDY3       0x0             ro       This bit is the mapping bit of the RDY bit in the ADC3_STS
+Page  387: ADC3 ordinary channel conversion overflow flag
+Page  387: ADC3_STS register.
+Page  387: ADC3 ordinary channel conversion start flag
+Page  387: ADC3_STS register.
+Page  387: ADC3 Preempted channel conversion start flag
+Page  387: ADC3_STS register.
+Page  387: ADC3 preempted channels conversion end flag
+Page  387: ADC3_STS register.
+Page  387: ADC3 ordinary channels conversion end flag
+Page  387: ADC3_STS register.
+Page  387: ADC3 voltage monitoring out of range flag
+Page  387: ADC3_STS register.
+Page  693: ADC3     TMR4                                                          Stream 2
+Page  693: 5           ADC1              37             ADC3                                 69             TMR4_CH3                     101                reserved

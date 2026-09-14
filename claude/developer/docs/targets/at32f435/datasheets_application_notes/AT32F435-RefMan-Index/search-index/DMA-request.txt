@@ -1,0 +1,104 @@
+Keyword: DMA request
+Occurrences: 100
+================================================================================
+
+Page  154: coordinating the priority of each DMA request.
+Page  154: ADC1       TMR2                            DMA request                      ch3
+Page  154: DMA request                      ch1      AHB
+Page  157: DMAMUX manages DMA requests/acknowledge between peripherals and DMA controller.
+Page  157: register. Each DMA controller stream selects only one DMA request from the flexible mapping table. In
+Page  158: selected DMA request input. In synchronous mode, the SYNCSEL bit in the DMA_MUXSxCTRL register
+Page  158: is used to select synchronized input. The selected DMA request input will be transferred to chx_mux_req
+Page  160: DMA request served
+Page  168: DMA request count
+Page  168: These bits indicate the number of DMA requests sent to
+Page  168: DMA request count before event output is generated.
+Page  168: DMA request select
+Page  168: Bit 6: 0     REQSEL           0x00                     Select DMA request. Refer to DMAMUX table for more
+Page  168: DMA request generation count
+Page  168: These bits define the number of DMA requests (GNBREQ
+Page  168: DMA request generation polarity
+Page  168: DMA request generation enable
+Page  168: Bit 16       GEN              0x0             rw       0: DMA request generation is disabled
+Page  168: 1: DMA request generation is enabled
+Page  169: Bit 7: 0    SYNCOVF           0x00            ro       When the DMA request count is less than REQCNT, this
+Page  169: Bit 3: 0    TRGOVF            0x00            ro       When the DMA request count is lower than GREQCNT,
+Page  185: or DMA request. At this point, data is written to the TXDT register using DMA or interrupt
+Page  198: 7. Enable I2C DMA request by setting DMAEN=1 in the I2C_CTRL2 register. Once the TDBE bit
+Page  198: 7. Enable I2C DMA request by setting DMAEN=1 in the I2C_CTRL2 register. Once the RDBE bit
+Page  256: Overflow event DMA request enable
+Page  264: is detected, and the capture compare interrupt flag bit (CxIF) is set to 1. An interrupt or a DMA request
+Page  264:  If needed, enable the relevant interrupt or DMA request by setting the C1IEN bit in the
+Page  267: this, the channel flag bit and DMA request still depend on the compare result.
+Page  273: Bit 2        OVFS              0x0             rw       This bit is used to select overflow event or DMA request
+Page  274: DMA request source
+Page  275: Trigger DMA request enable
+Page  275: Channel 4 DMA request enable
+Page  275: Channel 3 DMA request enable
+Page  275: Channel 2 DMA request enable
+Page  275: Channel 1 DMA request enable
+Page  275: Overflow event DMA request enable
+Page  289: is detected, and the capture compare interrupt flag bit (CxIF) is set. An interrupt or a DMA request will
+Page  291: channel flag bit and DMA request still depend on the compare result.
+Page  294: This bit is used to select overflow event or DMA request
+Page  300: This bit is used to select overflow event or DMA request
+Page  313: is detected, and the capture compare interrupt flag bit (CxIF) is set to 1. An interrupt/DMA request will
+Page  313:  If needed, enable the relevant interrupt or DMA request by setting the C1IEN bit in the
+Page  315: the channel flag bit and DMA request still depend on the compare result.
+Page  318:  If the brake interrupt or DMA request is enabled, the brake statue flag is set, and a brake
+Page  318: interrupt or DMA request can be generated.
+Page  322: This bit is used to select overflow event or DMA request
+Page  323: DMA request source
+Page  324: Trigger DMA request enable
+Page  324: HALL DMA request enable
+Page  324: Channel 4 DMA request enable
+Page  324: Channel 3 DMA request enable
+Page  324: Channel 2 DMA request enable
+Page  324: Channel 1 DMA request enable
+Page  324: Overflow event DMA request enable
+Page  361: storage of the calibration value will not set the OCCE flag, or generate interrupts or DMA requests.
+Page  369: When the OCDMAEN bit is set in the ADC_CTRL2 register, the ADC will issue DMA requests each time
+Page  369: stored in the data register. If the DMA is used, the DMA request remains set so that the DMA can read
+Page  370: DMA request                                                        Address/Data bus
+Page  371: a DMA request each time the data is ready, and overflow detection on master/salve is also enabled.
+Page  371: Once an overflow event occurs, the ADC will stop conversion, the DMA request is halted, and loss of
+Page  371: MSDMASEL   Master/slave    DMA requests   ADC_CODT[31:0]
+Page  371: MSDRCEN bit in the ADC_CCTRL register can be used to select when to stop DMA request, that is,
+Page  371: when the DMA request remains set until the end of data transfer, or when the DMA transfer register is
+Page  374: DMA request
+Page  379: Ordinary channel DMA request continue enable for
+Page  379: number of DMA transfers, no DMA request generated at
+Page  389: Ordinary channel DMA request continuation enable in
+Page  389: number of DMA transfers, no DMA request generated at
+Page  392: the DAC_CTRL register. One DMA request is generated when a trigger signal is active while the
+Page  392: DxTRGEN bit is set. The DAC DMA request is not added up, meaning the new DAM request will
+Page  393: When the DAC DMA request is enabled, an overflow occurs if a second external trigger arrives before
+Page  393: handled, or no new DMA request is issued, and the DxDMAUDRF bit in the DAC_SR register is set,
+Page  564:      AHB interface: generates interrupt and DMA request signals
+Page  569: The AHB interface generates the interrupt and DMA requests, and access the SDIO interface registers
+Page  576: used as DMA request.
+Page  576: be used as DMA request.
+Page  595: when both transmit and RXDMA request access to the AHB bus simultaneously. When the DA bit is set
+Page  652: receives four 32-bit data. After receiving a DMA request, the DMA makes four consecutive accesses to
+Page  652: triggered each time the DVP receives a 32-bit data. After receiving a DMA request, the DMA interface
+Page  670: programmed as DMA handshake mode. In this mode, the host controller sends a DMA request when
+Page  686: Figure 29-3 shows the behavior between DMA request/acknowledge and arbiter. Since there is only one
+Page  691: Direct      mode In the case of FEN = 1 and MINCM = 0, a DMA request is generated before the previous data
+Page  692: DMAMUX manages DMA requests/acknowledge between peripherals and DMA controller.
+Page  692: register. Each DMA controller stream selects only one DMA request from the flexible mapping table. In
+Page  692: selected DMA request input. In synchronous mode, the SYNCSEL bit in the DMA_MUXSxCTRL register
+Page  692: is used to select synchronized input. The selected DMA request input will be transferred to chx_mux_req
+Page  695: DMA request served
+Page  708: DMA request count
+Page  708: This field defines the number of DMA requests after
+Page  708: DMA request select
+Page  708: Bit 6: 0       REQSEL         0x00                     Select a DMA request Refer to DMAMUX table for more
+Page  709: DMA request generation count
+Page  709: Defines the number of DMA requests (GREQCNT + 1)
+Page  709: DMA request generation polarity
+Page  709: DMA request generation enable
+Page  709: Bit 16       GEN              0x0             rw       0: DMA request generation disabled
+Page  709: 1: DMA request generation enabled
+Page  709: Bit 4: 0     SIGSEL           0x00            rw       This field is used to select DMA signal for DMA request
+Page  709: while the DMA request count is below the REQCNT.
+Page  710: DMA request count is below the GNBREQ.

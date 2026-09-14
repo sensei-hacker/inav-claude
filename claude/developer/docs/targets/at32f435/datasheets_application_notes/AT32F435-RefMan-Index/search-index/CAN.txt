@@ -1,0 +1,1129 @@
+Keyword: CAN
+Occurrences: 1125
+================================================================================
+
+Page    1:    LCD parallel interface, 8080/6800 modes                         − Up to 2 x CAN interfaces (2.0B Active)
+Page   18: 20       CAN 400
+Page   18: 20.1 CAN introduction ....................................................................... 400
+Page   18: 20.2 CAN main features ..................................................................... 400
+Page   18: 20.7 CAN registers ............................................................................ 410
+Page   18: 20.7.1 CAN control and status registers ................................................. 411
+Page   18: 20.7.1.1 CAN master control register (CAN_MCTRL) ............................ 411
+Page   18: 20.7.1.2 CAN master status register (CAN_MSTS) ................................ 412
+Page   18: 20.7.1.3 CAN transmit status register (CAN_TSTS) .............................. 413
+Page   18: 20.7.1.4 CAN receive FIFO 0 register (CAN_RF0) ................................ 416
+Page   18: 20.7.1.5 CAN receive FIFO 1 register (CAN_RF1) ................................ 416
+Page   18: 20.7.1.6 CAN interrupt enable register (CAN_INTEN) ........................... 417
+Page   19: 20.7.1.7 CAN error status register (CAN_ESTS) ................................... 418
+Page   19: 20.7.1.8 CAN bit timing register (CAN_BTMG) ..................................... 419
+Page   19: 20.7.2 CAN mailbox registers ................................................................ 419
+Page   19: 20.7.2.1 Transmit mailbox identifier register (CAN_TMIx) (x=0..2) ......... 420
+Page   19: (CAN_TMCx) (x=0..2) ......................................................................... 420
+Page   19: 20.7.2.3 Transmit mailbox data low register (CAN_TMDTLx) (x=0..2) ..... 421
+Page   19: 20.7.2.4 Transmit mailbox data high register (CAN_TMDTHx) (x=0..2) ... 421
+Page   19: 20.7.2.5 Receive FIFO mailbox identifier register (CAN_RFIx) (x=0..1) .. 421
+Page   19: (CAN_RFCx) (x=0..1) ......................................................................... 421
+Page   19: 20.7.2.7 Receive FIFO mailbox data low register (CAN_RFDTLx) (x=0..1) 422
+Page   19: 20.7.2.8 Receive FIFO mailbox data high register (CAN_RFDTHx) (x=0..1) 422
+Page   19: 20.7.3 CAN filter registers ..................................................................... 422
+Page   19: 20.7.3.1 CAN filter control register (CAN_FCTRL) ................................ 422
+Page   19: 20.7.3.2 CAN filter mode configuration register (CAN_FMCFG) ............. 422
+Page   19: 20.7.3.3 CAN filter bit width configuration register (CAN_ FBW CFG) ...... 422
+Page   19: 20.7.3.4 CAN filter FIFO association register (CAN_ FRF) .................... 423
+Page   19: 20.7.3.5 CAN filter activation control register (CAN_ FACFG) ................ 423
+Page   19: 20.7.3.6 CAN filter bank i filter bit register (CAN_ FiFBx) (i=0..13; x=1..2) 423
+Page   36: Figure 20-7 CAN block diagram ................................................................................................................ 404
+Page   41: Table 20-1 CAN register map and reset values ........................................................................................ 410
+Page   44: communication interfaces such as SPI, QSPI, I2C, USART/UART and SDIO, CAN bus controller,
+Page   45: CAN1/2                                                                                                                                                      Temperature
+Page   48: With the help of bit-band, read and write access to a single bit can be performed using common
+Page   48: load/store operations. The Cortex®-M4F memory includes two bit-band regions: the least significant 1M
+Page   48: bytes of SRAM and the least significant 1Mbytes of peripherals. In addition to access to bit-band
+Page   48: addresses, their respective bit-band alias region can be used to access to any bit in these two bit-band
+Page   49: In addition, bit-band operations can also simplify jump process. When jump operation is based on a bit
+Page   51: 19   26             CAN1_TX                CAN1 TX interrupt                      0x0000_008C
+Page   51: 20   27             CAN1_RX0               CAN1 RX0 interrupt                     0x0000_0090
+Page   51: 21   28             CAN1_RX1               CAN1 RX1 interrupt                     0x0000_0094
+Page   51: 22   29             CAN_SE                 CAN state error interrupt              0x0000_0098
+Page   52: 63   70             CAN2_TX               CAN2 TX interrupt                            0x0000_013C
+Page   52: 64   71             CAN2_RX0              CAN2 RX0 interrupt                           0x0000_0140
+Page   52: 65   72             CAN2_RX1              CAN2 RX1 interrupt                           0x0000_0144
+Page   52: 66   73             CAN2_SE               CAN2 status error interrupt                  0x0000_0148
+Page   52: 67   74             OTGFS1                OTGFS1 CAN2 status error interrupt           0x0000_014C
+Page   53: decremented to zero. It can generate periodic interrupts, so it is often used as multi-task scheduling
+Page   55: In the AT32F435/437 series, the main Flash memory, Boot code or SRAM can be remapped to the
+Page   55: to select another boot mode, even after a system reset. A new boot mode can be selected only after
+Page   55: including communication protocol stacks that can be called for use by software developer through API.
+Page   56: rw                         Software can read and write to this bit.
+Page   56: ro                         Software can only read this bit.
+Page   56: wo                         Software can only write to the bit. Reading it returns its reset value.
+Page   56: rrc                        Software can read this bit. Reading this bit automatically clears it.
+Page   56: rw0c                       Software can read this bit and clear it by writing 0. Writing 1 has no effect on this bit.
+Page   56: rw1c                       Software can read this bit and clear it by writing 1. Writing 0 has no effect on this bit.
+Page   56: rw1s                       Software can read this bit and set it by writing 1. Writing 0 has no effect on this bit.
+Page   56: tog                        Software can read this bit and toggle it by writing 1. Writing 0 has no effect on this bit.
+Page   56: rwt                        Software can read this bit. Writing any value will trigger an event.
+Page   56: in the information block of the Flash memory. The 96-bit ID is unique for any device, and cannot be
+Page   56: altered by users. It can be used for the following:
+Page   60: can be accessed by bytes, half-words (16 bits) or words (32 bits). In addition, AT32F435/437 also provide
+Page   60: is divided into SRAM1 and SRAM2. The SRAM1 is fixed at 64 KB, and can be accessed through either
+Page   62: 0x4000 6800 - 0x4000 6BFF       CAN2
+Page   62: 0x4000 6400 - 0x4000 67FF       CAN1
+Page   65: automatically switched to VBAT pin to ensure that ERTC can work normally.
+Page   65: 1) When the battery powered domain is powered by VDD, the PC13 can be used as a general-purpose
+Page   65: can be used as a GPIO or LEXT pin. (As an I/O port, PC13, PC14 and PC15 must be limited below
+Page   65: 2) When the battery powered domain is powered by VBAT, the PC13 can be used as a tamper pin,
+Page   65: ERTC alarm or second output, while the PC14 and PC15 can only be used as a LEXT pin.
+Page   65: (Sleep mode, Deepsleep mode and Standby mode) to save power. Users can select the mode that gives
+Page   65: sources. In addition, the power consumption in Run mode can be reduced by slowing down the system
+Page   66: 1) If the WFI is executed to enter Sleep mode, any peripheral interrupt can wake up the device from
+Page   66: The wakeup event can be generated by the following:
+Page   66: external interrupt line in Interrupt mode can wake up the system from Deepsleep mode.
+Page   66: external interrupt line in Event mode can wake up the system from Deepsleep mode.
+Page   66: mode, the above-mentioned steps 3/9/11 can be ignored.
+Page   66: Standby mode can achieve the lowest power consumption for the device. In this mode, the LDO is
+Page   67: debugging. The reason is that the Cortex®-M4F core is no longer clocked. However, the software can
+Page   70: An external clock source can be provided by HEXT bypass. Its frequency can be up to 25 MHz. The
+Page   71: can be trimmed using the HICKTRIM[5: 0] bit in the clock control register.
+Page   71: The HICK or HEXT clock can be used as an input clock source of the PLL. The PLL input clock, after
+Page   71: the configuration parameters cannot be changed once PLL is enabled. The PLL clock signal is not
+Page   71: In this mode, an external clock source with a frequency of 32.768 kHz can be provided. The external
+Page   71: clock signal should be connected to the LEXT_IN pin while the LEXT_OUT can be released for GPI
+Page   71: 30 kHz and 60 kHz. It acts as a low-power clock source that can be kept running in Deepsleep mode
+Page   71: After a system reset, the HICK oscillator is selected as system clock. The system clock can make flexible
+Page   71: directly or indirectly through the PLL as the system clock, it cannot be stopped.
+Page   71: The USB clock source can be switched between HICK and PLL frequency divider. If the HICK is selected
+Page   71: is selected, it cannot be altered without resetting the battery powered domain. If the LEXT is used as an
+Page   72: CPU NMI so that the software can perform rescue operations. The NMI interrupt keeps executing until
+Page   72: ADCCLK, USB48M, SCLK, LICK, LEXT, HICK, HEXT, PLLCLK can be used as CLKOUT1/2 clocks.
+Page   74: This bit is set and cleared by software. It can also be
+Page   74: this bit cannot be cleared.
+Page   74: This bit can be written only if the HEXT is disabled.
+Page   74: This bit is set and cleared by software. It can also be
+Page   74: this bit cannot be cleared
+Page   74: Note: This bit can be written only if the HICKCAL_KEY[7: 0]
+Page   75: can trim the HICK to be ±1%.
+Page   75: This bit is set and cleared by software. It can also be set by
+Page   75: a HEXT clock failure occurs. This bit can also be set. When
+Page   75: Bit 0         HICKEN       0x1             rw        the HICK is used as the system clock, this bit cannot be
+Page   75: resetting this bit. This bit can be written only when the PLL
+Page   81: CAN2 reset
+Page   81: Bit 26       CAN2RST          0x0            rw       0: Does not reset CAN2
+Page   81: 1: Reset CAN2
+Page   81: CAN1 reset
+Page   81: Bit 25       CAN1RST          0x0            rw       0: Does not reset CAN1
+Page   81: 1: Reset CAN1
+Page   85: CAN2 clock enable
+Page   85: CAN1 clock enable
+Page   89: CAN2 clock enable in sleep mode
+Page   89: Bit 26       CAN2LPEN         0x1            rw       0: Disabled
+Page   89: CAN1 clock enable in sleep mode
+Page   89: Bit 25       CAN1LPEN         0x1            rw       0: Disabled
+Page   92: reset, and can only be modified by setting the BPWEN bit in the power control register (PWR_CTRL).
+Page   92: Once the ERTC clock source is selected, it cannot be
+Page   92: Reset flag can only be cleared by power reset or by writing the RSTFC bit, while others are cleared by
+Page   94: Bit 7: 0    HICKCAL_KEY    0x00          rw        The HICKCAL [7:0] can be written only when this field is set
+Page  101: Note: Bit 1~0 can be altered only when security library is disabled.
+Page  101: Note: Bit 2~0 can be altered only when security library is disabled.
+Page  101: Note: Bit 2~0 can be altered only when security library is disabled.
+Page  102: After reset, Flash memory is protected, by default. FLASH_CTRLx cannot be written. Write and erase
+Page  102: operation can be performed only when the Flash memory is unlocked.
+Page  102: Flash memory block can be unlocked by writing KEY1 (0x45670123) and KEY2 (0xCDEF89AB) to the
+Page  102: Flash memory block can be locked by setting the OPLK bit in the FLASH_CTRLx register.
+Page  102: Any sector in the Flash memory can be erased with sector erase function independently. Below should
+Page  103: Any block of Flash memory can be erased independently.
+Page  104: Mass erase function can erase all the Flash memory.
+Page  105: The Flash memory can be programmed with 32 bits, 16 bits or 8 bits at a time.
+Page  105: instructions can be received;
+Page  106: Flash memory can be accessed through AHB bus of the CPU.
+Page  106: After reset, user system data area is protected, by default. Write and erase operations can be performed
+Page  106: Flash memory block can be unlocked by writing KEY1 (0x45670123) and KEY2 (0xCDEF89AB) to the
+Page  107: Erase operation must be done before programming. User system data area can perform erase operation
+Page  108: The User system data area can be programmed with 16 bits at a time.
+Page  108: user system data area can be received;
+Page  109: User system data area can be accessed through AHB bus of the CPU.
+Page  109: When the Flash access is protected, the user can re-erase the system data area, and unlock Flash
+Page  109: but cannot be read (Except for I-Code and D-code buses), written, or deleted, unless a correct code is
+Page  110: Security library is protected by codes so that solution providers can program core algorithm into this
+Page  110: Security library cannot be read or deleted (including ISP/IAP/SWD) but only executed unless code
+Page  110: The rest of the area can be used for secondary development by solution providers;
+Page  110: Solution providers can sell core algorithm with security library function and do not have to develop full
+Page  110: Note: Security library can only be located in the main Flash memory;
+Page  111: CRC calculation can be performed on a sector level to check the security library code or user code inside
+Page  113: operation to Flash memory is allowed. Writing “1” can re-
+Page  115: operation to Flash memory is allowed. Writing “1” can re-
+Page  117: registers can be configured.
+Page  117: Note: This register can be written only after unlocking
+Page  118: (1) This register can be written only after unlocking security library lock.
+Page  120:  Each pin can be configured by software as general-purpose input/output, multiplexed function and
+Page  120: analog mode. In general-purpose output or MUX mode, each pin can be configured as push-pull
+Page  120:  Each pin can be configured as external interrupt input.
+Page  120: I/O port registers can be accessed by words, half-words or bytes, and each I/O port bit can be
+Page  121:  I/O states cannot be obtained by reading the input data register.
+Page  122: configuration cannot be modified until the next reset or power-on.
+Page  122: Several peripheral functions can be mapped on each IO pin. Peripheral input/output corresponding to
+Page  122: register so that there can be no conflict between peripherals sharing the same pin.
+Page  122: In multiplexed input mode, the I/O pin can be configured as multiplexed mode by setting the
+Page  122: GPIOx_CFGR register, and it can be configured as floating, pull-up/pull-down by setting the
+Page  122: When used as multiplexed output or bidirectional IOMUX, the I/O pin can be configured as multiplexed
+Page  125: PA11   USART6_TX   CAN1_RX     OTG1_D-                                    DVP_D2                  EVENTOUT
+Page  125: PA12   USART6_RX   CAN1_TX     OTG1_D+                                    DVP_D3                  EVENTOUT
+Page  127: PB5    UART5_RX        CAN2_RX                  EMAC_PPS_OUT
+Page  127: PB6    UART5_TX        CAN2_TX
+Page  127: PB8    UART5_RX        CAN1_RX
+Page  127: PB9    UART5_TX        CAN1_TX
+Page  127: PB12   USART3_CK       CAN2_RX
+Page  127: PB13   USART3_CTS      CAN2_TX
+Page  131: PD0               CAN1_RX     XMC_A5                           XMC_D2                          EVENTOUT
+Page  131: PD1               CAN1_TX     XMC_A6                           XMC_D3                          EVENTOUT
+Page  137: PG0                    CAN1_RX                                   XMC_A10                       EVENTOUT
+Page  137: PG1                    CAN1_TX                                   XMC_A11                       EVENTOUT
+Page  137: PG11                   CAN2_RX                                   XMC_NCE4_2   DVP_D3           EVENTOUT
+Page  137: PG12   USART6_RTS_DE   CAN2_TX                                   XMC_NE4                       EVENTOUT
+Page  138: The unique peripheral multiplexed function can be configured through the GPIOx_MUXL/GPIOx_MUXH
+Page  139: Note: Either PA0 or PC13 cannot be used as TAMPER_BPR and WKUP of PWC simultaneously.
+Page  139: Each pin can be used as an external interrupt input. The corresponding pin should be configured as
+Page  141: the value of WPEN bit cannot be modified during this
+Page  144: field, the user can decide which of the following memory to
+Page  151: EXINT consists of 23 interrupt lines EXINT_LINE[22:0], each of which can generate an interrupt or
+Page  151: event by edge detection trigger or software trigger. EXINT can enable or disable an interrupt or event
+Page  151:       EXINT 0~15 mapping IO can be configured independently
+Page  151:       Up to 23 software trigger that can be generated and cleared independently
+Page  151:       Each interrupt can be cleared independently.
+Page  151: With up to 23 interrupt lines EXINT_LINE[22:0], EXINT can detect not only GPIO external interrupt
+Page  151: detection mechanism, where, GPIO interrupt sources can be selected with IOMUX_EXINTCx register.
+Page  151: interrupt line can be used to generate an event or interrupt.
+Page  151: EXINT can enable or disable an interrupt or event individually through software configuration such as
+Page  151: EXINT also features an independent interrupt status bit. Reading access to EXINT_INTSTS register can
+Page  155: Circular mode and memory-to-memory mode cannot be used at the same time.
+Page  156: MWIDTH bits in the DMA_CxCTRL register. When PWIDTH is not equal to MWIDTH, it can be aligned
+Page  157: An interrupt can be generated on a DMA half-transfer, transfer complete and transfer error. Each channel
+Page  157: flexible mapping mode, each channel can bypass or synchronize 127 possible channel requests from
+Page  158: trigger event that can be on a rising edge, falling edge or either of them.
+Page  167: register can only written when the CHEN bit in the
+Page  167: Note: The register can only be written when the CHEN bit
+Page  167: Note: The register can only be written when the CHEN bit
+Page  169: Bit 7: 0    SYNCOVFC          0x00            rw1c     Writing 1 to the corresponding bit can clear the SYNCOVF
+Page  170: Bit 3: 0   TRGOVFC            0x00            rw1c     Writing 1 to the corresponding bit can clear the TRGOVF
+Page  171: CRC_DT register by CRC. The CRC_POLY register can be used to program the polynomial coefficient,
+Page  171: and the polynomial size can be set to 7-bit, 8-bit, 16-bit or 32-bit by setting the POLY_SIZE bit in the
+Page  171: Users can write the data to go through CRC check and read the calculated result through CRC_DT
+Page  172: CRC_DT register can be accessed by bytes (8 bits), half-words (16 bits) or words (32 bits). Other
+Page  173: 0x4C11DB7. Users can also set the polynomial coefficient
+Page  174: ―    Two 7-bit slave addresses (two addresses, one of them can be masked)
+Page  174: I2C bus consists of a data line (SDA) and clock line (SCL). It can achieve a maximum of 100 kHz speed
+Page  175: I2C bus interface can operate both in master mode and slave mode. Switching from master mode to
+Page  176: Clock stretching is enabled by default (STRETCH=0 in the I2C_CTRL1 register). The slave can hold the
+Page  177: Note: Timing configuration cannot be modified once the I2C is enabled.
+Page  178: In master mode, the width of SCL signals (high and low) can be configured freely by setting the DIV[7:
+Page  179: SCL bus low between the 8th and 9th clock edges. At this point, the user can read the RXDT
+Page  180: Artery_I2C_Timing_Configuration can be used to configure this register.
+Page  180: register. The ADDRF flag can be cleared by setting ADDRC=1 in the I2C_CLR register, and then
+Page  181: is asserted in the I2C_STS register. The STOPF flag can be cleared by setting STOPC=1 in
+Page  184: This register can be configured by means of Artery_I2C_Timing_Configuration tool.
+Page  184: to mask some address bits freely so that the slave can respond to some specific addresses. Refer
+Page  184: direction can be obtained by read access to the SDIR bit in the I2C_STS register. When SDIR=0,
+Page  185: register. The STOPF can be cleared by writing 1 to the STOPC bit in the I2C_CLR register,
+Page  185: In slave receive mode, the slave byte control mode can be used for data reception. This mode
+Page  188: The System Management Bus (SMBus) is a two-wire interface through which various devices can
+Page  188: communicate with each other. It is based on I2C. With SMBus, the device can provide manufacturer
+Page  188: SMBus address conflicts can be resolved by dynamically assigning a new unique address to each device.
+Page  188: Setting the DEVADDREN bit in the I2C_CTRL1 register can enable the I2C interface to recognize the
+Page  188: The slave device can send data to the master device through SMBus host notify protocol. For example,
+Page  188: the slave can notify the host to implement ARP with this protocol. Refer to SMBus 2.0 protocol for details
+Page  188: SMBALERT can acknowledge ARA.
+Page  189: The I2C peripherals embeds two counters for timeout detection, which can be configured through the
+Page  189: TMOUT bit can be cleared by writing 1 to the TMOUTC bit in the I2C_CLR register.
+Page  190: In slave receive mode, the slave receive byte control mode (SCTRL=1) can be used to control
+Page  190: 3. Slave receive byte control mode can be enabled (with SCTRL bit in the I2C_CTRL1) in slave mode,
+Page  190: The register can be configured by means of Artery_I2C_Timing_Configuration tool.
+Page  191: register. The ADDRF flag can be cleared by setting ADDRC=1 in the I2C_CLR register, and then
+Page  191: is asserted in the I2C_STS register. The STOPF flag can be cleared by setting STOPC=1 in
+Page  194: The register can be configured by means of Artery_I2C_Timing_Configuration tool.
+Page  194: direction can be obtained by read access to the SDIR bit in the I2C_STS register. When SDIR=0,
+Page  195: The ADDRF flag can be cleared by setting ADDRC=1 in the I2C_CLR register, and then data
+Page  195: 4. NACKEN bit of the I2C_CTRL register can be configured to generate an ACK or NACK, if
+Page  195: register. The STOPF can be cleared by writing 1 to the STOPC bit in the I2C_CLR register,
+Page  198: I2C data transfer can be done using DMA controller so as to reduce the burden on the CPU. The TDIEN
+Page  199: SDA can be changed only when the SCL signal becomes low; otherwise, a bus error may appear. When
+Page  205: I2C_TXDT register. The I2C_TXDT register can be cleared
+Page  210: The polarity, phase and pulse number of the clock can be configured by setting the CLKPOL,
+Page  210: The assertion of the TDC flag can be delayed by setting the SCGT[7: 0] bit (guard time bit). The TDF
+Page  210: bit can be asserted high after the guard time counter reaches the value programmed in the SCGT[7:
+Page  210: The infrared low-power mode can be enabled by setting IRDALP=1. In normal mode the transmitted
+Page  210: pulse width is specified as 3/16 bit. In infrared low-power mode, the pulse width can be configurable.
+Page  210: And the ISDIV[7:0] bit can be used to achieve the desired low-power frequency.
+Page  211: RTS and CTS flow control can be enabled by setting RTSEN=1 and CTSEN=1, respectively.
+Page  211: Silent mode can be entered by setting RM=1. It is possible to wake up from silent mode by setting
+Page  213: significant bits is reduced by one bit.
+Page  215: User can program the desired baud rate by setting different system clocks and writing different values
+Page  216: Note: 1. The TEN bit cannot be reset during data transfer, or the data on the TX pin will be corrupted.
+Page  216: of transfer. The USART cannot be disabled before the flag is set, or transfer error will occur.
+Page  216: will clear the TDC bit; This bit can also be cleared by writing “0”, but this is valid only in DMA mode.
+Page  217: (Receiver Data Register). In other words, data is received and can be read (including its
+Page  217: software. The RDBF flag can also be cleared by writing 0 to it. The RDBF bit must be cleared
+Page  218: can be read.
+Page  218: Note: The REN bit cannot be reset during data reception, or the byte that is currently being received will
+Page  219: When the TRPSWAP bit (USART_CTRL2[15]) is set, Tx/Rx pin can be swapped. Two common scenes
+Page  219: chip, they can be swapped through the TRPSWAP bit, without the need of hardware intervention.
+Page  219:  If the user only connected the master Tx to the slave Rx in full-duplex mode, the Tx/Rx can be
+Page  219: Note: The SWAP (USART_CTRL2[15]) can be modified only when the USART is disabled (UEN=0).
+Page  220: CK: Transmitter clock output. The output CLK phase, polarity and frequency can be programmable.
+Page  224: This bit is used to send a break frame. It can be set or
+Page  227: The SPI can be configured as host or slave based on software configuration, supporting full-duplex,
+Page  227: automatic CRC function of SPI internal hardware. In the meantime, the SPI interface can be compatible
+Page  229: set. In this case, the SPI can be used only for data reception (transmission is not supported). The MISO
+Page  230: can be used only for data transmission; when the SLBTD bit is 0, the SPI can be used only for data
+Page  230: mode (or disabling SPI system clock) cannot be entered unless the SPI is disabled.
+Page  230: interrupt is generated if ERRIE=1. When the MMERR is set, the SPIEN and MSTEN cannot be set by
+Page  231: SPIEN and MSTEN bits cannot be set by software. The MMERR bit is cleared by read or write access
+Page  233: CLKPHA bits cannot be used to change the polarity and phase of the SPI_CLK either.
+Page  233: bits cannot be used for CS signal management either.
+Page  233: The SPI transmitter is clocked by SPI_SCK controller. It can output different data frame formats,
+Page  233: Both DMA and CPU can be used for write operation. For DMA transfer, refer to DMA transfer section for
+Page  233: is set once again. This means that the user can be allowed to write the data to be transmitted only when
+Page  233: The SPI receiver is clocked by the SPI_SCK controller. It can output different data frame formats through
+Page  234: Both DMA and CPU can be used for read operation. For DMA transfer, refer to DMA transfer section for
+Page  234: RDBF flag           software can write data
+Page  235: RDBF flag           software can write data
+Page  235: software can write data
+Page  236: TDBE flag                    software can write data
+Page  236: The SPI interface supports TI mode. The TIEN bit can be set to enable SPI TI mode.
+Page  238: The I2S can be configured by software as master reception/transmission, and slave
+Page  238: A single I2S supports half-duplex. However, it can work with two additional instantiated I2S modules
+Page  239: I2Sx can be used as master, where x should be 2 or 3
+Page  239:  In half-duplex mode, only I2Sx can output SCK and WS
+Page  239:  In full-duplex mode, only I2Sx can output SCK and WS
+Page  239: Both the I2Sx and I2SxEXT can be configured as transmit or receive mode.
+Page  241: While being used as I2S, the SPI supports multiple audio protocols. The user can control the audio
+Page  241: and channel bits being controlled by the audio protocol selector. Besides, the user can also select the
+Page  241: the SPI_DT register, and the number of DMA transfer is 1. The first 16 bits (MSB) are the significant
+Page  242: the SPI_DT register, and the number of DMA transfer is 1. The 16 bits (LSB) are the significant bits
+Page  242: the significant bits, with the 8-bit MSB forced to 0 by hardware; the subsequent 16 bits transmit and
+Page  242: When used as I2S master, the SPI can provide communication clock (CK) and main peripheral clock
+Page  245: I2S can address four different audio standards: Philips standard, the most significant byte (left-aligned)
+Page  245: and the least significant byte (right-aligned) standards, and the PCM standard. Figure 13-23 shows
+Page  251: This bit can be configured only when the I2S is set to 16-
+Page  253: logic. without being connected to external I/Os, they can be used for a basic timing and providing clocks
+Page  257:       16-bit up, down, up/down and encoder mode counter (TMR2/5 can be extended to 32-bit)
+Page  258: The count clock of TMR2~TMR5 can be provided by the internal clock (CK_INT), external clock (external
+Page  258: The counter clock can be provided by two external clock sources, namely, TRGIN and EXT signals.
+Page  260: Timer synchronization allows interconnection between several timers. The TMR_CLK of one timer can
+Page  260: can be adjusted by setting the value of the TMRx_DIV register. The prescaler value can be modified at
+Page  261: Each timer has an internal 16-bit upcounter, downcounter, upcounter/downcounter. TMR2/5 can be
+Page  262: in up/down counting mode. In up/down counting mode 1 (TWCMSEL[1:0]=2’b01), CxIF flag can only be
+Page  262: set when the counter counts down; in up/down counting mode 2 (TWCMSEL[1:0]=2’b10), CxIF flag can
+Page  262: can be set when the counter counts up/down.
+Page  264: −     CxIN outputs the CxIPS signal that is divided by input channel divider. The divider factor can be
+Page  264: defined as No division, /2, /4 or /8, by the CxIDIV bit. It can be used for filtering, selection, division
+Page  265: The XOR gate can be used to connect Hall sensors. For example, connect the three XOR inputs to the
+Page  265: register. The TMR2 IS1 can be configured as TMR8_TRGO, Ethernet PTP output, OTG1_FS_SOF or
+Page  265: OTG2_FS_SOF. TMR5 channel 4 input can be configured as GPIO, LICK, LEXT or ERTC.
+Page  265: The PWM input mode can be used to measure the period and duty cycle of input signal. The period and
+Page  265: duty cycle of channel 1 can be measured as follows:
+Page  265: and duty of channel 1 input signal can be calculated through C1DT and C2DT respectively.
+Page  269: When TMR is selected as the master timer, the following signal sources can be selected as TRGOUT
+Page  269: This function can only be used in output capture or PWM modes, and does not work in forced mode.
+Page  269: The counter and its prescaler can be reset by a selected trigger signal. An overflow event is generated
+Page  270: The counter can start counting on the rising edge of a selected trigger input (TMR_EN=1).
+Page  271: Both Master and slave timer can be configured in different master and slave modes respectively. The
+Page  271: combination of both them can be used for various purposes. The figure below provides an example of
+Page  273: In plus mode or when disabled, only 16-bit value can be
+Page  274: signal can be sampled only after it has been generated N
+Page  275: If enabled, master and slave timer can be synchronized.
+Page  278: register, and can be sent to the TMRx_C1DT register
+Page  283: These timers can be synchronized.
+Page  284: The count clock of general-purpose timers can be provided by the internal clock (CK_INT), external clock
+Page  285: The counter clock can be provided by TRGIN signal.
+Page  286: Timer synchronization allows interconnection between several timers. The TMR_CLK of one timer can
+Page  286: can be adjusted by setting the value of the TMRx_DIV register. The prescaler value can be modified at
+Page  288: and TMR14 has an independent channel. Each channel can be configured as input or output.
+Page  288: −   CxIN outputs the CxIPS signal that is divided by input channel divider. The divider factor can be
+Page  288: defined as No division, /2, /4 or /8, by the CxIDIV bit. It can be used for filtering, selection, division
+Page  289: The PWM input mode can be used to measure the period and duty cycle of input signal. The period and
+Page  289: duty cycle of channel 1 can be measured as follows:
+Page  289: period and duty of channel 1 input signal can be calculated through C1DT and C2DT respectively.
+Page  292: The counter and its prescaler can be reset by a selected trigger signal. An overflow event is generated
+Page  293: The counter can start counting on the rising edge of a selected trigger input (TMR_EN=1).
+Page  296: The channel can be used in input (capture mode) or output (compare mode). The direction of a channel
+Page  296: must be given to the fact that the same bit can have different functions in input mode and output mode.
+Page  296: register, and can be sent to the TMRx_C1DT register
+Page  301: The channel can be used in input (capture mode) or output (compare mode). The direction of a channel
+Page  301: must be given to the fact that the same bit can have different functions in input mode and output mode.
+Page  301: register, and can be sent to the TMRx_C1DT register only
+Page  304: The count clock of TMR1, TMR8 and TMR20 can be provided by the internal clock (CK_INT), external
+Page  305: The counter clock can be provided by two external clock sources, namely, TRGIN and EXT signals.
+Page  307: Timer synchronization allows interconnection between several timers. The TMR_CLK of one timer can
+Page  307: to count. The frequency division relationship between the CK_CNT and TMR_CLK can be adjusted by
+Page  307: setting the value of the TMRx_DIV register. The prescaler value can be modified at any time, but it takes
+Page  309: in up/down counting mode. In up/down counting mode 1 (TWCMSEL[1:0]=2’b01), CxIF flag can only be
+Page  309: set when the counter counts down; in up/down counting mode 2 (TWCMSEL[1:0]=2’b10), CxIF flag can
+Page  309: can be set when the counter counts up/down.
+Page  309: repetition counter reaches 0. The frequency of the overflow event can be adjusted by setting the
+Page  312: Each timer of TMR1, TMR8 and TMR20 has four independent channels. Each channel can be configured
+Page  312: −   CxIN outputs the CxIPS signal that is divided by input channel divider. The divider factor can be
+Page  312: defined as No division, /2, /4 or /8, by the CxIDIV bit. It can be used for filtering, selection, division
+Page  313: The XOR gate can be used to connect Hall sensors. For example, connect the three XOR inputs to the
+Page  313: The PWM input mode can be used to measure the period and duty cycle of input signal. The period and
+Page  313: duty cycle of channel 1 can be measured as follows:
+Page  313: and duty of channel 1 input signal can be calculated through C1DT and C2DT respectively.
+Page  316: When TMR is selected as the master timer, the following signal sources can be selected as TRGOUT
+Page  317: This function can only be used in output capture or PWM modes, and does not work in forced mode.
+Page  318: OEN, FCSODIS, FCSOEN, CxIOS and CxCIOS. But, CxOUT and CxCOUT cannot be set both to active
+Page  318: The brake source can be the brake input pin or a clock failure event. The polarity is controlled by the
+Page  318: CxCIOS cannot be driven to their active level at the same time. It should be note that because
+Page  318: interrupt or DMA request can be generated.
+Page  318: Note: When the brake input is active, the OEN cannot be set, nor the status flag, BRKIF can be
+Page  319: The counter and its prescaler can be reset by a selected trigger signal. An overflow event can be
+Page  320: The counter can start counting on the rising edge of a selected trigger input (TMR_EN=1).
+Page  323: signal can be sampled only after it has been generated N
+Page  323: If enabled, master and slave timer can be synchronized.
+Page  326: The channel can be used in input (capture mode) or output (compare mode). The direction of a channel
+Page  326: be given to the fact that the same bit can have different functions in input mode and output mode.
+Page  327: register, and can be sent to the TMRx_C1DT register
+Page  328: The channel can be used in input (capture mode) or output (compare mode). The direction of a channel
+Page  328: be given to the fact that the same bit can have different functions in input mode and output mode.
+Page  333: Note: Based on lock configuration, AOEN, BRKV, BRKEN, FCSODIS, FCSOEN and DTC[7:0] can all
+Page  335:    The downcounter can be reloaded by enabling the counter interrupt.
+Page  335: before the watchdog generates a reset. The WIN[6: 0] bit can be used to configure the window value.
+Page  335: (ISTS) can be used to reload the counter to prevent a system reset. Note that if CNT[6]=0, setting the
+Page  336: This bit is set by software, but can be cleared only after
+Page  338: WDT is best suited to the applications that have lower timing accuracy and can run independently
+Page  338:    The counter is clocked by LICK (can work in Stop and Standby modes)
+Page  338:    The counter can be configured to stop counting either in Deepsleep or Standby mode
+Page  338: Both software and hardware operations can be used to enable WDT. In other words, the WDT can be
+Page  338: range, so a margin should be taken into account when configuring timeout period. The LICK can be
+Page  338: WDT can work in Sleep, Deepsleep and Standby modes. It is possible to stop counting in Deepsleep
+Page  340: write access to the register. The register can be read only
+Page  340: write access to the register. The register can be read only
+Page  340: The reload register WDT_RLD can be written only when
+Page  340: The divider register WDT_DIV can be written only when
+Page  341: The real-time clock provides a calendar clock function. The time and date can be modified by modifying
+Page  342: wakeup. The clock frequency of ck_a and ck_b can be obtained from the following equation:
+Page  342: and ERTC_BPRx registers) can be enabled by unlocking it.
+Page  342: Table 17-1 lists the ERTC registers that can be configured only after the write protection is unlocked and
+Page  343: Reference clock detection and coarse digital calibration cannot be used at the same time. Thus when
+Page  343: In the case of DREN=0, the clock and calendar values can be obtained by reading a synchronous
+Page  344: of two read accesses are consistent. Besides, it is also possible to compare the least significant bits of
+Page  344: UPDF=1, to ensure that the latest calendar value can be read. In synchronous read (DREN=0) mode,
+Page  344: alarm event is generated if an alarm clock is enabled. The MASKx bit can be used to selectively mask
+Page  344: Note: If MASK1=0 in the ERTC_ALA or ERTC_ALB, the alarm clock can work normally only when
+Page  344: The WATCLK[2: 0] bit can be used to select a wakeup timer clock, including ERTC_CLK/16,
+Page  345: cannot be used together.
+Page  345: Coarse digital calibration can be used to advance or delay the calendar updates by increasing or
+Page  345: Note: Coarse digital calibration can work correctly only when the DIVA is 6 or above.
+Page  345: cycles. A maximum of 511 pulses can be removed. When the ADD is set, 512 pulses can be inserted
+Page  345: from -511 to +512 ERTC_CLK cycles can be added during the 220 ERTC_CLK cycles.
+Page  345: deviation ranging from -255 to +256 ERTC_CLK cycles can be added during the 220 ERTC_CLK cycles.
+Page  346: The calendar update can be synchronized (not used in low-power modes) to a reference clock (usually
+Page  346: aligned. If the 1 Hz clock has a slight shift, a more accurate reference clock can be used to fine-tune the
+Page  346: reset value (0x7F and 0xFF respectively). The clock synchronization cannot be used in conjunction with
+Page  346: setting the TSIEN bit, an interrupt can be generated when a time stamp event occurs.
+Page  346: The ERTC has two tamper detection modes: TAMP1 and TAMP2. They can be configured as a level
+Page  346: detection with filter or edge detection respectively. TAMP1 can select either ERTC_MUX or
+Page  346: ERTC_MUX2 through the TSPIN bit, while the TAMP2 can only select ERTC_MUX2.
+Page  347: Note: In Standby mode, TAMP2 (PA0 pin) can not use pre-charge function.
+Page  347: ERTC can be woken up by alarm clocks, periodic auto wakeup feature, time stamps or tamper
+Page  352: can be modified only when an initialization mode is enabled
+Page  354: This bit can be written only when TADJF=0. It is intended to
+Page  358:  Each channel can independently define its own sampling time
+Page  360: sequence (ADC_PSQ), and the same channel can be repeated, the total number of sequences is
+Page  360: The converted data of such channel can be used to calculate the external reference voltage.
+Page  361: After each calibration, the calibration value is stored in the least significant 7 bits of the ADC_CALVAL
+Page  361: Note:Calibration is permitted only in 12-bit resolution mode. Switching resolution can be made only after
+Page  362: by preempted ones. The valid polarity for external trigger sources can be selected by the OCETE and
+Page  362: The conversion can be triggered by software write operation to the OCSWTRG and PCSWTRG bits in
+Page  363: The sampling period can be configured by setting the CSPTx bit in the ADC_SPT1 and ADC_SPT2
+Page  363: The resolution can be programmed through the CRSEL bit in the ADC_CTRL1 register. A lower
+Page  363: can be converted in a specific order.
+Page  364: automatically continue its conversion. This mode can work with the sequence mode. The preempted
+Page  364: signal is detected, the ordinary channels will be converted repeatedly. This mode can work with the
+Page  364: group. Such mode can also work with the preempted group auto conversion mode to repeatedly convert
+Page  365: The partition mode of the ordinary group can be enabled by setting the OCPEN bit in the ADC_CTRL1
+Page  365: The partition mode cannot be used with the repetition mode at the same time. Figure 18-7 shows an
+Page  365: The ADABRT bit in the ADC_CTRL2 register can be used to stop ADC conversions. At the end of the
+Page  366: A single oversampling converted data can be done through multiple conversions of the same channel in
+Page  367: The OOSRSEL bit in the ADC_OVSP register can be used to resume ordinary oversampling mode.
+Page  367: Trigger mode can be enabled by setting the OOSTREN bit in the ADC_OVSP register. The user must
+Page  369: The EOCSFEN bit in the ADC_CTRL2 register can be used to select when to set the ordinary group
+Page  369: stored in the data register. If the DMA is used, the DMA request remains set so that the DMA can read
+Page  369: The OCDRCEN bit in the ADC_CTRL2 register can be used to select whether to continually send DMA
+Page  370: Note: ADC conversion abort (ADABRT) cannot be used in master/slave mode. In this mode, each of the
+Page  371: The MSDMASEL bit in the ADC_CCTRL register can be used to select from five DMA transfer modes,
+Page  371: MSDRCEN bit in the ADC_CCTRL register can be used to select when to stop DMA request, that is,
+Page  371: The single slave mode can work with the mode 1/2/3 of the transfer mode (MSDMASEL), while the
+Page  371: dual slave mode can work with the mode 1/4/5.
+Page  373: by hardware. Thus the ASISEL bit becomes invalid when it cannot meet such sampling interval.
+Page  373: The single slave mode can work with the transfer mode 1/2/3 (MSDMASEL), while the dual slave
+Page  373: mode can work with all transfer modes. Figure 18-18 shows how to store data when the dual slave
+Page  380: When this bit is in OFF state, write an ON command can
+Page  380: When this bit in ON state, write another ON command can
+Page  384: Note: The number can be from 0 to 17. For example, if the
+Page  385: Note: The number can be from 0 to 17. For example, if the
+Page  385: rw       Note: The number can be from 0 to 17. For example, if the
+Page  385: Note: The number can be from 0 to 17. For example, if the
+Page  385: =10 00110 00101 00100 00011, it indicates that the scan
+Page  386: preempted conversions, this bit can be used to select
+Page  389: division, the ADCCLK cannot be higher than PCLK2.
+Page  392: digital part of the DAC can be configured in 8-bit or 12-bit mode and can be used in conjunction with the
+Page  392: and DCA2, with its own converter each. Each DAC1/DAC2 can be converted independently or
+Page  392: The following information can be used as DAC design reference:
+Page  392: The analog part of the DAC1/DAC2 can be enabled by setting the ENx bit in the DAC_CTRL
+Page  392: register, but its digital part is not subject to this bit. The DAC integrates two output gains that can
+Page  392: an external operational amplifier. The DAC1/DAC2 output gain can be enabled and disabled
+Page  392: The DAC1/DAC2 both have a DMA capability that can be enabled by setting the DxDMAEN bit in
+Page  392: In dual DAC mode, the application can handle two channels (DAC1/DAC2) by using only one DMA
+Page  393: If the DxTRGEN bit in the DAC_CTRL register is set, the DAC conversion can then be triggered by an
+Page  393: The DAC can output a variable-amplitude pseudo noise and a triangular wave, which is done by the
+Page  396: Note: These bits can be valid only when D2TRGEN = 1.
+Page  397: Note: These bits can be valid only when D1TRGEN = 1.
+Page  400: 20 CAN
+Page  400: 20.1 CAN introduction
+Page  400: CAN (Controller Area Network) is a distributed serial communication protocol for real-time and reliable
+Page  400: data communication among various nodes. It supports the CAN protocol version 2.0A and 2.0B.
+Page  400: 20.2 CAN main features
+Page  400: The nominal bit time of the CAN bus consists of three parts as follows:
+Page  400: by the BRDIV[11: 0] bit in the CAN_BTMG register.
+Page  400: PHASE_SEG1 of the CAN standard. Its duration is between 1 and 16 time units, defined by the BTS1[3:
+Page  400: Big segment 2 (BIT SEGMENT 2): It is referred to as BSEG2 including the PHASE_SEG2 of the CAN
+Page  401: The start location of each bit in CAN nodes is always in synchronization segment by default, and the
+Page  401: During the actual transmission, each bit of the CAN nodes has certain phase error due to the oscillator
+Page  401: communication, the start-bit edge and its subsequent falling edge can be synchronized or
+Page  401: resynchronized. The time length of the synchronization compensation can not be greater than the
+Page  403: The CAN controller contains four interrupt vectors that can be used to enable or disable interrupts by
+Page  403: setting the CAN_INTEN register.
+Page  404: The following information can be used as reference for CAN application development:
+Page  404: When the system enters the debug mode, the CAN controller stops or continues to work normally,
+Page  404: depending on the CANx_PAUSE bit in the DEBUG_CTRL register or the PTD bit in the
+Page  404: CAN_MCTRL register.
+Page  404: bus competition. It is activated by setting TTCEN=1 in the CAN_MCTRL register. The internal 16-
+Page  404: bit timer is incremented each CAN bit time, and is sampled on the Start Of Frame bit to generate
+Page  404: the time stamp value, which is stored in the CAN_RFCx and CAN_TMCx register.
+Page  404: The CAN_BTMG register can be modified only when the CAN is in frozen mode.
+Page  404: Although the transmission of incorrect data will not cause problems at the network level, it can have
+Page  404: severe impact on the application. Thus a transmit mailbox can be modified only when it is in empty
+Page  404: The filter configuration in the CAN_FMCFG, CAN_FBWCFG and CAN_FRF registers can be
+Page  404: modified only when FCS=1. The CAN_FiFBx register can be modified only when FCS=1 or FAENx=0.
+Page  404: As the number of nodes in the CAN network and the number of messages grows, an enhanced filtering
+Page  404: message reception. One FIFO scheme is used to ensure that the CPU can concentrate on application
+Page  404: Based on the above mentioned conditions, the CAN controller provides 28 scalable/configurable
+Page  404: Figure 20-7 CAN block diagram
+Page  404: CAN 1
+Page  404: CAN
+Page  404: CAN 2
+Page  405: The CAN controller has three operating modes:
+Page  405: After a system reset, the CAN controller is in Sleep mode. In this mode, the CAN clock is stopped
+Page  405: can still access to the mailbox registers.
+Page  405: The software request the CAN controller to enter Sleep mode by setting the DZEN bit in the
+Page  405: CAN_MCTRL register. The hardware confirms the request by setting the DZC bit in the CAN_MSTS
+Page  405: Exit Sleep mode in two ways: The CAN controller can be woke up by hardware clearing the DZEN
+Page  405: bit when the AEDEN bit in the CAN_MCTRL register and the CAN bus activity is detected. It can
+Page  405: Switch to Frozen mode: The CAN controller switches from Sleep mode to Frozen mode when the
+Page  405: FZEN bit is set in the CAN_MCTRL register and the DZEN bit is cleared. Such switch operation is
+Page  405: confirmed by hardware setting the FZC bit in the CAN_MSTS register.
+Page  405: Switch to Communication mode: The CAN controller enters Communication mode when the FZEN
+Page  405: and DZEN bits are both cleared and the CAN controller has synchronized with the bus. In other
+Page  405: words, it must wait for 11 consecutive recessive bits to be detected on the CANRX pin.
+Page  405: The software initialization can be done only in Frozen mode, including the CAN_BTMG and
+Page  405: CAN_MCTRL registers. But the initialization of the 14 CAN filter banks (mode, scale, FIFO
+Page  405: association, activation and filter values) can be done in non-Frozen mode. When the CAN controller
+Page  405: Switch to Communication mode: The CAN controller leaves Frozen mode when the FZEN bit is
+Page  405: cleared in the CAN_MCTRL register. This switch operation is confirmed by hardware clearing the
+Page  405: FZC bit in the CAN_MSTS register. The CAN controller must be synchronized with the bus.
+Page  405: Switch to Sleep mode: The CAN controller enters Sleep mode if DZEN=1 and FZEN=0 in the
+Page  405: CAN_MCTRL register. This switch operation is confirmed by hardware setting the DZC bit in the
+Page  405: CAN_MSTS register.
+Page  405: After the CAN_BTMG and CAN_MCTRL registers are configured in Frozen mode, the CAN
+Page  405: Switch to Sleep mode: The CAN controller switches to Sleep mode when the DZEN bit is set in the
+Page  405: CAN_MCTRL register and the current CAN bus transmission is complete.
+Page  405: Switch to Frozen mode: The CAN controller enters Frozen mode when the FZEN bit is set in the
+Page  405: CAN_MCTRL register and the current CAN bus transmission is complete.
+Page  405: The CAN controller defines three test modes, including Listen-only mode, Loop back mode and
+Page  405: combined Listen-only and Loop back mode. Test mode can be selected by setting the LOEN and LBEN
+Page  405: bits in the CAN_BTMG register.
+Page  405:  Listen-only mode is selected when the LOEN bit is set in the CAN_BTMG register. In this mode,
+Page  405: the CAN is able to receive data, but only recessive bits are output on the CANTX pin. In the
+Page  405: meantime, the dominant bits output on the CANTX can be monitored by the receive side but
+Page  405: without affecting the CAN bus.
+Page  405:  Loop back mode is selected by setting the LBEN bit in the CAN_BTMG register. In this mode, The
+Page  405: CAN only receives the level signal on its CANTX pin. Meanwhile, the CAN can also send data to
+Page  405: in the CAN_BTMG register. In this case, the CAN is disconnected from the bus network, the
+Page  405: CANTX pin remains in recessive state, and the transmit side is connected to the receive side.
+Page  406: The CAN controller provides 28 configurable and scalable filter banks (0~27). Each filter bank has
+Page  406: two 32-bit registers, CAN_FiFB1 and CAN_FiFB2. The filter bit width can be configured as two 16 bits
+Page  406: or one 32 bits, depending on the corresponding bits in the CAN_FBWCFG register.
+Page  406: 32-bit filter register CAN_FiFBx includes the SID[10: 0], EID[17: 0], IDT and RTR bits.
+Page  406: CAN_FiFB1[31: 21]                            CAN_FiFB1[20: 3]                   CAN_FiFB1[2: 0]
+Page  406: CAN_FiFB2[31: 21]                            CAN_FiFB2[20: 3]                   CAN_FiFB2[2: 0]
+Page  406: Two 16-bit filter register CAN_FiFBx includes SID[10: 0], IDT, RTR and EID[17: 15] bits
+Page  406: CAN_FiFB1             CAN_FiFB1                           CAN_FiFB1             CAN_FiFB1
+Page  406: CAN_FiFB1[31: 21]                                            CAN_FiFB1[15: 5]
+Page  406: CAN_FiFB2             CAN_FiFB2                           AN_FiFB2              CAN_FiFB2
+Page  406: CAN_FiFB2[31: 21]                                            CAN_FiFB2[15: 5]
+Page  406: The filter can be configured in identifier mask mode or in identifier list mode by setting the FMSELx bit
+Page  406: in the CAN_FMCFG register. The mask mode is used to specify which bits must match the pre-
+Page  406: the pre-programmed identifier. The two modes can be used in conjunction with filter width to deliver
+Page  406: CAN_FiFB1
+Page  406: ID                CAN_FiFB1[31:21]                          CAN_FiFB1[20:3]
+Page  406: CAN_FiFB2
+Page  406: Mask               CAN_FiFB2[31:21]                          CAN_FiFB2[20:3]
+Page  406: CAN_FiFB1
+Page  406: ID                CAN_FiFB1[31:21]                          CAN_FiFB1[20:3]
+Page  406: CAN_FiFB2
+Page  406: ID                CAN_FiFB2[31:21]                          CAN_FiFB2[20:3]
+Page  406: ID                CAN_FiFB1[15:5]             CAN_FiFB1[4:0]
+Page  406: Mask               CAN_FiFB1[31:21]          CAN_FiFB1[20:16]
+Page  406: ID                  CAN_FiFB2[15:5]             CAN_FiFB2[4:0]
+Page  406: Mask                CAN_FiFB2[31:21]          CAN_FiFB2[20:16]
+Page  407: ID           CAN_FiFB1[15:8]          CAN_FiFB1[7:0]
+Page  407: ID           CAN_FiFB1[31:24]        CAN_FiFB1[23:16]
+Page  407: ID           CAN_FiFB2[15:8]          CAN_FiFB2[7:0]
+Page  407: ID            CAN_FiFB2[31:24]        CAN_FiFB2[23:16]
+Page  407: number N is stored in the RFFMN[7: 0] bit in the CAN_RFCx register. The distribution of the filter number
+Page  407: When the CAN controller receives a frame of message, the message may pass through several filters.
+Page  407:  The CAN filters are configured by setting the FCS bit in the CAN_FCTRL register.
+Page  407:  Identifier mask mode or identifier list mode can be selected by setting the FMSELx bit in the
+Page  407: CAN_FMCFG register.
+Page  407:  The filter bit width can be configured as two 16 bits or one 32 bits by setting the FBWSELx bit in
+Page  407: the CAN_FBWCFG register.
+Page  407:  The filter x is associated with FIFO0 or FIFO1 by setting the FRFSELx bit in the CAN_FRF
+Page  407:  The filter banks x are activated by setting FAENx=1 in the CAN_FACFG register.
+Page  407:  Configure 0~27 filter banks by writing to the CAN_FiFBx register (i=0…27; x=1,2).
+Page  407:  Complete the CAN filter configuration by setting FCS=0 in the CAN_FCTRL register.
+Page  407: CAN_TMIx, CAN_TMCx, CAN_TMDTLx and CAN_TMDTHx registers. Once the mailbox
+Page  407: configuration is complete, setting the TMSR bit in the CAN_TMIx register can initiate CAN
+Page  407: The mailbox enters pending state immediately after the mailbox is configured and the CAN controller
+Page  407: receives the transmit request. At this point, the CAN controller will confirm whether the mailbox is given
+Page  407: priority. The mailbox in SCHEDULED state will monitor the CAN bus state so that the messages in
+Page  407: SCHEDULED mailbox can be transmitted as soon as the CAN bus becomes idle. The mailbox will enter
+Page  408: By identifier: When MMSSR=0 in the CAN_MCTRL register, the transmit order is defined by the identifier
+Page  408: By transmit request order: When MMSSR=1 in the CAN_MCTRL register, the transmit priority is given
+Page  408: The TMxTCF, TMxTSF, TMxALF, TMxTEF and TMxEF bits in the CAN_TSTS register are used to
+Page  408: The TMxCT bit is set in the CAN_TSTS register to abort the transmission of the current mailbox, detailed
+Page  409: The CAN_RFIx, CAN_RFCx, CAN_RFDTLx and CAN_RFDTHx registers can be used by user
+Page  409: The CAN controller boasts two FIFO with three levels to receive messages. FIFO rule is adopted. When
+Page  409: new incoming message through the MDRSEL bit in the CAN_MCTRL register.
+Page  409: In the meantime, when the user reads a frame of message and the RFxR is set in the CAN_RFx register,
+Page  409: one FIFO mailbox is released, and RFxMN[1: 0] bit is decremented by one in the CAN_RFx register.
+Page  409: The status of CAN nodes is indicated by the receive error counter (TEC) and transmit error counter
+Page  409: (REC) bits in the CAN_ESTS register. In the meantime, the ETR[2: 0] bit in the CAN_ESTS register is
+Page  409: CAN_INTEN register is enabled.
+Page  409: to transmit and receive messages. The CAN resumes from bus-off state in two ways:
+Page  409: Option 1: When AEBOEN=0 in the CAN_MCTRL register, in communication mode, the software
+Page  409: requests to enter Frozen mode and exit Frozen mode, and CAN will then resume from bus-off state
+Page  409: after 128 occurrences of 11 consecutive recessive bits have been detected on the CAN RX pin.
+Page  409: Option 2: When AEBOEN=1 in the CAN_MCTRL register, the CAN will resume from bus-off state
+Page  409: automatically after 128 occurrences of 11 consecutive recessive bits have been detected on the CAN
+Page  410: 20.7 CAN registers
+Page  410: Table 20-1 CAN register map and reset values
+Page  411: 20.7.1 CAN control and status registers
+Page  411: 20.7.1.1 CAN master control register (CAN_MCTRL)
+Page  411: Bit 16       PTD        0x1               rw     can be still accessible normally.
+Page  411: Note: Transmission can be disabled only when PTD and
+Page  411: CANx_PAUSE bits in the DEBUG_CTRL register are set
+Page  411: The CAN enters Sleep mode after reset. Then this bit is
+Page  411: an exit timing is detected on the CAN bus.
+Page  411: is detected on the CAN bus.
+Page  411: soon as a message is monitored on the CAN bus.
+Page  412: the AEDEN is set and a message is monitored on the CAN
+Page  412: After CAN reset or partial software reset, this bit is forced
+Page  412: to be set by hardware, that is, the CAN will keep in sleep
+Page  412: The CAN leaves Freeze mode once 11 consecutive
+Page  412: The Freeze mode is entered only when the current CAN
+Page  412: 20.7.1.2 CAN master status register (CAN_MSTS)
+Page  412: Note: This bit is set by hardware when the CAN reception
+Page  412: Note: This bit is set by hardware when the CAN
+Page  412: CAN enters Sleep mode. When set, this bit will generate a
+Page  413: bit is set in the CAN_ESTS register and the corresponding
+Page  413: interrupt enable bit in the CAN_INTEN register is enabled.
+Page  413: 0: The CAN is not in Sleep mode.
+Page  413: 1: CAN is in Sleep mode.
+Page  413: This bit is used to decide whether the CAN is in Sleep
+Page  413: Bit 1    DZC      0x1             ro       The Sleep mode can be entered only when the current
+Page  413: CAN activity (transmission or reception) is completed. For
+Page  413: bits have been detect on the CAN RX pin. For this reason,
+Page  413: 0: The CAN is not in Freeze mode.
+Page  413: 1: The CAN is in Freeze mode.
+Page  413: This bit is used to decide whether the CAN is in Freeze
+Page  413: Bit 0    FZC      0x0             ro       The Freeze mode can be entered only when the current
+Page  413: CAN activity (transmission or reception) is completed. For
+Page  413: recessive bits have been detect on the CAN RX pin. For
+Page  413: 20.7.1.3 CAN transmit status register (CAN_TSTS)
+Page  414: For example, in case of free CAN, the value of these two
+Page  414: Transmit mailbox 2 cancel transmit
+Page  414: 1: Transmission is cancelled.
+Page  414: Transmit mailbox 1 cancel transmit
+Page  414: 1: Mailbox 1 cancel transmit
+Page  415: Transmit mailbox 0 cancel transmit
+Page  415: 1: Mailbox 0 cancel transmit
+Page  416: 20.7.1.4 CAN receive FIFO 0 register (CAN_RF0)
+Page  416: 20.7.1.5 CAN receive FIFO 1 register (CAN_RF1)
+Page  417: 20.7.1.6 CAN interrupt enable register (CAN_INTEN)
+Page  418: 20.7.1.7 CAN error status register (CAN_ESTS)
+Page  418: CAN protocol.
+Page  418: CAN protocol.
+Page  419: the CAN bus. It is cleared by hardware when a message
+Page  419: If the error code 7 is not used by hardware, this field can
+Page  419: 20.7.1.8 CAN bit timing register (CAN_BTMG)
+Page  419: tRSAW = tCAN x (RSAW[1: 0] + 1)
+Page  419: CAN hardware is allowed to lengthen or shorten in a bit.
+Page  419: tBTS2 = tCAN x (BTS2[2: 0] + 1)
+Page  419: tBTS1 = tCAN x (BTS1[3: 0] + 1)
+Page  419: 20.7.2 CAN mailbox registers
+Page  419:  RFFMN field in the CAN_RFCx register
+Page  419:  A transmit mailbox can be written only when empty. TMxEF=1 in the CAN_TSTS register
+Page  420: of FIFO, and can only access to the first received message in the FIFO.
+Page  420: CAN_RFI0           CAN_RFI1                 CAN_TMI0          CAN_TMI1             CAN_TMI2
+Page  420: CAN_RFI0           CAN_RFI0
+Page  420: CAN_RFI0           CAN_RFI0
+Page  420: CAN_RFC0           CAN_RFC1                 CAN_TMC0          CAN_TMC1             CAN_TMC2
+Page  420: CAN_RDT0           CAN_RDT0
+Page  420: CAN_RDT0           CAN_RDT0
+Page  420: CAN_RFDTL0         CAN_RFDTL1               CAN_TMDTL0        CAN_TMDTL1          CAN_TMDTL2
+Page  420: CAN_RDL0           CAN_RDL0
+Page  420: CAN_RDL0           CAN_RDL0
+Page  420: CAN_RFDTH0         CAN_RFDTH1               CAN_TMDTH0        CAN_TMDTH1          CAN_TMDTH2
+Page  420: CAN_RDH0           CAN_RDH0
+Page  420: CAN_RDH0           CAN_RDH0
+Page  420: 20.7.2.1 Transmit mailbox identifier register (CAN_TMIx) (x=0..2)
+Page  420: (CAN_TMCx) (x=0..2)
+Page  420: Bit 31: 16   TMTS               0xXXXX           rw       Note: This field contains the value of the CAN timer
+Page  421: message. A transmit message can contain from 0 to 8 data
+Page  421: 20.7.2.3 Transmit mailbox data low register (CAN_TMDTLx) (x=0..2)
+Page  421: 20.7.2.4 Transmit mailbox data high register (CAN_TMDTHx) (x=0..2)
+Page  421: 20.7.2.5 Receive FIFO mailbox identifier register (CAN_RFIx) (x=0..1)
+Page  421: (CAN_RFCx) (x=0..1)
+Page  421: Bit 31: 16   RFTS               0xXXXX          ro       Note: This field contains the value of the CAN timer
+Page  421: Bit 3: 0     RFDTL              0xX             ro       message. A transmit message can contain from 0 to 8 data
+Page  422: 20.7.2.7 Receive FIFO mailbox data low register (CAN_RFDTLx)
+Page  422: 20.7.2.8 Receive FIFO mailbox data high register (CAN_RFDTHx)
+Page  422: 20.7.3 CAN filter registers
+Page  422: 20.7.3.1 CAN filter control register (CAN_FCTRL)
+Page  422: Note: The initialization of the filter bank can be configured
+Page  422: 20.7.3.2 CAN filter mode configuration register (CAN_FMCFG)
+Page  422: Note: This register can be written only when FCS=1 in the CAN_FCTRL register (The filter is in
+Page  422: 20.7.3.3 CAN filter bit width configuration register (CAN_ FBWCFG)
+Page  422: Note: This register can be written only when FCS=1 in the CAN_FCTRL register (The filter is in
+Page  423: 20.7.3.4 CAN filter FIFO association register (CAN_ FRF)
+Page  423: Note: This register can be written only when FCS=1 in the CAN_FCTRL register (The filter is in
+Page  423: 20.7.3.5 CAN filter activation control register (CAN_ FACFG)
+Page  423: 20.7.3.6 CAN filter bank i filter bit register (CAN_ FiFBx) (i=0..13;
+Page  423: Note: There are 14 filter banks (i=0..13). Each filter bank consists of two 32-bit registers, CAN_FiFB[2:
+Page  423: 1]. This register can be modified only when the FAENx bit of the CAN_FACFG register is cleared or the
+Page  423: FCS bit of the CAN_FCTRL register is set.
+Page  423: Only the bit with its register configuration value 1 can
+Page  425: can output to pins and the timer 2; an OE pulse generates when the OTGFS outputs data, the pulse can
+Page  425: bus signal is not received for 3ms. The LP_MODE bit in the OTGFS_GCCFG register can be used to
+Page  425: The PLL output frequency must ensure that the USBDIV (see CRM_CFG register) can be divided
+Page  425: When the USB module is enabled in the CRM, PA11 and PA12 can be multiplexed as DP/DM; PA8 can
+Page  427: 5. The software can read the CURMOD bit in the OTGFS_GINTSTS register to determine whether the
+Page  427: (largest packet size/4) + 1 spaces are recommended so that the USB can receive the subsequent
+Page  428: The application cannot perform other operations on the controller until the TXFFLSH and RXFFLSH bits
+Page  428: can receive the subsequent packet while the previous packet is being transferred to the AHB. If there is
+Page  428: space is recommended so that the AHB can get the next data packet while the current packet is being
+Page  429:  The application cannot perform other operations on the controller until the TXFFLSH and
+Page  430: characteristics such as type, speed and direction (the channel cannot be enabled by setting the
+Page  430: The application can disable a channel by writing 0x1 to the CHDIS and CHENA bits in the
+Page  430: generates a channel halted interrupt. The application cannot re-allocate channels for other transactions
+Page  430: (when disabling a periodic channel). The application can refresh the submitted requests when the
+Page  436:  The non-periodic transmit FIFO can store two packets (128 bytes for full-speed transfer)
+Page  437: 1                                 Assume that this queue can
+Page  438:  The application can only write the transmit FIFO when the transmit FIFO and request queue has
+Page  438:  The application can only write a request when the request queue has free spaces and wait until
+Page  438:  The receive FIFO can store at least one largest-packet-size packet and two status WORDs per
+Page  440: The application can only write a request to the same channel when the remaining space in the request
+Page  440:  The periodic transmit FIFO can store one packet (1KB bytes for full-speed transfer).
+Page  441: write_tx_fifo           1                                    can hold 4 entries.
+Page  442: Before switching to other channels (if any), the application can only write packets based on the number
+Page  442: The application can determine whether the transmit FIFO has free spaces through the NPTXFEMP bit
+Page  442:  The receive FIFO can store at least one largest-packet-size packet and two status WORDs per
+Page  443:  The periodic transmit FIFO can store one packet (1KB bytes for full-speed transfer)
+Page  444: (ch_1)             MPS                                can hold 4 entries.
+Page  447: 3. The application can receive up to 64-byte data for a single OUT data transfer of control endpoint 0. If
+Page  447: complete interrupt can be cleared through the XFERC bit in the OTGFS_DOEPINTx register
+Page  448:  The application can receive up to 64-byte data for a single IN data transfer of control endpoint 0.
+Page  448: 2. The application can mask the RXFLVL interrupt bit in the OTGFS_GINTSTS register by setting
+Page  449: specified OUT endpoint. PKTSTS code can be found in the OTGFS_GRXSTSR / OTGFS_GRXSTSP
+Page  450: SETUP packets can be received on a control endpoint
+Page  450: that the application can start processing the SETUP packet received.
+Page  451: packets from the receive FIFO (Refer to Read FIFO packets for details). This operation can be repeated
+Page  451: not limit the number of consecutive SETUP packets a host can send to the same endpoint. If this
+Page  451: 1. The application can either select a polling or an interrupt mode.
+Page  452: application can first write into the endpoint control register before writing the data into the data FIFO.
+Page  452: application can write multiple data packets for the same endpoint into the transmit FIFO. For the periodic
+Page  452: IN endpoints, the application must write packets for only one frame. It can write packets for the next
+Page  453: space in the data FIFO. The application can also use the TXFEMP bit in the OTGFS_DIEPINTx register
+Page  454: OUT data packets that the host (which cannot detect the ACK) re-transmits. The application does not
+Page  454:  This step can be repeated, depending on the transfer size
+Page  456: of the largest-packet-size packets that can be received in a single frame and not exceed this size.
+Page  456: Synchronous OUT data transfer cannot span more than one frame.
+Page  456: the NAK bit, the even/odd frame bits are also set properly. The controller can receive data on a
+Page  456:  This step can be repeated several times, depending on the transfer size
+Page  456: 5. This interrupt signal cannot always be detected by the synchronous OUT data transfers. However, the
+Page  456: application can detect the INCOMPISOOUT interrupt in the OTGFS_GINTSTS register. See “Incomplete
+Page  456: Then the host can send the initial synchronous IN token in any frame before transmission in the
+Page  458:  When the receive FIFO cannot accommodate the complete ISO OUT data packet, the controller
+Page  458:  When all data are read from the receive FIFO, the application can detect the XFERC interrupt in
+Page  459: Because the controller can take some time to disable the endpoint, the application may not be able to
+Page  459: endpoints. In this case, the application can detect the incomplete synchronous IN transfer interrupt in
+Page  459: before the completion of data write. In this case, the application can detect the INTKNTXFEMP
+Page  459: OTGFS_DIEPINTx register) from any synchronous IN endpoint because this can trigger the incomplete
+Page  459:  The application can only transmit multiples of largest-packet-size data packets, and a short
+Page  460:  The application cannot transmit a zero-length data packet at the end of a transfer. But it can
+Page  460: 2. The application can only schedule data transfers of one frame at a time
+Page  460: frame. This can be done by enabling periodic IN endpoint 1 frame before the scheduling of the frame to
+Page  460: 6. When the interrupt IN endpoint is set as a periodic endpoint, the controller internally can process the
+Page  460: application can never detect the TIMEOUT interrupt (in the OTGFS_DIEPINTx register) on the periodic
+Page  462: is of type IN, the FIFO can only be read. Similarly, if a host channel is of type OUT, the FIFO can
+Page  466: disconnected. This register can only be set by hardware.
+Page  468: can set larger values for these bits.
+Page  468: introduced by the PHY. This action can be required,
+Page  468: the line state condition can vary from one PHY to another.
+Page  468: FIFOs, but can do so when the controller is not in the
+Page  469: The application can refresh the entire RxFIFO using this
+Page  469: babble), this bit can be used to reset the PIU full-speed
+Page  469: This is can be cleared automatically, the controller this
+Page  469: The application can write to this bit at any time to reset the
+Page  469: controller. This is can be cleared automatically, the
+Page  472: effect. This bit can be cleared by writing the Clear Global
+Page  472: Bit 6      GINNAKEFF    0x0         ro       Global IN NAK bit set by the application. This bit can be
+Page  472: current frame number. This interrupt can be generated
+Page  472: set after power-on reset, the application can clear this bit.
+Page  473: This bit can be set by the controller only. The application
+Page  474: application can only pop the receive status FIFO when the receive FIFO non-empty bit of the Core
+Page  474: Indicates the least significant 4 bits of the frame number
+Page  475: The application can program the SRAM size that must be allocated to the receive FIFO.
+Page  475: The application can program the SRAM size and start address of the non-periodic transmit FIFO. The
+Page  477: The application can program the ID field.
+Page  477: Each of the FIFOs contains an IN endpoint data. This register can be used repeatedly for instantiated
+Page  477: enumeration speed. With this bit, the application can
+Page  478: interval. The application can write a value to the host
+Page  480: connect status and test mode, as show in Figure 21-2. The register of type rw1c can interrupt the
+Page  480: the application can make this bit set for another 10 ms to
+Page  481: The controller can still clear this bit, even if the device is
+Page  481: bit can only be set by the controller. The application must
+Page  481: Bit 3    PRTENCHNG     0x0             rw1c     enable bit 2 in this register changes. This bit can only be
+Page  481: Bit 2    PRTENA        0x0             rw1c     The application cannot set this bit by a register write
+Page  481: operation. It can only clear this bit to disable the port. This
+Page  481: This bit can only be set by the controller. The application
+Page  482: Bit 28: 22   DEVADDR           0x00            rw       This field is used to select the device that can serve as
+Page  482: Bit 10       DTGLERR           0x0             rw1c     This bit can only be set by the controller. The application
+Page  482: Bit 9        FRMOVRUN          0x0             rw1c     This bit can only be set by the controller. The application
+Page  482: Bit 8        BBLERR            0x0             rw1c     This bit can only be set by the controller. The application
+Page  483: This bit can only be set by the controller. The application
+Page  483: Bit 5        ACK              0x0             rw1c     This bit can only be set by the controller. The application
+Page  483: Bit 4        NAK              0x0             rw1c     This bit can only be set by the controller. The application
+Page  483: Bit 3        STALL            0x0             rw1c     This bit can only be set by the controller. The application
+Page  483: can only be set by the controller. The application must
+Page  484: can use this interrupt to determine if the synchronous
+Page  484: The application can use this field to select the handshake
+Page  484: the application can support. However, the actual bus
+Page  486: asserted due to an erratic error, the application can only
+Page  486: register can be masked by writing to the corresponding bit in the OTGFS_DIEPMSK register. Status
+Page  487: endpoint interrupt. Each of the bits in the OTGFS_DOEPINTx registers can be masked by writing to the
+Page  488: can be used to interrupt the application. There is one interrupt pit per endpoint, up to 8 interrupt bits for
+Page  489: application can use this bit to control the transmission of
+Page  489: The endpoint 0 can only use FIFO0.
+Page  490: the STALL bit has priority. Only the application can clear
+Page  492: The application cannot disable control OUT endpoint 0.
+Page  492: application can use this bit to control the transmission of
+Page  493: the STALL bit has priority. Only the application can clear
+Page  495: This bit can be cleared by writing 1 to the CNAK bit in the
+Page  496: interrupt, the application can decode the received SETUP
+Page  496: application can only read this register as long as the controller clears the endpoint enable bit.
+Page  496: Bit 6: 0     XFERSIZE           0x00            rw       becomes 0. The transfer size can be set to the maximum
+Page  496: application can only read this register as long as the controller clears the endpoint enable bit.
+Page  496: packets the endpoint can receive.
+Page  496: becomes 0. The transfer size can be set to the maximum
+Page  497: application can only read this register as long as the controller clears the endpoint enable bit.
+Page  497: the transfer size becomes 0. The transfer size can be set
+Page  498: application can only read this register as long as the controller clears the endpoint enable bit.
+Page  498: can receive.
+Page  498: the transfer size becomes 0. The transfer size can be set
+Page  499: frequency can be calibrated to a precision of ±0.25% so as to meet the needs of the high-precision clock
+Page  500: The default value of the HICK is 32, which can be calibrated to 8MHz±0.25%. The HICK frequency
+Page  500: can be adjusted by 20kHz (design value) each time when the CRM_HICKTRIM value changes. In
+Page  500: theory, the actual frequency after calibration can be adjusted to be within an accuracy range of about
+Page  501: After cross operation is completed, the actual value closest to C2 can be obtained by comparing the
+Page  501: 1. The rising edge of the CANLON (from 0 to 1)
+Page  501: Even though the sampling counter is between C1 and C3, at the rising edge the CANLON, the auto
+Page  501: calibration module can also be activated so that the HICK frequency can be adjusted to be within a range
+Page  501: of 0.5 steps of the center frequency as soon as the CANLON is enabled.
+Page  501: Under one of the above-mentioned circumstances, the HICK frequency can be calibrated to be within
+Page  503: Note: This module cannot be used without the USB_SOF
+Page  503: The default value is 32, which can trim the HICK to
+Page  503: The default value is 128, which can trim the HICK to
+Page  504: calibration can be trimmed to be within an accuracy of 0.5
+Page  506: XMC peripheral block can translate the AHB signals into the external memory signals and vice versa. It
+Page  507:    CAS latency can be configured 1/2/3 SDRAM clock cycles
+Page  512: There are two banks, bank 1 and bank, with independent control registers. Such two banks can be
+Page  513: as shown in Table 24-11.Users can perform programming operations according to the specifications of
+Page  529: NAND interface can be used to drive NAND Flash. It is divided into two storage banks: regular bank and
+Page  529: special bank, each with its separate timing registers. Both banks can be accessible with different timings.
+Page  530: Figure 24-19. Users can perform programming operations according to the specifications of the external
+Page  530: remains low until it enters ready state. This can be done by means of a special timing register and NWEN
+Page  531: byte into a special memory address section so that the XMC can perform write operations based on the
+Page  531: The PC card interface can drive PC cards. They are made of three memory spaces: IO memory space,
+Page  532: 24-21. Users can perform programming operations according to the specifications of the external memory
+Page  534: which can be done by setting BL=1. In both cases, the SDRAM controller always tries to translate
+Page  534: which can be done by setting BL=1.
+Page  536: only after a TRAS time. This bit can be used to judge whether to exit self-refresh mode.
+Page  536: During power-down mode, the SDRAM device can also perform auto-refresh operation. When an auto-
+Page  549: RC value cannot be changed after initialization.
+Page  551: ―     Data: Data can be transferred from the card to the host or vice versa. Data is transferred via
+Page  554: 4.   If the host wants to assign another RCA number, it can instruct the card to issue a new number by
+Page  554: host can operate cards within the range of 0 - 50MHz. It can send CMD9 (SEND_CSD) to get data
+Page  554: commands as a response. Data transfer read/write can be done in data block mode or stream mode,
+Page  554: ACMD6 is only valid in a transfer state, indicating that the bus width can be changed only after a card is
+Page  554: transferred is not determined in advance, the CRC cannot be used. When the memory range
+Page  555: to accept new data from a new WRITE_BLOCK command. The host can check the status of the card
+Page  555: The READY_FOR_DATA status bit indicates whether the car can accept new data or whether the write
+Page  555: process in still in progress. The host can deselect the card by issuing CMD7 (select another card), which
+Page  555: The host can erase a contiguous range of erase groups. There are three steps to start the erase process,
+Page  555: Card data can be protected against write and erase. The entire card can be permanently write-protected
+Page  555: bit in the CSD, part of the data can be protected, and the write protection can be changed by the
+Page  556: Locked cards can support certain commands, indicating that the host is allowed to reset, initialize and
+Page  556: can be set simultaneously with SET_PWD, but not with the CLR_PWD.
+Page  561: Reserved. These command indexes cannot be used in order to maintain backward compatibility with older
+Page  561: Reserved. These command indexes cannot be used in order to maintain backward compatibility with older
+Page  565: is transferred on both command and data lines with each clock cycle. The clock frequency can very
+Page  565: SDIO_D [7:0] is a bidirectional data channel. After initialization, the host can change the width of the
+Page  565: only one bit of data line, so only SDIO_DO can be used.
+Page  566: transmission underflow or reception overflow. The PWRSVEN bit can be set by software to enable power
+Page  566: save mode, and the SDIO_CK can be output only when the bus is active.
+Page  566: responses are saved in the area from SDIO_RSP1 to SDIO_RSP4. The command path can generate
+Page  566: command flag, which can be defined by the SDIO_STS register.
+Page  568: The data path subunit transfers data between the host and the cards. The databus width can be
+Page  568: data is transferred from the card to the controller. The TFRMODE bit can be used to select block data
+Page  568:  Send: The DCSM sends data to a card, and the data transfer mode can be either block or
+Page  569:  Receive: Data is received from a card and written to the BUF. The data transfer mode can be
+Page  569:  Transmit BUF: Data can be written to the transmit BUF via the AHB interface when the SDIO
+Page  570: The SDIO can support the following operations (except read suspend, for it does not require specific
+Page  570: can instruct the host to stop data transfer temporarily while the host is reading from multiple registers
+Page  570: During the read wait period, the SDIO host can detect the SDIO interrupts over the SDIO_D1.
+Page  570: If the SDIO card does not support the mentioned above read wait operation, the SDIO can enter a read
+Page  570: Note that as the SDIO_CK is stopped, the SDIO host cannot send any command to the card. The SDIO
+Page  570: host can detect the SDIO interrupt over the SDIO_D1.
+Page  570: To free the bus to provide higher-priority transfers for other functions or memories, the host can suspend
+Page  570: While sending data to a card, the SDIO can suspend the write operation. The SDIO_CMD [11] bit is set
+Page  572: 2. When all card are assigned with relative card addresses, the clock frequency can be changed
+Page  572: 3. This register cannot be written within seven HCLK clock periods after data is written. The
+Page  572: SDIO_CK can be stopped during the read wait period for SD I/O cards. In this case, the SDIO_
+Page  573: Note: 1.This register cannot be written within seven HCLK clock periods after data is written.
+Page  573: 2.MultiMedia card can sent two types of responses: 48-bit short response or 136-bit short
+Page  573: response. The SD card and SD I/O card can send only short responses, and the argument
+Page  573: can vary according to the type of response. The software will distinguish the type of
+Page  574: The most significant bit of the card status is always received first. The least significant bit of the
+Page  576: Note: This register cannot be written within seven HCLK clock periods after data is written.
+Page  576: Note: This register can be read only when the data transfer is complete.
+Page  576:  Static flags (bits [23: 22, 10: 0]): These bits can be cleared by writing to the SDIO_INTCLR
+Page  576: Bit 15       RXBUFH            0x0             ro       There are at least 8 words in the BUF. This flag bit can be
+Page  576: Bit 14       TXBUFH            0x0             ro       At least 8 words can be written to the BUF. This flag bit can
+Page  579: The receive and data BUF is group of a 32-bit wide registers that can be written or read. The BUF
+Page  579: contains 32 registers on 32 sequential addresses. The CPU can use BUF for read/write multiple
+Page  580:  Each descriptor can transfer up to 8 KB of data
+Page  581: algorithm. Two stations can only communicate in a single transfer direction at the same time.
+Page  583: the MII_TX_EN signal is active. The MII_TXD[0] is the least significant bit while the MII_TXD[3] is the
+Page  583: most significant bit.
+Page  583: MII_CRS: carrier sense signal defined in the CSMA/CD. It is controlled by the PHY and can be valid
+Page  583: MII_COL: Collision detection signal defined in CSMA/CD. It is controlled by the PHY and can be valid
+Page  583: Data is valid when the MII_RX_DV signal is active. The MII_RXD[0] is the least significant bit, while the
+Page  583: MII_RXD[3] is the most significant bit. While the MII_RX_DV is inactive but the MII_RX_ER is active,
+Page  584: Either the MII or RMII mode can be selected using the 23rd bit MII_RMII_SEL in the SCFG_CFG2
+Page  584: driven by an external 25MHz clock, which can be provided by either an oscillator or the MCU CLKOUT
+Page  585: As shown in Figure 26-7, both the EMAC and PHY require 50MHz clock sources, which can be done
+Page  587: 1. The MAC can be programmed to receive all multicast frames by setting PMC=1 in the frame filter
+Page  587: 2. If the PMC is set to 0 and the HMC is set to 0, perfect address filtering can be done using the
+Page  588: EMAC. In this case, the frames that pass through both SA and DA filtering can be forwarded to the
+Page  590: The FTF bit (the bit 20 in the EMAC_DMAOPM register) can be set to flush the TXFIFO. If the FTF
+Page  590: defined in IEEE802.3 standard, the EMAC can be programmed to append padding (zeroes are
+Page  590: During a frame transmission, the EMAC can be programmed either to append CRC to the frame check
+Page  590: In full-duplex mode the EMAC implements Transmit flow control using pause frames. The EMA can
+Page  591: value in the EMAC_MACFCTRL register. To extend the pause time or cancel the remaining pause time,
+Page  591: the EMAC must send another pause frame (PT=0 will cancel the remaining pause time).
+Page  592: the header. It can work in the following two modes:
+Page  593: + FCS) are cut off. This feature can be disabled by the WD bit in the EMAC_MACCTRL register. However,
+Page  595: 2. The number of bytes before the end of a frame is less than the burst size and the TXFIFO can
+Page  595: buffers can aligned to any of the four bytes.
+Page  595: error bit and the fatal bus error bit in the EMAC_DMASTS register. The DMA can resume operation after
+Page  597: 8.     The DMA can exit suspend state and enter run state only after receiving a transmit poll request
+Page  597: A frame can be stored in multiple buffers that are linked in chain structure. When the transmission starts,
+Page  597: Transmit polling can be suspended by one of the following conditions:
+Page  598: descriptor can be set only after subsequent descriptors for the same frame have
+Page  598: When this bit is set, neither TBS1 nor TBS2 can be cleared in the TDES1.
+Page  600: 2: After all data are transferred, the DMA can use these bits to store the time stamp
+Page  600: Before it releases the descriptor to the CPU, the DMA writes the 32 least significant
+Page  600: 2: After all data are transferred, the DMA can use these bits to store the 32 most
+Page  600: significant bits of the time stamp for the frame.
+Page  600: The DMA updates these bits with the 32 most significant bits of the time stamp
+Page  600: TDES6 contains the 32 least significant bits of the time stamp captured
+Page  600: The DMA updates this field with the 32 least significant bits of the time stamp
+Page  601: TDES7 contains the 32 most significant bits of the time stamp captured.
+Page  601: 3          T         rThe DMA updates this field with the 32 most significant bits of the time stamp captured
+Page  602: can be avoided by setting the bit 24 (DFRF bit) in the EMAC_DMAOPM register. In this case, the receive
+Page  604: When set, this bit indicates an error in the IPv4 or IPv6 header. This error can be
+Page  605: RBS2(TDES1[28: 16]) value can be ignored. RDES0[15] takes precedence over
+Page  605: significant bits of the time stamp. The time stamp is written by the DMA only when
+Page  605: significant bits of the time stamp. The time stamp is written by the DMA only when
+Page  606: IPv6 can be obtained from bit 6 and bit 7.
+Page  607: RDES6 contains the 16 least significant bits of the time stamp
+Page  607: The DMA updates this field with the 32 least significant bits of the time stamp
+Page  607: RDES7 contains the 16 most significant bits of the time stamp
+Page  607: The DMA updates this field with the 32 most significant bits of the time stamp
+Page  609: 1.    Disable the TXDMA and wait for all data transmission to complete. These transmissions can be
+Page  611: Sync cycles, the frequency is locked. The slave clock can then determine an accurate
+Page  612: This algorithm comes with a self-correction feature. In theory, the frequency can be locked at a
+Page  612: interrupt latency can be calculated since the clock of the timer and PTP reference clock are
+Page  613: The PPS output frequency is 1 Hz by default, which can be configured to 2PPSFREQ Hz through the
+Page  613: The second interrupt vector is used for interrupts generated by the PMT block on wakeup events. It can
+Page  614: The peripheral registers can be accessed by bytes (8-bit), half words (16-bit) or words (32-bit).
+Page  616: on the receiver, and can receive frames of up to 16,384
+Page  616: the transmitter, and can transfer frames of up to 16,384
+Page  616: In half-duplex mode, the minimum IFG can be configured
+Page  617: in which it can transmit and receive simultaneously.
+Page  618: frames that match the hash filter can pass address filter.
+Page  620: register are used to index the Hash table. The most significant bit of the CRC determines the register to
+Page  623: Bit 12: Canonical format indicator (CFI) or drop eligible
+Page  624: cleared and power-down mode is disabled. This bit can
+Page  624: The Ethernet MAC interrupt status register identify the events in the MAC that can generate an interrupt.
+Page  625: synchronization can be enabled only by writing the bit [31: 24] (in little endian mode) or the bit [7: 0] (in
+Page  626: synchronization can be enabled only by writing the bit [31: 24] (in little endian mode) or the bit [7: 0] (in
+Page  627: synchronization can be enabled only by writing the bit [31: 24] (in little endian mode) or the bit [7: 0] (in
+Page  627: synchronization can be enabled only by writing the bit [31: 24] (in little endian mode) or the bit [7: 0] (in
+Page  629: host bus. The RPBL can be programmed with 1, 2, 4, 8,
+Page  629: host bus. The RPBL can be programmed with 1, 2, 4, 8,
+Page  630: The Tx DMA can go into suspend mode due to an underflow error in a transmitted frame or due to the
+Page  630: unavailability of descriptors owned by transmit DMA. The Poll demand can be issued at any time, and
+Page  630: Demand is used to wake up the Rx DMA from suspend mode. The Rx DMA can enter suspend mode
+Page  630: in the operation mode register. After the Rx DMA stops, this register can be written with a new descriptor
+Page  631: in the register 6 (operation mode register). After the Tx DMA stops, this register can be written with a
+Page  631: can trigger the host to be interrupted. The bits in this register cannot be cleared when read. Writing 1’b1
+Page  631: 0]) can be masked through the corresponding bit in the interrupt enable mask register.
+Page  633: is owned by the host and cannot be acquired by the DMA.
+Page  633: is owned by the host and cannot be acquired by the DMA.
+Page  634: the bit [16: 14] are ignored. This bit can be changed only
+Page  639: significant byte bit [7: 0] is read.
+Page  639: The least significant byte bit [7: 0] of the corresponding counter must be read in order to clear the
+Page  639: interrupt is read. The least significant byte bit [7: 0] of the corresponding counter must be read in order
+Page  645: MAC_PTPTSCTR register, the value of this field cannot
+Page  647: can be controlled. The crop window feature allows the users to retain the desired data and drop others.
+Page  647: controller can be used to transfer the captured data to memory unit without the need of CPU. The users
+Page  647: can monitor the status of data reception through status and error interrupts.
+Page  648: camera. Data can be captured on either the rising or the falling edge of the DVP_PCLK by setting the
+Page  648: CKP bit in the DVP_CTR register. The captured data can be divided into two parts: valid pixel data and
+Page  648: blanking period data. The user only concerns the former. The CMOS can deliver synchronization
+Page  648: synchronization, which can be done through the SM bit in the DVP_CTRL register.
+Page  648: pixel data. The polarity of the horizontal synchronization signals can be programmed through the HSP
+Page  648: in the DVP_CTR register can be used to program the polarity of the frame valid to ensure that it matches
+Page  649: FMSC: The 4th captured data of FS is placed in the 8 most significant bits
+Page  649: LNSC: The 4th captured data of LS is placed in the 8 most significant bits
+Page  649: LNEC: The 4th captured data of LE is placed in the 8 most significant bits
+Page  649: FMEC: The 4th captured data of FE is placed in the 8 most significant bits
+Page  650: LNSC: The 4th captured data of Active SAV is placed in the 8 most significant bits
+Page  650: LNEC: The 4th captured data of Active EAV is placed in the 8 most significant bits
+Page  650: codes to pass on additional information. The DVP_SUR register can be used to mask the comparison
+Page  650: and 0xff configuration both can indicate the complete synchronization code comparison.
+Page  650: register can be used for the management of data alignment. Table 27-3 lists the CMOS camera parallel
+Page  652: The captured data can be transferred to memory unit using DMA interface without needing to occupy
+Page  652: the DVP_DT register. The burst mode is able to significantly reduce the number of arbitration so as to
+Page  652: four captured data into a word data. The first captured data is placed in the 8 least significant bits, and
+Page  652: the last captured data is placed in the 8 most significant bits, and so on.
+Page  652: captured data is placed in the 10 least significant bits of the least significant half word, and the last
+Page  652: captured data is placed in the 10 least significant bits of the most significant half word, and the remaining
+Page  653: data is placed in the 12 least significant bits of the least significant half word, and the last captured data
+Page  653: is placed in the 12 least significant bits of the most significant half word, and the remaining are cleared
+Page  653: data is placed in the 14 least significant bits of the least significant half word, and the last captured data
+Page  653: is placed in the 14 least significant bits of the most significant half word, and the remaining are cleared
+Page  653: course of sampling. The DVP_IENA is used to control interrupt signals, and it can be programmed to
+Page  653: event sources. The status in the DVP_ESTS and DVP_ISTS can be cleared by setting the corresponding
+Page  653: synchronization can be defined as the start or end of a frame, depending on the VSEID bit in the
+Page  653: synchronization can be defined as the start or end of a line, depending on the HSEID bit in the
+Page  654: The DVP interface can adjust the number of frame captured every second with the frame rate control
+Page  654: BFRC=0, and set the EFRCE bit in the DVP_ACTRL register, the DVP can adjust the number of
+Page  654: The crop window feature can be used to retain the desired data area and discard the remaining area.
+Page  655: The image resizing feature can be used to scale down the pixels or lines of an image. It consists of a
+Page  655: halve the size of the vertical axis of an image. The LCDS bit can be used to select whether to capture
+Page  655: the previous one but drop the next one, or vice versa. The PCDC bit can be used to adjust the horizontal
+Page  657: The advanced image reduction feature can be used to obtain a fine image scaling. To enable this
+Page  658: feature becomes invalid if the luminance format of an image data cannot be fetched directly.
+Page  660: data is output every pixel clock. It can be 8-bit, 10-bit, 12-bit or 14-bit. Refer to Section 27.4.2 for more
+Page  660: In YUV422 format, the DVP interface can use a basic pixel capture/drop feature to pick up luminance
+Page  661: The peripheral registers can be accessed by words (32-bit).
+Page  669: The QSPI has a command slave interface that contains register and data ports. The users can access
+Page  669: port register) can be accessed by bytes, half-words and words.
+Page  669: The data port can be accessed in either PIO or DMA mode. The RxFIFO / TxFIFO registers (0x18)
+Page  669: must be polled in PIO mode. When the RxFIFO is ready, the user can read or store the entire RxFIFO
+Page  669: data. When the TxFIFO is ready, it can be written with the entire data. The polling state must be
+Page  670: The DMA mode can also be used to access data ports. The DMA controller register must be
+Page  670: to system addresses. In this case, only 0x10 register can be used to select a command slave port or a
+Page  670: memory using this XIP port, the Abort function (bit [8] in the 0x10 register) cannot be used (meaning that
+Page  670: the bit [20] of the 0x10 register is set to 1), and the XIP port cannot be aborted with this bit, which means
+Page  670: which the user can load the port switch code and perform switching operation.
+Page  670: Note: the command phase can be set to 1 or 2 bytes. However, in 2-byte mode, it sends two repeated
+Page  670: In the address phase, the address phase can be from 0 to 4byte in length; In XIP mode, the length of
+Page  670: the address phase can be optional 3byte or 4byte.
+Page  676: Bit 28         PEMEN           0x0             rw       read command can be removed. Do not set this bit when
+Page  677: Flash supplier to SPI Flash supplier. Thus this register can
+Page  677: 00: No instruction code. It cannot be used until the
+Page  677: status. The user can check there is a dummy state
+Page  677: This field works with the PEMEN bit. This code can be
+Page  678: an Abort signal. The user can send a command only after
+Page  679: get empty so that data can be transmitted into it until it
+Page  680: user can check the status of SPI Flash.
+Page  681: The user can uses this bit to program a 3-byte or 4-byte
+Page  681: The user can check if there is a dummy state between the
+Page  681: Bit 19: 12   XIPW_INSC        0x02            rw       The user can set this field to enable a SPI Flash command
+Page  681: The user can uses this bit to program a 3-byte or 4-byte
+Page  682: The user can check if there is a dummy state between the
+Page  682: The XIP slave port can be used for the improvement of
+Page  682: The XIP slave port can be used for the improvement of
+Page  685: Each of the streams can be selected up to 8 possible channel requests
+Page  685: In M2M mode, circular mode, dual memory mode and direct mode cannot be used.
+Page  685: mode and circular mode cannot be used in Peripheral Flow Control.
+Page  685: Direct mode (FEN = 0) can be used only in P2M or M2P mode, and the transfer width of peripherals and
+Page  686: The clocks between a peripheral and DMA may be asynchronous. The user can choose whether the
+Page  689: capabilities. Each transfer data can be stored in a descriptor by software, and the DMA loads the
+Page  689: Then, the user can continue to set DMA_SxDTCNT=0, write the descriptor address to the DMA_SxLLP
+Page  690: As shown in Figure 29-9, the user can read 2D-block data from the source memory. The XCOUNT is a
+Page  690: can perform the second iteration and read four data beats from the slave word address 0x8, 0x9, 0xA
+Page  690: Then the DMA controller can continue a second iteration to write four beats in the word address ranging
+Page  692: An interrupt can be generated on a DMA half-transfer, transfer complete, transfer error, FIFO error and
+Page  692: flexible mapping mode, each channel can bypass or synchronize 127 possible channel requests from
+Page  692: trigger event that can be on a rising edge, falling edge or either of them.
+Page  702: This field can be written only when SEN=0.
+Page  702: Note: This field can be written only when SEN=0.
+Page  702: Note: This field can be written only when SEN=0.
+Page  702: This bit can be written only when SEN=0 to indicate the
+Page  702: This bit can be written only when SEN=0.
+Page  702: This field can be written only when SEN=0.
+Page  703: This bit can be written only when SEN=0.
+Page  703: This field can be written only when SEN=0.
+Page  703: This field can be written only when SEN=0.
+Page  703: This bit can be written only when SEN=0.
+Page  703: This bit can be written only when SEN=0.
+Page  703: This bit can be written only when SEN=0.
+Page  703: This bit can be written only when SEN=0.
+Page  704: This register can be written only when SEN=0.
+Page  704: If this register is zero, no transaction can be served even
+Page  704: This field can be written only if SEN=0.
+Page  705: Bit 31: 0   M0ADDR            0x0000 0000     rw       This field can be written only if:
+Page  705: Bit 31: 0   M1ADDR            0x0000 0000     rw       This field can be written only if:
+Page  705: These bits cannot be written only if SEN=0.
+Page  711: bandwidth is needed. Trace and debugging interfaces can be combined into one interface.
+Page  711: debugging. For timers and watchdogs, the user can select whether or not to stop or continue counting
+Page  711: during debugging; For CAN, the user can select whether or not to stop or continue updating receive
+Page  711: registers during debugging; For I2C, the user can select whether or not to stop or continue SMBUS
+Page  711: After reset, the SWJ-DP can be immediately used by the debugger as a default function. To ensure that
+Page  711: GPIO and IOMUX registers can be configured to allow users to switch between debug ports or disable
+Page  713: This register is asynchronously reset by POR Reset (not reset by system reset). It can be written by the
+Page  713: This register is asynchronously reset by POR Reset (not reset by system reset). It can be written by the
+Page  713: CAN2 pause control bit
+Page  713: 0: CAN2 works normally
+Page  713: Bit 26        CAN2_PAUSE           0x0          rw
+Page  713: 1: CAN2 receive register pauses (does not receive
+Page  713: CAN1 pause control bit
+Page  713: 0: CAN1 works normally
+Page  713: Bit 25        CAN1_PAUSE           0x0          rw
+Page  713: 1: CAN1 receive register pauses (does not receive
+Page  715: This register is asynchronously reset by POR Reset (not reset by system reset). It can be written by the
+Page  716: 10. Updated Section 20.7 CAN registers

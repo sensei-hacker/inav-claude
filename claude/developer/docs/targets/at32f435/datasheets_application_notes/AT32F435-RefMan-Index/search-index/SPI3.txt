@@ -1,0 +1,39 @@
+Keyword: SPI3
+Occurrences: 35
+================================================================================
+
+Page   45: SPI3 / I2S3                                                                                                                                   USART1/6
+Page   52: 51   58             SPI3_I2S3EXT          SPI3 and I2S3EXT global interrupt            0x0000_010C
+Page   62: 0x4000 3C00 - 0x4000 3FFF       SPI3/I2S3
+Page   81: SPI3 reset
+Page   81: Bit 15       SPI3RST          0x0            rw       0: Does not reset SPI3
+Page   81: 1: Reset SPI3
+Page   81: SPI3 reset
+Page   85: SPI3 clock enable
+Page   85: Bit 15       SPI3EN          0x0             rw        0: Disabled
+Page   90: SPI3 clock enable in sleep mode
+Page   90: Bit 15       SPI3LPEN     0x1        rw       0: Disabled
+Page  124: SPI1_CS     SPI3_CS
+Page  124: PA13               IR_OUT                                                     SPI3_MISO
+Page  124: JTCK                                                                 SPI3_MOSI
+Page  124: TMR2_CH1                                       SPI1_CS     SPI3_CS
+Page  126: SPI3_MOSI
+Page  126: SPI3_MOSI
+Page  126: JTDO                                                         SPI1_SCK    SPI3_SCK
+Page  126: PB4    JNTRST                  TMR3_CH1                 I2C3_SDA    SPI1_MISO   SPI3_MISO    I2S3_SDEXT
+Page  126: SPI1_MOSI   SPI3_MOSI
+Page  126: SPI2_CS     SPI4_CS      SPI3_SCK
+Page  128: SPI3_MOSI                 SPI2_MOSI
+Page  128: SPI3_SCK
+Page  128: PC11                    TMR5_CH3                          I2S3_SDEXT   SPI3_MISO    USART3_RX
+Page  128: TMR11_C                            SPI3_MOSI
+Page  130: SPI3_MOSI    SPI2_CS
+Page  130: SPI3_MOSI
+Page  154: SPI3       UART8                           DMA ack
+Page  158: SPI3     UART8
+Page  159: 14          SPI3_RX       46        TMR1_OVERFLOW 78             reserved       110     I2S2_EXT_RX
+Page  159: 15          SPI3_TX       47        TMR1_TRIG          79        reserved       111     I2S2_EXT_TX
+Page  238: Note: Some of SPI1/I2S1 and SPI3/I2S3 are shared with JTAG pins (SPIx_CS/I2Sx_WS shared
+Page  693: SPI3     UART8
+Page  693: 14          SPI3_RX           46             TMR1_OVERFLOW 78                                    reserved                     110                I2S2_EXT_RX
+Page  693: 15          SPI3_TX           47             TMR1_TRIG                            79             reserved                     111                I2S2_EXT_TX

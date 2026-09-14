@@ -1,0 +1,5 @@
+Keyword: IRQ
+Occurrences: 1
+================================================================================
+
+Page  561: CMD40       bcr      [31: 0]=stuff bits     R5               GO_IRQ_STATE Place the system in the interrupt mode

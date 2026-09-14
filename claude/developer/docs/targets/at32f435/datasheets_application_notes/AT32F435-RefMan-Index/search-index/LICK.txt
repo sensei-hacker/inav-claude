@@ -1,0 +1,56 @@
+Keyword: LICK
+Occurrences: 52
+================================================================================
+
+Page    1: − Internal low speed RC oscillator (LICK)                       −   LQFP64 10 x 10 mm LQFP48 7 x 7 mm
+Page   41: Table 16-1 WDT timeout period (LICK=40kHz) ......................................................................................... 339
+Page   45: 2                                             LICK
+Page   63: I/O Ring      WDT          LICK              Digital
+Page   70:  LICK (low speed internal clock)
+Page   70: LICK RC         LICK                                                                                                                                         CLKOUT1           CLKOUT1
+Page   70: MACTXCLK                                                  LICK
+Page   71:  Low speed internal RC oscillator (LICK)
+Page   71: The LICK oscillator is clocked by an internal low-speed RC oscillator. The clock frequency is between
+Page   71: The LICK clock signal is not released before it becomes stable.
+Page   71: ERTC clock sources: divided HEXT oscillator, LEXT oscillator and LICK oscillator. Once the clock source
+Page   72: ERTC clock, the ERTC is not affected when the VDD is powered off. If the HEXT or LICK is selected as
+Page   72: an ERTC clock, the ERTC state is not guaranteed when both HEXT and LICK are powered off.
+Page   72: Watchdog is clocked by LICK oscillator. If the watchdog is enabled by either hardware option or software
+Page   72: access, the LICK oscillator is forced ON. The clock is provided to the watchdog only after the LICK
+Page   72: ADCCLK, USB48M, SCLK, LICK, LEXT, HICK, HEXT, PLLCLK can be used as CLKOUT1/2 clocks.
+Page   78: LICK stable flag clear
+Page   78: Writing 1 by software to clear LICKSTBLF.
+Page   78: Bit 16        LICKSTBLFC         0x0                wo
+Page   78: LICK stable interrupt enable
+Page   78: Bit 8         LICKSTBLIEN        0x0                rw         0: Disabled
+Page   79: LICK stable interrupt flag
+Page   79: Bit 0            LICKSTBLF       0x0                  ro
+Page   79: 0: LICK is not ready.
+Page   79: 1: LICK is ready.
+Page   92: 10: LICK
+Page   93: LICK stable
+Page   93: Bit 1       LICKSTBL         0x0           ro        0: LICK is not ready.
+Page   93: 1: LICK is ready.
+Page   93: LICK enable
+Page   93: Bit 0       LICKEN           0x0           rw        0: Disabled
+Page   94: 0011: LICK clock output
+Page  265: OTG2_FS_SOF. TMR5 channel 4 input can be configured as GPIO, LICK, LEXT or ERTC.
+Page  283: Bit 7: 6         TMR5_CH4_IRMP                           0x0                          rw                  01: Internal clock LICK
+Page  338: The WDT is driven by a dedicated low-speed clock (LICK). Due to the lower clock accuracy of LICK, the
+Page  338:    The counter is clocked by LICK (can work in Stop and Standby modes)
+Page  338: The WDT counter is clocked by the LICK. The LICK is an internal RC clock with a typical value of
+Page  338: range, so a margin should be taken into account when configuring timeout period. The LICK can be
+Page  339: PCLK                                                                                   LICK 40KHz
+Page  339: Table 16-1 WDT timeout period (LICK=40kHz)
+Page  340: 000: LICK divided by 4
+Page  340: 001: LICK divided by 8
+Page  340: 010: LICK divided by 16
+Page  340: 011: LICK divided by 32
+Page  340: 100: LICK divided by 64
+Page  340: 101: LICK divided by 128
+Page  340: 110: LICK divided by 256
+Page  340: 111: LICK divided by 256
+Page  341: LICK               ERTC_CLK         Smooth
+Page  342: ERTC clock source (ERTC_CLK) is selected via clock controller from a LEXT, LICK, and a divided HEXT
+Page  342: To unlick the write protection of ERTC registers, the steps below should be respected:
+Page  348: LICK                                        √                     √                   √

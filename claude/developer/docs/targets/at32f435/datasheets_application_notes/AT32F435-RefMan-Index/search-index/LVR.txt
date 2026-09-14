@@ -1,0 +1,19 @@
+Keyword: LVR
+Occurrences: 15
+================================================================================
+
+Page    1: − Power-on reset (POR)/ low voltage reset (LVR), and            − Infrared transmitter (IRTMR)
+Page    2: 3.3   POR/LVR .................................................................................... 63
+Page   45: POR/LVR
+Page   63: 3.3 POR/LVR
+Page   63: it is triggered at VLVR when the VDD drops from the operating voltage to 0 V. During the power-on reset
+Page   63: time, hysteresis occurs in power-on reset (POR) and low voltage reset (LVR).
+Page   64: (VPOR-VLVR)
+Page   64: hysteresis             VLVR
+Page   65: power-saving mode wakeup circuit, watchdog timer (WDT), power-on reset/low voltage reset (POR/LVR),
+Page   69: cleared by POR/LVR or by setting the CLSEF bit.
+Page   69: Bit 0       SWEF       0x0            ro       cleared by POR/LVR or by setting the CLSWEF bit.
+Page   73:  LVR reset: low voltage reset
+Page   93: POR/LVR reset flag
+Page   93: 0: No POR/LVR reset occurs
+Page   93: 1: POR/LVR reset occurs.

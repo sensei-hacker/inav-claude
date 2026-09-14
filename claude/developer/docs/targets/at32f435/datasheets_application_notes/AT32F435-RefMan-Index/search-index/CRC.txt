@@ -1,0 +1,280 @@
+Keyword: CRC
+Occurrences: 276
+================================================================================
+
+Page    1:    Clock and reset management (CRM)                               CRC Calculation Unit
+Page    4: 5.5.2 CRC calculation unit ................................................................... 111
+Page    5: 5.6.25 Flash CRC calibration control register (FLASH_CRC_CTRL) ......... 118
+Page    5: 5.6.26 Flash CRC check result register (FLASH_CRC_CHKR) ................. 119
+Page    7: 10       CRC calculation unit (CRC) ......................................................... 171
+Page    7: 10.1 CRC introduction ....................................................................... 171
+Page    8: 10.2 CRC function description ............................................................ 171
+Page    8: 10.3 CRC registers ............................................................................ 172
+Page    8: 10.3.1 Data register (CRC_DT).............................................................. 172
+Page    8: 10.3.2 Common data register (CRC_CDT) .............................................. 172
+Page    8: 10.3.3 Control register (CRC_CTRL) ...................................................... 173
+Page    8: 10.3.4 Initialization register (CRC_IDT) ................................................. 173
+Page    8: 10.3.5 Polynomial register (CRC_POLY) ................................................ 173
+Page   10: 13.2.5 CRC .......................................................................................... 231
+Page   10: 13.4.5 SPICRC register (SPI_CPOLY) (Not used in I 2 S mode) ................. 250
+Page   10: 13.4.6 SPIRxCRC register (SPI_RCRC) (Not used in I 2 S mode) .............. 250
+Page   10: 13.4.7 SPITxCRC register (SPI_TCRC) .................................................. 250
+Page   27: 26.3.42 Ethernet MMC received frames with CRC error counter register
+Page   32: Figure 10-1 CRC calculation unit block diagram ....................................................................................... 171
+Page   40: Table 10-1 CRC register map and reset value .......................................................................................... 172
+Page   45: NVIC                                                                                           CRC                                 CRM                HCLK
+Page   61: 0x4002 3000 - 0x4002 33FF       CRC
+Page   79: CRC reset
+Page   79: Bit 12       CRCRST           0x0              rw          0: Does not reset CRC
+Page   79: 1: Reset CRC
+Page   83: CRC clock enable
+Page   83: Bit 12       CRCEN           0x0             rw          0: Disabled
+Page   88: CRC clock enable during sleep mode
+Page   88: Bit12        CRCLPEN     0x1        rw       0: Disabled
+Page  110: Optional CRC check for security library code is based on a sector level.
+Page  111: 5.5.2       CRC calculation unit
+Page  111: CRC calculation can be performed on a sector level to check the security library code or user code inside
+Page  111:  CRC initial value: 0x00000000
+Page  111:  Set the start sector and select the desired sector you wish to do CRC in the FLASH_CRC_CTRL
+Page  111:  Enable CRC by setting the bit 31 in the FLASH_CRC_CTRL register
+Page  111:  Obtain CRC result by reading the FLASH_CRC_CHKR register
+Page  111: Note: Cross-boundary CRC check is forbidden for both the security library and user system data area.
+Page  112: FLASH_CRC_CTRL                  0xF4                                0x0000 0000
+Page  112: FLASH_CRC_CHKR                  0xF8                                0x0000 0000
+Page  118: 5.6.25 Flash CRC calibration control register
+Page  118: (FLASH_CRC_CTRL)
+Page  118: CRC start
+Page  118: Bit 31       CRC_STRT            0x0             wo
+Page  118: CRC check. This bit is cleared automatically after the
+Page  118: hardware enables CRC.
+Page  118: CRC sector number
+Page  118: Bit 23: 12   CRC_SN              0x000           wo
+Page  118: Set the number of the CRC calibration, in terms of sectors.
+Page  118: CRC calibration start sector
+Page  118: Set the start sector for this CRC calibration.
+Page  118: Bit 11: 0    CRC_SS              0x000           wo       0x0: Sector 0
+Page  119: 5.6.26 Flash CRC check result register (FLASH_CRC_CHKR)
+Page  119: Bit 31: 0    CRC_CHKR             0x0000 0000     ro       CRC check result
+Page  171: 10 CRC calculation unit (CRC)
+Page  171: 10.1 CRC introduction
+Page  171: The Cyclic Redundancy Check (CRC) is an independent peripheral with CRC check feature. It follows
+Page  171: CRC32/MPEG-2 standard.
+Page  171: The CRC_CTRL register is used to select output data toggle (word, REVOD=1) or input data toggle
+Page  171: (byte, REVID=01; half-word, REVID=10; word, REVID=11). The CRC calculation unit also has
+Page  171: initialization function. After each CRC reset, the value in the CRC_IDT register is written into the
+Page  171: CRC_DT register by CRC. The CRC_POLY register can be used to program the polynomial coefficient,
+Page  171: CRC_CTRL register.
+Page  171: Users can write the data to go through CRC check and read the calculated result through CRC_DT
+Page  171: Figure 10-1 CRC calculation unit block diagram
+Page  171: CRC_DT       CRC_CDT CRC_CTRL            CRC_IDT      CRC_POLY
+Page  171: CRC
+Page  171:  Use CRC-32 code
+Page  171:  4 HCLK cycles for each CRC calculation
+Page  171:  Perform write/read operation through CRC_DT register
+Page  171:  Set an initialization value with the CRC_IDT register. The value is loaded with CRC_DT register
+Page  171: after each CRC reset.
+Page  171: 10.2 CRC function description
+Page  171: According to CRC calculation principle, the input data is taken as dividend, and the generator
+Page  171: polynominal gets a remainder, that is, the CRC value.
+Page  171: CRC calculation procedure
+Page  171: CRC_CTRL register.
+Page  172:      Initialization. The first data input needs to be XOR-ed with the initial value defined in the CRC_IDT
+Page  172:      CRC calculation. Dividing the input data by the generator polynominal (0x4C11DB7) using mod 2
+Page  172: division method produces a remainder, that is, CRC value.
+Page  172:   Output data toggle. Select whether to perform word toggle before output CRC value through the
+Page  172: REVOD bit in the CRC_CTRL register.
+Page  172: CRC-32/MPEG-2 parameters
+Page  172:      XOR-ed value: 0x0000 0000, indicating that the CRC result will not be XOR-ed.
+Page  172: 10.3 CRC registers
+Page  172: CRC_DT register can be accessed by bytes (8 bits), half-words (16 bits) or words (32 bits). Other
+Page  172: Table 10-1 CRC register map and reset value
+Page  172: CRC_DT                              0x00                              0xFFFF FFFF
+Page  172: CRC_CDT                             0x04                              0x0000 0000
+Page  172: CRC_CTRL                            0x08                              0x0000 0000
+Page  172: CRC_IDT                             0x10                              0xFFFF FFFF
+Page  172: CRC_POLY                            0x14                              0x04C1 1DB7
+Page  172: 10.3.1 Data register (CRC_DT)
+Page  172: Used as input register when writing new data into the CRC
+Page  172: calculator. It returns CRC calculation results when it is
+Page  172: 10.3.2 Common data register (CRC_CDT)
+Page  172: register is not affected by the CRC reset generated by the
+Page  172: RST bit in the CRC_CTRL register.
+Page  173: 10.3.3 Control register (CRC_CTRL)
+Page  173: conjunction with the CRC_POLY register.
+Page  173: Reset CRC calculation unit
+Page  173: Set by software. Cleared by hardware. To reset CRC
+Page  173: 10.3.4 Initialization register (CRC_IDT)
+Page  173: When CRC reset is triggered by the RST bit in the
+Page  173: CRC_CTRL register, the value in the initialization register
+Page  173: is written into the CRC_DT register as an initial value.
+Page  173: 10.3.5 Polynomial register (CRC_POLY)
+Page  173: The generated polynomial is a divisor in CRC calculation.
+Page  173: Bit 31: 0   POLY        0x04C1 1DB7 rw           Using CRC32 mode, this polynomial coefficient is
+Page  188: done by using CRC-8 polynomial:
+Page  227: automatic CRC function of SPI internal hardware. In the meantime, the SPI interface can be compatible
+Page  227: Receiver logic                         Receipt CRC unit
+Page  227: MISO     selector                                                             Transmitter logic                    Transmission CRC unit
+Page  228: and CRC error)
+Page  228:  Support hardware CRC transmission and error checking
+Page  231: 13.2.5 CRC
+Page  231: There is an independent transmission and reception CRC calculation unit in the SPI. When used as SPI
+Page  231: through software configuration, the SPI enables CRC calculation and CRC check automatically while
+Page  231: consistent with, detected by hardware, the data in the SPI_RCRC register, and such data is exactly the
+Page  231: CRC value, then the CCERR bit will be set. An interrupt is generated if ERRIE=1.
+Page  231: The CRC function and configuration procedure of the SPI are described as follows.
+Page  231: CRC configuration procedure
+Page  231:  CRC calculation polynomial is configured by setting the SPI_CPOLY register.
+Page  231:  CRC enable: The CRC calculation is enabled by setting the CCEN bit. This operation will reset
+Page  231: the SPI_RCRC and SPI_TCRC registers.
+Page  231: the CRC value automatically according to the value in the SPI_CPOLY register and each transmitted
+Page  231: data, and sends the CRC value at the end of the last data transmission. This result is regarded as the
+Page  231: value of the SPI_TCRC register.
+Page  231: the CRC value automatically according to the value in the SPI_CPOLY register and each received data,
+Page  231: and waits until the completion of CRC data reception at the end of the last data reception before
+Page  232: comparing the received CRC value with the value of the SPI_RCRC register. If check error occurs, the
+Page  232: CRC calculation and check in CPU reception mode will be completed automatically.
+Page  232: Special attention should be paid to: when the CRC calculation and check is enabled, the number of
+Page  232: send CRC automatically at the end of full transfer, and the receiver will also perform CRC check. Note
+Page  232: that the received CRC data will be moved into the SPI_DT register by hardware, with the RDBF being
+Page  232: to read the SPI_DT register to get the CRC value at the end of CRC reception in order to avoid the
+Page  233: the SPI_SCK controller chapter for information on communication clock, and refer to CRC and DMA
+Page  233: transfer chapter to configure CRC and DMA (if necessary). The recommended configuration procedure
+Page  233:  Configure CRC (if necessary)
+Page  234:  Configure CRC (if necessary)
+Page  238:    CRC value is obtained by software reading DT register at the end of CRC reception
+Page  245:  CRC check is not available on the I2S. Any operation linked to CRC, including CCERR flag and
+Page  247: SPI_RCRC                       0x14                              0x0000
+Page  247: SPI_TCRC                       0x18                              0x0000
+Page  247: CRC calculation enable
+Page  247: Transmit CRC next
+Page  247: Bit 12      NTC              0x0             rw       transferred is CRC value.
+Page  247: 1: Next transmitted data is CRC value
+Page  249: CRC error
+Page  249: 0: No CRC error
+Page  249: 1: CRC error occurs.
+Page  250: 13.4.5 SPICRC register (SPI_CPOLY) (Not used in I 2 S mode)
+Page  250: CRC polynomial
+Page  250: This register contains the polynomial used for CRC
+Page  250: 13.4.6 SPIRxCRC register (SPI_RCRC) (Not used in I 2 S mode)
+Page  250: Receive CRC
+Page  250: When CRC calculation is enabled, this register contains
+Page  250: the CRC value computed based on the received data.
+Page  250: Bit 15: 0    RCRC       0x0000          ro       SPI_CTRL1 register is cleared.
+Page  250: 8-bit LSB ([7: 0]) are calculated based on CRC8 standard;
+Page  250: when 16-bit data bit is selected, follow CRC16 standard.
+Page  250: 13.4.7 SPITxCRC register (SPI_TCRC)
+Page  250: Transmit CRC
+Page  250: When CRC calculation is enabled, this register contains
+Page  250: the CRC value computed based on the transmitted data.
+Page  250: Bit 15: 0    TCRC       0x0000          ro       SPI_CTRL1 register is cleared.
+Page  250: 8-bit LSB ([7: 0]) are calculated based on CRC8 standard;
+Page  250: when 16-bit data bit is selected, follow CRC16 standard.
+Page  402: Arbitration field          Control field                                  CRC field
+Page  402: ID                                   DLC                               CRC                               EOF
+Page  402: Arbitration field               Arbitration field         Control field   Data field         CRC field       Ack field
+Page  402: ID                                                            DLC                         CRC                        EOF
+Page  402: Arbitration field             Control field                   CRC field               Ack field
+Page  402: ID                               DLC                      CRC                             EOF
+Page  402: CRC = Cyclic redundancy code
+Page  418: 110: CRC error
+Page  454:  OUT data packets received with Bad Data CRC are emptied from the receive FIFO
+Page  458:  When the synchronous OUT data packet is received with CRC errors.
+Page  483: CRC check failure
+Page  551: by CRC bit, defining single and multiple block operations. Data transfers to/from MMC are done in data
+Page  552: Data block              crc                           Data block          crc                                   Data block            crc
+Page  552: CRC ok
+Page  552: SDIO_D                                                                             Busy              Data blcok           crc          Busy               Data block           crc                  Busy
+Page  554: transferred in bytes and without CRC appended to the end of each data block.
+Page  554: transferred is not determined in advance, the CRC cannot be used. When the memory range
+Page  554: start and end addresses are entirely contained within 512 bytes may also be transmitted. A CRC is
+Page  555: a CRC appended to the end of each block. If the CRC failed, the card indicates a failure on the SDIO_D
+Page  555: transferred data is also CRC protected. If a part of the CSD or CID register is stored in the ROM, then
+Page  555: and unpredictable times to write a block of data. After receiving a block of data and completing the CRC
+Page  556: followed by 16 CRC bits. The address filed in the write protect commands is a group address in byte
+Page  556: the 16-bit CRC. The data block indicates the operation mode (SET_PWD=1), the length
+Page  557: the 16-bit CRC. The data block indicates the operation mode (SET_PWD=1), the length
+Page  557: the 16-bit CRC. The data block indicates the operation mode (SET_PWD=1), the length
+Page  557: the 16-bit CRC. The data block indicates the operation mode (SET_PWD=1), the length
+Page  558: the 16-bit CRC. The data block indicates the operation mode (ERASE =1). All other bits must
+Page  562: All responses, except the R3 response type, are protected by a CRC. Every command code word is
+Page  562: Description           Start bit                                          Card status        CRC7             End bit
+Page  563: Description           Start bit                  CMD39                     RCA                                     register   CRC7         End bit
+Page  563: Description   Start bit       Start bit     Tx bit                    a successful card                Maybe used for         CRC7          End bit
+Page  564: Description     Start bit   Tx bit    CMD3            of a successful     Card status   CRC7     End bit
+Page  564:  Bit 15=COM_CRC_ERROR
+Page  566: the SDIO_ARG, 7-bit CRC and end bit. Then receives responses from the card. There are two response
+Page  566: types: 48-bit short response and 136-bit long response. Both use CRC error check. The received
+Page  566: Description       Start bit        Tx bit                           Parameter         CRC7               End bit
+Page  566: Command                               CRC7
+Page  566: internal CRC7)
+Page  567: CMDRSPCMPL                                                           A response is already received (CRC OK)
+Page  567: CMDFAIL                                                              A command response is already received (CRC fails)
+Page  567: enters the idle state if a response is not required. When a response is received, the received CRC code
+Page  567: and the internally generated CRC code are compared, and the appropriate status flags are set.
+Page  567: CCSM                                                               CRC error
+Page  568: Disabled, or CRC fails, or                                                          Data received, Read Wait
+Page  568: Send                                                                       Idle                           Disabled or CRC fails                   Receive
+Page  568: data, or CRC error
+Page  569:  Busy: The DCSM waits for the CRC flag. If the DCSM receives a correct CRC status and is not
+Page  569: busy, it will enter the Wait_S state. If it does not receive a correct CRC status or a timeout occurs
+Page  569: while the DCSM is in the busy state, a CRC fail flag or timeout flag is generated.
+Page  569: Description               Start bit           Data                 CRC16              End bit
+Page  570: if read wait start is set. The read wait process will start after the CRC is received. The
+Page  570: DCSM that enters the idle state after receiving the CRC of the current data block.
+Page  576: Bit 10       DTBLKCMPL         0x0             ro       Data block sent/received CRC check passed)
+Page  576: Bit 6        CMDRSPCMPL        0x0             ro       Command response (CRC check passed)
+Page  577: Bit 1        DTFAIL          0x0             ro       Data block sent/received (CRC check failed)
+Page  577: Bit 0        CMDFAIL         0x0             ro       Command response received (CRC check failed)
+Page  579: Data CRC fail interrupt enable
+Page  579: Bit 1        DTFAILIEN       0x0             rw       Data CRC fail interrupt.
+Page  579: Command CRC fail interrupt enable
+Page  579: Bit 0        CMDFAILIEN      0x0             rw       Command CRC fail interrupt.
+Page  580:  Automatic CRC and pad generation controllable on transmission frames
+Page  580:  Automatically remove pad bits/CRC on reception frames
+Page  587: calculates the CRC value of the received destination address (see the note below) and uses the 6
+Page  587: upper CRC bits to index the HASH table. A value of 000000 corresponds to bit 0 in the HASH table
+Page  587: bit in the HASH table relative to the CRC value is set to 1, it indicates that the frame has passed
+Page  590: Automatic CRC and pad generation
+Page  590: During a frame transmission, the EMAC can be programmed either to append CRC to the frame check
+Page  590: sequence or not to append CRC. When the EMAC is programmed to append pads for frames
+Page  590: (DA+SA+LT+Data) less than 60 bytes, the CRC value will be appended at the end of the padded frames.
+Page  590: In MII mode, if a collision occurs at any time from the beginning of a frame to the end of the CRC, the
+Page  592: FCS field used to verify the CRC of the frame. The frame is dropped in the core if it failed the address
+Page  593: CRC/pad stripping option, the EMAC sends the data of the frame to RXFIFO up to the count specified
+Page  593: on the programmed auto-CRC strip option.
+Page  593: and the result of CRC is indicated by the bit 0 in the receive descriptor (RDES0). This bit is set either
+Page  594: 1. CRC error
+Page  597: type/length field and valid data. As for whether to include CRC value, it depends on the transmit
+Page  597: descriptor. If the transmit descriptor requires the EMAC core to disable CRC or pad insertion, the buffer
+Page  597: must contain the CRC.
+Page  598: Disable CRC
+Page  598: Bit 27       DC       rw     When set, the MAC does not append a CRC field to the end of the transmitted
+Page  598: Bit 26       DP       rw     CRC field is added despite the state of the DC (TDES0[27]). This bit is valid only
+Page  603: memory. Whether the frame length includes CRC depends on the bit 7 and bit 25 in
+Page  603: RDES0[1]: CRC error
+Page  603: RDES0[5] bit is cleared. It is invalid when a CRC error occurs.
+Page  604: CRC error
+Page  604: Bit 1        CE          rw     When set, this bit indicates a CRC error occurred on the received frame. This bit is
+Page  608: Wkuppktfilter_reg6                 Filter 1 CRC-16                           Filter 0 CRC-16
+Page  608: Wkuppktfilter_reg7                 Filter 3 CRC-16                           Filter 2 CRC-16
+Page  608: offset + j of the incoming frame will be processed by the CRC block; otherwise filter i offset + j is ignored.
+Page  608: Filter i CRC-16
+Page  608: This register contains the CRC_16 value calculated by the filter, and the byte mask value programmed
+Page  608: and if the filter CRC_16 matches the examined incoming frame, then the wakeup frame is received. PMT
+Page  609: … CRC
+Page  617: Automatic pad/CRC Stripping
+Page  620: destination address of the incoming frame pass through the CRC logic, and the upper 6 bits in the CRC
+Page  620: register are used to index the Hash table. The most significant bit of the CRC determines the register to
+Page  620: 1. Calculate a 32-bit CRC value of the destination address (see IEEE 802.3, and refer to 3.2.8 section
+Page  623: Wkuppktfilter_reg6                Filter 1 CRC-16                              Filter 0 CRC-16
+Page  623: Wkuppktfilter_reg7                Filter 3 CRC-16                              Filter 2 CRC-16
+Page  635: 0: Rx FIFO drops error frames (CRC error, collision error,
+Page  635: good frames including pad bytes and CRC (with no error
+Page  639: Received Frames CRC Error
+Page  639: Bit 5        RFCE              0x0             rrc      This bit is set when the receive frame with CRC error
+Page  640: Received CRC Error Frame Counter Interrupt Mask
+Page  640: Setting this bit masks the interrupt when the received CRC
+Page  641: 26.3.42 Ethernet MMC received frames with CRC error counter
+Page  641: This register maintains the number of the received good frames with CRC error.
+Page  641: Received Frames CRC Error Counter
+Page  641: Received frames with CRC error.

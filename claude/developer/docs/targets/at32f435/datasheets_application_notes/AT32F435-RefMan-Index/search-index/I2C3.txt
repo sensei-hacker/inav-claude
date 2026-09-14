@@ -1,0 +1,40 @@
+Keyword: I2C3
+Occurrences: 36
+================================================================================
+
+Page   52: 72   79             I2C3_EVT              I2C2 event interrupt                         0x0000_0160
+Page   52: 73   80             I2C3_ERR              I2C2 error interrupt                         0x0000_0164
+Page   62: 0x4000 5C00 - 0x4000 5FFF       I2C3
+Page   81: I2C3 reset
+Page   81: Bit 23       I2C3RST          0x0            rw       0: Does not reset I2C3
+Page   81: 1: Reset I2C3
+Page   85: I2C3 clock enable
+Page   85: Bit 23       I2C3EN          0x0             rw        0: Disabled
+Page   90: I2C3 clock enable in sleep mode
+Page   90: Bit 23       I2C3LPEN     0x1        rw       0: Disabled
+Page  124: PA8      CLKOUT1   TMR1_CH1                           I2C3_SCL                            USART1_CK
+Page  124: PA9                TMR1_CH2                           I2C3_SMBA                           USART1_TX
+Page  126: PB2                TMR2_CH4    TMR20_CH1                I2C3_SMBA
+Page  126: PB4    JNTRST                  TMR3_CH1                 I2C3_SDA    SPI1_MISO   SPI3_MISO    I2S3_SDEXT
+Page  126: PB13               TMR1_CH1C                            I2C3_SMBA
+Page  126: I2C3_SCL
+Page  126: PB14               TMR1_CH2C                TMR8_CH2C   I2C3_SDA    SPI2_MISO   I2S2_SDEXT   USART3_RTS_DE
+Page  126: TMR1_CH3C                TMR8_CH3C   I2C3_SCL
+Page  128: PC0                                           I2C3_SCL
+Page  128: PC1                                           I2C3_SDA
+Page  128: I2C3_SDA                              UART8_RX
+Page  130: PD14                      TMR4_CH3              I2C3_SCL
+Page  130: PD15                      TMR4_CH4              I2C3_SDA
+Page  134: PF13                       TMR20_CH2                   I2C3_SMBA
+Page  134: PF14                       TMR20_CH3                   I2C3_SCL
+Page  134: PF15                       TMR20_CH4                   I2C3_SDA
+Page  154: I2C3       USART3
+Page  158: I2C3     USART3
+Page  159: 20          I2C3_RX       52        TMR8_CH4           84        reserved       116     UART7_RX
+Page  159: 21          I2C3_TX       53        TMR8_OVERFLOW 85             reserved       117     UART7_TX
+Page  693: I2C3     USART3
+Page  693: 20          I2C3_RX           52             TMR8_CH4                             84             reserved                     116                UART7_RX
+Page  694: 21              I2C3_TX               53        TMR8_OVERFLOW 85               reserved          117     UART7_TX
+Page  713: I2C3 pause control bit
+Page  713: Bit 28        I2C3_SMBUS_TIMEOUT   0x0          rw        0: I2C3 SMBUS timeout control works normally
+Page  713: 1: I2C3 SMBUS timeout control stops running

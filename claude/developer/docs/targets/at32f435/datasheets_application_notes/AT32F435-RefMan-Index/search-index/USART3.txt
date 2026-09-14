@@ -1,0 +1,40 @@
+Keyword: USART3
+Occurrences: 36
+================================================================================
+
+Page   51: 39   46             USART3                 USART3 global interrupt                0x0000_00DC
+Page   62: 0x4000 4800 - 0x4000 4BFF       USART3
+Page   81: USART3 reset
+Page   81: Bit 18       USART3RST        0x0            rw
+Page   81: 0: Does not reset USART3
+Page   81: 1: Reset USART3
+Page   85: USART3 clock enable
+Page   85: Bit 18       USART3EN        0x0             rw        0: Disabled
+Page   90: USART3 clock enable in sleep mode
+Page   90: Bit 18       USART3LPEN   0x1        rw       0: Disabled
+Page  124: PA6                TMR1_BRK    TMR3_CH1   TMR8_BRK                SPI1_MISO   I2S2_MCK    USART3_CTS
+Page  126: I2S3_MCK     USART3_TX
+Page  126: PB11               TMR2_CH4    TMR5_CH4                 I2C2_SDA                             USART3_RX
+Page  126: PB14               TMR1_CH2C                TMR8_CH2C   I2C3_SDA    SPI2_MISO   I2S2_SDEXT   USART3_RTS_DE
+Page  127: PB0    USART3_CK       QSPI2_IO0
+Page  127: PB1    USART3_RTS_DE   QSPI1_SCK
+Page  127: PB12   USART3_CK       CAN2_RX
+Page  127: PB13   USART3_CTS      CAN2_TX
+Page  128: I2S1_MCK                  USART3_TX
+Page  128: I2C1_SMBA                             USART3_RX
+Page  128: USART3_TX
+Page  128: PC11                    TMR5_CH3                          I2S3_SDEXT   SPI3_MISO    USART3_RX
+Page  128: USART3_CK
+Page  130: PD2                       TMR3_EXT                                                    USART3_RTS_DE
+Page  130: PD8                                                                                   USART3_TX
+Page  130: PD9                                                                                   USART3_RX
+Page  130: PD10                                                                                  USART3_CK
+Page  130: PD11                                            I2C2_SMBA                             USART3_CTS
+Page  130: PD12                      TMR4_CH1              I2C2_SCL                              USART3_RTS_DE
+Page  154: I2C3       USART3
+Page  158: I2C3     USART3
+Page  159: 28          USART3_RX     60        TMR2_OVERFLOW 92             reserved       124     reserved
+Page  159: 29          USART3_TX     61        TMR3_CH1           93        TMR20_TRIG     125     reserved
+Page  693: I2C3     USART3
+Page  694: 28              USART3_RX             60        TMR2_OVERFLOW 92               reserved          124     reserved
+Page  694: 29              USART3_TX             61        TMR3_CH1          93           TMR20_TRIG        125     reserved

@@ -1,0 +1,65 @@
+Keyword: RMII
+Occurrences: 61
+================================================================================
+
+Page    1: − Low power: Sleep, Deepsleep, and Standby modes                  SRAM(4 Kbytes): IEEE1588 hardware support, MII/RMII
+Page   38: Figure 26-7 RMII clock sources (provided by an external crystal oscillator)............................................. 585
+Page   70: EMACRMIICLK                  1
+Page   70: MII_RMII_SEL                                                                                                        CLKOUT2           CLKOUT2
+Page   70: MII_RMII_SEL
+Page   70: MII_RMII_SEL
+Page   83: Note: In RMII mode, if this clock is enabled, then MAC
+Page   83: RMII clock is enabled as well.
+Page   83: Note: In RMII mode, if this clock is enabled, then MAC
+Page   83: RMII clock is enabled as well.
+Page   87: Note: In RMII mode, if this clock is enabled, then the MAC
+Page   87: RMII clock is enabled as well.
+Page   88: Note: In RMII mode, if this clock is enabled, then the MAC
+Page   88: RMII clock is enabled as well.
+Page  125: EMAC_RMII_REF_CLK
+Page  125: EMAC_RMII_CRS_DV
+Page  127: PB11                               0            EMAC_RMII_TX_EN
+Page  127: EMAC_RMII_TXD0
+Page  127: EMAC_RMII_TXD1    US
+Page  129: PC4                            QSPI1_IO2     EMAC_RMII_RX    XMC_SDCS0    SDIO2_CK    XMC_NE4   EVENTOUT
+Page  129: PC5                            QSPI1_IO3     EMAC_RMII_RX    XMC_SDCKE0   SDIO2_CMD   XMC_NOE   EVENTOUT
+Page  131: PD8                                         EMAC_RMII_CRS_DV
+Page  131: PD9                                         EMAC_RMII_RXD0
+Page  131: PD10                                        EMAC_RMII_RXD1
+Page  137: EMAC_RMII_TX_EN
+Page  137: EMAC_RMII_TXD0
+Page  137: EMAC_RMII_TXD1
+Page  144: MII or RMII selection
+Page  144: This bit is used to select the Ethernet MII or RMII interface.
+Page  144: Bit 23       MII_RMII_SEL   0x0             rw       0: MII
+Page  144: 1: RMII
+Page  580: interface (RMII).
+Page  580: RMII
+Page  581: interface (MII) for Ethernet frame communication, and reduced media-independent interface RMII.
+Page  584: Reduced media-independent interface: RMII
+Page  584: 16 pins for data and control signals, while the RMII reduces the pin count to 7 pins (a 62.5% decrease
+Page  584: The RMII interface is used to connect the EMAC and the PHY. This helps translate the MAC MII signal
+Page  584: to the RMII.
+Page  584: RMII           TX_EN
+Page  584: MII/RMII selection and clock sources
+Page  584: Either the MII or RMII mode can be selected using the 23rd bit MII_RMII_SEL in the SCFG_CFG2
+Page  584: register. The MII/RMII mode must be selected when the Ethernet controller is in reset state or before
+Page  585: RMII clock sources
+Page  585: Figure 26-7 RMII clock sources (provided by an external crystal oscillator)
+Page  586: EMAC signal                   MII            RMII      Pin          Pin description
+Page  586: EMAC_RMII_REF_CLK
+Page  586: EMAC_RMII_CRS_DV
+Page  586: EMAC_RMII_RXD0
+Page  586: EMAC_RMII_RXD1
+Page  586: EMAC_RMII_TX_EN
+Page  586: EMAC_MII_TXD0 EMAC_RMII_TXD0        TXD0         TXD0         PB12     Multiplexed push-pull output
+Page  586: EMAC_MII_TXD1 EMAC_RMII_TXD1        TXD1         TXD1         PB13     Multiplexed push-pull output
+Page  586: EMAC_RMII_CRS_DV              RX_DV        CRS_DV         PD8     Floating input (reset state)
+Page  586: EMAC_RMII_RXD0
+Page  586: EMAC_RMII_RXD1
+Page  589: MAC core sends the frames to external Ethernet PHY via MII/RMII interface so as to communicate with
+Page  589: When the SOF is detected, the MAC accepts data and begins transmitting to the MII/RMII. The time
+Page  589: required to transmit the data frame to the MII/RMII after the application initiates is variable, due to various
+Page  594: frames in the TXFIFO to the MII/RMII interface.
+Page  594: For reception, the EMAC core sends the received Ethernet frames from the MII/RMII interface to the
+Page  616: This bit indicates the speed of the MII, RMII interface.

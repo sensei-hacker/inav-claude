@@ -1,0 +1,76 @@
+Keyword: SPI2
+Occurrences: 72
+================================================================================
+
+Page   45: SPI2 / I S2                                                                                                                                   SPI1 / I2S1
+Page   47: QSPI2_
+Page   51: 36   43             SPI2_I2S2EXT           SPI2 and IS2EXT global interrupt       0x0000_00D0
+Page   53: 91      98                 QSPI2                  QSPI2 global interrupt               0x0000_01AC
+Page   57: (QSPI2)         0xB000_0000
+Page   60: 0xB000 0000 - 0xBFFF FFFF       QSPI2_MEM
+Page   61: 0xA000 2000 - 0xA000 2FFF       QSPI2_REG
+Page   62: 0x4000 3800 - 0x4000 3BFF       SPI2/I2S2
+Page   80: QSPI2 reset
+Page   80: Bit 14       QSPI2RST       0x0             rw          0: Does not reset QSPI2
+Page   80: 1: Reset QSPI2
+Page   81: Bit 14       SPI2RST          0x0            rw       0: Does not reset SPI2
+Page   81: 1: Reset SPI2
+Page   84: QSPI2 clock enable
+Page   84: Bit 14       QSPI2EN         0x0            rw        0: Disabled
+Page   85: SPI2 clock enable
+Page   85: Bit 14       SPI2EN          0x0             rw        0: Disabled
+Page   89: QSPI2 clock enable in sleep mode
+Page   89: Bit 14       QSPI2LPEN        0x0            rw       0: Disabled
+Page   90: Bit 14       SPI2LPEN     0x1        rw       0: Disabled
+Page  124: SPI2_SCK
+Page  124: SPI2_MOSI
+Page  124: SPI2_CS
+Page  124: PA12               TMR1_EXT                           I2C2_SDA    SPI2_MISO
+Page  125: PA3                QSPI2_IO3   SDIO2_CMD   EMAC_MII_COL                                XMC_D5     EVENTOUT
+Page  125: PA5    USART6_RX   QSPI2_IO2   SDIO2_D5    SDIO2_D1                                    XMC_D7     EVENTOUT
+Page  125: PA15   USART2_RX   QSPI2_IO1   QSPI1_IO2                       XMC_NCE                            EVENTOUT
+Page  126: SPI2_SCK
+Page  126: SPI2_CS     SPI4_MOSI
+Page  126: SPI2_SCK
+Page  126: SPI2_CS     SPI4_CS      SPI3_SCK
+Page  126: SPI2_SCK    SPI4_SCK
+Page  126: PB14               TMR1_CH2C                TMR8_CH2C   I2C3_SDA    SPI2_MISO   I2S2_SDEXT   USART3_RTS_DE
+Page  126: ERTC_REFI                                                    SPI2_MOSI
+Page  127: PB0    USART3_CK       QSPI2_IO0
+Page  127: QSPI2_S
+Page  127: PB7                    QSPI2_IO1
+Page  127: QSPI2_C
+Page  128: SPI3_MOSI                 SPI2_MOSI
+Page  128: PC2                     TMR20_CH2                         SPI2_MISO    I2S2_SDEXT
+Page  128: SPI2_MOSI
+Page  128: TMR8_CH               SPI2_SCK
+Page  129: PC3    UART8_RX    QSPI2_IO1   SDIO2_D3
+Page  130: SPI3_MOSI    SPI2_CS
+Page  130: SPI2_SCK     SPI2_CS
+Page  130: SPI2_SCK
+Page  130: SPI2_MISO    USART2_CTS
+Page  130: SPI2_MOSI
+Page  133: PE7    UART7_RX               QSPI2_IO0                       XMC_D4                       EVENTOUT
+Page  133: PE8    UART7_TX               QSPI2_IO1                       XMC_D5                       EVENTOUT
+Page  133: PE9                           QSPI2_IO2                       XMC_D6                       EVENTOUT
+Page  133: PE10   UART5_TX               QSPI2_IO3                       XMC_D7                       EVENTOUT
+Page  136: PG8                                                      QSPI2_CS
+Page  136: PG10                                                     QSPI2_IO2
+Page  136: PG11                                                     QSPI2_IO3
+Page  136: PG12                                                     QSPI2_IO1         SPI4_MISO
+Page  136: PG13                                                     QSPI2_SCK
+Page  136: PG14                                                     QSPI2_IO0
+Page  143: Bit 11: 10   SWAP_XMC          0x0             rw       10: QSPI2 memory addresses are mapped at 0x8000
+Page  143: 0xD000 0000. QSPI2 memory addresses are mapped at
+Page  154: SPI2       UART7                                                            ch3
+Page  154: TMR1       QSPI2
+Page  158: SPI2     UART7           Req_gen2
+Page  158: TMR1     QSPI2
+Page  159: 8           TMR6_OVERFLOW 40        QSPI1              72        TMR5_CH1       104     QSPI2
+Page  159: 12          SPI2_RX       44        TMR1_CH3           76        TMR5_OVERFLOW 108      reserved
+Page  159: 13          SPI2_TX       45        TMR1_CH4           77        TMR5_TRIG      109     reserved
+Page  693: SPI2     UART7                Req_gen2
+Page  693: TMR1     QSPI2
+Page  693: 8           TMR6_OVERFLOW 40                 QSPI1                                72             TMR5_CH1                     104                QSPI2
+Page  693: 12          SPI2_RX           44             TMR1_CH3                             76             TMR5_OVERFLOW 108                               reserved
+Page  693: 13          SPI2_TX           45             TMR1_CH4                             77             TMR5_TRIG                    109                reserved

@@ -1,0 +1,231 @@
+Keyword: Ethernet
+Occurrences: 227
+================================================================================
+
+Page    1: dual QSPI, SDRAM, dual OTGFS, Ethernet, camera, 18 timers, 3 ADCs, 23
+Page    1: − 10/100M Ethernet MAC with dedicated DMA and
+Page   25: 26       Ethernet media access control (EMAC) ....................................... 580
+Page   25: 26.2.3 Ethernet frame transmission and reception using DMA ................. 594
+Page   26: 26.3.1 Ethernet MAC configuration register (EMAC_MACCTRL) .............. 616
+Page   26: 26.3.2 Ethernet MAC frame filter register (EMAC_MACFRMF) ................. 618
+Page   26: 26.3.3 Ethernet MAC Hash table high register (EMAC_MACHTH) ............ 620
+Page   26: 26.3.4 Ethernet MAC Hash table low register (EMAC_MACHTL) .............. 620
+Page   26: 26.3.5 Ethernet MAC MII address register (EMAC_MACMIIADDR) ........... 620
+Page   26: 26.3.6 Ethernet MAC MII data register (EMAC_MACMIIDT) ..................... 621
+Page   26: 26.3.7 Ethernet MAC flow control register (EMAC_MACFCTRL) .............. 621
+Page   26: 26.3.8 Ethernet MAC VLAN tag register (EMAC_MACVLT) ...................... 623
+Page   26: 26.3.9 Ethernet MAC remote wakeup frame filter register
+Page   26: 26.3.10 Ethernet MAC PMT control and status register
+Page   26: 26.3.11 Ethernet MAC interrupt status register (EMAC_MACISTS) ......... 624
+Page   26: 26.3.12 Ethernet MAC interrupt mask register (EMAC_MAIMR) .............. 625
+Page   26: 26.3.13 Ethernet MAC address 0 high register (EMAC_MACA0H) ........... 625
+Page   26: 26.3.14 Ethernet MAC address 0 low register (EMAC_MACA0L) ............. 626
+Page   26: 26.3.15 Ethernet MAC address 1 high register (EMAC_MACA1H) ........... 626
+Page   26: 26.3.16 Ethernet MAC address 1 low register (EMAC_MACA1H) ............ 626
+Page   26: 26.3.17 Ethernet MAC address 2 high register (EMAC_MACA2H) ........... 627
+Page   26: 26.3.18 Ethernet MAC address 2 low register (EMAC_MACA2L) ............. 627
+Page   26: 26.3.19 Ethernet MAC address 3 high register (EMAC_MACA3H) ........... 627
+Page   26: 26.3.20 Ethernet MAC address 3 low register (EMAC_MACA3L) ............. 628
+Page   26: 26.3.21 Ethernet DMA bus mode register (EMAC_DMABM) .................... 628
+Page   26: 26.3.22 Ethernet DMA transmit poll demand register (EMAC_DMATPD) .. 630
+Page   26: 26.3.23 Ethernet DMA receive poll demand register (EMAC_DMARPD) .. 630
+Page   26: 26.3.24 Ethernet DMA receive descriptor list address register
+Page   26: 26.3.25 Ethernet DMA transmit descriptor list address register
+Page   26: 26.3.26 Ethernet DMA status register (EMAC_DMASTS) ........................ 631
+Page   26: 26.3.27 Ethernet DMA operation mode register (EMAC_DMAOPM) ......... 634
+Page   26: 26.3.28 Ethernet DMA interrupt enable register (EMAC_DMAIE) ............ 636
+Page   27: 26.3.29 Ethernet DMA missed frame and buffer overflow counter register
+Page   27: 26.3.30 Ethernet DMA current transmit descriptor register
+Page   27: 26.3.31 Ethernet DMA current receive descriptor register
+Page   27: 26.3.32 Ethernet DMA current transmit buffer address register
+Page   27: 26.3.33 Ethernet DMA current receive buffer address reg ister
+Page   27: 26.3.34 Ethernet MMC control register (EMAC_MMCCTRL) ................... 638
+Page   27: 26.3.35 Ethernet MMC receive interrupt register (EMAC_MMCRI) .......... 639
+Page   27: 26.3.36 Ethernet MMC transmit interrupt register (EMAC_MMCTI) .......... 639
+Page   27: 26.3.37 Ethernet MMC receive interrupt register (EMAC_MMCRIM) ........ 640
+Page   27: 26.3.38 Ethernet MMC transmit interrupt register (EMAC_MMCTIM) ....... 640
+Page   27: 26.3.39 Ethernet MMC transmitted good frame single coll ision counter register
+Page   27: 26.3.40 Ethernet MMC transmitted good frame more than a single collision
+Page   27: 26.3.41 Ethernet MMC transmitted good frames counter register
+Page   27: 26.3.42 Ethernet MMC received frames with CRC error counter register
+Page   27: 26.3.43 Ethernet MMC received frames with alignment error counter register
+Page   27: 26.3.44 Ethernet MMC received good unicast frames counter register
+Page   27: 26.3.45 Ethernet PTP time stamp control register (EMAC_PTPTSCTRL) . 641
+Page   27: 26.3.46 Ethernet PTP subsecond increment register (EMAC_PTPSSINC) 643
+Page   27: 26.3.47 Ethernet PTP time stamp high register (EMAC_PTPTSH) ........... 643
+Page   27: 26.3.48 Ethernet PTP time stamp low register (EMAC_PTPTSL) ............ 644
+Page   27: 26.3.49 Ethernet PTP time stamp high update register (EMAC_PTPTSHUD) 644
+Page   27: 26.3.50 Ethernet PTP time stamp low update register (EMAC_PTPTSLUD) 644
+Page   27: 26.3.51 Ethernet PTP time stamp addend register (EMAC_PTPTSAD) .... 644
+Page   27: 26.3.52 Ethernet PTP target time high register (EMAC_PTPTTH) ........... 645
+Page   27: 26.3.53 Ethernet PTP target time low register (EMAC_PTPTTL) ............. 645
+Page   28: 26.3.54 Ethernet PTP time stamp status register (EMAC_PTPTSSR) ...... 645
+Page   28: 26.3.55 Ethernet PTP PPS register (EMAC_PTPPPSCR) ....................... 645
+Page   38: Figure 26-17 Ethernet interrupts................................................................................................................ 614
+Page   38: Figure 26-18 Ethernet MAC remote wakeup frame filter register (EMAC_MACRWFF) ........................... 623
+Page   43: Table 26-4 Ethernet peripheral pin configuration ...................................................................................... 586
+Page   43: Table 26-8 Ethernet register map and its reset values .............................................................................. 614
+Page   44: external memory controller (XMC), USB2.0 full-speed interfaces, Ethernet MAC, parallel digital camera
+Page   52: 61   68             EMAC2                 Ethernet global interrupt                    0x0000_0134
+Page   52: Configu                         Ethernet   wakeup      interrupt   through
+Page   79: Bit 25       EMACRST          0x0              rw          0: Does not reset the Ethernet MAC
+Page   79: 1: Reset the Ethernet MAC
+Page   94: Ethernet pulse width select
+Page  144: This bit is used to select the Ethernet MII or RMII interface.
+Page  151: Ethernet wakeup EXINT_LINE[19]
+Page  151: events, ERTC wakeup events, OTGFS1/OTGFS2 events and Ethernet wakeup events through edge
+Page  265: register. The TMR2 IS1 can be configured as TMR8_TRGO, Ethernet PTP output, OTG1_FS_SOF or
+Page  283: Bit 11: 10       TMR2_IS1_IRMP                           0x0                          rw                  01: Ethernet PTP output
+Page  580: 26 Ethernet media access control (EMAC)
+Page  580: The Ethernet peripheral enables the AT32F437 to transmit and receive data (10/100Mbps) through
+Page  580: Ethernet in compliance with IEEE 802.3-2002 standard.
+Page  580: The AT32F437 Ethernet peripheral supports two standard interfaces to the external PHY: media
+Page  580: The Ethernet peripheral contains an EMAC core and a DMA controller. The transmission and reception
+Page  580:  IEEE 802.3-compliant MII interface to communicate with an external high-speed Ethernet PHY
+Page  581:    Supports Ethernet frame time stamp as defined in IEEE 1588-2008. 64-bit time stamps are
+Page  581: The Ethernet peripheral consists of a MAC 802.3 (media access controller), MII interface and a
+Page  581: interface (MII) for Ethernet frame communication, and reduced media-independent interface RMII.
+Page  584: The reduced media-independent interface reduces the pin count between the AT32F437xx Ethernet
+Page  584: peripheral and the external Ethernet. According to the IEEE802.3u standard, the MII interface requires
+Page  584: register. The MII/RMII mode must be selected when the Ethernet controller is in reset state or before
+Page  586: Table 26-4 Ethernet peripheral pin configuration
+Page  589: command is sent by the application, Ethernet frames read from the user data buffer (such as SRAM) are
+Page  589: MAC core sends the frames to external Ethernet PHY via MII/RMII interface so as to communicate with
+Page  590: transferred to the MAC core. If the TXFIFO size is smaller than the Ethernet frame to be
+Page  590: If the length of a transmitting fame is less than 46 bytes, the minimum data size for an Ethernet frame
+Page  590: The collision detection is applicable only to half-duplex mode, not to full-duplex mode (refer to Ethernet
+Page  591: At the EMAC controller has completed the transmission of the Ethernet frame, the transmit status is
+Page  591: The most widespread use of Ethernet is to encapsulate TCP or UDP over IP datagrams, so the Ethernet
+Page  591: when the TSF is set in the EMAC_DMAOPM register). If the TXFIFO depth is less than the input Ethernet
+Page  591: The checksum module will detect an IPv4 datagrams when the Ethernet frame’s type field has the value
+Page  591: of the Ethernet type field and the IP header’s version filed are not consistent, or when the Ethernet frame
+Page  591: ― The received Ethernet type is 0x0800, but the IP header’s version field is not equal to 0x4
+Page  591: ― The received Ethernet type is 0x86DD, but the IP header’s version field is not equal to 0x6
+Page  592: header error, it inserts an IPv4 header checksum if the Ethernet type field indicates an IPv4
+Page  593: greater than 0x600, the MAC sends all received Ethernet frame data to RXFIFO, regardless of the value
+Page  593: register. The EMAC identifies IPv4 or IPv6 frames by checking for the Ethernet type field value. The
+Page  593: 1. Ethernet type field does not match the IP header version field
+Page  593: At the end of the Ethernet frame reception, the EMAC will send the receive status to the application
+Page  593: to debug the Ethernet communication. This feature is enabled by setting the LM bit in the
+Page  594: 26.2.3 Ethernet frame transmission and reception using DMA
+Page  594: The transmission and reception of the Ethernet frames are scheduled through DMA.
+Page  594: For transmission, the DMA reads out the Ethernet frames from the user system buffer (such as SRAM)
+Page  594: For reception, the EMAC core sends the received Ethernet frames from the MII/RMII interface to the
+Page  594: RXFIFO so that the DMA controller reads out the Ethernet frames from the RXFIFO and transfers them
+Page  595: software or hardware resets the Ethernet peripherals and re-initiates the DMA.
+Page  596: 1.      The application sets up the Ethernet frame data buffer and the transmit descriptor (TDES0-
+Page  596: 5.      If the Ethernet frame is stored in multiple descriptors with different descriptor, the DMA will close
+Page  597: Ethernet frames stored in the transmit buffer must contain destination address, source address, correct
+Page  600: TBAP1/T            1: The application indicates to the DMA the location of the Ethernet data in system
+Page  600: 1: The application indicates to the DMA the location of the Ethernet data in system
+Page  603: match the value in the Ethernet length/type field. This bit is valid only when the
+Page  604: due to mismatched Ethernet type filed and IP version field, IPv4 header checksum
+Page  604: error or an Ethernet frame lacking the desired number of IP header bytes.
+Page  604: When set, this bit indicates that the received frame is an Ethernet frame (the LT field
+Page  604: the IPv4 or IPv6 datagram in the received Ethernet frame.
+Page  605: When set, this bit prevents setting the Ethernet DMA status register’s RECV bit
+Page  606: Bit 12       PFT      ro     Ethernet. When this bit is cleared and the message type is non-zero, it indicates that
+Page  606: version is not consistent with the Ethernet Type value.
+Page  609: In DEEPSLEEP mode, the Ethernet PMT block is still able to detect frames as long as the EXTI 19 is
+Page  609: 9.    Upon receiving Magic Packet/a remote wakeup frame, the Ethernet exits the power-down mode.
+Page  609: (not limited to Ethernet). Refer to IEEE1588 standard for more information.
+Page  609: The PTP block captures the accurate time when a PTP packet is transmitted or received from Ethernet
+Page  610: stamp of the Ethernet frames being transmitted or received. There are two correction methods: coarse
+Page  612: 1.    Write the offset value (positive or negative) to the Ethernet PTP time stamp high update register
+Page  612: (EMAC_PTPTSHUD) and the Ethernet PTP time stamp low update register (EMAC_PTPTSLUD).
+Page  612: 2.    Set the bit 3 (TU) in the Ethernet PTP time stamp control register (EMAC_PTPTSCTRL).
+Page  612: bit 9 in the Ethernet MAC interrupt mask register (EMAC_MAIMR) to activate the time stamp
+Page  612: 4.    Set the bit 4 (TITE) in the Ethernet PTP time stamp control register (EMAC_PTPTSCTRL).
+Page  613: The EMAC has two interrupt vectors: one is used for normal Ethernet operations and the other for the
+Page  613: Ethernet wakeup event (remote wakeup frame or Magic Packet detection) when it is mapped on EXINT
+Page  613: When an Ethernet wakeup event is mapped on the EXINT line19 and the EMAC PMT interrupt is
+Page  614: Figure 26-17 Ethernet interrupts
+Page  614: Table 26-8 shows the Ethernet register map and its reset values.
+Page  614: Table 26-8 Ethernet register map and its reset values
+Page  616: 26.3.1 Ethernet MAC configuration register (EMAC_MACCTRL)
+Page  616: The Ethernet MAC configuration register defines the receive and transmit operation modes.
+Page  617: complement sum of all received Ethernet frames and
+Page  617: IPv4header ), and adds it to the Ethernet frame that has
+Page  618: 26.3.2 Ethernet MAC frame filter register (EMAC_MACFRMF)
+Page  618: The Ethernet MAC frame filter register contains the filter control bits for receiving frames. Some of the
+Page  620: 26.3.3 Ethernet MAC Hash table high register (EMAC_MACHTH)
+Page  620: 26.3.4 Ethernet MAC Hash table low register (EMAC_MACHTL)
+Page  620: 26.3.5 Ethernet MAC MII address register (EMAC_MACMIIADDR)
+Page  620: The Ethernet MAC MII address register controls the external PHY through the management interface.
+Page  621: 26.3.6 Ethernet MAC MII data register (EMAC_MACMIIDT)
+Page  621: The Ethernet MAC MII data register stores data to be written to the PHY register located at the address
+Page  621: 26.3.7 Ethernet MAC flow control register (EMAC_MACFCTRL)
+Page  621: The Ethernet MAC flow control register controls the generation and reception of the control frames by
+Page  622: 1'b0. The Ethernet MAC flow control register
+Page  623: 26.3.8 Ethernet MAC VLAN tag register (EMAC_MACVLT)
+Page  623: The Ethernet MAC VLAN tag register contains the IEEE 802.1Q VLAN tag to identify the VLAN frames.
+Page  623: 26.3.9 Ethernet MAC remote wakeup frame filter register
+Page  623: Figure 26-18 Ethernet MAC remote wakeup frame filter register (EMAC_MACRWFF)
+Page  624: 26.3.10 Ethernet MAC PMT control and status register
+Page  624: The Ethernet MAC PMT control and status register sets the request wakeup events and detects the
+Page  624: 26.3.11 Ethernet MAC interrupt status register (EMAC_MACISTS)
+Page  624: The Ethernet MAC interrupt status register identify the events in the MAC that can generate an interrupt.
+Page  625: 26.3.12 Ethernet MAC interrupt mask register (EMAC_MAIMR)
+Page  625: The Ethernet MAC interrupt mask register is used to mask the interrupt signal generated due to the
+Page  625: 26.3.13 Ethernet MAC address 0 high register (EMAC_MACA0H)
+Page  625: big-endian mode) in the Ethernet MAC address 0 low register (EMAC_MACA0L). Consecutive write
+Page  626: 26.3.14 Ethernet MAC address 0 low register (EMAC_MACA0L)
+Page  626: The Ethernet MAC address 0 low register contains the lower 32 bits of the 6-byte first MAC address.
+Page  626: 26.3.15 Ethernet MAC address 1 high register (EMAC_MACA1H)
+Page  626: The Ethernet MAC address 1 high register holds the upper 16 bits of the 6-byte second MAC address.
+Page  626: big-endian mode) in the Ethernet MAC address 1 low register (EMAC_MACA1L) . Consecutive write
+Page  626: 26.3.16 Ethernet MAC address 1 low register (EMAC_MACA1H)
+Page  626: The Ethernet MAC address 1 low register contains the lower 32 bits of the 6-byte second MAC address.
+Page  627: 26.3.17 Ethernet MAC address 2 high register (EMAC_MACA2H)
+Page  627: The Ethernet MAC address 2 high register holds the upper 16 bits of the 6-byte second MAC address.
+Page  627: big-endian mode) in the Ethernet MAC address 2 low register (EMAC_MACA2L). Consecutive write
+Page  627: 26.3.18 Ethernet MAC address 2 low register (EMAC_MACA2L)
+Page  627: The Ethernet MAC address 2 low register holds the lower 32 bits of the 6-byte second MAC address.
+Page  627: 26.3.19 Ethernet MAC address 3 high register (EMAC_MACA3H)
+Page  627: The Ethernet MAC address 3 high register holds the upper 16 bits of the 6-byte second MAC address.
+Page  627: big-endian mode) in the Ethernet MAC address 3 low register (EMAC_MACA3L). Consecutive write
+Page  628: 26.3.20 Ethernet MAC address 3 low register (EMAC_MACA3L)
+Page  628: The Ethernet MAC address 3 low register holds the lower 32 bits of the 6-byte second MAC address.
+Page  628: 26.3.21 Ethernet DMA bus mode register (EMAC_DMABM)
+Page  628: The Ethernet DMA bus mode register defines the bus operation modes for the DMA.
+Page  630: 26.3.22 Ethernet DMA transmit poll demand register
+Page  630: 26.3.23 Ethernet DMA receive poll demand register
+Page  630: 26.3.24 Ethernet DMA receive descriptor list address register
+Page  631: 26.3.25 Ethernet DMA transmit descriptor list address register
+Page  631: 26.3.26 Ethernet DMA status register (EMAC_DMASTS)
+Page  631: software must read the Ethernet PMT control and status
+Page  634: 26.3.27 Ethernet DMA operation mode register (EMAC_DMAOPM)
+Page  634: (including FCS error) in the Ethernet frames received by
+Page  636: 26.3.28 Ethernet DMA interrupt enable register (EMAC_DMAIE)
+Page  637: The Ethernet interrupt is generated only when the TST or PMT bit is set in the DMA status register with
+Page  637: 26.3.29 Ethernet DMA missed frame and buffer overflow counter
+Page  638: 26.3.30 Ethernet DMA current transmit descriptor register
+Page  638: 26.3.31 Ethernet DMA current receive descriptor register
+Page  638: 26.3.32 Ethernet DMA current transmit buffer address register
+Page  638: 26.3.33 Ethernet DMA current receive buffer address register
+Page  638: 26.3.34 Ethernet MMC control register (EMAC_MMCCTRL)
+Page  639: 26.3.35 Ethernet MMC receive interrupt register (EMAC_MMCRI)
+Page  639: 26.3.36 Ethernet MMC transmit interrupt register (EMAC_MMCTI)
+Page  640: 26.3.37 Ethernet MMC receive interrupt register (EMAC_MMCRIM)
+Page  640: 26.3.38 Ethernet MMC transmit interrupt register
+Page  640: 26.3.39 Ethernet MMC transmitted good frame single collision
+Page  641: 26.3.40 Ethernet MMC transmitted good frame more than a single
+Page  641: 26.3.41 Ethernet MMC transmitted good frames counter register
+Page  641: 26.3.42 Ethernet MMC received frames with CRC error counter
+Page  641: 26.3.43 Ethernet MMC received frames with alignment error
+Page  641: 26.3.44 Ethernet MMC received good unicast frames counter
+Page  641: 26.3.45 Ethernet PTP time stamp control register
+Page  641: while the PTP is directly sent by the Ethernet.
+Page  642: Bit 11     EPPEF       0x0         rw       that is directly encapsulated in the Ethernet frames. When
+Page  642: When this bit is set, the Ethernet PTP time stamp addend
+Page  643: 26.3.46 Ethernet PTP subsecond increment register
+Page  643: 26.3.47 Ethernet PTP time stamp high register (EMAC_PTPTSH)
+Page  644: 26.3.48 Ethernet PTP time stamp low register (EMAC_PTPTSL)
+Page  644: 26.3.49 Ethernet PTP time stamp high update register
+Page  644: 26.3.50 Ethernet PTP time stamp low update register
+Page  644: 26.3.51 Ethernet PTP time stamp addend register
+Page  645: 26.3.52 Ethernet PTP target time high register (EMAC_PTPTTH)
+Page  645: 26.3.53 Ethernet PTP target time low register (EMAC_PTPTTL)
+Page  645: 26.3.54 Ethernet PTP time stamp status register
+Page  645: 26.3.55 Ethernet PTP PPS register (EMAC_PTPPPSCR)
+Page  716: 8. Updated the descriptions of Section 26 Ethernet media access control (EMAC)

@@ -1,0 +1,8 @@
+Keyword: Cortex-M4
+Occurrences: 4
+================================================================================
+
+Page   45: Cortex-M4F                                                                           SDIO1/2                                                  Max.288 MHz
+Page   46: Cortex-M4F
+Page   46: Cortex-M4 Core
+Page   57: Cortex-M4 Internal   0xE00F_FFFF

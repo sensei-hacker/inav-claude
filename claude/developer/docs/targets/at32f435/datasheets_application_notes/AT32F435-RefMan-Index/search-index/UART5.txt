@@ -1,0 +1,28 @@
+Keyword: UART5
+Occurrences: 24
+================================================================================
+
+Page   52: 53   60             UART5                 UART5 global interrupt                       0x0000_0114
+Page   62: 0x4000 5000 - 0x4000 53FF       UART5
+Page   81: UART5 reset
+Page   81: Bit 20       UART5RST         0x0            rw       0: Does not reset UART5
+Page   81: 1: Reset UART5
+Page   85: UART5 clock enable
+Page   85: Bit 20       UART5EN         0x0             rw        0: Disabled
+Page   90: UART5 clock enable in sleep mode
+Page   90: Bit 20       UART5LPEN    0x1        rw       0: Disabled
+Page  127: PB5    UART5_RX        CAN2_RX                  EMAC_PPS_OUT
+Page  127: PB6    UART5_TX        CAN2_TX
+Page  127: PB8    UART5_RX        CAN1_RX
+Page  127: PB9    UART5_TX        CAN1_TX
+Page  129: PC12   UART5_TX                                              SDIO1_CK     DVP_D9      XMC_D3    EVENTOUT
+Page  131: PD2    UART5_RX               XMC_A7                           SDIO1_CMD   DVP_D11   XMC_NWE   EVENTOUT
+Page  133: PE10   UART5_TX               QSPI2_IO3                       XMC_D7                       EVENTOUT
+Page  133: PE11   UART5_RX                                               XMC_D8                       EVENTOUT
+Page  154: SDIO2      UART5
+Page  158: SDIO2    UART5
+Page  159: 1           DMA_MUXREQG1 33         UART5_TX           65        TMR3_OVERFLOW 97       reserved
+Page  159: 32          UART5_RX      64        TMR3_CH4           96        reserved
+Page  693: SDIO2    UART5
+Page  693: 1           DMA_MUXREQG1 33                  UART5_TX                             65             TMR3_OVERFLOW 97                                reserved
+Page  694: 32              UART5_RX              64        TMR3_CH4          96           reserved

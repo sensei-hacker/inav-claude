@@ -1,0 +1,49 @@
+Keyword: oscillator
+Occurrences: 45
+================================================================================
+
+Page    1: − 4 to 25 MHz crystal oscillator (HEXT)                        96-bit ID (UID)
+Page    1: − 32.768 kHz crystal oscillator (LEXT)                          − LQFP144 20 x 20 mm LQFP100 14 x 14 mm
+Page    1: − Internal low speed RC oscillator (LICK)                       −   LQFP64 10 x 10 mm LQFP48 7 x 7 mm
+Page   38: Figure 26-6 MII clock sources (provided by an external oscillator) ........................................................... 585
+Page   38: Figure 26-7 RMII clock sources (provided by an external crystal oscillator)............................................. 585
+Page   65: The battery powered domain contains ERTC circuit, LEXT oscillator, PC13, PC14 and PC15, which is
+Page   66: In Deepsleep mode, all clocks in 1.2 V domain are stopped, and both HICK and HEXT oscillators are
+Page   66: When the MCU exits the Deepsleep mode, the HICK RC oscillator is enabled and selected as a system
+Page   66: disabled. The whole 1.2 V domain, PLL, HICK and HEXT oscillators are also powered off. SRAM and
+Page   70:  High speed external oscillator (HEXT)
+Page   70: The HICK oscillator is clocked by a high-speed RC in the microcontroller. The internal frequency of the
+Page   70: oscillator. The HICK clock frequency of each device is calibrated by ARTERY to ±1% accuracy (TA=25°C)
+Page   71: The RC oscillator speed may be affected by voltage or temperature variations. Thus the HICK frequency
+Page   71:  Low speed external oscillator (LEXT)
+Page   71: The LEXT oscillator provides two clock sources: LEXT crystal/ceramic resonator and LEXT bypass.
+Page   71:  Low speed internal RC oscillator (LICK)
+Page   71: The LICK oscillator is clocked by an internal low-speed RC oscillator. The clock frequency is between
+Page   71: After a system reset, the HICK oscillator is selected as system clock. The system clock can make flexible
+Page   71: switch among HICK oscillator, HEXT oscillator and PLL clock. However, a switch from one clock source
+Page   71: to another occurs only if the target clock source becomes stable. When the HICK oscillator is used
+Page   71: ERTC clock sources: divided HEXT oscillator, LEXT oscillator and LICK oscillator. Once the clock source
+Page   72: Watchdog is clocked by LICK oscillator. If the watchdog is enabled by either hardware option or software
+Page   72: access, the LICK oscillator is forced ON. The clock is provided to the watchdog only after the LICK
+Page   72: oscillator temporization.
+Page   75: HICK oscillator frequency. The default value is 32, which
+Page   76: 10: External oscillator clock (HEXT) selected
+Page   92: Low speed external oscillator stable
+Page   92: External low-speed oscillator enable
+Page   94: 0010: Internal RC oscillator clock (HICK) output frequency
+Page  318: FCSODIS bit. This function works even if the MCU oscillator is off.
+Page  401: During the actual transmission, each bit of the CAN nodes has certain phase error due to the oscillator
+Page  502: 0: Internal 8MHz oscillator calibration is not ready
+Page  502: 1: Internal 8MHz oscillator calibration is ready
+Page  502: 8MHz oscillator has been calibrated to the frequency
+Page  503: frequency of the HICKRC oscillator according to the
+Page  503: Bit 7: 0     HICKCAL    0x80            ro       adjust the frequency of the HICKPC oscillator according to
+Page  584: driven by an external 25MHz clock, which can be provided by either an oscillator or the MCU CLKOUT
+Page  585: Figure 26-6 MII clock sources (provided by an external oscillator)
+Page  585: with an external crystal oscillator.
+Page  585: Figure 26-7 RMII clock sources (provided by an external crystal oscillator)
+Page  610: drift of the crystal oscillator and that of the synchronization procedure.
+Page  711: code remains active for HCLK and FCLK to continue to work. In DeepSleep mode, HICK oscillator is
+Page  713: internal RC oscillator (HICK)
+Page  713: RC oscillator (HICK) is enabled, and HICK is used as the
+Page  713: internal RC oscillator (HICK). When exiting from

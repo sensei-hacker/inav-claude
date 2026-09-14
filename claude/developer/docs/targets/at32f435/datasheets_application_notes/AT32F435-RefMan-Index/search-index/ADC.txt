@@ -1,0 +1,563 @@
+Keyword: ADC
+Occurrences: 559
+================================================================================
+
+Page    1: dual QSPI, SDRAM, dual OTGFS, Ethernet, camera, 18 timers, 3 ADCs, 23
+Page   16: 18       Analog-to-digital converter (ADC) ............................................... 358
+Page   16: 18.1 ADC introduction ....................................................................... 358
+Page   16: 18.2 ADC main features ..................................................................... 358
+Page   16: 18.3 ADC structure ............................................................................ 358
+Page   16: 18.4 ADC functional overview ............................................................. 359
+Page   16: 18.4.2 ADC operation process ............................................................... 360
+Page   17: 18.6 ADC registers ............................................................................ 374
+Page   17: 18.6.1 ADC status register (ADC_STS) .................................................. 376
+Page   17: 18.6.2 ADC control register 1 (ADC_CTRL1) .......................................... 377
+Page   17: 18.6.3 ADC control register 2 (ADC_CTRL2) .......................................... 378
+Page   17: 18.6.4 ADC sampling time register 1 (ADC_SPT1) .................................. 380
+Page   17: 18.6.5 ADC sampling time register 2 (ADC_SPT2) .................................. 382
+Page   17: 18.6.6 ADC preempted channel data offset register x
+Page   17: (ADC_ PCDTOx) (x=1..4) ...................................................................... 384
+Page   17: 18.6.7 ADC voltage monitor high threshold register (ADC_VWHB) ........... 384
+Page   17: 18.6.8 ADC voltage monitor low threshold register (ADC_ VWLB) ............ 384
+Page   17: 18.6.9 ADC ordinary sequence register 1 (ADC_ OSQ1) ......................... 384
+Page   17: 18.6.10 ADC ordinary sequence register 2 (ADC_ OSQ2) ...................... 384
+Page   17: 18.6.11 ADC ordinary sequence register 3 (ADC_ OSQ3) ...................... 385
+Page   17: 18.6.12 ADC preempted sequence register (ADC_ PSQ) ........................ 385
+Page   17: 18.6.13 ADC preempted data register x (ADC_ PDTx) (x=1..4) ............... 385
+Page   17: 18.6.14 ADC ordinary data register (ADC_ ODT) ................................... 386
+Page   17: 18.6.15 ADC oversampling register (ADC_ OVSP) ................................. 386
+Page   17: 18.6.16 ADC calibration value register (ADC_CALVAL) .......................... 387
+Page   17: 18.6.17 ADC common status register (ADC_CSTS)................................ 387
+Page   17: 18.6.18 ADC common control register (ADC_CCTRL) ............................ 388
+Page   17: 18.6.19 ADC common data register (ADC_CODT).................................. 391
+Page   36: Figure 18-1 ADC1 block diagram .............................................................................................................. 359
+Page   36: Figure 18-2 ADC basic operation process................................................................................................. 361
+Page   36: Figure 18-3 ADC power-on and calibration ............................................................................................... 362
+Page   41: Table 18-5 ADC register map and reset values ......................................................................................... 374
+Page   44: interface, HICK with automatic clock calibration (ACC), 12-bit ADC, 12-bit DAC, programmable voltage
+Page   45: ADCIF                 ADC1
+Page   45: ADC2
+Page   45: DAC                                                                                                                                                       ADC3
+Page   51: 18   25             ADC1_2_3               ADC1, ADC2 and ADC3 global interrupt   0x0000_0088
+Page   61: 0x4001 2000 - 0x4001 23FF       ADC1/2/3
+Page   63: DAC         ADC
+Page   65: LDO and all PAD circuits other than PC13, PC14 and PC15. The VDDA domain contains DAC/ADC
+Page   65: Typically, to ensure a better accuracy of ADC/DAC at a low voltage, the digital circuit is supplied by VDD
+Page   70: xNS                                       SCLK                     HCLK                  ADC Divider       To ADC1,2,3
+Page   70: Max.                    Max.                  /2,3,4,...,17      ADCCLK
+Page   70: To EMAC                                       To EMAC                                     ADCCLK
+Page   71: ADCs are clocked by APB2 divided by 2, 3, 4, 5…17
+Page   72: ADCCLK, USB48M, SCLK, LICK, LEXT, HICK, HEXT, PLLCLK can be used as CLKOUT1/2 clocks.
+Page   82: ADC interface reset
+Page   82: Bit 8        ADCRST           0x0            rw       0: Does not reset ADC1 interface
+Page   82: 1: Reset ADC1 interface
+Page   87: ADC3 interface clock enable
+Page   87: Bit 10       ADC3EN          0x0              rw          0: Disabled
+Page   87: ADC2 interface clock enable
+Page   87: Bit 9        ADC2EN          0x0              rw          0: Disabled
+Page   87: ADC1 interface clock enable
+Page   87: Bit 8        ADC1EN          0x0              rw          0: Disabled
+Page   91: ADC3 interface clock enable in sleep mode
+Page   91: Bit 10       ADC3LPEN         0x1            rw       0: Disabled
+Page   91: Bit 9        ADC2LPEN         0x1            rw       0: Disabled
+Page   91: ADC1 interface clock enable in sleep mode
+Page   91: Bit 8        ADC1LPEN         0x1            rw       0: Disabled
+Page   94: 0001: ADC clock output
+Page  138:  For ADC peripherals, the pins of analog channels should be configured as analog mode.
+Page  154: ADC1       TMR2                            DMA request                      ch3
+Page  154: ADC2       TMR3
+Page  154: ADC3       TMR4   DMA
+Page  158: ADC1     TMR2
+Page  158: ADC2     TMR3                                                Stream x
+Page  158: ADC3     TMR4                                                     Stream 2
+Page  159: 4           DMA_MUXREQG4 36         ADC2               68        TMR4_CH2       100     reserved
+Page  159: 5           ADC1          37        ADC3               69        TMR4_CH3       101     reserved
+Page  174: ―    Broadcast call mode
+Page  176:  Broadcast call address (0b0000000x): This address is enabled when GCAEN=1.
+Page  252: timer     TMR20              Up/Down                                                                 ADC/DAC
+Page  252: Up/Down                                                                 ADC/DAC
+Page  252: Up/Down                                                                 ADC/DAC
+Page  252: 16        Up        X        X       X                X       X        X          ADC/DAC
+Page  253:    Synchronization circuit to trigger ADC/DAC
+Page  257: IS2            STCI                      mode                      TMRx_DIV                                      To ADC
+Page  304: IS2            STCI                      mode                      TMRx_DIV                                        To DAC/ADC
+Page  358: 18 Analog-to-digital converter (ADC)
+Page  358: 18.1 ADC introduction
+Page  358: The ADC is a peripheral that converts an analog input signal into a 12-bit/10-bit/8-bit/6-bit digital signal.
+Page  358: Its sampling rate is as high as 5.33 MSPS. Each ADC has up to 19 channels (internal + external) for
+Page  358: sampling and conversion, totaling 24 external channel sources for three ADCs.
+Page  358: 18.2 ADC main features
+Page  358:  Self-calibration time: 205 ADC clock cycles
+Page  358:  ADC conversion time
+Page  358: − Fast channel: ADC conversion time is 0.1875 μs at 80 MHz in 12-bit resolution (5.33MSps)
+Page  358: − Slow channel: ADC conversion time is 0.2375 μs at 80 MHz in 12-bit resolution (4.21MSps)
+Page  358: − Fast channel: ADC conversion time is 0.1126 μs at 80 MHz in 6-bit resolution (8.88MSps)
+Page  358: − Slow channel: ADC conversion time is 0.1626 μs at 80 MHz in 6-bit resolution (6.15MSps)
+Page  358:  ADC supply requirement: Refer to AT32F435/437 datasheet for more information
+Page  358:  ADC input range: VREF- ≤ VIN ≤ VREF+
+Page  358:    ADC master/slave modes
+Page  358:    Master/slave shift mode with programmable timing shift length between ADCs
+Page  358: 18.3 ADC structure
+Page  358: Figure 18-1 shows the block diagram of ADC1.
+Page  358: Differences between ADC2/ADC3 and ADC1:
+Page  358: 1. ADC2/ADC3 are not connected to the internal temperature sensor (Temp. sensor) and internal
+Page  359: Figure 18-1 ADC1 block diagram
+Page  359: TMR1_CH1                                                                                   ADCDIV
+Page  359: ADC prescaler
+Page  359: TMR2_CH4                  OCTEN                    ADCCLK
+Page  359: TMR5_CH2                                                                                                                   ADCx_IN0
+Page  359: TMR8_CH1                 detection                                                                                         ADCx_IN1
+Page  359: ADCx_IN15
+Page  359: TMR5_CH4                                                                                                         ADC
+Page  359:  VDDA: Analog supply, ADC analog supply
+Page  359:  VSSA: Analog supply ground, ADC analog supply ground
+Page  359:  VREF+: Analog reference positive, high/positive reference voltage for the ADC
+Page  359:  VREF-: Analog reference negative, low/negative reference voltage for the ADC
+Page  359:  ADCx_IN: Analog input signal channels
+Page  359: 18.4 ADC functional overview
+Page  359: There are 19 analog signal channel inputs for each of the ADCs, expressed by ADC_Inx (x=0 to 18).
+Page  360:  ADC1_IN0 to ADC1_IN15 are referred to as the external analog input, ADC1_IN16 as an internal
+Page  360: temperature sensor, ADC1_IN17 as an internal reference voltage, and ADC1_IN18 as a battery
+Page  360:  ADC2_IN0 to ADC2_IN15 are referred to as the external analog input, and ADC2_IN16 and
+Page  360: ADC2_IN17 as Vss, and ADC1_IN18 as VREF-.
+Page  360:  ADC3_IN0 to ADC3_IN3, and ADC3_IN10 to ADC3_IN13 are referred to as the external analog
+Page  360: input, and ADC3_IN16 and ADC3_IN17 as Vss, and ADC3_IN18 as VREF-.
+Page  360: Program the ADC_Inx into the ordinary channel sequence (ADC_OSQx) and the preempted channel
+Page  360: sequence (ADC_PSQ), and the same channel can be repeated, the total number of sequences is
+Page  360: The temperature sensor is connected to ADC1_IN16. Before the temperature sensor channel conversion,
+Page  360: it is required to enable the ITSRVEN bit in the ADC_CCTRL register and wait after power-on time.
+Page  360: The internal reference voltage of the typical value 1.2 V is connected to ADC1_IN17. It is required to
+Page  360: enable the ITSRVEN bit in the ADC_CCTRL register before the internal reference channel conversion.
+Page  360: VBAT is higher than VDDA. Thus the VBAT must be divided by 4 before being connected to the ADC1_IN18.
+Page  360: The conversion of battery voltage channels starts only when the VBATEN bit is set in the ADC_CCTRL
+Page  360: Note: When the ADC is used for sampling VBAT voltage, the VBAT keeps consuming as along as the
+Page  360: 18.4.2 ADC operation process
+Page  360: Figure 18-2 shows the basic operation process of the ADC. It is recommended to do the calibration after
+Page  360: trigger is used to enable ADC sampling and conversion. Read data at the end of the conversion.
+Page  361: Figure 18-2 ADC basic operation process
+Page  361: ADC
+Page  361: Set the ADCxEN bit in the CRM_APB2EN register to enable ADC clocks: PCLK2 and ADCCLK.
+Page  361: Program the desired ADCCLK frequency by setting the ADCDIV bit in the ADC_CCTRL register. The
+Page  361: ADCCLK is derived from HCLK frequency division.
+Page  361: Note: ADCCLK must be less than 80 MHz, while the ADCCLK frequency must be lower than
+Page  361: Then set the ADCEN bit in the ADC_CTRL2 register to supply the ADC, and wait until the RDY flag is
+Page  361: set before starting ADC conversion. Clear the ADCEN bit will stop the ADC conversion and result in a
+Page  361: reset. In the meantime, the ADC is switched off to save power.
+Page  361: After power-on, the calibration is enabled by setting the ADCAL bit in the ADC_CTRL2 register. When
+Page  361: the calibration is complete, the ADCAL bit is cleared by hardware and the conversion is performed by
+Page  361: After each calibration, the calibration value is stored in the least significant 7 bits of the ADC_CALVAL
+Page  361: register, and then value is automatically sent back to the ADC so as to eliminate capacitance errors. The
+Page  362: Figure 18-3 ADC power-on and calibration
+Page  362: The ADCEN                              The ADCAL
+Page  362: ADCCLK
+Page  362: ADCEN
+Page  362: ADCAL
+Page  362: ADC                      Powering up                            Calibration                       Conversion
+Page  362: The RDY bit                            The ADCAL                         The OCCE bit
+Page  362: The ADC triggers contain ordinary channel trigger and preempted channel trigger. The ordinary channel
+Page  362: PCETE bits in the ADC_CTRL2 register. The ADC starts conversion after a trigger source is detected.
+Page  362: the ADC_CTRL2 register, or by an external event. The external events include timer and pin triggers.
+Page  362: The OCTESEL and PCTESEL bits in the ADC_CTRL2 register are used to select specific trigger sources,
+Page  363: The sampling period can be configured by setting the CSPTx bit in the ADC_SPT1 and ADC_SPT2
+Page  363: The resolution can be programmed through the CRSEL bit in the ADC_CTRL1 register. A lower
+Page  363: A single one conversion time (ADCCLK period) = sampling time + resolution bits + 0.5
+Page  363: 2.5+12.5=15 ADCCLK periods
+Page  363: 6.5+10.5=17 ADCCLK periods.
+Page  363: The sequence mode is enabled by setting the SQEN bit in the ADC_CTRL1 register. The ADC_OSQx
+Page  363: ADC_PSQ register is used to define the sequence and total number of the preempted channels. When
+Page  364: OCLEN=2, OSN1=ADC_IN5, OSN2=ADC_IN0, OSN3=ADC_IN5
+Page  364: ADC_IN5        ADC_IN0     ADC_IN5                    ADC_IN5      ADC_IN0       ADC_IN5
+Page  364: PCLEN=2, PSN2=ADC_IN14, PSN3=ADC_IN1, PSN4=ADC_IN14
+Page  364: ADC_IN14        ADC_IN1     ADC_IN14                  ADC_IN14      ADC_IN1       ADC_IN14
+Page  364: ADC_CTRL1 register. Once the ordinary channel conversion is over, the preempted group will
+Page  364: OCLEN=2, OSN1=ADC_IN5, OSN2=ADC_IN0, OSN3=ADC_IN5                           Sampling
+Page  364: PCLEN=1, PSN3=ADC_IN14, PSN4=ADC_IN1                                   Conversion
+Page  364: ADC_IN5         ADC_IN0            ADC_IN5             ADC_IN14         ADC_IN1
+Page  364: The repetition mode is enabled by setting the RPEN bit in the ADC_CTRL2 register. When a trigger
+Page  365: OCLEN=1, OSN1=ADC_IN5, OSN2=ADC_IN0
+Page  365: PCLEN=1, PSN3=ADC_IN14, PSN4=ADC_IN1
+Page  365: ADC_IN5           ADC_IN0           ADC_IN14          ADC_IN1             ADC_IN5               ADC_IN0          ADC_IN14
+Page  365: The partition mode of the ordinary group can be enabled by setting the OCPEN bit in the ADC_CTRL1
+Page  365: register. In this mode, the ordinary group conversion sequence length (OCLEN bit in the ADC_OSQ1
+Page  365: the OCPCNT bit in the ADC_CTRL1 register. A single trigger event will enable the conversion of all the
+Page  365: Set the PCPEN bit in the ADC_CTRL1 register will enable the partition mode of the preempted group.
+Page  365: In this mode, the preempted group conversion sequence length (PCLEN bit in the ADC_OSQ1 register)
+Page  365: OCLEN=4, OCPCNT=1, OSN1=ADC_IN5, OSN2=ADC_IN0, OSN3=ADC_IN2, OSN4=ADC_IN1, OSN5=ADC_IN7
+Page  365: ADC_IN5           ADC_IN0               ADC_IN2        ADC_IN1                ADC_IN7                 ADC_IN5          ADC_IN0
+Page  365: PCLEN=2, PSN2=ADC_IN14, PSN3=ADC_IN1, PSN4=ADC_IN13
+Page  365: ADC_IN14                  ADC_IN1              ADC_IN13               ADC_IN14
+Page  365: The ADABRT bit in the ADC_CTRL2 register can be used to stop ADC conversions. At the end of the
+Page  365: new channel sequence, and the ADC starts conversions from the beginning based on the new order
+Page  365: before starting other ADC operations. Figure 18-8 shows the timing diagram when the ADABRT bit is
+Page  366: OCLEN=3, OSN1=ADC_IN5, OSN2=ADC_IN0, OSN3=ADC_IN2
+Page  366: ADC                                                           ADC_IN2                                  ADC_IN0
+Page  366: status        Idle    ADC_IN5 conversion ADC_IN0 conversion              Idle     ADC_IN5 conversion
+Page  366: ADC_ODT                                           DT                    DT                               DT
+Page  366: ADC_IN5               ADC_IN0                         ADC_IN5
+Page  366:      Oversampling ratio is selected through the OSRSEL bit in the ADC_OVSP register. This bit is used
+Page  366:      Oversampling shift is selected through the OSSSEL bit in the ADC_OVSP register, which is
+Page  367: The OOSRSEL bit in the ADC_OVSP register can be used to resume ordinary oversampling mode.
+Page  367: OCLEN=0, OSN1=ADC_IN0
+Page  367: PCLEN=1, PSN3=ADC_IN4, PSN4=ADC_IN5                                                Conversion
+Page  367: Ordinary   1st ADC_IN0 2nd ADC_IN0 3rd ADC_IN0                                3rd ADC_IN0 4th ADC_IN0
+Page  367: Preempted          ADC_IN4        ADC_IN5
+Page  367: Ordinary   1st ADC_IN0 2nd ADC_IN0 3rd ADC_IN0                                1st ADC_IN0 2nd ADC_IN0 3rd ADC_IN0 4th ADC_IN0
+Page  367: Preempted          ADC_IN4        ADC_IN5
+Page  367: Trigger mode can be enabled by setting the OOSTREN bit in the ADC_OVSP register. The user must
+Page  368: OCLEN=1, OSN1=ADC_IN0, OSN2=ADC_IN1                                                                    Conversion
+Page  368: Ordinary      1st ADC_IN0 2nd ADC_IN0 3rd ADC_IN0 4th ADC_IN0 1st ADC_IN1 2nd ADC_IN1 3rd ADC_IN1 4th ADC_IN1
+Page  368: Ordinary     1st ADC_IN0       2nd ADC_IN0       3rd ADC_IN0         4th ADC_IN0        1st ADC_IN1         2nd ADC_IN1        3rd ADC_IN1       4th ADC_IN1
+Page  368: OCLEN=0, OSN1=ADC_IN0                                             Sampling
+Page  368: PCLEN=1, PSN3=ADC_IN4, PSN4=ADC_IN5                                       Conversion
+Page  368: Ordinary 1 ADC_IN0 2    ADC_IN0 3rd ADC_IN0 4th ADC_IN0
+Page  368: Preempted 1    ADC_IN4 2nd ADC_IN4 3rd ADC_IN4 4th ADC_IN4 1st ADC_IN5 2nd ADC_IN5 3rd ADC_IN5 4th ADC_IN5
+Page  368: At the end of the conversion of the ordinary group, the converted value is stored in the ADC_ODT register.
+Page  368: ADC_PDTx register.
+Page  368: DTALIGN bit in the ADC_CTRL2 register selects the alignment of data (right-aligned or left-aligned).
+Page  368: ADC_PCDTOx register. Thus the result may be a negative value, marked by SIGN.
+Page  369: Read access to the ADC_ODT register using CPU or DMA gets the converted data of the ordinary group.
+Page  369: Read access to the ADC_PDTx register using CPU gets the converted data of the preempted group.
+Page  369: The EOCSFEN bit in the ADC_CTRL2 register can be used to select when to set the ordinary group
+Page  369: When the OCDMAEN bit is set in the ADC_CTRL2 register, the ADC will issue DMA requests each time
+Page  369: the ADC_OTD register is updated.
+Page  369: When the EOCSFEN or OCDMAEN is set, the ADC will automatically start overflow detection. If an
+Page  369: overflow event occurs, the OCCO flag will be set, the ADC stops conversion, and the last valid data is
+Page  369: the last valid data. The OCCO flag is cleared by software, and the ADC is triggered again so that it starts
+Page  369: The OCDRCEN bit in the ADC_CTRL2 register can be used to select whether to continually send DMA
+Page  369: The OCVMEN bit or PCVMEN bit in the ADC_CTRL1 register is used to enable voltage monitoring based
+Page  369: The VMOR bit will be set if the converted result is outside the high threshold (ADC_VMHB[11:0]
+Page  369: register) or is less than the low threshold (ADC_VMLB[11:0]register).
+Page  369: In 10-bit resolution, ADC_VMHB[11:10] and ADC_VMLB[11:10] must be set to 2’b00;
+Page  369: In 8-bit resolution, ADC_VMHB[11:8] and ADC_VMLB[11:8] must be set to 4’b0000;
+Page  369: In 6-bit resolution, ADC_VMHB[11:6] and ADC_VMLB[11:6] must be set to 6’b000000;
+Page  369: The VMSGEN bit in the ADC_CTRL1 register is used to enable voltage monitor on either a single
+Page  370: registers (ADC_VMHB[15:0] and ADC_VMLB[15:0]) and the oversampled data.
+Page  370: Each of the ADCs has its dedicated ADCx_STS registers, that is, RDY flag, OCCO flag, OCCS (ordinary
+Page  370: Three ADCx_STS registers are mapped onto the ADC_CSTS register, so it is possible to obtain the
+Page  370: status of these tree registers by simply reading the ADC_CSTS register.
+Page  370: enabled, the corresponding flag is set and an interrupt is sent to CPU. ADC1 shares an interrupt vector
+Page  370: with ADC2 and ADC3.
+Page  370: conversion. The ADC_ODT register is used as a single interface obtaining the ordinary channel
+Page  370: converted data of master/salve ADC.
+Page  370: In a single master/slave mode, ADC1 acts as a master while ADC2 as a slave, and ADC3 behaves
+Page  370: independently. In dual master/slave mode, ADC1 acts as a master, while both ADC2 and ADC3 act as
+Page  370: slaves. In master/salve mode, it is necessary to disable the edge trigger mode of slave ADC.
+Page  370: Note: ADC conversion abort (ADABRT) cannot be used in master/slave mode. In this mode, each of the
+Page  370: ADCEN bit of the ADCs must be cleared in order to stop ADC conversions.
+Page  370: Note: To enable several ADC conversions with low resolution simultaneously, it is recommended to use
+Page  370: ADCx_IN0
+Page  370: ADCx_IN1
+Page  370: ADCx_IN15
+Page  370: Preempted             ADC1                                 ADC2                                   ADC3
+Page  371: In Master/Slave mode, the converted data of ordinary channels is also stored in the ADC_CODT register.
+Page  371: The MSDMASEL bit in the ADC_CCTRL register can be used to select from five DMA transfer modes,
+Page  371: as shown in Table 18-4. As long as the MSDMASEL is set, the ADC1 DMA channel is used to generate
+Page  371: Once an overflow event occurs, the ADC will stop conversion, the DMA request is halted, and loss of
+Page  371: synchronization may happen between the master and slave, so it is recommended to re-initialize ADC
+Page  371: MSDMASEL   Master/slave    DMA requests   ADC_CODT[31:0]
+Page  371: 001                          1st        16 bit 0, ADC1_ODT[15:0]
+Page  371: Single slave       2nd        16 bit 0, ADC2_ODT [15:0]
+Page  371: 3rd        16 bit 0, ADC1_ODT [15:0]
+Page  371: 1st        16 bit 0, ADC1_ODT[15:0]
+Page  371: 2nd        16 bit 0, ADC2_ODT [15:0]
+Page  371: 3rd        16 bit 0, ADC3_ODT[15:0]
+Page  371: 4th        16 bit 0, ADC1_ODT [15:0]
+Page  371: 010                          1st        ADC2_ODT[15:0], ADC1_ODT[15:0]
+Page  371: 2nd        ADC2_ODT[15:0], ADC1_ODT[15:0]
+Page  371: 1st        ADC2_ODT[15:0], ADC1_ODT[15:0]
+Page  371: 2nd        ADC1_ODT[15:0], ADC3_ODT[15:0]
+Page  371: 3rd        ADC3_ODT[15:0], ADC2_ODT[15:0]
+Page  371: 4th        ADC2_ODT[15:0], ADC1_ODT[15:0]
+Page  371: 011                          1st        16 bit 0, ADC2_ODT[7:0], ADC1_ODT[7:0]
+Page  371: 2nd        16 bit 0, ADC2_ODT[7:0], ADC1_ODT[7:0]
+Page  371: 1st        16 bit 0, ADC2_ODT[7:0], ADC1_ODT[7:0]
+Page  371: 2nd        16 bit 0, ADC1_ODT[7:0], ADC3_ODT[7:0]
+Page  371: 3rd        16 bit 0, ADC3_ODT[7:0], ADC2_ODT[7:0]
+Page  371: 4th        16 bit 0, ADC2_ODT[7:0], ADC1_ODT[7:0]
+Page  371: 100                          1st        8 bit 0, ADC3_ODT[7:0], ADC2_ODT[7:0], ADC1_ODT[7:0]
+Page  371: 2nd        8 bit 0, ADC3_ODT[7:0], ADC2_ODT[7:0], ADC1_ODT[7:0]
+Page  371: 101                          1st        ADC2_ODT[15:0], ADC1_ODT[15:0]
+Page  371: Dual slave         2nd        16 bit 0, ADC3_ODT[15:0]
+Page  371: 3rd        ADC2_ODT[15:0], ADC1_ODT[15:0]
+Page  371: MSDRCEN bit in the ADC_CCTRL register can be used to select when to stop DMA request, that is,
+Page  371: MSSEL bit in the ADC_CCTRL register is used to select regular simultaneous mode. If this mode is
+Page  371: Note: The same channel is not allowed to be sampled by several ADCs simultaneously. Do not put
+Page  371: the same channel in the same sequence location of different ADCs.
+Page  372: ADC1: OCLEN=2, OSN1=ADC1_IN0, OSN2=ADC1_IN1, OSN3=ADC1_IN2
+Page  372: ADC2: OCLEN=2, OSN1=ADC2_IN5, OSN2=ADC2_IN4, OSN3=ADC2_IN3                 Sampling
+Page  372: ADC3: OCLEN=2, OSN1=ADC3_IN7, OSN2=ADC3_IN8, OSN3=ADC3_IN9                         Conversion
+Page  372: ADC1 ordinary                                         ADC1 ordinary                         Single slave mode
+Page  372: ADC1        ADC1_IN0      ADC1_IN1      ADC1_IN2                 ADC1_IN0     ADC1_IN1   ADC1_IN2
+Page  372: ADC2        ADC2_IN5      ADC2_IN4      ADC2_IN3                 ADC2_IN5     ADC2_IN4   ADC2_IN3
+Page  372: ADC3        ADC3_IN7      ADC3_IN8      ADC3_IN9                 ADC3_IN7     ADC3_IN8   ADC3_IN9
+Page  372: MSSEL bit in the ADC_CCTRL register is used to select preempted simultaneous mode. If this mode is
+Page  372: Note: The same channel is not allowed to be sampled by several ADCs simultaneously. Do not put
+Page  372: the same channel in the same sequence location of different ADCs.
+Page  372: ADC1: PCLEN=2, PSN2=ADC1_IN0, PSN3=ADC1_IN1, PSN4=ADC1_IN2
+Page  372: ADC2: PCLEN=2, PSN2=ADC2_IN5, PSN3=ADC2_IN4, PSN4=ADC2_IN3                  Sampling
+Page  372: ADC3: PCLEN=2, PSN2=ADC3_IN7, PSN3=ADC3_IN8, PSN4=ADC3_IN9                         Conversion
+Page  372: ADC1 preempted                                      ADC1 preempted                         Single slave mode
+Page  372: ADC1        ADC1_IN0      ADC1_IN1      ADC1_IN2                 ADC1_IN0     ADC1_IN1   ADC1_IN2
+Page  372: ADC2        ADC2_IN5      ADC2_IN4      ADC2_IN3                 ADC2_IN5     ADC2_IN4   ADC2_IN3
+Page  372: ADC3        ADC3_IN7      ADC3_IN8      ADC3_IN9                 ADC3_IN7     ADC3_IN8   ADC3_IN9
+Page  372: MSSEL bit in the ADC_CCTRL register is used to select combined regular/preempted simultaneous
+Page  372: MSSEL bit in the ADC_CCTRL register selects the alternate preempted trigger mode. If this mode is
+Page  372: ADCs convert the preempted channels alternately. Figure 18-16 shows an example of the alternate
+Page  373: ADC1: PCLEN=2, PSN2=ADC1_IN0, PSN3=ADC1_IN1, PSN4=ADC1_IN2
+Page  373: ADC2: PCLEN=2, PSN2=ADC2_IN5, PSN3=ADC2_IN4, PSN4=ADC2_IN3                                      Sampling
+Page  373: ADC3: PCLEN=2, PSN2=ADC3_IN7, PSN3=ADC3_IN8, PSN4=ADC3_IN9                                           Conversion
+Page  373: ADC1 preempted       ADC1 preempted                                ADC1 preempted          ADC1 preempted                           Single slave mode
+Page  373: ADC1                                                                    ADC1
+Page  373: ADC1      ADC1_IN0       ADC1_IN1      ADC1_IN2                                 ADC1_IN0       ADC1_IN1       ADC1_IN2                       ADC2
+Page  373: ADC2                            ADC2_IN5      ADC2_IN4     ADC2_IN3       ADC2                       ADC2_IN5          ADC2_IN4       ADC2_IN3
+Page  373: ADC3                                    ADC3_IN7      ADC3_IN8       ADC3_IN9                               ADC3_IN7       ADC3_IN8        ADC3_IN9
+Page  373: ADC3                                                                ADC3
+Page  373: ADC1 preempted                             PCCE flag set          ADC1 preempted
+Page  373: MSSEL bit in the ADC_CCTRL register is used to select combined regular simultaneous + alternate
+Page  373: allow the master/slave ADCs to convert the preempted group alternately.
+Page  373: If the regular conversion is interrupted by the preempted trigger, the regular conversion of all ADCs is
+Page  373: stopped, and one of the ADCs starts the preempted conversion. At this point, the master will ignore the
+Page  373: MSSEL bit in the ADC_CCTRL register is used to select regular shift mode on regular group. After
+Page  373: a master trigger occurs, the conversion interval between ADCs is based on the programmed shift
+Page  373: length (through the ASISEL bit in the ADC_CCTRL register), as shown in Figure 18-17.
+Page  373: In this mode, the sampling interval between ADCs is configured to be at least 2.5 ADCCLK cycles
+Page  373: Because of this feature, it is possible to put the same channel in the same ADC location without
+Page  373: ASISEL=000              ADC1: SQEN=0, OSN1=ADC1_IN3, RPEN=1, CSPTx=0
+Page  373: ADC2: SQEN=0, OSN1=ADC2_IN3, RPEN=1, CSPTx=0
+Page  373: ADC3: SQEN=0, OSN1=ADC3_IN3, RPEN=1, CSPTx=0
+Page  373: ADC1 ordinary                                                                                        Single slave mode
+Page  373: ADC1                      ADC1_IN3                      ADC1_IN3                       ADC1_IN3
+Page  373: ADC1 EC flag set
+Page  373: ADC2                                 ADC2_IN3                     ADC2_IN3                        ADC2_IN3
+Page  373: ADC2 EC flag set
+Page  373: ADC3                                          ADC3_IN3                     ADC3_IN3                          ADC3_IN3
+Page  373: 5 ADCCLK                                                               ADC3 EC flag set
+Page  374: ADC1: SQEN=1, OSN1=ADC1_IN3, RPEN=1
+Page  374: ADC2: SQEN=1, OSN1=ADC2_IN3, RPEN=1
+Page  374: ADC1 ordinary                                                                        Conversion
+Page  374: trigger        ADC3: SQEN=1, OSN1=ADC3_IN3, RPEN=1
+Page  374: ADC1              ADC1_IN3          ADC1_IN3            ADC1_IN3
+Page  374: ADC2                   ADC2_IN3            ADC2_IN3              ADC2_IN3
+Page  374: ADC3                         ADC3_IN3             ADC3_IN3             ADC3_IN3
+Page  374: ADC1_ODT                          ADC1_DT1            ADC1_DT2           ADC1_DT3
+Page  374: ADC2_ODT                                ADC2_DT1                ADC2_DT2       ADC2_DT3
+Page  374: ADC3_ODT                                       ADC3_DT1              ADC3_DT2
+Page  374: ADC2_DT1,     ADC1_DT2,     ADC3_DT2,    ADC2_DT3,
+Page  374: CODT                                                                         ADC1_DT3
+Page  374: ADC1_DT1      ADC3_DT1      ADC2_DT2
+Page  374: 18.6 ADC registers
+Page  374: Table 18-5 lists ADC register map and their reset values.
+Page  374: Table 18-5 ADC register map and reset values
+Page  374: ADC1_STS                         0x000                               0x0000 0000
+Page  374: ADC1_CTRL1                       0x004                               0x0000 0000
+Page  374: ADC1_CTRL2                       0x008                               0x0000 0000
+Page  374: ADC1_SPT1                        0x00C                               0x0000 0000
+Page  374: ADC1_SPT2                        0x010                               0x0000 0000
+Page  374: ADC1_PCDTO1                      0x014                               0x0000 0000
+Page  374: ADC1_PCDTO2                      0x018                               0x0000 0000
+Page  374: ADC1_PCDTO3                      0x01C                               0x0000 0000
+Page  374: ADC1_PCDTO4                      0x020                               0x0000 0000
+Page  374: ADC1_VMHB                        0x024                               0x0000 FFFF
+Page  374: ADC1_VMLB                        0x028                               0x0000 0000
+Page  374: ADC1_OSQ1                        0x02C                               0x0000 0000
+Page  374: ADC1_OSQ2                        0x030                               0x0000 0000
+Page  374: ADC1_OSQ3                        0x034                               0x0000 0000
+Page  374: ADC1_PSQ                         0x038                               0x0000 0000
+Page  374: ADC1_PDT1                        0x03C                               0x0000 0000
+Page  374: ADC1_PDT2                        0x040                               0x0000 0000
+Page  374: ADC1_PDT3                        0x044                               0x0000 0000
+Page  374: ADC1_PDT4                        0x048                               0x0000 0000
+Page  374: ADC1_ODT                         0x04C                               0x0000 0000
+Page  374: ADC1_OVSP                        0x080                               0x0000 0000
+Page  374: ADC1_CALVAL                      0x0B4                               0x0000 0000
+Page  375: ADC2_STS      0x100              0x0000 0000
+Page  375: ADC2_CTRL1    0x104              0x0000 0000
+Page  375: ADC2_CTRL2    0x108              0x0000 0000
+Page  375: ADC2_SPT1     0x10C              0x0000 0000
+Page  375: ADC2_SPT2     0x110              0x0000 0000
+Page  375: ADC2_PCDTO1   0x114              0x0000 0000
+Page  375: ADC2_PCDTO2   0x118              0x0000 0000
+Page  375: ADC2_PCDTO3   0x11C              0x0000 0000
+Page  375: ADC2_PCDTO4   0x120              0x0000 0000
+Page  375: ADC2_VMHB     0x124              0x0000 FFFF
+Page  375: ADC2_VMLB     0x128              0x0000 0000
+Page  375: ADC2_OSQ1     0x12C              0x0000 0000
+Page  375: ADC2_OSQ2     0x130              0x0000 0000
+Page  375: ADC2_OSQ3     0x134              0x0000 0000
+Page  375: ADC2_PSQ      0x138              0x0000 0000
+Page  375: ADC2_PDT1     0x13C              0x0000 0000
+Page  375: ADC2_PDT2     0x140              0x0000 0000
+Page  375: ADC2_PDT3     0x144              0x0000 0000
+Page  375: ADC2_PDT4     0x148              0x0000 0000
+Page  375: ADC2_ODT      0x14C              0x0000 0000
+Page  375: ADC2_OVSP     0x180              0x0000 0000
+Page  375: ADC2_CALVAL   0x1B4              0x0000 0000
+Page  375: ADC3_STS      0x200              0x0000 0000
+Page  375: ADC3_CTRL1    0x204              0x0000 0000
+Page  375: ADC3_CTRL2    0x208              0x0000 0000
+Page  375: ADC3_SPT1     0x20C              0x0000 0000
+Page  375: ADC3_SPT2     0x210              0x0000 0000
+Page  375: ADC3_PCDTO1   0x214              0x0000 0000
+Page  375: ADC3_PCDTO2   0x218              0x0000 0000
+Page  375: ADC3_PCDTO3   0x21C              0x0000 0000
+Page  375: ADC3_PCDTO4   0x220              0x0000 0000
+Page  375: ADC3_VMHB     0x224              0x0000 FFFF
+Page  375: ADC3_VMLB     0x228              0x0000 0000
+Page  375: ADC3_OSQ1     0x22C              0x0000 0000
+Page  375: ADC3_OSQ2     0x230              0x0000 0000
+Page  375: ADC3_OSQ3     0x234              0x0000 0000
+Page  375: ADC3_PSQ      0x238              0x0000 0000
+Page  375: ADC3_PDT1     0x23C              0x0000 0000
+Page  375: ADC3_PDT2     0x240              0x0000 0000
+Page  375: ADC3_PDT3     0x244              0x0000 0000
+Page  375: ADC3_PDT4     0x248              0x0000 0000
+Page  376: ADC3_ODT                0x24C                              0x0000 0000
+Page  376: ADC3_OVSP               0x280                              0x0000 0000
+Page  376: ADC3_CALVAL             0x2B4                              0x0000 0000
+Page  376: ADC_CSTS                0x300                              0x0000 0000
+Page  376: ADC_CCTRL               0x304                              0x0000 0000
+Page  376: ADC_CODT                0x308                              0x0000 0000
+Page  376: 18.6.1 ADC status register (ADC_STS)
+Page  376: ADC conversion ready flag
+Page  376: This bit is read only. It is set by hardware when the ADC
+Page  376: 0: Not ready for ADC conversion
+Page  376: 1: Ready for ADC conversion
+Page  376: Bit 1       OCCE       0x0             rw0c     (writing 0) or by reading the ADC_ODT register.
+Page  377: 18.6.2 ADC control register 1 (ADC_CTRL1)
+Page  378: 00000: ADC_IN0 channel
+Page  378: 00001: ADC_IN1 channel
+Page  378: 01111: ADC_IN15 channel
+Page  378: 10000: ADC_IN16 channel
+Page  378: 10001: ADC_IN17 channel
+Page  378: 18.6.3 ADC control register 2 (ADC_CTRL2)
+Page  379: ADC conversion abort
+Page  379: 0: ADC conversion is not aborted
+Page  379: 1: ADC conversion is aborted
+Page  379: Note: This bit is cleared by hardware after ADC conversion
+Page  379: is aborted. After this bit is cleared, re-triggering ADC
+Page  379: to wait until it is cleared before starting related ADC
+Page  379: Bit 3      ADCALINIT   0x0         rw       cleared after the calibration registers are initialized.
+Page  379: Bit 2      ADCAL       0x0         rw       0: No calibration occurred or calibration completed
+Page  380: 0: A/D converter disabled (ADC goes to power-down
+Page  380: Bit 0        ADCEN      0x0             rw
+Page  380: wake up The ADC from power-down mode.
+Page  380: 18.6.4 ADC sampling time register 1 (ADC_SPT1)
+Page  380: Sample time selection of channel ADC_IN18
+Page  380: Sample time selection of channel ADC_IN17
+Page  380: Sample time selection of channel ADC_IN16
+Page  380: Sample time selection of channel ADC_IN15
+Page  381: Sample time selection of channel ADC_IN14
+Page  381: Sample time selection of channel ADC_IN13
+Page  381: Sample time selection of channel ADC_IN12
+Page  381: Sample time selection of channel ADC_IN11
+Page  381: Sample time selection of channel ADC_IN10
+Page  382: 18.6.5 ADC sampling time register 2 (ADC_SPT2)
+Page  382: Sample time selection of channel ADC_IN9
+Page  382: Sample time selection of channel ADC_IN8
+Page  382: Sample time selection of channel ADC_IN7
+Page  382: Sample time selection of channel ADC_IN6
+Page  382: Sample time selection of channel ADC_IN5
+Page  383: Sample time selection of channel ADC_IN4
+Page  383: Sample time selection of channel ADC_IN3
+Page  383: Sample time selection of channel ADC_IN2
+Page  383: Sample time selection of channel ADC_IN1
+Page  383: Sample time selection of channel ADC_IN0
+Page  384: 18.6.6 ADC preempted channel data offset register x (ADC_
+Page  384: Bit 11: 0    PCDTOx     0x000           rw       Converted data stored in the ADC_PDTx = Raw converted
+Page  384: data – ADC_PCDTOx
+Page  384: 18.6.7 ADC voltage monitor high threshold register
+Page  384: (ADC_VWHB)
+Page  384: 18.6.8 ADC voltage monitor low threshold register (ADC_
+Page  384: 18.6.9 ADC ordinary sequence register 1 (ADC_ OSQ1)
+Page  384: ADC_IN3 channel.
+Page  384: 18.6.10 ADC ordinary sequence register 2 (ADC_ OSQ2)
+Page  385: ADC_IN8 channel.
+Page  385: 18.6.11 ADC ordinary sequence register 3 (ADC_ OSQ3)
+Page  385: ADC_IN17 channel.
+Page  385: 18.6.12 ADC preempted sequence register (ADC_ PSQ)
+Page  385: number is set to 3, it refers to the ADC_IN3 channel.
+Page  385: from 4-PCLEN. For example, when ADC_PSQ ([21: 0])
+Page  385: 18.6.13 ADC preempted data register x (ADC_ PDTx) (x=1..4)
+Page  386: 18.6.14 ADC ordinary data register (ADC_ ODT)
+Page  386: ADC2 conversion data of ordinary channel
+Page  386: ro       These bits are reserved in ADC2 and ADC3.
+Page  386: Bit 31: 16   ADC2ODT    0x0000
+Page  386: In ADC1, these bits are valid only in master/slave mode,
+Page  386: and they contain the conversion result from the ADC2
+Page  386: 18.6.15 ADC oversampling register (ADC_ OVSP)
+Page  387: 18.6.16 ADC calibration value register (ADC_CALVAL)
+Page  387: 18.6.17 ADC common status register (ADC_CSTS)
+Page  387: ADC3 conversion ready flag
+Page  387: Bit 22       RDY3       0x0             ro       This bit is the mapping bit of the RDY bit in the ADC3_STS
+Page  387: ADC3 ordinary channel conversion overflow flag
+Page  387: ADC3_STS register.
+Page  387: ADC3 ordinary channel conversion start flag
+Page  387: ADC3_STS register.
+Page  387: ADC3 Preempted channel conversion start flag
+Page  387: ADC3_STS register.
+Page  387: ADC3 preempted channels conversion end flag
+Page  387: ADC3_STS register.
+Page  387: ADC3 ordinary channels conversion end flag
+Page  387: ADC3_STS register.
+Page  387: ADC3 voltage monitoring out of range flag
+Page  387: ADC3_STS register.
+Page  387: ADC2 conversion ready flag
+Page  387: Bit 14       RDY2       0x0             ro       This bit is the mapping bit of the RDY bit in the ADC2_STS
+Page  387: ADC2 ordinary channel conversion overflow flag
+Page  387: ADC2_STS register.
+Page  387: ADC2 ordinary channel conversion start flag
+Page  387: ADC2_STS register.
+Page  387: ADC2 preempted channel conversion start flag
+Page  387: ADC2_STS register.
+Page  388: ADC2 Preempted channels conversion end flag
+Page  388: ADC2_STS register.
+Page  388: ADC2 ordinary channels conversion end flag
+Page  388: ADC2_STS register.
+Page  388: ADC2 voltage monitoring out of range flag
+Page  388: ADC2_STS register.
+Page  388: ADC1 conversion ready flag
+Page  388: Bit 6        RDY1       0x0             ro       This bit is the mapping bit of the RDY bit in the ADC1_STS
+Page  388: ADC1 ordinary channel conversion overflow flag
+Page  388: ADC1_STS register.
+Page  388: ADC1 ordinary channel conversion start flag
+Page  388: ADC1_STS register.
+Page  388: ADC1 Preempted channel conversion start flag
+Page  388: ADC1_STS register.
+Page  388: ADC1 preempted channels conversion end flag
+Page  388: ADC1_STS register.
+Page  388: ADC1 ordinary channels conversion end flag
+Page  388: ADC1_STS register.
+Page  388: ADC1 voltage monitoring out of range flag
+Page  388: ADC1_STS register.
+Page  388: 18.6.18 ADC common control register (ADC_CCTRL)
+Page  389: ADC division
+Page  389: Bit 19: 16   ADCDIV     0x0         rw       1111: HCLK/17
+Page  389: The clock divided by this field are used by all ADCs.
+Page  389: The maximum value of the ADCCLK is 80 MHz. After this
+Page  389: division, the ADCCLK cannot be higher than PCLK2.
+Page  389: MSDMASEL[2] is the 28th bit in the ADC_CCTRL register.
+Page  389: Adjacent ADC sampling interval select in ordinary shift
+Page  389: 0000: 5 * TADCCLK
+Page  389: 0001: 6 * TADCCLK
+Page  389: 0010: 7 * TADCCLK
+Page  389: 1111: 20 * TADCCLK
+Page  389: between adjacent ADCs in ordinary shift mode. Refer to
+Page  391: 18.6.19 ADC common data register (ADC_CODT)
+Page  551: either to a single card (addressed command) or to all connected cards (broadcast command).
+Page  553: different types of commands: broadcast command and addressed (point-to-point) command.
+Page  553:  Broadcast command: applicable to all cards, some need responses
+Page  558: 1. Broadcast command: sent to all cards, no responses returned
+Page  558: 2. Broadcast command with response: sent to all cards, responses received from all cards
+Page  587: Broadcast address filter
+Page  587: If the DBF is set in the frame filter register, the EMAC will reject all broadcast frames. If DBF=0, the
+Page  587: EMAC will accept all broadcast frames.
+Page  589: Broadcast    0     X     X       X          X      X       0       Pass
+Page  619: Disable Broadcast Frames
+Page  619: broadcast frames. In addition, all other filter settings will
+Page  619: broadcast frames.
+Page  693: ADC1     TMR2
+Page  693: ADC2     TMR3                                                     Stream x
+Page  693: ADC3     TMR4                                                          Stream 2
+Page  693: 4           DMA_MUXREQG4 36                  ADC2                                 68             TMR4_CH2                     100                reserved
+Page  693: 5           ADC1              37             ADC3                                 69             TMR4_CH3                     101                reserved
+Page  716: 2023.04.10    2.04     4. Updated the descriptions of Section 18 Analog-to-digital converter (ADC)

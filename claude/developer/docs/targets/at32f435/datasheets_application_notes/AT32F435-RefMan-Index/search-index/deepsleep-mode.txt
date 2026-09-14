@@ -1,0 +1,32 @@
+Keyword: deepsleep mode
+Occurrences: 28
+================================================================================
+
+Page   63:    Three types of power saving modes: Sleep mode, Deepsleep mode, and Standby mode
+Page   65: (Sleep mode, Deepsleep mode and Standby mode) to save power. Users can select the mode that gives
+Page   66: Deepsleep Mode
+Page   66: Deepsleep mode is entered by setting the SLEEPDEEP bit in the Cortex®-M4F system control register
+Page   66: In Deepsleep mode, all clocks in 1.2 V domain are stopped, and both HICK and HEXT oscillators are
+Page   66: external interrupt line in Interrupt mode can wake up the system from Deepsleep mode.
+Page   66: external interrupt line in Event mode can wake up the system from Deepsleep mode.
+Page   66: When the MCU exits the Deepsleep mode, the HICK RC oscillator is enabled and selected as a system
+Page   67: By default, the debug connection is lost if the MCU enters Deepsleep mode or Standby mode while
+Page   68: Bit 1        LPSEL           0x0            rw       0: Enter DEEPSLEEP mode
+Page   68: LDO state select in Deepsleep mode
+Page   71: 30 kHz and 60 kHz. It acts as a low-power clock source that can be kept running in Deepsleep mode
+Page   73: when entering Deepsleep mode (by clearing the nDEPSLP_RST in the user system data area).
+Page   75: hardware when exiting Standby or Deepsleep mode. When
+Page   98: Deepsleep mode
+Page   98: [23: 16]                                     entering Deepsleep mode
+Page   99: Deepsleep mode
+Page   99: Deepsleep mode
+Page  344: Note: In Standby and Deepsleep modes, the current calendar values are not copied into the shadow
+Page  609: Precautions on system in DEEPSLEEP mode
+Page  609: In DEEPSLEEP mode, the Ethernet PMT block is still able to detect frames as long as the EXTI 19 is
+Page  609: 8.    MCU enters DEEPSLEEP mode.
+Page  711: code remains active for HCLK and FCLK to continue to work. In DeepSleep mode, HICK oscillator is
+Page  713: Debug Deepsleep mode control bit
+Page  713: 0: In Deepsleep mode, all clocks in the 1.2V domain are
+Page  713: disabled. When exiting from Deepsleep mode, the internal
+Page  713: 1: In Deepsleep mode, system clock is provided by the
+Page  713: Deepsleep mode, HICK is used as the system clock

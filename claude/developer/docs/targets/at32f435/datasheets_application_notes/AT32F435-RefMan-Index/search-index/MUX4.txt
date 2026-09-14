@@ -1,0 +1,14 @@
+Keyword: MUX4
+Occurrences: 10
+================================================================================
+
+Page  124: Pin      MUX0      MUX1        MUX2       MUX3        MUX4        MUX5        MUX6        MUX7
+Page  126: Pin    MUX0        MUX1        MUX2         MUX3        MUX4        MUX5        MUX6         MUX7
+Page  128: Pin    MUX0      MUX1   MUX2        MUX3      MUX4        MUX5         MUX6         MUX7
+Page  130: Pin    MUX0     MUX1      MUX2        MUX3      MUX4        MUX5         MUX6         MUX7
+Page  132: Pin    MUX0     MUX1        MUX2      MUX3       MUX4       MUX5         MUX6         MUX7
+Page  134: Pin    MUX0     MUX1       MUX2            MUX3        MUX4        MUX5    MUX6   MUX7
+Page  136: Pin    MUX0     MUX1      MUX2            MUX3    MUX4   MUX5              MUX6         MUX7
+Page  138: Pin      MUX0          MUX1         MUX2          MUX3       MUX4         MUX5       MUX6          MUX7
+Page  141: 0100: MUX4
+Page  142: 0100: MUX4

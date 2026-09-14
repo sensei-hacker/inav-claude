@@ -1,0 +1,217 @@
+Keyword: SRAM
+Occurrences: 213
+================================================================================
+
+Page    1: − 384 to 512 KBytes of SRAM                                     − Up to 3 x I2C interfaces (SMBus/PMBus)
+Page    1: bus: supports CF, SRAM, PSRAM, NOR, NAND,                       IrDA capability, modem control and RS485 drive enable,
+Page    1: − Low power: Sleep, Deepsleep, and Standby modes                  SRAM(4 Kbytes): IEEE1588 hardware support, MII/RMII
+Page    2: 2.3   SRAM memory ............................................................................. 60
+Page   23: 24.4 NOR/PSRAM ............................................................................. 512
+Page   24: 24.8.1 NOR Flash and PSRAM control registers ..................................... 537
+Page   24: 24.8.1.1 SRAM/NOR Flash chip select control register 1
+Page   24: 24.8.1.2 SRAM/NOR Flash chip select control register x (x=2, 3, 4 ) ....... 538
+Page   24: 24.8.1.3 SRAM/NOR Flash chip select timing register x (XMC_BK1TMGx)
+Page   24: 24.8.1.4 SRAM/NOR Flash write timing register x ( XMC_BK1TMGW Rx),
+Page   24: 24.8.1.5 SRAM/NOR Flash extra timing register x (XMC_EXTx)
+Page   37: Figure 24-3 NOR/PSRAM mode 1 read access ........................................................................................ 515
+Page   37: Figure 24-4 NOR/PSRAM mode 1 write access ....................................................................................... 515
+Page   37: Figure 24-5 NOR/PSRAM mode 2 read access ........................................................................................ 516
+Page   37: Figure 24-6 NOR/PSRAM mode 2 write access ....................................................................................... 517
+Page   37: Figure 24-7 NOR/PSRAM mode A read access ........................................................................................ 518
+Page   37: Figure 24-8 NOR/PSRAM mode A write access ....................................................................................... 519
+Page   37: Figure 24-9 NOR/PSRAM mode B read access ....................................................................................... 520
+Page   37: Figure 24-10 NOR/PSRAM mode B write access ..................................................................................... 521
+Page   37: Figure 24-11 NOR/PSRAM mode C read access ..................................................................................... 522
+Page   37: Figure 24-12 NOR/PSRAM mode C write access ..................................................................................... 523
+Page   37: Figure 24-13 NOR/PSRAM mode D read access ..................................................................................... 524
+Page   37: Figure 24-14 NOR/PSRAM mode D write access ..................................................................................... 525
+Page   37: Figure 24-15 NOR/PSRAM multiplexed mode read access ..................................................................... 526
+Page   37: Figure 24-16 NOR/PSRAM multiplexed mode write access ..................................................................... 527
+Page   37: Figure 24-17 NOR/PSRAM synchronous multiplexed mode read access................................................ 528
+Page   37: Figure 24-18 NOR/PSRAM synchronous multiplexed mode write access ............................................... 529
+Page   40: Table 1-1 Bit-band address mapping in SRAM ........................................................................................... 49
+Page   41: Table 21-2 OTGFS transmit FIFO SRAM allocation ................................................................................. 427
+Page   41: Table 24-1 NOR/PSRAM pins ................................................................................................................... 508
+Page   42: Table 24-8 Pin signals for NOR and PSRAM ............................................................................................ 512
+Page   42: Table 24-11 NOR/PSRAM parameter registers ......................................................................................... 514
+Page   42: Table 24-12 Mode 1— SRAM/NOR Flash chip select control register (XMC_BK1CTRL) configuration.. 514
+Page   42: Table 24-13 Mode 1— SRAM/NOR Flash chip select timing register (XMC_ BK1TMG) configuration ... 514
+Page   42: Table 24-14 Mode 2 — SRAM/NOR Flash chip select control register .................................................... 515
+Page   42: Table 24-15 Mode 2 — SRAM/NOR Flash chip select timing register...................................................... 516
+Page   42: Table 24-16 Mode A— SRAM/NOR Flash chip select control register ..................................................... 517
+Page   42: Table 24-17 Mode A— SRAM/NOR Flash chip select timing register ...................................................... 518
+Page   42: Table 24-18 Mode A— SRAM/NOR Flash write timing register ................................................................ 518
+Page   42: Table 24-19 Mode B— SRAM/NOR Flash chip select register ................................................................. 519
+Page   42: Table 24-20 Mode B— SRAM/NOR Flash chip select timing register ...................................................... 520
+Page   42: Table 24-21 Mode B— SRAM/NOR Flash write timing register ................................................................ 520
+Page   42: Table 24-22 Mode C— SRAM/NOR Flash chip select register ................................................................. 521
+Page   42: Table 24-23 Mode C—SRAM/NOR Flash chip select timing register ....................................................... 522
+Page   42: Table 24-24 Mode C— SRAM/NOR Flash write timing register................................................................ 522
+Page   42: Table 24-25 Mode D— SRAM/NOR Flash chip select register (XMC_BK1CTRL) configuration ............. 523
+Page   42: Table 24-26 Mode D—SRAM/NOR Flash chip select timing register ....................................................... 524
+Page   42: Table 24-27 Mode D— SRAM/NOR Flash write timing register................................................................ 524
+Page   42: Table 24-28 Multiplexed mode — SRAM/NOR Flash chip select control register .................................... 525
+Page   42: Table 24-29 Multiplexed mode—SRAM/NOR Flash chip select timing register (XMC_BK1TMG) configuration
+Page   42: Table 24-30 Synchronous mode — SRAM/NOR Flash chip select control register ................................. 527
+Page   42: Table 24-31 Synchronous mode—SRAM/NOR Flash chip select timing register (XMC_BK1TMG) ........ 528
+Page   45: OTGFS1/2                                                                         SRAM1
+Page   45: SRAM1             PVM
+Page   45: 10/100M                                                                       SRAM2
+Page   45: EMAC DMA                                                                                                                  SRAM2
+Page   45: SRAM 4KB                                                                                                             QSPI1/2
+Page   47: SRAM1
+Page   47: SRAM2
+Page   48: bytes of SRAM and the least significant 1Mbytes of peripherals. In addition to access to bit-band
+Page   48: The lowest 1 Mbyte of the SRAM: 0x2000_0000~0x200F_FFFF
+Page   49: For a bit in the SRAM bit-band region, if the byte address is A, the bit number is n (0<=n<=7), then the
+Page   49: Table 1-1 shows the mapping between bit-band region and alias region in SRAM:
+Page   49: Table 1-1 Bit-band address mapping in SRAM
+Page   55: In the AT32F435/437 series, the main Flash memory, Boot code or SRAM can be remapped to the
+Page   55: {BOOT1, BOOT0}=11, CODE starts from SRAM
+Page   55: will be relatched. If on-chip SRAM mode is used, the BOOT state is locked. In this case, it is impossible
+Page   57: Internal memory contains program memory (Flash), data memory (SRAM), peripheral registers and core
+Page   57: (XMC NOR/PSRAM/
+Page   57: SRAM/NAND)         0x6000_0000
+Page   57: SRAM1                                                    SRAM2
+Page   57: SRAM1
+Page   57: Aliased to Flash or                                 SRAM according to
+Page   60: 2.3 SRAM memory
+Page   60: The AT32F435/437 series contain a 384-KB on-chip SRAM which starts at the address 0x2000_0000. It
+Page   60: KB, while in 128 KB extension mode, the zero-wait-state Flash size is limited to 512 KB. On-chip SRAM
+Page   60: is divided into SRAM1 and SRAM2. The SRAM1 is fixed at 64 KB, and can be accessed through either
+Page   60: address 0x2000_0000~0x2000_FFFF or 0x1000_0000~0x1000_FFFF. The SRAM2 size ranges from
+Page   64: 1.2 V core domain includes a CPU core, SRAM, embedded digital peripherals and Phase Locked Loop
+Page   66: keep the same state as in Run mode. SRAM and register contents are preserved.
+Page   66: disabled. The whole 1.2 V domain, PLL, HICK and HEXT oscillators are also powered off. SRAM and
+Page   88: SRAM2 clock enable in sleep mode
+Page   88: Bit 17       SRAM2LPEN   0x1        rw       0: Disabled
+Page   88: SRAM1 clock enable in sleep mode
+Page   88: Bit 16       SRAM1LPEN   0x1        rw       0: Disabled
+Page  101: 00: On-chip 512 KB SRAM+128 KB zero-wait-state Flash
+Page  101: 01: On-chip 448 KB SRAM+192 KB zero-wait-state Flash
+Page  101: 256 K Flash                10, 11: On-chip 384 KB SRAM+256 KB zero-wait-state Flash
+Page  101: 000: On-chip 512KB SRAM + 128KB zero-wait-state Flash
+Page  101: 001: On-chip 448KB SRAM + 192KB zero-wait-state Flash
+Page  101: 010: On-chip 384KB SRAM + 256KB (default) zero-wait-state Flash
+Page  101: Bit 2: 0   011: On-chip 320KB SRAM + 320KB zero-wait-state Flash
+Page  101: 100: On-chip 256KB SRAM + 384KB zero-wait-state Flash
+Page  101: 101, 110, 111: On-chip 192KB SRAM + 448KB zero-wait-state Flash
+Page  101: 000: On-chip 512 KB SRAM+128 KB zero-wait-state Flash
+Page  101: 001: On-chip 448 KB SRAM+192 KB zero-wait-state Flash
+Page  101: 010: On-chip 384 KB SRAM+256 KB zero-wait-state Flash
+Page  101: 011: On-chip 320 KB SRAM+320 KB zero-wait-state Flash
+Page  101: 100: On-chip 256 KB SRAM+384 KB zero-wait-state Flash
+Page  101: 101: On-chip 192 KB SRAM+448 KB zero-wait-state Flash
+Page  101: 110, 111: On-chip 128 KB SRAM+512 KB zero-wait-state Flash
+Page  109: In debug mode or boot from SRAM and
+Page  143: 0x7000 0000. NOR/PSRAM /SRAM/NAND2 memory
+Page  143: 0000 and 0x7000 0000. NOR/PSRAM /SRAM/NAND2
+Page  144: 011: Embedded SRAM mapped at 0x0000 0000
+Page  424: AHB and has a dedicated SRAM of 1280 bytes.
+Page  424: SRAM
+Page  424: OTGFS controller, PHY and 1280-byte SRAM.
+Page  427: must meet the following conditions before modifying FIFO SRAM allocation.
+Page  427: Attention should be paid to the following information during FIFO SRAM allocation:
+Page  427: (1) Receive FIFO SRAM allocation
+Page  427:  SRAM for SETUP Packets: 13 WORDs must be reserved in the receive FIFO to receive one
+Page  427: (2) Transmit FIFO SRAM allocation
+Page  427: The minimum SRAM space required for each IN endpoint transmit FIFO is the maximum data packet
+Page  427: Table 21-2 OTGFS transmit FIFO SRAM allocation
+Page  427: FIFO name                         SRAM size
+Page  428: 6. After SRAM allocation, refresh transmit FIFO and receive FIFO to ensure normal FIFO running.
+Page  428: In host mode, the application must confirm the following status before changing FIFO SRAM allocation:
+Page  428: After FIFO SRAM allocation is complete, the application must refresh all FIFOs in the controller through
+Page  428: (1) Receive FIFO SRAM allocation
+Page  428: (2) Transmit FIFO SRAM allocation
+Page  428: The minimum SRAM space required for the host non-periodic transmit FIFO is the largest packet size
+Page  429: FIFO Name                                            Data SRAM Size
+Page  429: 4. After SRAM allocation, refresh transmit FIFO and receive FIFO to ensure normal FIFO running.
+Page  445: 4. Allocate SRAM for each endpoint
+Page  445: If the allocated SRAM is equal to at least 1 largest-packet-size of control endpoint 0 + 2 WORDs (for
+Page  445: SRAM is equal to at least 1 largest-packet-size of control endpoint 0
+Page  446:  Refer to OTGFS FIFO configuration for more information on how to program SRAM for each
+Page  475: The application can program the SRAM size that must be allocated to the receive FIFO.
+Page  475: The application can program the SRAM size and start address of the non-periodic transmit FIFO. The
+Page  475: Non-periodic transmit SRAM start address
+Page  475: periodic Transmit FIFO SRAM.
+Page  475: IN Endpoint FIFO0 transmit SRAM start address
+Page  475: Endpoint FIFO0 transmit SRAM.
+Page  477: IN Endpoint FIFOn transmit SRAM start address
+Page  477: Bit 15: 0    INEPTXFSTADDR     0x0400          ro/rw    This field contains the SRAM start address of the IN
+Page  506: address latch function. Such static memory device includes a static random memory (SRAM), NOR
+Page  506: Flash and PSRAM.
+Page  506: NOR/PSRAM has the following features:
+Page  506: ― Static random access memory (SRAM)
+Page  506: ― PSRAM
+Page  508: NOR/PSRAM memory interface                                     XMC_NWE
+Page  508: While interfacing to the external memory, NOR/PSRAM, NAND, PC card and SDRAM uses different pins
+Page  508: Table 24-1 NOR/PSRAM pins
+Page  510: NOR/PSRAM bank1 64 MB                       XMC_NE[1]
+Page  510: NOR/PSRAM bank2 64 MB                       XMC_NE[2]
+Page  510: NOR/PSRAM bank3 64 MB                       XMC_NE[3]
+Page  510: NOR/PSRAM bank4 64 MB                       XMC_NE[4]
+Page  511: 0110: NOR/PSRAM
+Page  512: 24.4 NOR/PSRAM
+Page  512: NOR/PSRAM offers multiple access modes with different timings to drive multiple memories including
+Page  512: NOR Flash, SRAM, PSRAM and Cellular RAM.
+Page  512: Table 24-8 Pin signals for NOR and PSRAM
+Page  512: XMC pin name                          NOR Flash                                     PSRAM
+Page  512: XMC_NWAIT                     NOR Flash wait request                        PSRAM wait request
+Page  513: SRAM
+Page  513: PSRAM                             32                    16                 Split into 2 XMC accesses
+Page  514: Table 24-11 NOR/PSRAM parameter registers
+Page  514: Table 24-12 Mode 1— SRAM/NOR Flash chip select control register (XMC_BK1CTRL) configuration
+Page  514: Table 24-13 Mode 1— SRAM/NOR Flash chip select timing register (XMC_ BK1TMG) configuration
+Page  515: Figure 24-3 NOR/PSRAM mode 1 read access
+Page  515: Figure 24-4 NOR/PSRAM mode 1 write access
+Page  515: Table 24-14 Mode 2 — SRAM/NOR Flash chip select control register
+Page  516: Table 24-15 Mode 2 — SRAM/NOR Flash chip select timing register
+Page  516: Figure 24-5 NOR/PSRAM mode 2 read access
+Page  517: Figure 24-6 NOR/PSRAM mode 2 write access
+Page  517: The timing of read operation in mode A/B/C/D is based on the SRAM/NOR Flash chip select timing
+Page  517: register (XMC_BK1TMG). The timing of write operation is based on SRAM/NOR Flash write timing
+Page  517: Table 24-16 Mode A— SRAM/NOR Flash chip select control register
+Page  518: Table 24-17 Mode A— SRAM/NOR Flash chip select timing register
+Page  518: Table 24-18 Mode A— SRAM/NOR Flash write timing register
+Page  518: Figure 24-7 NOR/PSRAM mode A read access
+Page  519: Figure 24-8 NOR/PSRAM mode A write access
+Page  519: Table 24-19 Mode B— SRAM/NOR Flash chip select register
+Page  520: Table 24-20 Mode B— SRAM/NOR Flash chip select timing register
+Page  520: Table 24-21 Mode B— SRAM/NOR Flash write timing register
+Page  520: Figure 24-9 NOR/PSRAM mode B read access
+Page  521: Figure 24-10 NOR/PSRAM mode B write access
+Page  521: Table 24-22 Mode C— SRAM/NOR Flash chip select register
+Page  522: Table 24-23 Mode C—SRAM/NOR Flash chip select timing register
+Page  522: Table 24-24 Mode C— SRAM/NOR Flash write timing register
+Page  522: Figure 24-11 NOR/PSRAM mode C read access
+Page  523: Figure 24-12 NOR/PSRAM mode C write access
+Page  523: Table 24-25 Mode D— SRAM/NOR Flash chip select register (XMC_BK1CTRL) configuration
+Page  524: Table 24-26 Mode D—SRAM/NOR Flash chip select timing register
+Page  524: Table 24-27 Mode D— SRAM/NOR Flash write timing register
+Page  524: Figure 24-13 NOR/PSRAM mode D read access
+Page  525: Figure 24-14 NOR/PSRAM mode D write access
+Page  525: Table 24-28 Multiplexed mode — SRAM/NOR Flash chip select control register
+Page  525: except 0x0 (SRAM)
+Page  526: Table 24-29 Multiplexed mode—SRAM/NOR Flash chip select timing register (XMC_BK1TMG) configuration
+Page  526: Figure 24-15 NOR/PSRAM multiplexed mode read access
+Page  527: Figure 24-16 NOR/PSRAM multiplexed mode write access
+Page  527: Table 24-30 Synchronous mode — SRAM/NOR Flash chip select control register
+Page  527: specifications. It is valid except 0x0 (SRAM)
+Page  528: Table 24-31 Synchronous mode—SRAM/NOR Flash chip select timing register (XMC_BK1TMG)
+Page  528: Figure 24-17 NOR/PSRAM synchronous multiplexed mode read access
+Page  529: Figure 24-18 NOR/PSRAM synchronous multiplexed mode write access
+Page  537: 24.8.1 NOR Flash and PSRAM control registers
+Page  537: 24.8.1.1 SRAM/NOR Flash chip select control register 1
+Page  538: 00: SRAM/ROM
+Page  538: Bit 3: 2     DEV        0x2             rw       01: PSRAM (Cellular RAM or CRAM)
+Page  538: 24.8.1.2 SRAM/NOR Flash chip select control register x (x=2, 3, 4)
+Page  539: 00: SRAM/ROM
+Page  539: Bit 3: 2   DEV        0x0         rw       01: PSRAM (Cellular RAM or CRAM)
+Page  540: 24.8.1.3 SRAM/NOR Flash chip select timing register x
+Page  540: 24.8.1.4 SRAM/NOR Flash write timing register x (XMC_BK1TMGWRx),
+Page  541: 24.8.1.5 SRAM/NOR Flash extra timing register x (XMC_EXTx)
+Page  589: command is sent by the application, Ethernet frames read from the user data buffer (such as SRAM) are
+Page  594: For transmission, the DMA reads out the Ethernet frames from the user system buffer (such as SRAM)
+Page  594: to the user data buffer (SRAM) via the AHB master interface.
+Page  594: system buffer area (SRAM). When the transmission and reception is enabled, the DMA polls the
+Page  716: 11.Updated Section 24.8.1.5 SRAM/NOR Flash extra timing register x

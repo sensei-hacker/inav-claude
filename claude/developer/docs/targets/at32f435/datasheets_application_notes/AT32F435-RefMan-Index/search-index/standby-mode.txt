@@ -1,0 +1,42 @@
+Keyword: standby mode
+Occurrences: 38
+================================================================================
+
+Page    1: − Low power: Sleep, Deepsleep, and Standby modes                  SRAM(4 Kbytes): IEEE1588 hardware support, MII/RMII
+Page   55: After a system reset or when leaving from Standby mode, the pin values of both BOOT1 and BOOT0
+Page   63: including Sleep, Deepsleep and Standby modes so as to achieve the best tradeoff among the conflicting
+Page   63:    Three types of power saving modes: Sleep mode, Deepsleep mode, and Standby mode
+Page   65: (Sleep mode, Deepsleep mode and Standby mode) to save power. Users can select the mode that gives
+Page   66: Low-power Deepsleep LDO voltage regulation process (note that Sleep and Standby modes have
+Page   66: Standby Mode
+Page   66: Standby mode can achieve the lowest power consumption for the device. In this mode, the LDO is
+Page   67: The Standby mode is entered by the following procedures:
+Page   67: In Standby mode, all I/O pins remain in a high-impedance state except reset pins, TAMPER pins that
+Page   67: The MCU leaves the Standby mode when an external reset (NRST pin), a WDT reset, ERTC periodic
+Page   67: By default, the debug connection is lost if the MCU enters Deepsleep mode or Standby mode while
+Page   68: 1: Enter Standby mode
+Page   68: Standby mode entry flag
+Page   68: 0: Device is not in Standby mode
+Page   69: 1: Device is in Standby mode
+Page   69: Note: This bit is set by hardware (enter Standby mode) and
+Page   71: and Standby mode for watchdog and auto-wakeup unit.
+Page   73:     Low-power management reset: This type of reset is enabled when entering Standby mode (by
+Page   73:  When exiting Standby mode
+Page   73: powered domain; the power-on reset, low-voltage reset or reset generated when exiting Standby mode
+Page   98: Standby mode
+Page   98: entering Standby mode
+Page   99: Standby mode
+Page  338:    The counter is clocked by LICK (can work in Stop and Standby modes)
+Page  338:    The counter can be configured to stop counting either in Deepsleep or Standby mode
+Page  338: WDT can work in Sleep, Deepsleep and Standby modes. It is possible to stop counting in Deepsleep
+Page  338: and Standby modes by setting the nWDT_DEPSLP and nWDT_STDBY bits in the User System Data
+Page  338: If the counter is disabled, it will stop decrementing as soon as the Deepsleep and Standby modes are
+Page  340: (Reset in Standby mode)
+Page  340: (Reset in Standby mode)
+Page  340: (Reset in Standby mode)
+Page  340: (Reset in Standby mode)
+Page  341: Standby mode
+Page  344: Deepsleep and Standby modes).
+Page  347: Note: In Standby mode, TAMP2 (PA0 pin) can not use pre-charge function.
+Page  713: Debug Standby mode control bit
+Page  713: Standby mode, and the system clock is provided by the

@@ -1,0 +1,25 @@
+Keyword: SmartCard
+Occurrences: 21
+================================================================================
+
+Page   33: Figure 12-3 Smartcard frame format ......................................................................................................... 210
+Page  207: SmartCard protocol defined in ISO7816-3 standard, and CTS/RTS (Clear To Send/Request To Send)
+Page  208: ─ Asynchronous SmartCard protocol defined in ISO7816-3 standard: Support 0.5 or 1.5 stop bits in
+Page  208: Smartcard mode
+Page  209: Interconnection Network), IrDA SIR (Serial Infrared), Asynchronous Smartcard protocol in ISO7816-3
+Page  210: 2. Smartcard mode:
+Page  210: The Smartcard is a single-wire half duplex communication protocol. The SCNACKEN bit is used to
+Page  210: Figure 12-3 Smartcard frame format
+Page  220: TX: Serial data output. In single-wire half-duplex and Smartcard mode, the TX pin is used as an I/O for
+Page  224: Bit 11       CLKEN      0x0             rw       mode or Smartcard mode.
+Page  224: In synchronous mode or Smartcard mode, this bit is used
+Page  224: Bit 9        CLKPHA     0x0             rw       the clock pin in synchronous mode or Smartcard mode.
+Page  225: Smartcard mode enable
+Page  225: Bit 5         SCMEN         0x0             rw       0: Smartcard mode is disabled.
+Page  225: 1: Smartcard mode is enabled.
+Page  225: Smartcard NACK enable
+Page  226: Smartcard guard time value
+Page  226: complete flag is set after this guard time in smartcard
+Page  226: IrDA/smartcard division
+Page  226: Smartcard mode:
+Page  226: the peripheral clock to provide clock for the Smartcard.

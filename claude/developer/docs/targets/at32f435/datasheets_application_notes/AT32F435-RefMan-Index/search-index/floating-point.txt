@@ -1,0 +1,6 @@
+Keyword: floating point
+Occurrences: 2
+================================================================================
+
+Page    1: − Floating Point Unit (FPU)                                       IC/OC/PWM or pulse counter channels
+Page   44: precision (IEEE-754) floating point unit (FPU), as shown in Figure 1-1:

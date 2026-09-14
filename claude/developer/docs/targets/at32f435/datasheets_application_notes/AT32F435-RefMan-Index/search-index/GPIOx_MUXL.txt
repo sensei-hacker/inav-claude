@@ -1,0 +1,11 @@
+Keyword: GPIOx_MUXL
+Occurrences: 7
+================================================================================
+
+Page    6: 6.3.9 GPIO multiplexed function low register (GPIOx_MUXL) (x=A..H) ... 141
+Page  122: options for flexible selection, configured through the GPIOx_MUXL (for pin 0 to 7) and GPIOx_MUXH
+Page  122: Each I/O pin is connected to only one peripheral’s pin by setting the GPIOx_MUXL or GPIOx_MUXH
+Page  124: The multiplexed function of each IO port line is configured through the GPIOx_MUXL (for pin 0 to 7)
+Page  138: The unique peripheral multiplexed function can be configured through the GPIOx_MUXL/GPIOx_MUXH
+Page  139: GPIOx_MUXL                      0x20                             0x0000 0000
+Page  141: 6.3.9 GPIO multiplexed function low register (GPIOx_MUXL)

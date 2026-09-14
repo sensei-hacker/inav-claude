@@ -1,0 +1,15 @@
+Keyword: UID
+Occurrences: 11
+================================================================================
+
+Page    1: − 4 to 25 MHz crystal oscillator (HEXT)                        96-bit ID (UID)
+Page   21: 21.6.3.13     OTGFS controller ID register (OTGFS_GUID) ...................... 477
+Page   56: UID[31: 0]                               0x1FFF F7E8                           0xXXXX XXXX
+Page   56: UID[63: 32]                              0x1FFF F7EC                           0xXXXX XXXX
+Page   56: UID[95: 64]                              0x1FFF F7F0                           0xXXXX XXXX
+Page   56: Bit 31: 0    UID[31: 0]             0xXXXX XXXX           ro       UID for bit 31 to bit 0
+Page   56: Bit 31: 0    UID[63: 32]            0xXXXX XXXX           ro       UID for bit 63 to bit 32
+Page   57: Bit 31: 0   UID[95: 64]              0xXXXX XXXX     ro      UID for bit 95 to bit 64
+Page   57: Note: UID[95:88] is series ID, which is 0x0D for AT32F435, and 0x0E for AT32F437.
+Page  462: OTGFS_GUID                            0x03C                         0x0000 1000
+Page  477: 21.6.3.13 OTGFS controller ID register (OTGFS_GUID)

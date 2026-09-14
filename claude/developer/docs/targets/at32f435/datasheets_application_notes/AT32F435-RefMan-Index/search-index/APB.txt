@@ -1,0 +1,105 @@
+Keyword: APB
+Occurrences: 101
+================================================================================
+
+Page    3: 4.3.5 APB peripheral reset register 1 (CRM_APBRST1) ......................... 79
+Page    3: 4.3.6 APB peripheral reset register 2 (CRM_APBRST2) ......................... 80
+Page    3: 4.3.7 APB peripheral reset register 3 (CRM_APBRST3) ......................... 80
+Page    3: 4.3.8 APB1 peripheral reset register (CRM_APB1RST) .......................... 81
+Page    3: 4.3.9 APB2 peripheral reset register (CRM_APB2RST) .......................... 82
+Page    3: 4.3.10 APB peripheral clock enable register 1 (CRM_AHBEN1) ................ 83
+Page    3: 4.3.11 APB peripheral clock enable register 2 (CRM_AHBEN2) ................ 84
+Page    3: 4.3.12 APB1 peripheral clock enable register 3 (CRM_AHBEN3) .............. 84
+Page    3: 4.3.13 APB1 peripheral clock enable register (CRM_APB1EN) ................. 85
+Page    3: 4.3.14 APB2 peripheral clock enable register (CRM_AHB2EN) ................. 86
+Page    3: 4.3.15 APB peripheral clock enable in low power mode register1
+Page    3: 4.3.16 APB peripheral clock enable in low power mode register2
+Page    3: 4.3.17 APB peripheral clock enable in low power mode register3
+Page    3: 4.3.18 APB1 peripheral clock enable in low power mode register
+Page    4: 4.3.19 APB2 peripheral clock enable in low power mode register
+Page   31: 30.4.3 DEBUG APB1 pause register (DEBUG_ APB1_PAUSE) ................ 713
+Page   31: 30.4.4 DEBUG APB2 pause register (DEBUG_ APB2_PAUSE) ................ 715
+Page   45: APB1 Bridge                                                                     APB2 Bridge
+Page   45: APB2 Bus (Freq. Max. 144 MHz)
+Page   45: APB1 Bus (Freq. Max. 144 MHz)
+Page   47: APB1
+Page   47: APB2
+Page   61: APB2
+Page   61: APB1
+Page   65: 5) Set pre-division factors for AHB and APB
+Page   65: clocks or gating the clocks to the APB and AHB peripherals when they are not used.
+Page   66: 11) Set pre-division factors for AHB and APB
+Page   68: Additional APB cycles are needed to read this register versus a standard APB read.
+Page   70: HICK RC                     HICK48M                                                                                                                     APB1/2        144 MHz
+Page   70: 48 MHz                                                                                           SCLKSEL                                                Divider                                     to APB1/2
+Page   70: AHB, APB1 and APB2 all support multiple frequency division. The AHB domain has a maximum of 288
+Page   70: MHz, and both APB1 and APB2 are up to 144 MHz.
+Page   71: ADCs are clocked by APB2 divided by 2, 3, 4, 5…17
+Page   71: The timers are clocked by APB1/2. In particular, if the APB prescaler is 1, the timer clock frequency is
+Page   71: equal to that of APB1/2; otherwise, the timer clock frequency doubles that of the APB1/2 frequency.
+Page   73: CRM_APB1RST                       0x020                        0x0000 0000
+Page   73: CRM_APB2RST                       0x024                        0x0000 0000
+Page   73: CRM_APB1EN                        0x040                        0x0000 0000
+Page   73: CRM_APB2EN                        0x044                        0x0000 0000
+Page   74: CRM_APB1LPEN                   0x060                           0xF6FE E9FF
+Page   74: CRM_APB2LPEN                   0x064                           0x2017 7733
+Page   77: APB2 division
+Page   77: The divided HCLK is used as APB2 clock.
+Page   77: Bit 15: 13   APB2DIV    0x0        rw       101: divided by 4
+Page   77: that the APB2 clock frequency does not exceed 144 MHz.
+Page   77: APB1 division
+Page   77: The divided HCLK is used as APB1 clock.
+Page   77: Bit 12: 10   APB1DIV    0x0        rw       101: divided by 4
+Page   77: that the APB1 clock frequency does not exceed 144 MHz
+Page   79: 4.3.5           APB peripheral reset register 1 (CRM_APBRST1)
+Page   80: 4.3.6             APB peripheral reset register 2 (CRM_APBRST2)
+Page   80: 4.3.7             APB peripheral reset register 3 (CRM_APBRST3)
+Page   81: 4.3.8           APB1 peripheral reset register (CRM_APB1RST)
+Page   82: 4.3.9           APB2 peripheral reset register (CRM_APB2RST)
+Page   83: 4.3.10 APB peripheral clock enable register 1 (CRM_AHBEN1)
+Page   84: 4.3.11 APB peripheral clock enable register 2 (CRM_AHBEN2)
+Page   84: 4.3.12 APB1 peripheral clock enable register 3 (CRM_AHBEN3)
+Page   85: 4.3.13 APB1 peripheral clock enable register (CRM_APB1EN)
+Page   86: 4.3.14 APB2 peripheral clock enable register (CRM_AHB2EN)
+Page   87: 4.3.15 APB peripheral clock enable in low power mode register1
+Page   89: 4.3.16 APB peripheral clock enable in low power mode register2
+Page   89: 4.3.17 APB peripheral clock enable in low power mode register3
+Page   89: 4.3.18 APB1 peripheral clock enable in low power mode register
+Page   91: 4.3.19 APB2 peripheral clock enable in low power mode register
+Page  175: APB                                                           check
+Page  216: Note: the interval period between two consecutive data transfers is fixed at 2 PCLK cyles. For example, if APB
+Page  253: prescaler. When TMR’s APB clock prescaler factor is 1, the CK_INT frequency is equal to that of APB;
+Page  253: otherwise, it doubles the APB clock frequency.
+Page  258: APB clock prescaler factor is 1, the CK_INT frequency is equal to that of APB; otherwise, it doubles the
+Page  258: APB clock frequency.
+Page  284: TMR’s APB clock prescaler factor is 1, the CK_INT frequency is equal to that of APB; otherwise, it
+Page  284: doubles the APB clock frequency.
+Page  305: TMR’s APB clock prescaler factor is 1, the CK_INT frequency is equal to that of APB; otherwise, it
+Page  305: doubles the APB clock frequency.
+Page  335: The window watchdog timer is clocked by a divided APB1_CLK. The precision of the APB1_CLK enables
+Page  335: The WWDT counter is clocked by a divided APB1_CLK, with the division factor being defined by the
+Page  335: Where: TPCLK1 refers to APB1 clock period, in ms.
+Page  341: APB
+Page  342: 1. Enable power interface clock by setting PWCEN=1 in the CRM_APB1EN register.
+Page  344: read (DREN=1), an additional APB cycle is required to complete the read operations of the calendar
+Page  351: APB_CLK cycles.
+Page  351: APB_CLK cycles.
+Page  351: APB_CLK cycles.
+Page  351: APB_CLK cycles.
+Page  361: Set the ADCxEN bit in the CRM_APB2EN register to enable ADC clocks: PCLK2 and ADCCLK.
+Page  392: APB BUS                                D1OBDIS
+Page  392: APB BUS
+Page  396: Bit 18       D2TRGEN       0x0         rw       DAC_D2ODT register after one APB1 clock cycle.
+Page  396: D2ODT register after three APB1 clock cycles.
+Page  396: If the software trigger is selected, it takes one APB1 clock
+Page  397: Bit 2      D1TRGEN    0x0         rw       DAC_D1ODT register after one APB1 clock cycle.
+Page  397: D1ODT register after three APB1 clock cycles
+Page  397: If the software trigger is selected, it takes one APB1 clock
+Page  398: Note: This bit is cleared by hardware (one APB1 clock
+Page  398: Note: This bit is cleared by hardware (one APB1 clock
+Page  425: The OTGFS interface has two clocks: USB control clock and APB bus clock. The USB full-speed device
+Page  425: Note: The APB clock frequency must be greater than 30MHz when OTGFS is enabled.
+Page  711: DEBUG_APB1_PAUSE                 0xE004 2008                    0x0000 0000
+Page  711: DEBUG_APB2_PAUSE                 0xE004 200C                    0x0000 0000
+Page  713: 30.4.3 DEBUG APB1 pause register (DEBUG_ APB1_PAUSE)
+Page  715: 30.4.4 DEBUG APB2 pause register (DEBUG_ APB2_PAUSE)

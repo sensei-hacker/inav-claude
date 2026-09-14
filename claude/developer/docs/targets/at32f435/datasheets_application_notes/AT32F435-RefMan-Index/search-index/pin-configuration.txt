@@ -1,0 +1,11 @@
+Keyword: pin configuration
+Occurrences: 7
+================================================================================
+
+Page   19: 21.3 OTGFS clock and pin configuration ............................................. 425
+Page   19: 21.3.2 OTGFS pin configuration ............................................................ 425
+Page   43: Table 26-4 Ethernet peripheral pin configuration ...................................................................................... 586
+Page  120: JTAG pin configuration are as follows:
+Page  425: 21.3 OTGFS clock and pin configuration
+Page  425: 21.3.2 OTGFS pin configuration
+Page  586: Table 26-4 Ethernet peripheral pin configuration

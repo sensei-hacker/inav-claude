@@ -1,0 +1,554 @@
+Keyword: EMAC
+Occurrences: 550
+================================================================================
+
+Page   25: 26       Ethernet media access control (EMAC) ....................................... 580
+Page   25: 26.1 EMAC introduction ..................................................................... 580
+Page   25: 26.1.1 EMAC structure .......................................................................... 580
+Page   25: 26.1.2 EMAC main features ................................................................... 580
+Page   25: 26.2 EMAC functional description ....................................................... 581
+Page   25: 26.2.1 EMAC communication interfaces ................................................. 581
+Page   25: 26.2.2 EMAC frame communication ....................................................... 586
+Page   26: 26.2.4 Enter and wake up EMAC power-down mode ............................... 608
+Page   26: 26.2.6 EMAC interrupts ......................................................................... 613
+Page   26: 26.3 EMAC registers ......................................................................... 614
+Page   26: 26.3.1 Ethernet MAC configuration register (EMAC_MACCTRL) .............. 616
+Page   26: 26.3.2 Ethernet MAC frame filter register (EMAC_MACFRMF) ................. 618
+Page   26: 26.3.3 Ethernet MAC Hash table high register (EMAC_MACHTH) ............ 620
+Page   26: 26.3.4 Ethernet MAC Hash table low register (EMAC_MACHTL) .............. 620
+Page   26: 26.3.5 Ethernet MAC MII address register (EMAC_MACMIIADDR) ........... 620
+Page   26: 26.3.6 Ethernet MAC MII data register (EMAC_MACMIIDT) ..................... 621
+Page   26: 26.3.7 Ethernet MAC flow control register (EMAC_MACFCTRL) .............. 621
+Page   26: 26.3.8 Ethernet MAC VLAN tag register (EMAC_MACVLT) ...................... 623
+Page   26: (EMAC_MACRWFF) ............................................................................. 623
+Page   26: (EMAC_MACPMTCTRLSTS) ................................................................. 624
+Page   26: 26.3.11 Ethernet MAC interrupt status register (EMAC_MACISTS) ......... 624
+Page   26: 26.3.12 Ethernet MAC interrupt mask register (EMAC_MAIMR) .............. 625
+Page   26: 26.3.13 Ethernet MAC address 0 high register (EMAC_MACA0H) ........... 625
+Page   26: 26.3.14 Ethernet MAC address 0 low register (EMAC_MACA0L) ............. 626
+Page   26: 26.3.15 Ethernet MAC address 1 high register (EMAC_MACA1H) ........... 626
+Page   26: 26.3.16 Ethernet MAC address 1 low register (EMAC_MACA1H) ............ 626
+Page   26: 26.3.17 Ethernet MAC address 2 high register (EMAC_MACA2H) ........... 627
+Page   26: 26.3.18 Ethernet MAC address 2 low register (EMAC_MACA2L) ............. 627
+Page   26: 26.3.19 Ethernet MAC address 3 high register (EMAC_MACA3H) ........... 627
+Page   26: 26.3.20 Ethernet MAC address 3 low register (EMAC_MACA3L) ............. 628
+Page   26: 26.3.21 Ethernet DMA bus mode register (EMAC_DMABM) .................... 628
+Page   26: 26.3.22 Ethernet DMA transmit poll demand register (EMAC_DMATPD) .. 630
+Page   26: 26.3.23 Ethernet DMA receive poll demand register (EMAC_DMARPD) .. 630
+Page   26: (EMAC_DMARDLADDR) ....................................................................... 630
+Page   26: (EMAC_DMATDLADDR) ....................................................................... 631
+Page   26: 26.3.26 Ethernet DMA status register (EMAC_DMASTS) ........................ 631
+Page   26: 26.3.27 Ethernet DMA operation mode register (EMAC_DMAOPM) ......... 634
+Page   26: 26.3.28 Ethernet DMA interrupt enable register (EMAC_DMAIE) ............ 636
+Page   27: (EMAC_DMAMFBOCNT) ....................................................................... 637
+Page   27: (EMAC_DMACTD) ................................................................................ 638
+Page   27: (EMAC_DMACRD) ............................................................................... 638
+Page   27: (EMAC_DMACTBADDR) ....................................................................... 638
+Page   27: (EMAC_DMACRBADDR) ....................................................................... 638
+Page   27: 26.3.34 Ethernet MMC control register (EMAC_MMCCTRL) ................... 638
+Page   27: 26.3.35 Ethernet MMC receive interrupt register (EMAC_MMCRI) .......... 639
+Page   27: 26.3.36 Ethernet MMC transmit interrupt register (EMAC_MMCTI) .......... 639
+Page   27: 26.3.37 Ethernet MMC receive interrupt register (EMAC_MMCRIM) ........ 640
+Page   27: 26.3.38 Ethernet MMC transmit interrupt register (EMAC_MMCTIM) ....... 640
+Page   27: (EMAC_MMCTFSCC) ........................................................................... 640
+Page   27: counter register (EMAC_MMCTFMSCC) ................................................ 641
+Page   27: (EMAC_MMCTFCNT) ........................................................................... 641
+Page   27: (EMAC_MMCRFCECR) ......................................................................... 641
+Page   27: (EMAC_MMCRFAECNT) ....................................................................... 641
+Page   27: (EMAC_MMCRGUFCNT) ...................................................................... 641
+Page   27: 26.3.45 Ethernet PTP time stamp control register (EMAC_PTPTSCTRL) . 641
+Page   27: 26.3.46 Ethernet PTP subsecond increment register (EMAC_PTPSSINC) 643
+Page   27: 26.3.47 Ethernet PTP time stamp high register (EMAC_PTPTSH) ........... 643
+Page   27: 26.3.48 Ethernet PTP time stamp low register (EMAC_PTPTSL) ............ 644
+Page   27: 26.3.49 Ethernet PTP time stamp high update register (EMAC_PTPTSHUD) 644
+Page   27: 26.3.50 Ethernet PTP time stamp low update register (EMAC_PTPTSLUD) 644
+Page   27: 26.3.51 Ethernet PTP time stamp addend register (EMAC_PTPTSAD) .... 644
+Page   27: 26.3.52 Ethernet PTP target time high register (EMAC_PTPTTH) ........... 645
+Page   27: 26.3.53 Ethernet PTP target time low register (EMAC_PTPTTL) ............. 645
+Page   28: 26.3.54 Ethernet PTP time stamp status register (EMAC_PTPTSSR) ...... 645
+Page   28: 26.3.55 Ethernet PTP PPS register (EMAC_PTPPPSCR) ....................... 645
+Page   38: Figure 26-1 Block diagram of EMAC ......................................................................................................... 580
+Page   38: Figure 26-18 Ethernet MAC remote wakeup frame filter register (EMAC_MACRWFF) ........................... 623
+Page   45: EMAC                                                                        Controller
+Page   45: EMAC DMA                                                                                                                  SRAM2
+Page   47: DMA1      DMA2        EDMA    EMAC
+Page   47: EMAC
+Page   52: 61   68             EMAC2                 Ethernet global interrupt                    0x0000_0134
+Page   52: 62   69             EMAC_WKUP2                                                         0x0000_0138
+Page   53: Note: AT32F437 supports EMAC and EMAC_WKUP interrupts, but AT32F435 does not.
+Page   60: 0x4002 8000 - 0x4002 9FFF       EMAC
+Page   62: Note: Only AT32F437 supports EMAC module.
+Page   70: EMAC_MII_TX_CLK
+Page   70: To EMAC                                       To EMAC                                     ADCCLK
+Page   70: EMACRMIICLK                  1
+Page   70: EMAC_MII_RX_CLK
+Page   70: 0                    To EMAC
+Page   79: EMAC reset
+Page   79: Bit 25       EMACRST          0x0              rw          0: Does not reset the Ethernet MAC
+Page   83: EMAC PTP clock enable
+Page   83: Bit 28       EMACPTPEN       0x0             rw          0: Disabled
+Page   83: EMAC RX clock enable
+Page   83: Bit 27       EMACRXEN        0x0             rw          1: Enabled
+Page   83: EMAC TX clock enable
+Page   83: Bit 26       EMACTXEN        0x0             rw          1: Enabled
+Page   83: EMAC clock enable
+Page   83: Bit 25       EMACEN          0x0             rw          0: Disabled
+Page   87: EMAC PTP clock enable in sleep mode
+Page   87: Bit 28       EMACPTPLPEN      0x1            rw       0: Disabled
+Page   87: EMAC RX clock enable in sleep mode
+Page   87: Bit 27       EMACRXLPEN       0x1            rw       1: Enabled
+Page   87: EMAC TX clock enable in sleep mode
+Page   87: Bit 26       EMACTXLPEN       0x1            rw
+Page   88: EMAC clock enable during sleep mode
+Page   88: Bit25        EMACLPEN    0x1        rw       0: Disabled
+Page   94: Bit 9       EMAC_PPS_SEL   0x0           rw        0: Pulse width is 125 ms.
+Page  125: PA0    UART4_TX                            EMAC_MII_CRS                                           EVENTOUT
+Page  125: EMAC_MII_RX_CLK
+Page  125: EMAC_RMII_REF_CLK
+Page  125: PA2                            SDIO2_CK    EMAC_MDIO                                   XMC_D4     EVENTOUT
+Page  125: PA3                QSPI2_IO3   SDIO2_CMD   EMAC_MII_COL                                XMC_D5     EVENTOUT
+Page  125: EMAC_MII_RX_DV      XMC_SDN
+Page  125: EMAC_RMII_CRS_DV
+Page  127: EMAC_MII_RXD2     SDIO1_D1                         EVENTOUT
+Page  127: EMAC_MII_RXD3     SDIO1_D2                         EVENTOUT
+Page  127: PB5    UART5_RX        CAN2_RX                  EMAC_PPS_OUT
+Page  127: EMAC_MII_TXD3     SDIO1_D4   DVP_D6                EVENTOUT
+Page  127: EMAC_MII_RX_ER    SDIO1_D7              XMC_NOE    EVENTOUT
+Page  127: QSPI1_IO     EMAC_MII_TX_EN
+Page  127: PB11                               0            EMAC_RMII_TX_EN
+Page  127: EMAC_MII_TXD0
+Page  127: EMAC_RMII_TXD0
+Page  127: EMAC_MII_TXD1     OTG2_VB
+Page  127: EMAC_RMII_TXD1    US
+Page  129: PC1    UART7_RX                SDIO2_D1      EMAC_MDC                                           EVENTOUT
+Page  129: PC2    UART8_TX                SDIO2_D2      EMAC_MII_TXD2   XMC_SDCS0                XMC_NWE   EVENTOUT
+Page  129: EMAC_MII_TX_C
+Page  129: EMAC_MII_RXD0
+Page  129: PC4                            QSPI1_IO2     EMAC_RMII_RX    XMC_SDCS0    SDIO2_CK    XMC_NE4   EVENTOUT
+Page  129: EMAC_MII_RXD1
+Page  129: PC5                            QSPI1_IO3     EMAC_RMII_RX    XMC_SDCKE0   SDIO2_CMD   XMC_NOE   EVENTOUT
+Page  131: EMAC_MII_RX_DV
+Page  131: PD8                                         EMAC_RMII_CRS_DV
+Page  131: EMAC_MII_RXD0
+Page  131: PD9                                         EMAC_RMII_RXD0
+Page  131: EMAC_MII_RXD1
+Page  131: PD10                                        EMAC_RMII_RXD1
+Page  131: EMAC_MII_RXD2
+Page  131: EMAC_MII_RXD3
+Page  133: PE2               QSPI1_IO2   XMC_SDNCAS      EMAC_MII_TXD3   XMC_A23                      EVENTOUT
+Page  137: PG8    USART6_RTS_DE                           EMAC_PPS_OUT      XMC_SDCLK                     EVENTOUT
+Page  137: EMAC_MII_TX_EN
+Page  137: EMAC_RMII_TX_EN
+Page  137: EMAC_MII_TXD0
+Page  137: EMAC_RMII_TXD0
+Page  137: EMAC_MII_TXD1
+Page  137: EMAC_RMII_TXD1
+Page  143:  Manage IRTMR/EMAC GPIO configurations
+Page  580: 26 Ethernet media access control (EMAC)
+Page  580: 26.1 EMAC introduction
+Page  580: 26.1.1 EMAC structure
+Page  580: Figure 26-1 Block diagram of EMAC
+Page  580: MCU EXTERNAL EMAC PHY
+Page  580: 26.1.2 EMAC main features
+Page  580: The Ethernet peripheral contains an EMAC core and a DMA controller. The transmission and reception
+Page  580: EMAC core features
+Page  581: 26.2 EMAC functional description
+Page  581: 26.2.1 EMAC communication interfaces
+Page  581: The EMAC allows to configure the station management interface (SMI) of PHY, media-independent
+Page  582: EMAC SMI                        PHY
+Page  582: Before write operation, PHY address, MII register and EMAC_MACMIIDT register must be configured
+Page  582: EMAC_MACMIIADDR and the EMAC_MACMIIDT registers are not allowed to change.
+Page  582: is set and MW bit is set to 0 in the EMAC_MACMIIADDR register.
+Page  582: EMAC_MACMIIADDR and EMAC_MACMIIDT registers are not allowed to change (The application
+Page  582: should not change these register contents. After the transaction, the EMAC_MACMIIDT register is
+Page  583: EMAC                                         PHY
+Page  584: The RMII interface is used to connect the EMAC and the PHY. This helps translate the MAC MII signal
+Page  584: EMAC                                                      PHY
+Page  584: The EMAC TX_CLK and RX_CLK clock signals are provided by the PHY. External PHY module is
+Page  585: EMAC
+Page  585: AT32F437      EMAC                               PHY
+Page  585: As shown in Figure 26-7, both the EMAC and PHY require 50MHz clock sources, which can be done
+Page  586: EMAC pin allocation and multiplexing
+Page  586: EMAC signal                   MII            RMII      Pin          Pin description
+Page  586: EMAC_MDC                   MDC          MDC           PC1     Multiplexed push-pull output
+Page  586: EMAC_MII_TXD2                TXD2              -        PC2     Multiplexed push-pull output
+Page  586: EMAC_MII_TX_CLK              TX_CLK             -        PC3     Floating input (reset state)
+Page  586: EMAC_MII_CRS                   CRS             -        PA0     Floating input (reset state)
+Page  586: EMAC_MII_RX_CLK
+Page  586: EMAC_RMII_REF_CLK
+Page  586: EMAC_MDIO                  MDIO         MDIO          PA2     Multiplexed push-pull output
+Page  586: EMAC_MII_COL                   COL             -        PA3     Floating input (reset state)
+Page  586: EMAC_MII_RX_DV                                                   Floating input (reset state)
+Page  586: EMAC_RMII_CRS_DV
+Page  586: EMAC_MII_RXD0                                                   Floating input (reset state)
+Page  586: EMAC_RMII_RXD0
+Page  586: EMAC_MII_RXD1                                                   Floating input (reset state)
+Page  586: EMAC_RMII_RXD1
+Page  586: EMAC_MII_RXD2                RXD2              -        PB0     Floating input (reset state)
+Page  586: EMAC_MII_RXD3                RXD3              -        PB1     Floating input (reset state)
+Page  586: EMAC_MII_RX_ER               RX_ER              -       PB10     Floating input (reset state)
+Page  586: EMAC_MII_TX_EN                                                  Multiplexed push-pull output
+Page  586: EMAC_RMII_TX_EN
+Page  586: EMAC_MII_TXD0 EMAC_RMII_TXD0        TXD0         TXD0         PB12     Multiplexed push-pull output
+Page  586: EMAC_MII_TXD1 EMAC_RMII_TXD1        TXD1         TXD1         PB13     Multiplexed push-pull output
+Page  586: EMAC_PPS_OUT               PPS_OUT      PPS_OUT         PB5     Multiplexed push-pull output
+Page  586: EMAC_MII_TXD3                TXD3              -        PB8     Multiplexed push-pull output
+Page  586: EMAC_RMII_CRS_DV              RX_DV        CRS_DV         PD8     Floating input (reset state)
+Page  586: EMAC_MII_RXD0                                                   Floating input (reset state)
+Page  586: EMAC_RMII_RXD0
+Page  586: EMAC_MII_RXD1                                                   Floating input (reset state)
+Page  586: EMAC_RMII_RXD1
+Page  586: EMAC_MII_RXD2                RXD2              -       PD11     Floating input (reset state)
+Page  586: EMAC_MII_RXD3                RXD3              -       PD12     Floating input (reset state)
+Page  586: 26.2.2 EMAC frame communication
+Page  587: EMAC frame filtering
+Page  587: EMAC supports source and destination address filtering.
+Page  587: is all 0, the EMAC will compare all 48 bits of the received unicast address with the programmed
+Page  587: 2. HASH table filtering: The HUC must be set in the frame filtering register. The EMAC performs
+Page  587: If the DBF is set in the frame filter register, the EMAC will reject all broadcast frames. If DBF=0, the
+Page  587: EMAC will accept all broadcast frames.
+Page  588: EMAC. In this case, the frames that pass through both SA and DA filtering can be forwarded to the
+Page  589: EMAC frame transmission
+Page  589: The EMAC frame transmission is controlled by the DMA controller and MAC. Once a transmission
+Page  590: EMAC_DMAOPM register.
+Page  590: The FTF bit (the bit 20 in the EMAC_DMAOPM register) can be set to flush the TXFIFO. If the FTF
+Page  590: the frame transmission is aborted. An underflow event is marked in the EMAC transmitter and the
+Page  590: defined in IEEE802.3 standard, the EMAC can be programmed to append padding (zeroes are
+Page  590: During a frame transmission, the EMAC can be programmed either to append CRC to the frame check
+Page  590: sequence or not to append CRC. When the EMAC is programmed to append pads for frames
+Page  590: collision signal is sent to the EMAC core. The EMAC core will send a 32-bit jam signal of 0x5555 5555
+Page  590: preamble transmission phrase, the EMAC completes the transmission of the preamble and SFD and
+Page  590: The EMAC jabber timer is enabled (set EMAC_MACCTRL[20]=0) to prevent certain station on the LAN
+Page  590: from occupying the LAN for a long time. Once enabled, the EMAC will stop transmitting if the application
+Page  590: The EMAC enables transmission after satisfying the interframe gap and backoff delays. The MAC
+Page  590: maintains an idle period of the programmed interframe gap (IFG bits in the EMAC_MACCTRL register)
+Page  590: between any two transmitted frames. The EMAC starts its IFG counter as soon as the carrier signal of
+Page  590: In full-duplex mode the EMAC implements Transmit flow control using pause frames. The EMA can
+Page  590: When the FCB bit in the EMAC_MACFCTRL register is set, the EMAC generates and transmits a single
+Page  591: value in the EMAC_MACFCTRL register. To extend the pause time or cancel the remaining pause time,
+Page  591: the EMAC must send another pause frame (PT=0 will cancel the remaining pause time).
+Page  591: If flow control is enabled (EFT=1 in the EMAC_MACFCTRL register), when the RXFIFO is full, the EMAC
+Page  591: The FTF bit (bit 20) in the EMAC_DMAOPM register is set to flush TXFIFO. The TXFIFO flush operation
+Page  591: and result in an underflow event in the EMAC. The status of such a frame is generated (TDES0 bits 1
+Page  591: words of the frames that were flushed. Then the FTF bit is cleared in the EMAC_DMAOPM register. In
+Page  591: At the EMAC controller has completed the transmission of the Ethernet frame, the transmit status is
+Page  591: when the TSF is set in the EMAC_DMAOPM register). If the TXFIFO depth is less than the input Ethernet
+Page  591: modified by the EMAC, even in store-and-forward mode.
+Page  592: EMAC frame reception
+Page  592: (configured with the RTC bit in the EMAC_DMAOPM register) or a full packet of data are received in the
+Page  592: In store-and-forward mode (configured by the RSF bit in the EMAC_DMAOPM register), a frame is read
+Page  592: If the EMAC core is configured to drop all error frames, behavior varies in different reception modes:
+Page  592: A reception operation is initiated when the EMAC detects an SFD on the MII. The MAC core strips the
+Page  592: detected on the MII. This time stamp is passed onto the application when the EMAC has completed the
+Page  592: If the received frame length/type field is less than 0x600 and if the EMAC is configured for the auto
+Page  593: CRC/pad stripping option, the EMAC sends the data of the frame to RXFIFO up to the count specified
+Page  593: The EMAC watchdog timer is enabled by default, frames above 2048 bytes (DA + SA + LT + Data + pad
+Page  593: + FCS) are cut off. This feature can be disabled by the WD bit in the EMAC_MACCTRL register. However,
+Page  593: Both IPv4 and IPv6 frames are detected for data integrity by setting the IPC bit in the EMAC_MACCTRL
+Page  593: register. The EMAC identifies IPv4 or IPv6 frames by checking for the Ethernet type field value. The
+Page  593: The ERF bit in the EMAC_MACFCTRL register to enable or disable Pause frame detection function.
+Page  593: Once receive flow control is enabled, the EMAC will decode the Pause frames.
+Page  593: At the end of the Ethernet frame reception, the EMAC will send the receive status to the application
+Page  593: EMAC loopback mode
+Page  593: The EMAC supports loopback of transmitted frames onto its receiver. The loopback mode is very useful
+Page  593: EMAC_MACCTRL register.
+Page  593: EMAC frame counter
+Page  593: and transmitted frames. These include the EMAC_MMCCTR, EMAC_MMCRI, EMAC_MMCRIM,
+Page  593: EMAC_MMCTI and EMAC_MMCTIM registers.
+Page  594: via the AHB master interface and forwards them to the TXFIFO. The EMAC core then transfers the data
+Page  594: For reception, the EMAC core sends the received Ethernet frames from the MII/RMII interface to the
+Page  595: EMAC_DMABM register. The maximum burst length is defined by the PBL filed (bit [13: 8] in the
+Page  595: EMAC_DMABM register). The receive and transmit descriptors are always accessed in the maximum
+Page  595: bytes programmed by buffer size field in the TDES1 to the EMAC core. If the FS bit is set in the TDES0,
+Page  595: and fixed-priority. When round-robin is selected (DA bit is set to 0 in the EMAC_DMABM register), the
+Page  595: arbiter allocates the databus according to the ratio set by the PR bit in the EMAC_DMABM register,
+Page  595: error bit and the fatal bus error bit in the EMAC_DMASTS register. The DMA can resume operation after
+Page  596: 1. Configure AT32F437xx bus access parameters in the EMAC_DMABM register.
+Page  596: 2. Mask unnecessary interrupt sources in the EMAC_DMAIE register.
+Page  596: addresses of the descriptor lists to both the EMAC_DMARDLADDR and EMAC_DMATDLADDR
+Page  596: 5. Configure the EMAC_MACCTRL register to enable the transmit and receive operating modes
+Page  596: 6. Set the bit 13 and bit 1 in the EMAC_DMAOPM register to enable transmission and reception.
+Page  596: 2.      Once the SSTC is set (EMAC_DMAOPM bit [13]), the DMA enables transmission.
+Page  596: suspend state is entered, and both the transmit buffer unavailable (EMAC_DMASTS bit 2) and
+Page  596: normal interrupt summary bit (EMAC_DMASTS bit 16) are set. The transmit controller jumps to
+Page  596: the transmit interrupt bit (EMAC_DMASTS bit [0]) will be set. The DMA then returns to Step 3
+Page  596: In this mode, the OSF bit is set (EMAC_DMAOPM bit 2=1). When the current data frame transmission
+Page  597: (EMAC_DMACTD register).
+Page  597: descriptor. If the transmit descriptor requires the EMAC core to disable CRC or pad insertion, the buffer
+Page  597: transmit complete interrupt bit (TDES0[30]) is set, the transmit interrupt bit (EMAC_DMASTS bit 0) is
+Page  597: (EMAC_DMASTS bit 15) and transmit data underflow bit (EMAC_DMASTS bit 5) are set, and the
+Page  598: Bit 30       IC       rw     When set, this bit sets the transmit interrupt bit (EMAC_DMASTS bit [0]) after the
+Page  598: (EMAC_PTPTSCTRL[0]) and FS bits (TDES0[28]) are set.
+Page  599: timeout. This bit is set only when the JAD bit is not set in the EMAC_MACCTRL
+Page  599: (Retry disabled) bit in the EMAC_MACCTRL register is set, then this bit is set after
+Page  599: deferral of over 24288 bit times when the DC bit is set in the EMAC_MACCTRL
+Page  599: the EMAC_DMASTS register and the transmit interrupt bit (bit 0 in the
+Page  599: EMAC_DMASTS register ).
+Page  600: 1. Time stamping is activated (by setting TE to 1 in the EMAC_PTPTSCTRL register)
+Page  600: 2. IPV4 checksum is activated (by setting IPC to 1 in the EMAC_MACCTRL register)
+Page  600: Enahced TXDMA descriptor feature is enabled by setting EDE to 1 in the EMAC_DMABM register.
+Page  601: 4.    When the SSR bit (EMAC_DMAOPM[1]) is set, the DMA enters run state and attempts to acquire
+Page  601:  The DMA enters the run state ( SSR=1 in the EMAC_DMAOPM).
+Page  602: interrupt bit (EMAC_DMASTS[6]). The same process repeats unless the DMA finds a descriptor as
+Page  602: (EMAC_DMASTS[7]) and then enters the suspend state. Before the suspend state is being entered,
+Page  602: can be avoided by setting the bit 24 (DFRF bit) in the EMAC_DMAOPM register. In this case, the receive
+Page  603: the EMAC_MACCTRL register.
+Page  605: Bit 31       DIC       rw      (EMAC_DMASTS) for the received frame pointed to by this descriptor. As a result,
+Page  605: 1. Time stamping is activated (by setting TE to 1 in the EMAC_PTPTSCTRL register)
+Page  605: 2. IPV4 checksum is activated (by setting IPC to 1 in the EMAC_MACCTRL register)
+Page  606: Enahced RXDMA descriptor feature is enabled by setting EDE to 1 in the EMAC_DMABM register.
+Page  608: 26.2.4 Enter and wake up EMAC power-down mode
+Page  608: The EMAC enters power-off mode when the PD bit is enabled in the EMAC_MACPMTCTRLSTS register.
+Page  608: In this mode, all received frames are dropped by the EMAC and they are not forwarded to the application.
+Page  608: wake up the EMAC from power-off mode. This is done by setting the ERWF and EMP bits in the
+Page  608: EMAC_MACPMTCTRLSTS register.
+Page  608: This mode is enabled by setting the RRWF bit in the EMAC_MACPMTCTRLSTS register.
+Page  608: When a remote wakeup frame is received, the EMAC will move from sleep mode to normal mode. At the
+Page  609: same time, the RRWF bit (bit 6) is set in the EMAC_MACPMTCTRLSTS register, indicating that a remote
+Page  609: Magic Packet detection is enabled by setting the EMP bit in the EMAC_MACPMTCTRLSTS register.
+Page  609: When the Magic Packet is received, the RMP bit will be updated in the EMAC_MACPMTCTRLSTS
+Page  609: enabled. However, the RE bit has to be set in the EMAC_MACCTRL register because the EMAC needs
+Page  609: checked by polling the TI bit in the EMAC_DMASTS register.
+Page  609: EMAC_MACCTRL register.
+Page  609: 3.    Poll the RI bit in the EMAC_DMASTS register, and wait for the RXDMA to real all the
+Page  609: EMAC_MACPMTCTRLSTS register.
+Page  609: 7.    Enable the EMAC receiver by setting the RE bit in the EMAC_MACCTRL register.
+Page  609: 10. Read the EMAC_MACPMTCTRLSTS register to clear RRWF/RMP, enable the EMAC transmit
+Page  610: When the bit 0 is set in the EMAC_PTPTSCTRL register and the bit 25 is also set in the TDES0 register,
+Page  610: When the bit 0 is set in the EMAC_PTPTSCTRL register and the bit 8 is also set in the
+Page  610: EMAC_PTPTSCTRL register, the EMAC will capture the time stamp of all the received frames on the
+Page  610: (EMAC_PTPTSHUD and EMAC_ PTPTSLUD). When the TI bit is set in the EMAC_PTPTSCTRL
+Page  610: stamp update register. If the TU bit is set in the EMAC_PTPTSCTRL register, a correction process
+Page  612: 1. Mask the time stamp trigger interrupt by setting the bit 9 in the EMAC_MAIMR register.
+Page  612: 2. Enable the time stamp by setting the bit 0 in the EMAC_PTPTSCTRL register.
+Page  612: 4. If the fine correction method is being used, program the EMAC_PTPTSAD register, set the bit 5 in
+Page  612: the EMAC_PTPTSCTRL register, poll the EMAC_PTPTSCTRL register until the bit 5 becomes 0.
+Page  612: 5. To select the fine correction method, program the bit 1 in the EMAC_PTPTSCTRL register.
+Page  612: 6. Write the system time value to be configured to the EMAC_PTPTSHUD and EMAC_PTPTSLUD)
+Page  612: 7. Set the bit 2 in the EMAC_PTPTSCTRL register, and start initializing the time stamp and polling
+Page  612: (EMAC_PTPTSHUD) and the Ethernet PTP time stamp low update register (EMAC_PTPTSLUD).
+Page  612: 2.    Set the bit 3 (TU) in the Ethernet PTP time stamp control register (EMAC_PTPTSCTRL).
+Page  612: bit 9 in the Ethernet MAC interrupt mask register (EMAC_MAIMR) to activate the time stamp
+Page  612: 4.    Set the bit 4 (TITE) in the Ethernet PTP time stamp control register (EMAC_PTPTSCTRL).
+Page  612: 5.    When this event generates an interrupt, read the EMAC_MAIMR register to clear the
+Page  612: 6.    Reprogram the EMAC_PTPTSAD register with the old value and set the bit 5 in the
+Page  612: EMAC_PTPTSCTRL register to update the addend register.
+Page  612: The EMAC provides a trigger interrupt when the system time is greater than the target time. Using an
+Page  612: EMAC                                    TMR2
+Page  613: Refer to the EMAC_PTPPPSCR register descriptor for more information about PTP pulse second
+Page  613: output. The following contents are based on the fact when the emac_pps_sel bit (bit 9) is cleared in the
+Page  613: PPSFREQ[3: 0] in the EMAC_PTPPPSCR register.
+Page  613: in the EMAC_PTPTSCTRL register); the pulse width of the PPS is 100 ms when the digital rollover
+Page  613: EMAC
+Page  613: 26.2.6 EMAC interrupts
+Page  613: The EMAC has two interrupt vectors: one is used for normal Ethernet operations and the other for the
+Page  613: When an Ethernet wakeup event is mapped on the EXINT line19 and the EMAC PMT interrupt is
+Page  614: 26.3 EMAC registers
+Page  614: EMAC_MACCTRL                       0x00                        0x0000 8000
+Page  614: EMAC_MACFRMF                       0x04                        0x0000 0000
+Page  614: EMAC_MACHTH                        0x08                        0x0000 0000
+Page  614: EMAC_MACHTL                        0x0C                        0x0000 0000
+Page  614: EMAC_MACMIIADDR                    0x10                        0x0000 0000
+Page  614: EMAC_MACMIIDT                      0x14                        0x0000 0000
+Page  614: EMAC_MACFCTRL                      0x18                        0x0000 0000
+Page  614: EMAC_MACVLT                        0x1C                        0x0000 0000
+Page  614: EMAC_MACRWFF                       0x28                        0x0000 0000
+Page  614: EMAC_MACPMTCTRLSTS                 0x2C                        0x0000 0000
+Page  614: EMAC_MACISTS                       0x38                        0x0000 0000
+Page  615: EMAC_MAIMR        0x3C                0x0000 0000
+Page  615: EMAC_MACA0H       0x40                0x0010 FFFF
+Page  615: EMAC_MACA0L       0x44                0xFFFF FFFF
+Page  615: EMAC_MACA1H       0x48                0x0000 FFFF
+Page  615: EMAC_MACA1L       0x4C                0xFFFF FFFF
+Page  615: EMAC_MACA2H       0x50                0x0000 FFFF
+Page  615: EMAC_MACA2L       0x54                0xFFFF FFFF
+Page  615: EMAC_MACA3H       0x58                0x0000 FFFF
+Page  615: EMAC_MACA3L       0x5C                0xFFFF FFFF
+Page  615: EMAC_MMCCTRL      0x100               0x0000 0000
+Page  615: EMAC_MMCRI        0x104               0x0000 0000
+Page  615: EMAC_MMCTI        0x108               0x0000 0000
+Page  615: EMAC_MMCRIM       0x10C               0x0000 0000
+Page  615: EMAC_MMCTIM       0x110               0x0000 0000
+Page  615: EMAC_MMCTFSCC     0x14C               0x0000 0000
+Page  615: EMAC_MMCTFMSCC    0x150               0x0000 0000
+Page  615: EMAC_MMCTFCNT     0x168               0x0000 0000
+Page  615: EMAC_MMCRFCECNT   0x194               0x0000 0000
+Page  615: EMAC_MMCRFAECNT   0x198               0x0000 0000
+Page  615: EMAC_MMCRGUFCNT   0x1C4               0x0000 0000
+Page  615: EMAC_PTPTSCTRL    0x700               0x0000 2000
+Page  615: EMAC_PTPSSINC     0x704               0x0000 0000
+Page  615: EMAC_PTPTSH       0x708               0x0000 0000
+Page  615: EMAC_PTPTSL       0x70C               0x0000 0000
+Page  615: EMAC_PTPTSH       0x708               0x0000 0000
+Page  615: EMAC_PTPTSL       0x70C               0x0000 0000
+Page  615: EMAC_PTPTSHUD     0x710               0x0000 0000
+Page  615: EMAC_PTPTSLUD     0x714               0x0000 0000
+Page  615: EMAC_PTPTSAD      0x718               0x0000 0000
+Page  615: EMAC_PTPTTH       0x71C               0x0000 0000
+Page  615: EMAC_PTPTTL       0x720               0x0000 0000
+Page  615: EMAC_PTPTSSR      0x728               0x0000 0000
+Page  615: EMAC_PTPPPSCR     0x72c               0x0000 0000
+Page  615: EMAC_DMABM        0x1000              0x0002 0101
+Page  615: EMAC_DMATPD       0x1004              0x0000 0000
+Page  615: EMAC_DMARPD       0x1008              0x0000 0000
+Page  615: EMAC_DMARDLADDR   0x100C              0x0000 0000
+Page  615: EMAC_DMATDLADDR   0x1010              0x0000 0000
+Page  615: EMAC_DMASTS       0x1014              0x0000 0000
+Page  615: EMAC_DMAOPM       0x1018              0x0000 0000
+Page  615: EMAC_DMAIE        0x101C              0x0000 0000
+Page  616: EMAC_DMAMFBOCNT                0x1020                            0x0000 0000
+Page  616: EMAC_DMACTD                    0x1048                            0x0000 0000
+Page  616: EMAC_DMACRD                    0x104C                            0x0000 0000
+Page  616: EMAC_DMACTBADDR                0x1050                            0x0000 0000
+Page  616: EMAC_DMACRBADDR                0x1054                            0x0000 0000
+Page  616: 26.3.1 Ethernet MAC configuration register (EMAC_MACCTRL)
+Page  616: Fast EMAC Speed
+Page  618: 26.3.2 Ethernet MAC frame filter register (EMAC_MACFRMF)
+Page  620: 26.3.3 Ethernet MAC Hash table high register (EMAC_MACHTH)
+Page  620: be used (EMAC_MACHTH or EMAC_MACHTL), and the other 5 bits determine which bit in the register
+Page  620: EMAC_MACHTH registers checked for filtering. If the destination address of the incoming frame is
+Page  620: 0xA00A98000045, the calculated 6-bit Hash value is 0x07, and the bit 7 in the EMAC_MACHTL register
+Page  620: 26.3.4 Ethernet MAC Hash table low register (EMAC_MACHTL)
+Page  620: The EMAC_MACHTL register contains the lower 32 bits of the Hash table. If the Hash filter is disabled
+Page  620: 26.3.5 Ethernet MAC MII address register (EMAC_MACMIIADDR)
+Page  621: When this bit is set, it indicates that the EMAC_MACMIIDT
+Page  621: is loaded to the EMAC_MACMIIDT register.
+Page  621: EMAC_MACMIIADDR and EMAC_MACMIIDT register.
+Page  621: The EMAC_MACMIIDT register is invalid before this bit is
+Page  621: operation. Similarly, the EMAC_MACMIIDT value is invalid
+Page  621: 26.3.6 Ethernet MAC MII data register (EMAC_MACMIIDT)
+Page  621: specified in the EMAC_MACMIIADDR register. EMAC_MACMIIDT register also stores data read out
+Page  621: 26.3.7 Ethernet MAC flow control register (EMAC_MACFCTRL)
+Page  622: to the EMAC_MACFCTRL register. The application must
+Page  622: (EMAC_MACFCTRL) should not be written until this bit is
+Page  623: 26.3.8 Ethernet MAC VLAN tag register (EMAC_MACVLT)
+Page  623: If the EMAC_MACVLT register is configured to be double-synchronized to the (G)MII clock domain,
+Page  623: (EMAC_MACRWFF)
+Page  623: Figure 26-18 Ethernet MAC remote wakeup frame filter register (EMAC_MACRWFF)
+Page  624: (EMAC_MACPMTCTRLSTS)
+Page  624: 26.3.11 Ethernet MAC interrupt status register (EMAC_MACISTS)
+Page  624: EMAC_MMCTI register. This bit is cleared when all bits in
+Page  625: EMAC_MMCRI register. This bit is cleared when all bits in
+Page  625: the EMAC_MACPMTCTRLSTS register). This bit is
+Page  625: access to the EMAC_MACPMTCTRLSTS register.
+Page  625: 26.3.12 Ethernet MAC interrupt mask register (EMAC_MAIMR)
+Page  625: corresponding event in the EMAC_MACISTS register.
+Page  625: EMAC_MACISTS register. This bit is applicable only when
+Page  625: in the MPT interrupt status bit of the EMAC_MACISTS
+Page  625: 26.3.13 Ethernet MAC address 0 high register (EMAC_MACA0H)
+Page  625: The EMAC_MACA0H register contains the upper 6 bits of the first 6-byte MAC address of the station.
+Page  625: big-endian mode) in the Ethernet MAC address 0 low register (EMAC_MACA0L). Consecutive write
+Page  626: 26.3.14 Ethernet MAC address 0 low register (EMAC_MACA0L)
+Page  626: 26.3.15 Ethernet MAC address 1 high register (EMAC_MACA1H)
+Page  626: big-endian mode) in the Ethernet MAC address 1 low register (EMAC_MACA1L) . Consecutive write
+Page  626: Bit 29: 24   MBC                0x00            rw       Bit 29: EMAC_MACA1H [15: 8]
+Page  626: Bit 28: EMAC_MACA1H [7: 0]
+Page  626: Bit 27: EMAC_MACA1L[31: 24]
+Page  626: Bit 24: EMAC_MACA1L[7: 0]
+Page  626: 26.3.16 Ethernet MAC address 1 low register (EMAC_MACA1H)
+Page  627: 26.3.17 Ethernet MAC address 2 high register (EMAC_MACA2H)
+Page  627: big-endian mode) in the Ethernet MAC address 2 low register (EMAC_MACA2L). Consecutive write
+Page  627: Bit 29: 24   MBC                0x00            rw       Bit 29: EMAC_MACA2H [15: 8]
+Page  627: Bit 28: EMAC_MACA2H [7: 0]
+Page  627: Bit 27: EMAC_MACA2L[31: 24]
+Page  627: Bit 24: EMAC_MACA2L[7: 0]
+Page  627: 26.3.18 Ethernet MAC address 2 low register (EMAC_MACA2L)
+Page  627: 26.3.19 Ethernet MAC address 3 high register (EMAC_MACA3H)
+Page  627: big-endian mode) in the Ethernet MAC address 3 low register (EMAC_MACA3L). Consecutive write
+Page  628: Bit 29: 24   MBC             0x00            rw       Bit 29: EMAC_MACA3H [15: 8]
+Page  628: Bit 28: EMAC_MACA3H [7: 0]
+Page  628: Bit 27: EMAC_MACA3L[31: 24]
+Page  628: Bit 24: EMAC_MACA3L[7: 0]
+Page  628: 26.3.20 Ethernet MAC address 3 low register (EMAC_MACA3L)
+Page  628: 26.3.21 Ethernet DMA bus mode register (EMAC_DMABM)
+Page  630: (EMAC_DMATPD)
+Page  630: The EMAC_DMATPD register enables the Tx DMA to check whether or not the current descriptor is
+Page  630: the current descriptor pointed to by the EMAC_DMACTD.
+Page  630: (EMAC_DMARPD)
+Page  630: The EMAC_DMARPD register enables the Rx DMA to check new descriptors. The Receive Poll
+Page  630: the current descriptor pointed to by the EMAC_DMACRD.
+Page  630: (EMAC_DMARDLADDR)
+Page  630: The EMAC_DMARDLADDR register points to the start of the receive descriptor list. The descriptor list
+Page  631: (EMAC_DMATDLADDR)
+Page  631: The EMAC_DMATDLADDR register points to the start of the transmit descriptor list. The descriptor list
+Page  631: 26.3.26 Ethernet DMA status register (EMAC_DMASTS)
+Page  631: The EMAC_DMASTS register contains all the status bits the DMA reports to the host. This register is
+Page  631: Bit 28       MPI                0x0             ro       register (EMAC_MACPMTCTRLSTS) to get the interrupt
+Page  632: EMAC_DMASTS[0]: Transmit interrupt
+Page  632: EMAC_DMASTS[2]: Transmit buffer unavailable
+Page  632: EMAC_DMASTS[6]: Receive interrupt
+Page  632: EMAC_DMASTS[14]: Early receive interrupt
+Page  632: EMAC_DMASTS[1]: Transmit process stopped
+Page  632: EMAC_DMASTS[3]: Transmit Jabber timeout
+Page  632: EMAC_DMASTS[4]: Receive FIFO overflow
+Page  632: EMAC_DMASTS[5]: Transmit data underflow
+Page  632: EMAC_DMASTS[7]: Receive buffer unavailable
+Page  632: EMAC_DMASTS[8]: Receive process stopped
+Page  632: EMAC_DMASTS[9]: Receive watchdog timeout
+Page  632: EMAC_DMASTS[10]: Early transmit interrupt
+Page  632: EMAC_DMASTS[13]: Fatal bus error
+Page  634: 26.3.27 Ethernet DMA operation mode register (EMAC_DMAOPM)
+Page  634: The EMAC_DMAOPM register defines the receive and transmit operation modes and commands. This
+Page  636: 26.3.28 Ethernet DMA interrupt enable register (EMAC_DMAIE)
+Page  636: The EMAC_DMAIE register enables the interrupts reported by the status register. Setting a bit to 1’b1
+Page  636: EMAC_DMASTS[0]: Transmit interrupt
+Page  636: EMAC_DMASTS[2]: Transmit buffer unavailable
+Page  636: EMAC_DMASTS[6]: Receive interrupt
+Page  636: EMAC_DMASTS[14]: Early receive interrupt
+Page  636: EMAC_DMASTS[1]: Transmit process stopped
+Page  636: EMAC_DMASTS[3]: Transmit Jabber timeout
+Page  636: EMAC_DMASTS[4]: Transmit overflow
+Page  636: EMAC_DMASTS[5]: Transmit data underflow
+Page  636: EMAC_DMASTS[7]: Transmit buffer u unavailable
+Page  636: EMAC_DMASTS[8]: Receive process stopped
+Page  636: EMAC_DMASTS[9]: Receive watchdog timeout
+Page  636: EMAC_DMASTS[10]: Early transmit interrupt
+Page  636: EMAC_DMASTS[13]: Fatal bus error
+Page  637: register (EMAC_DMAMFBOCNT)
+Page  638: (EMAC_DMACTD)
+Page  638: The EMAC_DMACTD register points to the start address of the transmit descriptor being read by the
+Page  638: (EMAC_DMACRD)
+Page  638: The EMAC_DMACRD register points to the start address of the receive descriptor being read by the
+Page  638: (EMAC_DMACTBADDR)
+Page  638: The EMAC_DMACTBADDR register points to the transmit buffer address being read by the DMA.
+Page  638: (EMAC_DMACRBADDR)
+Page  638: The EMAC_DMACRBADDR register points to the receive buffer address being read by the DMA.
+Page  638: 26.3.34 Ethernet MMC control register (EMAC_MMCCTRL)
+Page  638: The EMAC_MMCCTRL register defines the operating mode of the management counters.
+Page  639: 26.3.35 Ethernet MMC receive interrupt register (EMAC_MMCRI)
+Page  639: The EMAC_MMCRI register contains the interrupts generated in the following conditions:
+Page  639: When the counter stops rolling, an interrupt is set but the counter is still all 1. The EMAC_MMCRI is a
+Page  639: 26.3.36 Ethernet MMC transmit interrupt register (EMAC_MMCTI)
+Page  639: The EMAC_MMCTI register contains the interrupts generated in the following conditions: when the
+Page  639: EMAC_MMCTI is a 32-bit register. An interrupt bit is cleared when the MMC counter that generates the
+Page  640: 26.3.37 Ethernet MMC receive interrupt register (EMAC_MMCRIM)
+Page  640: The EMAC_MMCRIM contains the masks for interrupts generate when the receive statistic counters
+Page  640: (EMAC_MMCTIM)
+Page  640: The EMAC_MMCTIM contains the masks for interrupts generate when the transmit statistic counters
+Page  640: counter register (EMAC_MMCTFSCC)
+Page  641: collision counter register (EMAC_MMCTFMSCC)
+Page  641: (EMAC_MMCTFCNT)
+Page  641: register (EMAC_MMCRFCECR)
+Page  641: counter register (EMAC_MMCRFAECNT)
+Page  641: register (EMAC_MMCRGUFCNT)
+Page  641: (EMAC_PTPTSCTRL)
+Page  642: Enable Processing of PTP over EMAC Frames
+Page  642: this bit is cleared, the MAC ignores the PTP over EMAC
+Page  643: (EMAC_PTPSSINC)
+Page  643: Bit 7: 0     SSIV              0x00            rw       accuracy (by setting the bit 9 in the EMAC_PTPTSCTRL
+Page  643: 26.3.47 Ethernet PTP time stamp high register (EMAC_PTPTSH)
+Page  644: 26.3.48 Ethernet PTP time stamp low register (EMAC_PTPTSL)
+Page  644: EMAC_PTPTSCTRL register, each bit represents 1 ns,
+Page  644: (EMAC_PTPTSHUD)
+Page  644: TSUPDT bit in the EMAC_PTPTSCTRL register.
+Page  644: (EMAC_PTPTSLUD)
+Page  644: EMAC_PTPTSCTRL register, each bit represents 1 ns,
+Page  644: (EMAC_PTPTSAD)
+Page  645: 26.3.52 Ethernet PTP target time high register (EMAC_PTPTTH)
+Page  645: 26.3.53 Ethernet PTP target time low register (EMAC_PTPTTL)
+Page  645: (EMAC_PTPTSSR)
+Page  645: 26.3.55 Ethernet PTP PPS register (EMAC_PTPPPSCR)
+Page  645: The output of this field depends on the emac_pps_sel bit
+Page  645: Emac_pps_sel=0:
+Page  645: Emac_pps_sel=1:
+Page  716: 8. Updated the descriptions of Section 26 Ethernet media access control (EMAC)

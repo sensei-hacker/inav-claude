@@ -1,0 +1,13 @@
+Keyword: digital video
+Occurrences: 9
+================================================================================
+
+Page   28: 27       Digital Video parallel interface (DVP) .......................................... 647
+Page  647: 27 Digital Video parallel interface (DVP)
+Page  647: The digital video parallel interface (DVP) is able to capture parallel data output on the CMOS video
+Page  648: The digital video parallel interface uses the DVP pixel clock (DVP_PCLK) to capture the pixel parallel
+Page  648: pixel data. The digital video parallel interface (DVP) supports hardware or embedded code
+Page  648: bit in the DVP_CTRL register in order to ensure that it matches the output of the digital video camera.
+Page  648: output of the digital video camera. For example, in Figure 27-2, the VSP bit must be set (the
+Page  648: the output of the digital video camera. For example, in Figure 27-3, the VSP bit must be set to 0
+Page  651: The digital video parallel interface (DVP) supports two types of capture: single frame and continuous

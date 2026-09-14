@@ -1,0 +1,29 @@
+Keyword: UART4
+Occurrences: 25
+================================================================================
+
+Page   45: UART4/5/7/8                                                                                                                                TMR9/10/11
+Page   52: 52   59             UART4                 UART4 global interrupt                       0x0000_0110
+Page   62: 0x4000 4C00 - 0x4000 4FFF       UART4
+Page   81: UART4 reset
+Page   81: Bit 19       UART4RST         0x0            rw       0: Does not reset UART4
+Page   81: 1: Reset UART4
+Page   85: UART4 clock enable
+Page   85: Bit 19       UART4EN         0x0             rw        0: Disabled
+Page   90: UART4 clock enable in sleep mode
+Page   90: Bit 19       UART4LPEN    0x1        rw       0: Disabled
+Page  125: PA0    UART4_TX                            EMAC_MII_CRS                                           EVENTOUT
+Page  125: PA1    UART4_RX    QSPI1_IO3                                                                      EVENTOUT
+Page  129: PC10   UART4_TX    QSPI1_IO1                                 SDIO1_D2     DVP_D8                EVENTOUT
+Page  129: PC11   UART4_RX    QSPI1_CS                                  SDIO1_D3     DVP_D4      XMC_D2    EVENTOUT
+Page  132: PE8             TMR1_CH1C                                                             UART4_TX
+Page  132: PE9             TMR1_CH1                                                              UART4_RX
+Page  138: PH2      UART4_RX              QSPI1_IO0                                                      EVENTOUT
+Page  138: PH3      UART4_TX              QSPI1_IO1                                                      EVENTOUT
+Page  154: SDIO1      UART4 DMA ack
+Page  158: SDIO1    UART4                                                                         SYNC
+Page  159: 30          UART4_RX      62        TMR3_CH2           94        TMR20_HALL     126     TMR2_TRIG
+Page  159: 31          UART4_TX      63        TMR3_CH3           95        reserved       127     TMR4_TRIG
+Page  693: SDIO1    UART4                                                                              SYNC
+Page  694: 30              UART4_RX              62        TMR3_CH2          94           TMR20_HALL        126     TMR2_TRIG
+Page  694: 31              UART4_TX              63        TMR3_CH3          95           reserved          127     TMR4_TRIG

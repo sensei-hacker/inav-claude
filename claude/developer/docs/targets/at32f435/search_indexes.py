@@ -11,10 +11,15 @@ Phase 2 — Page extraction (uses pdftotext from poppler-utils):
   surrounding content.
 
 Each index covers a different document:
+  AT32F435-RefMan-Index           → reference-manaul-RM_AT32F435_437_EN_V2.06.pdf (Reference Manual: registers, per-pin IOMUX tables)
   AT32F435-Datasheet-Index        → AT32F437VGT7-datasheet.pdf (datasheet: pinouts, electrical specs)
   AT32F435-DMA-Index              → AN0103_AT32F435_437_DMA_Application_Note_EN_V2.0.1.pdf (DMA details)
   AT32F435-ADC-Index              → AN0093_AT32F435_437_ADC_Application_Note_EN_V2.0.1.pdf (ADC details)
   AT32F435-Performance-Index      → AN0092_AT32F435_437_Performance_Improve_V2.0.1_EN.pdf (Optimization)
+
+Note: for MUX/alternate-function *numbers*, don't search the PDF — use
+alternate-functions.tsv / af-by-function.txt, pre-extracted from the RM's own
+per-pin tables by parse_refman_iomux.py + parse_af_table.py.
 
 Usage:
     # Search all indexes, extract matched pages
@@ -57,6 +62,10 @@ DATA_DIR = BASE / "datasheets_application_notes"
 
 # Each index directory mapped to its source PDF (relative to DATA_DIR)
 INDEXES = {
+    "AT32F435-RefMan-Index": {
+        "description": "Reference Manual (registers, peripheral operation, per-pin IOMUX tables)",
+        "pdf": "reference-manaul-RM_AT32F435_437_EN_V2.06.pdf",
+    },
     "AT32F435-Datasheet-Index": {
         "description": "Datasheet (pinouts, electrical specs, alternate functions)",
         "pdf": "AT32F437VGT7-datasheet.pdf",

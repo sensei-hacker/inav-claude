@@ -2,10 +2,13 @@
 
 ## What You Have
 
-✅ **Four indexed AT32F435 documents** (datasheet, DMA, ADC, and performance notes)
-✅ **`search_indexes.py`** — unified search across all four indexes
+✅ **Five indexed AT32F435 documents** (Reference Manual, datasheet, DMA, ADC, and performance notes)
+✅ **`search_indexes.py`** — unified search across all five indexes
 ✅ **100+ pre-indexed keywords per index**
 ✅ **Two-phase lookup:** index first (instant), then PDF page extraction (pdftotext)
+✅ **`alternate-functions.tsv`/`af-by-function.txt`** — per-pin MUX ground truth
+  extracted directly from the Reference Manual's own tables (not a PDF search —
+  see `parse_refman_iomux.py` / `parse_af_table.py` and `CLAUDE.md`)
 
 ## How It Works
 
@@ -25,6 +28,7 @@ cd claude/developer/docs/targets/at32f435
 ./search_indexes.py DMA
 
 # Search one index only
+./search_indexes.py --index AT32F435-RefMan-Index register
 ./search_indexes.py --index AT32F435-Datasheet-Index SPI
 ./search_indexes.py --index AT32F435-DMA-Index channel
 ./search_indexes.py --index AT32F435-ADC-Index conversion

@@ -1,0 +1,1653 @@
+Keyword: interrupt
+Occurrences: 1649
+================================================================================
+
+Page    1:    Core: ARM®32-bit Cortex®-M4F CPU with FPU                       − All mappable to 16 external interrupt vectors
+Page    2: 1.1.4 Interrupt and exception vectors .................................................... 50
+Page    3: 4.1.7 Interrupts .................................................................................... 72
+Page    3: 4.3.4 Clock interrupt register (CRM_CLKINT) ........................................ 78
+Page    5: 6.2.12 External interrupt/wake-up lines .................................................. 139
+Page    6: 7.2.3 SCFG external interrupt configuration register 1
+Page    6: 7.2.4 SCFG external interrupt configuration register 2
+Page    6: 7.2.5 SCFG external interrupt configuration register 3
+Page    6: 7.2.6 SCFG external interrupt configuration register 4
+Page    6: 8        External interrupt/Event controller (EXINT) ................................ 151
+Page    6: 8.3.1 Interrupt enable register (EXINT_INTEN) ..................................... 152
+Page    7: 8.3.6 Interrupt status register (EXINT_ INTSTS) ................................... 153
+Page    7: 9.3.6 Interrupts ................................................................................... 157
+Page    7: 9.4.2 DMAMUX overflow interrupts ...................................................... 160
+Page    7: 9.5.1 DMA interrupt status register (DMA_STS) .................................... 162
+Page    7: 9.5.2 DMA interrupt flag clear register (DMA_CLR) ............................... 164
+Page    7: 9.5.11 DMAMUX channel interrupt clear flag register (DMA_ MUXSYNCCLR)169
+Page    7: 9.5.12 DMAMUX generator interrupt status register (DMA_ MUXGSTS) .... 169
+Page    7: 9.5.13 DMAMUX generator interrupt flag clear register (DMA_ MUXGCLR)170
+Page    8: 11.5 I 2 C interrupt requests ................................................................. 200
+Page    9: 12.10Interrupt requests ...................................................................... 219
+Page   10: 13.2.12 Interrupts ................................................................................ 237
+Page   10: 13.3.9 Interrupts ................................................................................... 246
+Page   11: 14.1.4.3 TMR6 and TMR7 DMA/interrupt enable register (TMRx_IDEN) .. 256
+Page   11: 14.1.4.4 TMR6 and TMR7 interrupt status register (TMRx_ISTS) ........... 256
+Page   11: 14.2.4.4 TMR2 to TMR5 DMA/interrupt enable register (TMRx_IDEN) .... 275
+Page   11: 14.2.4.5 TMR2 to TMR5 interrupt status register (TMRx_ISTS) .............. 276
+Page   12: 14.3.4.3 TMR9 and TMR12 DMA/interrupt enable register (TMRx_IDEN) 294
+Page   12: 14.3.4.4 TMR9 and TMR12 interrupt status register (TMRx_ISTS) ......... 295
+Page   13: 14.3.5.2 TMR10, TMR11, TMR13 and TMR14 DMA/interrupt enable register
+Page   13: 14.3.5.3 TMR10, TMR11, TMR13 and TMR14 interrupt status register
+Page   13: 14.4.4.4 TMR1, TMR8 and TMR20 DMA/interrupt enable register
+Page   13: 14.4.4.5 TMR1, TMR8 and TMR20 interrupt status register (TMRx_ISTS) 325
+Page   16: 18.4.7.1 Status flag and interrupts ...................................................... 370
+Page   18: 20.4 Interrupt management ................................................................ 403
+Page   18: 20.7.1.6 CAN interrupt enable register (CAN_INTEN) ........................... 417
+Page   19: 21.4 OTGFS interrupts ...................................................................... 426
+Page   20: 21.5.3.9 Initialize interrupt IN transfers ................................................ 438
+Page   20: 21.5.3.10     Initialize interrupt OUT transfers ........................................ 440
+Page   20: 21.5.4.20     Periodic IN (interrupt and synchronous) data transfers ......... 459
+Page   20: 21.6.3.2 OTGFS interrupt status control register ( OTGFS_GOTGINT) .... 466
+Page   21: 21.6.3.6 OTGFS interrupt register ( OTGFS_GINTSTS) .......................... 470
+Page   21: 21.6.3.7 OTGFS interrupt mask register ( OTGFS_GINTMSK) ................ 473
+Page   21: 21.6.4.5 OTGFS host all channels interrupt register ( OTGFS_HAINT) .... 479
+Page   21: 21.6.4.9 OTGFS host channelx interrupt register ( OTGFS_HCINTx)
+Page   21: 21.6.4.10     OTGFS host channelx interrupt mask register ( OTGFS_HCINTMSKx)
+Page   22: 21.6.5.4 OTGFS device OTGFSIN endpoint common interrupt mask register
+Page   22: 21.6.5.5 OTGFS device OUT endpoint common interrupt mask register
+Page   22: 21.6.5.6 OTGFS device all endpoints interrupt mask register
+Page   22: 21.6.5.7 OTGFS all endpoints interrupt mask register (OTGFS_ DAINTMSK)488
+Page   22: 21.6.5.8 OTGFS device IN endpoint FIFO empty interrupt mask register
+Page   22: 21.6.5.13     OTGFS device IN endpoint -x interrupt register (OTGFS_ DIEPINTx)
+Page   22: 21.6.5.14     OTGFS device OUT endpoint -x interrupt register
+Page   22: 22.3 Interrupt requests ...................................................................... 499
+Page   24: 24.8.2.2 Interrupt enable and FIFO status register x (XMC_BKxIS) (x=2,3) 542
+Page   24: 24.8.3.2 Interrupt enable and FIFO status register 4 (XMC_B K4IS) ........ 544
+Page   25: 25.4.12 SDIO clear interrupt register (SDIO_INTCLR) ............................ 577
+Page   25: 25.4.13 SDIO interrupt mask register (SDIO_INTEN) ............................. 577
+Page   26: 26.2.6 EMAC interrupts ......................................................................... 613
+Page   26: 26.3.11 Ethernet MAC interrupt status register (EMAC_MACISTS) ......... 624
+Page   26: 26.3.12 Ethernet MAC interrupt mask register (EMAC_MAIMR) .............. 625
+Page   26: 26.3.28 Ethernet DMA interrupt enable register (EMAC_DMAIE) ............ 636
+Page   27: 26.3.35 Ethernet MMC receive interrupt register (EMAC_MMCRI) .......... 639
+Page   27: 26.3.36 Ethernet MMC transmit interrupt register (EMAC_MMCTI) .......... 639
+Page   27: 26.3.37 Ethernet MMC receive interrupt register (EMAC_MMCRIM) ........ 640
+Page   27: 26.3.38 Ethernet MMC transmit interrupt register (EMAC_MMCTIM) ....... 640
+Page   28: 27.5 Interrupts and interrupt control .................................................... 653
+Page   28: 27.8.4 DVP interrupt enable register (DVP_IENA)................................... 664
+Page   28: 27.8.5 DVP interrupt status register (DVP_ISTS) .................................... 664
+Page   28: 27.8.6 DVP interrupt clear register (DVP_ICLR) ..................................... 664
+Page   30: 29.3.10 Interrupts ................................................................................ 692
+Page   30: 29.4.2 DMAMUX overflow interrupts ...................................................... 694
+Page   31: 29.5.20 DMAMUX synchronization interrupt status register
+Page   31: 29.5.21 DMAMUX synchronization interrupt clear flag register
+Page   31: 29.5.22 DMAMUX generator interrupt status register (DMA_ MUXGSTS) 710
+Page   31: 29.5.23 DMAMUX generator interrupt clear flag register (DMA_ MUXGCLR)710
+Page   32: Figure 8-1 External interrupt/Event controller block diagram .................................................................... 151
+Page   33: Figure 12-13 USART interrupt map diagram ............................................................................................. 220
+Page   33: Figure 13-15 SPI interrupts ....................................................................................................................... 237
+Page   34: Figure 13-24 I2S interrupts......................................................................................................................... 246
+Page   36: Figure 20-2 Transmit interrupt generation ................................................................................................. 402
+Page   36: Figure 20-3 Transmit interrupt generation ................................................................................................. 403
+Page   36: Figure 20-4 Receive interrupt 0 generation ............................................................................................... 403
+Page   36: Figure 20-5 Receive interrupt 1 generation ............................................................................................... 403
+Page   36: Figure 20-6 Status error interrupt generation ............................................................................................ 403
+Page   36: Figure 21-2 OTGFS interrupt hierarchy..................................................................................................... 426
+Page   37: Figure 21-8 Example of common interrupt OUT/IN transfers ................................................................... 441
+Page   37: Figure 22-1 ACC interrupt mapping diagram............................................................................................. 499
+Page   38: Figure 26-17 Ethernet interrupts................................................................................................................ 614
+Page   40: Table 8-1 External interrupt/Event controller register map and reset value .............................................. 152
+Page   40: Table 9-2 DMA interrupt requests .............................................................................................................. 157
+Page   40: Table 11-7 I2C interrupt requests ............................................................................................................... 200
+Page   41: Table 12-4 USART interrupt request ......................................................................................................... 220
+Page   41: Table 17-3 Interrupt control bits ................................................................................................................. 348
+Page   41: Table 22-1 ACC interrupt requests ............................................................................................................ 499
+Page   43: Table 29-2 DMA interrupts ......................................................................................................................... 692
+Page   46: Cortex®-M4F processor is a low-power consumption processor featuring low gate count, low interrupt
+Page   46: applications that require quicker response to interruption. Cortex®-M4F processor is based on ARMv7-
+Page   46: Interrupts and Power control
+Page   50: 1.1.4             Interrupt and exception vectors
+Page   50: Non maskable interrupt
+Page   50: 1       8                     PVM                       PVM from EXINT interrupt                  0x0000_0044
+Page   50: 2       9                     TAMPER                    Tamper interrupt                          0x0000_0048
+Page   50: 3       10                    ERTC_WKUP                 ERTC wakeup interrupt                     0x0000_004C
+Page   50: 4       11                    FLASH                     Flash global interrupt                    0x0000_0050
+Page   50: rable                                interrupt
+Page   50: 6       13                    EXINT0                    EXINT line0 interrupt                     0x0000_0058
+Page   50: 7       14                    EXINT1                    EXINT line1 interrupt                     0x0000_005C
+Page   50: 8       15                    EXINT2                    EXINT line2 interrupt                     0x0000_0060
+Page   50: 9       16                    EXINT3                    EXINT line3 interrupt                     0x0000_0064
+Page   50: 10      17                    EXINT4                    EXINT line4 interrupt                     0x0000_0068
+Page   50: 11      18                    EDMA data flow1           EDMA data flow1 global interrupt          0x0000_006C
+Page   50: Configu    EDMA data flow2           EDMA data flow2 global interrupt
+Page   50: Configu    EDMA data flow3           EDMA data flow3 global interrupt
+Page   50: Configu    EDMA data flow4           EDMA data flow4 global interrupt
+Page   51: Configu   EDMA data flow5        EDMA data flow5 global interrupt
+Page   51: Configu   EDMA data flow6        EDMA data flow6 global interrupt
+Page   51: Configu   EDMA data flow7        EDMA data flow7 global interrupt
+Page   51: 18   25             ADC1_2_3               ADC1, ADC2 and ADC3 global interrupt   0x0000_0088
+Page   51: 19   26             CAN1_TX                CAN1 TX interrupt                      0x0000_008C
+Page   51: 20   27             CAN1_RX0               CAN1 RX0 interrupt                     0x0000_0090
+Page   51: 21   28             CAN1_RX1               CAN1 RX1 interrupt                     0x0000_0094
+Page   51: 22   29             CAN_SE                 CAN state error interrupt              0x0000_0098
+Page   51: 23   30             EXINT9_5               EXINT line[9: 5] interrupt             0x0000_009C
+Page   51: Configu                          TMR1 break interrupt and TMR9 global
+Page   51: rable                            interrupt
+Page   51: rable                            interrupt
+Page   51: Configu   TMR1_TRG_HALL_T        TMR1 trigger and HALL interrupt and
+Page   51: rable     MR11                   TMR11 global interrupt
+Page   51: 27   34             TMR1_CH                TMR1 channel interrupt                 0x0000_00AC
+Page   51: 28   35             TMR2                   TMR2 global interrupt                  0x0000_00B0
+Page   51: 29   36             TMR3                   TMR3 global interrupt                  0x0000_00B4
+Page   51: 30   37             TMR4                   TMR4 global interrupt                  0x0000_00B8
+Page   51: 31   38             I2C1_EVT               I C1 event interrupt                   0x0000_00BC
+Page   51: 32   39             I2C1_ERR               I C1 error interrupt                   0x0000_00C0
+Page   51: 33   40             I2C2_EVT               I C2 event interrupt                   0x0000_00C4
+Page   51: 34   41             I2C2_ERR               I C2 error interrupt                   0x0000_00C8
+Page   51: 35   42             SPI1                   SPI1 global interrupt                  0x0000_00CC
+Page   51: 36   43             SPI2_I2S2EXT           SPI2 and IS2EXT global interrupt       0x0000_00D0
+Page   51: 37   44             USART1                 USART1 global interrupt                0x0000_00D4
+Page   51: 38   45             USART2                 USART2 global interrupt                0x0000_00D8
+Page   51: 39   46             USART3                 USART3 global interrupt                0x0000_00DC
+Page   51: 40   47             EXINT15_10             EXINT line[15: 10] global interrupt    0x0000_00E0
+Page   51: 41   48             ERTCAlarm              ERTC alarm through EXINT interrupt     0x0000_00E4
+Page   51: rable                            EXINT interrupt
+Page   51: Configu                          TMR8 break interrupt and TMR12
+Page   51: rable                            global interrupt
+Page   51: Configu                          TMR8 overflow interrupt and TMR13
+Page   51: rable                            global interrupt
+Page   51: Configu   TMR8_TRG_HALL_T        TMR8 trigger and HALL interrupt and
+Page   51: rable     MR14                   TMR14 global interrupt
+Page   51: 46   53             TMR8_CH                TMR8 channel interrupt                 0x0000_00F8
+Page   51: 47   54             EDMA data flow8        EDMA data flow8 global interrupt       0x0000_00FC
+Page   51: 48   55             XMC                    XMC global interrupt                   0x0000_0100
+Page   52: 49   56             SDIO1                 SDIO1 global interrupt                       0x0000_0104
+Page   52: 50   57             TMR5                  TMR5 global interrupt                        0x0000_0108
+Page   52: 51   58             SPI3_I2S3EXT          SPI3 and I2S3EXT global interrupt            0x0000_010C
+Page   52: 52   59             UART4                 UART4 global interrupt                       0x0000_0110
+Page   52: 53   60             UART5                 UART5 global interrupt                       0x0000_0114
+Page   52: Configu                         TMR6 global interrupt
+Page   52: interrupt
+Page   52: 55   62             TMR7                  TMR7 global interrupt                        0x0000_011C
+Page   52: 56   63             DMA1 channel1         DMA1 channel1 global interrupt               0x0000_0120
+Page   52: Configu                         DMA1 channel2 global interrupt
+Page   52: Configu                         DMA1 channel3 global interrupt
+Page   52: Configu                         DMA1 channel4 global interrupt
+Page   52: Configu                         DMA1 channel5 global interrupt
+Page   52: 61   68             EMAC2                 Ethernet global interrupt                    0x0000_0134
+Page   52: Configu                         Ethernet   wakeup      interrupt   through
+Page   52: 63   70             CAN2_TX               CAN2 TX interrupt                            0x0000_013C
+Page   52: 64   71             CAN2_RX0              CAN2 RX0 interrupt                           0x0000_0140
+Page   52: 65   72             CAN2_RX1              CAN2 RX1 interrupt                           0x0000_0144
+Page   52: 66   73             CAN2_SE               CAN2 status error interrupt                  0x0000_0148
+Page   52: 67   74             OTGFS1                OTGFS1 CAN2 status error interrupt           0x0000_014C
+Page   52: Configu                         DMA1 channel6 global interrupt
+Page   52: Configu                         DMA1 channel7 global interrupt
+Page   52: 71   78             USART6                USART6 global interrupt                      0x0000_015C
+Page   52: 72   79             I2C3_EVT              I2C2 event interrupt                         0x0000_0160
+Page   52: 73   80             I2C3_ERR              I2C2 error interrupt                         0x0000_0164
+Page   52: Configu                         OTGFS2 standby wakeup interrupt
+Page   52: 77   84             OTGFS2                OTGFS2 global interrupt                      0x0000_0174
+Page   52: 78   85             DVP                   DVP global interrupt                         0x0000_0178
+Page   52: 81   88             FPU                   FPU exception interrupt                      0x0000_0184
+Page   52: 82   89             UART7                 UART7 global interrupt                       0x0000_0188
+Page   52: 83   90   Configu   UART8                 UART8 global interrupt                       0x0000_018C
+Page   53: 84      91                 SPI4                   SPI4 global interrupt                0x0000_0190
+Page   53: 91      98                 QSPI2                  QSPI2 global interrupt               0x0000_01AC
+Page   53: 92      99                 QSPI1                  QSPI1 global interrupt               0x0000_01B0
+Page   53: 94      101                DMAMUX                 DMAMUX overflow interrupt            0x0000_01B8
+Page   53: 102     109                SDIO2                  SDIO2 global interrupt               0x0000_01D8
+Page   53: 103     110                ACC                    ACC global interrupt                 0x0000_01DC
+Page   53: 104     111                TMR20_BRK              TMR20 break interrupt                0x0000_01E0
+Page   53: 105     112                TMR20_OVF              TMR20 overflow interrupt             0x0000_01E4
+Page   53: 106     113                TMR20_TRG_HALL         TMR20 trigger and HALL interrupt     0x0000_01E8
+Page   53: 107     114                TMR20_CH               TMR20 channel interrupt              0x0000_01EC
+Page   53: 108     115                DMA2 channel0          DMA2 channel0 global interrupt       0x0000_01F0
+Page   53: Configu   DMA2 channel1          DMA2 channel1 global interrupt
+Page   53: Configu   DMA2 channel2          DMA2 channel2 global interrupt
+Page   53: Configu   DMA2 channel3          DMA2 channel3 global interrupt
+Page   53: Configu   DMA2 channel4          DMA2 channel4 global interrupt
+Page   53: Configu   DMA2 channel5          DMA2 channel5 global interrupt
+Page   53: Configu   DMA2 channel6          DMA2 channel6 global interrupt
+Page   53: Note: AT32F437 supports EMAC and EMAC_WKUP interrupts, but AT32F435 does not.
+Page   53: decremented to zero. It can generate periodic interrupts, so it is often used as multi-task scheduling
+Page   54: Before that, it is a must for initializing MSP, because the first instruction may be interrupted by NMI or
+Page   63:    Power voltage detector is provided to issue an interrupt when the supply voltage is lower or
+Page   64: The PVM interrupt will be generated through the EXTI line 16 when VDD rises above the PVM threshold.
+Page   65: mode as soon as the system exits the lowest-priority interrupt service routine.
+Page   66: 1) If the WFI is executed to enter Sleep mode, any peripheral interrupt can wake up the device from
+Page   66:  Enabling a peripheral interrupt (it is not enabled in the NVIC) and enabling the SEVONPEND bit.
+Page   66: When the MCU resumes, the peripheral interrupt pending bit and NVIC channel pending bit must
+Page   66: interrupt entry/exit.
+Page   66: 1) When the Sleep mode is entered by executing a WFI instruction, the interrupt generated on any
+Page   66: external interrupt line in Interrupt mode can wake up the system from Deepsleep mode.
+Page   66: 2) When the Sleep mode is entered by executing a WFE instruction, the interrupt generated on any
+Page   66: external interrupt line in Event mode can wake up the system from Deepsleep mode.
+Page   72: to the break input of TMR1 and TMR8 and an interrupt is generated. This interrupt is directly linked to
+Page   72: CPU NMI so that the software can perform rescue operations. The NMI interrupt keeps executing until
+Page   72: the CFD interrupt pending bit is cleared. This is why the CFD interrupt has to be cleared in the NMI
+Page   72: completion of the switch. During this switch period, the DMA remain working, and the interrupt events
+Page   72: 4.1.7       Interrupts
+Page   72: source. An interrupt request is generated when the interrupt corresponding to the clock source is enabled.
+Page   72: If a failure is detected on the HEXT clock, the CFD interrupt is generated. Such interrupt is directly linked
+Page   78: 4.3.4           Clock interrupt register (CRM_CLKINT)
+Page   78: PLL stable interrupt enable
+Page   78: HEXT stable interrupt enable
+Page   78: HICK stable interrupt enable
+Page   78: LEXT stable interrupt enable
+Page   78: LICK stable interrupt enable
+Page   79: LICK stable interrupt flag
+Page   95: DMA remain working, and the interrupt events are recorded
+Page  113: Operation done flag interrupt enable
+Page  113: Bit 12       ODFIE          0x0             rw       0: Interrupt is disabled;
+Page  113: 1: Interrupt is enabled.
+Page  113: Error interrupt enable
+Page  113: This bit enables EPPERR or PROGERR interrupt.
+Page  113: 0: Interrupt is disabled;
+Page  113: 1: Interrupt is enabled.
+Page  115: Operation done flag interrupt enable
+Page  115: Bit 12       ODFIE          0x0             rw       0: Interrupt is disabled;
+Page  115: 1: Interrupt is enabled.
+Page  115: Error interrupt enable
+Page  115: This bit enables EPPERR or PROGERR interrupt.
+Page  115: 0: Interrupt is disabled;
+Page  115: 1: Interrupt is enabled.
+Page  120:  Each pin can be configured as external interrupt input.
+Page  139: 6.2.12 External interrupt/wake-up lines
+Page  139: Each pin can be used as an external interrupt input. The corresponding pin should be configured as
+Page  143:  Manage the external interrupts connected to the GPIOs
+Page  144: 7.2.3 SCFG external interrupt configuration register 1
+Page  144: EXINT3 external interrupt.
+Page  144: EXINT2 external interrupt.
+Page  144: EXINT1 external interrupt.
+Page  145: EXINT0 external interrupt.
+Page  145: 7.2.4 SCFG external interrupt configuration register 2
+Page  145: EXINT7 external interrupt.
+Page  145: EXINT6 external interrupt.
+Page  146: EXINT5 external interrupt.
+Page  146: EXINT4 external interrupt.
+Page  146: 7.2.5 SCFG external interrupt configuration register 3
+Page  146: EXINT11 external interrupt.
+Page  146: Bit 11: 8    EXINT10    0x0000          rw       EXINT10 external interrupt.
+Page  147: EXINT9 external interrupt.
+Page  147: EXINT8 external interrupt.
+Page  147: 7.2.6 SCFG external interrupt configuration register 4
+Page  147: EXINT15 external interrupt.
+Page  148: EXINT14 external interrupt.
+Page  148: EXINT13 external interrupt.
+Page  148: EXINT12 external interrupt.
+Page  151: 8       External interrupt/Event controller (EXINT)
+Page  151: EXINT consists of 23 interrupt lines EXINT_LINE[22:0], each of which can generate an interrupt or
+Page  151: event by edge detection trigger or software trigger. EXINT can enable or disable an interrupt or event
+Page  151: to respond to the trigger source in order to generate an interrupt or event.
+Page  151: Figure 8-1 External interrupt/Event controller block diagram
+Page  151: EXINT_SWTRG[22:0]                       Interrupt 0~22
+Page  151:       Independent trigger selection on each interrupt line
+Page  151:       Independent enable bit on each interrupt
+Page  151:       Independent status bit on each interrupt
+Page  151:       Each interrupt can be cleared independently.
+Page  151: With up to 23 interrupt lines EXINT_LINE[22:0], EXINT can detect not only GPIO external interrupt
+Page  151: detection mechanism, where, GPIO interrupt sources can be selected with IOMUX_EXINTCx register.
+Page  151: interrupt line can be used to generate an event or interrupt.
+Page  151: In addition, EXINT supports independent software trigger for the generation of an event or interrupt. This
+Page  151: EXINT can enable or disable an interrupt or event individually through software configuration such as
+Page  151: EXINT_INTEN and EXINT_EVTEN register, indicating that the corresponding interrupt or event must be
+Page  151: EXINT also features an independent interrupt status bit. Reading access to EXINT_INTSTS register can
+Page  151: obtain the corresponding interrupt status. The status flag is cleared by writing “1” to this register.
+Page  151: Interrupt initialization procedure
+Page  151:  Select an interrupt source by setting IOMUX_EXINTCx register (This is required if GPIO is used
+Page  151: as an interrupt source).
+Page  152:     Enable interrupt or event by setting EXINT_INTEN and EXINT_EVTEN register.
+Page  152: trigger interrupt).
+Page  152: Interrupt clear procedure
+Page  152:  Writing “1” to the EXINT_INTSTS register to clear the interrupts generated, and the
+Page  152: Table 8-1 External interrupt/Event controller register map and reset value
+Page  152: 8.3.1        Interrupt enable register (EXINT_INTEN)
+Page  152: Interrupt enable or disable on line x
+Page  152: 0: Interrupt request is disabled.
+Page  152: Bit 22: 0    INTENx           0x00000         rw       1: Interrupt request is enabled.
+Page  152: interrupt and event on line x.
+Page  153: interrupt and event on line x.
+Page  153: generate an interrupt.
+Page  153: Bit 22: 0    SWTx       0x00000         rw       event on the corresponding interrupt line automatically.
+Page  153: 8.3.6        Interrupt status register (EXINT_ INTSTS)
+Page  153: 0: No interrupt occurred.
+Page  153: Bit 22: 0    LINEx      0x00000         Rw1c     1: Interrupt occurred.
+Page  154: enhancing system performance and reducing the generation of interrupts.
+Page  155: and interrupt mode
+Page  157: 9.3.6          Interrupts
+Page  157: An interrupt can be generated on a DMA half-transfer, transfer complete and transfer error. Each channel
+Page  157: has its specific interrupt flag, clear and enable bits, as shown in the table below.
+Page  157: Table 9-2 DMA interrupt requests
+Page  157: Interrupt event           Event flag bit       Clear control bit           Enable control bit
+Page  160: 9.4.2          DMAMUX overflow interrupts
+Page  160: the DMA_MUXGCLR register. An interrupt will be generated if the interrupt enable bit TRGOVIEN is set
+Page  160: SYNCOVFCx bit in the DMA_MUXSYNCCLR register. An interrupt will be generated if the interrupt
+Page  162: 9.5.1         DMA interrupt status register (DMA_STS)
+Page  164: 9.5.2           DMA interrupt flag clear register (DMA_CLR)
+Page  164: Channel 7 global interrupt flag clear
+Page  164: Channel 6 global interrupt flag clear
+Page  165: Channel 5 global interrupt flag clear
+Page  165: Channel 4 global interrupt flag clear
+Page  165: Channel 3 global interrupt flag clear
+Page  165: Channel 2 global interrupt flag clear
+Page  166: Channel 1 global interrupt flag clear
+Page  166: Data transfer error interrupt enable
+Page  166: Half-transfer interrupt enable
+Page  166: Transfer complete interrupt enable
+Page  168: Synchronization overrun interrupt enable
+Page  168: Bit 8        SYNCOVIEN        0x0                      0: Interrupt disabled
+Page  168: 1: Interrupt enabled
+Page  169: Trigger overrun interrupt enable
+Page  169: Bit 8       TRGOVIEN          0x0             rw       0: Interrupt disabled
+Page  169: 1: Interrupt enabled
+Page  169: Synchronization overrun interrupt flag
+Page  169: 9.5.11 DMAMUX channel interrupt clear flag register
+Page  169: Synchronization overrun interrupt flag clear
+Page  169: 9.5.12 DMAMUX generator interrupt status register
+Page  169: Trigger overrun interrupt flag
+Page  170: 9.5.13 DMAMUX generator interrupt flag clear register
+Page  170: Trigger overrun interrupt flag clear
+Page  175: Interrupt
+Page  179: be set in the I2C_STS register, and the SCL, at this point, will be pulled low, an interrupt
+Page  185: ― Write operation through interrupts or DMA: Clear the TXDT register by setting the TDBE bit
+Page  185: through software, then set the TDIS bit to generate a TDIS event, which generates an interrupt
+Page  185: or DMA request. At this point, data is written to the TXDT register using DMA or interrupt
+Page  185: An interrupt will be generated if the corresponding interrupt enable bit is enabled. For more
+Page  185: information about interrupt generation, refer to the interrupt chapter.
+Page  188: 2. Enable ALERT interrupt if necessary;
+Page  188: 4. The host will generate ALERT interrupt if enabled;
+Page  188: 5. The host then processes the interrupt and accesses to all devices through ARA (Alert Response
+Page  198: interrupts, etc. in the DMA_CHCTRL register;
+Page  198: (DMA_CxDTCNT=0), the data transfer is complete (An interrupt is generated if enabled).
+Page  198: interrupts, etc. in the DMA_CHCTRL register
+Page  198: (DMA_CxDTCNT=0), the data transfer is complete (An interrupt is generated if enabled).
+Page  200: 11.5 I 2 C interrupt requests
+Page  200: The following table lists all the I2C interrupt requests.
+Page  200: Table 11-7 I2C interrupt requests
+Page  200: Interrupt event                    Event flag                 Enable control bit
+Page  200: Transmit interrupt state                 TDIS                         TDIEN
+Page  201: Error interrupt enable
+Page  201: Bit 7        ERRIEN      0x0             rw       0: Error interrupt disabled
+Page  201: 1: Error interrupt enabled
+Page  201: Data transfer complete interrupt enable
+Page  201: Bit 6        TDCIEN      0x0             rw       0: Data transfer complete interrupt disabled
+Page  201: 1: Data transfer complete interrupt enabled
+Page  201: Stop generation complete interrupt enable
+Page  201: Bit 5        STOPIEN     0x0             rw       0: Stop generation complete interrupt disabled
+Page  201: 1: Stop generation complete interrupt enabled
+Page  202: Acknowledge fail interrupt enable
+Page  202: Bit 4        ACKFAILIEN    0x0             rw       0: Acknowledge fail interrupt disabled
+Page  202: 1: Acknowledge fail interrupt enabled
+Page  202: Address match interrupt enable
+Page  202: Bit 3        ADDRIEN       0x0             rw       0: Address match interrupt disabled
+Page  202: 1: Address match interrupt enabled
+Page  202: Data receive interrupt enable
+Page  202: Bit 2        RDIEN         0x0             resd     0: Data receive interrupt disabled
+Page  202: 1: Data receive interrupt enabled
+Page  202: Data transmit interrupt enable
+Page  202: Bit 1        TDIEN         0x0             rw       0: Data transmit interrupt disabled
+Page  202: 1: Data transmit interrupt enabled
+Page  205: Transmit data interrupt status
+Page  207: interrupt control logic                                                                                                 TEN
+Page  208:  Programmable 10 interrupt sources with flags
+Page  214: 6.    Configure DMA interrupt generation after half or full transfer in the DMA control register.
+Page  215: 6.   Configure DMA interrupt generation after half or full transfer in the DMA control register.
+Page  215: interrupt will occur.
+Page  216: USART. The TDBE bit is set whenever the TDR is empty, and an interrupt is generated if the TDBEIEN
+Page  216: 5.  Interrupt configuration: Refer to 12.10 Interrupt requests.
+Page  217: and the RDBF is set accordingly. An interrupt is generated if the RDBFIEN is set.
+Page  217: whether there are interrupts to generate using the interrupt enable bits.
+Page  217: 5. Interrupt configuration: Refer to 12.10 Interrupt requests.
+Page  217:  An interrupt is generated when the RDBFIEN is set.
+Page  217:  Non-LIN mode: It is handled as a framing error, and the FERR is set. An interrupt is generated if
+Page  217: the corresponding interrupt bit is enabled. Refer to framing error described below for details.
+Page  217:  LIN mode: It is handled as a break frame, and the BFF bit is set. An interrupt is generated if the
+Page  217:  It is handled as a data frame, and the IDLEF bit is set. An interrupt is generated if the IDLEIEN is
+Page  218: interrupt. In DMA mode, an interrupt is generated if the ERRIEN.
+Page  218:  An interrupt is generated if the RDBFIEN is set or both ERRIEN and DMAREN are set.
+Page  219:  No interrupt is generated in non-DMA mode. However, since the NERR bit is set at the same
+Page  219: time as the RDBF bit, the RDBF bit will generate an interrupt. In DMA mode, an interrupt will be
+Page  219: 12.10 Interrupt requests
+Page  219: USART interrupt generator serves as a control center of USART interrupts. It is used to monitor the
+Page  219: interrupt source inside the USART in real time and the generation of interrupts according to the
+Page  219: programmed interrupt control bits. Table 12-4 shows the USART interrupt source and interrupt enable
+Page  219: control bit. An interrupt will be generated over an event when the corresponding interrupt enable bit is
+Page  220: Table 12-5 USART interrupt request
+Page  220: Interrupt event                              Event flag        Enable bit
+Page  220: Figure 12-13 USART interrupt map diagram
+Page  220: interrupt
+Page  223: PERR interrupt enable
+Page  223: Bit 8        PERRIEN    0x0         rw       0: Interrupt is disabled.
+Page  223: 1: Interrupt is enabled.
+Page  223: TDBE interrupt enable
+Page  223: Bit 7        TDBEIEN    0x0         rw       0: Interrupt is disabled.
+Page  223: 1: Interrupt is enabled.
+Page  223: TDC interrupt enable
+Page  223: Bit 6        TDCIEN     0x0         rw       0: Interrupt is disabled.
+Page  223: 1: Interrupt is enabled.
+Page  223: RDBF interrupt enable
+Page  223: Bit 5        RDBFIEN    0x0         rw       0: Interrupt is disabled.
+Page  223: 1: Interrupt is enabled.
+Page  223: IDLE interrupt enable
+Page  223: Bit 4        IDLEIEN    0x0         rw       0: Interrupt is disabled.
+Page  223: 1: Interrupt is enabled.
+Page  224: Break frame interrupt enable
+Page  225: CTSCF interrupt enable
+Page  225: Bit 10        CTSCFIEN      0x0             rw       0: CTSCF interrupt disabled
+Page  225: 1: CTSCF interrupt enabled
+Page  225: Error interrupt enable
+Page  225: An interrupt is generated when a framing error, overflow
+Page  225: 0: Error interrupt is disabled.
+Page  225: 1: Error interrupt is enabled.
+Page  227: Interrupt generator
+Page  228:      Programmable error interrupt flags (CS pulse error, receiver overflow error, master mode error
+Page  228:  Programmable transmit data buffer empty interrupt and receive data buffer full interrupt
+Page  230: interrupt is generated if ERRIE=1. When the MMERR is set, the SPIEN and MSTEN cannot be set by
+Page  231: (MMERR bit) is set at this time. An interrupt is generated if ERRIE=1. When the MMERR bit is set, the
+Page  231: CRC value, then the CCERR bit will be set. An interrupt is generated if ERRIE=1.
+Page  232: CCERR flag is set. An interrupt is generated if the ERRIE bit is enabled.
+Page  232:  Configure DMA interrupt generation after half or full transfer in the DMA control register.
+Page  232:  Configure DMA interrupt generation after half or full transfer in the DMA control register
+Page  233: indicating that the SPI_DT register is empty. If the TDBEIE bit is set, an interrupt is generated. After the
+Page  233: interrupt (TDBEIE =1) through the TDBE bit.
+Page  234: RDBF is set, meaning that there are some data to be read in the SPI_DT register. An interrupt is
+Page  234: next received data will do. At this point, the ROERR is set. An interrupt is generated if the ERRIE is set.
+Page  234: interrupt (RDBEIE =1) through the RDBE bit.
+Page  237: 13.2.12 Interrupts
+Page  237: Figure 13-17 SPI interrupts
+Page  237: SPI interrupt
+Page  238: Interrupt generator
+Page  244:  Configure DMA interrupt generation after half or full transfer in the DMA control register.
+Page  245:       Configure DMA interrupt generation after half or full transfer in the DMA control register
+Page  245: and their interrupt enable bits including TDBEIE, RDBFIE and ERRIE are identical.
+Page  245: the corresponding interrupts, is not supported.
+Page  245: the transmitter. An interrupt is generated when the ERRIE is set.
+Page  246: 13.3.9 Interrupts
+Page  246: Figure 13-26 I2S interrupts
+Page  248: Transmit data buffer empty interrupt enable
+Page  248: Receive data buffer full interrupt enable
+Page  248: Error interrupt enable
+Page  248: This bit controls interrupt generation when errors occur
+Page  256: 14.1.4.3 TMR6 and TMR7 DMA/interrupt enable register (TMRx_IDEN)
+Page  256: Overflow interrupt enable
+Page  256: 14.1.4.4 TMR6 and TMR7 interrupt status register (TMRx_ISTS)
+Page  256: Overflow interrupt flag
+Page  257:       Interrupt/DMA is generated at overflow event, trigger event and channel event
+Page  264: is detected, and the capture compare interrupt flag bit (CxIF) is set to 1. An interrupt or a DMA request
+Page  264:  If needed, enable the relevant interrupt or DMA request by setting the C1IEN bit in the
+Page  275: 14.2.4.4 TMR2 to TMR5 DMA/interrupt enable register (TMRx_IDEN)
+Page  275: Bit 6      TIEN       0x0             rw       Trigger interrupt enable
+Page  276: Channel 4 interrupt enable
+Page  276: Channel 3 interrupt enable
+Page  276: Channel 2 interrupt enable
+Page  276: Channel 1 interrupt enable
+Page  276: Overflow interrupt enable
+Page  276: 14.2.4.5 TMR2 to TMR5 interrupt status register (TMRx_ISTS)
+Page  276: Trigger interrupt flag
+Page  276: Channel 4 interrupt flag
+Page  276: Channel 3 interrupt flag
+Page  276: Channel 2 interrupt flag
+Page  276: Channel 1 interrupt flag
+Page  276: Overflow interrupt flag
+Page  283: 11: ERTC wakeup interrupt
+Page  283:  Interrupt is generated at overflow event, trigger event and channel event
+Page  284:  Interrupt is generated at overflow event and channel event
+Page  289: is detected, and the capture compare interrupt flag bit (CxIF) is set. An interrupt or a DMA request will
+Page  289:  If needed, enable the relevant interrupt by setting the C1IEN bit in the TMRx_IDEN register.
+Page  294: 14.3.4.3 TMR9 and TMR12 DMA/interrupt enable register (TMRx_IDEN)
+Page  294: Trigger interrupt enable
+Page  294: Channel 2 interrupt enable
+Page  295: Channel 1 interrupt enable
+Page  295: Overflow interrupt enable
+Page  295: 14.3.4.4 TMR9 and TMR12 interrupt status register (TMRx_ISTS)
+Page  295: Trigger interrupt flag
+Page  295: Channel 2 interrupt flag
+Page  295: Channel 1 interrupt flag
+Page  295: Overflow interrupt flag
+Page  300: 14.3.5.2 TMR10, TMR11, TMR13 and TMR14 DMA/interrupt enable
+Page  300: Channel 1 interrupt enable
+Page  300: Overflow interrupt enable
+Page  300: 14.3.5.3 TMR10, TMR11, TMR13 and TMR14 interrupt status register
+Page  300: Channel 1 interrupt flag
+Page  300: Overflow interrupt flag
+Page  304:  Interrupt/DMA is generated at overflow event, trigger event, brake signal input and channel event
+Page  313: is detected, and the capture compare interrupt flag bit (CxIF) is set to 1. An interrupt/DMA request will
+Page  313:  If needed, enable the relevant interrupt or DMA request by setting the C1IEN bit in the
+Page  318:  If the brake interrupt or DMA request is enabled, the brake statue flag is set, and a brake
+Page  318: interrupt or DMA request can be generated.
+Page  324: 14.4.4.4 TMR1, TMR8 and TMR20 DMA/interrupt enable register
+Page  324: Brake interrupt enable
+Page  324: Trigger interrupt enable
+Page  324: HALL interrupt enable
+Page  324: Channel 4 interrupt enable
+Page  324: Channel 3 interrupt enable
+Page  325: Channel 2 interrupt enable
+Page  325: Channel 1 interrupt enable
+Page  325: Overflow interrupt enable
+Page  325: 14.4.4.5 TMR1, TMR8 and TMR20 interrupt status register
+Page  325: Brake interrupt flag
+Page  325: Trigger interrupt flag
+Page  325: HALL interrupt flag
+Page  325: Channel 4 interrupt flag
+Page  325: Channel 3 interrupt flag
+Page  325: Channel 2 interrupt flag
+Page  325: Channel 1 interrupt flag
+Page  326: Overflow interrupt flag
+Page  335:    The downcounter can be reloaded by enabling the counter interrupt.
+Page  335: WWDT offers reload counter interrupt feature. If enabled, the WWDT will set the RLDF flag when the
+Page  335: counter value reaches 0x40h, and an interrupt is generated accordingly. The interrupt service routine
+Page  336: Reload counter interrupt
+Page  337: Reload counter interrupt flag
+Page  341:    5 x interrupts: alarm A, alarm B, periodic auto-wakeup, tamper detection and time stamp
+Page  344: respective interrupts.
+Page  344: with the VAL value. An interrupt is also generated if a periodic wakeup interrupt is enabled.
+Page  346: setting the TSIEN bit, an interrupt can be generated when a time stamp event occurs.
+Page  346: The TP1F or TP2F will be set when a valid tamper event is detected. An interrupt will also be generated
+Page  346: if a tamper detection interrupt is enabled. If the TPTSEN bit is already set, a time stamp event will be
+Page  346: 3. According to your needs, enable a tamper detection interrupt (TPIEN=1)
+Page  347: 6. According to your needs, enable a tamper interrupt (TPIEN=1)
+Page  347: events. To enable an ERTC interrupt, configure as follows:
+Page  347: 1. Configure the EXINT line corresponding to ERTC interrupts as an interrupt mode and enable it,
+Page  347: 2. Enable a NVIC channel corresponding to ERTC interrupts
+Page  347: 3. Enable an ERTC interrupt
+Page  347: Table 17-2 lists the ERTC clock sources, events and interrupts that are able to wakeup low-power
+Page  348: Table 17-3 Interrupt control bits
+Page  348: Interrupt events            Event flag                 Interrupt enable bit      EXINT line
+Page  350: Timestamp interrupt enable
+Page  350: Bit 15   TSIEN     0x0       rw         0: Timestamp interrupt disabled
+Page  350: 1: Timestamp interrupt enabled
+Page  350: Wakeup timer interrupt enable
+Page  350: Bit 14   WATIEN    0x0       rw         0: Wakeup timer interrupt disable
+Page  350: 1: Wakeup timer interrupt enabled
+Page  350: Alarm B interrupt enable
+Page  350: Bit 13   ALBIEN    0x0       rw         0: Alarm B interrupt disabled
+Page  350: 1: Alarm B interrupt enabled
+Page  350: Alarm A interrupt enable
+Page  350: Bit 12   ALAIEN    0x0       rw         0: Alarm A interrupt disabled
+Page  350: 1: Alarm A interrupt enabled
+Page  356: Tamper detection interrupt enable
+Page  356: Bit 2        TPIEN      0x0       rw         0: Tamper detection interrupt disabled
+Page  356: 1: Tamper detection interrupt enabled
+Page  358:  Interrupt generation at one of the following events:
+Page  359: TMR5_TRGOUT                                                                                                    interrupt
+Page  360: channel conversion is interrupted, giving the priority to the preempted channel, and the ordinary channel
+Page  361: storage of the calibration value will not set the OCCE flag, or generate interrupts or DMA requests.
+Page  367:    OOSRSEL=0: continuous conversion mode. Ordinary group of channels, after being interrupted
+Page  367: from the last interrupted ordinary conversion.
+Page  367:    OOSRSEL=1: restart mode. Ordinary group of channels, after being interrupted by preempted
+Page  367: trigger each of the ordinary conversions. In this mode, once the ordinary conversion is interrupted by
+Page  370: 18.4.7.1 Status flag and interrupts
+Page  370: OCCO, PCCE, CCE and VMOR have their respective interrupt enable bits. Once the interrupt bits are
+Page  370: enabled, the corresponding flag is set and an interrupt is sent to CPU. ADC1 shares an interrupt vector
+Page  373: If the regular conversion is interrupted by the preempted trigger, the regular conversion of all ADCs is
+Page  377: Ordinary channel conversion overflow interrupt enable
+Page  377: rw       0: Ordinary channel conversion overflow interrupt
+Page  377: 1: Ordinary channel conversion overflow interrupt enabled
+Page  377: is set, an OCCE or PCCE interrupt is generated only at
+Page  378: Conversion end interrupt enable on Preempted channels
+Page  378: 0: Conversion end interrupt disabled on Preempted
+Page  378: 1: Conversion end interrupt enabled on Preempted
+Page  378: Voltage monitoring out of range interrupt enable
+Page  378: Bit 6        VMORIEN    0x0             rw       0: Voltage monitoring out of range interrupt disabled
+Page  378: 1: Voltage monitoring out of range interrupt enabled
+Page  378: Channel conversion end interrupt enable
+Page  378: Bit 5        CCEIEN     0x0             rw       0: Channel conversion end interrupt disabled
+Page  378: 1: Channel conversion end interrupt enabled
+Page  386: When the ordinary oversampling is interrupted by
+Page  393: reporting the error condition. An interrupt is generated if its corresponding DxDMAUDRIEN bit in the
+Page  393: input falls between 2.0 V and VDDA. To avoid parasitic interruption and excessive consumption,
+Page  393: external event (timer counter, external interrupt line) or by software. The DxTRGSEL[2: 0] is used to
+Page  395: DAC2 DMA transfer underrun interrupt enable
+Page  395: 0: DAC2 DMA transfer underrun interrupt disabled
+Page  395: 1: DAC2 DMA transfer underrun interrupt enabled
+Page  396: 110: External interrupt line 9
+Page  396: DAC1 DMA transfer underrun interrupt enable
+Page  396: 0: DAC1 DMA transfer underrun interrupt disabled
+Page  396: 1: DAC1 DMA transfer underrun interrupt enabled
+Page  397: 110: External interrupt line 9
+Page  400:  Interrupt enable and mask
+Page  402: Figure 20-2 Transmit interrupt generation
+Page  403: 20.4 Interrupt management
+Page  403: The CAN controller contains four interrupt vectors that can be used to enable or disable interrupts by
+Page  403: Figure 20-3 Transmit interrupt generation
+Page  403: Figure 20-4 Receive interrupt 0 generation
+Page  403: Figure 20-5 Receive interrupt 1 generation
+Page  403: Figure 20-6 Status error interrupt generation
+Page  409: used to record the last error source, and the corresponding interrupts will be generated when the
+Page  412: Enter doze mode interrupt flag
+Page  412: status change interrupt. This bit is cleared by software
+Page  412: Exit doze mode interrupt flag
+Page  413: interrupt.
+Page  413: Error occur interrupt flag
+Page  413: 0: No error interrupt or no condition for error interrupt flag
+Page  413: 1: Error interrupt is generated.
+Page  413: interrupt enable bit in the CAN_INTEN register is enabled.
+Page  413: When set, this bit will generate a status change interrupt.
+Page  417: 20.7.1.6 CAN interrupt enable register (CAN_INTEN)
+Page  417: Enter doze mode interrupt enable
+Page  417: 0: Enter sleep mode interrupt disabled
+Page  417: 1: Enter sleep mode interrupt enabled
+Page  417: Note: EDZIF flag bit corresponds to this interrupt. An
+Page  417: interrupt is generated when both this bit and EDZIF bit are
+Page  417: Quit doze mode interrupt enable
+Page  417: 0: Quit sleep mode interrupt disabled
+Page  417: 1: Quit sleep mode interrupt enabled
+Page  417: Note: The flag bit of this interrupt is the QDZIF bit. An
+Page  417: interrupt is generated when both this bit and QDZIF bit are
+Page  417: Error occur interrupt enable
+Page  417: 0: Error interrupt disabled
+Page  417: 1: Error interrupt enabled
+Page  417: Note: The flag bit of this interrupt is the EOIF bit. An
+Page  417: interrupt is generated when both this bit and EOIF bit are
+Page  417: Error type record interrupt enable
+Page  417: 0: Error type record interrupt disabled
+Page  417: Bit 11       ETRIEN     0x0             rw       1: Error type record interrupt enabled
+Page  417: Note: EOIF is set only when this interrupt is enabled and
+Page  417: Bus-off interrupt enable
+Page  417: 0: Bus-off interrupt disabled
+Page  417: Bit 10       BOIEN      0x0             rw       1: Bus-off interrupt enabled
+Page  417: Note: EOIF is set only when this interrupt is enabled and
+Page  417: Error passive interrupt enable
+Page  417: 0: Error passive interrupt disabled
+Page  417: 1: Error passive interrupt enabled
+Page  417: Note: EOIF is set only when this interrupt is enabled and
+Page  418: Error active interrupt enable
+Page  418: 0: Error warning interrupt disabled
+Page  418: Bit 8        EAIEN      0x0             rw       1: Error warning interrupt enabled
+Page  418: Note: EOIF is set only when this interrupt is enabled and
+Page  418: Receive FIFO 1 overflow interrupt enable
+Page  418: 0: Receive FIFO 1 overflow interrupt disabled
+Page  418: Bit 6        RF1OIEN    0x0             rw       1: Receive FIFO 1 overflow interrupt enabled
+Page  418: Note: The flag bit of this interrupt is the RF1OF bit. An
+Page  418: interrupt is generated when this bit and RF1OF bit are set.
+Page  418: Receive FIFO 1 full interrupt enable
+Page  418: 0: Receive FIFO 1 full interrupt disabled
+Page  418: Bit 5        RF1FIEN    0x0             rw       1: Receive FIFO 1 full interrupt enabled
+Page  418: Note: The flag bit of this interrupt is the RF1FF bit. An
+Page  418: interrupt is generated when this bit and RF1FF bit are set.
+Page  418: FIFO 1 receive message interrupt enable
+Page  418: 0: FIFO 1 receive message interrupt disabled
+Page  418: Bit 4        RF1MIEN    0x0             rw       1: FIFO 1 receive message interrupt enabled
+Page  418: Note: The flag bit of this interrupt is RF1MN bit, so an
+Page  418: interrupt is generated when this bit and RF1MN bit are set.
+Page  418: Receive FIFO 0 overflow interrupt enable
+Page  418: 0: Receive FIFO 0 overflow interrupt disabled
+Page  418: Bit 3        RF0OIEN    0x0             rw       1: Receive FIFO 0 overflow interrupt enabled
+Page  418: Note: The flag bit of this interrupt is RF0OF bit, so an
+Page  418: interrupt is generated when this bit and RF0OF bit are set.
+Page  418: Receive FIFO 0 full interrupt enable
+Page  418: 0: Receive FIFO 0 full interrupt disabled
+Page  418: Bit 2        RF0FIEN    0x0             rw       1: Receive FIFO 0 full interrupt enabled
+Page  418: Note: The flag bit of this interrupt is the RF0FF bit. An
+Page  418: interrupt is generated when this bit and RF0FF bit are set
+Page  418: FIFO 0 receive message interrupt enable
+Page  418: 0: FIFO 0 receive message interrupt disabled
+Page  418: Bit 1        RF0MIEN    0x0             rw       1: FIFO 0 receive message interrupt enabled
+Page  418: Note: The flag bit of this interrupt is the RF0MN bit. An
+Page  418: interrupt is generated when this bit and RF0MN bit are set
+Page  418: Transmit mailbox empty interrupt enable
+Page  418: 0: Transmit mailbox empty interrupt disabled
+Page  418: 1: Transmit mailbox empty interrupt enabled
+Page  418: Note: The flag bit of this interrupt is the TMxTCF bit. An
+Page  418: interrupt is generated when this bit and TMxTCF bit are
+Page  424: The OTGFS supports control transfer, bulk transfer, interrupt transfer and synchronous transfer.
+Page  426: 21.4 OTGFS interrupts
+Page  426: Figure 21-2 shows the OTGFS interrupt hierarchy. Refer to the OTGFS interrupt register
+Page  426: (OTGFS_GINTSTS) and OTGFS interrupt mask register (OTGFS_GINTMSK).
+Page  426: Figure 21-2 OTGFS interrupt hierarchy
+Page  426: Interrupt
+Page  426: Global Interrupt
+Page  426: register                                                                 Core Interrupt Mask Register
+Page  426: Device All                Interrupt
+Page  426: Endpoints Interrupt            Register
+Page  426: IN Endpoints                       interrupt mask register
+Page  426: Interrupt register 0~15                 Device IN/OUT Endpoints
+Page  426: Interrupt Mask Register
+Page  426: Interrupt
+Page  426: Host All Channels Interrupt                             Host All Channels
+Page  426: Registers                                       Interrupt Mask
+Page  426: Host Channels Interrupt                                  Host Channels Interrupt Mask
+Page  426: Note Because an interrupt mask only masks an interrupt,
+Page  426: software must clear an interrupt before unmasking it, to
+Page  426: avoid servicing an old interrupt.
+Page  426: interrupt register indicates the mode. The OTGFS controller enters host mode when A-type plug is
+Page  427:    Global interrupt mask bit = 0x1
+Page  427:  OTG interrupt mask
+Page  427:  Mode mismatch interrupt mask
+Page  429: cleared, write 0x1 to the OTGFS_DCTL.SGNPINNAK register. When the NACK valid interrupt is set,
+Page  429: 1. Unmask interrupt through the PRTINTMSK bit in the OTGFS_GINTMSK register
+Page  429: 8. Wait for the interrupt (PRTENCHNG bit in the OTGFS_HPRT register)
+Page  430: 1. Unmask the following interrupts by setting the OTGFS_GINTMSK register:
+Page  430: 2. Unmask the interrupts of the selected channels by setting the OTGFS_HAINTMSK register
+Page  430: 3. Unmask the transfer-related interrupts in the host channel interrupt register by setting the
+Page  430: generates a channel halted interrupt. The application cannot re-allocate channels for other transactions
+Page  430: until an interrupt is generated in the OTGFS_HCINTx register (CHHLTD bit). Those transactions that
+Page  430: have already been started on the USB line are not interrupted by the host.
+Page  430: When there is a transaction input in the request queue, the controller will trigger a RXFLVL interrupt. The
+Page  430: application must generate a channel halted interrupt through the OTGFS_GRXSTSP register.
+Page  430:  When an interrupt (XFERC bit) is received in the OTGFS_HCINTx register during a non-periodic
+Page  430:  When an STALL , XACTERR , BBLERR or DTGLERR interrupt in the OTGFS_HCINTx register
+Page  430:  When a DISCONINT (device disconnected) interrupt event is received in the OTGFS_GINTSTS
+Page  431: Up to 8 interrupt and synchronous transfer requests are supported in the periodic hardware transfer
+Page  431: interrupt
+Page  432: interrupt?
+Page  432: Mask RXFLVL interrupt
+Page  432: interrupt                                                interrupt
+Page  432: written in the receiver buffer and generates a babble interrupt.
+Page  432: Then the controller generates a Port disable interrupt. Once receiving the interrupt, the application must
+Page  432: determine that this is not caused by an overcurrent condition (another cause of the port disable interrupt)
+Page  432: If the device is suddenly disconnected, an interrupt is generated on a disconnect event (DISCONINT bit
+Page  432: in the OTGFS_GINTSTS register). Upon receiving this interrupt, the application must start a software
+Page  434: 4. The controller generates a RXFLVL interrupt as soon as the receive packet is written into the receive
+Page  434: 5. To handle the RXFLVL interrupt, mask the RXFLVL interrupt and read the received packet status to
+Page  434: unmask the RXFLVL interrupt
+Page  434: 6. The controller generates the RXFLVL interrupt when the transfer complete status is written into the
+Page  435: 8. The controller generates the XFERC interrupt as soon as the receive packet is read
+Page  435: 9. To handle the XFERC interrupt, disable the channel (see Halting a channel) and stop writing the
+Page  435: 10. The controller generates the RXFLVL interrupt as soon as the halt status is written to the receive
+Page  435: 12. The controller generates a CHHLTD interrupt as soon as the halt status is read from the receive
+Page  435: 13. In response to the CHHLTD interrupt, the processor does not allocate the channel for other transfers.
+Page  435: (2) Handling interrupts
+Page  435: The following code describes the interrupt service routine related to the channel during bulk and control
+Page  436: 6. The controller generate an XFERC interrupt as soon as the previous transfer is completed
+Page  436: 7. In response to the XFERC interrupt, the processor does not allocate the channel for other transfers.
+Page  437: interrupt            ch_2
+Page  437: interrupt
+Page  437: 7                           interrupt
+Page  437: read_rx_stsre                                 interrupt
+Page  437: interrupt            ch_2
+Page  437: Disable(ch_2)      9                           interrupt
+Page  437: read_rx_sts       11                         interrupt
+Page  437: (2) Handling interrupts
+Page  437: The following code describes the interrupt service routine related to the channel during bulk and control
+Page  438: an XFERC interrupt is received.
+Page  438: 21.5.3.9 Initialize interrupt IN transfers
+Page  438: Figure 21-8 shows the operation process of a typical interrupt IN transfer. Refer to channel 2 (ch_2). The
+Page  438: (1) Common interrupt IN operation process
+Page  439: 5. The OTGFS host generates a RXFLVL interrupt as soon as an IN packet is received and written to
+Page  439: 6. To handle the RXFLVL interrupt, read the received packet status to determine the number of bytes
+Page  439: received, then read the receive FIFO. The application must mask the RXFLVL interrupt before
+Page  439: reading the receive FIFO, and unmask the interrupt after reading the entire packet
+Page  439: 7. The controller generates the RXFLVL interrupt when the transfer complete status is written to the
+Page  439: 8. The controller generates an XFERC interrupt as soon as the receive packet is read
+Page  439: 9. To handle the XFERC interrupt, read the PKTCN bit in the OTGFS_HCTSIZ2 register. If the PKTCNT
+Page  439: (2) Handling interrupts
+Page  439: The following code describes the interrupt service routine related to the channel during interrupt IN
+Page  440: 21.5.3.10                Initialize interrupt OUT transfers
+Page  440: Figure shows a typical interrupt OUT transfer operation. Refer to channel 1 (ch_1). The assumptions are
+Page  440: (1) Common interrupt IN operation process
+Page  440: 5. The host generates an XFERC interrupt after the last packet is transmitted successfully.
+Page  440: 6. In response to the XFERC interrupt, re-initialize the channel for the next transfer.
+Page  440: (2) Handling interrupts
+Page  440: Figure 21-8 shows an example of common interrupt OUT/IN transfers
+Page  441: Figure 21-8 Example of common interrupt OUT/IN transfers
+Page  441: interrupt
+Page  441: read_rx_sts                               interrupt
+Page  441: read_rx_sts                                    interrupt
+Page  441: interrupt
+Page  441: interrupt                                    DATA1                   frame
+Page  441: The following code describes the interrupt service routine related to the channel during interrupt OUT
+Page  442: (1) Common interrupt IN operation process
+Page  442: 5. The OTGFS host generates a RXFLVL interrupt as soon as an IN packet is received and written to
+Page  442: 6. To handle the RXFLVL interrupt, read the received packet status to determine the number of bytes
+Page  442: received, then read the receive FIFO. The application must mask the RXFLVL interrupt before
+Page  442: reading the receive FIFO, and unmask the interrupt after reading the entire packet
+Page  442: 7. The controller generates the RXFLVL interrupt when the transfer complete status is written to the
+Page  443: 8. The controller generates an XFERC interrupt as soon as the receive packet is read
+Page  443: 9. To handle the XFERC interrupt, read the PKTCN bit in the OTGFS_HCTSIZ2 register. If the PKTCNT
+Page  443: (2) Handling interrupts
+Page  443: The following code describes the interrupt service routine related to the channel during synchronous IN
+Page  443: (1) Common interrupt IN operation process
+Page  444: 5. The host generates an XFERC interrupt after the last packet is transmitted successfully
+Page  444: 6. In response to the XFERC interrupt, re-initialize the channel for the next transfer.
+Page  444: (2) Handling interrupts
+Page  444: interrupt
+Page  444: read_rx_sts                             interrupt
+Page  444: read_rx_sts                             interrupt
+Page  444: interrupt           ch_2
+Page  444: interrupt                                DATA1                   frame
+Page  444: The following code describes the interrupt service routine related to the channel during synchronous
+Page  445: 3. Program the OTGFS_GINTMSK register to unmask the following interrupts:
+Page  445: 4. Wait for the USBRESET interrupt in the OTGFS_GINTSTS register. It indicates that a reset signal has
+Page  445: been detected on the USB (lasting for about 10ms). Upon receiving this interrupt, the application must
+Page  445: 5. Wait for the ENUMDONE interrupt in the OTGFS_GINTSTS register. It indicates the end of USB reset.
+Page  445: Upon receiving this interrupt, the application must read the OTGFS_DSTS register to determine the
+Page  445: 2. Unmask the following interrupt bits
+Page  446: completion interrupt signal is detected:
+Page  446:  Upon detecting the enumeration completion interrupt signal, read the OTGFS_DSTS register to
+Page  446:  Unmask SOF interrupts.
+Page  446:  Unmask the interrupt for each valid endpoint and mask the interrupts for all invalid endpoints in
+Page  446:  Endpoint start data toggle (for interrupt and bulk endpoints
+Page  447: 2. If the last SETUP packet received before the generation of the SETUP interrupt indicates data OUT
+Page  447: 4. When the XFERC interrupt is set in the OTGFS_DOEPINTx register during the last OUT transfer, it
+Page  447: 7. When the XFERC interrupt is set in the OTGFS_DOEPINTx register is set, it indicates that the status
+Page  447: are set in the receive FIFO packet status register, the controller generates an interrupt. The Transfer
+Page  447: complete interrupt can be cleared through the XFERC bit in the OTGFS_DOEPINTx register
+Page  447: Repeat above-mentioned steps until an interrupt (XFERC bit in the OTGFS_DIEPINTx register) is
+Page  447:  If the last SETUP packet received before the generation of the SETUP interrupt indicates data IN
+Page  448:  Repeat above-mentioned steps until the XFERC interrupt is generated in the OTGFS_DIEPINTx
+Page  448:  When the XFERC interrupt is set in the OTGFS_DOEPINTx register during the last IN transfer, it
+Page  448: The XFERC interrupt bit is set in the OTGFS_DOEPINTx register to indicate the end of status OUT
+Page  448: interrupt. If the SETUP packet indicates two-level control commands, the application must perform
+Page  448: 4. The XFERC interrupt bit is set in the OTGFS_DIEPINTx register to indicate the end of status IN
+Page  448: 1. The application must read the OTGFS_GRXSTSP register as soon as the RXFLVL interrupt bit is
+Page  448: 2. The application can mask the RXFLVL interrupt bit in the OTGFS_GINTSTS register by setting
+Page  449: controller triggers a Setup interrupt on the specified control OUT endpoint
+Page  449: request is popped from the receive FIFO, the controller triggers a Transfer Completed interrupt on the
+Page  449: 7. After the valid data is popped from the receive FIFO, the RXFLVL interrupt bit in the
+Page  449: 8. Step 1-5 must be repeated each time the application detects the interrupt line due to the RXFLVL bit
+Page  450: and ignore the Transfer Completed interrupt due to this read operation.
+Page  450: interrupts the application through the SETUP interrupt bit in the OTGFS_DOEPINTx register, indicating
+Page  451: 2. Wait for the RXFLVL interrupt bit in the OTGFS_GINTSTS register and read and empty the data
+Page  451: 3. When the SETUP interrupt bit is set in the OTGFS_DOEPINTx register, it indicates that the SETUP
+Page  451: data transfer has been completed successfully. Upon this interrupt, the application must read the
+Page  451: Interrupt bit set?
+Page  451: condition occurs, the OTGFS controller generates an interrupt (B2BSTUP bit in the OTGFS_DOEPINTx
+Page  451: 1. The application can either select a polling or an interrupt mode.
+Page  452:  In interrupt mode, the application must wait for the TXFEMP interrupt bit in the
+Page  452: end of the IN transfer (indicated by endpoint disable interrupt bit), the application must read the Transfer
+Page  453: controller generates an “IN token received when FIFO is empty” interrupt, and the NAK bit for the
+Page  453: 7. The controller rewinds the FIFO pointers internally and no timeout interrupt is generated except for
+Page  453: 8. When the transfer size is 0 and the packet count is also 0, the Transfer completed interrupt is
+Page  453: describes a regular non-synchronous OUT transfers (control, bulk or interrupt transfers).
+Page  453: 2. When an OUT endpoint interrupt occurs, the application must read the endpoint’s transfer size register
+Page  454: 7. When the application pops this entry (OUT data transfer complete), a transfer completed interrupt is
+Page  454: 3. Wait for the RXFLVL interrupt in the OTGFS_GINTSTS register, and read out all data packets from
+Page  454: 4. When the XFERC interrupt is set in the OTGFS_DOEPINTx register, it indicates a successful
+Page  455: 3. Upon writing the complete data in the receive FIFO, the controller then triggers the RXFLVL interrupt
+Page  455: 5. The application processes the interrupt and reads the data from the receive FIFO.
+Page  455: interrupt in the OTGFS_DOEPINTx register.
+Page  455: 7. The application processes the interrupt and uses the XFERC bit in the OTGFS_DOEPINTx register
+Page  456: OUT data packets from the receive FIFO before the end of the periodic frame (EOPF interrupt in the
+Page  456: generation of the EOPF and SOF interrupt in the OTGFS_GINTSTS register.
+Page  456: 3. Wait for the RXFLVL interrupt in the OTGFS_GINTSTS register, and read all the data packets from
+Page  456: 4. When the XFERC interrupt is set in the OTGFS_DOEPINTx register, it indicates the completion of the
+Page  456: synchronous OUT data transfers. But this interrupt does not necessarily mean that the data in memory
+Page  456: 5. This interrupt signal cannot always be detected by the synchronous OUT data transfers. However, the
+Page  456: application can detect the INCOMPISOOUT interrupt in the OTGFS_GINTSTS register. See “Incomplete
+Page  457: [Synchronous IN transfer interrupt]
+Page  457: The following interrupts must be processed to ensure successful scheduling of the synchronous
+Page  457:  XFERC interrupt in the OTGFS_DIEPINTx register (for endpoints)
+Page  457:  OTG INCOMPISOIN interrupt in the OTGFS_GINTSTS register (for global interrupts)
+Page  457: 1. Unmask the incompISOOUT interrupt in the OTGFS_GINTSTS register by setting the
+Page  457: INCOMISOINMSK interrupt bit in the OTGFS_GINTMSK register
+Page  457: 2. Unmask the XFERC interrupt in the OTGFS_DIEPINTx register by setting the XFERCMSK bit in the
+Page  457: 5. Wait for interrupts
+Page  457:  When an interrupt is generated (XFERC bit in OTGFS_DIEPINTx register), clear the XFERC
+Page  457: interrupt; For the following transaction, repeat step 3-5 until the completion of data transfers.
+Page  457:  When an interrupt is generated (INCOMPISOIN bit in OTGFS_GINTSTS register), clear the
+Page  457: INCOMPISOIN interrupt; For any synchronous IN endpoint, when Odd/Even bits match the current
+Page  457: frame number bit 0, and when the endpoint remains enabled, the controller generates an interrupt at
+Page  457: the end of the frame. This interrupt is generated on one of the following conditions:
+Page  458: The INCOMPISOIN interrupt in the OTGFS_GINTSTS register is a global interrupt. Therefore, when
+Page  458: 1. For synchronous OUT endpoints, the XFERC interrupt (in the OTGFS_DOEPINTx register) may not
+Page  458: detect the XFERC interrupt in the OTGFS_DOEPINTx register.
+Page  458: OUT endpoints, an interrupt of incomplete synchronous OUT data is generated, indicating that an
+Page  458: XFERC interrupt in the OTGFS_DOEPINTx register is not set on at least one of the synchronous OUT
+Page  458: 1. The assertion of the incomplete synchronous OUT data interrupt indicates that at least one
+Page  458:  When all data are read from the receive FIFO, the application can detect the XFERC interrupt in
+Page  458: 3. When it receives an incomplete synchronous OUT data interrupt, the application must read the control
+Page  458: 4. The pervious step must be performed before the SOF interrupt of the GINTSTS register is detected
+Page  459: 6. Wait for the endpoint disable interrupt in the OTGFS_DOEPINTx register, and enable the endpoint to
+Page  459: endpoints. In this case, the application can detect the incomplete synchronous IN transfer interrupt in
+Page  459: interrupt in the OTGFS_DIEPINTx register. The application ignores this interrupt, which will result in
+Page  459: the generation of the incomplete synchronous IN transfer interrupt (in OTGFS_GINTSTS register).
+Page  459: 4. The controller disables the endpoint, clears the disable bit, and triggers the endpoint disable interrupt.
+Page  459: 1. When the transmit FIFO becomes empty, the application ignores the INTKNTXFEMP interrupt (in the
+Page  459: synchronous IN interrupt.
+Page  459: 2. The incomplete synchronous IN transfer interrupt (in the OTGFS_GINTSTS register) indicates that at
+Page  459: 6. The endpoint disable interrupt in the DIEPINTx register indicates that the controller has disabled the
+Page  459: 21.5.4.20 Periodic IN (interrupt and synchronous) data transfers
+Page  460: INTKNTXFEMP interrupt.
+Page  460:  An NAK handshake signal is transmitted on the USB for interrupt IN endpoints.
+Page  460:  For interrupt endpoints, when an ACK handshake is transmitted
+Page  460:  When the transfer size and packet count are both 0, the transfer complete interrupt for the
+Page  460: the controller generates an INCOMPISOIN interrupt in the OTGFS_GINTSTS register.
+Page  460: 4. The assertion of the INTKNTXFEMP interrupt indicates that the application has not yet written all data
+Page  460: 5. If the interrupt endpoint is already enabled while this interrupt is detected, ignore the interrupt. If it is
+Page  460: not enabled, enable the endpoint to transmit data on the next IN token. If it is enabled while the interrupt
+Page  460: 6. When the interrupt IN endpoint is set as a periodic endpoint, the controller internally can process the
+Page  460: timeout on the interrupt IN endpoint, without the need of the application intervention. Therefore, the
+Page  460: application can never detect the TIMEOUT interrupt (in the OTGFS_DIEPINTx register) on the periodic
+Page  460: interrupt IN endpoints.
+Page  460: 7. The assertion of the XFERC interrupt in the OTGFS_DIEPINTx register but without the
+Page  460: INTKNTXFEMP interrupt indicates the successful completion of a synchronous IN transfer. When
+Page  461: 8. The assertion of the XFERC interrupt in the OTGFS_DIEPINTx register, with or without the
+Page  461: INTKNTXFEMP interrupt, indicates the successful completion of an interrupt IN transfer. When reading
+Page  461: 9. The assertion of the INCOMPISOIN interrupt but without the above-mentioned interrupts indicates
+Page  461: access occurs, a mode mismatch interrupt is generated and the MODMIS bit (in the OTGFS_GINTSTS
+Page  466: 21.6.3.2 OTGFS interrupt status control register (OTGFS_GOTGINT)
+Page  466: The application reads this register to know about which kind of OTG interrupt is generated, and writes
+Page  466: this register to clear the OTG interrupt.
+Page  466: It indicates when the periodic TxFIFO empty interrupt bit
+Page  467: 0: PTXFEMP (GINTSTS) interrupt indicates that the
+Page  467: 1: PTXFEMP (GINTSTS) interrupt indicates that the
+Page  467: TxFIFO empty interrupt (NPTXFEMP in GINTSTS) is
+Page  467: TxFIFO empty interrupt (TXFEMP bit in DIEPINTn) is
+Page  467: 0: The TxFEMP (in DIEPINTn) interrupt indicates that the
+Page  467: 1: The TxFEMP (in DIEPINTn) interrupt indicates that the
+Page  467: Global interrupt mask
+Page  467: interrupts sent by the interrupt line to itself.
+Page  467: 0: Mask the interrupts sent to the application
+Page  467: 1: Unmask the interrupts sent to the application
+Page  468: Read: NAK effective interrupt (NAK Effective Interrupt)
+Page  469: due to PHY errors (such as operation interrupted or
+Page  469: Clears all interrupts and CSR registers except for the
+Page  470: 21.6.3.6 OTGFS interrupt register (OTGFS_GINTSTS)
+Page  470: This register interrupts the application due to system-level events in the current mode (device or host
+Page  470: The FIFO status interrupts are read-only. The FIFO interrupt conditions are cleared automatically as
+Page  470: soon as the software reads from or writes to the FIFO while processing these interrupts.
+Page  470: The application must clear the GINTSTS register at initialization before enabling an interrupt bit to avoid
+Page  470: any interrupt generation prior to initialization.
+Page  470: Resume/Remote wakeup detected interrupt)
+Page  470: In device mode, this interrupt is generated only when a
+Page  470: In host mode, this interrupt is generated only when a
+Page  470: Disconnect detected interrupt
+Page  470: The interrupt is generated when a device disconnect is
+Page  470: The interrupt is generated when the Periodic Transmit
+Page  470: Host channel interrupt
+Page  470: The controller sets this bit to indicate that an interrupt is
+Page  470: Interrupt register to determine the exact number of the
+Page  470: Bit 25       HCHINT            0x0             ro       channel on which the interrupt occurred, and then read
+Page  470: the Host Channel-n Interrupt register to determine the
+Page  470: interrupt event source.
+Page  470: the HCINTn (Host All Channels Interrupt) register to clear
+Page  470: Host port interrupt
+Page  470: In host mode, the controller sets this interrupt bit when
+Page  470: In device mode, the controller sets this interrupt bit to
+Page  471: This interrupt is generated along with the End of Periodic
+Page  471: Frame Interrupt bit in this register.
+Page  471: The controller sets this interrupt to indicate that there is at
+Page  471: transfers in the current frame. This interrupt is generated
+Page  471: along with the End of Periodic Frame Interrupt bit in this
+Page  471: OUT endpoints interrupt
+Page  471: The controller sets this bit to indicate that an interrupt is
+Page  471: Interrupt register to determine the exact number of the
+Page  471: OUT endpoint on which the interrupt occurred, and then
+Page  471: read the corresponding Device OUT Endpoint-n Interrupt
+Page  471: register to determine the exact source of the interrupt. The
+Page  471: corresponding Device OUT Endpoint-n Interrupt register
+Page  471: IN Endpoints interrupt
+Page  471: The controller sets this bit to indicate that an interrupt is
+Page  471: Endpoints Interrupt register to determine the exact
+Page  471: number of the IN endpoint on which the interrupt occurred,
+Page  471: Interrupt register to determine the exact source of the
+Page  471: interrupt. The application must clear the corresponding
+Page  471: Interrupt register to clear this bit.
+Page  471: End of periodic frame interrupt
+Page  471: Isochronous OUT packet dropped interrupt)
+Page  472: in the Device Control register. This interrupt does not
+Page  472: This interrupt is generated when the Non-periodic TxFIFO
+Page  472: clear this interrupt.
+Page  472: current frame number. This interrupt can be generated
+Page  472: OTG interrupt
+Page  472: that caused this interrupt. The application must clear the
+Page  473: Mode mismatch interrupt
+Page  473: 21.6.3.7 OTGFS interrupt mask register (OTGFS_GINTMSK)
+Page  473: This register works with the Interrupt Register to interrupt the application. When an interrupt bit is masked,
+Page  473: the interrupt related to this interrupt bit is not generated. However, the Interrupt Register bit
+Page  473: corresponding to this interrupt is still set.
+Page  473: Interrupt mask: 0
+Page  473: Interrupt unmask: 1
+Page  473: Resume/Remote wakeup detected interrupt mask
+Page  473: Disconnect detected interrupt mask
+Page  473: Host channels interrupt mask
+Page  473: Host port interrupt mask
+Page  473: OUT endpoints interrupt mask
+Page  473: IN endpoints interrupt mask
+Page  473: End of periodic frame interrupt mask
+Page  473: Device only isochronous OUT packet dropped interrupt
+Page  474: USB suspend interrupt mask
+Page  474: Early suspend interrupt mask
+Page  474: OTG interrupt mask
+Page  474: Mode mismatch interrupt mask
+Page  474: Interrupt register is set.
+Page  474: 0011: IN transfer completed (triggers an interrupt)
+Page  474: 0101: Data toggle error (triggers an interrupt)
+Page  474: 0111: Channel halted (triggers an interrupt)
+Page  475: 0001: Global OUT NAK (triggers an interrupt)
+Page  475: Bit 20: 17   PKTSTS           0x0             ro       0011: OUT transfer completed (triggers an interrupt)
+Page  475: interrupt)
+Page  479: 21.6.4.5 OTGFS host all channels interrupt register (OTGFS_HAINT)
+Page  479: When a flag event occurs on a channel, the host all channels interrupt register interrupts the application
+Page  479: through the host channels interrupt bit of the controller interrupt register, as shown in Figure 21-2. There
+Page  479: is one interrupt bit for each channel, up to 16 bits. The application sets or clears this register by setting
+Page  479: or clearing the appropriate bit in the corresponding host channel-n interrupt register.
+Page  479: Channel interrupts
+Page  479: 21.6.4.6 OTGFS host all channels interrupt mask register
+Page  479: The host all channels interrupt mask register works with the host all channels interrupt register to
+Page  479: interrupt the application when an event occurs on a channel. There is one interrupt mask bit per one
+Page  479: Channel interrupt mask
+Page  480: connect status and test mode, as show in Figure 21-2. The register of type rw1c can interrupt the
+Page  480: application through the host port interrupt bit in the controller interrupt register. Upon a port interrupt, the
+Page  480: application must read this register and clear the bit that caused the interrupt. For the register of type
+Page  480: rw1c, the application must write 1 to clear the interrupt.
+Page  481: resume/remote wakeup detected interrupt bit or
+Page  481: disconnect detected interrupt bit in the controller interrupt
+Page  481: the port resume/remote wakeup detected interrupt bit of
+Page  481: Bit 6    PRTRES        0x0             rw       the controller interrupt register), the controller starts
+Page  481: bit does not trigger any interrupt.
+Page  481: Bit 1    PRTCONDET     0x0             rw1c     bit using the host port interrupt bit in the controller register.
+Page  482: generation of the channel disabled interrupt before
+Page  482: and interrupt) only.
+Page  482: 11: Interrupt transfer
+Page  482: 21.6.4.9 OTGFS host channelx interrupt register (OTGFS_HCINTx) (x
+Page  482: The application must read this register when the host channels interrupt bit is set in the controller
+Page  482: interrupt register. Before reading this register, the application must read the host all channels interrupt
+Page  482: register to get the exact channel number of the host channel-n interrupt register. The application must
+Page  483: ACK response received/Transmitted interrupt
+Page  483: NAK response received interrupt
+Page  483: STALL response received interrupt
+Page  483: 21.6.4.10 OTGFS host channelx interrupt mask register
+Page  483: Bit 6        NYETMSK          0x0             rw       NYET response received interrupt mask
+Page  483: Bit 5        ACKMSK           0x0             rw       ACK response received/transmitted interrupt mask
+Page  483: Bit 4        NAKMSK           0x0             rw       NAK response received interrupt mask
+Page  483: Bit 3        STALLMSK         0x0             rw       STALL response received interrupt mask
+Page  483: count reaches zero, the application is interrupted to
+Page  484: periodic frame end interrupt is generated. The application
+Page  484: can use this interrupt to determine if the synchronous
+Page  485: controller interrupt register is cleared.
+Page  485: bit in the controller interrupt register is cleared.
+Page  486: This register indicates the status of the controller related to OTGFS events. It must be read on interrupt
+Page  486: events from the device all interrupts register (OTGFS_DAINT).
+Page  486: and interrupt is generated with the early suspend bit of the
+Page  486: controller interrupt register. If the early suspend is
+Page  486: 21.6.5.4 OTGFS device OTGFSIN endpoint common interrupt mask
+Page  486: This register works with each of the device IN endpoint interrupt register for all endpoints to generate
+Page  486: an IN endpoint interrupt. The IN endpoint interrupt for a specific status in the OTGFS_DIEPINTx
+Page  486: BNA interrupt mask
+Page  486: Bit 9          BNAINMSK        0x0               rw       0: Interrupt masked
+Page  486: 1: Interrupt unmasked
+Page  486: Bit 8          TXFIFOUDRMSK    0x0               rw       0: Interrupt masked
+Page  486: 1: Interrupt unmasked
+Page  487: Bit 6       INEPTNAKMSK      0x0             rw       0: Interrupt masked
+Page  487: 1: Interrupt unmasked
+Page  487: Bit 5       INTKNEPTMISMSK   0x0             rw       0: Interrupt masked
+Page  487: 1: Interrupt unmasked
+Page  487: Bit 4       INTKNTXFEMPMSK   0x0             rw       0: Interrupt masked
+Page  487: 1: Interrupt unmasked
+Page  487: Bit 3       TIMEOUTMSK       0x0             rw       0: Interrupt masked
+Page  487: 1: Interrupt unmasked
+Page  487: Endpoint disabled interrupt mask
+Page  487: Bit 1       EPTDISMSK        0x0             rw       0: Interrupt masked
+Page  487: 1: Interrupt unmasked
+Page  487: Transfer completed interrupt mask
+Page  487: Bit 0       XFERCMSK         0x0             rw       0: Interrupt masked
+Page  487: 1: Interrupt unmasked
+Page  487: 21.6.5.5 OTGFS device OUT endpoint common interrupt mask register
+Page  487: endpoint interrupt. Each of the bits in the OTGFS_DOEPINTx registers can be masked by writing to the
+Page  487: register. All interrupts are masked by default.
+Page  487: BNA interrupt mask
+Page  487: Bit 9       BNAOUTMSK        0x0             rw       0: Interrupt masked
+Page  487: 1: Interrupt unmasked
+Page  487: Bit 8       OUTPERRMSK       0x0             rw       0: Interrupt masked
+Page  487: 1: Interrupt unmasked
+Page  487: Bit 6       B2BSETUPMSK      0x0             rw       0: Interrupt masked
+Page  487: 1: Interrupt unmasked
+Page  487: Bit 4       OUTTEPDMSK       0x0             rw       0: Interrupt masked
+Page  487: 1: Interrupt unmasked
+Page  487: 0: Interrupt masked
+Page  487: 1: Interrupt unmasked
+Page  487: Endpoint disabled interrupt mask
+Page  487: Bit 1       EPTDISMSK        0x0             rw       0: Interrupt masked
+Page  487: 1: Interrupt unmasked
+Page  487: Transfer completed interrupt mask
+Page  487: Bit 0       XFERCMSK         0x0             rw       0: Interrupt masked
+Page  487: 1: Interrupt unmasked
+Page  488: 21.6.5.6 OTGFS device all endpoints interrupt mask register
+Page  488: When an event occurs on an endpoint, The IN/OUT endpoint interrupt bits in the OTGS_DAINT register
+Page  488: can be used to interrupt the application. There is one interrupt pit per endpoint, up to 8 interrupt bits for
+Page  488: interrupt bits are used at the same time. The corresponding bits in this register are set and cleared when
+Page  488: the application sets and clears the bits in the corresponding device endpoint-x interrupt register.
+Page  488: OUT endpoint interrupt bits
+Page  488: IN endpoint interrupt bits
+Page  488: 21.6.5.7 OTGFS all endpoints interrupt mask register
+Page  488: When an event occurs on a device endpoint, the device endpoint interrupt mask register works with the
+Page  488: device endpoint interrupt register to interrupt the application. However, the device all endpoints interrupt
+Page  488: register corresponding to this interrupt is still set.
+Page  488: OUT EP interrupt mask bits
+Page  488: 0: Interrupt masked
+Page  488: 1: Interrupt unmasked
+Page  488: IN EP interrupt mask bits
+Page  488: 0: Interrupt masked
+Page  488: 1: Interrupt unmasked
+Page  488: 21.6.5.8 OTGFS device IN endpoint FIFO empty interrupt mask
+Page  488: This register works with the TXFE_OTGFS_DIEPINTx register to generate an interrupt.
+Page  488: IN endpoint Tx FIFO empty interrupt mask bits
+Page  488: interrupt register.
+Page  488: Bit 7: 0     INEPTXFEMSK        0x0000          rw       A transmit FIFO empty interrupt bit per IN endpoint. Bit 0
+Page  488: 0: Interrupt masked
+Page  488: 1: Interrupt unmasked
+Page  488: following interrupts:
+Page  489: Bit 30       EPTDIS     0x0         ro       disabled interrupt before treating the endpoint as
+Page  489: endpoint disabled interrupt. The application must set this
+Page  490: Bit 31       EPTENA            0x0             rw1s     generation one of the following interrupts on this endpoint:
+Page  490: interrupt before treating the endpoint as disabled. The
+Page  490: disabled interrupt. The application must set this bit only
+Page  490: Applies to interrupt/bulk IN endpoints only. Writing to this
+Page  490: Applies to interrupt/bulk IN endpoints only. Writing to this
+Page  490: Bit 27       SNAK              0x0             wo       a Transfer completed interrupt or after receiving a SETUP
+Page  491: 11: Interrupt
+Page  491: Applies to interrupt/bulk IN endpoints only.
+Page  492: Bit 31       EPTENA          0x0             rw1s     one of the following interrupts on this endpoint:
+Page  492: bit on a transfer completed interrupt or when a SETUP
+Page  493: this bit before setting any one of the following interrupts
+Page  493: Bit 30       EPTDIS            0x0             ro       interrupt before treating the endpoint as disabled. The
+Page  493: disabled interrupt. The application must set this bit only
+Page  493: Applies to interrupt/bulk OUT endpoints only. Writing to
+Page  493: Applies to interrupt/bulk OUT endpoints only. Writing to
+Page  493: Bit 27       SNAK              0x0             wo       a Transfer completed interrupt or after receiving a SETUP
+Page  494: 11: Interrupt
+Page  494: Applies to interrupt/bulk OUT endpoints only.
+Page  495: 21.6.5.13 OTGFS device IN endpoint-x interrupt register
+Page  495: the endpoint interrupt registers. The application must clear the appropriate bit in this register to clear the
+Page  495: This interrupt is generated when the transmit FIFO for this
+Page  495: This interrupt indicates that the IN endpoint NAB bit set by
+Page  495: This interrupt does not guarantee that a NAK handshake
+Page  495: empty. An interrupt is generated on the endpoint for which
+Page  495: Endpoint disabled interrupt
+Page  495: Transfer completed interrupt
+Page  495: 21.6.5.14 OTGFS device OUT endpoint-x interrupt register
+Page  495: reading the endpoint interrupt registers. The application must clear the appropriate bit in this register to
+Page  495: endpoint has not yet been enabled. An interrupt is
+Page  496: interrupt, the application can decode the received SETUP
+Page  496: Endpoint disabled interrupt
+Page  496: Transfer completed interrupt
+Page  496: controller interrupts the application when the transfer size
+Page  496: controller interrupts the application when the transfer size
+Page  496: packet size of the endpoint, to be interrupted at the end of
+Page  497: endpoint. The controller interrupts the application when
+Page  497: interrupted at the end of each packet.
+Page  498: endpoint. The controller interrupts the application when
+Page  498: interrupted at the end of each packet.
+Page  499:    Two interrupt source flag
+Page  499: 22.3 Interrupt requests
+Page  499: Table 22-1 ACC interrupt requests
+Page  499: Interrupt event                      Event flag                         Enable bit
+Page  499: ACC interrupt events are linked to the same interrupt vector (see Figure 25-1). Interrupt events include:
+Page  499: corresponding interrupt will be generated if the corresponding enable bit is enabled.
+Page  499: Figure 22-1 ACC interrupt mapping diagram
+Page  499: ACC interrupt
+Page  500: C1   C2     C3          RSLOST    INTERRUPT
+Page  502: CALRDY interrupt enable
+Page  503: 0: Interrupt generation disabled
+Page  503: 1: ACC interrupt is generated when CALRDY=1 in the
+Page  503: RSLOST error interrupt enable
+Page  503: Bit 4        EIEN       0x0             rw       0: Interrupt generation disabled
+Page  503: 1: ACC interrupt is generated when RSLOST=1 in the
+Page  509: XMC_INTR                   Input                  PC card interrupt signal
+Page  532: XMC_INTR                     PC card interrupt signal
+Page  535: bit is set in the SDRAM_STS register. An interrupt is generated if the ERIEN has been set.
+Page  542: 24.8.2.2 Interrupt enable and FIFO status register x (XMC_BKxIS)
+Page  542: Falling edge interrupt enable
+Page  542: Bit 5        FEIEN      0x0             rw       0: Falling edge interrupt disabled
+Page  542: 1: Falling edge interrupt enabled
+Page  542: Bit 4        HLIEN      0x0             rw       High-level interrupt enable
+Page  543: 0: High-level interrupt disabled
+Page  543: 1: High-level interrupt enabled
+Page  543: Rising edge interrupt enable
+Page  543: Bit 3        REIEN     0x0             rw       0: Rising edge interrupt disabled
+Page  543: 1: Rising edge interrupt enabled
+Page  543: 0: No falling edge interrupt generated
+Page  543: 1: Falling edge interrupt generated
+Page  543: 0: No high level interrupt generated
+Page  543: 1: High level interrupt generated
+Page  543: 0: No rising edge interrupt generated
+Page  543: 1: Rising edge interrupt generated
+Page  544: 24.8.3.2 Interrupt enable and FIFO status register 4 (XMC_BK4IS)
+Page  544: Falling edge interrupt enable
+Page  544: Bit 5       FEIEN      0x0             rw       0: Falling edge interrupt disabled
+Page  544: 1: Falling edge interrupt enabled
+Page  544: High-level interrupt enable
+Page  544: Bit 4       HLIEN      0x0             rw       0: High-level interrupt disabled
+Page  544: 1: High-level interrupt enabled
+Page  544: Rising edge interrupt enable
+Page  544: Bit 3       REIEN      0x0             rw       0: Rising edge interrupt disabled
+Page  544: 1: Rising edge interrupt enabled
+Page  545: 0: No falling edge interrupt generated
+Page  545: 1: Falling edge interrupt generated
+Page  545: 0: No high level interrupt generated
+Page  545: 1: High level interrupt generated
+Page  545: 0: No rising edge interrupt generated
+Page  545: 1: Rising edge interrupt generated
+Page  549: Error interrupt enable
+Page  549: Bit 14      ERIEN           0x0             rw       0: Error interrupt disabled
+Page  549: 1: Error interrupt enabled
+Page  551:  Interrupt requests
+Page  555: will place the card in the disconnect state and release the SDIO_D line without interrupting the write
+Page  561: CMD40       bcr      [31: 0]=stuff bits     R5               GO_IRQ_STATE Place the system in the interrupt mode
+Page  563: 25.3.2.2.7        R5 (interrupt request)
+Page  563: or of the host                   interrupt data
+Page  564: 25.3.2.2.8        R6 (interrupt request)
+Page  564:      AHB interface: generates interrupt and DMA request signals
+Page  567: If the interrupt bit is set in the command register, the timer is disabled and the CCSM waits for an interrupt
+Page  569: The AHB interface generates the interrupt and DMA requests, and access the SDIO interface registers
+Page  569: SDIO interrupts
+Page  569: The interrupt logic generates an interrupt request when one of the selected status flags is high. The
+Page  569: SDIO_INTEN register is used to select the conditions that will generate an interrupt.
+Page  569: 4. Enable the DMA2 controller and clear all interrupt flag bits, configure the DMA2 channel4
+Page  569: (SDIO_CMD), enable the CCSMEN bit, wait for SDIO_STS [6]=CMDRSPCMPL interrupt,
+Page  570: During the read wait period, the SDIO host can detect the SDIO interrupts over the SDIO_D1.
+Page  570: host can detect the SDIO interrupt over the SDIO_D1.
+Page  571: SDIO interrupts
+Page  571: There is a pin with interrupt feature on the SD interface in order to enable the SD I/O card to interrupt
+Page  571: the MultiMedia card/SD module. In 4-bit SD mode, this pin is SDIO_D1. The SD I/O interrupts are
+Page  571: detected when the level is active. In other words, the interrupt signal line must be active (low) before it
+Page  571: end of the interrupt routine.
+Page  571: When the SDIO_DTCTRL [11] bit is set, the SDIO interrupts are detected on the SDIO_D1 signal line.
+Page  572: RXBUF_F interrupt signals.
+Page  573: CCSM waits for interrupt request
+Page  573: interrupt request.
+Page  576: Bit 22       IOIF              0x0             ro       SD I/O interrupt received
+Page  577: 25.4.12 SDIO clear interrupt register (SDIO_INTCLR)
+Page  577: 25.4.13 SDIO interrupt mask register (SDIO_INTEN)
+Page  577: The SDIO_INTEN register determines which status bit generates an interrupt by setting the
+Page  577: SD I/O mode received interrupt enable
+Page  577: Bit 22       IOIFIEN         0x0             rw       SD I/O mode received interrupt function.
+Page  577: Data available in RxBUF interrupt enable
+Page  577: Bit 21       RXBUFIEN        0x0             rw       Data Available in RxBUF Interrupt.
+Page  577: Data available in TxBUF interrupt enable
+Page  577: Bit 20       TXBUFIEN        0x0             rw       Data Available in TxBUF Interrupt.
+Page  577: RxBUF empty interrupt enable
+Page  578: RxBUF empty interrupt.
+Page  578: TxBUF empty interrupt enable
+Page  578: Bit 18   TXBUFEIEN       0x0         rw       TxBUF empty interrupt.
+Page  578: RxBUF full interrupt enable
+Page  578: Bit 17   RXBUFFIEN       0x0         rw       RxBUF full interrupt.
+Page  578: TxBUF full interrupt enable
+Page  578: Bit 16   TXBUFFIEN       0x0         rw       TxBUF full interrupt.
+Page  578: RxBUF half full interrupt enable
+Page  578: Bit 15   RXBUFHIEN       0x0         rw       RxBUF half full interrupt.
+Page  578: TxBUF half empty interrupt enable
+Page  578: Bit 14   TXBUFHIEN       0x0         rw       TxBUF half empty interrupt.
+Page  578: Data receive acting interrupt enable
+Page  578: Bit 13   DORXIEN         0x0         rw       Data receive acting interrupt.
+Page  578: Data transmit acting interrupt enable
+Page  578: Bit 12   DOTXIEN         0x0         rw       Data transmit acting interrupt.
+Page  578: Command acting interrupt enable
+Page  578: Bit 11   DOCMDIEN        0x0         rw       Command acting interrupt.
+Page  578: Data block end interrupt enable
+Page  578: Bit 10   DTBLKCMPLIEN    0x0         rw       Data block end interrupt.
+Page  578: Start bit error interrupt enable
+Page  578: Bit 9    SBITERRIEN      0x0         rw       Start bit error interrupt.
+Page  578: Data end interrupt enable
+Page  578: Bit 8    DTCMPLIEN       0x0         rw       Data end interrupt.
+Page  578: Command sent interrupt enable
+Page  578: Bit 7    CMDCMPLIEN      0x0         rw       Command sent interrupt.
+Page  578: Bit 6    CMDRSPCMPLIEN   0x0         rw       Command response received interrupt enable
+Page  579: Command response received interrupt.
+Page  579: RxBUF overrun error interrupt enable
+Page  579: Bit 5        RXERROIEN       0x0             rw       RxBUF overrun error interrupt.
+Page  579: TxBUF underrun error interrupt enable
+Page  579: Bit 4        TXERRUIEN       0x0             rw       TxBUF underrun error interrupt.
+Page  579: Data timeout interrupt enable
+Page  579: Bit 3        DTTIMEOUTIEN    0x0             rw       Data timeout interrupt.
+Page  579: Command timeout interrupt enable
+Page  579: Bit 2        CMDTIMEOUTIEN   0x0             rw       Command timeout interrupt.
+Page  579: Data CRC fail interrupt enable
+Page  579: Bit 1        DTFAILIEN       0x0             rw       Data CRC fail interrupt.
+Page  579: Command CRC fail interrupt enable
+Page  579: Bit 0        CMDFAILIEN      0x0             rw       Command CRC fail interrupt.
+Page  580:  Programmable interrupts for different operational conditions
+Page  581:    Trigger interrupts when the system is greater the specified time
+Page  596: 2. Mask unnecessary interrupt sources in the EMAC_DMAIE register.
+Page  596: normal interrupt summary bit (EMAC_DMASTS bit 16) are set. The transmit controller jumps to
+Page  596: 7.      When the frame transmission is complete, if the Interrupt on Completion (TDES0[30]) is set, then
+Page  596: the transmit interrupt bit (EMAC_DMASTS bit [0]) will be set. The DMA then returns to Step 3
+Page  596: transmit poll request and the overflow interrupt flag bit is cleared.
+Page  597: 6.     If enabled, the transmit interrupt bit is set. The DMA fetches the next descriptor when the status
+Page  597: TDES0. It then sets relevant interrupt flag bits and returns to suspend state.
+Page  597: transmit complete interrupt bit (TDES0[30]) is set, the transmit interrupt bit (EMAC_DMASTS bit 0) is
+Page  597: A frame transmission is aborted when an underflow is detected. The abnormal interrupt summary bit
+Page  598: Interrupt on completion
+Page  598: Bit 30       IC       rw     When set, this bit sets the transmit interrupt bit (EMAC_DMASTS bit [0]) after the
+Page  599: the EMAC_DMASTS register and the transmit interrupt bit (bit 0 in the
+Page  602: interrupt bit (EMAC_DMASTS[6]). The same process repeats unless the DMA finds a descriptor as
+Page  605: Disable interrupt on completion
+Page  605: this disables the interrupt triggered by the RECV bit. This bit is valid only when the
+Page  609: wakeup frame is received. If a remote wakeup interrupt is enabled, an interrupt will be generated when
+Page  609: register. Upon the reception of Magic Packet, the PMT will generate an interrupt if enabled.
+Page  609: 4.    Configure and enable the EXTI19 to generate either an event or an interrupt.
+Page  612: 1. Mask the time stamp trigger interrupt by setting the bit 9 in the EMAC_MAIMR register.
+Page  612: bit 9 in the Ethernet MAC interrupt mask register (EMAC_MAIMR) to activate the time stamp
+Page  612: interrupt.
+Page  612: 5.    When this event generates an interrupt, read the EMAC_MAIMR register to clear the
+Page  612: corresponding interrupt flag bits.
+Page  612: The EMAC provides a trigger interrupt when the system time is greater than the target time. Using an
+Page  612: interrupt introduces an interrupt latency. To obtain an accurate interrupt latency time, a PTP will output
+Page  612: interrupt latency can be calculated since the clock of the timer and PTP reference clock are
+Page  613: 26.2.6 EMAC interrupts
+Page  613: The EMAC has two interrupt vectors: one is used for normal Ethernet operations and the other for the
+Page  613: The first interrupt vector is used for interrupts generated by the MAC and the DMA.
+Page  613: The second interrupt vector is used for interrupts generated by the PMT block on wakeup events. It can
+Page  613: cause the AT32F437xx to exit the low-power mode, and generate an interrupt.
+Page  613: When an Ethernet wakeup event is mapped on the EXINT line19 and the EMAC PMT interrupt is
+Page  613: enabled and the EXINT line 19 interrupt, detected on its rising edge, is also enabled, both interrupts are
+Page  614: Figure 26-17 Ethernet interrupts
+Page  624: 26.3.11 Ethernet MAC interrupt status register (EMAC_MACISTS)
+Page  624: The Ethernet MAC interrupt status register identify the events in the MAC that can generate an interrupt.
+Page  624: Timestamp Interrupt Status
+Page  624: MMC Transmit Interrupt Status
+Page  624: This bit is set when an interrupt event is generated in the
+Page  624: the transmit interrupt register are cleared.
+Page  624: MMC Receive Interrupt Status
+Page  624: This bit is set when an interrupt is generated in the
+Page  625: the receive interrupt register are cleared.
+Page  625: MMC Interrupt Status
+Page  625: PMT Interrupt Status
+Page  625: 26.3.12 Ethernet MAC interrupt mask register (EMAC_MAIMR)
+Page  625: The Ethernet MAC interrupt mask register is used to mask the interrupt signal generated due to the
+Page  625: Timestamp Interrupt Mask
+Page  625: When this bit is set, it masks the interrupt signal generated
+Page  625: in the time stamp interrupt status bit of the
+Page  625: PMT Interrupt Mask.
+Page  625: When this bit is set, it masks the interrupt signal generated
+Page  625: in the MPT interrupt status bit of the EMAC_MACISTS
+Page  631: read by the software driver during an interrupt service routine or polling. Most of the bits in this register
+Page  631: can trigger the host to be interrupted. The bits in this register cannot be cleared when read. Writing 1’b1
+Page  631: 0]) can be masked through the corresponding bit in the interrupt enable mask register.
+Page  631: Timestamp Trigger Interrupt
+Page  631: This bit indicates an interrupt event in the time stamp
+Page  631: corresponding register to get interrupt sources.
+Page  631: MAC PMT Interrupt
+Page  631: This bit indicates an interrupt even in the PMT. The
+Page  631: Bit 28       MPI                0x0             ro       register (EMAC_MACPMTCTRLSTS) to get the interrupt
+Page  631: MAC MMC Interrupt
+Page  631: This bit indicates an interrupt event in the MMC. The
+Page  631: Bit 27       MMI                0x0             ro       interrupt sources and clear them in order to reset this bit
+Page  631: Bit 25: 23   EB                 0x0             ro       This filed does not generate an interrupt.
+Page  632: not generate an interrupt.
+Page  632: not generate an interrupt.
+Page  632: Normal Interrupt Summary
+Page  632: The normal interrupt summary value is the logic OR of the
+Page  632: following bits when the corresponding interrupt bits are
+Page  632: enabled in the interrupt enable registers.
+Page  632: EMAC_DMASTS[0]: Transmit interrupt
+Page  632: EMAC_DMASTS[6]: Receive interrupt
+Page  632: EMAC_DMASTS[14]: Early receive interrupt
+Page  632: Only unmasked bits affect the normal interrupt summary.
+Page  632: Abnormal Interrupt Summary
+Page  632: The abnormal interrupt summary value is the logic OR of
+Page  632: the following bits when the corresponding interrupt bits
+Page  632: are enabled in the interrupt enable registers.
+Page  632: EMAC_DMASTS[10]: Early transmit interrupt
+Page  632: Only unmasked bits affect the abnormal interrupt
+Page  632: Early Receive Interrupt
+Page  632: Bit 13       FBEI   0x0         rw1c     Fatal Bus Error Interrupt
+Page  633: Early Transmit Interrupt
+Page  633: Receive Interrupt
+Page  633: Bit 6        RI         0x0         rw1c     RDES1 (interrupt disabled after reset operation) is reset in
+Page  633: Transmit Interrupt
+Page  636: 26.3.28 Ethernet DMA interrupt enable register (EMAC_DMAIE)
+Page  636: The EMAC_DMAIE register enables the interrupts reported by the status register. Setting a bit to 1’b1
+Page  636: enables a corresponding interrupt. All interrupts are disabled after a software or hardware reset.
+Page  636: Normal Interrupt enable
+Page  636: When this bit is set, a normal interrupt summary is
+Page  636: enabled. When this bit is cleared, a normal interrupt
+Page  636: EMAC_DMASTS[0]: Transmit interrupt
+Page  636: EMAC_DMASTS[6]: Receive interrupt
+Page  636: EMAC_DMASTS[14]: Early receive interrupt
+Page  636: Abnormal interrupt enable
+Page  636: When this bit is set, an abnormal interrupt summary is
+Page  636: enabled. When this bit is cleared, an abnormal interrupt
+Page  636: EMAC_DMASTS[10]: Early transmit interrupt
+Page  636: Early Receive interrupt Enable
+Page  636: When this bit is set with the normal interrupt summary
+Page  636: enable bit, the early receive interrupt is enabled. When this
+Page  636: bit is cleared, the early receive interrupt is disabled.
+Page  636: When this bit is set with the abnormal interrupt summary
+Page  636: Bit 13       FBEE             0x0             rw       enable bit, the fatal bus error interrupt is enabled. When
+Page  636: this bit is cleared, the fatal bus error enable interrupt is
+Page  636: Early transmit Interrupt Enable
+Page  636: When this bit is set with the abnormal interrupt summary
+Page  636: enable bit, the early transmit interrupt is enabled. When
+Page  636: this bit is cleared, the early transmit interrupt is disabled.
+Page  636: When this bit is set with the abnormal interrupt summary
+Page  637: enable bit, the receive watchdog timeout interrupt is
+Page  637: timeout interrupt is disabled.
+Page  637: When this bit is set with the abnormal interrupt summary
+Page  637: enable bit, the receive stopped interrupt is enabled. When
+Page  637: this bit is cleared, the receive stopped interrupt is disabled.
+Page  637: When this bit is set with the abnormal interrupt summary
+Page  637: Bit 7        RBUE              0x0             rw       enable bit, the receive buffer unavailable interrupt is
+Page  637: unavailable interrupt is disabled.
+Page  637: Receive Interrupt Enable
+Page  637: When this bit is set with the normal interrupt summary
+Page  637: enable bit, the receive interrupt is enabled. When this bit
+Page  637: is cleared, the receive interrupt is disabled.
+Page  637: Underflow Interrupt Enable
+Page  637: When this bit is set with the abnormal interrupt summary
+Page  637: enable bit, the underflow interrupt is enabled. When this
+Page  637: bit is cleared, the underflow interrupt is disabled.
+Page  637: Overflow Interrupt Enable
+Page  637: When this bit is set with the abnormal interrupt summary
+Page  637: enable bit, the overflow interrupt is enabled. When this bit
+Page  637: is cleared, the overflow interrupt is disabled.
+Page  637: When this bit is set with the abnormal interrupt summary
+Page  637: Bit 3        TJE               0x0             rw       enable bit, the transmit Jabber timeout interrupt is
+Page  637: timeout interrupt is disabled.
+Page  637: When this bit is set with the normal interrupt summary
+Page  637: Bit 2        TUE               0x0             rw       enable bit, the transmit buffer unavailable interrupt is
+Page  637: unavailable interrupt is disabled.
+Page  637: When this bit is set with the abnormal interrupt summary
+Page  637: Bit 1        TSE               0x0             rw       enable bit, the transmit stopped interrupt is enabled. When
+Page  637: this bit is cleared, the transmit stopped interrupt is
+Page  637: Transmit Interrupt Enable
+Page  637: When this bit is set with the normal interrupt summary
+Page  637: enable bit, the transmit interrupt is enabled. When this bit
+Page  637: is cleared, the transmit interrupt is disabled.
+Page  637: The Ethernet interrupt is generated only when the TST or PMT bit is set in the DMA status register with
+Page  637: other interrupts unmasked, ow when the NIS/AIS is enabled with other interrupts enabled.
+Page  639: 26.3.35 Ethernet MMC receive interrupt register (EMAC_MMCRI)
+Page  639: The EMAC_MMCRI register contains the interrupts generated in the following conditions:
+Page  639: When the counter stops rolling, an interrupt is set but the counter is still all 1. The EMAC_MMCRI is a
+Page  639: 32-bit register. An interrupt bit is cleared when the MMC counter that generates the interrupt is read.
+Page  639: interrupt bit.
+Page  639: 26.3.36 Ethernet MMC transmit interrupt register (EMAC_MMCTI)
+Page  639: The EMAC_MMCTI register contains the interrupts generated in the following conditions: when the
+Page  639: 0xFFFF). When the counter stops rolling, an interrupt is set but the counter is still all 1. The
+Page  639: EMAC_MMCTI is a 32-bit register. An interrupt bit is cleared when the MMC counter that generates the
+Page  639: interrupt is read. The least significant byte bit [7: 0] of the corresponding counter must be read in order
+Page  639: to clear the interrupt bit.
+Page  640: Interrupt
+Page  640: 26.3.37 Ethernet MMC receive interrupt register (EMAC_MMCRIM)
+Page  640: The EMAC_MMCRIM contains the masks for interrupts generate when the receive statistic counters
+Page  640: Received Unicast Good Frame Counter Interrupt Mask
+Page  640: Setting this bit masks the interrupt when the received good
+Page  640: Interrupt Mask
+Page  640: Bit 6        RAEFACIM         0x0             rw       Setting this bit masks the interrupt when the received
+Page  640: Received CRC Error Frame Counter Interrupt Mask
+Page  640: Setting this bit masks the interrupt when the received CRC
+Page  640: 26.3.38 Ethernet MMC transmit interrupt register
+Page  640: The EMAC_MMCTIM contains the masks for interrupts generate when the transmit statistic counters
+Page  640: Transmitted Good Frame Counter Interrupt Mask
+Page  640: Setting this bit masks the interrupt when the transmitted
+Page  640: Interrupt Mask
+Page  640: Bit 15       TMCGFCIM         0x0             rw       Setting this bit masks the interrupt when the transmitted
+Page  640: Interrupt Mask
+Page  640: Bit 14       TSCGFCIM         0x0             rw       Setting this bit masks the interrupt when the transmitted
+Page  642: Timestamp Interrupt Trigger Enable
+Page  642: When this bit is set, a time stamp interrupt is enabled if the
+Page  642: trigger interrupt is generated.
+Page  645: Target time second register and target time subsecond register are used to schedule an interrupt event
+Page  645: interrupt is generated if enabled.
+Page  645: Bit 31: 0   TTLR              0x0000 0000     rw       control register. An interrupt is generated if enabled.
+Page  647: can monitor the status of data reception through status and error interrupts.
+Page  647: Interrupt
+Page  647:     Frame capture completed, vertical synchronization and horizontal synchronization status interrupts
+Page  647:     FIFO overrun and embedded synchronization error interrupts
+Page  653: 27.5 Interrupts and interrupt control
+Page  653: There are four registers available to control the interrupts of the DVP interface. The read-only
+Page  653: course of sampling. The DVP_IENA is used to control interrupt signals, and it can be programmed to
+Page  653: enable the synchronization status or error interrupts of the corresponding bits, and send them to CPU.
+Page  653: The interrupts, after enabled, are stored in the read-only DVP_ISTS register, which is used to check the
+Page  653: DVP supports three synchronization status interrupts:
+Page  653: capture. Based on the synchronization logic, the frame capture completed interrupt occurs when the
+Page  653: frame end signal is detected. If the Crop feature is enabled, the frame capture completed interrupt occurs
+Page  653: The DVP supports two types of error interrupts:
+Page  654: interrupt is generated. If the CAP is not enabled, both OVRES and OVRIS bits have no effect.
+Page  664: 27.8.4 DVP interrupt enable register (DVP_IENA)
+Page  664: Horizontal synchronization interrupt enable
+Page  664: Bit 4       HSIE       0x0             rw       0: Horizontal synchronization interrupt disabled
+Page  664: 1: Horizontal synchronization interrupt enabled
+Page  664: Vertical synchronization interrupt enable
+Page  664: Bit 3       VSIE       0x0             rw       0: Vertical synchronization interrupt disabled
+Page  664: 1: Vertical synchronization interrupt enabled
+Page  664: Embedded synchronization error interrupt enable
+Page  664: Bit 2       ESEIE      0x0             rw       0: Embedded synchronization error interrupt disabled
+Page  664: 1: Embedded synchronization error interrupt enabled
+Page  664: Output data FIFO overrun interrupt enable
+Page  664: Bit 1       OVRIE      0x0             rw       0: Output data FIFO overrun interrupt disabled
+Page  664: 1: Output data FIFO overrun interrupt enabled
+Page  664: Capture frame done interrupt enable
+Page  664: Bit 0       CFDIE      0x0             rw       0: Capture frame done interrupt disabled
+Page  664: 1: Capture frame done interrupt enabled
+Page  664: 27.8.5 DVP interrupt status register (DVP_ISTS)
+Page  664: Horizontal synchronization interrupt status
+Page  664: 0:No horizontal synchronization interrupt generated
+Page  664: Bit 4       HSIS       0x0             ro       1: Horizontal synchronization interrupt generated
+Page  664: Vertical synchronization interrupt status
+Page  664: 0: No vertical synchronization interrupt generated
+Page  664: Bit 3       VSIS       0x0             ro       1: Vertical synchronization interrupt generated
+Page  664: Embedded synchronization error interrupt status
+Page  664: 0: No embedded synchronization error interrupt generated
+Page  664: 1: Embedded synchronization error interrupt generated
+Page  664: Output data FIFO overrun interrupt status
+Page  664: 0: No FIFO overrun interrupt generated
+Page  664: Bit 1       OVRIS      0x0             ro       1: FIFO overrun interrupt generated
+Page  664: Capture frame done interrupt status
+Page  664: Bit 0       CFDIS      0x0             ro       1: Capture frame done interrupt generated
+Page  664: 27.8.6 DVP interrupt clear register (DVP_ICLR)
+Page  664: Horizontal synchronization interrupt clear
+Page  664: Vertical synchronization interrupt clear
+Page  664: Bit 2       ESEIC      0x0             wo       Embedded synchronization error interrupt clear
+Page  665: Output data FIFO overrun interrupt clear
+Page  665: Capture frame done interrupt clear
+Page  666: Vertical synchronization event and interrupt definition
+Page  666: 0: VSES and VEIS indicates frame end event and interrupt
+Page  666: interrupt
+Page  666: Horizontal synchronization event and interrupt definition
+Page  666: Bit 16       HSEID      0x0             rw       0: HSES and HEIS indicates line end event and interrupt
+Page  666: 1: HSES and HEIS indicates line start event and interrupt
+Page  680: RxFIFO threshold interrupt for DMA handshake mode. The
+Page  680: TxFIFO threshold interrupt for DMA handshake mode. The
+Page  680: Command complete Interrupt enable
+Page  680: Bit 1        CMDIE            0x0             rw       0: Command complete Interrupt disabled
+Page  680: 1: Command complete Interrupt enabled
+Page  684: goal of enhancing system performance and reducing the generation of interrupts.
+Page  685: and interrupt mode
+Page  685: This includes FIFO threshold value select, direct mode disable and FIFO error interrupt enable bit.
+Page  689: one. At this point, a transfer completed interrupt (FDTF bit) is generated to mark the completion of a
+Page  692: 29.3.10 Interrupts
+Page  692: An interrupt can be generated on a DMA half-transfer, transfer complete, transfer error, FIFO error and
+Page  692: direct mode error. Each channel has its specific interrupt flag, clear and enable bits, as shown in the
+Page  692: Table 29-2 DMA interrupts
+Page  692: Interrupt events   Event flag               Clear control bit          Enable control bit
+Page  694: 29.4.2 DMAMUX overflow interrupts
+Page  694: the DMA_MUXGCLR register. An interrupt will be generated if the interrupt enable bit TRGOVIEN is set
+Page  694: SYNCOVFCx bit in the DMA_MUXSYNCCLR register. An interrupt will be generated if the interrupt
+Page  698: Bit 27       FDTF4            0x0             ro       Stream4 full data transfer complete interrupt flag
+Page  698: Bit 26       HDTF4            0x0             ro       Stream4 half data transfer complete interrupt flag
+Page  698: Bit 25       DTERRF4          0x0             ro       Stream4 transfer error interrupt flag
+Page  698: Bit 24       DMERRF4          0x0             ro       Stream4 direct mode error interrupt flag
+Page  698: Bit 22       FERRF4           0x0             ro       Stream4 fifo error interrupt flag
+Page  698: Bit 21       FDTF3            0x0             ro       Stream3 full data transfer complete interrupt flag
+Page  698: Bit 20       HDTF3            0x0             ro       Stream3 half data transfer complete interrupt flag
+Page  698: Bit 19       DTERRF3          0x0             ro       Stream3 transfer error interrupt flag
+Page  698: Bit 18       DMERRF3          0x0             ro       Stream3 direct mode error interrupt flag
+Page  698: Bit 16       FERRF3           0x0             ro       Stream3 fifo error interrupt flag
+Page  699: Bit 11       FDTF2            0x0             ro       Stream2 full data transfer complete interrupt flag
+Page  699: Bit 10       HDTF2            0x0             ro       Stream2 half transfer complete interrupt flag
+Page  699: Bit 9        DTERRF2          0x0             ro       Stream2 transfer error interrupt flag
+Page  699: Bit 8        DMERRF2          0x0             ro       Stream2 direct mode error interrupt flag
+Page  699: Bit 6        FERRF2           0x0             ro       Stream2 fifo error interrupt flag
+Page  699: Bit 5        FDTF1            0x0             ro       Stream1 full data transfer complete interrupt flag
+Page  699: Bit 4        HDTF1            0x0             ro       Stream1 half data transfer complete interrupt flag
+Page  699: Bit 3        DTERRF1          0x0             ro       Stream1 transfer error interrupt flag
+Page  699: Bit 2        DMERRF1          0x0             ro       Stream1 direct mode error interrupt flag
+Page  699: Bit 0        FERRF1           0x0             ro       Stream1 fifo error interrupt flag
+Page  699: Bit 27       FDTF8            0x0             ro       Stream6 full data transfer complete interrupt flag
+Page  699: Bit 26       HDTF8            0x0             ro       Stream8 half transfer complete interrupt flag
+Page  699: Bit 25       DTERRF8          0x0             ro       Stream8 transfer error interrupt flag
+Page  699: Bit 24       DMERRF8          0x0             ro       Stream8 direct mode error interrupt flag
+Page  699: Bit 22       FERRF8           0x0             ro       Stream8 fifo error interrupt flag
+Page  699: Bit 21       FDTF7            0x0             ro       Stream7 full data transfer complete interrupt flag
+Page  699: Bit 20       HDTF7            0x0             ro       Stream7 half data transfer complete interrupt flag
+Page  699: Bit 19       DTERRF7          0x0             ro       Stream7 transfer error interrupt flag
+Page  699: Bit 18       DMERRF7          0x0             ro       Stream7 direct mode error interrupt flag
+Page  699: Bit 16       FERRF7           0x0             ro       Stream7 fifo error interrupt flag
+Page  699: Bit 11       FDTF6            0x0             ro       Stream6 full data transfer complete interrupt flag
+Page  700: Bit 10       HDTF6            0x0             ro       Stream6 half data transfer complete interrupt flag
+Page  700: Bit 9        DTERRF6          0x0             ro       Stream6 transfer error interrupt flag
+Page  700: Bit 8        DMERRF6          0x0             ro       Stream6 direct mode error interrupt flag
+Page  700: Bit 6        FERRF6           0x0             ro       Stream6 fifo error interrupt flag
+Page  700: Bit 5        FDTF5            0x0             ro       Stream5 full data transfer complete interrupt flag
+Page  700: Bit 4        HDTF5            0x0             ro       Stream5 half data transfer complete interrupt flag
+Page  700: Bit 3        DTERRF5          0x0             ro       Stream5 transfer error interrupt flag
+Page  700: Bit 2        DMERRF5          0x0             ro       Stream5 direct mode error interrupt flag
+Page  700: Bit 0        FERRF5           0x0             ro       Stream5 fifo error interrupt flag
+Page  700: Bit 27       FDTFC4           0x0             w        Stream4 clear transfer complete interrupt flag
+Page  700: Bit 26       HDTFC4           0x0             w        Stream4 clear half transfer complete interrupt flag
+Page  700: Bit 25       DTERRFC4         0x0             w        Stream4 clear error interrupt flag
+Page  700: Bit 24       DMERRFC4         0x0             w        Steam4 clear direct mode error interrupt flag
+Page  700: Bit 22       FERRFC4          0x0             w        Stream4 clear fifo error interrupt flag
+Page  700: Bit 21       FDTFC3           0x0             w        Stream3 clear transfer complete interrupt flag
+Page  700: Bit 20       HDTFC3           0x0             w        Stream3 clear half transfer complete interrupt flag
+Page  700: Bit 19       DTERRFC3         0x0             w        Stream3 clear error interrupt flag
+Page  700: Bit 18       DMERRFC3         0x0             w        Steam3 clear direct mode error interrupt flag
+Page  700: Bit 16       FERRFC3          0x0             w        Stream3 clear fifo error interrupt flag
+Page  700: Bit 15: 12   FDTFC2           0x0             w        Stream2 clear transfer complete interrupt flag
+Page  700: Bit 11       HDTFC2           0x0             w        Stream2 clear half transfer complete interrupt flag
+Page  700: Bit 10       DTERRFC2         0x0             w        Stream2 clear error interrupt flag
+Page  700: Bit 9        DMERRFC2         0x0             w        Steam2 clear direct mode error interrupt flag
+Page  701: Bit 7        FERRFC2          0x0             w        Stream2 clear fifo error interrupt flag
+Page  701: Bit 5        FDTFC1           0x0             w        Stream1 clear transfer complete interrupt flag
+Page  701: Bit 4        HDTFC1           0x0             w        Stream1 clear half transfer complete interrupt flag
+Page  701: Bit 3        DTERRFC1         0x0             w        Stream1 clear error interrupt flag
+Page  701: Bit 2        DMERRFC1         0x0             w        Steam1 clear direct mode error interrupt flag
+Page  701: Bit 0        FERRFC1          0x0             w        Stream1 clear fifo error interrupt flag
+Page  701: Bit 27       FDTFC8           0x0             w        Stream8 clear transfer complete interrupt flag
+Page  701: Bit 26       HDTFC8           0x0             w        Stream8 clear half transfer complete interrupt flag
+Page  701: Bit 25       DTERRFC8         0x0             w        Stream8 clear error interrupt flag
+Page  701: Bit 24       DMERRFC8         0x0             w        Steam8 clear direct mode error interrupt flag
+Page  701: Bit 22       FERRFC8          0x0             w        Stream8 clear fifo error interrupt flag
+Page  701: Bit 21       FDTFC7           0x0             w        Stream7 clear transfer complete interrupt flag
+Page  701: Bit 20       HDTFC7           0x0             w        Stream7 clear half transfer complete interrupt flag
+Page  701: Bit 19       DTERRFC7         0x0             w        Stream7 clear error interrupt flag
+Page  701: Bit 18       DMERRFC7         0x0             w        Steam7 clear direct mode error interrupt flag
+Page  701: Bit 16       FERRFC7          0x0             w        Stream7 clear fifo error interrupt flag
+Page  701: Bit 15: 12   FDTFC6           0x0             w        Stream6 clear transfer complete interrupt flag
+Page  701: Bit 11       HDTFC6           0x0             w        Stream6 clear half transfer complete interrupt flag
+Page  701: Bit 10       DTERRFC6         0x0             w        Stream6 clear error interrupt flag
+Page  701: Bit 9        DMERRFC6         0x0             w        Steam6 clear direct mode error interrupt flag
+Page  701: Bit 7        FERRFC6          0x0             w        Stream6 clear fifo error interrupt flag
+Page  701: Bit 5        FDTFC5           0x0             w        Stream5 clear transfer complete interrupt flag
+Page  702: Bit 4        HDTFC5           0x0             w        Stream5 clear half transfer complete interrupt flag
+Page  702: Bit 3        DTERRFC5         0x0             w        Stream5 clear error interrupt flag
+Page  702: Bit 2        DMERRFC5         0x0             w        Steam5 clear direct mode error interrupt flag
+Page  702: Bit 0        FERRFC5          0x0             w        Stream5 clear fifo error interrupt flag
+Page  703: Full data transfer interrupt enable
+Page  703: Bit 4        FDTIEN   0x0         rw       0: TC interrupt disabled
+Page  703: 1: TC interrupt enabled
+Page  703: Half data transfer interrupt enable
+Page  703: Bit 3        HDTIEN   0x0         rw       0: HT interrupt disabled
+Page  703: 1: HT interrupt enabled
+Page  704: Data transfer error interrupt enable
+Page  704: Bit 2        DTERRIEN         0x0             rw       0: TE interrupt disabled
+Page  704: 1: TE interrupt enabled
+Page  704: Direct mode error interrupt enable
+Page  704: Bit 1        DMERRIEN         0x0             rw       0: DME interrupt disabled
+Page  704: 1: DME interrupt enabled
+Page  705: FIFO error interrupt enable
+Page  705: Bit 7       FERRIEN           0x0             rw       0: FIFO error interrupt disabled
+Page  705: 1: FIFO error interrupt enabled
+Page  708: Synchronization overrun interrupt enable
+Page  708: Bit 8          SYNCOVIEN      0x0                      0: Interrupt disabled
+Page  708: 1: Interrupt enabled
+Page  709: Trigger overrun interrupt enable
+Page  709: Bit 8        TRGOVIEN         0x0             rw       0: Interrupt disabled
+Page  709: 1: Interrupt enabled
+Page  709: 29.5.20 DMAMUX synchronization interrupt status register
+Page  709: Synchronization overrun interrupt flag
+Page  709: 29.5.21 DMAMUX synchronization interrupt clear flag register
+Page  709: Synchronization overrun interrupt flag clear
+Page  710: 29.5.22 DMAMUX generator interrupt status register (DMA_
+Page  710: Trigger overrun interrupt flag
+Page  710: 29.5.23 DMAMUX generator interrupt clear flag register (DMA_
+Page  710: Trigger overrun interrupt flag clear

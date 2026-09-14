@@ -1,0 +1,28 @@
+Keyword: UART7
+Occurrences: 24
+================================================================================
+
+Page   52: 82   89             UART7                 UART7 global interrupt                       0x0000_0188
+Page   61: 0x4000 7800 - 0x4000 7BFF       UART7
+Page   81: UART7 reset
+Page   81: Bit 30       UART7RST         0x0            rw       0: Does not reset UART7
+Page   81: 1: Reset UART7
+Page   85: UART7 clock enable
+Page   85: Bit 30       UART7EN         0x0             rw        0: Disabled
+Page   89: UART7 clock enable in sleep mode
+Page   89: Bit 30       UART7LPEN        0x1            rw       0: Disabled
+Page  127: PB3    UART7_RX
+Page  127: PB4    UART7_TX                                                   SDIO1_D0   DVP_D5                EVENTOUT
+Page  129: PC0    UART7_TX                SDIO2_D0                      XMC_SDNWE                          EVENTOUT
+Page  129: PC1    UART7_RX                SDIO2_D1      EMAC_MDC                                           EVENTOUT
+Page  133: PE7    UART7_RX               QSPI2_IO0                       XMC_D4                       EVENTOUT
+Page  133: PE8    UART7_TX               QSPI2_IO1                       XMC_D5                       EVENTOUT
+Page  135: PF6    UART7_RX   QSPI1_IO3                            XMC_NIORD                      EVENTOUT
+Page  135: PF7    UART7_TX   QSPI1_IO2                            XMC_NREG                       EVENTOUT
+Page  154: SPI2       UART7                                                            ch3
+Page  158: SPI2     UART7           Req_gen2
+Page  159: 20          I2C3_RX       52        TMR8_CH4           84        reserved       116     UART7_RX
+Page  159: 21          I2C3_TX       53        TMR8_OVERFLOW 85             reserved       117     UART7_TX
+Page  693: SPI2     UART7                Req_gen2
+Page  693: 20          I2C3_RX           52             TMR8_CH4                             84             reserved                     116                UART7_RX
+Page  694: 21              I2C3_TX               53        TMR8_OVERFLOW 85               reserved          117     UART7_TX

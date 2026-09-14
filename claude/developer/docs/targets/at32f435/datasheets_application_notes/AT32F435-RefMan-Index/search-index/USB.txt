@@ -1,0 +1,178 @@
+Keyword: USB
+Occurrences: 174
+================================================================================
+
+Page   19: 21.1 USBFS structure ........................................................................ 424
+Page   20: 21.5.4.2 Endpoint initialization on USB reset ........................................ 445
+Page   20: 21.5.4.7 USB endpoint deactivation ..................................................... 447
+Page   21: 21.6.3.4 OTGFS USB configuration register ( OTGFS_GUSBCFG) .......... 467
+Page   44: external memory controller (XMC), USB2.0 full-speed interfaces, Ethernet MAC, parallel digital camera
+Page   47: USBOTG2
+Page   47: USBOTG1
+Page   55: programming function through USART1, USART2 or USB interface, but also provides extra firmware
+Page   56:  Serial number: such as USB string serial number
+Page   70: USB Divider                                                                                      288MHz             to TMRx
+Page   70: 3,3.5,4,...,7                      USB48M                                                        Peripheral
+Page   70: To USB interface                              clock enable
+Page   70: HICK_TO_USB
+Page   70: USB48M                         HEXT                         Divider1          Divider2
+Page   71: The USB clock source can be switched between HICK and PLL frequency divider. If the HICK is selected
+Page   71: as a clock source, the USB clock should be set as 48 MHz; If the PLL frequency divider is selected as a
+Page   71: clock source, the USB frequency divider provides 48 MHz USBCLK, and thus the PLL must be set as
+Page   72: ADCCLK, USB48M, SCLK, LICK, LEXT, HICK, HEXT, PLLCLK can be used as CLKOUT1/2 clocks.
+Page   76: Bit 26: 24       USBDIV         0x0            rw
+Page   94: 0000: USB clock output
+Page   94: USB 48 MHz clock source select
+Page   94: Bit 13      HICK_TO_USB    0x0           rw
+Page   94: Note: Since USB must work at 48 MHz, HICKDIV=1 must
+Page   94: as the clock source of USB 48 MHz.
+Page   94: USB division
+Page   94: USB clock.
+Page   94: Bit 15: 12 USBDIV          0x0           rw        0101: PLL clock divided by 3
+Page   96: uses USART1, USART2 or USB (DFU) serial interface for ISP programming.
+Page  138:  For USB OTGFS_ID pin, configure corresponding IOMUX and enable corresponding clocks in CRM,
+Page  260: TMR2                                   TMR1                          TMR8/USB_SOF(2) TMR3                            TMR4
+Page  424: 21.1 USBFS structure
+Page  424: USB 2.0 FS
+Page  424: OTGFS         USB 2.0 I/F                 USB2.0 FS
+Page  424: The OTGFS is a USB full-speed dual role device controller. The status of the ID line determines whether
+Page  425: The OTGFS interface has two clocks: USB control clock and APB bus clock. The USB full-speed device
+Page  425: perform USB bus sampling.
+Page  425: USBFS 48M clock has two sources:
+Page  425: When the HICK 48M clock is used as a USB control clock, it is recommended to enable ACC feature.
+Page  425: The PLL output frequency must ensure that the USBDIV (see CRM_CFG register) can be divided
+Page  425: When the USB module is enabled in the CRM, PA11 and PA12 can be multiplexed as DP/DM; PA8 can
+Page  427: 3. Program the following fields in the OTGFS_GUSBCFG register:
+Page  427:  USB turnaround time bit
+Page  427: A dynamic FIFO allocation is required during power-on or USB reset. In device mode, the application
+Page  427: (largest packet size/4) + 1 spaces are recommended so that the USB can receive the subsequent
+Page  427: better the USB performance, and this helps to avoid latency on the AHB line.
+Page  428: back packets. In most cases, two (largest packet size/4) + 2 spaces are recommended so that the USB
+Page  428: USB performance, and this helps to avoid latency on the AHB line. Typically, two largest packet sizes of
+Page  428: transferred to the USB. If there is a longer latency on AHB, sufficient spaces must be reserved to receive
+Page  429: 3. Set PRTPWR = 0x1 in the OTGFS_HPRT register to drive VBUS supply on the USB
+Page  430: have already been started on the USB line are not interrupted by the host.
+Page  430: have been cleared. Once the device is reconnected, the host must start a USB reset.
+Page  437: Application            AHB                Host                  USB                   Device
+Page  441: Application            AHB                    Host                USB                  Device
+Page  444: Application           AHB                 Host                 USB                 Device
+Page  445:  USB reset
+Page  445:  USB suspend
+Page  445: 4. Wait for the USBRESET interrupt in the OTGFS_GINTSTS register. It indicates that a reset signal has
+Page  445: been detected on the USB (lasting for about 10ms). Upon receiving this interrupt, the application must
+Page  445: follow the steps defined in USB initialization on USB reset.
+Page  445: 5. Wait for the ENUMDONE interrupt in the OTGFS_GINTSTS register. It indicates the end of USB reset.
+Page  445: 21.5.4.2 Endpoint initialization on USB reset
+Page  445: This section describes the operations required for the application to perform when a USB reset signal is
+Page  446:  Refer to Endpoint activation and USB endpoint deactivation for more information on how to
+Page  446:  USB valid endpoint = 0x1
+Page  447: 21.5.4.7 USB endpoint deactivation
+Page  447:  Clear the USB valid endpoint bit in the OTGFS_DIEPCTLx register (for IN or bidirectional
+Page  447: which causes a USB timeout.
+Page  450: 2. For every SETUP packet received on the USB line, 3 WORDs of data are written to the receive FIFO,
+Page  451: Per the USB 2.0 specification, typically, a host does not send more than three consecutive SETUP
+Page  451: packets to the same endpoint during a SETUP packet error. However, the USB2.0 specification does
+Page  452: size register to determine how much data in the transmit FIFO have already been sent on the USB line.
+Page  452:  Data transmitted on USB = (Application-programmed initial packet count – Controller-updated
+Page  452:  Data to be transmitted on USB = Application-programmed initial transfer size – Data transmitted
+Page  452: on USB
+Page  453: endpoints on the USB.
+Page  453:  Number of USB packets the payload was received = Application-programmed initial packet count
+Page  454: long as there is available space in the receive FIFO. For each data packet received on the USB line, the
+Page  454:  After sending an ACK to the data packet on the USB, the controller discards non-synchronous
+Page  454: Figure 21-12 describes the reception of a single bulk OUT data packet from the USB to the AHB and
+Page  455: Host           USB              Device                        Application
+Page  455: 2. When the controller receives the OUT token on the USB, it stores data in the receive FIFO because
+Page  455: 4. Upon receiving the packet count of USB packets, the controller internally sets the NAK bit for the
+Page  456:  OTGFS_DOEPTSIZx.RxDPID = 0xD0 and the USB packet count in which the payload was
+Page  456:  OTGFS_DOEPTSIZx.RxDPID = 0xD1 and the USB packet count in which the payload was
+Page  456:  OTGFS_DOEPTSIZx.RxDPID = 0xD2 and the USB packet count in which the payload was
+Page  456: The number of USB packets in which the payload was received= Application-programed initial packet
+Page  457: Set USBACTEP = 0x1 in the OTGFS_DIEPCTLx register
+Page  459: The controller responds to the received IN token by sending a zero-length data packet to the USB.
+Page  460: USB, and An NAK handshake signal would be transmitted for INTR IN endpoints.
+Page  460:  A zero-length data packet is transmitted on the USB for synchronous IN endpoints
+Page  460:  An NAK handshake signal is transmitted on the USB for interrupt IN endpoints.
+Page  461: are transmitted on the USB line.
+Page  461: transmitted on the USB line.
+Page  462: Table 21-4 shows the USB OTG register map and their reset values.
+Page  462: OTGFS_GUSBCFG                         0x00C                         0x0000 1440
+Page  466: application must configure this register before starting transmission on either the AHB or USB.
+Page  467: 21.6.3.4 OTGFS USB configuration register (OTGFS_GUSBCFG)
+Page  467: device mode. This register contains USB and USB-PHY related parameters. The application must
+Page  467: program the register before handling any transaction on either the AHB or USB. Do not change this
+Page  467: USB Turnaround Time
+Page  467: Bit 13: 10   USBTRDTIM       0x5             rw       follows:
+Page  467: a minimum of 30MHz AHB frequency. The USB
+Page  468: MHz, and don’t care about the USB turnaround time, you
+Page  468: In full-speed mode, the USB standard timeout value is
+Page  469: AHB data transfer. All transactions on the USB are
+Page  469: changes the PHY selection bits in the above-listed USB
+Page  470: resume signal (triggered by host) is detected on the USB
+Page  470: the USB bus.
+Page  471: USB Reset
+Page  471: Bit 12       USBRST        0x0         rw1c
+Page  471: detected on the USB bus.
+Page  471: USB Suspend
+Page  471: Bit 11       USBSUSP       0x0         rw1c
+Page  471: detected on the USB bus. The controller enters the
+Page  472: has been detected on the USB bus for 3 ms.
+Page  472: on the USB bus. The STALL bit has priority over the NAK
+Page  472: on the USB bus. The application must set this bit to 1 to
+Page  472: an SOF token has been received on the USB bus. The
+Page  473: Bit 12       USBRSTMSK          0x0             rw
+Page  473: USB Reset mask
+Page  473: Bit 11       USBSUSPMSK         0x0             rw       Accessible in device mode only
+Page  474: USB suspend interrupt mask
+Page  474: Bit 24: 21   FN                0x0             ro       of the data packet received on the USB bus. This field is
+Page  477: USB communication.
+Page  478: the USB bus.
+Page  478: on the USB bus, and is cleared to 0 when the value
+Page  480: This register contains USB port-related information such as USB reset, enable, suspend, resume,
+Page  480: Indicates the current logic status of the USB data lines.
+Page  480: duration defined in Section 7.1.7.5 of USB 2.0
+Page  480: maximum limit set by the USB standard.
+Page  481: detects a USB remote wakeup sequence (as indicated by
+Page  482: This register contains the status of a channel related to USB and AHB events, as shown in Figure 21-2.
+Page  482: Indicates one of the following errors occurred on the USB
+Page  484: Bit 1: 0     DEVSPD           0x0             rw       complete, and is based on the speed of the USB host to
+Page  484: 11: Full speed (USB1.1 transceiver, clock is 48MHz)
+Page  485: device does not receive signals on the USB bus. The
+Page  485: connect event to the host. Then the USB host restarts
+Page  485: initiates a remote signal to wakeup the USB host. The
+Page  485: the suspend mode. Per USB2.0 standards, the
+Page  485: states for the USB host to detect a device disconnect. To accommodate clock jitter, it is advised that
+Page  486: condition is detected on the USB bus. The controller
+Page  486: USB bus.
+Page  486: –   When there is an activity on the USB bus
+Page  489: USB active endpoint
+Page  489: Bit 15       USBACEPT   0x0         ro
+Page  490: USB host to this endpoint. If a NAK bit, global non-periodic
+Page  491: USB active endpoint
+Page  491: Bit 15       USBACEPT   0x0         rw       USB reset. After receiving the SetConfiguration and
+Page  492: USB active endpoint
+Page  492: Bit 15       USBACEPT        0x1             ro       This bit is always set to 1, indicating that a control endpoint
+Page  493: USB host to this endpoint. If a NAK bit, global non-periodic
+Page  494: USB active endpoint
+Page  494: Bit 15       USBACEPT   0x0         rw       USB reset. After receiving the SetConfiguration and
+Page  495: This register indicates the status of an endpoint when USB and AHB-related events occurs, as shown in
+Page  495: is sent on the USB line. A STALL bit has priority over a
+Page  495: the AHB and on the USB for this endpoint.
+Page  495: This register indicates the status of an endpoint with respect to USB and AHB-related events, as shown
+Page  496: the AHB and on the USB for this endpoint.
+Page  496: Indicates the total number of USB packets that constitute
+Page  497: of packets to be transmitted on the USB for each frame.
+Page  497: Indicates the total number of USB packets (data transfer
+Page  498: Indicates the number of USB packets transmitted on the
+Page  498: Bit 0        STOPPCLK           0x0             rw       USB is suspended, session is invalid or device is
+Page  498: disconnected. The application clears this bit when the USB
+Page  499: The main purpose of this module is to provide a clock of 48MHz±0.25% for the USB device.
+Page  499: applications such as USB.
+Page  500:  USB_SOF: USB Start-of-Frame signal given by the USB device. Its high-level width is 12 system
+Page  500: USB_SOF1         0
+Page  500: USB_SOF2         1                      CONTROL
+Page  500: USB_SOF period signal: 1ms of period must be accurate, which is a prerequisite of the normal operation
+Page  503: 0: USB1 as SOF signal source
+Page  503: 1: USB2 as SOF signal source
+Page  503: Bit 0        CALON      0x0             rw          the USB_SOF.
+Page  503: Note: This module cannot be used without the USB_SOF

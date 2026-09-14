@@ -1,0 +1,614 @@
+Keyword: XMC
+Occurrences: 610
+================================================================================
+
+Page    1: − External memory controller (XMC) with 16-bit data             − Up to 4 x USARTs/4 x UARTs (ISO7816 interface, LIN,
+Page   23: 24       External memory controller (XMC) .............................................. 506
+Page   23: 24.1 XMC introduction ....................................................................... 506
+Page   23: 24.2 XMC main features .................................................................... 506
+Page   23: 24.3 XMC architecture ....................................................................... 508
+Page   24: 24.8 XMC registers ............................................................................ 536
+Page   24: (XMC_BK1CTRL1) ............................................................................. 537
+Page   24: 24.8.1.3 SRAM/NOR Flash chip select timing register x (XMC_BK1TMGx)
+Page   24: 24.8.1.4 SRAM/NOR Flash write timing register x ( XMC_BK1TMGW Rx),
+Page   24: 24.8.1.5 SRAM/NOR Flash extra timing register x (XMC_EXTx)
+Page   24: 24.8.2.1 NAND Flash control register x (XMC_BKxCTRL) (x=2,3) .......... 542
+Page   24: 24.8.2.2 Interrupt enable and FIFO status register x (XMC_BKxIS) (x=2,3) 542
+Page   24: 24.8.2.3 Regular memory timing register x (XMC_ BKxTMGRG) (x=2,3) . 543
+Page   24: 24.8.2.4 Special memory timing register x (XMC_ BKxTMGSP) (x=2,3) .. 543
+Page   24: 24.8.2.5 ECC value register x (XMC_ BKxCC) (x=2,3) ........................... 544
+Page   24: 24.8.3.1 PC card control register (XMC_BK4CTRL) .............................. 544
+Page   24: 24.8.3.2 Interrupt enable and FIFO status register 4 (XMC_B K4IS) ........ 544
+Page   24: 24.8.3.3 Common memory timing register 4 (XMC_ BK4TMGCM) ........... 545
+Page   24: 24.8.3.4 Attribute memory timing register 4 (XMC_ BK4TMGAT) ............ 545
+Page   24: 24.8.3.5 IO space timing register 4 (XMC_ BK4TMGIO) ........................ 546
+Page   37: Figure 24-1 XMC block diagram ................................................................................................................ 508
+Page   37: Figure 24-2 XMC memory banks............................................................................................................... 510
+Page   42: Table 24-12 Mode 1— SRAM/NOR Flash chip select control register (XMC_BK1CTRL) configuration.. 514
+Page   42: Table 24-13 Mode 1— SRAM/NOR Flash chip select timing register (XMC_ BK1TMG) configuration ... 514
+Page   42: Table 24-25 Mode D— SRAM/NOR Flash chip select register (XMC_BK1CTRL) configuration ............. 523
+Page   42: Table 24-29 Multiplexed mode—SRAM/NOR Flash chip select timing register (XMC_BK1TMG) configuration
+Page   42: Table 24-31 Synchronous mode—SRAM/NOR Flash chip select timing register (XMC_BK1TMG) ........ 528
+Page   42: Table 24-39 XMC register address mapping ............................................................................................. 536
+Page   44: external memory controller (XMC), USB2.0 full-speed interfaces, Ethernet MAC, parallel digital camera
+Page   45: SWJTAG                                                                                                                              XMC            HICK 48 MHz
+Page   47: XMC_
+Page   51: 48   55             XMC                    XMC global interrupt                   0x0000_0100
+Page   57: (XMC SDRAM)        0xC000_0000
+Page   57: (XMC PC Card)       0xA800_0000
+Page   57: 0x1FFF_BFFF                                                          XMC and QSPI1/2 Reg
+Page   57: (XMC NOR/PSRAM/
+Page   60: 0xC000 0000 - 0xDFFF FFFF       XMC_MEM(SDRAM)
+Page   60: 0xA800 0000 - 0xAFFF FFFF       XMC_MEM(PC CARD)
+Page   60: 0x6000 0000 - 0x8FFF FFFF       XMC_MEM
+Page   61: 0xA000 0000 - 0xA000 0FFF       XMC_REG
+Page   80: XMC reset
+Page   80: Bit 0        XMCRST         0x0             rw          0: Does not reset XMC
+Page   80: 1: Reset XMC
+Page   84: XMC clock enable
+Page   84: Bit 0        XMCEN           0x0            rw        0: Disabled
+Page   89: XMC clock enable in sleep mode
+Page   89: Bit 0        XMCLPEN          0x1            rw       0: Disabled
+Page  125: PA2                            SDIO2_CK    EMAC_MDIO                                   XMC_D4     EVENTOUT
+Page  125: PA3                QSPI2_IO3   SDIO2_CMD   EMAC_MII_COL                                XMC_D5     EVENTOUT
+Page  125: DVP_HSYNC    XMC_D6     EVENTOUT
+Page  125: PA5    USART6_RX   QSPI2_IO2   SDIO2_D5    SDIO2_D1                                    XMC_D7     EVENTOUT
+Page  125: EMAC_MII_RX_DV      XMC_SDN
+Page  125: PA8    USART2_TX               OTG1_SOF                        SDIO1_D1                XMC_A4     EVENTOUT
+Page  125: XMC_NE2
+Page  125: PA15   USART2_RX   QSPI2_IO1   QSPI1_IO2                       XMC_NCE                            EVENTOUT
+Page  127: XMC_SD
+Page  127: QSPI1_C                        XMC_SD
+Page  127: XMC_NA     DVP_VSYN
+Page  127: EMAC_MII_RX_ER    SDIO1_D7              XMC_NOE    EVENTOUT
+Page  127: OTG2_ID               XMC_D13    EVENTOUT
+Page  127: PB14                   TMR12_CH1                                  OTG2_D-    SDIO1_D6   XMC_D0     EVENTOUT
+Page  129: PC0    UART7_TX                SDIO2_D0                      XMC_SDNWE                          EVENTOUT
+Page  129: PC2    UART8_TX                SDIO2_D2      EMAC_MII_TXD2   XMC_SDCS0                XMC_NWE   EVENTOUT
+Page  129: XMC_SDCKE0               XMC_A0    EVENTOUT
+Page  129: PC4                            QSPI1_IO2     EMAC_RMII_RX    XMC_SDCS0    SDIO2_CK    XMC_NE4   EVENTOUT
+Page  129: PC5                            QSPI1_IO3     EMAC_RMII_RX    XMC_SDCKE0   SDIO2_CMD   XMC_NOE   EVENTOUT
+Page  129: PC6    USART6_TX               XMC_A0                        SDIO1_D6     DVP_D0      XMC_D1    EVENTOUT
+Page  129: PC7    USART6_RX               XMC_A1                        SDIO1_D7     DVP_D1                EVENTOUT
+Page  129: PC8    USART6_CK   QSPI1_IO2   XMC_A2                        SDIO1_D0     DVP_D2                EVENTOUT
+Page  129: PC9                QSPI1_IO0   XMC_A3        OTG2_OE         SDIO1_D1     DVP_D3                EVENTOUT
+Page  129: PC11   UART4_RX    QSPI1_CS                                  SDIO1_D3     DVP_D4      XMC_D2    EVENTOUT
+Page  129: PC12   UART5_TX                                              SDIO1_CK     DVP_D9      XMC_D3    EVENTOUT
+Page  131: PD0               CAN1_RX     XMC_A5                           XMC_D2                          EVENTOUT
+Page  131: PD1               CAN1_TX     XMC_A6                           XMC_D3                          EVENTOUT
+Page  131: PD2    UART5_RX               XMC_A7                           SDIO1_CMD   DVP_D11   XMC_NWE   EVENTOUT
+Page  131: PD3               QSPI1_SCK   XMC_A8                           XMC_CLK     DVP_D5              EVENTOUT
+Page  131: PD4                           XMC_A9                           XMC_NOE                         EVENTOUT
+Page  131: PD5                           XMC_A10                          XMC_NWE                         EVENTOUT
+Page  131: PD6                           XMC_A11                          XMC_NWAIT   DVP_D10             EVENTOUT
+Page  131: XMC_NE1
+Page  131: PD7                           XMC_A12
+Page  131: XMC_NCE2
+Page  131: XMC_D13                         EVENTOUT
+Page  131: XMC_D14                         EVENTOUT
+Page  131: XMC_D15                         EVENTOUT
+Page  131: XMC_A14                          XMC_A16
+Page  131: XMC_SDBA0
+Page  131: XMC CLE
+Page  131: XMC_A15                          XMC_A17
+Page  131: XMC_SDBA1
+Page  131: XMC ALE
+Page  131: PD13   UART8_TX   QSPI1_IO3   XMC_SD_CLK                       XMC_A18                         EVENTOUT
+Page  131: PD14   UART8_RX                                                XMC_D0                          EVENTOUT
+Page  131: PD15                                                           XMC_D1                          EVENTOUT
+Page  133: XMC_LB/XM
+Page  133: XMC_UB/XM
+Page  133: PE2               QSPI1_IO2   XMC_SDNCAS      EMAC_MII_TXD3   XMC_A23                      EVENTOUT
+Page  133: PE3                                                           XMC_A19     DVP_D9           EVENTOUT
+Page  133: PE4                                                           XMC_A20     DVP_D4           EVENTOUT
+Page  133: PE5                                                           XMC_A21     DVP_D6           EVENTOUT
+Page  133: PE6                           XMC_SDNRAS                      XMC_A22     DVP_D7           EVENTOUT
+Page  133: PE7    UART7_RX               QSPI2_IO0                       XMC_D4                       EVENTOUT
+Page  133: PE8    UART7_TX               QSPI2_IO1                       XMC_D5                       EVENTOUT
+Page  133: PE9                           QSPI2_IO2                       XMC_D6                       EVENTOUT
+Page  133: PE10   UART5_TX               QSPI2_IO3                       XMC_D7                       EVENTOUT
+Page  133: PE11   UART5_RX                                               XMC_D8                       EVENTOUT
+Page  133: PE12                                                          XMC_D9                       EVENTOUT
+Page  133: PE13                                                          XMC_D10                      EVENTOUT
+Page  133: PE14                                                          XMC_D11                      EVENTOUT
+Page  133: PE15                                                          XMC_D12                      EVENTOUT
+Page  135: PF0                                                    XMC_A0                         EVENTOUT
+Page  135: PF1                                                    XMC_A1                         EVENTOUT
+Page  135: PF2                                                    XMC_A2                         EVENTOUT
+Page  135: PF3                                                    XMC_A3                         EVENTOUT
+Page  135: PF4                                                    XMC_A4                         EVENTOUT
+Page  135: PF5                                                    XMC_A5                         EVENTOUT
+Page  135: PF6    UART7_RX   QSPI1_IO3                            XMC_NIORD                      EVENTOUT
+Page  135: PF7    UART7_TX   QSPI1_IO2                            XMC_NREG                       EVENTOUT
+Page  135: PF8               TMR13_CH1   QSPI1_IO0                XMC_NIOWR                      EVENTOUT
+Page  135: PF9               TMR14_CH1   QSPI1_MOSI_IO1           XMC_CD                         EVENTOUT
+Page  135: PF10              QSPI1_SCK                            XMC_INTR     DVP_D11           EVENTOUT
+Page  135: PF11                                                   XMC_SDNRAS   DVP_D12           EVENTOUT
+Page  135: PF12                                                   XMC_A6                         EVENTOUT
+Page  135: PF13                                                   XMC_A7                         EVENTOUT
+Page  135: PF14                                                   XMC_A8                         EVENTOUT
+Page  135: PF15                                                   XMC_A9                         EVENTOUT
+Page  137: PG0                    CAN1_RX                                   XMC_A10                       EVENTOUT
+Page  137: PG1                    CAN1_TX                                   XMC_A11                       EVENTOUT
+Page  137: PG2                                                              XMC_A12                       EVENTOUT
+Page  137: PG3                                                              XMC_A13                       EVENTOUT
+Page  137: XMC_A14
+Page  137: XMC_SDBA0
+Page  137: XMC_A15
+Page  137: XMC_SDBA1
+Page  137: PG6                                QSPI1_CS                      XMC_INT2     DVP_D12          EVENTOUT
+Page  137: PG7    USART6_CK                                                 XMC_INT3     DVP_D13          EVENTOUT
+Page  137: PG8    USART6_RTS_DE                           EMAC_PPS_OUT      XMC_SDCLK                     EVENTOUT
+Page  137: XMC_NE2      DVP_VSY
+Page  137: XMC_NCE3
+Page  137: XMC_NE3
+Page  137: XMC_NCE4_1
+Page  137: PG11                   CAN2_RX                                   XMC_NCE4_2   DVP_D3           EVENTOUT
+Page  137: PG12   USART6_RTS_DE   CAN2_TX                                   XMC_NE4                       EVENTOUT
+Page  137: PG13   USART6_CTS                                                XMC_A24                       EVENTOUT
+Page  137: PG14   USART6_TX       QSPI1_IO3                                 XMC_A25                       EVENTOUT
+Page  137: PG15   USART6_CTS                                                XMC_SDNCAS   DVP_D13          EVENTOUT
+Page  143: XMC address mapping swap
+Page  143: 00: No XMC address mapping swap
+Page  143: Bit 11: 10   SWAP_XMC          0x0             rw       10: QSPI2 memory addresses are mapped at 0x8000
+Page  144: 010: XMC BANK1 mapped at 0x0000 0000
+Page  144: 100: XMC SDRAM BANK1 mapped at 0x0000 0000
+Page  506: 24 External memory controller (XMC)
+Page  506: 24.1 XMC introduction
+Page  506: XMC peripheral block can translate the AHB signals into the external memory signals and vice versa. It
+Page  506: 24.2 XMC main features
+Page  508: 24.3 XMC architecture
+Page  508: Figure 24-1 XMC block diagram
+Page  508: XMC
+Page  508: XMC registers AHB           XMC memory AHB
+Page  508: controller                      XMC_A[25:0]
+Page  508: XMC_D[15:0]
+Page  508: XMC_NOE
+Page  508: NOR/PSRAM memory interface                                     XMC_NWE
+Page  508: XMC_NWAIT
+Page  508: XMC_NE[4:1]
+Page  508: XMC_NADV
+Page  508: NAND bank2 memory interface                                    XMC_LB
+Page  508: XMC_UB
+Page  508: XMC_CLK
+Page  508: XMC_NCE[3:2]
+Page  508: XMC_INT[3:2]
+Page  508: XMC_NCE4_1
+Page  508: v                                                XMC_NCE4_2
+Page  508: XMC_NREG
+Page  508: XMC_NIORD
+Page  508: PC card memory interface                                     XMC_NIOWR
+Page  508: XMC_CD
+Page  508: XMC_INTR
+Page  508: XMC_SDCS0
+Page  508: SDRAM bank0 memory interface                                   XMC_SDCKE0
+Page  508: XMC_SDNWE
+Page  508: XMC_SDNRAS
+Page  508: XMC_SDNCAS
+Page  508: XMC_SDCLK
+Page  508: SDRAM bank1 memory interface                                   XMC_SDCS1
+Page  508: XMC_SDCKE1
+Page  508: XMC_CLK                                 Output                              Clock
+Page  508: XMC_NE[x], x=1,4                           Output                            Chip select
+Page  508: XMC_NADV                                 Output                Address latch or address valid (NL)
+Page  509: XMC_A[x]                  Output                        Address bus
+Page  509: XMC_NOE                   Output                    Output enable signal
+Page  509: XMC_NWE                   Output                     Write enable signal
+Page  509: XMC_LB and XMC_UB             Output                      Byte select signal
+Page  509: XMC_D[15: 0]        Read input/write output    Data bus/multiplexed address data
+Page  509: XMC_NWAIT                   Input                         Wait signal
+Page  509: XMC_NCE[2]                Output                        Chip select
+Page  509: XMC_A[17]                Output                 Address latch (ALE) signal
+Page  509: XMC_A[16]                Output                Command latch (CLE) signal
+Page  509: XMC_NOE                  Output                Output enable (NRE) signal
+Page  509: XMC_NWE                  Output                    Write enable signal
+Page  509: XMC_D[15: 0]       Read input/write output               Data bus
+Page  509: XMC_NWAIT                  Input                    Ready/Busy (R/B)
+Page  509: XMC_NCE4_1               Output                      Chip select 1 (CE1)
+Page  509: XMC_NCE4_2               Output                      Chip select 2 (CE2)
+Page  509: XMC_A[10:0]             Output                          Address bus
+Page  509: XMC_NOE
+Page  509: XMC_NWE
+Page  509: XMC_NIORD               Output               Output enable signal for IO space
+Page  509: XMC_NIOWR                Output                Write enable signal for IO space
+Page  509: XMC_NREG                Output                  Attribute space select signal
+Page  509: XMC_D[15: 0]       Read input/write output                Data bus
+Page  509: XMC_CD                    Input            PC card detection signal, active high
+Page  509: XMC_NWAIT                  Input                     Ready/Busy (R/B)
+Page  509: XMC_INTR                   Input                  PC card interrupt signal
+Page  509: XMC_SDCKE0               Output                    DEVICE0 clock enable
+Page  509: XMC_SDCKE1               Output                    DEVICE1 clock enable
+Page  509: XMC_SDCS0               Output                     DEVICE0 chip-select
+Page  509: XMC_SDCS1               Output                     DEVICE1 chip-select
+Page  509: XMC_SDCLK               Output                          Clock signal
+Page  509: XMC_SDNRAS               Output                          Row select
+Page  509: XMC_SDNCAS               Output                         Column select
+Page  509: XMC_SDNWE                Output                          Write enable
+Page  509: XMC_LB, XMC_UB             Output                          Byte select
+Page  509: XMC_A[12:0]             Output                          Address bus
+Page  509: XMC_A[14]               Output                      BANK address low
+Page  509: XMC_A[15]              Output                     B BANK address high
+Page  509: XMC_D[15:0]       Read input/write output               Data bus
+Page  510: XMC address is divided into multiple memory banks, as shown below.
+Page  510: Figure 24-2 XMC memory banks
+Page  510: NOR/PSRAM bank1 64 MB                       XMC_NE[1]
+Page  510: NOR/PSRAM bank2 64 MB                       XMC_NE[2]
+Page  510: NOR/PSRAM bank3 64 MB                       XMC_NE[3]
+Page  510: NOR/PSRAM bank4 64 MB                       XMC_NE[4]
+Page  510: 77FF FFFFh                                                       XMC_NCE[2]
+Page  510: 87FF FFFFh                                                       XMC_NCE[3]
+Page  510: PC card                           XMC_NCE4_1
+Page  510: attribute memory 32 MB                     XMC_NCE4_2
+Page  510: 128 MB                             XMC_SDCS0
+Page  510: 128 MB                             XMC_SDCS1
+Page  512: XMC pin name                          NOR Flash                                     PSRAM
+Page  512: XMC_CLK                     Clock (synchronous mode)                     Clock (synchronous mode)
+Page  512: XMC_NE[x]                           Chip-select                                  Chip-select
+Page  512: XMC_NADV                    Address latch or address valid              Address latch or address valid
+Page  512: XMC_A[23:16], XMC_A[0]                  Address bus                                  Address bus
+Page  512: XMC_NOE                           Output enable                                Output enable
+Page  512: XMC_NWE                            Write enable                                 Write enable
+Page  512: XMC_LB: lower byte
+Page  512: XMC_LB, XMC_UB              Without using XMC_LB, XMC_UB
+Page  512: XMC_UB: upper byte
+Page  512: XMC_D[15: 0]          multiplexed address data bus (multiplex     multiplexed address data bus (multiplex
+Page  512: XMC_NWAIT                     NOR Flash wait request                        PSRAM wait request
+Page  512: Note: If the memory data size is 8-bit, the typical data bus is XMC_D[7: 0].
+Page  512: address. HADDR is a byte address whereas the XMC supports the memory addressed in words or half
+Page  512: specific address occurs, the XMC will enable chip-select signals and write/read operation to the external
+Page  513: HADDR[25: 0] is linked to XMC_A[25: 0].
+Page  513: HADDR[15: 0] is connected to XMC_D[15: 0]
+Page  513: HADDR[26: 1] is connected to XMC_A[25: 0].
+Page  513: HADDR[16: 1] is connected to XMC_D[15: 0]
+Page  513: In case that the AHB data width is not equal to that of the memories, the XMC will make appropriate
+Page  513: modes supported by XMC.
+Page  513: Asynchronous                                             XMC_LB and XMC_UB, One-
+Page  513: NOR Flash                         32                    16                 Split into 2 XMC accesses
+Page  513: 32                    16                 Split into 2 XMC accesses
+Page  513: 8                     16                 Use XMC_LB and XMC_UB
+Page  513: PSRAM                             32                    16                 Split into 2 XMC accesses
+Page  513: 8                     16                 Use XMC_LB and XMC_UB
+Page  513: 32                    16                 Split into 2 XMC accesses
+Page  513: The XMC offers various access modes. Each access mode is operated based on the timing parameters,
+Page  513: Access modes available in the XMC:
+Page  514: DTLAT            Data latency time            Synchronous                          XMC_CLK cycle
+Page  514: is enabled, the XMC will start to check whether the XMC_NWAIT signal is in wait request state during
+Page  514: data set time. If so, the XMC will wait until the XMC_NWAIT returns to the ready state before data transfer.
+Page  514: The timing of read and write operation in mode 1 and mode 2 is based on the XMC_BK1TMG register
+Page  514: As configured in Table 24-12 and Table 24-13, the XMC uses mode 1 to access the external memory.
+Page  514: Table 24-12 Mode 1— SRAM/NOR Flash chip select control register (XMC_BK1CTRL) configuration
+Page  514: Table 24-13 Mode 1— SRAM/NOR Flash chip select timing register (XMC_ BK1TMG) configuration
+Page  514: Indicates the time the XMC_NE[x] from the rising edge to the
+Page  515: XMC_NE[x]
+Page  515: Address signals               XMC_A[25：0]                                        Memory address
+Page  515: XMC_NOE
+Page  515: XMC_NWE
+Page  515: XMC_LB
+Page  515: XMC_UB
+Page  515: XMC_D[15：0]            High-Z                                             memory
+Page  515: XMC capture
+Page  515: signal                  XMC_NE[x]
+Page  515: Address signals              XMC_A[25：0]                                       Memory address
+Page  515: XMC_NOE
+Page  515: XMC_NWE
+Page  515: XMC_LB
+Page  515: XMC_UB
+Page  515: XMC_D[15：0]                                                  Data from XMC
+Page  515: As configured in Table 24-14 and Table 24-15, the XMC uses mode 2 to access the external memory.
+Page  516: Indicates the time the XMC_NE[x] from the rising edge to
+Page  516: signal                   XMC_NE[x]
+Page  516: XMC_NADV
+Page  516: XMC_A[25：0]                                 Memory address
+Page  516: XMC_NOE
+Page  516: XMC_NWE          High
+Page  516: XMC_LB
+Page  516: XMC_UB
+Page  516: XMC_D[15：0]                                                    Data from external
+Page  516: XMC capture
+Page  517: XMC_NE[x]
+Page  517: XMC_NADV
+Page  517: XMC_A[25：0]                                  Memory address
+Page  517: XMC_NOE
+Page  517: XMC_NWE
+Page  517: XMC_LB
+Page  517: XMC_UB
+Page  517: XMC_D[15：0]                                                 Data from XMC
+Page  517: register (XMC_BK1TMG). The timing of write operation is based on SRAM/NOR Flash write timing
+Page  517: register (XMC_BK1TMGWR). In addition to this, it is possible to mix A, B, C and D modes for read and
+Page  517: As configured in Table 24-16 and Table 24-17, the XMC uses mode A to access the external memory.
+Page  518: Indicates the time the XMC_NE[x] from the rising edge to the
+Page  518: Indicates the time the XMC_NE[x] from the rising edge to the
+Page  518: signal                XMC_NE[x]
+Page  518: Address signals               XMC_A[23：16]
+Page  518: XMC_A[0]
+Page  518: XMC_NOE
+Page  518: XMC_NWE
+Page  518: XMC_LB
+Page  518: XMC_UB
+Page  518: XMC_D[15：0]     High-Z                                            memory
+Page  518: XMC capture
+Page  519: signal                 XMC_NE[x]
+Page  519: Address signals            XMC_A[23：16]
+Page  519: XMC_A[0]
+Page  519: XMC_NOE
+Page  519: XMC_NWE
+Page  519: XMC_LB
+Page  519: XMC_UB
+Page  519: XMC_D[15：0]                                              Data from XMC
+Page  519: As configured in Table 24-19, Table 24-20, and Table 24-21, the XMC uses mode B to access the external
+Page  520: Indicates the time the XMC_NE[x] from the rising edge to the
+Page  520: Indicates the time the XMC_NE[x] from the rising edge to the
+Page  520: signal                 XMC_NE[x]
+Page  520: XMC_NADV
+Page  520: XMC_A[25：0]                                 Memory address
+Page  520: XMC_NOE
+Page  520: XMC_NWE         High
+Page  520: XMC_LB
+Page  520: XMC_UB
+Page  520: XMC_D[15：0]                                                    Data from external
+Page  520: XMC capture
+Page  521: signal                XMC_NE[x]
+Page  521: XMC_NADV
+Page  521: XMC_A[25：0]                              Memory address
+Page  521: XMC_NOE
+Page  521: XMC_NWE
+Page  521: XMC_LB
+Page  521: XMC_UB
+Page  521: XMC_D[15：0]                                             Data from XMC
+Page  521: As configured in Table 24-22, Table 24-23 and Table 24-24, the XMC uses mode C to access the external
+Page  522: Indicates the time the XMC_NE[x] from the rising edge to the
+Page  522: Indicates the time the XMC_NE[x] from the rising edge to the
+Page  522: signal                  XMC_NE[x]
+Page  522: XMC_NADV
+Page  522: XMC_A[23：16]
+Page  522: XMC_A[0]
+Page  522: XMC_NOE
+Page  522: XMC_NWE         High
+Page  522: Data signals             XMC_LB
+Page  522: XMC_UB
+Page  522: XMC_D[15：0]                                                    Data from external
+Page  522: XMC capture
+Page  523: signal                  XMC_NE[x]
+Page  523: XMC_NADV
+Page  523: XMC_A[23：16]                                Memory address
+Page  523: XMC_A[0]
+Page  523: XMC_NOE
+Page  523: XMC_NWE
+Page  523: XMC_LB
+Page  523: XMC_UB
+Page  523: XMC_D[15：0]                                        Data from XMC
+Page  523: As configured in Table 24-25, Table 24-26, and Table 24-27, the XMC uses mode D to access the
+Page  523: Table 24-25 Mode D— SRAM/NOR Flash chip select register (XMC_BK1CTRL) configuration
+Page  524: Indicates the time the XMC_NE[x] from the rising edge to the
+Page  524: Indicates the time the XMC_NE[x] from the rising edge to the
+Page  524: Chip select               XMC_NE[x]
+Page  524: XMC_NADV
+Page  524: XMC_A[25：0]                                   Memory address
+Page  524: XMC_NOE
+Page  524: XMC_NWE
+Page  524: XMC_LB
+Page  524: XMC_UB
+Page  524: XMC_D[15：0]
+Page  524: XMC capture
+Page  525: XMC_NE[x]
+Page  525: XMC_NADV
+Page  525: XMC_A[25：0]                                     Memory address
+Page  525: XMC_NOE
+Page  525: XMC_NWE
+Page  525: Data signals             XMC_LB
+Page  525: XMC_UB
+Page  525: XMC_D[15：0]                                                     Data from XMC
+Page  525: As configured in Table 24-28 and Table 24-29, the XMC uses mode A to access the external memory.
+Page  526: Table 24-29 Multiplexed mode—SRAM/NOR Flash chip select timing register (XMC_BK1TMG) configuration
+Page  526: Indicates the time the XMC_NE[x] from the rising edge to the
+Page  526: XMC_NE[x]
+Page  526: XMC_NADV
+Page  526: XMC_A[25：16]                            Memory address[25:16]
+Page  526: XMC_NOE
+Page  526: XMC_NWE
+Page  526: XMC_LB
+Page  526: XMC_UB
+Page  526: XMC_D[15：0]                 Memory address[15:0]
+Page  526: XMC capture
+Page  527: XMC_NE[x]
+Page  527: XMC_NADV
+Page  527: XMC_A[25：16]                                    Memory address[25:16]
+Page  527: XMC_NOE
+Page  527: XMC_NWE
+Page  527: XMC_LB
+Page  527: XMC_UB
+Page  527: Address data           XMC_D[15：0]                         Memory address[15:0]         Data from XMC
+Page  527: As configured in Table 24-30 and Table 24-31, the XMC uses synchronous mode to access the external
+Page  527: If the memory inserts XMC_NWAIT signal between the address latch and data transfer, the XMC will not
+Page  527: only wait (DTLAT+1) CLK clock cycles but also have to take into account the XMC_NWAIT signal. During
+Page  527: data transmission, the XMC will, depending on the NWTCFG configuration, select to wait either one
+Page  527: cycle after the XMC_NWAIT signal is active or when the XMC_NWAIT signal is active.
+Page  527: Figure 24-17 and Figure 24-18 are examples of XMC waiting in the next cycle of XMC_NWAIT signal
+Page  528: Table 24-31 Synchronous mode—SRAM/NOR Flash chip select timing register (XMC_BK1TMG)
+Page  528: XMC_CLK cycle is HCLK cycle*(CLKPSC+1). Refer to
+Page  528: Indicates the time the XMC_NE[x] from the rising edge to the
+Page  528: XMC_CLK
+Page  528: Clock                  XMC_CLK
+Page  528: XMC_NE[x]
+Page  528: XMC_NADV
+Page  528: XMC_A[25：16]                                     Memory address[25:16]
+Page  528: XMC_NOE
+Page  528: XMC_NWE          High
+Page  528: XMC_LB
+Page  528: XMC_UB
+Page  528: Wait signal         XMC_NWAIT
+Page  528: XMC_D[15：0]                                         Data1   Data2          Data3   Data4
+Page  528: XMC capture data
+Page  529: XMC_CLK
+Page  529: Clock                   XMC_CLK
+Page  529: XMC_NE[x]
+Page  529: XMC_NADV
+Page  529: XMC_A[25：16]                                       Memory address[25:16]
+Page  529: XMC_NOE          High
+Page  529: Data signals         XMC_NWE
+Page  529: XMC_LB
+Page  529: XMC_UB
+Page  529: Wait signal         XMC_NWAIT
+Page  529: Address data          XMC_D[15：0]                Memory address[15:0]
+Page  529: XMC
+Page  529: XMC     XMC                       XMC
+Page  529: XMC pin name                        8-bit NAND Flash                             16-bit NAND Flash
+Page  529: XMC_NCE[2]                          Chip-select                                  Chip-select
+Page  529: XMC_A[17]                           Address latch enable (ALE)                   Address latch enable (ALE)
+Page  529: XMC_A[16]                           Command latch enable (CLE)                   Command latch enable (CLE)
+Page  529: XMC_NOE                             Output enable (NRE)                          Output enable (NRE)
+Page  529: XMC_NWE                             Write enable                                 Write enable
+Page  529: Do not use XMC_D[15: 8]
+Page  529: XMC_D[15: 0]                        Data bus
+Page  529: Use XMC_D[7: 0] as data bus.
+Page  529: XMC_NWAIT                           Ready/Busy (R/B)                             Ready/Busy (R/B)
+Page  529: through data bus, the HADDR is actually not associated with NAND Flash size, so theoretically the XMC
+Page  529: In case that the AHB data width is not equal to that of the memories, the XMC will make appropriate
+Page  530: modes supported by XMC.
+Page  530: 8-bit NAND         R/W                  16                     8                     Split into 2 XMC accesses
+Page  530: R/W                  32                     8                     Split into 4 XMC accesses
+Page  530: R/W                  32                     16                    Split into 4 XMC accesses
+Page  530: The XMC access the NAND Flash according to the timing parameters, as shown in Table 24-34 and
+Page  530: XMC_NCE[2]
+Page  530: ALE/CLE            XMC_A[17:16]
+Page  530: NRE    XMC_NOE        High
+Page  530: Data              XMC_NWE
+Page  530: XMC_D[15：0]                                     Data from XMC
+Page  530: NRE    XMC_NOE
+Page  530: Data              XMC_NWE        High
+Page  530: XMC_D[15：0]
+Page  530: XMC capture
+Page  530: When the NWEN bit is enabled, the XMC will monitor whether the XMC_NWAIT signal is pulled low or
+Page  530: not at the end of memory hold-up period, if so, it will keep the XMC_NCE[2] low until the XMC_NWAIT
+Page  530: Some NAND Flash devices require that, after receiving the last address byte, that the XMC_NCE[2]
+Page  531: the XMC_NWE to the falling edge of the XMC_NWAIT into a SPHT register, and write the last address
+Page  531: byte into a special memory address section so that the XMC can perform write operations based on the
+Page  531: SPHT+1    XMC check
+Page  531: HCLK    XMC_NWAIT
+Page  531: XMC_NCE[2]
+Page  531: ALE                XMC_A[17]
+Page  531: CLE                XMC_A[16]
+Page  531: NRE     XMC_NOE      High
+Page  531: Data               XMC_NWE
+Page  531: XMC_D[7：0]                 Command     Address0      Address1      Address2      Address3
+Page  531: R/B              XMC_NWAIT
+Page  531: XMC_BKxECC register.
+Page  531: XMC will store the ECC computed value into the XMC_BKxECC registers.
+Page  531: 6. Software reads the XMC_BKxECC register and performs the corresponding error correction routine.
+Page  532: XMC_NCE4_1                   Chip-select 1 (CE1)
+Page  532: XMC_NCE4_2                   Chip-select 2 (CE2)
+Page  532: XMC_A[10:0]                  Address bus
+Page  532: XMC_NOE                      Output enable for common and attribute spaces
+Page  532: XMC_NWE                      Write enable for common and attribute spaces
+Page  532: XMC_NIORD                    Output enable for IO space
+Page  532: XMC_NIOWR                    Write enable for IO space
+Page  532: XMC_NREG                     attribute space select
+Page  532: XMC_D[15: 0]                 Data bus
+Page  532: XMC_CD                       PC card detection signal, active high
+Page  532: XMC_NWAIT                    Ready/Busy (R/B)
+Page  532: XMC_INTR                     PC card interrupt signal
+Page  532: specific address occurs, the XMC will enable chip-select signals and write/read operation to the external
+Page  532: In case that the AHB data width is not equal to that of the memories, the XMC will make appropriate
+Page  532: modes supported by XMC.
+Page  532: Read/Write        8                 16                  Use XMC_NCE4_1
+Page  532: Use XMC_NCE4_1 and
+Page  532: PC card                                                                 XMC_NCE4_2
+Page  532: Split into 2 XMC accesses and use
+Page  532: XMC_NCE4_1 and XMC_NCE4_2
+Page  532: The XMC access the NAND Flash according to the timing parameters, as shown in Table 24-38 and Figure
+Page  533: XMC_NCE4_1
+Page  533: XMC_NCE4_2
+Page  533: XMC_NREG
+Page  533: Address signals     XMC_A[10:0]
+Page  533: XMC_NOE      High
+Page  533: Data         XMC_NWE
+Page  533: XMC_D[15：0]                              Data from XMC
+Page  533: XMC_NOE
+Page  533: Data         XMC_NWE      High
+Page  533: XMC_D[15：0]
+Page  533: XMC capture
+Page  534: XMC_
+Page  534: XMC_
+Page  534: XMC_
+Page  534: XMC_
+Page  534: XMC_
+Page  534: XMC_
+Page  534: XMC_
+Page  534: XMC_
+Page  535: XMC_
+Page  535: XMC_
+Page  535: XMC_
+Page  535: XMC_
+Page  535: XMC_
+Page  535: XMC_
+Page  535: XMC_A
+Page  535: XMC_
+Page  536: 24.8 XMC registers
+Page  536: Table 24-39 XMC register address mapping
+Page  536: XMC_BK1CTRL1                  0x000                         0x0000 30DB
+Page  536: XMC_BK1TMG1                   0x004                         0x0FFF FFFF
+Page  536: XMC_BK1CTRL2                  0x008                         0x0000 30D2
+Page  536: XMC_BK1TMG2                   0x00C                         0x0FFF FFFF
+Page  536: XMC_BK1CTRL3                  0x010                         0x0000 30D2
+Page  536: XMC_BK1TMG3                   0x014                         0x0FFF FFFF
+Page  536: XMC_BK1CTRL4                  0x018                         0x0000 30D2
+Page  536: XMC_BK1TMG4                   0x01C                         0x0FFF FFFF
+Page  536: XMC_BK2CTRL                   0x060                         0x0000 0018
+Page  536: XMC_BK2IS                     0x064                         0x0000 0040
+Page  536: XMC_BK2TMGRG                  0x068                         0xFCFC FCFC
+Page  536: XMC_BK2TMGSP                  0x06C                         0xFCFC FCFC
+Page  536: XMC_BK2ECC                    0x074                         0x0000 0000
+Page  536: XMC_BK3CTRL                   0x080                         0x0000 0018
+Page  536: XMC_BK3IS                     0x084                         0x0000 0040
+Page  536: XMC_BK3TMGRG                  0x088                         0xFCFC FCFC
+Page  536: XMC_BK3TMGSP                  0x08C                         0xFCFC FCFC
+Page  536: XMC_BK3ECC                    0x094                         0x0000 0000
+Page  536: XMC_BK4CTRL                   0x0A0                         0x0000 0018
+Page  536: XMC_BK4IS                     0x0A4                         0x0000 0040
+Page  537: XMC_BK4TMGCM          0x0A8                              0xFCFC FCFC
+Page  537: XMC_BK4TMGAT          0x0AC                              0xFCFC FCFC
+Page  537: XMC_BK4TMGIO          0xB0                               0xFCFC FCFC
+Page  537: XMC_BK1TMGWR1         0x104                              0x0FFF FFFF
+Page  537: XMC_BK1TMGWR2         0x10C                              0x0FFF FFFF
+Page  537: XMC_BK1TMGWR3         0x114                              0x0FFF FFFF
+Page  537: XMC_BK1TMGWR4         0x11C                              0x0FFF FFFF
+Page  537: XMC_EXT1              0x220                              0x0000 0808
+Page  537: XMC_EXT2              0x224                              0x0000 0808
+Page  537: XMC_EXT3              0x228                              0x0000 0808
+Page  537: XMC_EXT4              0x22C                              0x0000 0808
+Page  537: (XMC_BK1CTRL1)
+Page  537: these bits are configured in synchronous mode, the XMC
+Page  537: Bit 14       RWTD       0x0             rw       that is, the XMC_BK1TMGWR1 register is enabled.
+Page  538: This bit defines whether the XMC will split a wrapped AHB
+Page  538: these bits are configured in synchronous mode, the XMC
+Page  539: Bit 14     RWTD       0x0         rw       that is, the XMC_BK1TMGWRx register is enabled.
+Page  539: This bit defines whether the XMC will split a wrapped AHB
+Page  540: (XMC_BK1TMGx) (x=1,2,3,4)
+Page  540: Bit 27: 24   DTLAT      0xF             rw       0000: 1 extra XMC_CLK cycle is inserted
+Page  540: 0001: 2 extra XMC_CLK cycles are inserted
+Page  540: 1111: 16 extra XMC_CLK cycles are inserted
+Page  540: frequency of the XMC_CLK clock.
+Page  540: 0001: XMC_CLK cycle= 2 x HCLK clock cycles
+Page  540: 0010: XMC_CLK cycle =3 x HCLK clock cycles
+Page  540: 1111: XMC_CLK cycle = 6 x HCLK cycles
+Page  540: 24.8.1.4 SRAM/NOR Flash write timing register x (XMC_BK1TMGWRx),
+Page  541: 24.8.1.5 SRAM/NOR Flash extra timing register x (XMC_EXTx)
+Page  542: 24.8.2.1 NAND Flash control register x (XMC_BKxCTRL) (x=2,3)
+Page  542: 24.8.2.2 Interrupt enable and FIFO status register x (XMC_BKxIS)
+Page  542: XMC FIFO size is 16 words. It is used to store the data
+Page  543: 24.8.2.3 Regular memory timing register x (XMC_ BKxTMGRG) (x=2,3)
+Page  543: XMC_NWE and XMC_NOE is low.
+Page  543: 24.8.2.4 Special memory timing register x (XMC_ BKxTMGSP) (x=2,3)
+Page  544: XMC_NWE and XMC_NOE is low.
+Page  544: 24.8.2.5 ECC value register x (XMC_ BKxCC) (x=2,3)
+Page  544: 24.8.3.1 PC card control register (XMC_BK4CTRL)
+Page  544: 24.8.3.2 Interrupt enable and FIFO status register 4 (XMC_BK4IS)
+Page  544: XMC FIFO size is 16 words. It is used to store the data
+Page  545: 24.8.3.3 Common memory timing register 4 (XMC_ BK4TMGCM)
+Page  545: XMC_NWE and XMC_NOE is low.
+Page  545: 24.8.3.4 Attribute memory timing register 4 (XMC_ BK4TMGAT)
+Page  546: XMC_NWE and XMC_NOE is low.
+Page  546: 24.8.3.5 IO space timing register 4 (XMC_ BK4TMGIO)
+Page  546: Specifies the IO wait time when the XMC_NWE and
+Page  546: XMC_NOE is low.
+Page  716: (XMC_EXTx) (x=1,2,3,4)

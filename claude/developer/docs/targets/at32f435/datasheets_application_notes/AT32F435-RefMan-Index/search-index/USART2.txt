@@ -1,0 +1,37 @@
+Keyword: USART2
+Occurrences: 33
+================================================================================
+
+Page   45: USART2/3                                             ERTC                                                                                 SPI4 / I2S4
+Page   51: 38   45             USART2                 USART2 global interrupt                0x0000_00D8
+Page   55: programming function through USART1, USART2 or USB interface, but also provides extra firmware
+Page   62: 0x4000 4400 - 0x4000 47FF       USART2
+Page   81: USART2 reset
+Page   81: Bit 17       USART2RST        0x0            rw       0: Does not reset USART2
+Page   81: 1: Reset USART2
+Page   85: USART2 clock enable
+Page   85: Bit 17       USART2EN        0x0             rw        0: Disabled
+Page   90: USART2 clock enable in sleep mode
+Page   90: Bit 17       USART2LPEN   0x1        rw       0: Disabled
+Page   96: uses USART1, USART2 or USB (DFU) serial interface for ISP programming.
+Page  124: PA0                            TMR5_CH1   TMR8_EXT    I2C2_SCL                            USART2_CTS
+Page  124: SPI4_MOSI               USART2_RTS_D
+Page  124: PA2                TMR2_CH3    TMR5_CH3   TMR9_CH1                                        USART2_TX
+Page  124: PA3                TMR2_CH4    TMR5_CH4   TMR9_CH2                I2S2_MCK                USART2_RX
+Page  124: PA4                                                                                       USART2_CK
+Page  125: PA8    USART2_TX               OTG1_SOF                        SDIO1_D1                XMC_A4     EVENTOUT
+Page  125: PA14   USART2_TX                                                                                  EVENTOUT
+Page  125: PA15   USART2_RX   QSPI2_IO1   QSPI1_IO2                       XMC_NCE                            EVENTOUT
+Page  126: PB0                TMR1_CH2C   TMR3_CH3     TMR8_CH2C               I2S1_MCK    USART2_RX
+Page  130: SPI2_MISO    USART2_CTS
+Page  130: USART2_RTS_DE
+Page  130: PD5                                                                                   USART2_TX
+Page  130: USART2_RX
+Page  130: PD7                                                                                   USART2_CK
+Page  154: I2C2       USART2
+Page  158: I2C2     USART2
+Page  159: 26          USART2_RX     58        TMR2_CH3           90        TMR20_OVERFLOW 122     reserved
+Page  159: 27          USART2_TX     59        TMR2_CH4           91        reserved       123     reserved
+Page  693: I2C2     USART2
+Page  694: 26              USART2_RX             58        TMR2_CH3          90           TMR20_OVERFLOW 122        reserved
+Page  694: 27              USART2_TX             59        TMR2_CH4          91           reserved          123     reserved

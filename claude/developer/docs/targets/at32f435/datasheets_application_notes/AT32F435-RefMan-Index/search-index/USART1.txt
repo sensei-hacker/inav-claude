@@ -1,0 +1,33 @@
+Keyword: USART1
+Occurrences: 29
+================================================================================
+
+Page   45: SPI3 / I2S3                                                                                                                                   USART1/6
+Page   51: 37   44             USART1                 USART1 global interrupt                0x0000_00D4
+Page   55: programming function through USART1, USART2 or USB interface, but also provides extra firmware
+Page   61: 0x4001 1000 - 0x4001 13FF       USART1
+Page   82: Bit 4        USART1RST        0x0            rw       USART1 reset
+Page   83: 0: Does not reset USART1
+Page   83: 1: Reset USART1
+Page   87: USART1 clock enable
+Page   87: Bit 4        USART1EN        0x0              rw          0: Disabled
+Page   91: USART1 clock enable in sleep mode
+Page   91: Bit 4        USART1LPEN       0x1            rw       0: Disabled
+Page   96: uses USART1, USART2 or USB (DFU) serial interface for ISP programming.
+Page  124: PA8      CLKOUT1   TMR1_CH1                           I2C3_SCL                            USART1_CK
+Page  124: PA9                TMR1_CH2                           I2C3_SMBA                           USART1_TX
+Page  124: PA10               TMR1_CH3                                                   I2S4_MCK    USART1_RX
+Page  124: PA11               TMR1_CH4                           I2C2_SCL                SPI4_MISO   USART1_CTS
+Page  124: USART1_RTS_D
+Page  124: PA15     JTDI                                                                             USART1_TX
+Page  126: USART1_RX
+Page  126: USART1_CK
+Page  126: USART1_TX
+Page  126: USART1_RX
+Page  154: I2C1       USART1           DMAMUX
+Page  158: I2C1     USART1
+Page  159: 24          USART1_RX     56        TMR2_CH1           88        TMR20_CH3      120     reserved
+Page  159: 25          USART1_TX     57        TMR2_CH2           89        TMR20_CH4      121     reserved
+Page  693: I2C1     USART1
+Page  694: 24              USART1_RX             56        TMR2_CH1          88           TMR20_CH3         120     reserved
+Page  694: 25              USART1_TX             57        TMR2_CH2          89           TMR20_CH4         121     reserved

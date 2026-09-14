@@ -1,0 +1,270 @@
+Keyword: USART
+Occurrences: 266
+================================================================================
+
+Page    1: − External memory controller (XMC) with 16-bit data             − Up to 4 x USARTs/4 x UARTs (ISO7816 interface, LIN,
+Page    9: 12       Universal synchronous/asynchronous receiver/transmitter (USART) 207
+Page    9: 12.1 USART introduction ................................................................... 207
+Page    9: 12.4 USART frame format and configuration ........................................ 212
+Page    9: 12.12USART registers ........................................................................ 221
+Page    9: 12.12.1 Status register (USART_STS) .................................................. 221
+Page    9: 12.12.2 Data register (USART_DT) ....................................................... 222
+Page    9: 12.12.3 Baud rate register (USART_BAUDR) ........................................ 222
+Page    9: 12.12.4 Control register 1 (USART_CTRL1) .......................................... 222
+Page    9: 12.12.5 Control register 2 (USART_CTRL2) .......................................... 224
+Page    9: 12.12.6 Control register 3 (USART_CTRL3) .......................................... 225
+Page    9: 12.12.7 Guard time and divider register (USART_GDIV) ........................ 226
+Page   33: Figure 12-1 USART block diagram ............................................................................................................ 207
+Page   33: Figure 12-7 8-bit format USART synchronous mode ................................................................................ 212
+Page   33: Figure 12-13 USART interrupt map diagram ............................................................................................. 220
+Page   41: Table 12-4 USART interrupt request ......................................................................................................... 220
+Page   41: Table 12-5 USART register map and reset value ...................................................................................... 221
+Page   44: communication interfaces such as SPI, QSPI, I2C, USART/UART and SDIO, CAN bus controller,
+Page   45: SPI3 / I2S3                                                                                                                                   USART1/6
+Page   45: USART2/3                                             ERTC                                                                                 SPI4 / I2S4
+Page   51: 37   44             USART1                 USART1 global interrupt                0x0000_00D4
+Page   51: 38   45             USART2                 USART2 global interrupt                0x0000_00D8
+Page   51: 39   46             USART3                 USART3 global interrupt                0x0000_00DC
+Page   52: 71   78             USART6                USART6 global interrupt                      0x0000_015C
+Page   55: programming function through USART1, USART2 or USB interface, but also provides extra firmware
+Page   61: 0x4001 1400 - 0x4001 17FF       USART6
+Page   61: 0x4001 1000 - 0x4001 13FF       USART1
+Page   62: 0x4000 4800 - 0x4000 4BFF       USART3
+Page   62: 0x4000 4400 - 0x4000 47FF       USART2
+Page   81: USART3 reset
+Page   81: Bit 18       USART3RST        0x0            rw
+Page   81: 0: Does not reset USART3
+Page   81: 1: Reset USART3
+Page   81: USART2 reset
+Page   81: Bit 17       USART2RST        0x0            rw       0: Does not reset USART2
+Page   81: 1: Reset USART2
+Page   82: USART6 reset
+Page   82: Bit 5        USART6RST        0x0            rw       0: Does not reset USART6
+Page   82: 1: Reset USART6
+Page   82: Bit 4        USART1RST        0x0            rw       USART1 reset
+Page   83: 0: Does not reset USART1
+Page   83: 1: Reset USART1
+Page   85: USART3 clock enable
+Page   85: Bit 18       USART3EN        0x0             rw        0: Disabled
+Page   85: USART2 clock enable
+Page   85: Bit 17       USART2EN        0x0             rw        0: Disabled
+Page   87: USART6 clock enable
+Page   87: Bit 5        USART6EN        0x0              rw          0: Disabled
+Page   87: USART1 clock enable
+Page   87: Bit 4        USART1EN        0x0              rw          0: Disabled
+Page   90: USART3 clock enable in sleep mode
+Page   90: Bit 18       USART3LPEN   0x1        rw       0: Disabled
+Page   90: USART2 clock enable in sleep mode
+Page   90: Bit 17       USART2LPEN   0x1        rw       0: Disabled
+Page   91: USART6 clock enable in sleep mode
+Page   91: Bit 5        USART6LPEN       0x1            rw       0: Disabled
+Page   91: USART1 clock enable in sleep mode
+Page   91: Bit 4        USART1LPEN       0x1            rw       0: Disabled
+Page   96: uses USART1, USART2 or USB (DFU) serial interface for ISP programming.
+Page  124: PA0                            TMR5_CH1   TMR8_EXT    I2C2_SCL                            USART2_CTS
+Page  124: SPI4_MOSI               USART2_RTS_D
+Page  124: PA2                TMR2_CH3    TMR5_CH3   TMR9_CH1                                        USART2_TX
+Page  124: PA3                TMR2_CH4    TMR5_CH4   TMR9_CH2                I2S2_MCK                USART2_RX
+Page  124: PA4                                                                                       USART2_CK
+Page  124: PA6                TMR1_BRK    TMR3_CH1   TMR8_BRK                SPI1_MISO   I2S2_MCK    USART3_CTS
+Page  124: PA8      CLKOUT1   TMR1_CH1                           I2C3_SCL                            USART1_CK
+Page  124: PA9                TMR1_CH2                           I2C3_SMBA                           USART1_TX
+Page  124: PA10               TMR1_CH3                                                   I2S4_MCK    USART1_RX
+Page  124: PA11               TMR1_CH4                           I2C2_SCL                SPI4_MISO   USART1_CTS
+Page  124: USART1_RTS_D
+Page  124: PA15     JTDI                                                                             USART1_TX
+Page  125: PA4    USART6_TX               SDIO2_D4    SDIO2_D0
+Page  125: PA5    USART6_RX   QSPI2_IO2   SDIO2_D5    SDIO2_D1                                    XMC_D7     EVENTOUT
+Page  125: PA8    USART2_TX               OTG1_SOF                        SDIO1_D1                XMC_A4     EVENTOUT
+Page  125: PA11   USART6_TX   CAN1_RX     OTG1_D-                                    DVP_D2                  EVENTOUT
+Page  125: PA12   USART6_RX   CAN1_TX     OTG1_D+                                    DVP_D3                  EVENTOUT
+Page  125: PA14   USART2_TX                                                                                  EVENTOUT
+Page  125: PA15   USART2_RX   QSPI2_IO1   QSPI1_IO2                       XMC_NCE                            EVENTOUT
+Page  126: PB0                TMR1_CH2C   TMR3_CH3     TMR8_CH2C               I2S1_MCK    USART2_RX
+Page  126: USART1_RX
+Page  126: USART1_CK
+Page  126: USART1_TX
+Page  126: USART1_RX
+Page  126: I2S3_MCK     USART3_TX
+Page  126: PB11               TMR2_CH4    TMR5_CH4                 I2C2_SDA                             USART3_RX
+Page  126: PB14               TMR1_CH2C                TMR8_CH2C   I2C3_SDA    SPI2_MISO   I2S2_SDEXT   USART3_RTS_DE
+Page  127: PB0    USART3_CK       QSPI2_IO0
+Page  127: PB1    USART3_RTS_DE   QSPI1_SCK
+Page  127: PB12   USART3_CK       CAN2_RX
+Page  127: PB13   USART3_CTS      CAN2_TX
+Page  128: I2S1_MCK                  USART3_TX
+Page  128: I2C1_SMBA                             USART3_RX
+Page  128: USART3_TX
+Page  128: PC11                    TMR5_CH3                          I2S3_SDEXT   SPI3_MISO    USART3_RX
+Page  128: USART3_CK
+Page  129: PC6    USART6_TX               XMC_A0                        SDIO1_D6     DVP_D0      XMC_D1    EVENTOUT
+Page  129: PC7    USART6_RX               XMC_A1                        SDIO1_D7     DVP_D1                EVENTOUT
+Page  129: PC8    USART6_CK   QSPI1_IO2   XMC_A2                        SDIO1_D0     DVP_D2                EVENTOUT
+Page  130: PD2                       TMR3_EXT                                                    USART3_RTS_DE
+Page  130: SPI2_MISO    USART2_CTS
+Page  130: USART2_RTS_DE
+Page  130: PD5                                                                                   USART2_TX
+Page  130: USART2_RX
+Page  130: PD7                                                                                   USART2_CK
+Page  130: PD8                                                                                   USART3_TX
+Page  130: PD9                                                                                   USART3_RX
+Page  130: PD10                                                                                  USART3_CK
+Page  130: PD11                                            I2C2_SMBA                             USART3_CTS
+Page  130: PD12                      TMR4_CH1              I2C2_SCL                              USART3_RTS_DE
+Page  137: PG7    USART6_CK                                                 XMC_INT3     DVP_D13          EVENTOUT
+Page  137: PG8    USART6_RTS_DE                           EMAC_PPS_OUT      XMC_SDCLK                     EVENTOUT
+Page  137: PG9    USART6_RX       QSPI1_IO2
+Page  137: PG12   USART6_RTS_DE   CAN2_TX                                   XMC_NE4                       EVENTOUT
+Page  137: PG13   USART6_CTS                                                XMC_A24                       EVENTOUT
+Page  137: PG14   USART6_TX       QSPI1_IO3                                 XMC_A25                       EVENTOUT
+Page  137: PG15   USART6_CTS                                                XMC_SDNCAS   DVP_D13          EVENTOUT
+Page  154: I2C1       USART1           DMAMUX
+Page  154: I2C2       USART2
+Page  154: I2C3       USART3
+Page  154: SPI1       USART6                                                           ch2     Master
+Page  158: I2C1     USART1
+Page  158: I2C2     USART2
+Page  158: I2C3     USART3
+Page  158: SPI1     USART6          Req_gen1
+Page  159: 18          I2C2_RX       50        TMR8_CH2           82        reserved       114     USART6_RX
+Page  159: 19          I2C2_TX       51        TMR8_CH3           83        reserved       115     USART6_TX
+Page  159: 24          USART1_RX     56        TMR2_CH1           88        TMR20_CH3      120     reserved
+Page  159: 25          USART1_TX     57        TMR2_CH2           89        TMR20_CH4      121     reserved
+Page  159: 26          USART2_RX     58        TMR2_CH3           90        TMR20_OVERFLOW 122     reserved
+Page  159: 27          USART2_TX     59        TMR2_CH4           91        reserved       123     reserved
+Page  159: 28          USART3_RX     60        TMR2_OVERFLOW 92             reserved       124     reserved
+Page  159: 29          USART3_TX     61        TMR3_CH1           93        TMR20_TRIG     125     reserved
+Page  207: receiver/transmitter (USART)
+Page  207: 12.1 USART introduction
+Page  207: The universal synchronous/asynchronous receiver/transmitter (USART) serves an interface for
+Page  207: supports asynchronous full-duplex and half-duplex as well as synchronous transfer. USART offers a
+Page  207: protocols, USART also supports widely-used serial communication protocols such as LIN (Local
+Page  207: matching to build up a USART network. Meanwhile, high-speed communication is possible by using
+Page  207: Figure 12-1 USART block diagram
+Page  207: USART_DT
+Page  207: USART Transmit/Receive Data control
+Page  207: USART control logic                                                                                                                      CLKPOL
+Page  207: USART control logic
+Page  207: USART STS                                                                                               RDBFIEN
+Page  207: To System                              USART                                                                                                  ERRIEN
+Page  207: Communication baud rate                                      USART Baud Rate Producer
+Page  208: USART main features:
+Page  209: The full-duplex and half-duplex selector enables USART to perform data exchanges with peripherals in
+Page  209: is used for data input. Since the transmitter and receiver are independent of each other, USART is
+Page  209: and SW_RX are interconnected inside the USART. For the USART part, TX pins is used for data output,
+Page  209: USART mode selector allows USART to work in different operation modes through software
+Page  209: configuration so as to enable data exchanges between USART and peripherals with different
+Page  209: USART supports NRZ standard format (Mark/Space), by default. It also supports LIN (Local
+Page  209: synchronous mode, depending on USART mode selection configuration.
+Page  209: are used to make USART initialization configuration.
+Page  211: RTS: the RTS becomes active (pull-down means low) as soon as the USART receiver is ready to
+Page  211: CTS: the USART transmitter checks the CTS input before sending next frame. The next data is sent
+Page  211: When parity check is disabled, if DBN[1:0]=10, the MSB refers to the USART_DT[6]; if DBN[1:0]=00,
+Page  211: the MSB refers to the USART_DT[7]; if DBN[1:0]=01, the MSB stands for USART_DT[8].
+Page  211: When parity check is enabled, if DBN[1:0]=10, the MSB stands for USART_DT[5]; if DBN[1:0]=00,
+Page  211: the MSB stands for USART_DT[6]; if DBN[1:0]=01, the MSB stands for USART_DT[7].
+Page  212: Figure 12-7 8-bit format USART synchronous mode
+Page  212: 12.4 USART frame format and configuration
+Page  212: USART data frame consists of start bit, data bit and stop bit, with the last data bit being as a parity bit.
+Page  212: USART idle frame size is equal to that of the data frame under current configuration, but all bits are 1.
+Page  212: USART break frame size is the current data frame size plus its stop bit. All bits before the stop bit are 0.
+Page  214: transmission for USART, which is detailed in subsequent sections. For more information on specific DMA
+Page  214: 2.    Configure the destination of DMA transfer: Configure the USART_DT register address as the
+Page  214: in the DMA control register. Data will be loaded into the USART_DT register from the memory
+Page  214: transfer in the DMA control register. Data will be loaded from the USART_DT register to the
+Page  214: 3.    Configure the source of DMA transfer: Configure the USART_DT register address as the source of
+Page  214: DMA transfer in the DMA control register. Data will be loaded from the USART_DT register to the
+Page  215: USART baud rate generator uses an internal counter based on PCLK. The DIV (USART_BAUDR [15:0]
+Page  215: The receiver and transmitter of USART share the same baud rate generator, and the receiver splits each
+Page  215: into the USART_BAUDR register. The calculation format is as follows:
+Page  215: Where, 𝑓𝐶𝐾 refers to the system clock of USART (i.e. PCLK1/PCLK2 )
+Page  215: 1. Write access to the USART_BAUDR register before UEN. The baud rate register value should not
+Page  215: 2. When USART receiver or transmitter is disabled, the internal counter will be reset, and baud rate
+Page  216: USART transmitter has its individual TEN control bit. The transmitter and receiver share the same baud
+Page  216: USART. The TDBE bit is set whenever the TDR is empty, and an interrupt is generated if the TDBEIEN
+Page  216: 2. After the TEN bit is enabled, the USART will automatically send an idle frame.
+Page  216: 1.  USART enable: Set the UEN bit.
+Page  216: 4.  Frame format configuration: Refer to 12.4 USART frame format and configuration.
+Page  216: USART_CTRL3 register) is set, and configure DMA register accordingly.
+Page  216: 8. Transmitter enable: When the TEN bit is set, the USART transmitter will send an idle frame.
+Page  216: USART_DT register (This operation will clear the TDBE bit). Repeat this step in non-DMA mode.
+Page  216: of transfer. The USART cannot be disabled before the flag is set, or transfer error will occur.
+Page  216: 11. When TDC=1, read access to the USART_STS register and write access to the USART_DT register
+Page  216: USART_DT         DATA0                 DATA1                DATA2
+Page  217: USART receiver has its individual REN control bit (bit 2 in the USART_CTRL1 register). The transmitter
+Page  217: a receive shift register in the USART.
+Page  217: The data is input on the RX pin of the USART. When a valid start bit is detected, the receiver ports the
+Page  217: During data reception, the USART receiver will detect whether there are errors to occur, including
+Page  217: 1. USART enable: UEN bit is set.
+Page  217: 4. Frame format configuration: Refer to 12.4 USART frame format and configuration.
+Page  217:  In non-DMA mode, the RDBF bit is cleared when read access to the USART_DT register by
+Page  217:  The USART receiver moves the invalid data from the receive shift register to the receive data
+Page  218: USART_DT register is read.
+Page  218:  The ROERR bit is cleared by reading the USART_STS register and then USART_DT register in
+Page  218: A start bit detection occurs when the REN bit is set. With the oversampling techniques, the USART
+Page  218: mentioned requirements, the USART receiver does not think that a correct start bit is
+Page  218: The USART receiver has the ability to detect noise. In the non-synchronous mode, the USART receiver
+Page  218: USART is able to receive data under the maximum allowable deviation condition. Its value depends on
+Page  218: the DBN bit of the USART_CTRL1 register and the DIV[3: 0] of the USART_BAUDR register.
+Page  219: The NERR bit is cleared by read access to USART_STS register followed by the USART_DT read
+Page  219: When the TRPSWAP bit (USART_CTRL2[15]) is set, Tx/Rx pin can be swapped. Two common scenes
+Page  219: USART_TX                  TX                             USART_TX               TX
+Page  219: USART_RX                  RX                             USART_RX               RX
+Page  219: USART                                                    USART
+Page  219: Note: The SWAP (USART_CTRL2[15]) can be modified only when the USART is disabled (UEN=0).
+Page  219: USART interrupt generator serves as a control center of USART interrupts. It is used to monitor the
+Page  219: interrupt source inside the USART in real time and the generation of interrupts according to the
+Page  219: programmed interrupt control bits. Table 12-4 shows the USART interrupt source and interrupt enable
+Page  220: Table 12-5 USART interrupt request
+Page  220: Figure 12-13 USART interrupt map diagram
+Page  220: USART
+Page  220: The following five interfaces are used for USART communication.
+Page  221: 12.12 USART registers
+Page  221: Table 12-6 USART register map and reset value
+Page  221: USART_STS                          0x00                              0x0000 00C0
+Page  221: USART_DT                           0x04                              0x0000 0000
+Page  221: USART_BAUDR                        0x08                              0x0000 0000
+Page  221: USART_CTRL1                        0x0C                              0x0000 0000
+Page  221: USART_CTRL2                        0x10                              0x0000 0000
+Page  221: USART_CTRL3                        0x14                              0x0000 0000
+Page  221: USART_GTP                          0x18                              0x0000 0000
+Page  221: 12.12.1 Status register (USART_STS)
+Page  221: is empty. It is cleared by a USART_DT register write
+Page  221: Bit 6        TDC             0x1              rw0c     USART_STS register followed by a USART_DT write
+Page  221: from the shift register to the USART_DT register. It is
+Page  221: Bit 5        RDBF            0x0              rw0c     cleared by software. (Option 1: read USART_DT register;
+Page  221: It is cleared by software. (Read USART_DT register
+Page  221: followed by a USART_DT read operation)
+Page  221: USART_STS register followed by a USART_DT read
+Page  222: Bit 2        NERR            0x0             ro       USART_STS register followed by a USART_DT read
+Page  222: Bit 1        FERR            0x0             ro       by software. USART_STS register followed by a
+Page  222: USART_DT read operation)
+Page  222: cleared by software. USART_STS register followed by a
+Page  222: USART_DT read operation)
+Page  222: 12.12.2 Data register (USART_DT)
+Page  222: 12.12.3 Baud rate register (USART_BAUDR)
+Page  222: This field define the USART divider.
+Page  222: 12.12.4 Control register 1 (USART_CTRL1)
+Page  223: USART enable
+Page  223: Bit 13       UEN        0x0         rw       0: USART is disabled.
+Page  223: 1: USART is enable.
+Page  224: 12.12.5 Control register 2 (USART_CTRL2)
+Page  224: USART identification
+Page  224: Bit 31: 28   IDH        0x0             rw       This field holds the upper four bits of USART ID. It is
+Page  225: USART identification
+Page  225: Bit 3: 0      IDL           0x0             rw       This field holds the lower four bits of USART ID. It is
+Page  225: 12.12.6 Control register 3 (USART_CTRL3)
+Page  225: the USART controls the transfer direction of the external
+Page  226: 12.12.7 Guard time and divider register (USART_GDIV)
+Page  693: I2C1     USART1
+Page  693: I2C2     USART2
+Page  693: I2C3     USART3
+Page  693: SPI1     USART6               Req_gen1
+Page  693: 18          I2C2_RX           50             TMR8_CH2                             82             reserved                     114                USART6_RX
+Page  693: 19          I2C2_TX           51             TMR8_CH3                             83             reserved                     115                USART6_TX
+Page  694: 24              USART1_RX             56        TMR2_CH1          88           TMR20_CH3         120     reserved
+Page  694: 25              USART1_TX             57        TMR2_CH2          89           TMR20_CH4         121     reserved
+Page  694: 26              USART2_RX             58        TMR2_CH3          90           TMR20_OVERFLOW 122        reserved
+Page  694: 27              USART2_TX             59        TMR2_CH4          91           reserved          123     reserved
+Page  694: 28              USART3_RX             60        TMR2_OVERFLOW 92               reserved          124     reserved
+Page  694: 29              USART3_TX             61        TMR3_CH1          93           TMR20_TRIG        125     reserved

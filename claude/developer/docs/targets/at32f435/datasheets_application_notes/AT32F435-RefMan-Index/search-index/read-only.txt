@@ -1,0 +1,23 @@
+Keyword: read-only
+Occurrences: 19
+================================================================================
+
+Page  110: Only I-Code and D-Code bus are allowed to read the read-only area;
+Page  119: Note: All these bits are read-only, and return 0 when being written.
+Page  262: Note: The OWCDIR is read-only in up/down counting mode.
+Page  309: Note: The OWCDIR is read-only in up/down counting mode.
+Page  421: Note: All the receive mailbox registers are read-only.
+Page  421: Note: All the receive mailbox registers are read-only.
+Page  422: Note: All the receive mailbox registers are read-only.
+Page  422: Note: All the receive mailbox registers are read-only.
+Page  470: The FIFO status interrupts are read-only. The FIFO interrupt conditions are cleared automatically as
+Page  476: This register is valid in host mode only. It is a read-only register that contains the available space
+Page  477: This is a read-only register containing the production ID.
+Page  479: This is a read-only register containing the free space information of the periodic Tx FIFO and the periodic
+Page  497: This is a read-only register containing the free space information for the device IN endpoint transmit
+Page  576: The SDIO_STS is a read-only register, containing two types of flags:
+Page  577: The SDIO_INTCLR is a read-only register. Writing 1 to the corresponding register bit will clear the
+Page  644: This register contains the lower 32 time bits. It is a read-only register containing the subsecond system
+Page  653: There are four registers available to control the interrupts of the DVP interface. The read-only
+Page  653: The interrupts, after enabled, are stored in the read-only DVP_ISTS register, which is used to check the
+Page  704: This register is read-only when SEN=1, indicating the

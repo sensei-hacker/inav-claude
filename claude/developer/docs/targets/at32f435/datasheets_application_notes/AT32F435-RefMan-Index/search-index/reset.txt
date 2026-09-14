@@ -1,0 +1,1202 @@
+Keyword: reset
+Occurrences: 1198
+================================================================================
+
+Page    1: − Power-on reset (POR)/ low voltage reset (LVR), and            − Infrared transmitter (IRTMR)
+Page    1:    Clock and reset management (CRM)                               CRC Calculation Unit
+Page    2: 1.1.6 Reset ......................................................................................... 54
+Page    2: 4        Clock and reset manage (CRM) ..................................................... 70
+Page    3: 4.2   Reset .......................................................................................... 72
+Page    3: 4.2.1 System reset ............................................................................... 72
+Page    3: 4.2.2 Battery powered domain reset ...................................................... 73
+Page    3: 4.3.5 APB peripheral reset register 1 (CRM_APBRST1) ......................... 79
+Page    3: 4.3.6 APB peripheral reset register 2 (CRM_APBRST2) ......................... 80
+Page    3: 4.3.7 APB peripheral reset register 3 (CRM_APBRST3) ......................... 80
+Page    3: 4.3.8 APB1 peripheral reset register (CRM_APB1RST) .......................... 81
+Page    3: 4.3.9 APB2 peripheral reset register (CRM_APB2RST) .......................... 82
+Page    5: 6.2.2 GPIO reset status ....................................................................... 120
+Page   20: 21.5.4.2 Endpoint initialization on USB reset ........................................ 445
+Page   21: 21.6.3.5 OTGFS reset register (OTGFS_GRSTCTL).............................. 468
+Page   32: Figure 1-6 Reset process ............................................................................................................................ 54
+Page   32: Figure 3-2 Power-on reset/Low voltage reset waveform............................................................................. 64
+Page   32: Figure 4-2 System reset circuit .................................................................................................................... 73
+Page   34: Figure 14-32 Example of reset mode ........................................................................................................ 270
+Page   35: Figure 14-56 Example of reset mode ........................................................................................................ 292
+Page   36: Figure 14-89 Example of reset mode ........................................................................................................ 319
+Page   40: Table 3-1 PW register map and reset values .............................................................................................. 67
+Page   40: Table 4-1 CRM register map and reset values ............................................................................................ 73
+Page   40: Table 5-8 Flash memory interface—Register map and reset value ........................................................... 111
+Page   40: Table 6-10 GPIO register map and reset values ....................................................................................... 139
+Page   40: Table 7-1 SCFG register map and reset values ........................................................................................ 143
+Page   40: Table 8-1 External interrupt/Event controller register map and reset value .............................................. 152
+Page   40: Table 9-5 DMA register map and reset value ............................................................................................ 161
+Page   40: Table 10-1 CRC register map and reset value .......................................................................................... 172
+Page   40: Table 11-8 I2C register map and reset values ........................................................................................... 200
+Page   41: Table 12-5 USART register map and reset value ...................................................................................... 221
+Page   41: Table 13-2 SPI register map and reset value ............................................................................................ 247
+Page   41: Table 14-2 TMR6 and TMR7— register table and reset value .................................................................. 255
+Page   41: Table 14-5 TMRx register map and reset value ........................................................................................ 272
+Page   41: Table 14-8 TMRx register map and reset value ........................................................................................ 293
+Page   41: Table 14-10 TMRx register map and reset value ...................................................................................... 299
+Page   41: Table 14-14 TMR1 and TMR8 register map and reset value .................................................................... 321
+Page   41: Table 15-2 WWDT register map and reset value ...................................................................................... 336
+Page   41: Table 16-2 WDT register and reset value .................................................................................................. 339
+Page   41: Table 17-1 RTC register map and reset values ......................................................................................... 342
+Page   41: Table 17-4 ERTC register map and reset values ...................................................................................... 348
+Page   41: Table 18-5 ADC register map and reset values ......................................................................................... 374
+Page   41: Table 19-2 DAC register map and reset values ........................................................................................ 395
+Page   41: Table 20-1 CAN register map and reset values ........................................................................................ 410
+Page   41: Table 21-4 OTGFS register map and reset values ................................................................................... 462
+Page   41: Table 22-2 ACC register map and reset values ......................................................................................... 502
+Page   43: Table 26-8 Ethernet register map and its reset values .............................................................................. 614
+Page   43: Table 27-5 DVP register map and reset values ......................................................................................... 661
+Page   43: Table 28-1 SPI register map and reset values .......................................................................................... 676
+Page   43: Table 29-5 BPR register map and reset values ......................................................................................... 696
+Page   43: Table 30-1 DEBUG register address and reset value ................................................................................711
+Page   50: -3         Fixed      Reset                     Reset                                     0x0000_0004
+Page   50: Configu                              Clock and     Reset      manage   (CRM)
+Page   54: 1.1.6       Reset
+Page   54: The processor reads the first two words from the CODE memory after a system reset and before program
+Page   54:     Get the initial value of the program counter (PC) from address 0x0000_0004. This value is a reset
+Page   54: Figure 1-6 Reset process
+Page   54: Read address             Read address              Read reset vector     Read next
+Page   54: Fetch reset                 Fetch 1st
+Page   54: reset         Fetch MSP
+Page   55: After a system reset or when leaving from Standby mode, the pin values of both BOOT1 and BOOT0
+Page   55: to select another boot mode, even after a system reset. A new boot mode can be selected only after
+Page   55: the next power-on reset.
+Page   56: wo                         Software can only write to the bit. Reading it returns its reset value.
+Page   56: Register abbr.                           Base address                          Reset value
+Page   56: Bit          Abbr.                  Reset value      Type        Description
+Page   56: Bit          Abbr.                  Reset value           Type     Description
+Page   56: Bit          Abbr.                  Reset value           Type     Description
+Page   57: Bit         Abbr.                    Reset value     Type    Description
+Page   61: 0x4002 3800 - 0x4002 3BFF       Clock and reset manage (CRM)
+Page   63: A POR analog module embedded in the VDD/VDDA domain is used to generate a power reset. The
+Page   63: power reset signal is released at VPOR when the VDD is increased from 0 V to the operating voltage, or
+Page   63: it is triggered at VLVR when the VDD drops from the operating voltage to 0 V. During the power-on reset
+Page   63: period, the reset signal has certain amount of time delay compared to VDD boost process. At the same
+Page   63: time, hysteresis occurs in power-on reset (POR) and low voltage reset (LVR).
+Page   64: Figure 3-2 Power-on reset/Low voltage reset waveform
+Page   64: Reset
+Page   65: power-saving mode wakeup circuit, watchdog timer (WDT), power-on reset/low voltage reset (POR/LVR),
+Page   65: being at its rising phrase or due to VDD low voltage reset. If the power switch has not been switched to
+Page   67: In Standby mode, all I/O pins remain in a high-impedance state except reset pins, TAMPER pins that
+Page   67: The MCU leaves the Standby mode when an external reset (NRST pin), a WDT reset, ERTC periodic
+Page   67: Table 3-1 PWC register map and reset values
+Page   67: Register                       Offset                    Reset value
+Page   68: Bit          Name            Reset value    Type     Description
+Page   68: After reset, the battery powered domain write access is
+Page   68: Bit          Name            Reset value    Type     Description
+Page   68: Note: This bit is cleared by hardware after system reset.
+Page   68: Note: This bit is cleared by hardware after system reset.
+Page   69: Bit         Name       Reset value    Type     Description
+Page   70: 4       Clock and reset manage (CRM)
+Page   71: After a system reset, the HICK oscillator is selected as system clock. The system clock can make flexible
+Page   71: is selected, it cannot be altered without resetting the battery powered domain. If the LEXT is used as an
+Page   72: 4.2 Reset
+Page   72: 4.2.1       System reset
+Page   72: AT32F435/437 series provide the following system reset sources:
+Page   72:  NRST reset: on the external NRST pin
+Page   72:  WDT reset: watchdog overflow
+Page   72:  WWDT reset: window watchdog overflow
+Page   72:  CPU software reset: Cortex®-M4F software reset
+Page   73:     Low-power management reset: This type of reset is enabled when entering Standby mode (by
+Page   73: clearing the nSTDBY_RST bit in the user system data area); this type of reset is also enabled
+Page   73:  POR reset: power-on reset
+Page   73:  LVR reset: low voltage reset
+Page   73: NRST reset, WDT reset, WWDT reset, software reset and low-power management reset sets all
+Page   73: registers to their reset values except the clock control/status register (CRM_CTRLSTS) and the battery
+Page   73: powered domain; the power-on reset, low-voltage reset or reset generated when exiting Standby mode
+Page   73: sets all registers to their reset values except the battery powered domain registers.
+Page   73: Figure 4-2 System reset circuit
+Page   73: Filter      NRST reset
+Page   73: WDT reset                                     System
+Page   73: reset
+Page   73: WWDT reset
+Page   73: CPU software reset
+Page   73: Low-power management reset
+Page   73: standby return reset
+Page   73: 4.2.2        Battery powered domain reset
+Page   73: Battery powered domain has two specific reset sources:
+Page   73:  Software reset: triggered by setting the BPDRST bit in the battery powered domain control
+Page   73: Software reset affects only the battery powered domain.
+Page   73: Table 4-1 CRM register map and reset values
+Page   73: Register                          Offset                       Reset value
+Page   74: Bit          Name       Reset value    Type      Description
+Page   75: Bit         Name             Reset value    Type       Description
+Page   75: resetting this bit. This bit can be written only when the PLL
+Page   76: Bit              Name           Reset value    Type     Description
+Page   78: Bit           Name               Reset value        Type       Description
+Page   79: 4.3.5           APB peripheral reset register 1 (CRM_APBRST1)
+Page   79: Bit          Name             Reset value      Type        Description
+Page   79: OTGFS2 reset
+Page   79: Bit 29       OTGFS2RST        0x0              rw          0: Does not reset the OTGFS2
+Page   79: 1: Reset the OTGFS2
+Page   79: EMAC reset
+Page   79: Bit 25       EMACRST          0x0              rw          0: Does not reset the Ethernet MAC
+Page   79: 1: Reset the Ethernet MAC
+Page   79: DMA2 reset
+Page   79: Bit 24       DMA2RST          0x0              rw          0: Does not reset DMA2
+Page   79: 1: Reset DMA2
+Page   79: DMA1 reset
+Page   79: Bit 22       DMA1RST          0x0              rw          0: Does not reset DMA1
+Page   79: 1: Reset DMA1
+Page   79: EDMA reset
+Page   79: Bit 21       EDMARST          0x0              rw          0: Does not reset EDMA
+Page   79: 1: Reset EDMA
+Page   79: CRC reset
+Page   79: Bit 12       CRCRST           0x0              rw          0: Does not reset CRC
+Page   79: 1: Reset CRC
+Page   79: IO port H reset
+Page   79: Bit 7        GPIOHRST         0x0              rw          0: Does not reset IO port H
+Page   79: 1: Reset IO port H
+Page   79: IO port G reset
+Page   79: Bit 6        GPIOGRST         0x0              rw          0: Does not reset IO port G
+Page   79: 1: Reset IO port G
+Page   79: IO port F reset
+Page   79: Bit 5        GPIOFRST         0x0              rw          0: Does not reset IO port F
+Page   79: 1: Reset IO port F
+Page   80: IO port E reset
+Page   80: Bit 4           GPIOERST        0x0              rw         0: Does not reset IO port E
+Page   80: 1: Reset IO port E
+Page   80: IO port D reset
+Page   80: Bit 3           GPIODRST        0x0              rw         0: Does not reset IO port D
+Page   80: 1: Reset IO port D
+Page   80: IO port C reset
+Page   80: Bit 2           GPIOCRST        0x0              rw         0: Does not reset IO port C
+Page   80: 1: Reset IO port C
+Page   80: IO port B reset
+Page   80: Bit 1           GPIOBRST        0x0              rw         0: Does not reset IO port B
+Page   80: 1: Reset IO port B
+Page   80: IO port A reset
+Page   80: Bit 0           GPIOARST        0x0              rw         0: Does not reset IO port A
+Page   80: 1: Reset IO port A
+Page   80: 4.3.6             APB peripheral reset register 2 (CRM_APBRST2)
+Page   80: Bit          Name           Reset value     Type        Description
+Page   80: SDIO1 reset
+Page   80: Bit 15       SDIO1RST       0x0             rw          0: Does not reset SDIO1
+Page   80: 1: Reset SDIO1
+Page   80: OTGFS1 reset
+Page   80: Bit 7        OTGFS1RST      0x0             rw          0: Does not reset OTGFS1
+Page   80: 1: Reset OTGFS1
+Page   80: DVP reset
+Page   80: Bit 0        DVPRST         0x0             rw          0: Does not reset DVP
+Page   80: 1: Reset DVP
+Page   80: 4.3.7             APB peripheral reset register 3 (CRM_APBRST3)
+Page   80: Bit          Name           Reset value     Type        Description
+Page   80: SDIO2 reset
+Page   80: Bit 15       SDIO2RST       0x0             rw          0: Does not reset SDIO2
+Page   80: 1: Reset SDIO2
+Page   80: QSPI2 reset
+Page   80: Bit 14       QSPI2RST       0x0             rw          0: Does not reset QSPI2
+Page   80: 1: Reset QSPI2
+Page   80: QSPI1 reset
+Page   80: Bit 1        QSPI1RST       0x0             rw          0: Does not reset QSPI1
+Page   80: 1: Reset QSPI1
+Page   80: XMC reset
+Page   80: Bit 0        XMCRST         0x0             rw          0: Does not reset XMC
+Page   80: 1: Reset XMC
+Page   81: 4.3.8           APB1 peripheral reset register (CRM_APB1RST)
+Page   81: Bit          Name             Reset value    Type     Description
+Page   81: UART8 reset
+Page   81: Bit 31       UART8RST         0x0            rw       0: Does not reset UART8
+Page   81: 1: Reset UART8
+Page   81: UART7 reset
+Page   81: Bit 30       UART7RST         0x0            rw       0: Does not reset UART7
+Page   81: 1: Reset UART7
+Page   81: DAC interface reset
+Page   81: Bit 29       DACRST           0x0            rw       0: Does not reset DAC interface
+Page   81: 1: Reset DAC interface
+Page   81: Power interface reset
+Page   81: Bit 28       PWCRST           0x0            rw       0: Does not reset Power interface
+Page   81: 1: Reset Power interface
+Page   81: CAN2 reset
+Page   81: Bit 26       CAN2RST          0x0            rw       0: Does not reset CAN2
+Page   81: 1: Reset CAN2
+Page   81: CAN1 reset
+Page   81: Bit 25       CAN1RST          0x0            rw       0: Does not reset CAN1
+Page   81: 1: Reset CAN1
+Page   81: I2C3 reset
+Page   81: Bit 23       I2C3RST          0x0            rw       0: Does not reset I2C3
+Page   81: 1: Reset I2C3
+Page   81: I2C2 reset
+Page   81: Bit 22       I2C2RST          0x0            rw       0: Does not reset I2C2
+Page   81: 1: Reset I2C2
+Page   81: I2C1 reset
+Page   81: Bit 21       I2C1RST          0x0            rw       0: Does not reset I2C1
+Page   81: 1: Reset I2C1
+Page   81: UART5 reset
+Page   81: Bit 20       UART5RST         0x0            rw       0: Does not reset UART5
+Page   81: 1: Reset UART5
+Page   81: UART4 reset
+Page   81: Bit 19       UART4RST         0x0            rw       0: Does not reset UART4
+Page   81: 1: Reset UART4
+Page   81: USART3 reset
+Page   81: 0: Does not reset USART3
+Page   81: 1: Reset USART3
+Page   81: USART2 reset
+Page   81: Bit 17       USART2RST        0x0            rw       0: Does not reset USART2
+Page   81: 1: Reset USART2
+Page   81: SPI3 reset
+Page   81: Bit 15       SPI3RST          0x0            rw       0: Does not reset SPI3
+Page   81: 1: Reset SPI3
+Page   81: SPI3 reset
+Page   81: Bit 14       SPI2RST          0x0            rw       0: Does not reset SPI2
+Page   81: 1: Reset SPI2
+Page   81: Window watchdog reset
+Page   81: Bit 11       WWDTRST          0x0            rw       0: Does not reset Window watchdog
+Page   81: 1: Reset Window watchdog
+Page   81: Timer14 reset
+Page   81: Bit 8        TMR14RST         0x0            rw       0: Does not reset Timer14
+Page   81: 1: Reset Timer14
+Page   81: Timer13 reset
+Page   81: 0: Does not reset Timer13
+Page   82: 1: Reset Timer13
+Page   82: Timer12 reset
+Page   82: Bit 6        TMR12RST         0x0            rw       0: Does not reset Timer12
+Page   82: 1: Reset Timer12
+Page   82: Timer7 reset
+Page   82: Bit 5        TMR7RST          0x0            rw       0: Does not reset Timer7
+Page   82: 1: Reset Timer7
+Page   82: Timer6 reset
+Page   82: Bit 4        TMR6RST          0x0            rw       0: Does not reset Timer6
+Page   82: 1: Reset Timer6
+Page   82: Timer5 reset
+Page   82: Bit 3        TMR5RST          0x0            rw       0: Does not reset Timer5
+Page   82: 1: Reset Timer5
+Page   82: Timer4 reset
+Page   82: Bit 2        TMR4RST          0x0            rw       0: Does not reset Timer4
+Page   82: 1: Reset Timer4
+Page   82: Timer3 reset
+Page   82: Bit 1        TMR3RST          0x0            rw       0: Does not reset Timer3
+Page   82: 1: Reset Timer3
+Page   82: Timer2 reset
+Page   82: Bit 0        TMR2RST          0x0            rw       0: Does not reset Timer2
+Page   82: 1: Reset Timer2
+Page   82: 4.3.9           APB2 peripheral reset register (CRM_APB2RST)
+Page   82: Bit          Name             Reset value    Type     Description
+Page   82: ACC reset
+Page   82: Bit 29       ACCRST           0x0            rw       0: Does not reset ACC
+Page   82: 1: Reset ACC
+Page   82: Timer20 reset
+Page   82: Bit 20       TMR20RST         0x0            rw       0: Does not reset Timer20
+Page   82: 1: Reset Timer20
+Page   82: Timer11 reset
+Page   82: Bit 18       TMR11RST         0x0            rw       0: Does not reset Timer11
+Page   82: 1: Reset Timer11
+Page   82: Timer10 reset
+Page   82: Bit 17       TMR10RST         0x0            rw       0: Does not reset Timer10
+Page   82: 1: Reset Timer10
+Page   82: Timer9 reset
+Page   82: Bit 16       TMR9RST          0x0            rw       0: Does not reset Timer9
+Page   82: 1: Reset Timer9
+Page   82: SCFG reset
+Page   82: Bit 14       SCFGRST          0x0            rw       0: Does not reset SCFG
+Page   82: 1: Reset SCFG
+Page   82: SPI4 reset
+Page   82: Bit 13       SPI4RST          0x0            rw       0: Does not reset SPI4
+Page   82: 1: Reset SPI4
+Page   82: SPI1 reset
+Page   82: Bit 12       SPI1RST          0x0            rw       0: Does not reset SPI1
+Page   82: 1: Reset SPI1
+Page   82: ADC interface reset
+Page   82: Bit 8        ADCRST           0x0            rw       0: Does not reset ADC1 interface
+Page   82: 1: Reset ADC1 interface
+Page   82: USART6 reset
+Page   82: Bit 5        USART6RST        0x0            rw       0: Does not reset USART6
+Page   82: 1: Reset USART6
+Page   82: Bit 4        USART1RST        0x0            rw       USART1 reset
+Page   83: 0: Does not reset USART1
+Page   83: 1: Reset USART1
+Page   83: TMR8 timer reset
+Page   83: Bit 1        TMR8RST          0x0           rw       0: Does not reset TMR8
+Page   83: 1: Reset TMR8
+Page   83: TMR1 timer reset
+Page   83: Bit 0        TMR1RST          0x0           rw       0: Does not reset TMR1
+Page   83: 1: Reset TMR1
+Page   83: Bit          Name            Reset value     Type        Description
+Page   84: Bit          Name            Reset value    Type      Description
+Page   84: Bit          Name            Reset value    Type      Description
+Page   85: Bit          Name            Reset value     Type      Description
+Page   86: Bit          Name            Reset value     Type      Description
+Page   87: Bit          Name             Reset value    Type     Description
+Page   89: Bit          Name             Reset value    Type     Description
+Page   89: Bit          Name             Reset value    Type     Description
+Page   89: Bit          Name             Reset value    Type     Description
+Page   91: Bit          Name             Reset value    Type     Description
+Page   92: reset, and can only be modified by setting the BPWEN bit in the power control register (PWR_CTRL).
+Page   92: These bits could be reset only by battery powered domain reset. Any internal or external reset does not
+Page   92: Bit           Name            Reset value   Type      Description
+Page   92: Battery powered domain software reset
+Page   92: Bit 16        BPDRST          0x0           rw        0: Do not reset battery powered domain software
+Page   92: 1: Reset battery powered domain software
+Page   92: changed until the BPDRST bit is reset.
+Page   92: Reset flag can only be cleared by power reset or by writing the RSTFC bit, while others are cleared by
+Page   92: system reset.
+Page   92: Bit          Name            Reset value    Type      Description
+Page   92: Low-power reset flag
+Page   92: 0: No low-power reset occurs
+Page   92: 1: Low-power reset occurs
+Page   92: Window watchdog timer reset flag
+Page   92: 0: No window watchdog timer reset occurs
+Page   92: 1: Window watchdog timer reset occurs
+Page   93: Watchdog timer reset flag
+Page   93: 0: No watchdog timer reset occurs
+Page   93: 1: Watchdog timer reset occurs.
+Page   93: Software reset flag
+Page   93: 0: No software reset occurs
+Page   93: 1: Software reset occurs.
+Page   93: POR/LVR reset flag
+Page   93: 0: No POR/LVR reset occurs
+Page   93: 1: POR/LVR reset occurs.
+Page   93: NRST pin reset flag
+Page   93: 0: No NRST pin reset occurs
+Page   93: 1: NRST pin reset occurs
+Page   93: Reset flag clear
+Page   93: 1: Clear the reset flag.
+Page   93: Bit         Name             Reset value   Type      Description
+Page   94: Bit         Name           Reset value   Type      Description
+Page   98: The system data will be read from the information block of Flash memory whenever a system reset
+Page   98: system reset.
+Page   98: 0: Reset occurs when entering Standby
+Page   98: 1: No reset occurs when entering
+Page   99: 0: Reset occurs when entering
+Page   99: 1: No reset occurs when entering
+Page  102: After reset, Flash memory is protected, by default. FLASH_CTRLx cannot be written. Write and erase
+Page  102: until the next reset.
+Page  106: After reset, user system data area is protected, by default. Write and erase operations can be performed
+Page  106: the next reset.
+Page  109: activate access protection after a system reset. In this case, only the Flash program is allowed to read
+Page  109: memory automatically) by writing 0xA5 to FAP byte, and then perform a system reset. Subsequently, the
+Page  109: instead of system reset in order to resume access to Flash memory data.
+Page  110:  Perform system reset, and then reload security library setting word;
+Page  110:  Perform system reset, and then reload security library setting word;
+Page  111: Table 5-8 lists Flash register map and their reset values.
+Page  111: Table 5-8 Flash memory interface—Register map and reset value
+Page  111: Register                         Offset                        Reset value
+Page  112: Bit          Name              Reset value     Type     Description
+Page  112: Bit          Name              Reset value     Type     Description
+Page  112: Bit          Name              Reset value Type         Description
+Page  112: Bit          Name              Reset value     Type     Description
+Page  113: Bit          Name           Reset value     Type     Description
+Page  113: Bit          Name           Reset value     Type     Description
+Page  113: Bit          Name           Reset value     Type     Description
+Page  114: Bit         Name               Reset value     Type     Description
+Page  114: Bit         Name               Reset value     Type     Description
+Page  114: Bit         Name               Reset value     Type     Description
+Page  114: Bit         Name               Reset value     Type     Description
+Page  115: Bit          Name           Reset value     Type     Description
+Page  115: Bit          Name           Reset value     Type     Description
+Page  115: Bit          Name           Reset value     Type     Description
+Page  116: Bit          Name              Reset value     Type     Description
+Page  116: Bit          Name              Reset value     Type     Description
+Page  116: Bit          Name              Reset value     Type     Description
+Page  116: Bit          Name              Reset value     Type     Description
+Page  117: Bit          Name              Reset value     Type     Description
+Page  117: Bit          Name              Reset value     Type     Description
+Page  117: next reset.
+Page  117: Bit          Name              Reset value     Type     Description
+Page  117: Bit          Name              Reset value     Type     Description
+Page  118: Bit          Name                Reset value     Type     Description
+Page  118: Bit          Name                Reset value     Type     Description
+Page  118: Bit          Name                Reset value     Type     Description
+Page  119: Bit          Name                 Reset value     Type     Description
+Page  120: 6.2.2             GPIO reset status
+Page  120: After power-on or system reset, all pins are configured as floating input mode except JATG-related pins.
+Page  122: configuration cannot be modified until the next reset or power-on.
+Page  139: Table 6-10 lists GPIO register map and their reset values. These peripheral registers must be
+Page  139: Table 6-10 GPIO register map and reset values
+Page  139: Register                        Offset                           Reset value
+Page  139: Reset values: 0xa8000000 for port A, 0x0000 0280 for port B, 0x00000000 for other ports
+Page  139: Bit          Name             Reset value     Type     Description
+Page  139: Bit                                                    00: Input mode (reset state)
+Page  139: Bit          Name             Reset value     Type     Description
+Page  139: 0: Push-pull (reset state)
+Page  140: Reset values: 0x0000 00C0 for port B    0x00000000 for other ports
+Page  140: Bit          Name            Reset value     Type     Description
+Page  140: Reset values: 0x6400 0000 for port A, 0x0000 0100 for port B, 0x0000000 for other ports
+Page  140: Bit          Name            Reset value     Type     Description
+Page  140: Bit          Name            Reset value     Type     Description
+Page  140: Bit          Name            Reset value     Type     Description
+Page  140: Bit          Name            Reset value     Type     Description
+Page  141: Bit          Name         Reset value     Type     Description
+Page  141: Reset value: 0x00000000
+Page  141: Bit          Name         Reset value     Type     Description
+Page  142: Bit          Name       Reset value     Type     Description
+Page  142: Bit          Name       Reset value     Type     Description
+Page  142: Bit          Name       Reset value     Type     Description
+Page  143: Table 7-1 shows SCFG register map and their reset values.
+Page  143: Table 7-1 SCFG register map and reset values
+Page  143: Register                         Offset                            Reset value
+Page  143: Bit          Name              Reset value     Type     Description
+Page  143: 0000. After reset, the reset value of this field is the same
+Page  144: Bit          Name           Reset value     Type     Description
+Page  144: Bit          Name           Reset value     Type     Description
+Page  145: Bit          Name       Reset value     Type     Description
+Page  146: Bit          Name       Reset value     Type     Description
+Page  147: Bit          Name       Reset value     Type     Description
+Page  149: Bit          Name       Reset value     Type     Description
+Page  152: Table 8-1 shows EXINT register map and their reset value.
+Page  152: Table 8-1 External interrupt/Event controller register map and reset value
+Page  152: Register                    Offset                        Reset value
+Page  152: Bit          Name             Reset value     Type     Description
+Page  152: Bit          Name             Reset value     Type     Description
+Page  152: Bit          Name             Reset value     Type     Description
+Page  153: Bit          Name       Reset value     Type     Description
+Page  153: Bit          Name       Reset value     Type     Description
+Page  153: Bit          Name       Reset value     Type     Description
+Page  161: Table 9-5 shows DMA register map and their reset values.
+Page  161: Table 9-5 DMA register map and reset value
+Page  161: Register                           Offset                 Reset value
+Page  162: Bit       Name                Reset value     Type     Description
+Page  164: Bit        Name               Reset value     Type     Description
+Page  166: Bit          Name             Reset value     Type     Description
+Page  167: Bit          Name             Reset value     Type     Description
+Page  167: Bit          Name             Reset value     Type     Description
+Page  167: Bit          Name             Reset value     Type     Description
+Page  167: Bit      Name             Reset value     Type     Description
+Page  167: Bit      Name             Reset value     Type     Description
+Page  168: Bit      Name             Reset value     Type     Description
+Page  169: Bit     Name              Reset value     Type     Description
+Page  169: Bit         Name              Reset value     Type     Description
+Page  169: Bit         Name              Reset value     Type     Description
+Page  170: Bit        Register           Reset value     Type     Description
+Page  171: initialization function. After each CRC reset, the value in the CRC_IDT register is written into the
+Page  171: after each CRC reset.
+Page  172: Table 10-1 CRC register map and reset value
+Page  172: Register                            Offset                            Reset value
+Page  172: Bit            Name               Reset value     Type     Description
+Page  172: Bit            Name               Reset value     Type     Description
+Page  172: register is not affected by the CRC reset generated by the
+Page  173: Bit         Name        Reset value     Type     Description
+Page  173: Reset CRC calculation unit
+Page  173: Set by software. Cleared by hardware. To reset CRC
+Page  173: 1: Reset
+Page  173: Bit         Name        Reset value     Type     Description
+Page  173: When CRC reset is triggered by the RST bit in the
+Page  173: Bit         Name        Reset value     Type     Description
+Page  188: 3. After reset, SMBus needs timeout, but there is no limit for I2C in this regard.
+Page  200: Table 11-8 I2C register map and reset values
+Page  200: Register                                Offset                 Reset value
+Page  201: Bit          Name        Reset value     Type     Description
+Page  202: Bit          Name          Reset value     Type     Description
+Page  203: Bit              Name              Reset value     Type     Description
+Page  203: Bit              Name              Reset value     Type     Description
+Page  203: Bit          Name              Reset value     Type     Description
+Page  203: Bit               Name              Reset value     Type     Description
+Page  204: Bit          Name           Reset value     Type      Description
+Page  205: Bit          Name       Reset value       Type   Description
+Page  206: Bit          Name           Reset value     Type     Description
+Page  206: Bit         Name           Reset value     Type     Description
+Page  206: Bit         Name           Reset value     Type     Description
+Page  215: 2. When USART receiver or transmitter is disabled, the internal counter will be reset, and baud rate
+Page  216: Note: 1. The TEN bit cannot be reset during data transfer, or the data on the TX pin will be corrupted.
+Page  218: Note: The REN bit cannot be reset during data reception, or the byte that is currently being received will
+Page  221: Table 12-6 USART register map and reset value
+Page  221: Register                           Offset                            Reset value
+Page  221: Bit          Name            Reset value      Type     Description
+Page  222: Bit          Name            Reset value     Type     Description
+Page  222: Bit          Name            Reset value     Type     Description
+Page  222: Bit          Name            Reset value     Type     Description
+Page  224: Bit          Name       Reset value     Type     Description
+Page  225: Bit           Name          Reset value     Type     Description
+Page  226: Bit          Name       Reset value     Type     Description
+Page  228: CLKPOL bit is reset, rising edge if the CLKPOL bit is set) will sample data bits. Data are latched on
+Page  228: the occurrence of the second lock transition. If the CLKPHA bit is reset, the first edge on the SCK pin
+Page  228: (falling edge if CLKPOL bit is set, rising edge if CLKPOL bit is reset) will sample data bits. Data are
+Page  231:  CRC enable: The CRC calculation is enabled by setting the CCEN bit. This operation will reset
+Page  233: more details. For CPU transfer, attention should be paid to the TDBE bit. The reset value of this bit is 1,
+Page  234: more details. For CPU transfer, attention should be paid to the RDBE bit. The reset value of this bit is 0,
+Page  238: controller, and they are used as JTAG by default after each reset. To configure them as
+Page  247: Table 13-2 SPI register map and reset value
+Page  247: Register                       Offset                            Reset value
+Page  247: Bit         Name             Reset value     Type     Description
+Page  248: Bit          Name           Reset value     Type     Description
+Page  249: Bit         Name       Reset value     Type     Description
+Page  250: Bit          Name       Reset value     Type     Description
+Page  250: Bit          Name       Reset value     Type     Description
+Page  250: Bit          Name       Reset value     Type     Description
+Page  250: This register is reset when the CCEN bit in the
+Page  250: Bit          Name       Reset value     Type     Description
+Page  250: This register is reset when the CCEN bit in the
+Page  250: Bit          Name       Reset value     Type     Description
+Page  251: Bit          Name        Reset value     Type     Description
+Page  253: Reset, Enable, Count
+Page  253: default, counter overflow/underflow, setting OVFSWTR bit and the reset signal generated by the slave
+Page  254: timer controller in reset mode trigger the generation of an overflow event. When the OVFS bit is set, only
+Page  255: Table 14-2 TMR6 and TMR7 register map and reset value
+Page  255: Register                            Offset                               Reset value
+Page  255: Bit         Name              Reset value      Type     Description
+Page  255: If the OVFSWTR bit is set, or a hardware reset is
+Page  256: Bit         Name       Reset value     Type     Description
+Page  256: 000: Reset
+Page  256: Bit         Name       Reset value     Type     Description
+Page  256: Bit         Name       Reset value     Type     Description
+Page  256: Bit         Name       Reset value     Type     Description
+Page  256: Bit         Name       Reset value     Type     Description
+Page  257: Bit              Name                                          Reset value                   Type               Description
+Page  257: Bit              Name                                          Reset value                   Type              Description
+Page  257: Reset
+Page  261: default, counter overflow/underflow, setting OVFSWTR bit and the reset signal generated by the slave
+Page  261: timer controller in reset mode trigger the generation of an overflow event. When the OVFS bit is set, only
+Page  265: to the same TMRx_CHx, and configure the CxIFPx of channel 1/2 to trigger slave timer controller reset.
+Page  265:  Set SMSEL=3‘b110 to set the slave timer in reset mode;
+Page  265: values to the C1DT register, and channel 1 input signal rising edge resets the counter. The falling edge
+Page  265: reset
+Page  265: Reset
+Page  266: reset counter and C1DT capture       C2DT capture
+Page  269: Slave mode: Reset mode
+Page  269: The counter and its prescaler can be reset by a selected trigger signal. An overflow event is generated
+Page  270: Figure 14-32 Example of reset mode
+Page  272: Table 14-5 TMR2 and TMR 5 register map and reset value
+Page  272: Register                  Offset                             Reset value
+Page  273: Bit          Name              Reset value     Type     Description
+Page  274: Bit          Name       Reset value     Type     Description
+Page  274: 000: Reset
+Page  274: Bit          Name       Reset value     Type     Description
+Page  275: 100: Reset mode —Rising edge of the TRGIN input
+Page  275: Bit        Name       Reset value     Type     Description
+Page  276: Bit          Name       Reset value     Type     Description
+Page  277: Bit          Name       Reset value     Type     Description
+Page  277: Bit          Name       Reset value     Type     Description
+Page  278: Bit          Name     Reset value     Type     Description
+Page  279: Note: the divider is reset once C1EN=’0’
+Page  279: Bit          Name      Reset value     Type     Description
+Page  279: Bit          Name      Reset value     Type     Description
+Page  280: Bit          Name                Reset value     Type     Description
+Page  281: Bit          Name        Reset value     Type     Description
+Page  281: Bit          Name        Reset value     Type     Description
+Page  281: Bit          Name        Reset value     Type     Description
+Page  281: Bit          Name        Reset value     Type     Description
+Page  281: Bit          Name        Reset value     Type     Description
+Page  282: Bit          Name        Reset value     Type     Description
+Page  282: Bit          Name        Reset value     Type     Description
+Page  282: Bit          Name        Reset value     Type     Description
+Page  282: Bit          Name        Reset value     Type     Description
+Page  283: Bit              Name                                    Reset value                  Type                Description
+Page  283: Bit              Name                                    Reset value                  Type                Description
+Page  283: Reset
+Page  287: default, counter overflow/underflow, setting OVFSWTR bit and the reset signal generated by the slave
+Page  287: timer controller in reset mode trigger the generation of an overflow event. When the OVFS bit is set, only
+Page  289: to the same TMRx_CHx, and configure the CxIFPx of channel 1/2 to trigger slave timer controller reset.
+Page  289:  Set SMSEL=3‘b110 to set the slave timer in reset mode;
+Page  289: values to the C1DT register, and channel 1 input signal rising edge resets the counter. The falling
+Page  289: IS2               Hang               reset
+Page  289: CI2FP2            Reset
+Page  290: reset counter and C1DT capture         C2DT capture
+Page  292: Slave mode: Reset mode
+Page  292: The counter and its prescaler can be reset by a selected trigger signal. An overflow event is generated
+Page  292: Figure 14-56 Example of reset mode
+Page  293: Table 14-8 TMR9 and TMR12 register map and reset value
+Page  293: Register                                 Offset                                           Reset value
+Page  293: Bit               Name             Reset value          Type     Description
+Page  294: Bit        Name       Reset value     Type     Description
+Page  294: 100: Reset mode — Rising edge of the TRGIN input
+Page  294: Bit        Name       Reset value     Type     Description
+Page  295: Bit          Name       Reset value     Type     Description
+Page  295: Bit          Name       Reset value     Type     Description
+Page  296: Bit          Name              Reset value     Type     Description
+Page  297: Bit          Name     Reset value     Type     Description
+Page  297: Note: the divider is reset once C1EN=’0’
+Page  298: Bit          Name              Reset value     Type     Description
+Page  298: Bit          Name              Reset value     Type     Description
+Page  298: Bit          Name              Reset value     Type     Description
+Page  298: Bit          Name              Reset value     Type     Description
+Page  298: Bit          Name              Reset value     Type     Description
+Page  299: Bit          Name           Reset value      Type     Description
+Page  299: Table 14-10 TMR10, TMR11, TMR13 and TMR14 register map and reset value
+Page  299: Register                          Offset                               Reset value
+Page  299: Bit          Name           Reset value      Type     Description
+Page  300: Bit          Name       Reset value     Type     Description
+Page  300: Bit          Name       Reset value     Type     Description
+Page  300: Bit          Name       Reset value     Type     Description
+Page  301: Bit        Name                Reset value     Type     Description
+Page  302: Bit         Name       Reset value     Type     Description
+Page  302: Note: the divider is reset once C1EN=’0’
+Page  302: Bit         Name       Reset value     Type     Description
+Page  303: Bit         Name              Reset value     Type     Description
+Page  303: Bit         Name              Reset value     Type     Description
+Page  303: Bit         Name              Reset value     Type     Description
+Page  303: Bit         Name              Reset value     Type     Description
+Page  304: Reset
+Page  308: default, counter overflow/underflow, setting OVFSWTR bit and the reset signal generated by the slave
+Page  308: timer controller in reset mode trigger the generation of an overflow event. When the OVFS bit is set, only
+Page  313: to the same TMRx_CHx, and configure the CxIFPx of channel 1/2 to trigger slave timer controller reset.
+Page  313:  Set SMSEL=3‘b110 to set the slave timer in reset mode;
+Page  313: values to the C1DT register, and channel 1 input signal rising edge resets the counter. The falling edge
+Page  313: IS1                                   reset
+Page  313: IS0                Reset
+Page  314: reset counter and C1DT capture               C2DT capture
+Page  318: ― The outputs are first put in reset state, that is, inactive state (depending on the polarity). This
+Page  319: Slave mode: Reset mode
+Page  319: The counter and its prescaler can be reset by a selected trigger signal. An overflow event can be
+Page  319: Figure 14-89 Example of reset mode
+Page  321: Table 14-14 TMR1, TMR8 and TMR20 register map and reset value
+Page  321: Register              Offset                                   Reset value
+Page  321: Bit            Name                Reset value     Type     Description
+Page  322: Bit          Name        Reset value     Type     Description
+Page  322: 000: Reset
+Page  323: Bit          Name       Reset value     Type     Description
+Page  324: 100: Reset mode — Rising edge of the TRGIN input
+Page  324: Bit        Name       Reset value     Type     Description
+Page  325: Bit          Name       Reset value     Type     Description
+Page  326: Bit          Name               Reset value     Type     Description
+Page  326: Bit          Name               Reset value     Type     Description
+Page  327: Bit          Name      Reset value     Type     Description
+Page  328: Note: the divider is reset once C1EN=’0’
+Page  328: Bit          Name               Reset value     Type     Description
+Page  329: Bit          Name       Reset value     Type     Description
+Page  329: Bit          Name       Reset value     Type     Description
+Page  331: Bit         Name            Reset value       Type   Description
+Page  331: Bit         Name            Reset value       Type   Description
+Page  331: Bit         Name            Reset value       Type   Description
+Page  331: Bit         Name            Reset value       Type   Description
+Page  331: Bit         Name            Reset value       Type   Description
+Page  332: Bit         Name        Reset value     Type     Description
+Page  332: Bit         Name        Reset value     Type     Description
+Page  332: Bit         Name        Reset value     Type     Description
+Page  332: Bit         Name        Reset value     Type     Description
+Page  333: next system reset.
+Page  333: Bit         Name           Reset value     Type     Description
+Page  334: Bit         Name       Reset value     Type     Description
+Page  334: Bit         Name       Reset value     Type     Description
+Page  334: Bit         Register   Reset value     Type     Description
+Page  335: circuits from generating a system reset. The window watch dog is used to detect the occurrence of
+Page  335:    If the watchdog is enabled, a system reset is generated when the value of the downcounter is less
+Page  335: If the watchdog is enabled, a system reset is generated at the following conditions:
+Page  335: EN                     7-bit counter,CNT[6:0]                             reset
+Page  335: reset
+Page  335: To prevent system reset, the counter must be reloaded only when its value is less than the value stored
+Page  335: before the watchdog generates a reset. The WIN[6: 0] bit can be used to configure the window value.
+Page  335: (ISTS) can be used to reload the counter to prevent a system reset. Note that if CNT[6]=0, setting the
+Page  335: WWDTEN bit will generate a system reset, so the CNT[6] bit must be always set (CNT[6]=1) while writing
+Page  335: to the WWDT_CTRL register to prevent the occurrence of an immediate reset once the window watchdog
+Page  336: Reset
+Page  336: Table 15-2 WWDT register map and reset value
+Page  336: Register                                  Offset                                     Reset value
+Page  336: Bit           Name                  Reset value            Type    Description
+Page  336: reset.
+Page  336: Bit 6: 0      CNT                   0x7F                   rw      When the counter counts down to 0x3F, a reset is
+Page  336: Bit           Name                  Reset value            Type    Description
+Page  337: window register value, a reset is generated. The counter
+Page  337: Bit         Name       Reset value     Type     Description
+Page  338:    A system reset is generated under the following circumstances:
+Page  338: through user system data area, the WDT will be automatically enabled after power-on reset.
+Page  338: WDT reset:
+Page  338: When the counter value of the WDT counts down to 0, a WDT reset be generated. Thus the WDT_CMD
+Page  338: the WDT reset.
+Page  338: entered. This means that the WDT would not perform a system reset in both low power modes. After
+Page  339: CNT=0       reset
+Page  339: WDT_WIN            SYNC               value                         reload at CNT>WIN    reset
+Page  339: Table 16-2 WDT register and reset value
+Page  339: Register                                Offset                                       Reset value
+Page  340: (Reset in Standby mode)
+Page  340: Bit          Name         Reset value     Type     Description
+Page  340: Bit          Name         Reset value     Type     Description
+Page  340: (Reset in Standby mode)
+Page  340: Bit          Name         Reset value     Type     Description
+Page  340: (Reset in Standby mode)
+Page  340: Bit          Name         Reset value     Type     Description
+Page  340: (Reset in Standby mode)
+Page  340: Bit          Name         Reset value     Type     Description
+Page  340: the reload counter will perform a reset. The reload counter
+Page  341: influence of system reset and VDD power off as long as VBAT is powered.
+Page  342: After a power-on reset, all ERTC registers are write protected. Such protection mechanism is not affected
+Page  342: by the system reset. Write access to the ERTC registers (except the ERTC_STS[14: 8], ERTC_TAMP
+Page  342: Table 17-1 RTC register map and reset values
+Page  343: two ERTC_CLK. The shadow register is reset by a system reset. To ensure consistency between the 3
+Page  344: Note: A wakeup timer is not affected by a system reset and low power consumption modes (Sleep,
+Page  346: reset value (0x7F and 0xFF respectively). The clock synchronization cannot be used in conjunction with
+Page  346: generated accordingly. Once a tamper event occurs, the battery powered registers will be reset so as
+Page  348: Table 17-4 ERTC register map and reset values
+Page  348: Register                           Offset                               Reset value
+Page  349: Bit          Name       Reset value    Type      Description
+Page  349: Bit          Name       Reset value    Type      Description
+Page  349: Bit          Name       Reset value    Type      Description
+Page  350: system reset. It is used to store the daylight saving time
+Page  351: Bit          Name       Reset value   Type       Description
+Page  352: Bit           Name       Reset value   Type       Description
+Page  352: Bit          Name        Reset value   Type       Description
+Page  352: Bit          Name        Reset value   Type       Description
+Page  353: Bit          Name    Reset value   Type       Description
+Page  353: Bit          Name    Reset value   Type       Description
+Page  354: Bit          Name             Reset value    Type      Description
+Page  354: Bit          Name             Reset value    Type      Description
+Page  354: Bit          Name             Reset value    Type      Description
+Page  354: Bit          Name             Reset value    Type      Description
+Page  354: when TSF bit is reset.
+Page  355: Bit          Name             Reset value    Type      Description
+Page  355: when TSF bit is reset.
+Page  355: Bit          Name             Reset value    Type      Description
+Page  355: when TSF bit is reset.
+Page  355: Bit           Name            Reset value    Type      Description
+Page  355: Bit           Name            Reset value    Type      Description
+Page  357: Bit         Name      Reset value   Type       Description
+Page  357: Bit         Name      Reset value   Type       Description
+Page  357: Bit         Name      Reset value   Type       Description
+Page  357: not reset by a system reset. They are reset on a tamper
+Page  357: event or when a battery powered domain is reset.
+Page  361: reset. In the meantime, the ADC is switched off to save power.
+Page  367: group of channels during oversampling, will be reset and restart the ordinary conversion.
+Page  369: requests after the DMA transfer register is reset.
+Page  371: reset.
+Page  374: Table 18-5 lists ADC register map and their reset values.
+Page  374: Table 18-5 ADC register map and reset values
+Page  374: Register                         Offset                              Reset value
+Page  376: Bit         Name       Reset value     Type     Description
+Page  377: Bit          Name       Reset value     Type     Description
+Page  378: Bit          Name       Reset value     Type     Description
+Page  380: Bit          Name       Reset value     Type     Description
+Page  382: Bit          Name       Reset value     Type     Description
+Page  384: Bit          Name       Reset value     Type     Description
+Page  384: Bit          Name       Reset value     Type     Description
+Page  384: Bit          Name       Reset value     Type     Description
+Page  384: Bit          Name       Reset value     Type     Description
+Page  384: Bit          Name       Reset value     Type     Description
+Page  385: Bit          Name       Reset value     Type     Description
+Page  385: Bit          Name       Reset value     Type     Description
+Page  385: Bit          Name       Reset value     Type     Description
+Page  386: Bit          Name       Reset value     Type     Description
+Page  386: Bit          Name       Reset value     Type     Description
+Page  386: reset)
+Page  387: Bit          Name       Reset value     Type     Description
+Page  387: Bit          Name       Reset value     Type     Description
+Page  388: Bit          Name       Reset value     Type     Description
+Page  391: Bit          Name    Reset value    Type      Description
+Page  394: DAC_DxODT register. It is possible to disable LFSR function and reset LFSR wave generation algorithm
+Page  394: resulting value is loaded into the DAC_DxODT register. It is possible to disable/reset the triangular-wave
+Page  395: Table 19-2 DAC register map and reset values
+Page  395: Register                           Offset                            Reset value
+Page  395: Bit          Name            Reset value      Type     Description
+Page  398: Bit          Name       Reset value     Type     Description
+Page  398: Bit          Name       Reset value     Type     Description
+Page  398: Bit          Name       Reset value     Type     Description
+Page  398: Bit          Name       Reset value     Type     Description
+Page  398: Bit          Name       Reset value     Type     Description
+Page  398: Bit          Name       Reset value     Type     Description
+Page  399: Bit          Name        Reset value     Type     Description
+Page  399: Bit          Name        Reset value     Type     Description
+Page  399: Bit          Name        Reset value     Type     Description
+Page  399: Bit          Name        Reset value     Type     Description
+Page  399: Bit          Name        Reset value     Type     Description
+Page  399: Bit          Name        Reset value     Type     Description
+Page  399: Bit          Name        Reset value     Type     Description
+Page  405: After a system reset, the CAN controller is in Sleep mode. In this mode, the CAN clock is stopped
+Page  410: Table 20-1 CAN register map and reset values
+Page  410: Register                         Offset                      Reset value
+Page  411: Bit          Name       Reset value       Type   Description
+Page  411: Software partial reset
+Page  411: 1: Software partial reset
+Page  411: SPRST only reset receive FIFO and MCTRL register.
+Page  411: The CAN enters Sleep mode after reset. Then this bit is
+Page  412: After CAN reset or partial software reset, this bit is forced
+Page  412: Bit          Name       Reset value     Type     Description
+Page  413: Bit      Name     Reset value     Type     Description
+Page  416: Bit         Name       Reset value     Type     Description
+Page  416: Bit         Name       Reset value     Type     Description
+Page  417: Bit          Name       Reset value     Type     Description
+Page  418: Bit          Name       Reset value     Type     Description
+Page  419: Bit          Name            Reset value     Type     Description
+Page  420: 2.This register implements the Transmit Request control (bit 0) — reset value 0.
+Page  420: Bit          Name               Reset value      Type     Description
+Page  420: Bit          Name               Reset value      Type     Description
+Page  421: Bit          Name               Reset value     Type     Description
+Page  421: Bit          Name               Reset value     Type     Description
+Page  421: Bit          Name               Reset value     Type     Description
+Page  421: Bit          Name               Reset value     Type     Description
+Page  422: Bit          Name              Reset value     Type     Description
+Page  422: Bit          Name              Reset value     Type     Description
+Page  422: Bit          Name              Reset value     Type     Description
+Page  422: Bit          Name              Reset value     Type     Description
+Page  422: Bit          Name              Reset value     Type     Description
+Page  423: Bit          Name              Reset value     Type     Description
+Page  423: Bit          Name              Reset value     Type     Description
+Page  423: Bit          Name              Reset value     Type     Description
+Page  427: A dynamic FIFO allocation is required during power-on or USB reset. In device mode, the application
+Page  428: After allocation, the FIFO pointers must be reset by refreshing operation to ensure normal FIFO running.
+Page  429: 5. Set PRTRST = 0x1 in the OTGFS_HPRT register to issue a reset operation
+Page  429: 6. Wait for at least 10 ms to ensure the completion of the reset
+Page  430: because when the device is disconnected with the host, the PRTCONSTS bit will be reset in the
+Page  430: OTGFS_HPRT register. The application must initiate a software reset to ensure that all channels
+Page  430: have been cleared. Once the device is reconnected, the host must start a USB reset.
+Page  432: by checking the PRTOVRCACT bit in the OTGFS_HPRT register, then perform a software reset. The
+Page  432: reset through the CSFTRST in the OTGFS_GRSTCTL register.
+Page  433: 1. After power-on reset, the current HFIR value set by the application is shown
+Page  434: 1. After power-on reset, the current HFIR value set by the application is shown
+Page  435: Reset Error Count
+Page  435: Reset Error Count
+Page  435: Reset Error Count
+Page  436: Reset Error Count
+Page  437: Reset Error Count
+Page  438: Reset Error Count
+Page  438: Reset Error Count
+Page  439: the next transfer. In this case, the application must reset the ODDFRM bit in the OTGFS_HCCHAR2
+Page  439: Reset Error Count
+Page  439: Reset Error Count
+Page  439: Reset Error Count
+Page  440: Reset Error Count
+Page  441: Reset Error Count
+Page  442: Reset Error Count
+Page  442: Reset Error Count
+Page  443: the next transfer. In this case, the application must reset the ODDFRM bit in the OTGFS_HCCHAR2
+Page  443: Reset Error Count
+Page  445:  USB reset
+Page  445: 4. Wait for the USBRESET interrupt in the OTGFS_GINTSTS register. It indicates that a reset signal has
+Page  445: follow the steps defined in USB initialization on USB reset.
+Page  445: 5. Wait for the ENUMDONE interrupt in the OTGFS_GINTSTS register. It indicates the end of USB reset.
+Page  445: 21.5.4.2 Endpoint initialization on USB reset
+Page  445: This section describes the operations required for the application to perform when a USB reset signal is
+Page  445: 5. Reset the device address in the device configuration register
+Page  450: handling SETUP transfers. After power-on reset, the application must follow the OTGFS Initialization
+Page  452: To initialize the controller after power-on reset, the application must perform the steps list in OTGFS
+Page  453: To initialize the controller after power-on reset, the application must perform the steps list in “OTGFS
+Page  455: To initialize the controller after power-on reset, the application must perform the steps list in “OTGFS
+Page  458: To initialize the controller after power-on reset, the application must perform the steps list in OTGFS
+Page  459: To initialize the controller after power-on reset, the application must perform the steps list in OTGFS
+Page  461: initialized as they are after a power-on reset. These peripheral registers must be accessed by words
+Page  462: Table 21-4 shows the USB OTG register map and their reset values.
+Page  462: Table 21-4 OTGFS register map and reset values
+Page  462: Register                              Offset                        Reset value
+Page  466: Bit          Name              Reset value     Type     Description
+Page  466: Bit          Name              Reset value     Type     Description
+Page  466: Bit          Name              Reset value     Type     Description
+Page  467: Bit          Name            Reset value     Type     Description
+Page  468: 21.6.3.5 OTGFS reset register (OTGFS_GRSTCTL)
+Page  468: The application resets various hardware modules in the controller through this register.
+Page  468: Bit          Name              Reset value     Type     Description
+Page  469: Host frame counter reset
+Page  469: The application uses this bit to reset the frame number
+Page  469: Bit 2   FRMCNTRST   0x0         rw1s     reset, the subsequent SOS sent out by the controller has
+Page  469: PIU FS dedicated controller soft reset
+Page  469: This bit is used to reset PIU full-speed dedicated controller
+Page  469: controller are reset to the idle state. When the PHY
+Page  469: babble), this bit can be used to reset the PIU full-speed
+Page  469: clear this bit after all the necessary logic is reset in the
+Page  469: Controller soft reset
+Page  469: Resets the hclk and phy_clock domain as follows:
+Page  469: Resets all state machines (except AHB slave) to the idle
+Page  469: The application can write to this bit at any time to reset the
+Page  469: reset in the controller. The controller could take several
+Page  469: has to be reset for normal operation.
+Page  470: Bit          Name              Reset value     Type     Description
+Page  471: USB Reset
+Page  471: The controller sets this bit to indicate that a reset is
+Page  472: reset may return the value 0x1. If this register is read as
+Page  472: 0x1 immediately after power-on reset, it does not mean
+Page  472: set after power-on reset, the application can clear this bit.
+Page  473: Bit          Name               Reset value     Type     Description
+Page  473: USB Reset mask
+Page  474: Bit          Name              Reset value     Type     Description
+Page  474: Reset value: 0
+Page  474: Reset value: 0
+Page  474: Bit          Name              Reset value     Type     Description
+Page  475: Bit          Name             Reset value     Type     Description
+Page  475: The power-on reset value of this register is defined as the
+Page  475: Bit          Name             Reset value     Type     Description
+Page  475: Bit          Name             Reset value     Type     Description
+Page  476: Bit          Name             Reset value     Type     Description
+Page  476: Reset value: Configurable
+Page  476: Reset value: Configurable
+Page  476: Bit          Name             Reset value     Type     Description
+Page  477: Bit          Name              Reset value     Type     Description
+Page  477: Bit          Name              Reset value     Type     Description
+Page  477: The power-on reset value of this register is the sum of the
+Page  477: Bit          Name              Reset value     Type     Description
+Page  477: The reset value is the maximum possible IN endpoint
+Page  477: Bit          Name              Reset value     Type     Description
+Page  478: selected, reset must be done by software.
+Page  478: Bit          Name              Reset value     Type     Description
+Page  478: Bit          Name              Reset value     Type     Description
+Page  479: Bit          Name               Reset value     Type     Description
+Page  479: Bit          Name               Reset value     Type     Description
+Page  479: Bit          Name               Reset value     Type     Description
+Page  480: This register contains USB port-related information such as USB reset, enable, suspend, resume,
+Page  480: Bit          Name                Reset value     Type     Description
+Page  480: Port reset
+Page  480: When this bit is set by the application, a reset sequence
+Page  480: time required for the reset sequence, and clear this bit
+Page  480: after the reset sequence is complete.
+Page  480: 0: Port not in reset
+Page  480: Bit 8        PRTRST              0x0             rw       1: Port in reset
+Page  480: specification to start a reset on the port. In addition to this,
+Page  480: reset bit or port resume bit in this register, or sets the
+Page  481: A port is enabled only by the controller after a reset
+Page  481: Bit      Name          Reset value     Type     Description
+Page  482: Bit          Name              Reset value     Type     Description
+Page  483: Bit          Name             Reset value     Type     Description
+Page  483: Bit          Name             Reset value     Type     Description
+Page  484: Bit          Name             Reset value     Type     Description
+Page  484: Bit          Name             Reset value     Type     Description
+Page  486: Bit            Name            Reset value       Type     Description
+Page  486: on reset reflects a non-zero value. If a non-zero value is
+Page  486: on reset, it does not mean that the host has received a
+Page  486: Bit            Name            Reset value       Type     Description
+Page  487: Bit         Name             Reset value     Type     Description
+Page  488: Bit          Name               Reset value     Type     Description
+Page  488: Bit          Name               Reset value     Type     Description
+Page  488: Bit          Name               Reset value     Type     Description
+Page  488: Bit          Name               Reset value     Type     Description
+Page  490: Bit          Name              Reset value     Type     Description
+Page  491: Bit 15       USBACEPT   0x0         rw       USB reset. After receiving the SetConfiguration and
+Page  492: Bit          Name            Reset value     Type     Description
+Page  493: Bit          Name              Reset value     Type     Description
+Page  494: Bit 15       USBACEPT   0x0         rw       USB reset. After receiving the SetConfiguration and
+Page  495: Bit         Name                Reset value     Type     Description
+Page  495: Bit         Name                Reset value     Type     Description
+Page  496: Bit          Name               Reset value     Type     Description
+Page  496: Bit          Name               Reset value     Type     Description
+Page  497: Bit          Name               Reset value     Type     Description
+Page  497: Bit          Name               Reset value     Type     Description
+Page  498: Bit          Name               Reset value     Type     Description
+Page  498: Bit          Name               Reset value     Type     Description
+Page  502: Table 22-2 ACC register map and reset values
+Page  502: Register                      Offset                            Reset value
+Page  502: Bit            Name            Reset value     Type     Description
+Page  502: Bit            Name            Reset value     Type     Description
+Page  503: Bit          Name       Reset value     Type     Description
+Page  503: Bit          Name       Reset value     Type     Description
+Page  504: Bit          Name       Reset value     Type     Description
+Page  504: Bit          Name       Reset value     Type     Description
+Page  534: After the initialization, the SDRAM is ready to accept commands. If a system reset occurs during an on-
+Page  534: going SDRAM access, the SDRAM device has to be reset after re-initialization in order to issue a new
+Page  536: Register                      Offset                        Reset value
+Page  537: Bit          Name       Reset value     Type     Description
+Page  538: Bit          Name       Reset value     Type     Description
+Page  540: Bit          Name       Reset value     Type     Description
+Page  540: Bit          Name       Reset value     Type     Description
+Page  541: Bit          Name        Reset value     Type     Description
+Page  542: Bit          Name       Reset value     Type     Description
+Page  542: Bit          Name       Reset value     Type     Description
+Page  543: Bit          Name      Reset value     Type     Description
+Page  543: Bit          Name      Reset value     Type     Description
+Page  544: Bit         Name       Reset value     Type     Description
+Page  544: Bit         Name       Reset value     Type     Description
+Page  544: Bit         Name       Reset value     Type     Description
+Page  545: Bit          Name      Reset value     Type     Description
+Page  545: Bit          Name      Reset value     Type     Description
+Page  546: Bit          Name           Reset value     Type     Description
+Page  546: Bit          Name           Reset value     Type     Description
+Page  547: Bit          Name            Reset value     Type     Description
+Page  549: Bit             Name            Reset value     Type     Description
+Page  549: Bit         Name            Reset value     Type     Description
+Page  550: Bit         Name         Reset value     Type     Description
+Page  553: In card identification mode, the host resets all cards, validates the operation voltage range, identifies
+Page  556: Locked cards can support certain commands, indicating that the host is allowed to reset, initialize and
+Page  557: reset. An attempt to lock a locked card or to lock a card that does not have a password fails and the
+Page  558: CMD0         bc       [31: 0]=stuff bits    -                               Reset all cards to idle state
+Page  565: data bus. After reset, the SDIO_D0 is used for data transfer by default. MMCV3.31 or previous supports
+Page  567: reset
+Page  568: After reset
+Page  569: flags are cleared, and the read and write pointers are reset as well. The data path sets the DORX
+Page  571: Register                         Offset                           Reset value
+Page  571: Bit         Name               Reset value     Type     Description
+Page  572: Bit          Name            Reset value     Type     Description
+Page  573: Bit          Name            Reset value     Type     Description
+Page  573: Bit          Name            Reset value     Type     Description
+Page  574: Bit          Name             Reset value     Type         Description
+Page  574: Bit          Name             Reset value     Type       Description
+Page  574: Bit          Name             Reset value     Type       Description
+Page  574: Bit          Name             Reset value     Type       Description
+Page  575: Bit          Name          Reset value     Type     Description
+Page  576: Bit          Name              Reset value     Type     Description
+Page  576: Bit          Name              Reset value     Type     Description
+Page  577: Bit          Name            Reset value     Type     Description
+Page  577: Bit          Name            Reset value     Type     Description
+Page  579: Bit          Name            Reset value     Type     Description
+Page  579: Bit          Name            Reset value     Type     Description
+Page  584: register. The MII/RMII mode must be selected when the Ethernet controller is in reset state or before
+Page  586: EMAC_MII_TX_CLK              TX_CLK             -        PC3     Floating input (reset state)
+Page  586: EMAC_MII_CRS                   CRS             -        PA0     Floating input (reset state)
+Page  586: RX_CLK      REF_CLK         PA1     Floating input (reset state)
+Page  586: EMAC_MII_COL                   COL             -        PA3     Floating input (reset state)
+Page  586: EMAC_MII_RX_DV                                                   Floating input (reset state)
+Page  586: EMAC_MII_RXD0                                                   Floating input (reset state)
+Page  586: EMAC_MII_RXD1                                                   Floating input (reset state)
+Page  586: EMAC_MII_RXD2                RXD2              -        PB0     Floating input (reset state)
+Page  586: EMAC_MII_RXD3                RXD3              -        PB1     Floating input (reset state)
+Page  586: EMAC_MII_RX_ER               RX_ER              -       PB10     Floating input (reset state)
+Page  586: EMAC_RMII_CRS_DV              RX_DV        CRS_DV         PD8     Floating input (reset state)
+Page  586: EMAC_MII_RXD0                                                   Floating input (reset state)
+Page  586: EMAC_MII_RXD1                                                   Floating input (reset state)
+Page  586: EMAC_MII_RXD2                RXD2              -       PD11     Floating input (reset state)
+Page  586: EMAC_MII_RXD3                RXD3              -       PD12     Floating input (reset state)
+Page  590: the rule defined in Section 4.2.3.2.1 of the IEEE 802.3 specification. The MAC will reset its IFG counter
+Page  591: is immediate and the corresponding points are reset to their initial states even if the TXFIFO is in the
+Page  595: software or hardware resets the Ethernet peripherals and re-initiates the DMA.
+Page  614: Table 26-8 shows the Ethernet register map and its reset values.
+Page  614: Table 26-8 Ethernet register map and its reset values
+Page  614: Register                           Offset                      Reset value
+Page  616: Bit          Name            Reset value     Type     Description
+Page  618: deferral times resets to 0 and restarts.
+Page  618: Bit          Name              Reset value     Type     Description
+Page  620: Bit          Name              Reset value     Type     Description
+Page  620: Bit          Name              Reset value     Type     Description
+Page  620: Bit          Name              Reset value     Type     Description
+Page  621: Bit          Name              Reset value     Type     Description
+Page  621: Bit          Name              Reset value     Type     Description
+Page  622: completion of the Pause frame, the MAC resets this bit to
+Page  623: Bit          Name              Reset value     Type     Description
+Page  624: Bit          Name              Reset value     Type     Description
+Page  624: Remote Wakeup Frame Filter Register Pointer Reset
+Page  624: When this bit is set, it resets the remote frame filter register
+Page  624: Bit          Name              Reset value     Type     Description
+Page  625: Bit          Name               Reset value     Type     Description
+Page  625: Bit          Name               Reset value     Type     Description
+Page  626: Bit          Name               Reset value     Type     Description
+Page  626: Bit          Name               Reset value     Type     Description
+Page  626: Bit          Name               Reset value     Type     Description
+Page  627: Bit          Name               Reset value     Type     Description
+Page  627: Bit          Name               Reset value     Type     Description
+Page  627: Bit          Name               Reset value     Type     Description
+Page  628: Bit          Name            Reset value     Type     Description
+Page  628: Bit          Name            Reset value     Type     Description
+Page  629: valid only when the bit 1 (destination address) is reset. The
+Page  629: whether the bit 27 (TXPR) is set or reset.
+Page  630: Software Reset
+Page  630: When this bit is set, the MAC DMA controller resets all
+Page  630: cleared after all reset operations have been completed.
+Page  630: the Tx DMA will reset this command once it starts re-fetching the current descriptor from the host
+Page  630: Bit         Name               Reset value     Type     Description
+Page  630: Bit         Name               Reset value     Type     Description
+Page  630: Bit         Name               Reset value     Type     Description
+Page  631: Bit          Name               Reset value     Type     Description
+Page  631: Bit          Name               Reset value     Type     Description
+Page  631: sources and clear them in order to reset this bit to 1'b0.
+Page  631: Bit 27       MMI                0x0             ro       interrupt sources and clear them in order to reset this bit
+Page  633: Bit 6        RI         0x0         rw1c     RDES1 (interrupt disabled after reset operation) is reset in
+Page  633: The bit 31 (OWN) is reset in the TDES0. Specific frame
+Page  634: Bit          Name              Reset value     Type     Description
+Page  634: dropped if the FEF bit is reset.
+Page  634: When this bit is set, the Tx FIFO controller logic is reset of
+Page  634: bits are applicable only when the bit 21 (TSF) is reset.
+Page  635: reset. The newly written value becomes effective only
+Page  636: enables a corresponding interrupt. All interrupts are disabled after a software or hardware reset.
+Page  636: Bit          Name             Reset value     Type     Description
+Page  637: Bit          Name              Reset value     Type     Description
+Page  637: value. In this case, the overflow frame counter is reset to
+Page  638: In this case, the missed frame counter is reset to all zero,
+Page  638: Bit         Name            Reset value     Type     Description
+Page  638: Bit 31: 0   HTDAP           0x0000 0000     ro       These bits are cleared when reset. The DMA updates the
+Page  638: Bit         Name            Reset value     Type     Description
+Page  638: Bit 31: 0   HRDAP           0x0000 0000     ro       These bits are cleared when reset. The DMA updates the
+Page  638: Bit         Name            Reset value     Type     Description
+Page  638: Bit 31: 0   HTBAP           0x0000 0000     ro       These bits are cleared when reset. The DMA updates the
+Page  638: Bit         Name            Reset value     Type     Description
+Page  638: Bit 31: 0   HRBAP           0x0000 0000     ro       These bits are cleared when reset. The DMA updates the
+Page  638: Bit         Name            Reset value     Type     Description
+Page  639: 0. If the Reset on Read bit is set while the MMC counter is
+Page  639: Reset on Read
+Page  639: When this bit is set, the MMC counter is reset to 0 after
+Page  639: Reset Counter
+Page  639: Bit 0        RC                0x0             rw       When this bit is set, all counters are reset. This bit is
+Page  639: Bit          Name              Reset value     Type     Description
+Page  639: Bit          Name              Reset value     Type     Description
+Page  640: Bit          Name             Reset value     Type     Description
+Page  640: Bit          Name             Reset value     Type     Description
+Page  640: Bit          Name             Reset value     Type     Description
+Page  641: Bit          Name             Reset value     Type     Description
+Page  641: Bit          Name             Reset value     Type     Description
+Page  641: Bit          Name             Reset value     Type     Description
+Page  641: Bit          Name             Reset value     Type     Description
+Page  641: Bit          Name             Reset value     Type     Description
+Page  641: Bit          Name             Reset value     Type     Description
+Page  643: Bit          Name              Reset value     Type     Description
+Page  643: Bit          Name              Reset value     Type     Description
+Page  644: Bit         Name               Reset value     Type     Description
+Page  644: Bit         Name               Reset value     Type     Description
+Page  644: Bit         Name               Reset value     Type     Description
+Page  644: Bit         Name               Reset value     Type     Description
+Page  645: Bit         Name              Reset value     Type     Description
+Page  645: Bit         Name              Reset value     Type     Description
+Page  645: Bit         Name              Reset value     Type     Description
+Page  645: Bit         Name              Reset value     Type     Description
+Page  650: behavior of decoder for the misappropriated bits of the synchronization code. The reset value 0x00
+Page  651: automatically resets the CAP bit and stops capturing data.
+Page  651: sampling data until the end of the current frame. At this point, the DVP interface resets the CAP bit and
+Page  661: Table 27-5 shows the DVP register map and its reset values.
+Page  661: Table 27-5 DVP register map and reset values
+Page  661: Register                       Offset                              Reset value
+Page  661: Bit            Name             Reset value        Type     Description
+Page  663: Bit 0       CAP        0x0             rw       automatically reset after the completion of a single frame
+Page  663: is automatically reset after the completion of the current
+Page  663: Bit         Name       Reset value     Type     Description
+Page  663: Bit         Name       Reset value     Type     Description
+Page  664: Bit         Name       Reset value     Type     Description
+Page  664: Bit         Name       Reset value     Type     Description
+Page  664: Bit         Name       Reset value     Type     Description
+Page  665: Bit          Name    Reset value     Type     Description
+Page  665: Bit          Name    Reset value     Type     Description
+Page  666: Bit          Name       Reset value     Type     Description
+Page  666: Bit          Name       Reset value     Type     Description
+Page  666: Bit          Name       Reset value     Type     Description
+Page  666: Bit          Name       Reset value     Type     Description
+Page  668: Bit          Name       Reset value     Type     Description
+Page  668: Bit          Name       Reset value     Type     Description
+Page  668: Bit          Name       Reset value     Type     Description
+Page  668: Bit          Name       Reset value     Type     Description
+Page  676: Table 28-1 QSPI register map and reset values
+Page  676: Register                     Offset                              Reset value
+Page  676: Bit            Name            Reset value     Type     Description
+Page  676: Bit            Name            Reset value     Type     Description
+Page  677: Bit          Name             Reset value     Type     Description
+Page  677: Bit          Name             Reset value     Type     Description
+Page  678: Bit          Name             Reset value     Type     Description
+Page  679: Refresh all commands/FIFOs and reset state machine
+Page  679: Bit          Name             Reset value     Type     Description
+Page  679: Bit          Name             Reset value     Type     Description
+Page  680: Bit          Name             Reset value     Type     Description
+Page  680: Bit          Name             Reset value     Type     Description
+Page  680: Bit          Name             Reset value     Type     Description
+Page  681: Bit          Name             Reset value     Type     Description
+Page  681: Bit          Name             Reset value     Type     Description
+Page  682: Bit          Name             Reset value     Type     Description
+Page  683: Bit         Name              Reset value     Type     Description
+Page  683: Bit         Name              Reset value     Type     Description
+Page  683: Bit         Name              Reset value     Type     Description
+Page  683: Bit         Name              Reset value     Type     Description
+Page  696: Table 29-5 shows DMA register map and reset values.
+Page  696: Table 29-5 BPR register map and reset values
+Page  696: Register                        Offset                        Reset value
+Page  698: Bit          Name             Reset value     Type     Description
+Page  699: Bit          Name             Reset value     Type     Description
+Page  700: Bit          Name             Reset value     Type     Description
+Page  701: Bit          Name             Reset value     Type     Description
+Page  702: Bit          Name             Reset value     Type     Description
+Page  704: Bit          Name             Reset value     Type     Description
+Page  704: Bit          Name             Reset value     Type     Description
+Page  705: Bit         Name              Reset value     Type     Description
+Page  705: Bit         Name              Reset value     Type     Description
+Page  705: Bit         Name              Reset value     Type     Description
+Page  706: Bit          Name             Reset value     Type     Description
+Page  706: Bit          Name             Reset value     Type     Description
+Page  706: Bit          Name             Reset value     Type     Description
+Page  706: Bit          Name             Reset value     Type     Description
+Page  707: Bit          Name             Reset value     Type     Description
+Page  707: Bit          Name             Reset value     Type     Description
+Page  708: Bit            Name           Reset value     Type     Description
+Page  708: Bit            Name           Reset value     Type     Description
+Page  709: Bit          Name             Reset value     Type     Description
+Page  709: Bit          Name             Reset value     Type     Description
+Page  709: Bit          Name             Reset value     Type     Description
+Page  710: Bit         Name              Reset value     Type     Description
+Page  710: Bit         Name              Reset value     Type     Description
+Page  711: software. They are even accessible while the MCU is under system reset.
+Page  711: After reset, the SWJ-DP can be immediately used by the debugger as a default function. To ensure that
+Page  711: Table 30-1 shows DEBUG register map and reset values.
+Page  711: Table 30-1 DEBUG register address and reset value
+Page  711: Register                         Offset                         Reset value
+Page  712: Bit         Name      Reset value          Type   Description
+Page  713: This register is asynchronously reset by POR Reset (not reset by system reset). It can be written by the
+Page  713: debugger under reset.
+Page  713: Bit          Name               Reset value   Type Description
+Page  713: This register is asynchronously reset by POR Reset (not reset by system reset). It can be written by the
+Page  713: debugger under reset.
+Page  713: Bit           Name                 Reset value Type       Description
+Page  715: This register is asynchronously reset by POR Reset (not reset by system reset). It can be written by the
+Page  715: debugger under reset.
+Page  715: Bit          Name              Reset value     Type     Description
+Page  715: DEBUG_IDCODE register is mapped on the external PPB bus. This register is asynchronously reset by
+Page  715: POR Reset (not reset by system reset). This code is accessible by the JTAG debug port or SW debug
+Page  715: Bit          Name              Reset value     Type     Description
+Page  716: 2. Modified the reset value of section 22.6.4 Control register 2 (ACC_CTRL2)

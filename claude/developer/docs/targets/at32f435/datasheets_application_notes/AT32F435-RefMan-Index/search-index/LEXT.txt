@@ -1,0 +1,52 @@
+Keyword: LEXT
+Occurrences: 48
+================================================================================
+
+Page    1: − VBAT supply for LEXT, ERTC and 20 x 32-bit battery              available (For AT32F437 only)
+Page    1: − 32.768 kHz crystal oscillator (LEXT)                          − LQFP144 20 x 20 mm LQFP100 14 x 14 mm
+Page   45: LEXT
+Page   63: LEXT           ERTC       POR_BPD
+Page   65: The battery powered domain contains ERTC circuit, LEXT oscillator, PC13, PC14 and PC15, which is
+Page   65: can be used as a GPIO or LEXT pin. (As an I/O port, PC13, PC14 and PC15 must be limited below
+Page   65: ERTC alarm or second output, while the PC14 and PC15 can only be used as a LEXT pin.
+Page   70:  LEXT (low speed external crystal)
+Page   70: LEXT_IN                                       HEXT
+Page   70: LEXT OSC         LEXT
+Page   70: LEXT_OUT         40 kHz                                                                                                                           LEXT                        Divider1          Divider2
+Page   70: LEXT                                 CLKOUT1_SEL
+Page   71:  Low speed external oscillator (LEXT)
+Page   71: The LEXT oscillator provides two clock sources: LEXT crystal/ceramic resonator and LEXT bypass.
+Page   71: LEXT crystal/ceramic resonator:
+Page   71: The LEXT crystal/ceramic resonator provides a 32.768 KHz low-speed clock source. The LEXT clock
+Page   71:  LEXT bypass clock
+Page   71: clock signal should be connected to the LEXT_IN pin while the LEXT_OUT can be released for GPI
+Page   71: ERTC clock sources: divided HEXT oscillator, LEXT oscillator and LICK oscillator. Once the clock source
+Page   71: is selected, it cannot be altered without resetting the battery powered domain. If the LEXT is used as an
+Page   72: ADCCLK, USB48M, SCLK, LICK, LEXT, HICK, HEXT, PLLCLK can be used as CLKOUT1/2 clocks.
+Page   76: 01: LEXT selected
+Page   78: LEXT stable flag clear
+Page   78: Writing 1 by software to clear LEXTSTBLF.
+Page   78: Bit 17        LEXTSTBLFC         0x0                wo
+Page   78: LEXT stable interrupt enable
+Page   78: Bit 9         LEXTSTBLIEN        0x0                rw         0: Disabled
+Page   79: LEXT stable flag
+Page   79: Bit 1            LEXTSTBLF       0x0                  ro
+Page   79: 0: LEXT is not ready.
+Page   79: 1: LEXT is ready.
+Page   92: Note: LEXTEN, LEXTBYPS, ERTCSEL, and ERTCEN bits of the battery powered domain control
+Page   92: 01: LEXT
+Page   92: Bit 2         LEXTBYPS        0x0           rw        0: Disabled
+Page   92: Set by hardware after the LEXT is ready.
+Page   92: Bit 1         LEXTSTBL        0x0           ro
+Page   92: 0: LEXT is not ready.
+Page   92: 1: LEXT is ready.
+Page   92: Bit 0         LEXTEN          0x0           rw        0: Disabled
+Page   94: 0100: LEXT clock output
+Page  138: PC14        CRM_BPDC[0]=1                  Once enabled, PC14 pin acts as LEXT channel.
+Page  138: PC15                                       Once enabled, PC15 pin acts as LEXT channel.
+Page  265: OTG2_FS_SOF. TMR5 channel 4 input can be configured as GPIO, LICK, LEXT or ERTC.
+Page  283: 10: Internal clock LEXT
+Page  341: LEXT
+Page  342: ERTC clock source (ERTC_CLK) is selected via clock controller from a LEXT, LICK, and a divided HEXT
+Page  342: To obtain ck_b with frequency of 1 Hz, DIVA=127, DIVB=255, and 32.768 kHz LEXT should be used.
+Page  348: LEXT                                        √                     √                   √

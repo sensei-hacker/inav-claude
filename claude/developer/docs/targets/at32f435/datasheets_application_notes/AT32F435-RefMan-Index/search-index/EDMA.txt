@@ -1,0 +1,132 @@
+Keyword: EDMA
+Occurrences: 128
+================================================================================
+
+Page    1: − 2 x general-purpose DMAs and 1 x EDMA                                 AT32F435ZCT7, AT32F435VCT7,AT32F435RCT7,
+Page   30: 29       EDMA controller (EDMA) ............................................................. 684
+Page   30: 29.5 EDMA registers ......................................................................... 696
+Page   43: Table 29-3 EDMA flexible request mapping .............................................................................................. 693
+Page   44: 16-bit and 32-bit timers, Infrared Transmitter (IRTMR), DMA controller, EDMA controller, ERTC,
+Page   45: EDMA
+Page   47: DMA1      DMA2        EDMA    EMAC
+Page   50: 11      18                    EDMA data flow1           EDMA data flow1 global interrupt          0x0000_006C
+Page   50: Configu    EDMA data flow2           EDMA data flow2 global interrupt
+Page   50: Configu    EDMA data flow3           EDMA data flow3 global interrupt
+Page   50: Configu    EDMA data flow4           EDMA data flow4 global interrupt
+Page   51: Configu   EDMA data flow5        EDMA data flow5 global interrupt
+Page   51: Configu   EDMA data flow6        EDMA data flow6 global interrupt
+Page   51: Configu   EDMA data flow7        EDMA data flow7 global interrupt
+Page   51: 47   54             EDMA data flow8        EDMA data flow8 global interrupt       0x0000_00FC
+Page   61: 0x4002 6000 - 0x4002 63FF       EDMA
+Page   79: EDMA reset
+Page   79: Bit 21       EDMARST          0x0              rw          0: Does not reset EDMA
+Page   79: 1: Reset EDMA
+Page   83: EDMA clock enable
+Page   83: Bit 21       EDMAEN          0x0             rw          0: Disabled
+Page   88: EDMA clock enable in sleep mode
+Page   88: Bit 21       EDMALPEN    0x1        rw       0: Disabled
+Page  652: improve bus performance. Only EDMA is supported in burst transfer mode, and the peripheral burst
+Page  666: This register works with EDMA’s peripheral transfer
+Page  666: 0: DMA burst transaction disabled. The EDMA’s peripheral
+Page  667: 1: DMA burst transaction enabled. The EDMA’s peripheral
+Page  667: This configuration is enabled only when the EDMA is used
+Page  684: 29 EDMA controller (EDMA)
+Page  684: Enhanced direct memory access (EDMA) controller is designed for 32-bit MCU applications with the
+Page  693: Table 29-3 EDMA flexible request mapping
+Page  696: 29.5 EDMA registers
+Page  696: EDMA_STS1                       0x00                          0x0000 0000
+Page  696: EDMA_STS2                       0x04                          0x0000 0000
+Page  696: EDMA_CLR1                       0x08                          0x0000 0000
+Page  696: EDMA_CLR2                       0x0c                          0x0000 0000
+Page  696: EDMA_S1CTRL                     0x10                          0x0000 0000
+Page  696: EDMA_S1DTCNT                    0x14                          0x0000 0000
+Page  696: EDMA_S1PADDR                    0x18                          0x0000 0000
+Page  696: EDMA_S1M0ADDR                   0x1c                          0x0000 0000
+Page  696: EDMA_S1M1ADDR                   0x20                          0x0000 0000
+Page  696: EDMA_S1FCTRL                    0x24                          0x0000 0000
+Page  696: EDMA_S2CTRL                     0x28                          0x0000 0000
+Page  696: EDMA_S2DTCNT                    0x2c                          0x0000 0000
+Page  696: EDMA_S2PADDR                    0x30                          0x0000 0000
+Page  696: EDMA_S2M0ADDR                   0x34                          0x0000 0000
+Page  696: EDMA_S2M1ADDR                   0x38                          0x0000 0000
+Page  696: EDMA_S2FCTRL                    0x3c                          0x0000 0000
+Page  696: EDMA_S3CTRL                     0x40                          0x0000 0000
+Page  696: EDMA_S3DTCNT                    0x44                          0x0000 0000
+Page  696: EDMA_S3PADDR                    0x48                          0x0000 0000
+Page  696: EDMA_S3M0ADDR                   0x4c                          0x0000 0000
+Page  696: EDMA_S3M1ADDR                   0x50                          0x0000 0000
+Page  696: EDMA_S3FCTRL                    0x54                          0x0000 0000
+Page  696: EDMA_S4CTRL                     0x58                          0x0000 0000
+Page  696: EDMA_S4DTCNT                    0x5c                          0x0000 0000
+Page  696: EDMA_S4PADDR                    0x60                          0x0000 0000
+Page  696: EDMA_S4M0ADDR                   0x64                          0x0000 0000
+Page  696: EDMA_S4M1ADDR                   0x68                          0x0000 0000
+Page  696: EDMA_S4FCTRL                    0x6c                          0x0000 0000
+Page  696: EDMA_S5CTRL                     0x70                          0x0000 0000
+Page  696: EDMA_S5DTCNT                    0x74                          0x0000 0000
+Page  696: EDMA_S5PADDR                    0x78                          0x0000 0000
+Page  696: EDMA_S5M0ADDR                   0x7c                          0x0000 0000
+Page  696: EDMA_S5M1ADDR                   0x80                          0x0000 0000
+Page  696: EDMA_S5FCTRL                    0x84                          0x0000 0000
+Page  696: EDMA_S6CTRL                     0x88                          0x0000 0000
+Page  696: EDMA_S6DTCNT                    0x8c                          0x0000 0000
+Page  697: EDMA_S6PADDR    0x90               0x0000 0000
+Page  697: EDMA_S6M0ADDR   0x94               0x0000 0000
+Page  697: EDMA_S6M1ADDR   0x98               0x0000 0000
+Page  697: EDMA_S6FCTRL    0x9c               0x0000 0000
+Page  697: EDMA_S7CTRL     0xa0               0x0000 0000
+Page  697: EDMA_S7DTCNT    0xa4               0x0000 0000
+Page  697: EDMA_S7PADDR    0xa8               0x0000 0000
+Page  697: EDMA_S7M0ADDR   0xac               0x0000 0000
+Page  697: EDMA_S7M1ADDR   0xb0               0x0000 0000
+Page  697: EDMA_S7FCTRL    0xb4               0x0000 0000
+Page  697: EDMA_S8CTRL     0xb8               0x0000 0000
+Page  697: EDMA_S8DTCNT    0xbc               0x0000 0000
+Page  697: EDMA_S8PADDR    0xc0               0x0000 0000
+Page  697: EDMA_S8M0ADDR   0xc4               0x0000 0000
+Page  697: EDMA_S8M1ADDR   0xc8               0x0000 0000
+Page  697: EDMA_S8FCTRL    0xcc               0x0000 0000
+Page  697: EDMA_LLCTRL     0xd0               0x0000 0000
+Page  697: EDMA_S1LLP      0xd4               0x0000 0000
+Page  697: EDMA_S2LLP      0xd8               0x0000 0000
+Page  697: EDMA_S3LLP      0xdc               0x0000 0000
+Page  697: EDMA_S4LLP      0xe0               0x0000 0000
+Page  697: EDMA_S5LLP      0xe4               0x0000 0000
+Page  697: EDMA_S6LLP      0xe8               0x0000 0000
+Page  697: EDMA_S7LLP      0xec               0x0000 0000
+Page  697: EDMA_S8LLP      0xf0               0x0000 0000
+Page  697: EDMA_S2DCTRL    0xf4               0x0000 0000
+Page  697: EDMA_S12DCNT    0xf8               0x0000 0000
+Page  697: EDMA_S1STRIDE   0xfc               0x0000 0000
+Page  697: EDMA_S22DCNT    0x100              0x0000 0000
+Page  697: EDMA_S2STRIDE   0x104              0x0000 0000
+Page  697: EDMA_S32DCNT    0x108              0x0000 0000
+Page  697: EDMA_S3STRIDE   0x10c              0x0000 0000
+Page  697: EDMA_S42DCNT    0x110              0x0000 0000
+Page  697: EDMA_S4STRIDE   0x114              0x0000 0000
+Page  697: EDMA_S52DCNT    0x118              0x0000 0000
+Page  697: EDMA_S5STRIDE   0x11c              0x0000 0000
+Page  697: EDMA_S62DCNT    0x120              0x0000 0000
+Page  697: EDMA_S6STRIDE   0x124              0x0000 0000
+Page  697: EDMA_S72DCNT    0x128              0x0000 0000
+Page  697: EDMA_S7STRIDE   0x12c              0x0000 0000
+Page  697: EDMA_S82DCNT    0x130              0x0000 0000
+Page  698: EDMA_S8STRIDE                   0x134                             0x0000 0000
+Page  698: EDMA_SYNCEN                     0x138                             0x0000 0000
+Page  698: EDMA_MUXSEL                     0x13c                             0x0000 0000
+Page  698: EDMA_MUXS1CTRL                  0x140                             0x0000 0000
+Page  698: EDMA_MUXS2TRL                   0x144                             0x0000 0000
+Page  698: EDMA_MUXS3CTRL                  0x148                             0x0000 0000
+Page  698: EDMA_MUXS4CTRL                  0x14c                             0x0000 0000
+Page  698: EDMA_MUXS5CTRL                  0x150                             0x0000 0000
+Page  698: EDMA_MUXS6CTRL                  0x154                             0x0000 0000
+Page  698: EDMA_MUXS7CTRL                  0x158                             0x0000 0000
+Page  698: EDMA_MUXS8CTRL                  0x15c                             0x0000 0000
+Page  698: EDMA_MUXG1CTRL                  0x160                             0x0000 0000
+Page  698: EDMA_MUXG2CTRL                  0x164                             0x0000 0000
+Page  698: EDMA_MUXG3CTRL                  0x168                             0x0000 0000
+Page  698: EDMA_MUXG4CTRL                  0x16c                             0x0000 0000
+Page  698: EDMA_MUXSYNCSTS                 0x170                             0x0000 0000
+Page  698: EDMA_MUXSYNCCLR                 0x174                             0x0000 0000
+Page  698: EDMA_MUXGSTS                    0x178                             0x0000 0000
+Page  698: EDMA_MUXGCLR                    0x17c                             0x0000 0000

@@ -1,0 +1,10 @@
+Keyword: BOOT1
+Occurrences: 6
+================================================================================
+
+Page   55: code area between 0x0000_0000 and 0x07FF_FFFF. BOOT1 and BOOT0 are used to set the specific
+Page   55: {BOOT1, BOOT0}=00/10, CODE starts from the main Flash memory
+Page   55: {BOOT1, BOOT0}=01, CODE starts from Boot code
+Page   55: {BOOT1, BOOT0}=11, CODE starts from SRAM
+Page   55: After a system reset or when leaving from Standby mode, the pin values of both BOOT1 and BOOT0
+Page  144: as that of the BOOT0 and BOOT1 pins. After changing this

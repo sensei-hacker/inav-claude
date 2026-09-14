@@ -1,0 +1,77 @@
+Keyword: HEXT
+Occurrences: 73
+================================================================================
+
+Page    1: − 4 to 25 MHz crystal oscillator (HEXT)                        96-bit ID (UID)
+Page   45: HEXT 4~25 MHz
+Page   65: for details. The LDO output voltage is changeable only when the HEXT or HICK is used as system clock.
+Page   65: 1) Select HICK or HEXT as system clock
+Page   66: In Deepsleep mode, all clocks in 1.2 V domain are stopped, and both HICK and HEXT oscillators are
+Page   66: 8) If the HEXT is used as PLL clock, enable HEXT and wait for HEXTSTBL
+Page   66: disabled. The whole 1.2 V domain, PLL, HICK and HEXT oscillators are also powered off. SRAM and
+Page   70:  HEXT (high speed external crystal)
+Page   70: HEXT_IN
+Page   70: HEXT                                                  Peripheral
+Page   70: HEXT OSC                  HEXT
+Page   70: HEXT_OUT                                                                                                               AHB
+Page   70: LEXT_IN                                       HEXT
+Page   70: HEXT
+Page   70: USB48M                         HEXT                         Divider1          Divider2
+Page   70:  High speed external oscillator (HEXT)
+Page   70: The HEXT includes two clock sources: crystal/ceramic resonator and bypass clock.
+Page   70: The HEXT crystal/ceramic resonator is connected externally to a 4~25 MHz HEXT crystal that produces
+Page   70: a highly accurate clock for the system. The HEXT clock signal is not released until it becomes stable.
+Page   70: An external clock source can be provided by HEXT bypass. Its frequency can be up to 25 MHz. The
+Page   70: external clock signal should be connected to the HEXT_IN pin while the HEXT_OUT pin should be left
+Page   70: HICK clock is 48 MHz. Although it is less accurate, its startup time is shorter than the HEXT crystal
+Page   71: The HICK or HEXT clock can be used as an input clock source of the PLL. The PLL input clock, after
+Page   71: switch among HICK oscillator, HEXT oscillator and PLL clock. However, a switch from one clock source
+Page   71: ERTC clock sources: divided HEXT oscillator, LEXT oscillator and LICK oscillator. Once the clock source
+Page   72: ERTC clock, the ERTC is not affected when the VDD is powered off. If the HEXT or LICK is selected as
+Page   72: an ERTC clock, the ERTC state is not guaranteed when both HEXT and LICK are powered off.
+Page   72: The clock fail detector (CFD) is designed to respond to HEXT clock failure when the HEXT is used as a
+Page   72: system clock, directly or indirectly. If a failure is detected on the HEXT clock, a clock failure event is sent
+Page   72: service routine. The HEXT clock failure will result in a switch of the system clock to the HICK clock, the
+Page   72: CFD to be disabled, HEXT clock to be stopped, and even PLL to be disabled if the HEXT clock is selected
+Page   72: ADCCLK, USB48M, SCLK, LICK, LEXT, HICK, HEXT, PLLCLK can be used as CLKOUT1/2 clocks.
+Page   72: If a failure is detected on the HEXT clock, the CFD interrupt is generated. Such interrupt is directly linked
+Page   74: This bit can be written only if the HEXT is disabled.
+Page   74: Bit 18       HEXTBYPS   0x0            rw
+Page   74: This bit is set by hardware after HEXT becomes stable.
+Page   74: Bit 17       HEXTSTBL   0x0            ro
+Page   74: 0: HEXT is not ready.
+Page   74: 1: HEXT is ready.
+Page   74: Bit 16       HEXTEN     0x0            rw        mode. When the HEXT clock is used as the system clock,
+Page   75: a HEXT clock failure occurs. This bit can also be set. When
+Page   75: 1: HEXT is used as PLL reference clock
+Page   76: 10: External oscillator clock (HEXT) selected
+Page   76: 10: HEXT selected
+Page   77: HEXT division for ERTC clock
+Page   77: This field is set and cleared by software to divide the HEXT
+Page   77: 00010: HEXT/2
+Page   77: 00011: HEXT/3
+Page   77: 00100: HEXT/4
+Page   77: 11110: HEXT/30
+Page   77: 11111: HEXT/31
+Page   77: Bit 3: 2     SCLKSTS    0x0        R0       01: HEXT
+Page   77: Bit 1: 0     SCLKSEL    0x0        rw       01: HEXT
+Page   78: HEXT stable flag clear
+Page   78: Writing 1 by software to clear HEXTSTBLF.
+Page   78: Bit 19        HEXTSTBLFC         0x0                wo
+Page   78: HEXT stable interrupt enable
+Page   78: Bit 11        HEXTSTBLIEN        0x0                rw         0: Disabled
+Page   78: This bit is set by hardware when the HEXT
+Page   79: HEXT stable flag
+Page   79: Bit 3            HEXTSTBLF       0x0                  ro
+Page   79: 0: HEXT is not ready.
+Page   79: 1: HEXT is ready.
+Page   92: 11: Divided HEXT (with the ERTC_DIV bit in the CRM_CFG)
+Page  138: PH0         CRM_CTRL[16]=1                 Once enabled, PH0 pin acts as HEXT channel.
+Page  138: PH1                                        Once enabled, PH1 pin acts as HEXT channel.
+Page  341: HEXT_DIV
+Page  342: ERTC clock source (ERTC_CLK) is selected via clock controller from a LEXT, LICK, and a divided HEXT
+Page  342: clock (By setting the ERTCSEL[1: 0] in the CRM_BPDC register). The HEXT divider value is configured
+Page  342: Note: To use a divided HEXT by the ERTC_CLK, it is necessary to configure a HEXT divider value before
+Page  342: switching a clock source to the HEXT.
+Page  348: HEXT                                        √                     ×                   ×
+Page  585: HEXT                     RX_CLK

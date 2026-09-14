@@ -1,0 +1,26 @@
+Keyword: DMA channel
+Occurrences: 22
+================================================================================
+
+Page    7: 9.5.3 DMA channel-x configuration register (DMA_CxCTRL)                                  (x = 1…7) 166
+Page    7: 9.5.4 DMA channel-x number of data register (DMA_CxDTCNT) (x = 1…7) 167
+Page    7: 9.5.5 DMA channel-x peripheral address register (DMA_CxPADDR)
+Page    7: 9.5.6 DMA channel-x memory address register (DMA_CxMADDR)
+Page  154: There are two DMA controllers in the microcontroller. Each controller contains 7 DMA channels. Each
+Page  155: This mode indicates that DMA channels perform data transfer without requests from peripherals.
+Page  166: 9.5.3 DMA channel-x configuration register (DMA_CxCTRL)
+Page  167: 9.5.4 DMA channel-x number of data register (DMA_CxDTCNT)
+Page  167: 9.5.5 DMA channel-x peripheral address register
+Page  167: 9.5.6 DMA channel-x memory address register
+Page  198: 6. Enable the DMA channel by setting CHEN=1 in the DMA_CxCTRL register;
+Page  198: 6. Enable the DMA channel by setting CHEN=1 in the DMA_CxCTRL register
+Page  214: 1.    Select a DMA channel: Select a DMA channel from DMA channel map table described in DMA
+Page  214: 1.    Select a DMA transfer channel: Select a DMA channel from DMA channel map table described in
+Page  232:  Select DMA channel: Select a DMA channel for the current SPI transfer from DMA flexible
+Page  232:  Select DMA transfer channel: Select a DMA channel for the current SPI from DMA flexible
+Page  244:  Select DMA channel: Select a DMA channel for the current SPI from DMA channel map table
+Page  244:  Select DMA transfer channel: Select a DMA channel for the current SPI from DMA channel map
+Page  371: as shown in Table 18-4. As long as the MSDMASEL is set, the ADC1 DMA channel is used to generate
+Page  392: request and a DMA channel.
+Page  570: 6.   Check that no channels are still enabled by confirming the DMA channel enable SDIO status
+Page  684: This controller offers 8 DMA channels to guarantee data transfers between peripheral-to-memory,

@@ -1,0 +1,17 @@
+Keyword: JTAG
+Occurrences: 13
+================================================================================
+
+Page    1: − SWD and JTAG interfaces
+Page   45: SWJTAG                                                                                                                              XMC            HICK 48 MHz
+Page   46: SW/JTAG
+Page  120: JTAG pin configuration are as follows:
+Page  238: Note: Some of SPI1/I2S1 and SPI3/I2S3 are shared with JTAG pins (SPIx_CS/I2Sx_WS shared
+Page  238: controller, and they are used as JTAG by default after each reset. To configure them as
+Page  238: SPIx/I2Sx, the JTAG should be disabled (during debugging) and switched to SWD
+Page  238: interface, or both the JTAG and SWD are disabled (during normal run)
+Page  711: implemented with two interfaces: serial wire debug (SWD) and JTAG debug port. Trace information is
+Page  711: bus. These codes are accessible using the JTAG debug port or the SWD debug port or by the user
+Page  711: JTAG input pins are not floating (particularly SWCLK/JTCK), the JTAG input pins are embedded with
+Page  712: is mapped on the external PPB bus at address 0xE0042000. This code is accessible by the JTAG debug
+Page  715: POR Reset (not reset by system reset). This code is accessible by the JTAG debug port or SW debug

@@ -1,0 +1,20 @@
+Keyword: low power
+Occurrences: 16
+================================================================================
+
+Page    1: − Low power: Sleep, Deepsleep, and Standby modes                  SRAM(4 Kbytes): IEEE1588 hardware support, MII/RMII
+Page    3: 4.3.15 APB peripheral clock enable in low power mode register1
+Page    3: 4.3.16 APB peripheral clock enable in low power mode register2
+Page    3: 4.3.17 APB peripheral clock enable in low power mode register3
+Page    3: 4.3.18 APB1 peripheral clock enable in low power mode register
+Page    4: 4.3.19 APB2 peripheral clock enable in low power mode register
+Page   68: Low power mode select when Cortex®-M4F sleepdeep
+Page   87: 4.3.15 APB peripheral clock enable in low power mode register1
+Page   89: 4.3.16 APB peripheral clock enable in low power mode register2
+Page   89: 4.3.17 APB peripheral clock enable in low power mode register3
+Page   89: 4.3.18 APB1 peripheral clock enable in low power mode register
+Page   91: 4.3.19 APB2 peripheral clock enable in low power mode register
+Page  338: WDT low power counting mode:
+Page  338: entered. This means that the WDT would not perform a system reset in both low power modes. After
+Page  344: Periodic automatic wakeup unit is used to wake up ERTC from low power consumption modes
+Page  344: Note: A wakeup timer is not affected by a system reset and low power consumption modes (Sleep,

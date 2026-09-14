@@ -1,0 +1,6 @@
+Keyword: reserved bits
+Occurrences: 2
+================================================================================
+
+Page  422: Note: All the non-reserved bits of this register are controlled by software completely.
+Page  634: to GMAC-MTL configuration where the unused and reserved bits are 24, 13, 2 and 1. A delay value

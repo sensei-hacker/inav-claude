@@ -1,0 +1,66 @@
+Keyword: sLib
+Occurrences: 62
+================================================================================
+
+Page    1: ARM®-based 32-bit Cortex®-M4F MCU+FPU with 256 to 4032 KB Flash, sLib,
+Page    1: − sLib: configurable part of main Flash set as a library        subsecond precision, hardware calendar and
+Page    5: 5.6.16 Flash security library status register 2 (SLIB_STS2) ..................... 116
+Page    5: 5.6.17 Flash security library status register 0 (SLIB_STS0) ..................... 116
+Page    5: 5.6.18 Flash security library status register 1 (SLIB_STS1) ..................... 116
+Page    5: 5.6.19 Flash security library password clear register (SLIB_PWD_CLR) ... 117
+Page    5: 5.6.20 Security library additional status register (SLIB_MISC_STS) ......... 117
+Page    5: 5.6.21 Security library password setting register (SLIB_SET_PWD) ......... 117
+Page    5: 5.6.22 Security library address setting register0 (SLIB_SET_RANGE0) ... 117
+Page    5: 5.6.23 Security library address setting register 1 (SLIB_SET_RANGE1) .. 118
+Page    5: 5.6.24 Security library unlock register (SLIB_UNLOCK) .......................... 118
+Page  110: this register, security library should be unlocked first, by writing 0xA35F6D24 to the SLIB_UNLOCK
+Page  110: register, and checking the SLIB_ULKF bit in the SLIB_MISC_STS register to verify if it is unlocked
+Page  110:  Write 0xA35F6D24 to the SLIB_UNLOCK register to unlock security library;
+Page  110:  Check the SLIB_ULKF bit of SLIB_MISC_STS register to verify that it is unlocked successfully;
+Page  110:  Set a security password in the SLIB_SET_PWD register;
+Page  110:  Set the area to be protected in the SLIB_SET_RANGE0 and SLIB_SET_RANGE1 register;
+Page  110:  Enable the security library information settings by setting the SET_SLIB_STRT bit in the
+Page  110: SLIB_SET_RANGE1 register;
+Page  110:  Read the SLIB_STS0/STS1/STS2 register to verify the security library settings.
+Page  110:  Write the previously set security library password to the SLIB_PWD_CLR register;
+Page  110:  Read the SLIB_STS0 register to check the security library settings.
+Page  111: SLIB_STS2                        0xC8                          0x0000 FFFF
+Page  111: SLIB_STS0                        0xCC                          0x0000 0000
+Page  111: SLIB_STS1                        0xD0                          0xFFFF FFFF
+Page  111: SLIB_PWD_CLR                     0xD4                          0x0000 0000
+Page  111: SLIB_MISC_STS                    0xD8                          0x0100 0000
+Page  111: SLIB_SET_PWD                     0xDC                          0x0000 0000
+Page  111: SLIB_SET_RANGE0                  0xE0                          0x0000 0000
+Page  111: SLIB_SET_RANGE1                  0xE4                          0x0000 0000
+Page  112: SLIB_UNLOCK                     0xF0                                0x0000 0000
+Page  116: 5.6.16 Flash security library status register 2 (SLIB_STS2)
+Page  116: sLib instruction start sector
+Page  116: Bit 15: 0    SLIB_INST_SS      0xFFFF          ro       2: Sector 2
+Page  116: 0xFFFF: Non-sLib instruction
+Page  116: 5.6.17 Flash security library status register 0 (SLIB_STS0)
+Page  116: SLIB_ENF: sLib enable flag
+Page  116: Bit 3        SLIB_ENF          0x0             ro
+Page  116: of SLIB_STS1) used as security library code.
+Page  116: 5.6.18 Flash security library status register 1 (SLIB_STS1)
+Page  116: Bit 31: 16   SLIB_ES           0xFFFF          ro       1: Sector 1
+Page  116: Bit 15: 0    SLIB_SS           0xFFFF          ro       1: Sector 1
+Page  117: (SLIB_PWD_CLR)
+Page  117: Bit 31:0     SLIB_PCLR_VAL     0x0000 0000     wo       security library functions.
+Page  117: bit 1 in the SLIB_MISC_STS register.
+Page  117: (SLIB_MISC_STS)
+Page  117: Bit 24: 16   SLIB_RCNT         0x100           ro
+Page  117: Bit 2        SLIB_ULKF         0x0             ro       When this bit is set, it indicates that sLib-related setting
+Page  117: Bit 1        SLIB_PWD_OK       0x0             ro
+Page  117: Bit 0        SLIB_PWD_ERR      0x0             ro       different from 0xFFFF FFFF.
+Page  117: (SLIB_SET_PWD)
+Page  117: Bit 31: 0    SLIB_PSET_VAL     0x0000 0000     wo       security library lock. It is used to set up the startup
+Page  117: (SLIB_SET_RANGE0)
+Page  117: Bit 31: 16   SLIB_ES_SET       0x000           wo       1: Sector 1
+Page  117: Bit 10: 0    SLIB_SS_SET       0x000           wo
+Page  118: (SLIB_SET_RANGE1)
+Page  118: Setting sLib start
+Page  118: Bit 31       SET_SLIB_STRT       0x0             wo       settings.
+Page  118: Bit 15: 0    SLIB_ISS_SET        0x0000          wo       1: Sector 1
+Page  118: 0xFFFF: Non-sLib instruction
+Page  118: 5.6.24 Security library unlock register (SLIB_UNLOCK)
+Page  118: Bit 31: 0    SLIB_UKVAL          0x0000 0000     wo       Fixed key value is 0xA35F_6D24, used for security library

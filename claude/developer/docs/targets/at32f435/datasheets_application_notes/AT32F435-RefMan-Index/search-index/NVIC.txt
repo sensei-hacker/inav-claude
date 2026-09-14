@@ -1,0 +1,12 @@
+Keyword: NVIC
+Occurrences: 8
+================================================================================
+
+Page   45: NVIC                                                                                           CRC                                 CRM                HCLK
+Page   46: NVIC
+Page   66:  Enabling a peripheral interrupt (it is not enabled in the NVIC) and enabling the SEVONPEND bit.
+Page   66: When the MCU resumes, the peripheral interrupt pending bit and NVIC channel pending bit must
+Page   72: are recorded and then handled by NVIC when the AHB bus resumes.
+Page   95: and then handled by NVIC when the AHB bus resumes.
+Page  347: 2. Enable a NVIC channel corresponding to ERTC interrupts
+Page  359: TMR8_CH2                     PCTEN                                              PCCEIEN                        to NVIC

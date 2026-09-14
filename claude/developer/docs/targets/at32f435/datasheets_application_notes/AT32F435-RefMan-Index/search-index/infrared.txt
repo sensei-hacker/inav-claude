@@ -1,0 +1,21 @@
+Keyword: infrared
+Occurrences: 17
+================================================================================
+
+Page    1: − Power-on reset (POR)/ low voltage reset (LVR), and            − Infrared transmitter (IRTMR)
+Page   23: 23       Infrared timer (IRTMR) ................................................................ 505
+Page   44: 16-bit and 32-bit timers, Infrared Transmitter (IRTMR), DMA controller, EDMA controller, ERTC,
+Page  143: Infrared modulation envelope signal source selection
+Page  143: This field is used to select the infrared modulation
+Page  143: Infrared output polarity selection
+Page  143: Bit 5        IR_POL            0x0             rw       0: Infrared output (IR_OUT) is not inversed
+Page  143: 1: Infrared output (IR_OUT) is inversed
+Page  207: Interconnection Network), IrDA (Infrared Data Association) SIRENDEC specification, Asynchronous
+Page  209: Interconnection Network), IrDA SIR (Serial Infrared), Asynchronous Smartcard protocol in ISO7816-3
+Page  210: 3. Infrared mode:
+Page  210: The infrared low-power mode can be enabled by setting IRDALP=1. In normal mode the transmitted
+Page  210: pulse width is specified as 3/16 bit. In infrared low-power mode, the pulse width can be configurable.
+Page  505: 23 Infrared timer (IRTMR)
+Page  505: The IRTMR (Infrared Timer) is used to generate the IR_OUT signal that drives the infrared LED so as to
+Page  505: achieve infrared control.
+Page  716: 5. Updated the descriptions of Section 23 Infrared timer (IRTMR)

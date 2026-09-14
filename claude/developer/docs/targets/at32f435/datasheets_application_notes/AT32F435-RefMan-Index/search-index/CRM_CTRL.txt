@@ -1,0 +1,16 @@
+Keyword: CRM_CTRL
+Occurrences: 12
+================================================================================
+
+Page    3: 4.3.1 Clock control register (CRM_CTRL) .............................................. 74
+Page    4: 4.3.21 Control/status register (CRM_CTRLSTS) ...................................... 92
+Page   73: registers to their reset values except the clock control/status register (CRM_CTRLSTS) and the battery
+Page   73: CRM_CTRL                          0x000                        0x0000 XX83
+Page   74: CRM_CTRLSTS                    0x074                           0x0C00 0000
+Page   74: 4.3.1         Clock control register (CRM_CTRL)
+Page   92: 4.3.21 Control/status register (CRM_CTRLSTS)
+Page  138: PH0         CRM_CTRL[16]=1                 Once enabled, PH0 pin acts as HEXT channel.
+Page  138: CRM_CTRL[16]=1&
+Page  138: CRM_CTRL[18]=0
+Page  500: in bypass mode. The value is defined by the HICKCAL[7: 0] in the CRM_CTRL register.
+Page  500: HICK in bypass mode. The value is defined by the HICKTRIM[5: 0] in the CRM_CTRL register.

@@ -1,0 +1,78 @@
+Keyword: tamper
+Occurrences: 74
+================================================================================
+
+Page   15: 17.3.7 Tamper detection ....................................................................... 346
+Page   15: 17.4.17 ERTC tamper configuration register (ERTC_TAMP) ................... 355
+Page   50: 2       9                     TAMPER                    Tamper interrupt                          0x0000_0048
+Page   65: I/O, tamper pin, ERTC calibration clock, ERTC alarm or second output, while the PC14 and PC15
+Page   65: 2) When the battery powered domain is powered by VBAT, the PC13 can be used as a tamper pin,
+Page   67: In Standby mode, all I/O pins remain in a high-impedance state except reset pins, TAMPER pins that
+Page   67: are set as anti-tamper or calibration output, and the wakeup pins enabled.
+Page   67: wakeup, ERTC timestamp, ERTC tamper event, a rising edge on the WKUP pin or the rising edge of an
+Page  138: PA0         (ERTC_TAMP[0]=1&               Once enabled, PA0 pin is used as TAMPER2_BPR.
+Page  139: Note: Either PA0 or PC13 cannot be used as TAMPER_BPR and WKUP of PWC simultaneously.
+Page  151: ERTC tamper and time stamp EXINT_LINE[21]
+Page  341:    Two programmable tamper detection, supporting time stamp feature
+Page  341:    5 x interrupts: alarm A, alarm B, periodic auto-wakeup, tamper detection and time stamp
+Page  341:    Multiplexed function input, reference clock input, two-way tamper detection and time stamp
+Page  346: When time stamp event is detected on the tamper pin (valid edge is detected), the current calendar
+Page  346: 1. How to enable time stamp when a valid edge is detected on a tamper pin
+Page  346: 2. How to save time stamp on a tamper event
+Page  346:  Configure tamper detection registers
+Page  346:  Enable tamper detection time stamp by setting TPTSEN=1
+Page  346: 17.3.7 Tamper detection
+Page  346: The ERTC has two tamper detection modes: TAMP1 and TAMP2. They can be configured as a level
+Page  346: The TP1F or TP2F will be set when a valid tamper event is detected. An interrupt will also be generated
+Page  346: if a tamper detection interrupt is enabled. If the TPTSEN bit is already set, a time stamp event will be
+Page  346: generated accordingly. Once a tamper event occurs, the battery powered registers will be reset so as
+Page  346: 3. According to your needs, enable a tamper detection interrupt (TPIEN=1)
+Page  346: 2. Select tamper detection valid level (through TP1EDG or TP2EDG)
+Page  346: 3. Select tamper detection sampling frequency (through the TPFREQ bit )
+Page  347: 4. According to your needs, enable tamper detection pull-up (setting TPPU=1). When TPPU=1 is
+Page  347: asserted, tamper detection pre-charge time must be configured through the TPPR bit
+Page  347: 5. According to your needs, configure whether to activate a time stamp on a tamper event
+Page  347: 6. According to your needs, enable a tamper interrupt (TPIEN=1)
+Page  347: 1. If a rising edge is configured to enable tamper detection, and the tamper detection pin turns to high
+Page  347: level before tamper detection is enabled, then a tamper event will be detected right after the tamper
+Page  347: 2. If a falling edge is configured to enable tamper detection, and the tamper detection pin turns to low
+Page  347: level before tamper detection is enabled, then a tamper event will be detected right after the tamper
+Page  347: Note: Tamper detection is still active even when the VDD power is OFF.
+Page  347: ERTC can be woken up by alarm clocks, periodic auto wakeup feature, time stamps or tamper
+Page  348: Tamper event         √                     ×                   ×
+Page  348: Tamper event         √                     √                   √
+Page  348: Tamper event         √                     √                   √
+Page  348: Tamper event                TP1F/TP2F                  TPIEN                     21
+Page  351: Tamper detection 2 flag
+Page  351: Bit 14       TP2F       0x0           rw0c       0: No tamper event
+Page  351: 1: Tamper event occurs
+Page  351: Tamper detection 1 flag
+Page  351: Bit 13       TP1F       0x0           rw0c       0: No tamper event
+Page  351: 1: Tamper event occurs
+Page  355: 17.4.17 ERTC tamper configuration register (ERTC_TAMP)
+Page  355: Tamper detection pin selection
+Page  355: Tamper detection pull-up
+Page  355: 0: Tamper detection pull-up enabled
+Page  356: 1: Tamper detection pull-up disabled
+Page  356: Tamper detection pre-charge time
+Page  356: Tamper detection filter time
+Page  356: Bit 12: 11   TPFLT      0x0       rw         1: Tamper is detected after 2 consecutive samples
+Page  356: 2: Tamper is detected after 4 consecutive samples
+Page  356: 3: Tamper is detected after 8 consecutive samples
+Page  356: Tamper detection frequency
+Page  356: Tamper detection timestamp enable
+Page  356: 0: Tamper detection timestamp disabled
+Page  356: 1: Tamper detection timestamp enabled. Save timestamp on
+Page  356: a tamper event.
+Page  356: Tamper detection 2 valid edge
+Page  356: Tamper detection 2 enable
+Page  356: Bit 3        TP2EN      0x0       rw         0: Tamper detection 2 disabled
+Page  356: 1: Tamper detection 2 enabled
+Page  356: Tamper detection interrupt enable
+Page  356: Bit 2        TPIEN      0x0       rw         0: Tamper detection interrupt disabled
+Page  356: 1: Tamper detection interrupt enabled
+Page  356: Tamper detection 1 valid edge
+Page  356: Tamper detection 1 enable
+Page  356: Bit 0        TP1EN      0x0       rw         0: Tamper detection 1 disabled
+Page  356: 1: Tamper detection 1 enabled
+Page  357: not reset by a system reset. They are reset on a tamper

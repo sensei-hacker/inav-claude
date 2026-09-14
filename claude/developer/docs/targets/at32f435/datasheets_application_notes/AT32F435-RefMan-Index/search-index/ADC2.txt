@@ -1,0 +1,93 @@
+Keyword: ADC2
+Occurrences: 89
+================================================================================
+
+Page   45: ADC2
+Page   51: 18   25             ADC1_2_3               ADC1, ADC2 and ADC3 global interrupt   0x0000_0088
+Page   87: ADC2 interface clock enable
+Page   87: Bit 9        ADC2EN          0x0              rw          0: Disabled
+Page   91: Bit 9        ADC2LPEN         0x1            rw       0: Disabled
+Page  154: ADC2       TMR3
+Page  158: ADC2     TMR3                                                Stream x
+Page  159: 4           DMA_MUXREQG4 36         ADC2               68        TMR4_CH2       100     reserved
+Page  358: Differences between ADC2/ADC3 and ADC1:
+Page  358: 1. ADC2/ADC3 are not connected to the internal temperature sensor (Temp. sensor) and internal
+Page  360:  ADC2_IN0 to ADC2_IN15 are referred to as the external analog input, and ADC2_IN16 and
+Page  360: ADC2_IN17 as Vss, and ADC1_IN18 as VREF-.
+Page  370: with ADC2 and ADC3.
+Page  370: In a single master/slave mode, ADC1 acts as a master while ADC2 as a slave, and ADC3 behaves
+Page  370: independently. In dual master/slave mode, ADC1 acts as a master, while both ADC2 and ADC3 act as
+Page  370: Preempted             ADC1                                 ADC2                                   ADC3
+Page  371: Single slave       2nd        16 bit 0, ADC2_ODT [15:0]
+Page  371: 2nd        16 bit 0, ADC2_ODT [15:0]
+Page  371: 010                          1st        ADC2_ODT[15:0], ADC1_ODT[15:0]
+Page  371: 2nd        ADC2_ODT[15:0], ADC1_ODT[15:0]
+Page  371: 1st        ADC2_ODT[15:0], ADC1_ODT[15:0]
+Page  371: 3rd        ADC3_ODT[15:0], ADC2_ODT[15:0]
+Page  371: 4th        ADC2_ODT[15:0], ADC1_ODT[15:0]
+Page  371: 011                          1st        16 bit 0, ADC2_ODT[7:0], ADC1_ODT[7:0]
+Page  371: 2nd        16 bit 0, ADC2_ODT[7:0], ADC1_ODT[7:0]
+Page  371: 1st        16 bit 0, ADC2_ODT[7:0], ADC1_ODT[7:0]
+Page  371: 3rd        16 bit 0, ADC3_ODT[7:0], ADC2_ODT[7:0]
+Page  371: 4th        16 bit 0, ADC2_ODT[7:0], ADC1_ODT[7:0]
+Page  371: 100                          1st        8 bit 0, ADC3_ODT[7:0], ADC2_ODT[7:0], ADC1_ODT[7:0]
+Page  371: 2nd        8 bit 0, ADC3_ODT[7:0], ADC2_ODT[7:0], ADC1_ODT[7:0]
+Page  371: 101                          1st        ADC2_ODT[15:0], ADC1_ODT[15:0]
+Page  371: 3rd        ADC2_ODT[15:0], ADC1_ODT[15:0]
+Page  372: ADC2: OCLEN=2, OSN1=ADC2_IN5, OSN2=ADC2_IN4, OSN3=ADC2_IN3                 Sampling
+Page  372: ADC2        ADC2_IN5      ADC2_IN4      ADC2_IN3                 ADC2_IN5     ADC2_IN4   ADC2_IN3
+Page  372: ADC2: PCLEN=2, PSN2=ADC2_IN5, PSN3=ADC2_IN4, PSN4=ADC2_IN3                  Sampling
+Page  372: ADC2        ADC2_IN5      ADC2_IN4      ADC2_IN3                 ADC2_IN5     ADC2_IN4   ADC2_IN3
+Page  373: ADC2: PCLEN=2, PSN2=ADC2_IN5, PSN3=ADC2_IN4, PSN4=ADC2_IN3                                      Sampling
+Page  373: ADC1      ADC1_IN0       ADC1_IN1      ADC1_IN2                                 ADC1_IN0       ADC1_IN1       ADC1_IN2                       ADC2
+Page  373: ADC2                            ADC2_IN5      ADC2_IN4     ADC2_IN3       ADC2                       ADC2_IN5          ADC2_IN4       ADC2_IN3
+Page  373: ADC2: SQEN=0, OSN1=ADC2_IN3, RPEN=1, CSPTx=0
+Page  373: ADC2                                 ADC2_IN3                     ADC2_IN3                        ADC2_IN3
+Page  373: ADC2 EC flag set
+Page  374: ADC2: SQEN=1, OSN1=ADC2_IN3, RPEN=1
+Page  374: ADC2                   ADC2_IN3            ADC2_IN3              ADC2_IN3
+Page  374: ADC2_ODT                                ADC2_DT1                ADC2_DT2       ADC2_DT3
+Page  374: ADC2_DT1,     ADC1_DT2,     ADC3_DT2,    ADC2_DT3,
+Page  374: ADC1_DT1      ADC3_DT1      ADC2_DT2
+Page  375: ADC2_STS      0x100              0x0000 0000
+Page  375: ADC2_CTRL1    0x104              0x0000 0000
+Page  375: ADC2_CTRL2    0x108              0x0000 0000
+Page  375: ADC2_SPT1     0x10C              0x0000 0000
+Page  375: ADC2_SPT2     0x110              0x0000 0000
+Page  375: ADC2_PCDTO1   0x114              0x0000 0000
+Page  375: ADC2_PCDTO2   0x118              0x0000 0000
+Page  375: ADC2_PCDTO3   0x11C              0x0000 0000
+Page  375: ADC2_PCDTO4   0x120              0x0000 0000
+Page  375: ADC2_VMHB     0x124              0x0000 FFFF
+Page  375: ADC2_VMLB     0x128              0x0000 0000
+Page  375: ADC2_OSQ1     0x12C              0x0000 0000
+Page  375: ADC2_OSQ2     0x130              0x0000 0000
+Page  375: ADC2_OSQ3     0x134              0x0000 0000
+Page  375: ADC2_PSQ      0x138              0x0000 0000
+Page  375: ADC2_PDT1     0x13C              0x0000 0000
+Page  375: ADC2_PDT2     0x140              0x0000 0000
+Page  375: ADC2_PDT3     0x144              0x0000 0000
+Page  375: ADC2_PDT4     0x148              0x0000 0000
+Page  375: ADC2_ODT      0x14C              0x0000 0000
+Page  375: ADC2_OVSP     0x180              0x0000 0000
+Page  375: ADC2_CALVAL   0x1B4              0x0000 0000
+Page  386: ADC2 conversion data of ordinary channel
+Page  386: ro       These bits are reserved in ADC2 and ADC3.
+Page  386: Bit 31: 16   ADC2ODT    0x0000
+Page  386: and they contain the conversion result from the ADC2
+Page  387: ADC2 conversion ready flag
+Page  387: Bit 14       RDY2       0x0             ro       This bit is the mapping bit of the RDY bit in the ADC2_STS
+Page  387: ADC2 ordinary channel conversion overflow flag
+Page  387: ADC2_STS register.
+Page  387: ADC2 ordinary channel conversion start flag
+Page  387: ADC2_STS register.
+Page  387: ADC2 preempted channel conversion start flag
+Page  387: ADC2_STS register.
+Page  388: ADC2 Preempted channels conversion end flag
+Page  388: ADC2_STS register.
+Page  388: ADC2 ordinary channels conversion end flag
+Page  388: ADC2_STS register.
+Page  388: ADC2 voltage monitoring out of range flag
+Page  388: ADC2_STS register.
+Page  693: ADC2     TMR3                                                     Stream x
+Page  693: 4           DMA_MUXREQG4 36                  ADC2                                 68             TMR4_CH2                     100                reserved

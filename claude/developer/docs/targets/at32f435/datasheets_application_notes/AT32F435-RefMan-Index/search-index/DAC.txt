@@ -1,0 +1,228 @@
+Keyword: DAC
+Occurrences: 224
+================================================================================
+
+Page   17: 19       Digital-to-analog converter (DAC) ............................................... 392
+Page   17: 19.1 DAC introduction ....................................................................... 392
+Page   17: 19.2 DAC main features ..................................................................... 392
+Page   17: 19.4.3 DAC data alignment ................................................................... 394
+Page   17: 19.5 DAC registers ............................................................................ 395
+Page   17: 19.5.1 DAC control register (DAC_CTRL) ............................................... 395
+Page   17: 19.5.2 DAC software trigger register (DAC_SWTRG) .............................. 398
+Page   17: 19.5.3 DAC1 12-bit right-aligned data holding register (DAC_ D1DTH12R) 398
+Page   17: 19.5.4 DAC1 12-bit left-aligned data holding register (DAC_ D 1DTH12L) . 398
+Page   18: 19.5.5 DAC1 8-bit right-aligned data holding register (DAC_ D1DTH8R) .. 398
+Page   18: 19.5.6 DAC2 12-bit right-aligned data holding register (DAC_ D2DTH12R) 398
+Page   18: 19.5.7 DAC2 12-bit left-aligned data holding register (DAC_ D2DTH12L) . 398
+Page   18: 19.5.8 DAC2 8-bit right-aligned data holding register (DAC_ D2DTH8R) .. 399
+Page   18: 19.5.9 Dual DAC 12-bit right-aligned data holding register
+Page   18: (DAC_ DDTH12R) ................................................................................ 399
+Page   18: 19.5.10 Dual DAC 12-bit left-aligned data holding register
+Page   18: (DAC_ DDTH12L) ................................................................................. 399
+Page   18: 19.5.11 Dual DAC 8-bit right-aligned data holding register
+Page   18: (DAC_ DDTH8R) .................................................................................. 399
+Page   18: 19.5.12 DAC1 data output register (DAC_ D1ODT) ................................ 399
+Page   18: 19.5.13 DAC2 data output register (DAC_ D2ODT) ................................ 399
+Page   18: 19.5.14 DAC status register (DAC_STS) ............................................... 399
+Page   36: Figure 19-1 DAC1/DAC2 block diagram ................................................................................................... 392
+Page   41: Table 19-2 DAC register map and reset values ........................................................................................ 395
+Page   44: interface, HICK with automatic clock calibration (ACC), 12-bit ADC, 12-bit DAC, programmable voltage
+Page   45: DAC1                                                          TMR6/7
+Page   45: DAC                                                                                                                                                       ADC3
+Page   45: DAC2         Controller                                       WWDT                                                                                                      @VDDA
+Page   52: 54   61   rable     TMR6_DAC              DAC1 and DAC2 underflow error                0x0000_0118
+Page   61: 0x4000 7400 - 0x4000 77FF       DAC
+Page   63: DAC         ADC
+Page   65: LDO and all PAD circuits other than PC13, PC14 and PC15. The VDDA domain contains DAC/ADC
+Page   65: Typically, to ensure a better accuracy of ADC/DAC at a low voltage, the digital circuit is supplied by VDD
+Page   81: DAC interface reset
+Page   81: Bit 29       DACRST           0x0            rw       0: Does not reset DAC interface
+Page   81: 1: Reset DAC interface
+Page   85: DAC interface clock enable
+Page   85: Bit 29       DACEN           0x0             rw        0: Disabled
+Page   89: DAC interface clock enable in sleep mode
+Page   89: Bit 29       DACLPEN          0x1            rw       0: Disabled
+Page  138: PA4         DAC_CTRL[2] =1                 Once enabled, PA4 pin acts as DAC1 analog channel.
+Page  138: PA5         DAC_CTRL[18] =1                Once enabled, PA5 pin acts as DAC2 analog channel.
+Page  154: DAC1       TMR5                                                             ch7
+Page  154: DAC2       TMR6
+Page  158: DAC1     TMR5                                                        Stream 1               DMAMUX_SEL
+Page  158: DAC2     TMR6
+Page  159: 6           DAC1          38        reserved           70        TMR4_CH4       102     reserved
+Page  159: 9           TMR7_OVERFLOW 41        DAC2               73        TMR5_CH2       105     DVP
+Page  252: timer     TMR20              Up/Down                                                                 ADC/DAC
+Page  252: Up/Down                                                                 ADC/DAC
+Page  252: Up/Down                                                                 ADC/DAC
+Page  252: 16        Up        X        X       X                X       X        X          ADC/DAC
+Page  253: for the digital-to-analog converter (DAC).
+Page  253:    Synchronization circuit to trigger ADC/DAC
+Page  253: To DAC
+Page  304: IS2            STCI                      mode                      TMRx_DIV                                        To DAC/ADC
+Page  392: 19 Digital-to-analog converter (DAC)
+Page  392: 19.1 DAC introduction
+Page  392: The DAC uses a 12-bit digital input to generate an analog output between 0 and reference voltage. The
+Page  392: digital part of the DAC can be configured in 8-bit or 12-bit mode and can be used in conjunction with the
+Page  392: DMA. It supports left or right alignment in a single /dual DAC modes. It has two output channels, DAC1
+Page  392: and DCA2, with its own converter each. Each DAC1/DAC2 can be converted independently or
+Page  392: simultaneously in dual DAC mode. The input reference voltage VREF+ makes conversion more accuracy.
+Page  392: Figure 19-1 DAC1/DAC2 block diagram
+Page  392: D1DMAEN                                                              转换1   DAC
+Page  392: SWTRIG2                      DMA_req2             Triangle                Clock                  转换2   DAC
+Page  392: 19.2 DAC main features
+Page  392:    A single/dual DAC 8-bit or 12-bit digital input
+Page  392:    Dual DAC or single DAC1/DAC2 independent conversions
+Page  392:    DMA mode for DAC1/DAC2
+Page  392: The following information can be used as DAC design reference:
+Page  392: The analog part of the DAC1/DAC2 can be enabled by setting the ENx bit in the DAC_CTRL
+Page  392: register, but its digital part is not subject to this bit. The DAC integrates two output gains that can
+Page  392: an external operational amplifier. The DAC1/DAC2 output gain can be enabled and disabled
+Page  392: through the DxOBDIS bit in the DAC_CTRL register.
+Page  392: The DAC1/DAC2 both have a DMA capability that can be enabled by setting the DxDMAEN bit in
+Page  392: the DAC_CTRL register. One DMA request is generated when a trigger signal is active while the
+Page  392: DxTRGEN bit is set. The DAC DMA request is not added up, meaning the new DAM request will
+Page  392: In dual DAC mode, the application can handle two channels (DAC1/DAC2) by using only one DMA
+Page  393: When the DAC DMA request is enabled, an overflow occurs if a second external trigger arrives before
+Page  393: handled, or no new DMA request is issued, and the DxDMAUDRF bit in the DAC_SR register is set,
+Page  393: DAC_CTRL register is set.
+Page  393: DAC_CTRL register before re-starting a DMA transfer and re-initializing DMA and DAC.
+Page  393: The digital inputs are linearly converted to analog voltage outputs by the DAC, and it is between 0
+Page  393: and VREF+. The analog DAC module is supplied by VDDA. The positive analog reference voltage
+Page  393: DAC output = VREF+ x (DxODT[11: 0]/4095)
+Page  393: If the DxTRGEN bit in the DAC_CTRL register is set, the DAC conversion can then be triggered by an
+Page  393: When the DxTRGEN bit is set, the data stored into the HDRx register is transferred into the DAC_DxODT
+Page  393: register each time a DAC detects an active trigger event,. If the software trigger is selected, the
+Page  393: DxSWTRG flag is cleared by hardware after writing 1. The DAC output becomes active after a period of
+Page  393: time once the data is loaded into the DAC_DxODT register.
+Page  393: the DAC_DxODT register without the need of a trigger event.
+Page  393: The DAC can output a variable-amplitude pseudo noise and a triangular wave, which is done by the
+Page  393: LENinear Feedback Shift Register and triangle wave generator respectively. The DAC variable-
+Page  393: amplitude pseudo noise generation is selected by setting DxNM[1:0]=01 in the LFSR, while the DAC
+Page  394: The DxNBSEL [3: 0] bit in the DAC_CTRL register is set to mark partially or totally the LFSR data. The
+Page  394: DAC_DxODT register. It is possible to disable LFSR function and reset LFSR wave generation algorithm
+Page  394: The DAC triangular-wave generation is selected by setting DxNM[1: 0]=1x. The amplitude is configured
+Page  394: through the DxNBSEL [3: 0] bit in the DAC_CTRL register. An internal triangular-wave counter is
+Page  394: resulting value is loaded into the DAC_DxODT register. It is possible to disable/reset the triangular-wave
+Page  394: 19.4.3 DAC data alignment
+Page  394: The DAC supports a single DAC and dual DA mode. The data format is dependent on the selected
+Page  394: Single DAC data format:
+Page  394: 8-bit right alignment: load data into the DAC_DxDTH8R [7:0]
+Page  394: 12-bit left alignment: load data into the DAC_DxDTH12L [15: 4]
+Page  394: 12-bit right alignment: load data in the DAC_DxDTH12R [11: 0]
+Page  394: Dual DAC data format:
+Page  395: 8-bit right alignment: load data into the DAC_DDTH8R [7: 0] and DAC_DDTH8R [15: 8]
+Page  395: 12-bit left alignment: load data into the DAC_DDTH12L [15: 4] and DAC_DDTH12L [31: 20]
+Page  395: 12-bit right alignment: load data into the DAC_DDTH12R [11: 0] and DAC_DDTH12R [27:16]
+Page  395: 19.5 DAC registers
+Page  395: Table 19-2 DAC register map and reset values
+Page  395: DAC_CTRL                           000h                              0x0000 0000
+Page  395: DAC_SWTRG                          004h                              0x0000 0000
+Page  395: DAC_D1DTH12R                       008h                              0x0000 0000
+Page  395: DAC_D1DTH12L                       00Ch                              0x0000 0000
+Page  395: DAC_D1DTH8R                        010h                              0x0000 0000
+Page  395: DAC_D2DTH12R                       014h                              0x0000 0000
+Page  395: DAC_D2DTH12L                       018h                              0x0000 0000
+Page  395: DAC_D2DTH8R                        01Ch                              0x0000 0000
+Page  395: DAC_DDTH12R                        020h                              0x0000 0000
+Page  395: DAC_DDTH12L                        024h                              0x0000 0000
+Page  395: DAC_DDTH8R                         028h                              0x0000 0000
+Page  395: DAC_D1ODT                          02Ch                              0x0000 0000
+Page  395: DAC_D2ODT                          030h                              0x0000 0000
+Page  395: DAC_STS                            034h                              0x0000 0000
+Page  395: 19.5.1 DAC control register (DAC_CTRL)
+Page  395: DAC2 DMA transfer underrun interrupt enable
+Page  395: 0: DAC2 DMA transfer underrun interrupt disabled
+Page  395: 1: DAC2 DMA transfer underrun interrupt enabled
+Page  395: DAC2 DMA transfer enable
+Page  395: 0: DAC2 DMA mode disabled
+Page  395: 1: DAC2 DMA mode enabled
+Page  395: DAC2 noise bit select
+Page  396: DAC2 noise mode
+Page  396: DAC2 trigger select
+Page  396: DAC2 trigger enable
+Page  396: 0: DAC2 trigger disabled
+Page  396: 1: DAC2 trigger enabled
+Page  396: When the DAC2 trigger is disabled, the data written into
+Page  396: the DAC_D2DTHx register is transferred into the
+Page  396: Bit 18       D2TRGEN       0x0         rw       DAC_D2ODT register after one APB1 clock cycle.
+Page  396: When the DAC2 trigger is enabled, the data written into the
+Page  396: DAC_D2DTHx register is transferred into the DAC_
+Page  396: cycle to have the data written into the DAC_D2DTHx
+Page  396: register transferred into the DAC_D2ODT register.
+Page  396: DAC2 output buffer disable
+Page  396: Bit 17       D2OBDIS       0x0         rw       0: DAC2 output buffer enabled
+Page  396: 1: DAC2 output buffer disabled
+Page  396: DAC2 enable
+Page  396: Bit 16       D2EN          0x0         rw       0: DAC2 disabled
+Page  396: 1: DAC2 enabled
+Page  396: DAC1 DMA transfer underrun interrupt enable
+Page  396: 0: DAC1 DMA transfer underrun interrupt disabled
+Page  396: 1: DAC1 DMA transfer underrun interrupt enabled
+Page  396: DAC1 DMA transfer enable
+Page  396: Bit 12       D1DMAEN       0x0         rw       0: DAC1 DMA transfer disabled
+Page  396: 1: DAC1 DMA transfer enabled
+Page  396: DAC1 noise bit select
+Page  397: DAC1 noise mode
+Page  397: DAC1 trigger select
+Page  397: DAC1 trigger enable
+Page  397: 0: DAC1 trigger disabled
+Page  397: 1: DAC1 trigger enabled
+Page  397: When the DAC1 trigger is disabled, the data written into
+Page  397: the DAC_D1DTHx register is transferred into the
+Page  397: Bit 2      D1TRGEN    0x0         rw       DAC_D1ODT register after one APB1 clock cycle.
+Page  397: When the DAC1 trigger is enabled, the data written into the
+Page  397: DAC_D1DTHx register is transferred into the DAC_
+Page  397: cycle to have the data written into the DAC_D1DTHx
+Page  397: register transferred into the DAC_ D1ODT register.
+Page  397: DAC1 output buffer disable
+Page  397: Bit 1      D1OBDIS    0x0         rw       0: DAC1 output buffer enabled
+Page  397: 1: DAC1 output buffer disabled
+Page  397: DAC1 enable
+Page  397: Bit 0      D1EN       0x0         rw       0: DAC1 disabled
+Page  397: 1: DAC1 enabled
+Page  398: 19.5.2 DAC software trigger register (DAC_SWTRG)
+Page  398: DAC2 software trigger
+Page  398: 0: DAC2 software trigger disabled
+Page  398: 1: DAC2 software trigger enabled
+Page  398: cycle later) once the DAC_D2DTH data is loaded into the
+Page  398: DAC_D2ODT register.
+Page  398: DAC1 software trigger
+Page  398: 0: DAC1 software trigger disabled
+Page  398: 1: DAC1 software trigger enabled
+Page  398: cycle later) once the DAC_D1DTH data is loaded into the
+Page  398: DAC_D1ODT register.
+Page  398: 19.5.3 DAC1 12-bit right-aligned data holding register (DAC_
+Page  398: Bit 11: 0    D1DT12R    0x000           rw       DAC1 12-bit right-aligned data
+Page  398: 19.5.4 DAC1 12-bit left-aligned data holding register (DAC_
+Page  398: Bit 15: 4    D1DT12L    0x000           rw       DAC1 12-bit left-aligned data
+Page  398: 19.5.5 DAC1 8-bit right-aligned data holding register (DAC_
+Page  398: Bit 7: 0     D1DT8R     0x00            rw       DAC1 8-bit right-aligned data
+Page  398: 19.5.6 DAC2 12-bit right-aligned data holding register (DAC_
+Page  398: Bit 11: 0    D2DT12R    0x000           rw       DAC2 12-bit right-aligned data
+Page  398: 19.5.7 DAC2 12-bit left-aligned data holding register (DAC_
+Page  398: Bit 15: 4    D2DT12L    0x000           rw       DAC2 12-bit left-aligned data
+Page  399: 19.5.8 DAC2 8-bit right-aligned data holding register (DAC_
+Page  399: Bit 7: 0     D2DT8R      0x00            rw       DAC2 8-bit right-aligned data
+Page  399: 19.5.9 Dual DAC 12-bit right-aligned data holding register (DAC_
+Page  399: Bit 27: 16   DD2DT12R    0x000           rw       DAC2 12-bit right-aligned data
+Page  399: Bit 11: 0    DD1DT12R    0x000           rw       DAC1 12-bit right-aligned data
+Page  399: 19.5.10 Dual DAC 12-bit left-aligned data holding register (DAC_
+Page  399: Bit 31: 20   DD2DT12L    0x000           rw       DAC2 12-bit left-aligned data
+Page  399: Bit 15: 4    DD1DT12L    0x000           rw       DAC1 12-bit left-aligned data
+Page  399: 19.5.11 Dual DAC 8-bit right-aligned data holding register (DAC_
+Page  399: Bit 15: 8    DD2DT8R     0x00            rw       DAC2 8-bit right-aligned data
+Page  399: Bit 7: 0     DD1DT8R     0x00            rw       DAC1 8-bit right-aligned data
+Page  399: 19.5.12 DAC1 data output register (DAC_ D1ODT)
+Page  399: Bit 11: 0    D1ODT       0x000           rw       DAC1 output data
+Page  399: 19.5.13 DAC2 data output register (DAC_ D2ODT)
+Page  399: Bit 11: 0    D2ODT       0x000           rw       DAC2 output data
+Page  399: 19.5.14 DAC status register (DAC_STS)
+Page  399: DAC2 DMA transfer underrun flag
+Page  399: 0: No DAC2 DMA transfer underrun
+Page  399: 1: DAC2 DMA transfer underrun occurs
+Page  399: Bit 13       D1DMAUDRF   0x0             w1c      DAC1 DMA transfer underrun flag
+Page  400: 0: No DAC1 DMA transfer underrun
+Page  400: 1: DAC1 DMA transfer underrun occurs
+Page  693: DAC1     TMR5                                                             Stream 1               DMAMUX_SEL
+Page  693: DAC2     TMR6
+Page  693: 6           DAC1              38             reserved                             70             TMR4_CH4                     102                reserved
+Page  693: 9           TMR7_OVERFLOW 41                 DAC2                                 73             TMR5_CH2                     105                DVP

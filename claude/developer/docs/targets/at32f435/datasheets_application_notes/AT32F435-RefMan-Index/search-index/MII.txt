@@ -1,0 +1,200 @@
+Keyword: MII
+Occurrences: 196
+================================================================================
+
+Page    1: − Low power: Sleep, Deepsleep, and Standby modes                  SRAM(4 Kbytes): IEEE1588 hardware support, MII/RMII
+Page   26: 26.3.5 Ethernet MAC MII address register (EMAC_MACMIIADDR) ........... 620
+Page   26: 26.3.6 Ethernet MAC MII data register (EMAC_MACMIIDT) ..................... 621
+Page   38: Figure 26-3 MII signals .............................................................................................................................. 583
+Page   38: Figure 26-5 MII clock sources (provided by CLKOUT pin)........................................................................ 585
+Page   38: Figure 26-6 MII clock sources (provided by an external oscillator) ........................................................... 585
+Page   38: Figure 26-7 RMII clock sources (provided by an external crystal oscillator)............................................. 585
+Page   70: EMAC_MII_TX_CLK
+Page   70: EMACRMIICLK                  1
+Page   70: MII_RMII_SEL                                                                                                        CLKOUT2           CLKOUT2
+Page   70: EMAC_MII_RX_CLK
+Page   70: MII_RMII_SEL
+Page   70: MII_RMII_SEL
+Page   83: Note: In RMII mode, if this clock is enabled, then MAC
+Page   83: RMII clock is enabled as well.
+Page   83: Note: In RMII mode, if this clock is enabled, then MAC
+Page   83: RMII clock is enabled as well.
+Page   87: Note: In RMII mode, if this clock is enabled, then the MAC
+Page   87: RMII clock is enabled as well.
+Page   88: Note: In RMII mode, if this clock is enabled, then the MAC
+Page   88: RMII clock is enabled as well.
+Page  125: PA0    UART4_TX                            EMAC_MII_CRS                                           EVENTOUT
+Page  125: EMAC_MII_RX_CLK
+Page  125: EMAC_RMII_REF_CLK
+Page  125: PA3                QSPI2_IO3   SDIO2_CMD   EMAC_MII_COL                                XMC_D5     EVENTOUT
+Page  125: EMAC_MII_RX_DV      XMC_SDN
+Page  125: EMAC_RMII_CRS_DV
+Page  127: EMAC_MII_RXD2     SDIO1_D1                         EVENTOUT
+Page  127: EMAC_MII_RXD3     SDIO1_D2                         EVENTOUT
+Page  127: EMAC_MII_TXD3     SDIO1_D4   DVP_D6                EVENTOUT
+Page  127: EMAC_MII_RX_ER    SDIO1_D7              XMC_NOE    EVENTOUT
+Page  127: QSPI1_IO     EMAC_MII_TX_EN
+Page  127: PB11                               0            EMAC_RMII_TX_EN
+Page  127: EMAC_MII_TXD0
+Page  127: EMAC_RMII_TXD0
+Page  127: EMAC_MII_TXD1     OTG2_VB
+Page  127: EMAC_RMII_TXD1    US
+Page  129: PC2    UART8_TX                SDIO2_D2      EMAC_MII_TXD2   XMC_SDCS0                XMC_NWE   EVENTOUT
+Page  129: EMAC_MII_TX_C
+Page  129: EMAC_MII_RXD0
+Page  129: PC4                            QSPI1_IO2     EMAC_RMII_RX    XMC_SDCS0    SDIO2_CK    XMC_NE4   EVENTOUT
+Page  129: EMAC_MII_RXD1
+Page  129: PC5                            QSPI1_IO3     EMAC_RMII_RX    XMC_SDCKE0   SDIO2_CMD   XMC_NOE   EVENTOUT
+Page  131: EMAC_MII_RX_DV
+Page  131: PD8                                         EMAC_RMII_CRS_DV
+Page  131: EMAC_MII_RXD0
+Page  131: PD9                                         EMAC_RMII_RXD0
+Page  131: EMAC_MII_RXD1
+Page  131: PD10                                        EMAC_RMII_RXD1
+Page  131: EMAC_MII_RXD2
+Page  131: EMAC_MII_RXD3
+Page  133: PE2               QSPI1_IO2   XMC_SDNCAS      EMAC_MII_TXD3   XMC_A23                      EVENTOUT
+Page  137: EMAC_MII_TX_EN
+Page  137: EMAC_RMII_TX_EN
+Page  137: EMAC_MII_TXD0
+Page  137: EMAC_RMII_TXD0
+Page  137: EMAC_MII_TXD1
+Page  137: EMAC_RMII_TXD1
+Page  144: MII or RMII selection
+Page  144: This bit is used to select the Ethernet MII or RMII interface.
+Page  144: Bit 23       MII_RMII_SEL   0x0             rw       0: MII
+Page  144: 1: RMII
+Page  580: independent interface (MII) defined in the IEEE 802.3 standard and the reduced media independent
+Page  580: interface (RMII).
+Page  580: RMII
+Page  580: MII
+Page  580:  IEEE 802.3-compliant MII interface to communicate with an external high-speed Ethernet PHY
+Page  581:    Supports loopback mode on the MII interface for debugging
+Page  581: The Ethernet peripheral consists of a MAC 802.3 (media access controller), MII interface and a
+Page  581: interface (MII) for Ethernet frame communication, and reduced media-independent interface RMII.
+Page  582: Before write operation, PHY address, MII register and EMAC_MACMIIDT register must be configured
+Page  582: first, followed by the MII MW and MB bits, and then the SMI interface will transfer the PHY address,
+Page  582: EMAC_MACMIIADDR and the EMAC_MACMIIDT registers are not allowed to change.
+Page  582: Before read operation, the PHY address and MII register must be configured first, and then the MB bit
+Page  582: is set and MW bit is set to 0 in the EMAC_MACMIIADDR register.
+Page  582: EMAC_MACMIIADDR and EMAC_MACMIIDT registers are not allowed to change (The application
+Page  582: should not change these register contents. After the transaction, the EMAC_MACMIIDT register is
+Page  582: Media-independent interface: MII
+Page  582: The media-independent interface (MII) acts an interconnection between the MAC sublayer and the PHY
+Page  583: Figure 26-3 MII signals
+Page  583: MII         RX_ER
+Page  583: MII_TX_CLK: Transmit data clock signal. This clock is 2.5MHz at 10Mbps speed; 25MHz at 100Mbps
+Page  583: MII_RX_CLK: Receive data clock signal. This clock is 2.5MHz at 10Mbps speed; 25MHz at 100Mbps
+Page  583: MII_TX_EN: Transmit enable signal. It must be set synchronously with the start bit of the preamble, and
+Page  583: MII_TXD[3: 0]: Transmit data. 4-bit data are transmitted each time synchronously. Data is valid when
+Page  583: the MII_TX_EN signal is active. The MII_TXD[0] is the least significant bit while the MII_TXD[3] is the
+Page  583: MII_CRS: carrier sense signal defined in the CSMA/CD. It is controlled by the PHY and can be valid
+Page  583: The PHY must ensure that the MII_CS signal remains active throughout the duration of a collision
+Page  583: MII_COL: Collision detection signal defined in CSMA/CD. It is controlled by the PHY and can be valid
+Page  583: MII_RXD[3: 0]: It is controlled by the PHY. Four-bit data to be received are transmitted synchronously.
+Page  583: Data is valid when the MII_RX_DV signal is active. The MII_RXD[0] is the least significant bit, while the
+Page  583: MII_RXD[3] is the most significant bit. While the MII_RX_DV is inactive but the MII_RX_ER is active,
+Page  583: the PHY will transmit a specific MII_RXD[3: 0] value to indicate specific information.
+Page  583: MII_RX_DV: Receive data valid signal. It is controlled by the PHY. This signal is valid when the PHY
+Page  583: has kept data on the MII for reception. It must be enabled synchronously with the first bit (MII_RX_CLK)
+Page  583: following the transmission of the final four-bit data. In order to receive a frame correctly, the MII_RX_DV
+Page  583: MII_RX_ER: Receive error signal. It must be active for one or more clock periods (MII_RX_CLK) to
+Page  583: state of the MII_RX_DV and MII_RXD[3: 0] data.
+Page  584: MII_TX_EN                   MII_TXD[3: 0]                         Description
+Page  584: MII_RX_DV           MII_RX_ER               MII_RXD[3: 0]                  Description
+Page  584: Reduced media-independent interface: RMII
+Page  584: peripheral and the external Ethernet. According to the IEEE802.3u standard, the MII interface requires
+Page  584: 16 pins for data and control signals, while the RMII reduces the pin count to 7 pins (a 62.5% decrease
+Page  584: The RMII interface is used to connect the EMAC and the PHY. This helps translate the MAC MII signal
+Page  584: to the RMII.
+Page  584: RMII           TX_EN
+Page  584: MII/RMII selection and clock sources
+Page  584: Either the MII or RMII mode can be selected using the 23rd bit MII_RMII_SEL in the SCFG_CFG2
+Page  584: register. The MII/RMII mode must be selected when the Ethernet controller is in reset state or before
+Page  584: MII clock sources
+Page  585: Figure 26-5 MII clock sources (provided by CLKOUT pin)
+Page  585: Figure 26-6 MII clock sources (provided by an external oscillator)
+Page  585: RMII clock sources
+Page  585: Figure 26-7 RMII clock sources (provided by an external crystal oscillator)
+Page  586: EMAC signal                   MII            RMII      Pin          Pin description
+Page  586: EMAC_MII_TXD2                TXD2              -        PC2     Multiplexed push-pull output
+Page  586: EMAC_MII_TX_CLK              TX_CLK             -        PC3     Floating input (reset state)
+Page  586: EMAC_MII_CRS                   CRS             -        PA0     Floating input (reset state)
+Page  586: EMAC_MII_RX_CLK
+Page  586: EMAC_RMII_REF_CLK
+Page  586: EMAC_MII_COL                   COL             -        PA3     Floating input (reset state)
+Page  586: EMAC_MII_RX_DV                                                   Floating input (reset state)
+Page  586: EMAC_RMII_CRS_DV
+Page  586: EMAC_MII_RXD0                                                   Floating input (reset state)
+Page  586: EMAC_RMII_RXD0
+Page  586: EMAC_MII_RXD1                                                   Floating input (reset state)
+Page  586: EMAC_RMII_RXD1
+Page  586: EMAC_MII_RXD2                RXD2              -        PB0     Floating input (reset state)
+Page  586: EMAC_MII_RXD3                RXD3              -        PB1     Floating input (reset state)
+Page  586: EMAC_MII_RX_ER               RX_ER              -       PB10     Floating input (reset state)
+Page  586: EMAC_MII_TX_EN                                                  Multiplexed push-pull output
+Page  586: EMAC_RMII_TX_EN
+Page  586: EMAC_MII_TXD0 EMAC_RMII_TXD0        TXD0         TXD0         PB12     Multiplexed push-pull output
+Page  586: EMAC_MII_TXD1 EMAC_RMII_TXD1        TXD1         TXD1         PB13     Multiplexed push-pull output
+Page  586: EMAC_MII_TXD3                TXD3              -        PB8     Multiplexed push-pull output
+Page  586: EMAC_RMII_CRS_DV              RX_DV        CRS_DV         PD8     Floating input (reset state)
+Page  586: EMAC_MII_RXD0                                                   Floating input (reset state)
+Page  586: EMAC_RMII_RXD0
+Page  586: EMAC_MII_RXD1                                                   Floating input (reset state)
+Page  586: EMAC_RMII_RXD1
+Page  586: EMAC_MII_RXD2                RXD2              -       PD11     Floating input (reset state)
+Page  586: EMAC_MII_RXD3                RXD3              -       PD12     Floating input (reset state)
+Page  589: MAC core sends the frames to external Ethernet PHY via MII/RMII interface so as to communicate with
+Page  589: When the SOF is detected, the MAC accepts data and begins transmitting to the MII/RMII. The time
+Page  589: required to transmit the data frame to the MII/RMII after the application initiates is variable, due to various
+Page  590: In MII mode, if a collision occurs at any time from the beginning of a frame to the end of the CRC, the
+Page  590: the MII becomes inactive. If a frame arrives sooner that the configured IFG time, it will be delayed for
+Page  590: signal of the MII becomes inactive. In full-duplex mode, the MAC enables transmission at the end of the
+Page  592: A reception operation is initiated when the EMAC detects an SFD on the MII. The MAC core strips the
+Page  592: detected on the MII. This time stamp is passed onto the application when the EMAC has completed the
+Page  593: Note that the loopback mode is applicable only to the MII interface.
+Page  594: 6. MII_RXER input error
+Page  594: frames in the TXFIFO to the MII/RMII interface.
+Page  594: For reception, the EMAC core sends the received Ethernet frames from the MII/RMII interface to the
+Page  599: Bit 11       LOC      rw     transmission (The MII_CRS signal is active for one or more transmit clock periods).
+Page  599: detected after the collision window (64 byte times, including preamble, in MII mode).
+Page  601: The MII/RMI interface receives the receive frame and writes it to the RXFIFO. When a programmed
+Page  604: (odd nibbles) This bit is valid only in MII mode.
+Page  608: is only responsible for checking length error, FCS error, Dribble bit error, MII error, collision and ensuring
+Page  610: a frame’s SFD is output on the MII, and then a time stamp is captured. The upper 32 bits and the lower
+Page  610: MII. The upper 32 bits and the lower 32 bits of the time stamp are stored in the RDES3 and RDES2,
+Page  614: EMAC_MACMIIADDR                    0x10                        0x0000 0000
+Page  614: EMAC_MACMIIDT                      0x14                        0x0000 0000
+Page  616: When this bit is set, the MAC transmitter will ignore the MII
+Page  616: This bit indicates the speed of the MII, RMII interface.
+Page  616: When this bit is set, the MAC MII operates in loopback
+Page  617: mode. The MII receive clock input (clk_rx_i) is required for
+Page  617: When a collision occurs on the MII interface, the MAC will
+Page  618: MII. Deferral time is not cumulative. For instance, if the
+Page  620: received on the MII interface), the calculated 6-bit Hash value is 0x2C and the bit 12 in the
+Page  620: 26.3.5 Ethernet MAC MII address register (EMAC_MACMIIADDR)
+Page  620: The Ethernet MAC MII address register controls the external PHY through the management interface.
+Page  620: MII Register
+Page  620: Bit 10: 6    MII               0x00            rw
+Page  620: This field select the desired MII register in the PHY device.
+Page  621: MII Write
+Page  621: When this bit is set, it indicates that the EMAC_MACMIIDT
+Page  621: is loaded to the EMAC_MACMIIDT register.
+Page  621: MII Busy
+Page  621: EMAC_MACMIIADDR and EMAC_MACMIIDT register.
+Page  621: The EMAC_MACMIIDT register is invalid before this bit is
+Page  621: cleared by the MAC. Thus, the MII data should be kept
+Page  621: operation. Similarly, the EMAC_MACMIIDT value is invalid
+Page  621: 26.3.6 Ethernet MAC MII data register (EMAC_MACMIIDT)
+Page  621: The Ethernet MAC MII data register stores data to be written to the PHY register located at the address
+Page  621: specified in the EMAC_MACMIIADDR register. EMAC_MACMIIDT register also stores data read out
+Page  621: MII Data
+Page  621: Bit 31: 16   PT                0x0000          rw       configured to be double-synchronized to the MII clock
+Page  622: (64 bytes) on the MII interface.
+Page  623: If the EMAC_MACVLT register is configured to be double-synchronized to the (G)MII clock domain,
+Page  625: The first DA byte received on the MII interface corresponds to the LS byte (bit [7: 0]) of the MAC address
+Page  625: the MII interface as the destination address, then the MacAddress0 register [47: 0] is compared with
+Page  625: If the MAC address register is configured to be double-synchronized with the MII domain, the
+Page  626: If the MAC address register is configured to be double-synchronized with the MII domain, the
+Page  627: If the MAC address register is configured to be double-synchronized with the MII domain, the
+Page  627: If the MAC address register is configured to be double-synchronized with the MII domain, the

@@ -1,0 +1,11 @@
+Keyword: FPU
+Occurrences: 7
+================================================================================
+
+Page    1: ARM®-based 32-bit Cortex®-M4F MCU+FPU with 256 to 4032 KB Flash, sLib,
+Page    1:    Core: ARM®32-bit Cortex®-M4F CPU with FPU                       − All mappable to 16 external interrupt vectors
+Page    1: − Floating Point Unit (FPU)                                       IC/OC/PWM or pulse counter channels
+Page   44: precision (IEEE-754) floating point unit (FPU), as shown in Figure 1-1:
+Page   46: latency, and low-cost debug. It supports DSP instruction set and FPU, and is applicable to deeply-embedded
+Page   46: FPU
+Page   52: 81   88             FPU                   FPU exception interrupt                      0x0000_0184

@@ -1,0 +1,16 @@
+Keyword: DSP
+Occurrences: 12
+================================================================================
+
+Page    1: − DSP instructions                                              − 2 x Watchdog timers (WDT and WWDT)
+Page   44: monitor (PVM) and other peripherals. Cortex®-M4F processer supports enhanced high-performance DSP
+Page   46: latency, and low-cost debug. It supports DSP instruction set and FPU, and is applicable to deeply-embedded
+Page   46: M architecture, supporting both Thumb instruction set and DSP instruction set.
+Page  100: QSPIKEY0 [7: 0]: QuadSPI (QSPI) ciphertext access area encryption
+Page  100: [23: 16]      QSPIKEY1[7: 0]: QuadSPI (QSPI) ciphertext encryption key byte 1
+Page  100: [7: 0]        QSPIKEY2[7: 0]: QuardSPI (QSPI) ciphertext encryption key byte 2
+Page  100: [23: 16]      QSPIKEY3[7: 0]: QuardSPI (QSPI) ciphertext encryption key byte 3
+Page  100: [7: 0]        QSPIKEY4[7: 0]: QuardSPI (QSPI) ciphertext encryption key byte 4
+Page  100: [23: 16]      QSPIKEY5[7: 0]: QuadSPI (QSPI) ciphertext encryption key byte 5
+Page  100: [7: 0]        QSPIKEY6[7: 0]: QuadSPI (QSPI) ciphertext encryption key byte 6
+Page  100: [31: 24]      QSPIKEY7[7: 0]: QuadSPI (QSPI) ciphertext encryption key byte 7

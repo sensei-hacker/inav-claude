@@ -1,0 +1,331 @@
+Keyword: GPIO
+Occurrences: 327
+================================================================================
+
+Page    5: 6        GPIOs and IOMUX ....................................................................... 120
+Page    5: 6.2.1 GPIO structure ........................................................................... 120
+Page    5: 6.2.2 GPIO reset status ....................................................................... 120
+Page    5: 6.3   GPIO registers ........................................................................... 139
+Page    5: 6.3.1 GPIO configuration register (GPIOx_CFGR) (x=A..H) ................... 139
+Page    6: 6.3.2 GPIO output mode register (GPIOx_OMODE) (x=A..H) ................. 139
+Page    6: 6.3.3 GPIO drive capability register (GPIOx_ODRVR) (x=A..H) .............. 140
+Page    6: 6.3.4 GPIO pull-up/pull-down register (GPIOx_PULL) (x=A..H) .............. 140
+Page    6: 6.3.5 GPIO input register (GPIOx_IDH) (x=A..H) ................................... 140
+Page    6: 6.3.6 GPIO output register (GPIOx_IDH) (x=A..H) ................................. 140
+Page    6: 6.3.7 GPIO set/clear register (GPIOx_SCR) (x=A..H) ............................ 140
+Page    6: 6.3.8 GPIO write protection register (GPIOx_WPR) (x=A..H) ................. 141
+Page    6: 6.3.9 GPIO multiplexed function low register (GPIOx_MUXL) (x=A..H) ... 141
+Page    6: 6.3.10 GPIO multiplexed function high register (GPIOx_MUXH) (x=A..H) . 142
+Page    6: 6.3.11 GPIO port bit clear register (GPIOx_CLR) (x=A..H) ...................... 142
+Page    6: 6.3.12 GPIO huge current control register (GPIOx_HDRV) (x=A..E) ......... 142
+Page   32: Figure 6-1 GPIO basic structure ................................................................................................................ 120
+Page   40: Table 6-1 Port A multiplexed function configuration with GPIOA_MUX* register ...................................... 124
+Page   40: Table 6-2 Port B multiplexed function configuration with GPIOB_MUX* register ..................................... 126
+Page   40: Table 6-3 Port C multiplexed function configuration with GPIOC_MUX* register ..................................... 128
+Page   40: Table 6-4 Port D multiplexed function configuration with GPIOD_MUX* register ..................................... 130
+Page   40: Table 6-5 Port E multiplexed function configuration with GPIOE_MUX* register ..................................... 132
+Page   40: Table 6-6 Port F multiplexed function configuration with GPIOF_MUX* register ...................................... 134
+Page   40: Table 6-7 Port G multiplexed function configuration with GPIOG_MUX* register .................................... 136
+Page   40: Table 6-8 Port H multiplexed function configuration with GPIOH_MUX* register ..................................... 138
+Page   40: Table 6-10 GPIO register map and reset values ....................................................................................... 139
+Page   45: GPIO A/B/C/D/E/F/G/H
+Page   47: GPIO
+Page   49: In terms of bit-band operation, one of the advantages is to control LED ON/OFF independently via GPIO
+Page   60: 0x4002 1C00 - 0x4002 1FFF       GPIO port H
+Page   61: 0x4002 1800 - 0x4002 1BFF       GPIO port G
+Page   61: 0x4002 1400 - 0x4002 17FF       GPIO port F
+Page   61: 0x4002 1000 - 0x4002 13FF       GPIO port E
+Page   61: 0x4002 0C00 - 0x4002 0FFF       GPIO port D
+Page   61: 0x4002 0800 - 0x4002 0BFF       GPIO port C
+Page   61: 0x4002 0400 - 0x4002 07FF       GPIO port B
+Page   61: 0x4002 0000 - 0x4002 03FF       GPIO port A
+Page   65: can be used as a GPIO or LEXT pin. (As an I/O port, PC13, PC14 and PC15 must be limited below
+Page   72: When being used as the CLKOUT1/2 clock output pin, the corresponding GPIO port registers must be
+Page   79: Bit 7        GPIOHRST         0x0              rw          0: Does not reset IO port H
+Page   79: Bit 6        GPIOGRST         0x0              rw          0: Does not reset IO port G
+Page   79: Bit 5        GPIOFRST         0x0              rw          0: Does not reset IO port F
+Page   80: Bit 4           GPIOERST        0x0              rw         0: Does not reset IO port E
+Page   80: Bit 3           GPIODRST        0x0              rw         0: Does not reset IO port D
+Page   80: Bit 2           GPIOCRST        0x0              rw         0: Does not reset IO port C
+Page   80: Bit 1           GPIOBRST        0x0              rw         0: Does not reset IO port B
+Page   80: Bit 0           GPIOARST        0x0              rw         0: Does not reset IO port A
+Page   83: Bit 7        GPIOHEN         0x0             rw          0: Disabled
+Page   83: Bit 6        GPIOGEN         0x0             rw          0: Disabled
+Page   84: Bit 5        GPIOFEN         0x0             rw        0: Disabled
+Page   84: Bit 4        GPIOEEN         0x0             rw        0: Disabled
+Page   84: Bit 3        GPIODEN         0x0             rw        0: Disabled
+Page   84: Bit 2        GPIOCEN         0x0             rw        0: Disabled
+Page   84: Bit 1        GPIOBEN         0x0             rw        0: Disabled
+Page   84: Bit 0        GPIOAEN         0x0             rw        0: Disabled
+Page   88: Bit 7        GPIOHLPEN   0x1        rw       0: Disabled
+Page   88: Bit 6        GPIOGLPEN   0x1        rw       0: Disabled
+Page   88: Bit 5        GPIOFLPEN   0x1        rw       0: Disabled
+Page   88: Bit 4        GPIOELPEN   0x1        rw       0: Disabled
+Page   88: Bit 3        GPIODLPEN   0x1        rw       0: Disabled
+Page   88: Bit 2        GPIOCLPEN   0x1        rw       0: Disabled
+Page   88: Bit 1        GPIOBLPEN   0x1        rw       0: Disabled
+Page   88: Bit 0        GPIOALPEN   0x1        rw       0: Disabled
+Page  120: 6       GPIOs and IOMUX
+Page  120: 6.2.1             GPIO structure
+Page  120: Figure 6-1 GPIO basic structure
+Page  120: GPIO controller
+Page  120: 6.2.2             GPIO reset status
+Page  121:  GPIO set/clear register is used to set/clear the corresponding GPIO output data registers.
+Page  121: Note: If both IOCB and IOSB bits are set in the GPIO set/clear register, the IOSB takes priority.
+Page  122: options for flexible selection, configured through the GPIOx_MUXL (for pin 0 to 7) and GPIOx_MUXH
+Page  122: Each I/O pin is connected to only one peripheral’s pin by setting the GPIOx_MUXL or GPIOx_MUXH
+Page  122: While being used as multiplexed function input, the I/O pin is disconnected from GPIO controller and it
+Page  122: GPIOx_CFGR register, and it can be configured as floating, pull-up/pull-down by setting the
+Page  122: GPIOx_PULL register according to the peripheral characteristics.
+Page  122: mode by setting the GPIOx_CFGR register, as push-pull/open-drain mode by setting the
+Page  122: GPIOx_OMODE register or pull-up/pull-down by setting the GPIOx_PULL register according to the
+Page  122: peripheral characteristics. Configure output drive capability by setting the GPIOx_ODRVR and
+Page  122: GPIOx_HDRV register.
+Page  124: The multiplexed function of each IO port line is configured through the GPIOx_MUXL (for pin 0 to 7)
+Page  124: or GPIOx_MUXH (for pin 8 to 15) register.
+Page  124: Table 6-1 Port A multiplexed function configuration with GPIOA_MUX* register
+Page  126: Table 6-2 Port B multiplexed function configuration with GPIOB_MUX* register
+Page  128: Table 6-3 Port C multiplexed function configuration with GPIOC_MUX* register
+Page  130: Table 6-4 Port D multiplexed function configuration with GPIOD_MUX* register
+Page  132: Table 6-5 Port E multiplexed function configuration with GPIOE_MUX* register
+Page  134: Table 6-6 Port F multiplexed function configuration with GPIOF_MUX* register
+Page  136: Table 6-7 Port G multiplexed function configuration with GPIOG_MUX* register
+Page  138: Table 6-8 Port H multiplexed function configuration with GPIOH_MUX* register
+Page  138: there is no need of GPIO status configuration.
+Page  138: The unique peripheral multiplexed function can be configured through the GPIOx_MUXL/GPIOx_MUXH
+Page  138: Some pins have been directly owned by specific hardware feature, whatever GPIO configuration.
+Page  139: 6.3 GPIO registers
+Page  139: Table 6-10 lists GPIO register map and their reset values. These peripheral registers must be
+Page  139: Table 6-10 GPIO register map and reset values
+Page  139: GPIOA_CFGR                      0x00                             0xA800 0000
+Page  139: GPIOx_CFGR(x =B,C,F)            0x00
+Page  139: GPIOx_OMODER                    0x04                             0x0000 0000
+Page  139: GPIOx_ODRVR                     0x08
+Page  139: GPIOA_PULL                      0x0C                             0x6400 0000(A)
+Page  139: GPIOx_PULL(x = B,C,F)           0x0C
+Page  139: GPIOx_IDT                       0x10                             0x0000 XXXX
+Page  139: GPIOx_ODT                       0x14                             0x0000 0000
+Page  139: GPIOx_SCR                       0x18                             0x0000 0000
+Page  139: GPIOx_WPR                       0x1C                             0x0000 0000
+Page  139: GPIOx_MUXL                      0x20                             0x0000 0000
+Page  139: GPIOx_MUXH                      0x24                             0x0000 0000
+Page  139: GPIOx_CLR                       0x28                             0x0000 0000
+Page  139: GPIOx_HDRV                      0x3C                             0x0000 0000
+Page  139: 6.3.1         GPIO configuration register (GPIOx_CFGR) (x=A..H)
+Page  139: GPIOx mode configuration (y=0~15)
+Page  139: 6.3.2         GPIO output mode register (GPIOx_OMODE) (x=A..H)
+Page  139: GPIOx output mode configuration
+Page  139: Bit 15: 0    OM               0x0000          rw       GPIOx:
+Page  140: 6.3.3         GPIO drive capability register (GPIOx_ODRVR) (x=A..H)
+Page  140: GPIOx drive capability (y=0…15)
+Page  140: 6.3.4         GPIO pull-up/pull-down register (GPIOx_PULL) (x=A..H)
+Page  140: GPIOx pull-up/pull-down configuration (y=0…15)
+Page  140: 6.3.5         GPIO input register (GPIOx_IDH) (x=A..H)
+Page  140: GPIOx input data
+Page  140: 6.3.6         GPIO output register (GPIOx_IDH) (x=A..H)
+Page  140: GPIOx output data
+Page  140: 6.3.7         GPIO set/clear register (GPIOx_SCR) (x=A..H)
+Page  140: GPIOx clear bit
+Page  140: GPIOx set bit
+Page  141: 6.3.8         GPIO write protection register (GPIOx_WPR) (x=A..H)
+Page  141: 6.3.9 GPIO multiplexed function low register (GPIOx_MUXL)
+Page  141: Multiplexed function select for GPIOx pin y (y=0…7)
+Page  142: 6.3.10 GPIO multiplexed function high register (GPIOx_MUXH)
+Page  142: Multiplexed function select for GPIOx pin y (y=8…15)
+Page  142: 6.3.11 GPIO port bit clear register (GPIOx_CLR) (x=A..H)
+Page  142: GPIOx clear bit
+Page  142: 6.3.12 GPIO huge current control register (GPIOx_HDRV)
+Page  142: 1: GPIO is configured as maximum sourcing/sinking
+Page  143:  Manage the external interrupts connected to the GPIOs
+Page  143:  Manage IRTMR/EMAC GPIO configurations
+Page  144: 0000: GPIOA pin3
+Page  144: 0001: GPIOB pin3
+Page  144: 0010: GPIOC pin3
+Page  144: Bit 15: 12   EXINT3         0x0000          rw       0011: GPIOD pin3
+Page  144: 0100: GPIOE pin3
+Page  144: 0101: GPIOF pin3
+Page  144: 0110: GPIOG pin3
+Page  144: 0111: GPIOH pin3
+Page  144: 0000: GPIOA pin2
+Page  144: 0001: GPIOB pin2
+Page  144: 0010: GPIOC pin2
+Page  144: Bit 11: 8    EXINT2         0x0000          rw       0011: GPIOD pin2
+Page  144: 0100: GPIOE pin2
+Page  144: 0101: GPIOF pin2
+Page  144: 0110: GPIOG pin2
+Page  144: 0111: GPIOH pin2
+Page  145: 0000: GPIOA pin1
+Page  145: 0001: GPIOB pin1
+Page  145: 0010: GPIOC pin1
+Page  145: 0011: GPIOD pin1
+Page  145: 0100: GPIOE pin1
+Page  145: 0101: GPIOF pin1
+Page  145: 0110: GPIOG pin1
+Page  145: 0111: GPIOH pin1
+Page  145: 0000: GPIOA pin0
+Page  145: 0001: GPIOB pin0
+Page  145: 0010: GPIOC pin0
+Page  145: Bit 3: 0     EXINT0     0x0000          rw       0011: GPIOD pin0
+Page  145: 0100: GPIOE pin0
+Page  145: 0101: GPIOF pin0
+Page  145: 0110: GPIOG pin0
+Page  145: 0111: GPIOH pin0
+Page  145: 0000: GPIOA pin7
+Page  145: 0001: GPIOB pin7
+Page  145: 0010: GPIOC pin7
+Page  145: Bit 15: 12   EXINT7     0x0000          rw       0011: GPIOD pin7
+Page  145: 0100: GPIOE pin7
+Page  145: 0101: GPIOF pin7
+Page  145: 0110: GPIOG pin7
+Page  145: 0111: GPIOH pin7
+Page  145: 0000: GPIOA pin6
+Page  145: 0001: GPIOB pin6
+Page  145: Bit 11: 8    EXINT6     0x0000          rw       0010: GPIOC pin6
+Page  145: 0011: GPIOD pin6
+Page  145: 0100: GPIOE pin6
+Page  145: 0101: GPIOF pin6
+Page  145: 0110: GPIOG pin6
+Page  146: 0111: GPIOH pin6
+Page  146: 0000: GPIOA pin5
+Page  146: 0001: GPIOB pin5
+Page  146: 0010: GPIOC pin5
+Page  146: Bit 7: 4     EXINT5     0x0000          rw       0011: GPIOD pin5
+Page  146: 0100: GPIOE pin5
+Page  146: 0101: GPIOF pin5
+Page  146: 0110: GPIOG pin5
+Page  146: 0111: GPIOH pin5
+Page  146: 0000: GPIOA pin4
+Page  146: 0001: GPIOB pin4
+Page  146: 0010: GPIOC pin4
+Page  146: Bit 3: 0     EXINT4     0x0000          rw       0011: GPIOD pin4
+Page  146: 0100: GPIOE pin4
+Page  146: 0101: GPIOF pin4
+Page  146: 0110: GPIOG pin4
+Page  146: 0111: GPIOH pin4
+Page  146: 0000: GPIOA pin11
+Page  146: 0001: GPIOB pin11
+Page  146: 0010: GPIOC pin11
+Page  146: 0011: GPIOD pin11
+Page  146: 0100: GPIOE pin11
+Page  146: 0101: GPIOF pin11
+Page  146: 0110: GPIOG pin11
+Page  146: 0111: GPIOH pin11
+Page  146: 0000: GPIOA pin10
+Page  146: 0001: GPIOB pin10
+Page  147: 0010: GPIOC pin10
+Page  147: 0011: GPIOD pin10
+Page  147: 0100: GPIOE pin10
+Page  147: 0101: GPIOF pin10
+Page  147: 0110: GPIOG pin10
+Page  147: 0111: GPIOH pin10
+Page  147: 0000: GPIOA pin9
+Page  147: 0001: GPIOB pin9
+Page  147: 0010: GPIOC pin9
+Page  147: 0011: GPIOD pin9
+Page  147: 0100: GPIOE pin9
+Page  147: 0101: GPIOF pin9
+Page  147: 0110: GPIOG pin9
+Page  147: 0111: GPIOH pin9
+Page  147: 0000: GPIOA pin8
+Page  147: 0001: GPIOB pin8
+Page  147: 0010: GPIOC pin8
+Page  147: 0011: GPIOD pin8
+Page  147: 0100: GPIOE pin8
+Page  147: 0101: GPIOF pin8
+Page  147: 0110: GPIOG pin8
+Page  147: 0111: GPIOH pin8
+Page  147: 0000: GPIOA pin15
+Page  147: 0001: GPIOB pin15
+Page  147: 0010: GPIOC pin15
+Page  147: 0011: GPIOD pin15
+Page  147: 0100: GPIOE pin15
+Page  147: 0101: GPIOF pin15
+Page  147: 0110: GPIOG pin15
+Page  147: 0111: GPIOH pin15
+Page  148: 0000: GPIOA pin14
+Page  148: 0001: GPIOB pin14
+Page  148: 0010: GPIOC pin14
+Page  148: 0011: GPIOD pin14
+Page  148: 0100: GPIOE pin14
+Page  148: 0101: GPIOF pin14
+Page  148: 0110: GPIOG pin14
+Page  148: 0111: GPIOH pin14
+Page  148: 0000: GPIOA pin13
+Page  148: 0001: GPIOB pin13
+Page  148: 0010: GPIOC pin13
+Page  148: 0011: GPIOD pin13
+Page  148: 0100: GPIOE pin13
+Page  148: 0101: GPIOF pin13
+Page  148: 0110: GPIOG pin13
+Page  148: 0111: GPIOH pin13
+Page  148: 0000: GPIOA pin12
+Page  148: 0001: GPIOB pin12
+Page  148: 0010: GPIOC pin12
+Page  148: 0011: GPIOD pin12
+Page  148: 0100: GPIOE pin12
+Page  148: 0101: GPIOF pin12
+Page  148: 0110: GPIOG pin12
+Page  148: 0111: GPIOH pin12
+Page  149: 1:Corresponding GPIO is switched to ultra-high
+Page  149: GPIOx_OTYPER&GPIOx_HDRV become invalid.
+Page  149: 1: Corresponding GPIO is switched to ultra-high
+Page  149: GPIOx_OTYPER&GPIOx_HDRV become invalid.
+Page  149: 1: Corresponding GPIO is switched to ultra-high
+Page  149: GPIOx_OTYPER&GPIOx_HDRV become invalid.
+Page  149: 1: Corresponding GPIO is switched to ultra-high
+Page  149: GPIOx_OTYPER&GPIOx_HDRV become invalid.
+Page  149: 1: Corresponding GPIO is switched to ultra-high
+Page  149: GPIOx_OTYPER&GPIOx_HDRV become invalid.
+Page  149: 1: Corresponding GPIO is switched to ultra-high
+Page  149: GPIOx_OTYPER&GPIOx_HDRV become invalid.
+Page  149: 1: Corresponding GPIO is switched to ultra-high
+Page  150: GPIOx_OTYPER&GPIOx_HDRV become invalid.
+Page  150: 1: Corresponding GPIO is switched to ultra-high
+Page  150: GPIOx_OTYPER&GPIOx_HDRV become invalid.
+Page  150: 1: Corresponding GPIO is switched to ultra-high
+Page  150: GPIOx_OTYPER&GPIOx_HDRV become invalid.
+Page  151: With up to 23 interrupt lines EXINT_LINE[22:0], EXINT can detect not only GPIO external interrupt
+Page  151: detection mechanism, where, GPIO interrupt sources can be selected with IOMUX_EXINTCx register.
+Page  151:  Select an interrupt source by setting IOMUX_EXINTCx register (This is required if GPIO is used
+Page  158: {dmamux_evt[x:1], exint_gpio [15:0]}                             dmamux_evt[x:0]
+Page  160: 0            exint_gpio[0]   8           exint_gpio[8]       16         DMA_MUXevt1   24      reserved
+Page  160: 1            exint_gpio[1]   9           exint_gpio[9]       17         DMA_MUXevt2   25      reserved
+Page  160: 2            exint_gpio[2]   10          exint_gpio[10]      18         DMA_MUXevt3   26      reserved
+Page  160: 3            exint_gpio[3]   11          exint_gpio[11]      19         DMA_MUXevt4   27      reserved
+Page  160: 4            exint_gpio[4]   12          exint_gpio[12]      20         DMA_MUXevt5   28      reserved
+Page  160: 5            exint_gpio[5]   13          exint_gpio[13]      21         DMA_MUXevt6   29      reserved
+Page  160: 6            exint_gpio[6]   14          exint_gpio[14]      22         DMA_MUXevt7   30      reserved
+Page  160: 7            exint_gpio[7]   15          exint_gpio[15]      23         reserved      31      reserved
+Page  175: CPU_Halt_en                                                                                   GPIO    I2C_SCL
+Page  175: I2C_DMAreq_TX                                                                                                  GPIO     I2C_SDA
+Page  264: C1OUT    to GPIO
+Page  265: OTG2_FS_SOF. TMR5 channel 4 input can be configured as GPIO, LICK, LEXT or ERTC.
+Page  266: - Set the corresponding GPIO of TMR output channel as the multiplexed mode;
+Page  280: CxOUT channel state and the GPIO and IOMUX registers.
+Page  283: 00: TMR5 channel 4 input connected to GPIO
+Page  288: C1OUT        to GPIO
+Page  290: - Set the corresponding GPIO of TMR output channel as the multiplexed mode;
+Page  298: CxOUT channel state and the GPIO and IOMUX registers.
+Page  303: CxOUT channel state and the GPIO and IOMUX registers.
+Page  312: disable                                                                                                   disable                                                C1COUT to GPIO
+Page  312: C1OUT   to GPIO
+Page  315: -      Set the corresponding GPIO of TMR output channel as the multiplexed mode;
+Page  318: CxOUT(to GPIO)        GPIO output enable
+Page  318: CxCOUT(to GPIO)        GPIO output enable
+Page  331: depends on the CxOUT and CxCOUT channel state and the GPIO and the IOMUX registers.
+Page  359: TMR8_TRGOUT                                                                                                   GPIO
+Page  370: GPIO
+Page  424: GPIO
+Page  425: The OTGFS input/output pins are multiplexed with GPIOs. The GPIOs are used as OTGFS in one of
+Page  425: Pin                  GPIO          Description
+Page  693: {dmamux_evt[x:1], exint_gpio [15:0]}                             dmamux_evt[x:0]
+Page  694: 0              exint_gpio[0]   8          exint_gpio[8]    16          DMA_MUXevt1   24       reserved
+Page  694: 1              exint_gpio[1]   9          exint_gpio[9]    17          DMA_MUXevt2   25       reserved
+Page  694: 2              exint_gpio[2]   10         exint_gpio[10]   18          DMA_MUXevt3   26       reserved
+Page  694: 3              exint_gpio[3]   11         exint_gpio[11]   19          DMA_MUXevt4   27       reserved
+Page  694: 4              exint_gpio[4]   12         exint_gpio[12]   20          DMA_MUXevt5   28       reserved
+Page  694: 5              exint_gpio[5]   13         exint_gpio[13]   21          DMA_MUXevt6   29       reserved
+Page  694: 6              exint_gpio[6]   14         exint_gpio[14]   22          DMA_MUXevt7   30       reserved
+Page  694: 7              exint_gpio[7]   15         exint_gpio[15]   23          DMA_MUXevt8   31       reserved
+Page  711: GPIO and IOMUX registers can be configured to allow users to switch between debug ports or disable
+Page  716: 2. Updated the descriptions of Section 6 GPIOs and IOMUX

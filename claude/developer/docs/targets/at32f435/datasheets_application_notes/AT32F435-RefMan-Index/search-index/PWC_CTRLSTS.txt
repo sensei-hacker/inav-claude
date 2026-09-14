@@ -1,0 +1,11 @@
+Keyword: PWC_CTRLSTS
+Occurrences: 7
+================================================================================
+
+Page    2: 3.7.2 Power control/status register (PWC_CTRLSTS) ............................ 68
+Page   64: by the PVMOF bit in the PWC_CTRLSTS register, with the hysteresis voltage VHYS_P being 100 mv.
+Page   67: – Clear the SWEF bit in the power control/status register (PWC_CTRLSTS)
+Page   67: PWC_CTRLSTS                    0x04                      0x0000 0000
+Page   68: 3.7.2           Power control/status register (PWC_CTRLSTS)
+Page  138: PA0         PWC_CTRLSTS[8] =1              Once enabled, PA0 pin acts as WKUP1 function of PWC.
+Page  138: PC13        PWC_CTRLSTS[9] = 1             Once enabled, PC13 pin acts as WKUP2 function of PWC.

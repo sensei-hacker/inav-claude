@@ -1,0 +1,42 @@
+Keyword: SPI4
+Occurrences: 38
+================================================================================
+
+Page   45: USART2/3                                             ERTC                                                                                 SPI4 / I2S4
+Page   53: 84      91                 SPI4                   SPI4 global interrupt                0x0000_0190
+Page   61: 0x4001 3400 - 0x4001 37FF       SPI4/I2S4
+Page   82: SPI4 reset
+Page   82: Bit 13       SPI4RST          0x0            rw       0: Does not reset SPI4
+Page   82: 1: Reset SPI4
+Page   87: SPI4 clock enable
+Page   87: Bit 13       SPI4EN          0x0              rw          0: Disabled
+Page   91: SPI4 clock enable in sleep mode
+Page   91: Bit 13       SPI4LPEN         0x1            rw       0: Disabled
+Page  124: SPI4_MOSI               USART2_RTS_D
+Page  124: PA11               TMR1_CH4                           I2C2_SCL                SPI4_MISO   USART1_CTS
+Page  126: SPI4_CS
+Page  126: SPI4_SCK
+Page  126: TMR4_CH3     TMR10_CH1   I2C1_SCL                SPI4_MISO
+Page  126: SPI2_CS     SPI4_MOSI
+Page  126: SPI2_CS     SPI4_CS      SPI3_SCK
+Page  126: SPI2_SCK    SPI4_SCK
+Page  130: PD0                                                         SPI4_MISO
+Page  132: TMR3_EX                         SPI4_SCK
+Page  132: CLKOUT               TMR3_CH                         SPI4_CS
+Page  132: PE5                                                         SPI4_MISO    TMR20_CH2C
+Page  132: TMR3_CH   TMR9_CH               SPI4_MOSI
+Page  132: SPI4_CS
+Page  132: SPI1_CS    SPI4_SCK
+Page  132: PE13            TMR1_CH3                                    SPI4_MISO
+Page  132: SPI1_MIS   SPI4_MOSI
+Page  136: SPI4_SCK
+Page  136: PG12                                                     QSPI2_IO1         SPI4_MISO
+Page  136: SPI4_MOSI
+Page  136: SPI4_CS
+Page  154: SPI4       QSPI1                                                            ch7
+Page  158: SPI4     QSPI1           Req_gen3
+Page  159: 10          SPI1_RX       42        TMR1_CH1           74        TMR5_CH3       106     SPI4_RX
+Page  159: 11          SPI1_TX       43        TMR1_CH2           75        TMR5_CH4       107     SPI4_TX
+Page  693: SPI4     QSPI1                Req_gen3
+Page  693: 10          SPI1_RX           42             TMR1_CH1                             74             TMR5_CH3                     106                SPI4_RX
+Page  693: 11          SPI1_TX           43             TMR1_CH2                             75             TMR5_CH4                     107                SPI4_TX

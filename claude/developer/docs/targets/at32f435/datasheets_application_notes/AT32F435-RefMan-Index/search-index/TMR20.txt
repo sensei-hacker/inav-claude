@@ -1,0 +1,139 @@
+Keyword: TMR20
+Occurrences: 135
+================================================================================
+
+Page   13: 14.4 Advanced-control timers (TMR1, TMR8 and TMR20) ..................... 304
+Page   13: 14.4.1 TMR1, TMR8 and TMR20 introduction ......................................... 304
+Page   13: 14.4.2 TMR1, TMR8 and TMR20 main features ...................................... 304
+Page   13: 14.4.3 TMR1, TMR8 and TMR20 functional overview .............................. 304
+Page   13: 14.4.4 TMR1, TMR8 and TMR20 registers .............................................. 321
+Page   13: 14.4.4.1 TMR1, TMR8 and TMR20 control register 1 (TMRx_CTRL1) ..... 321
+Page   13: 14.4.4.2 TMR1, TMR8 and TMR20 control register 2 (TMRx_CTRL2) ..... 322
+Page   13: 14.4.4.3 TMR1, TMR8 and TMR20 slave timer control register
+Page   13: 14.4.4.4 TMR1, TMR8 and TMR20 DMA/interrupt enable register
+Page   13: 14.4.4.5 TMR1, TMR8 and TMR20 interrupt status register (TMRx_ISTS) 325
+Page   13: 14.4.4.6 TMR1, TMR8 and TMR20 software event register (TMRx_SW EVT)326
+Page   14: 14.4.4.7 TMR1, TMR8 and TMR20 channel mode register 1 (TMRx_CM1) 326
+Page   14: 14.4.4.8 TMR1, TMR8 and TMR20 channel mode register 2 (TMRx_CM2) 328
+Page   14: 14.4.4.9 TMR1, TMR8 and TMR20 channel control register (TMRx_CCTRL) 329
+Page   14: 14.4.4.10     TMR1, TMR8 and TMR20 counter value (TMRx_CVAL) ........ 331
+Page   14: 14.4.4.11     TMR1, TMR8 and TMR20 division value (TMRx_DI V) ........... 331
+Page   14: 14.4.4.12     TMR1, TMR8 and TMR20 period register (TMRx_PR) ........... 331
+Page   14: 14.4.4.13     TMR1, TMR8 and TMR20 repetition period register (TMRx_RPR) 331
+Page   14: 14.4.4.14     TMR1, TMR8 and TMR20 channel 1 data register (TMRx_C1DT) 331
+Page   14: 14.4.4.15     TMR1, TMR8 and TMR20 channel 2 data register (TMRx_C2DT) 332
+Page   14: 14.4.4.16     TMR1, TMR8 and TMR20 channel 3 data register (TMRx_C3DT) 332
+Page   14: 14.4.4.17     TMR1, TMR8 and TMR20 channel 4 data register (TMRx_C4DT) 332
+Page   14: 14.4.4.18     TMR1, TMR8 and TMR20 brake register (TMRx_BRK) .......... 332
+Page   14: 14.4.4.19     TMR1, TMR8 and TMR20 DMA control register
+Page   14: 14.4.4.20     TMR1, TMR8 and TMR20 DMA data register (TMRx_DMADT) 334
+Page   14: 14.4.4.21     TMR1, TMR8 and TMR20 channel mode register 3 (TMRx_ CM3) 334
+Page   14: 14.4.4.22     TMR1, TMR8 and TMR20 channel 5 data register (TMRx_C5DT) 334
+Page   53: 104     111                TMR20_BRK              TMR20 break interrupt                0x0000_01E0
+Page   53: 105     112                TMR20_OVF              TMR20 overflow interrupt             0x0000_01E4
+Page   53: 106     113                TMR20_TRG_HALL         TMR20 trigger and HALL interrupt     0x0000_01E8
+Page   53: 107     114                TMR20_CH               TMR20 channel interrupt              0x0000_01EC
+Page   61: 0x4001 4C00 - 0x4001 73FF       TMR20 timer
+Page   82: Bit 20       TMR20RST         0x0            rw       0: Does not reset Timer20
+Page   86: Bit 20       TMR20EN         0x0             rw        0: Disabled
+Page   91: Bit 20       TMR20LPEN        0x1            rw       0: Disabled
+Page  126: PB2                TMR2_CH4    TMR20_CH1                I2C3_SMBA
+Page  128: PC2                     TMR20_CH2                         SPI2_MISO    I2S2_SDEXT
+Page  128: I2S4_MCK     TMR20_CH3    UART8_TX
+Page  132: PE0                                                                      TMR20_EXT
+Page  132: PE1             TMR1_CH2C                                                TMR20_CH4
+Page  132: PE2                                                                      TMR20_CH1
+Page  132: PE3                                                                      TMR20_CH2
+Page  132: PE4                                                                      TMR20_CH1C
+Page  132: PE5                                                         SPI4_MISO    TMR20_CH2C
+Page  132: PE6                                                                      TMR20_CH3C
+Page  134: PF2                        TMR20_CH3                   I2C2_SMBA
+Page  134: PF3                        TMR20_CH4
+Page  134: PF4                        TMR20_CH1C
+Page  134: PF5                        TMR20_CH2C
+Page  134: PF6                        TMR20_CH4       TMR10_CH1
+Page  134: PF7                        TMR20_BRK       TMR11_CH1
+Page  134: PF9                        TMR20_BRK
+Page  134: PF11                       TMR20_EXT       TMR8_EXT
+Page  134: PF12                       TMR20_CH1       TMR8_BRK
+Page  134: PF13                       TMR20_CH2                   I2C3_SMBA
+Page  134: PF14                       TMR20_CH3                   I2C3_SCL
+Page  134: PF15                       TMR20_CH4                   I2C3_SDA
+Page  136: PG0                       TMR20_CH1C                     SPI1_MISO
+Page  136: PG1                       TMR20_CH2C
+Page  136: PG2                       TMR20_CH3C
+Page  136: PG3                       TMR20_BRK
+Page  136: PG5                       TMR20_EXT
+Page  154: I2S3_EXT   TMR20                                  Slave
+Page  158: I2S3_EXT TMR20                                                                 REQID                                 2          chx_mux_req
+Page  159: 22          reserved      54        TMR8_TRIG          86        TMR20_CH1      118     UART8_RX
+Page  159: 23          reserved      55        TMR8_HALL          87        TMR20_CH2      119     UART8_TX
+Page  159: 24          USART1_RX     56        TMR2_CH1           88        TMR20_CH3      120     reserved
+Page  159: 25          USART1_TX     57        TMR2_CH2           89        TMR20_CH4      121     reserved
+Page  159: 26          USART2_RX     58        TMR2_CH3           90        TMR20_OVERFLOW 122     reserved
+Page  159: 29          USART3_TX     61        TMR3_CH1           93        TMR20_TRIG     125     reserved
+Page  159: 30          UART4_RX      62        TMR3_CH2           94        TMR20_HALL     126     TMR2_TRIG
+Page  252: timer     TMR20               Up/Down
+Page  252: timer     TMR20              Up/Down                                                                 ADC/DAC
+Page  304: 14.4 Advanced-control timers (TMR1, TMR8 and TMR20)
+Page  304: 14.4.1 TMR1, TMR8 and TMR20 introduction
+Page  304: Each of the advanced-control timer (TMR1, TMR8 and TMR20) consists of a 16-bit counter supporting
+Page  304: 14.4.2 TMR1, TMR8 and TMR20 main features
+Page  304: The main functions of general-purpose TMR1, TMR8 and TMR20 include:
+Page  304: 14.4.3 TMR1, TMR8 and TMR20 functional overview
+Page  304: The count clock of TMR1, TMR8 and TMR20 can be provided by the internal clock (CK_INT), external
+Page  307: TMR20                         TMR8                                   TMR2                    TMR4              TMR5
+Page  312: Each timer of TMR1, TMR8 and TMR20 has four independent channels. Each channel can be configured
+Page  321: 14.4.4 TMR1, TMR8 and TMR20 registers
+Page  321: Table 14-14 TMR1, TMR8 and TMR20 register map and reset value
+Page  321: 14.4.4.1 TMR1, TMR8 and TMR20 control register 1 (TMRx_CTRL1)
+Page  322: 14.4.4.2 TMR1, TMR8 and TMR20 control register 2 (TMRx_CTRL2)
+Page  323: 14.4.4.3 TMR1, TMR8 and TMR20 slave timer control register
+Page  324: 14.4.4.4 TMR1, TMR8 and TMR20 DMA/interrupt enable register
+Page  325: 14.4.4.5 TMR1, TMR8 and TMR20 interrupt status register
+Page  326: 14.4.4.6 TMR1, TMR8 and TMR20 software event register
+Page  326: 14.4.4.7 TMR1, TMR8 and TMR20 channel mode register 1 (TMRx_CM1)
+Page  328: 14.4.4.8 TMR1, TMR8 and TMR20 channel mode register 2 (TMRx_CM2)
+Page  329: 14.4.4.9 TMR1, TMR8 and TMR20 channel control register
+Page  331: 14.4.4.10            TMR1, TMR8 and TMR20 counter value (TMRx_CVAL)
+Page  331: 14.4.4.11            TMR1, TMR8 and TMR20 division value (TMRx_DIV)
+Page  331: 14.4.4.12            TMR1, TMR8 and TMR20 period register (TMRx_PR)
+Page  331: 14.4.4.13 TMR1, TMR8 and TMR20 repetition period register
+Page  331: 14.4.4.14 TMR1, TMR8 and TMR20 channel 1 data register
+Page  332: 14.4.4.15 TMR1, TMR8 and TMR20 channel 2 data register
+Page  332: 14.4.4.16 TMR1, TMR8 and TMR20 channel 3 data register
+Page  332: 14.4.4.17 TMR1, TMR8 and TMR20 channel 4 data register
+Page  332: 14.4.4.18            TMR1, TMR8 and TMR20 brake register (TMRx_BRK)
+Page  333: 14.4.4.19 TMR1, TMR8 and TMR20 DMA control register
+Page  334: 14.4.4.20 TMR1, TMR8 and TMR20 DMA data register
+Page  334: 14.4.4.21 TMR1, TMR8 and TMR20 channel mode register 3 (TMRx_
+Page  334: 14.4.4.22 TMR1, TMR8 and TMR20 channel 5 data register
+Page  359: TMR20_TRGOUT              conversion start
+Page  359: TMR20_TRGOUT2
+Page  359: TMR20_CH1                              Channel                                                            Temp.sensor
+Page  359: TMR20_CH2                             manegement                                                          V INTRV
+Page  359: TMR20_CH3
+Page  359: TMR20_TRGOUT
+Page  359: TMR20_TRGOUT2
+Page  359: TMR20_CH4
+Page  359: TMR20_CH2
+Page  362: 00000                               TMR1_CH1 event                   10000                          TMR20_TRGOUT event
+Page  362: 00001                               TMR1_CH2 event                   10001                          TMR20_TRGOUT2 event
+Page  362: 00010                               TMR1_CH3 event                   10010                          TMR20_CH1 event
+Page  362: 00011                               TMR2_CH2 event                   10011                          TMR20_CH2 event
+Page  362: 00100                               TMR2_CH3 event                   10100                          TMR20_CH3 event
+Page  363: 00000                TMR1_CH4 event                 10000          TMR20_TRGOUT event
+Page  363: 00001                TMR1_TRGOUT event              10001          TMR20_TRGOUT2 event
+Page  363: 00010                TMR2_CH1 event                 10010          TMR20_CH4 event
+Page  363: 01100                TMR8_CH2 event                 11100          TMR20_CH2 event
+Page  693: I2S3_EXT TMR20                                                                      REQID                                 2          chx_mux_req
+Page  694: 22              reserved              54        TMR8_TRIG         86           TMR20_CH1         118     UART8_RX
+Page  694: 23              reserved              55        TMR8_HALL         87           TMR20_CH2         119     UART8_TX
+Page  694: 24              USART1_RX             56        TMR2_CH1          88           TMR20_CH3         120     reserved
+Page  694: 25              USART1_TX             57        TMR2_CH2          89           TMR20_CH4         121     reserved
+Page  694: 26              USART2_RX             58        TMR2_CH3          90           TMR20_OVERFLOW 122        reserved
+Page  694: 29              USART3_TX             61        TMR3_CH1          93           TMR20_TRIG        125     reserved
+Page  694: 30              UART4_RX              62        TMR3_CH2          94           TMR20_HALL        126     TMR2_TRIG
+Page  715: TMR20 pause control bit
+Page  715: Bit 6        TMR20_PAUSE       0x0             rw       0: TMR20 works normally
+Page  715: 1: TMR20 stops running

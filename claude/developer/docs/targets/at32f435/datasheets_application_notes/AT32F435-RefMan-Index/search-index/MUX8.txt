@@ -1,0 +1,14 @@
+Keyword: MUX8
+Occurrences: 10
+================================================================================
+
+Page  125: Pin    MUX8        MUX9        MUX10       MUX11               MUX12      MUX13        MUX14      MUX15
+Page  127: Pin    MUX8            MUX9        MUX10        MUX11             MUX12      MUX13      MUX14      MUX15
+Page  129: Pin    MUX8        MUX9        MUX10         MUX11           MUX12        MUX13       MUX14     MUX15
+Page  131: Pin    MUX8       MUX9        MUX10         MUX11              MUX12       MUX13     MUX14     MUX15
+Page  133: Pin    MUX8       MUX9        MUX10           MUX11           MUX12       MUX13    MUX14   MUX15
+Page  135: Pin    MUX8       MUX9        MUX10            MUX11   MUX12        MUX13     MUX14   MUX15
+Page  137: Pin    MUX8            MUX9        MUX10       MUX11             MUX12        MUX13            MUX15
+Page  138: Pin      MUX8       MUX9       MUX10             MUX11     MUX12        MUX13      MUX14      MUX15
+Page  141: 1000: MUX8
+Page  142: 1000: MUX8

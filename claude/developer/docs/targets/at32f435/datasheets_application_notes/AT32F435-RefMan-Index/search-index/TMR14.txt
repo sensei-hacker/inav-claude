@@ -1,0 +1,55 @@
+Keyword: TMR14
+Occurrences: 51
+================================================================================
+
+Page   12: 14.3 General-purpose timer (TMR9 to TMR14) .................................... 283
+Page   12: 14.3.1 TMR9 to TMR14 introduction ....................................................... 283
+Page   12: 14.3.2 TMR9 to TMR14 main features .................................................... 283
+Page   12: 14.3.2.2 TMR10, TMR11, TMR13 and TMR14 main features .................. 284
+Page   12: 14.3.3 TMR9 to TMR14 functional overview ........................................... 284
+Page   13: 14.3.5 TMR10, TMR11, TMR13 and TMR14 registers .............................. 299
+Page   13: 14.3.5.1 TMR10, TMR11, TMR13 and TMR14 control register 1
+Page   13: 14.3.5.2 TMR10, TMR11, TMR13 and TMR14 DMA/interrupt enable register
+Page   13: 14.3.5.3 TMR10, TMR11, TMR13 and TMR14 interrupt status register
+Page   13: 14.3.5.4 TMR10, TMR11, TMR13 and TMR14 software event register
+Page   13: 14.3.5.5 TMR10, TMR11, TMR13 and TMR14 channel mode register 1
+Page   13: 14.3.5.6 TMR10, TMR11, TMR13 and TMR14 channel control register
+Page   13: 14.3.5.7 TMR10, TMR11, TMR13 and TMR14 counter value (TMRx_CVAL) 303
+Page   13: 14.3.5.8 TMR10, TMR11, TMR13 and TMR14 division value (TMRx_DIV) 303
+Page   13: 14.3.5.9 TMR10, TMR11, TMR13 and TMR14 period register (TMRx_PR) 303
+Page   13: 14.3.5.10      TMR10, TMR11, TMR13 and TMR14 channel 1 data register
+Page   51: rable     MR14                   TMR14 global interrupt
+Page   62: 0x4000 2000 - 0x4000 23FF       TMR14 timer
+Page   81: Bit 8        TMR14RST         0x0            rw       0: Does not reset Timer14
+Page   86: Bit 8        TMR14EN         0x0             rw        0: Disabled
+Page   90: Bit 8        TMR14LPEN    0x1        rw       0: Disabled
+Page  125: PA7                TMR14_CH1   QSPI1_IO1
+Page  135: PF9               TMR14_CH1   QSPI1_MOSI_IO1           XMC_CD                         EVENTOUT
+Page  252: TMR14
+Page  252: TMR14
+Page  283: 14.3 General-purpose timer (TMR9 to TMR14)
+Page  283: 14.3.1 TMR9 to TMR14 introduction
+Page  283: The general-purpose timer (TMR9 to TMR14) consists of a 16-bit counter supporting upcounting mode.
+Page  283: 14.3.2 TMR9 to TMR14 main features
+Page  284: 14.3.2.2 TMR10, TMR11, TMR13 and TMR14 main features
+Page  284: The main functions of general-purpose TMRx (TMR10, TMR11, TMR13 and TMR14) include:
+Page  284: 14.3.3 TMR9 to TMR14 functional overview
+Page  286: Each timer (TMR9 ~TMR14) consists of a 16-bit prescaler, which is used to generate the CK_CNT that
+Page  286: TMR12                              TMR4_TRGOUT                    TMR5_TRGOUT           TMR13_OC       TMR14_OC
+Page  288: and TMR14 has an independent channel. Each channel can be configured as input or output.
+Page  299: 14.3.5 TMR10, TMR11, TMR13 and TMR14 registers
+Page  299: All TMR10, TMR11, TMR 13 and TMR14 registers are mapped into a 1-bit addressable space.
+Page  299: Table 14-10 TMR10, TMR11, TMR13 and TMR14 register map and reset value
+Page  299: 14.3.5.1 TMR10, TMR11, TMR13 and TMR14 control register 1
+Page  300: 14.3.5.2 TMR10, TMR11, TMR13 and TMR14 DMA/interrupt enable
+Page  300: 14.3.5.3 TMR10, TMR11, TMR13 and TMR14 interrupt status register
+Page  300: 14.3.5.4 TMR10, TMR11, TMR13 and TMR14 software event register
+Page  301: 14.3.5.5 TMR10, TMR11, TMR13 and TMR14 channel mode register 1
+Page  302: 14.3.5.6 TMR10, TMR11, TMR13 and TMR14 channel control register
+Page  303: 14.3.5.7 TMR10, TMR11, TMR13 and TMR14 counter value
+Page  303: 14.3.5.8 TMR10, TMR11, TMR13 and TMR14 division value (TMRx_DIV)
+Page  303: 14.3.5.9 TMR10, TMR11, TMR13 and TMR14 period register (TMRx_PR)
+Page  303: 14.3.5.10 TMR10, TMR11, TMR13 and TMR14 channel 1 data register
+Page  714: TMR14 pause control bit
+Page  714: Bit 8        TMR14_PAUSE          0x0         rw     0: TMR14 works normally
+Page  714: 1: TMR14 stops running

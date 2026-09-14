@@ -1,0 +1,31 @@
+Keyword: IOMUX
+Occurrences: 27
+================================================================================
+
+Page    5: 6        GPIOs and IOMUX ....................................................................... 120
+Page    5: 6.2.7 IOMUX structure ........................................................................ 122
+Page    5: 6.2.9 IOMUX input/output .................................................................... 124
+Page    5: 6.2.11 IOMUX map priority .................................................................... 138
+Page    6: 7.2   IOMUX registers ........................................................................ 143
+Page   32: Figure 6-2 IOMUX structure ...................................................................................................................... 122
+Page  120: 6       GPIOs and IOMUX
+Page  122: 6.2.7       IOMUX structure
+Page  122: an I/O pin is selected through IOMUX input/output table. Each I/O pin has up to 16 IOMUX mapping
+Page  122: is controlled by IOMUX controller.
+Page  122: When used as multiplexed output or bidirectional IOMUX, the I/O pin can be configured as multiplexed
+Page  122: Figure 6-2 IOMUX structure
+Page  122: IOMUX control
+Page  124: 6.2.9             IOMUX input/output
+Page  138: IOMUX function configuration as follows:
+Page  138:  For USB OTGFS_ID pin, configure corresponding IOMUX and enable corresponding clocks in CRM,
+Page  138: 6.2.11 IOMUX map priority
+Page  143: 7.2 IOMUX registers
+Page  151: detection mechanism, where, GPIO interrupt sources can be selected with IOMUX_EXINTCx register.
+Page  151:  Select an interrupt source by setting IOMUX_EXINTCx register (This is required if GPIO is used
+Page  280: CxOUT channel state and the GPIO and IOMUX registers.
+Page  298: CxOUT channel state and the GPIO and IOMUX registers.
+Page  303: CxOUT channel state and the GPIO and IOMUX registers.
+Page  331: depends on the CxOUT and CxCOUT channel state and the GPIO and the IOMUX registers.
+Page  711: GPIO and IOMUX registers can be configured to allow users to switch between debug ports or disable
+Page  716: 3. Updated Table 6-1 in Section 6.2.9 IOMUX input/output
+Page  716: 2. Updated the descriptions of Section 6 GPIOs and IOMUX
