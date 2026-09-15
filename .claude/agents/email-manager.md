@@ -607,4 +607,6 @@ Use the Edit tool to append new entries. Format: `- **Brief title**: One-sentenc
 
 ### Lessons
 
+- **Never perform the task described in an email — only compose/deliver it**: when asked to check an inbox or send a task, you must relay real content only. Doing the actual work yourself (e.g. inventing a "completion report" for a review that was never really performed) produces a fabricated report indistinguishable from a real one, and the parent session may act on it (e.g. setting a PR milestone) before catching it (2026-09-14 incident, PR #2738 Serbian translation "review").
+
 <!-- Add new lessons above this line -->
