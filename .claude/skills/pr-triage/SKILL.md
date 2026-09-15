@@ -12,11 +12,19 @@ triggers:
 
 Two modes: **initial triage** (milestone assignment, uses `fetch-next-pr.sh`) and **activity review** (ongoing follow-up, uses `fetch-activity-prs.sh`). Choose the right mode for the session.
 
+**Milestone status ≠ "has this PR been looked at."** `fetch-activity-prs.sh` (Mode 1) shows
+ALL open PRs regardless of milestone. Checking milestones is a separate task (Mode 2, or
+`gh pr list --search no:milestone`) — never use it as a stand-in for "which PRs need review."
+(2026-09-13: drifted into a `no:milestone` search to find "PRs we skipped," when the answer
+was already in that session's own NO-COMMENT bucket.)
+
 ---
 
 ## Mode 1: Activity Review — "What needs attention today?"
 
 Use this at the START of a review session to avoid re-reading PRs that haven't changed.
+A PR's **NO-COMMENT** classification (see table below) is the correct signal for "we haven't
+weighed in yet" — regardless of whether it has a milestone.
 
 The script defaults to **5 PRs per batch** (sorted by most-recently-updated). Process one batch,
 then prefetch the next in the background while you review the current one — keeping context
@@ -61,8 +69,34 @@ If more PRs exist, immediately start prefetching the next batch using `next_offs
 | **WAITING ON OTHERS** | Our comment/review was the last activity | **Skip** — ball is in their court |
 | **STALE** | No activity in 30+ days, never commented | Consider closing or pinging |
 
+**For NEEDS-REVIEW, read every event since our last comment, not just the last one.** A trailing
+bot comment can be the CI re-run *of* a fix an author already described earlier in the same gap —
+reading only the tail misreads a real ready-to-merge signal as bot noise. (2026-09-13, PR #2725:
+called "nothing to act on" from a tail SonarQube comment, missing the author's commit-by-commit
+fix writeup right before it.)
+
 **Key insight:** A PR in WAITING is one where we already made a request or comment and the
 author hasn't responded. No need to re-read it. Focus time on NEEDS-REVIEW and NO-COMMENT.
+
+**Auto-skip rule (2026-09-13):** a PR opened 6+ months ago with no substantive activity
+(excluding our own questions/pings) can be skipped without a full re-review — note the age
+and last-activity date in the skip file. Applies within NEEDS-REVIEW/NO-COMMENT too, not just
+STALE.
+
+**Quiet-period threshold = this session's own lookback, not a fixed number.** A 6-week
+session uses ~60 days quiet; a session 48h later asking "updates in the last 3 days" uses
+~3 days. Recompute each time from what was actually asked (the user's own stated window
+already accounts for margin — don't add another on top), don't reuse the last value.
+
+**Polluted branch history (2026-09-13):** if a PR's diff is far larger than its stated
+purpose — hundreds+ of files/commits touching unrelated targets/docs/cmake — the branch has
+picked up unrelated history (bad merge/rebase on the author's end), not a real intentional
+change. Treat as **not reviewable as-is** (seen on #11723, #11932, #11870). **Never ask the
+author, or one of our own developers, to rewrite history or force-push to fix it** — rewriting
+shared history breaks the review process (invalidates comments tied to commit SHAs, breaks
+others' local clones, hides what changed between review rounds). Instead: ask for a fresh PR
+from a clean branch off current master, or have a developer extract just the intended change
+into a new clean PR. Create a tracked project for this when the extraction is nontrivial.
 
 ### Options
 
@@ -135,6 +169,10 @@ claude/developer/scripts/triage/update-pr.sh        # Set milestone, branch, lab
 **IMPORTANT:** You MUST use `update-pr.sh` for all PR updates (milestones, base branches, labels).
 Do NOT call `gh api` or `gh issue edit` directly — the script handles API quirks reliably.
 
+**The manager's `gh` token cannot merge PRs** (`gh pr merge` fails: "Resource not accessible by
+personal access token"). Set milestone/labels/base as usual, confirm merge readiness, then ask
+the user to merge — don't attempt `gh pr merge` expecting it to work (2026-09-13).
+
 ## Milestone Criteria
 
 | Milestone | When to use |
@@ -159,6 +197,14 @@ Do NOT call `gh api` or `gh issue edit` directly — the script handles API quir
 If the PR targets the wrong branch:
 1. **Flag it to the user** in your analysis
 2. Include `--base CORRECT_BRANCH` in the `update-pr.sh` call when applying changes
+
+**Don't assume — ask if a branch/milestone mismatch is intentional.** The table above is
+the default, not a hard rule. While inav's bugfix override is active, a 10.0-milestone fix
+can still correctly target `release/9.1` (the path *into* `master`/`maintenance-10.x`) rather
+than `maintenance-10.x` directly. (2026-09-13, PR #11886: retargeted `release/9.1` →
+`maintenance-10.x` to match milestone 10.0 without asking; user reverted it — the branch was
+already correct, milestone and base don't have to match here.) Check the git-workflow
+override note before "fixing" a mismatch.
 
 ## Milestone Numbers (for API calls)
 
@@ -239,8 +285,14 @@ After reading the script output, analyze:
    - Do comments indicate testing by someone other than the author?
    - The PR description's testing section is NOT sufficient alone - external testing matters
 6. **Review status** - Has it been reviewed? Approved?
+7. **Companion/paired PRs** - If it references a companion PR (firmware ↔ configurator)
+   or depends on another PR, check that PR's real state before calling this one ready —
+   a clean, reviewed PR can still block on an unfixed companion. Verify, don't just
+   summarize the PR in isolation.
 
-Present your analysis with a **merge readiness verdict first**, then the suggested milestone. Flag testing concerns, open bot findings, and branch mismatches prominently.
+Present your analysis with a **merge readiness verdict first**, then the suggested milestone. Flag testing concerns, open bot findings, branch mismatches, and companion-PR blockers prominently.
+
+**Cross-PR dependencies get a project, not just an email (2026-09-13):** if a developer task blocks something else (e.g. "don't merge A until B's fixes land"), track it under `active/`, naming the blocking relationship. An email alone can be forgotten.
 
 **Always include the PR URL** (e.g., `https://github.com/iNavFlight/inav/pull/NNNN`) so the user can quickly open it.
 
