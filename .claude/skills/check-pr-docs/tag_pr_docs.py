@@ -42,7 +42,7 @@ def get_prs_needing_docs(repo: str, days_back: int = 7) -> List[Dict]:
         "--state", "all",
         "--search", f"created:>={search_date}",
         "--json", "number,title,author,state,labels,files",
-        "--repo", f"inavflight/{repo}"
+        "--repo", f"iNavFlight/{repo}"
     ]
 
     result = subprocess.run(cmd, capture_output=True, text=True, check=True)
@@ -177,7 +177,7 @@ def ask_user_to_tag(repo: str, pr: Dict, wiki_info: str) -> bool:
             return False
         elif choice == 'v':
             # Open PR in browser
-            subprocess.run(["gh", "pr", "view", str(pr['number']), "--web", "--repo", f"inavflight/{repo}"])
+            subprocess.run(["gh", "pr", "view", str(pr['number']), "--web", "--repo", f"iNavFlight/{repo}"])
             print("\nOpened PR in browser. Now, should it be tagged?")
         elif choice == 'q':
             print("\nQuitting...")
@@ -195,7 +195,7 @@ def tag_pr(repo: str, pr_number: int, label: str = "documentation needed") -> bo
         cmd = [
             "gh", "pr", "edit", str(pr_number),
             "--add-label", label,
-            "--repo", f"inavflight/{repo}"
+            "--repo", f"iNavFlight/{repo}"
         ]
         subprocess.run(cmd, check=True)
         print(f"✅ Tagged PR #{pr_number} with '{label}'")
