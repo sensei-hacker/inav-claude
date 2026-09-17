@@ -1,5 +1,7 @@
 # ⚠️ CRITICAL CHECKLIST - Read Before Modifying Any Code
 
+> **Workflow:** steps 3, 4, 6 of 17 → `WORKFLOW.md`.
+
 **STOP! Complete this checklist before making ANY code changes:**
 
 **Use a task list tool to track each step as you complete it.**
@@ -44,6 +46,13 @@ dirty-checkout sanity check the script runs automatically before handing out
 an unlocked checkout, and what to do if a candidate turns out to be dirty or
 a lock looks stale.
 
+**Remember:**
+- Hold the lock through the whole push lifecycle (including follow-up fixes); re-acquire before any post-release push.
+- Use the real session id (`--session "$DSH_SESSION_ID"` where `$CLAUDE_CODE_SESSION_ID` is absent), never a placeholder.
+- Preserve deliverables and remove scratch dirs *before* releasing — a released checkout is someone else's from that moment.
+- Adding a parallel checkout dir touches more than `lock_manager.py` (hooks, `new-branch.sh`, permissions yaml, README) — grep the tree for the sibling name.
+- Tell subagents the exact safe path when a lock is held elsewhere — they don't inherit your lock discipline.
+
 ## 3. Create Git Branch
 The branch MUST be created off of the correct version branch — never off master.
 
@@ -54,6 +63,12 @@ claude/developer/scripts/git/new-branch.sh <repo> <bugfix|feature|breaking> <bra
 See `.claude/skills/git-workflow/SKILL.md` ("Creating Branches") for the current
 base-branch decision table (including any active temporary override) and the manual
 fallback if the script can't be used.
+
+**Remember:**
+- Confirm you're on the correct branch before working — a lock-handed-out checkout may sit on a prior task's branch.
+- Peek at another ref with `git show <ref>:<path>` (read-only); `git checkout <other-ref> -- .` silently reverts local commits ahead of that ref.
+- Harness-only tasks (`.claude/`, `claude/`) commit straight to `master` — branches belong in the project repos.
+- The base-branch table above is the single authority, even when a task email says otherwise.
 
 ## 4. Plan End-User Documentation (If Needed)
 
@@ -115,6 +130,12 @@ fallback if the script can't be used.
 - Use `test-engineer` agent for ALL testing
 - Use `inav-architecture` agent BEFORE searching firmware code
 
+**Remember:**
+- Use `fc-flasher` for hardware flashing, never `dfu-util` directly (STM32H7 fails DFU exit).
+- Tell a lookup agent the exact checkout path when multiple worktrees coexist.
+- `git status`/`git log -- <path>` before "extending" a named script — it may already be done, uncommitted.
+- Tell fresh subagents explicitly to skip CLAUDE.md's role-selection question.
+
 ## 6. Before Searching Firmware Code
 
 **❌ NEVER:** Start with `Grep` or `Explore` on `inav/src/`
@@ -146,52 +167,21 @@ See `guides/debugging-guide.md` for detailed usage instructions.
 1. *Do NOT mention Claude in commit messages* - Do NOT put "Co-Authored-By: Claude Sonnet 4.6" or similar in a commit message
 2. *Read claude/developer/guides/CRITICAL-BEFORE-COMMIT.md*
 
-## Self-Improvement: Lessons Learned
+## Self-Improvement: Lessons
 
-When you discover something important about PRE-CODING SETUP that will likely help in future sessions, add it to this section. Only add insights that are:
-- **Reusable** - will apply to future pre-coding setup, not one-off situations
-- **About setup/preparation** - lock files, branches, agent usage, search strategy
-- **Concise** - one line per lesson
+Add concise, actionable one-liners (see `guides/README.md` Capture Rubric). State the
+rule, not the story.
 
-Use the Edit tool to append new entries. Format: `- **Brief title**: One-sentence insight`
+- **Fix blockers, don't route around them**: if a build fails on an unrelated error, fix that error rather than simulating the linker.
+- **Check for an existing upstream fix first**: `gh pr list`/web-search before implementing from a plan — cherry-pick a better existing fix rather than re-deriving it.
+- **Fixing on a lower branch? Check the higher branch for the same pattern**: `git show upstream/<higher>:<path>`; flag the backport in the completion report.
+- **Security-critical code: fewer knobs, shorter functions** — don't add a knob/parameter unless something concrete needs it.
+- **"Live in production" ≠ authorize importing as-is**: evaluate every hunk; flag credentials, no-op auth checks, or always-success endpoints for explicit confirmation.
+- **Verify bot review comments by tracing the code, don't dismiss them** — they're often real, non-obvious bugs.
+- **Verify a doc's "no callers" claim yourself** — a disabled call site still changes remove-vs-implement.
+- **A diagnosis naming one call site may miss a sibling** — grep the file for other reads of the same data before assuming the fix is complete.
+- **`git diff <a> <b> --stat` is the wrong measure for PR retargeting**: use `git log <target>..<branch>` or merge-base — a two-tree diff includes unrelated history.
+- **Build test state via real functions, not hand-fabricated memory** — a test pinned to today's implementation is no better than hashing the file.
+- **"Verify PR N" means test and report on N, not re-implement its diff as your own PR** — review, test, and comment instead.
 
-### Lessons
-
-#### Locks & Checkouts
-
-- **Hold the lock for the whole life of any push, including a follow-up fix after the task's own completion report already went out**: releasing the lock and later pushing "just one more commit" to the same branch defeats the lock's entire purpose (preventing uncoordinated concurrent writes to a shared checkout) even if no other agent happened to grab it in between. If more work on a branch turns up after you've released its lock, re-acquire the lock first, push, then release again — don't push through an unlocked checkout.
-- **Use a real session id in lock files, never a placeholder string**: writing something like `SESSION_ID: developer-session` instead of the actual `$CLAUDE_CODE_SESSION_ID` causes the "is this repo locked by a different session" hook check to false-positive on every subsequent command touching that repo, generating a spurious approval prompt each time — fix immediately with `Edit` if caught after the fact, since the friction compounds across the session. In harnesses without that env var (e.g. DSH), pass the real identifier explicitly instead: `lock_manager.py acquire --session "$DSH_SESSION_ID"`.
-- **A released lock can be re-acquired within seconds — preserve deliverables and remove your scratch *while you still hold it***: after releasing inav2.lock, another session immediately acquired inav2 and staged 1,951 files for its own merge work; any post-release git operation on that checkout would have stepped on their in-flight state. Copy artifacts out of the checkout and `rm -rf` your `build-*` scratch dirs *before* `release`, and treat a released checkout as someone else's from that moment on.
-- **Adding a new parallel checkout directory (e.g. `inav-configurator2`) touches more than `lock_manager.py`**: it must also be added to `.claude/hooks/deterministic_checks.py`'s `_LOCKABLE_REPOS`, `claude/developer/scripts/git/new-branch.sh` (repo validation list + `DECISION_REPO` mapping), `.claude/hooks/tool_permissions_bash.yaml`'s branch-creation-blocking rule (both the `cd`-detection and cwd-detection regexes — a name like `inav-configurator2` won't match a `(inav-configurator)(/|$)` pattern since `2` isn't `/` or end-of-string), and `claude/locks/README.md`. Grep the whole `.claude/` and `claude/locks/` tree for the sibling repo's name (e.g. `inav2`) when adding a new one — don't rely on the one file whose comment says "keep in sync," it's not the only place that needs it.
-- **Subagents don't inherit your lock discipline — tell them the safe path explicitly**: an `inav-code-review` run, asked only to review a diff file, went looking for surrounding source context on its own and created a `git worktree`/added a remote directly inside `inav/` while it was locked by a different session's task. No harm resulted (worktree adds are additive; the other session's checked-out branch was untouched), but it was luck, not design. When delegating any agent that might read repo state beyond a supplied diff/file path while a repo lock is held by another session, explicitly tell it which repo/path is safe to touch (e.g. a second clone like `inav2/`) — don't assume it will infer the lock exists or avoid the locked one.
-
-#### Branches & Task State
-
-- **Be sure you are on the correct branch before starting work**: a lock-handed-out checkout was already sitting on a branch from a prior, unrelated task (`fix-configurator-ci-macos-arm64-oom`), which turned out to have its own open PR (#2706) for a different fix. A commit went onto it before checking — caught before pushing (`gh pr list --head <branch>` would have caught it sooner), but a checked-out branch being handed to you doesn't mean it's the right one for this task.
-- **`git checkout <other-ref> -- .` on a branch with local commits ahead of that ref silently reverts them in the index/working tree**: used to compare current file content against another ref (e.g. "does this bug pre-exist on upstream/X?") while staying on your working branch, it stages a full reversion of everything your branch has ahead of that ref — a `git stash pop` afterward then layers new edits on top of the reverted state, not on your actual fix. Use `git show <ref>:<path>` (read-only, prints to stdout, touches nothing) or a separate worktree/checkout instead when you need to peek at another ref without disturbing HEAD. If it happens anyway, `git reset --hard HEAD` recovers cleanly (commits are untouched, only the index/working tree needed fixing).
-- **Harness-only tasks (`.claude/`, `claude/`) skip branch creation**: A guardrail hook blocks `git checkout -b` in the root `inavflight/` repo — branches belong in the project repos (`inav/`, `inav-configurator/`, etc.). For tasks that only touch harness config/docs, commit straight to `master`, matching existing harness commit history.
-- **A task-assignment email's base-branch wording isn't authoritative — check the git-workflow skill's table anyway**: a manager task email said to prepare a PR "off current master." Followed literally, then had to redo the branch/commit after the user pointed out `.claude/skills/git-workflow/SKILL.md`'s base-branch decision table explicitly says "NEVER target PRs to master — it receives merges only" and that inav features currently base on `maintenance-10.x` under the standing override. The table is the single authority regardless of what a task email says; check it even when the assignment sounds specific and confident. (If the target file happens to be identical between the two branches, only the base commit needs fixing — cherry-pick the existing commit onto a freshly checked-out branch from the correct base rather than re-deriving the diff.)
-
-#### Delegating to Agents
-
-- **Always use fc-flasher agent for hardware flashing**: Never invoke `dfu-util` directly. STM32H7 boards silently fail DFU exit with raw dfu-util ("can't detach"), leaving the FC stuck. The fc-flasher agent uses the known-good script that handles all STM32 variants correctly.
-- **Tell a lookup agent exactly which checkout to read, especially with multiple worktrees in the repo root**: asked to look up code in `inav2/`, the `msp-expert` agent instead read and reported from an unrelated untracked `inav-pr11756-review/` directory sitting in the repo root, guessing it was "the active working copy" — it happened to contain the same file, so the answer was still correct, but nothing forced that. When several `inav*`/ad hoc review checkouts coexist, state the exact path in the prompt rather than trusting the agent to infer the right one.
-- **Check `git status`/`git log` on a task's named tool/script file before "extending" it**: a project's assignment email said a script "does not yet model X, needs extending" based on a report written days earlier. The extension already existed, fully implemented with its own self-tests — a prior session had written it but never committed it (the file was still untracked in `git status`). Re-implementing from the stale report would have duplicated real work and likely diverged from it. Five seconds of `git status`/`git log -- <path>` before writing new code in an assigned-but-possibly-already-done tool file would have caught this immediately either way.
-- **Tell a fresh (non-fork) sub-agent explicitly to skip CLAUDE.md's role-selection question**: state it directly in the prompt — CLAUDE.md's own "you're the Agent role, skip the question" exception isn't reliably picked up otherwise.
-
-#### Engineering Judgment
-
-- **Fix blockers, don't route around them**: If goal X is blocked by small problem Y, fix Y first — don't pivot to complex workarounds (e.g. if a build fails due to an unrelated compile error in another file, fix that error rather than trying to analyze LTO bitcode object files to simulate what the linker would have produced). We build correct solutions, not workarounds.
-- **Check for an existing upstream fix before implementing from a project plan**: Even when a manager-written summary already sketches an implementation, search open upstream PRs touching the same file/symptom (`gh pr list`/`gh api ...pulls` search, or a quick web check of the issue tracker) before writing new code. A pre-written plan can be superseded by someone else's already-tested fix with a cleaner design; cherry-picking that commit (crediting the original author) beats re-deriving a divergent implementation.
-- **When fixing a bug in release/9.x, check maintenance-10.x for the same code pattern**: the two branches commonly share the same buggy lines (e.g. the ADS-B recalc-before-ttl order existed verbatim in both); `git show upstream/maintenance-10.x:<path>` is a 5-second check that turns a single fix into a fix-plus-backport-flag in the completion report, instead of the 10.x bug surfacing later as a separate issue.
-- **In security-critical code, prefer fewer configuration knobs and shorter functions over flexibility**: during a setuid TOTP validator rewrite, the user repeatedly cut things back — rejected an env-var override for a path (env vars are attacker-influenced in some contexts and add a second code path to audit), rejected getpwnam()-based path defaults when the real deployment didn't use home directories, and rejected threading an extra out-parameter through a helper when the caller could just check for the condition directly. Stated principle: "complexity is the enemy of security." When writing auth/validation code, default to the fewest inputs, the fewest branches, and functions short enough to read top-to-bottom in one pass — don't add a knob or parameter unless something concrete needs it.
-- **"It's live in production" is not authorization to import a change as-is**: when syncing a repo against a diff pulled from a real server, evaluate every hunk on its own merits rather than reproducing it verbatim. Skip commented-out dead code and one-off debugging hacks (a hardcoded email redirect for one account, a send-suppression rule for one address) — they add confusion, not capability. Separately, flag anything that introduces or preserves a live credential, a disabled/no-op auth check, or an endpoint that unconditionally reports success, for explicit user confirmation before merging — regardless of whether it's commented out or actively running. Being real and being safe are different questions.
-- **A bot review comment (Qodo, CodeRabbit, etc.) deserves the same trace-through-the-code verification as a human's, not a dismissal**: two Qodo comments on an upstream PR claimed (1) a refused MSP write's `callback(false)` gets ignored by existing save-chain callbacks, so the save silently "succeeds" and the FC reboots anyway, and (2) one write code's naming pattern slips past the write-classifier regex. Both were confirmed correct by actually reading the callback chain (`tabs/failsafe.js`'s `savePhaseTwo()` takes no params, ignores the arg) and running the regex against every MSPCodes name in `node -e`. Cheap to verify, and both were real, non-obvious bugs a text-only review would likely have missed.
-
-- **Verify a project doc's "no callers" claim yourself before removing anything**: a task doc said an unimplemented function had no other callers, but `grep` found one, dormant behind a permanently-undefined feature macro. A disabled-but-real call site still changes the remove-vs-implement decision. One grep is cheap; trust the doc's negative claims less than its positive ones.
-- **A root-cause diagnosis naming one call site may have missed a sibling one**: a project doc for issue #11704 correctly found that `servoMixer()`'s `MANUAL_MODE` branch bypassed `getRcCommandOverride()`, but didn't mention that the same function has a second, unconditional block (`INPUT_RC_ROLL/PITCH/YAW`, computed every call regardless of flight mode) with the identical bug — found only by grepping the whole file for other reads of the same raw inputs (`rcCommand`/RX channel value) rather than trusting the doc's single cited line range. When a diagnosis names specific line numbers, grep the file for other occurrences of the same source data before assuming the fix is complete.
-- **`git diff <branchA> <branchB> --stat` measures the wrong thing when deciding whether retargeting a PR's base needs a rebase**: it's a raw two-tree diff, dominated by all the unrelated history each branch has ever accumulated — not what a GitHub PR compare view actually shows (which is computed from the merge-base, i.e. only commits unique to your branch since the point where the two diverged). `release/9.1`-based work retargeted to `maintenance-10.x` looked alarming by `git diff --stat` (2198 files), but lower-version branches typically merge forward into higher ones regularly, so the real question is `git log <target>..<your-branch> --oneline | wc -l` (commits your branch has that the target doesn't) or `git merge-base --is-ancestor <old-base> <new-base>` — check that before concluding a full branch-recreate-and-reapply is required.
-- **Build test state via the real functions a caller would use, not by fabricating it directly**: a test exists to keep validating *behavior* as the implementation changes; one that pokes at memory directly instead (`memset(0)`, hand-assigned fields, reimplemented internal logic) is really pinned to today's implementation, not behavior — no more useful than hashing the file. E.g. a servo-mixer test's `SetUp()` used `memset(&rule, 0, ...)` instead of calling production's `Reset_servoMixers()`; when upstream later gave field `conditionId` a non-zero-means-"unconditional" default (`-1`), the memset'd `0` silently meant something else, and the test zeroed every input with no build error to flag it. Applies to any hand-built state, not just memset or reset functions.
-
-- **"Verify PR N" means test and report on N, not re-implement its diff as your own PR** (2026-09-15): cloning #2751 into a new PR duplicated the author's work (plagiarism) and skipped the actual verification — exactly how an unverified, buggy change slipped through. Review, test, and comment on the existing PR instead.
 <!-- Add new lessons above this line -->

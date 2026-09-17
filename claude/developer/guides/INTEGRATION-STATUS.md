@@ -102,7 +102,7 @@ All 4 critical checklists are created in `claude/developer/guides/`:
 - Quick Start
 - Responsibilities
 - Communication/email system
-- 12-step workflow table
+- 17-step workflow (pointer to `WORKFLOW.md`)
 - Critical checklist references (prominent at top)
 - Repository overview (brief)
 - Essential agents (brief list)

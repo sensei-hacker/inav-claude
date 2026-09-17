@@ -55,7 +55,7 @@ duplicate that table here.
 1. **Check inbox:** Use **email-manager** agent or `ls claude/developer/email/inbox/`
 2. **Read assignment:** Open the task file
 3. **Read:** `guides/CRITICAL-BEFORE-CODE.md`
-4. **Do the work:** Follow the 12-step workflow below
+4. **Do the work:** Follow the 17-step workflow in `guides/WORKFLOW.md`
 5. **Report completion:** Use **email-manager** agent to send completion report to manager
 
 ---
@@ -87,33 +87,17 @@ Use the `email-manager` agent for all email operations.
 
 ---
 
-## 17-Step Workflow
+## Workflow
 
-**Use a task list tool to track these steps for each task:**
+**Follow the 17-step workflow in `guides/WORKFLOW.md`** — that file is the single source
+for the step sequence, each step's agent/skill, and the guide to read. Copy its numbered
+list into your task-list tool at the start of every task.
 
-| Step | Action | Agent/Skill | Guides |
-|------|--------|-------------|--------|
-| 1 | Check inbox for assignments | **email-manager** agent | - |
-| 2 | Read task assignment | Read the task file | - |
-| 3 | Create a git branch | **git-workflow** skill or `/git-workflow` | `guides/CRITICAL-BEFORE-CODE.md`<br>`guides/git-workflow.md` |
-| 4 | Draft user documentation (if needed) | Write draft for new features/behavior changes | `guides/CRITICAL-BEFORE-CODE.md` step 4 |
-| 5 | Reproduce the issue (test should fail) | **test-engineer** agent | `guides/CRITICAL-BEFORE-TEST.md` |
-| 6 | Implement the fix | Check for specialized agents first (see below), then code | `guides/CRITICAL-BEFORE-CODE.md`<br>`guides/coding-standards.md` |
-| 7 | Compile the code | **inav-builder** agent | - |
-| 8 | Verify the fix (test should pass) | **test-engineer** agent | `guides/CRITICAL-BEFORE-TEST.md` |
-| 9 | Finalize user documentation (if drafted) | Update draft, add to `inav/docs/` or `inavwiki/` | `guides/CRITICAL-BEFORE-PR.md` |
-| 10 | Commit your changes | Follow git best practices | `guides/CRITICAL-BEFORE-COMMIT.md` |
-| 11 | Create a pull request | **create-pr** skill or `/create-pr` | `guides/CRITICAL-BEFORE-PR.md` |
-| 12 | Check PR status and bot suggestions | **check-pr-bots** agent or **check-builds** skill | - |
-| 13 | Decide: is there a lesson worth recording from this session? | Consider only, against the rubric — if yes, add one line to the relevant guide's "Self-Improvement" section, or otherwise update the guide as appropriate; if no, nothing to do | `guides/README.md` (Capture Rubric) |
-| 14 | Decide: did this session produce reusable tooling worth keeping? | Consider only, against the rubric — if yes, move it out of `workspace/` to the existing destination convention; if no, nothing to do | `guides/README.md` (Capture Rubric) |
-| 15 | Create completion report | **email-manager** agent | - |
-| 16 | Notify manager | **email-manager** agent | - |
-| 17 | Archive assignment | **email-manager** agent and use skill /finish-task | - |
-
-**Key principle:** Before fixing a bug, have the `test-engineer` agent write a test that reproduces it. This ensures you understand the problem and can verify when it's fixed.
-
-**Key principle — the inbox is the queue, not the project tracker:** Step 1 (check inbox) is how you find out what's pending — not `claude/projects/active/<project>/summary.md` or `INDEX.md`. Those status fields are the Manager's bookkeeping, updated only after they process your completion report from their own inbox, so they can lag behind what you've actually done. If an inbox item looks like it might already be finished, check `claude/developer/email/sent/` for a prior completed/status-update email matching that project name before assuming it's still open — don't consult the project tracker to make that call.
+**Key principles:**
+1. **Test-first:** before fixing a bug, have the `test-engineer` agent write a test that
+   reproduces it — you can't verify a fix you can't reproduce.
+2. **The inbox is the queue, not the project tracker:** check `email/sent/` (not
+   `claude/projects/`) to decide whether an inbox item is already done.
 
 ---
 

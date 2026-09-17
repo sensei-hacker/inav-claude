@@ -142,15 +142,9 @@ A bug that fails silently can hide for months. Asking "Why wasn't this detected?
 
 ---
 
-## Self-Improvement: Lessons Learned
+## Self-Improvement: Lessons
 
-When you discover something important about DEBUGGING TECHNIQUES that will likely help in future sessions, add it to this section. Only add insights that are:
-- **Reusable** - will apply to future debugging tasks, not one-off situations
-- **About debugging** - tools, techniques, when to use each, debugging approaches
-- **Concise** - one line per lesson
-
-Use the Edit tool to append new entries. Format: `- **Brief title**: One-sentence insight`
-
-### Lessons
+Add concise, actionable one-liners (see `guides/README.md` Capture Rubric). State the
+rule, not the story.
 
 <!-- Add new lessons above this line -->

@@ -1,5 +1,7 @@
 # ⚠️ CRITICAL CHECKLIST - Read Before Git Commit
 
+> **Workflow:** step 10 of 17 → `WORKFLOW.md`.
+
 **Complete this checklist before running `git commit`:**
 
 **Use a task list tool to track each step as you complete it.**
@@ -119,18 +121,12 @@ Pushing directly to `upstream` bypasses code review and branch protection. The o
 
 ---
 
-## Self-Improvement: Lessons Learned
+## Self-Improvement: Lessons
 
-When you discover something important about GIT COMMIT PRACTICES that will likely help in future sessions, add it to this section. Only add insights that are:
-- **Reusable** - will apply to future commit operations, not one-off situations
-- **About git/commits** - commit messages, staging, hooks, amending, linting
-- **Concise** - one line per lesson
+Add concise, actionable one-liners (see `guides/README.md` Capture Rubric). State the
+rule, not the story.
 
-Use the Edit tool to append new entries. Format: `- **Brief title**: One-sentence insight`
-
-### Lessons
-
-- **Don't route around permission/auth restrictions on your own initiative**: Narrow GitHub token scopes, force-push blocks, etc. are deliberate guardrails, not bugs — agents have previously force-pushed to public branches after amending commits, destroying other people's work. If an operation fails due to a permission restriction, report the failure; only switch to a broader-scoped credential or bypass it if the user explicitly authorizes that specific case.
-- **Don't rewrite pushed history on a PR branch to fix or redo prior work — add a normal follow-up commit instead**: this avoids force-push entirely, so there's no need to reset/revert/re-derive remote state first.
+- **Permission denials are guardrails, not bugs**: report the failure; only broaden a credential or bypass if the user authorizes that specific case.
+- **Don't rewrite pushed history on a PR branch**: add a normal follow-up commit instead of amending/force-pushing.
 
 <!-- Add new lessons above this line -->

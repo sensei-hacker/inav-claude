@@ -153,24 +153,18 @@ F411 boards are deprecated (last supported in INAV 7). Focus development on F4 (
 
 ---
 
-## Self-Improvement: Lessons Learned
+## Self-Improvement: Lessons
 
-When you discover something important about CODING STANDARDS that will likely help in future sessions, add it to this section. Only add insights that are:
-- **Reusable** - will apply to future coding tasks, not one-off situations
-- **About code quality** - organization, naming, comments, avoiding over-engineering
-- **Concise** - one line per lesson
+Add concise, actionable one-liners (see `guides/README.md` Capture Rubric). State the
+rule, not the story.
 
-Use the Edit tool to append new entries. Format: `- **Brief title**: One-sentence insight`
-
-### Lessons
-
-- **Docs and comments describe the current state, not its history**: Write what IS true and what a reader needs to do now — never "this was previously missed," "used to be X," or similar discovery-narrative prose. That belongs in the commit message/PR description, which readers can consult if they want history; the doc or comment itself is not a changelog. This applies to all documentation (guides, READMEs, yaml comments), not just code comments.
-- **Lead with what IS true, not what isn't**: Default to stating the actual fact, current behavior, or correct process — not a wrong assumption you had, an alternative you considered and rejected, or something that used to be the case. Only state a negative when it would be genuinely surprising to a reader who doesn't yet know better (e.g. "`master` is not part of the release flow" is worth saying, since a reader would otherwise assume it is; "target selection doesn't happen via a `cmake -D` flag" isn't, since no reader would assume that mechanism exists to begin with). This is the same instinct as the history lesson above — narrating a false lead or rejected option is still narrating your process instead of the reader's answer — and it applies to full sections, not just individual sentences: when a section's own opening emphasizes an exception before the reader has been told the rule, restructure it to lead with the rule.
-- **`str.split("\n")` on a trailing-newline file yields a phantom trailing `""` line**: when doing line-based text processing, drop that empty element (it is the terminator, not a real blank line), or merged/joined output gains spurious blank lines.
-- **A file trivially "overlaps" itself at k = its whole length**: self-overlap / loop detection must require a *proper* overlap (k < total non-empty lines), or every file is reported as a self-match.
-- **Configurator `i18n` attributes replace the element's ENTIRE inner HTML**: `i18n.localize()` in `js/localization.js` does `element.html(translated)`, so putting `i18n` on a wrapper div wipes its nested structure (e.g. the LED strip tab's step-header wrappers holding `circle-number`/`step-instruction` spans, or containers holding a JS-updated counter span like `.placed-count`). Put `i18n` on the text-only leaf span or on the static text node's own span, keeping structure-bearing wrappers and JS-managed counters untouched.
-- **jBox modals don't auto-size to their content**: the `height` passed to `new jBox('Modal', {...})` is fixed, not a max/min — adding an `<img>` (or any content) to a modal that previously only had text produces a scrollbar or clipped content unless you also bump `height` to fit. Check this live (screenshot or hardware) after adding content to any existing modal, not just at first authoring.
-- **Floats must end in `f` to avoid promotion to double**: writing `2.0` instead of `2.0f` silently pulls in double-precision math on embedded targets where that library isn't wanted.
-- **A `SYSTEM` include dir silences `-Werror=switch` too, not just the target warning**: prefer `#pragma GCC diagnostic ignored "-Wxxx"` around the one `#include` (precedent: `src/main/io/adsb.c`).
+- **Docs and comments describe the current state, not its history** — "used to be X" belongs in the commit message, not the doc/code.
+- **Lead with what IS true, not what isn't** — state the actual fact/behavior; reserve negatives for genuinely surprising cases.
+- **`str.split("\n")` on a trailing-newline file yields a phantom trailing `""`** — drop it before joining/merging.
+- **A file "overlaps" itself at k = its full length** — self-overlap/loop detection needs a *proper* overlap (k < total non-empty lines).
+- **Configurator `i18n` replaces the element's entire inner HTML** — put `i18n` on the text leaf span, not structure-bearing wrappers or JS-managed counters.
+- **jBox modals don't auto-size to content** — bump the fixed `height` when adding content, and re-check live.
+- **Floats must end in `f` to avoid promotion to double** — `2.0` pulls in double math on embedded targets.
+- **A `SYSTEM` include dir silences `-Werror=switch` too** — prefer `#pragma GCC diagnostic ignored "-Wxxx"` around the one `#include`.
 
 <!-- Add new lessons above this line -->

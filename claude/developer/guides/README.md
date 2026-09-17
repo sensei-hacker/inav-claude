@@ -6,7 +6,8 @@ These critical checklists provide **just-in-time information** - read them right
 
 | Operation | Read This File | Purpose |
 |-----------|----------------|---------|
-| **Starting any task** | `CRITICAL-BEFORE-CODE.md` | Lock files, branch creation, agent usage |
+| **At the start of any task** | `WORKFLOW.md` | The 17-step sequence (single source) — copy into your task list |
+| **Before modifying code** | `CRITICAL-BEFORE-CODE.md` | Lock files, branch creation, agent usage |
 | **Before `git commit`** | `CRITICAL-BEFORE-COMMIT.md` | Git best practices, commit message rules |
 | **Before creating PR** | `CRITICAL-BEFORE-PR.md` | Testing requirements, PR checklist, bot checks |
 | **Before/during testing** | `CRITICAL-BEFORE-TEST.md` | Test-first approach, testing requirements |
@@ -92,15 +93,6 @@ do nothing further.
 
 ## File Sizes
 
-All checklists are intentionally brief:
-```bash
-$ wc -l CRITICAL-*.md
-  59 CRITICAL-BEFORE-CODE.md
-  66 CRITICAL-BEFORE-COMMIT.md
- 102 CRITICAL-BEFORE-PR.md
-  97 CRITICAL-BEFORE-TEST.md
- 324 total
-```
-
-Each file is focused and readable in under 2 minutes.
-If any file grows beyond ~120 lines, it should be split or streamlined.
+Each checklist should be readable in under 2 minutes (~120 lines max). If one grows beyond
+that, split or streamline it — growth is usually the "Self-Improvement" lesson block at the
+bottom, which should stay concise and actionable, not narrative.
