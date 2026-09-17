@@ -175,7 +175,6 @@ rule, not the story.
 
 - **Fix blockers, don't route around them**: if a build fails on an unrelated error, fix that error rather than simulating the linker.
 - **Check for an existing upstream fix first**: `gh pr list`/web-search before implementing from a plan — cherry-pick a better existing fix rather than re-deriving it.
-- **Fixing on a lower branch? Check the higher branch for the same pattern**: `git show upstream/<higher>:<path>`; flag the backport in the completion report.
 - **Security-critical code: fewer knobs, shorter functions** — don't add a knob/parameter unless something concrete needs it.
 - **"Live in production" ≠ authorize importing as-is**: evaluate every hunk; flag credentials, no-op auth checks, or always-success endpoints for explicit confirmation.
 - **Verify bot review comments by tracing the code, don't dismiss them** — they're often real, non-obvious bugs.

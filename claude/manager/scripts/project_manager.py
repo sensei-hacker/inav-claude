@@ -77,8 +77,11 @@ def parse_index(index_path: Path) -> List[Project]:
     with open(index_path) as f:
         lines = f.readlines()
 
-    emoji_class = ''.join(STATUS_MAP.keys())
-    header_re = re.compile(rf'^### ([{emoji_class}]) (.+)$')
+    # Alternation, not a character class: some status emoji (e.g. ⏸️) are
+    # multiple Unicode codepoints, which a [...] class would split apart and
+    # fail to match as a unit.
+    emoji_alt = '|'.join(re.escape(e) for e in STATUS_MAP.keys())
+    header_re = re.compile(rf'^### ({emoji_alt}) (.+)$')
 
     for i, line in enumerate(lines, 1):
         match = header_re.match(line)
@@ -99,18 +102,23 @@ def parse_index(index_path: Path) -> List[Project]:
                 line_start=i
             )
 
-        # Extract metadata
+        # Extract metadata. Fields are often packed multiple-per-line,
+        # pipe-separated (e.g. "**Status:** ... | **Priority:** MEDIUM | ..."),
+        # so scan the whole line rather than anchoring at line start.
         elif current_project:
-            if m := re.match(r'\*\*Priority:\*\* (.+)', line):
-                current_project.priority = m.group(1).strip()
-            elif m := re.match(r'\*\*Assignee:\*\* (.+)', line):
-                current_project.assignee = m.group(1).strip()
-            elif m := re.match(r'\*\*Created:\*\* (.+)', line):
-                current_project.created = m.group(1).strip()
-            elif m := re.match(r'\*\*Completed:\*\* (.+)', line):
-                current_project.completed = m.group(1).strip()
-            elif m := re.match(r'\*\*Location:\*\* `(.+)`', line):
-                current_project.location = m.group(1).strip()
+            for m in re.finditer(r'\*\*([A-Za-z ]+):\*\*\s*([^|]*)', line):
+                field = m.group(1).strip()
+                value = m.group(2).strip()
+                if field == 'Priority':
+                    current_project.priority = value
+                elif field == 'Assignee':
+                    current_project.assignee = value
+                elif field == 'Created':
+                    current_project.created = value
+                elif field == 'Completed':
+                    current_project.completed = value
+                elif field in ('Directory', 'Location'):
+                    current_project.location = value.strip('`')
 
     # Add last project
     if current_project:
