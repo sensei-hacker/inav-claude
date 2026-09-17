@@ -48,6 +48,7 @@ This check protects against skipping the manager→developer handoff that keeps 
 - **inav/** - Flight controller firmware (C) - You edit this
 - **inav-configurator/** - Desktop GUI (JavaScript/Electron) - You edit this
 - **inavwiki/** - Documentation (Markdown)
+- **iNavFlight.github.io/** - Docusaurus-based documentation site (primary end-user docs) - You edit this
 - **mspapi2/** - Python MSP library (recommended) - You edit this
   - GitHub: https://github.com/xznhj8129/mspapi2
   - Modern, well-structured library with codec, transport, API, and multi-client server

@@ -115,6 +115,33 @@ def check_wiki_for_pr(repo: str, pr_number: int, author: str) -> Tuple[bool, str
     return False, "No wiki commits found"
 
 
+def check_docs_site_for_pr(repo: str, pr_number: int, author: str) -> Tuple[bool, str]:
+    """
+    Check if the Docusaurus docs site has commits related to this PR.
+    Returns (has_docs_commit, reason)
+    """
+    docs_path = "iNavFlight.github.io"
+
+    try:
+        # Check for PR reference
+        cmd = ["git", "log", "--since=14 days ago", "--grep", f"#{pr_number}", "--pretty=format:%s"]
+        result = subprocess.run(cmd, capture_output=True, text=True, cwd=docs_path)
+        if result.stdout.strip():
+            return True, f"Docs-site commit references #{pr_number}"
+
+        # Check for commits by same author
+        cmd = ["git", "log", "--since=14 days ago", "--author", author, "--pretty=format:%s"]
+        result = subprocess.run(cmd, capture_output=True, text=True, cwd=docs_path)
+        if result.stdout.strip():
+            commits = result.stdout.strip().split('\n')
+            return True, f"Docs site has {len(commits)} commit(s) by same author"
+
+    except Exception as e:
+        return False, f"Error checking docs site: {e}"
+
+    return False, "No docs-site commits found"
+
+
 def ask_user_to_tag(repo: str, pr: Dict, wiki_info: str) -> bool:
     """
     Ask user if they want to tag this PR.
@@ -124,7 +151,7 @@ def ask_user_to_tag(repo: str, pr: Dict, wiki_info: str) -> bool:
     print(f"PR #{pr['number']} - {pr['title']}")
     print(f"Author: {pr['author']['login']}")
     print(f"State: {pr['state']}")
-    print(f"Wiki check: {wiki_info}")
+    print(f"Docs check: {wiki_info}")
     print("-" * 70)
 
     # Show some file changes
@@ -220,16 +247,23 @@ def main():
         for pr in prs:
             total_checked += 1
 
-            # Check wiki
+            # Check wiki and docs site
             has_wiki, wiki_info = check_wiki_for_pr(repo, pr['number'], pr['author']['login'])
+            has_docs_site, docs_info = check_docs_site_for_pr(repo, pr['number'], pr['author']['login'])
 
-            if has_wiki:
+            if has_wiki or has_docs_site:
+                reasons = []
+                if has_wiki:
+                    reasons.append(wiki_info)
+                if has_docs_site:
+                    reasons.append(docs_info)
                 print(f"\n✅ PR #{pr['number']} - {pr['title']}")
-                print(f"   {wiki_info} - Skipping")
+                print(f"   {'; '.join(reasons)} - Skipping")
                 continue
 
             # Ask user
-            if ask_user_to_tag(repo, pr, wiki_info):
+            combined_info = f"{wiki_info} | {docs_info}"
+            if ask_user_to_tag(repo, pr, combined_info):
                 if tag_pr(repo, pr['number']):
                     total_tagged += 1
 

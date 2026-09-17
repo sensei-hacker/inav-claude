@@ -19,7 +19,7 @@ Analyzes pull requests from the last week to verify they include appropriate doc
 This skill helps ensure PRs include proper documentation by:
 1. Listing recent PRs (last 7 days) for each repository
 2. Checking if PRs have documentation updates
-3. **Independently checking wiki commits** (may not be mentioned in PR)
+3. **Independently checking wiki + docs-site commits** (may not be mentioned in PR)
 4. Assessing whether documentation is needed
 5. Flagging PRs that may need docs tagged
 
@@ -52,9 +52,12 @@ gh pr list --state all --search "created:>=$(date -d '7 days ago' +%Y-%m-%d)" --
 gh pr list --state all --search "created:>=$(date -d '7 days ago' +%Y-%m-%d)" | wc -l
 ```
 
-### Step 2: Fetch Recent Wiki Commits
+### Step 2: Fetch Recent Wiki + Docs Site Commits
 
-**CRITICAL:** Check wiki commits independently - authors may update the wiki but not mention it in the PR.
+**CRITICAL:** Check wiki **and docs-site** commits independently - authors may update
+the wiki or the Docusaurus docs site (`iNavFlight.github.io/`) without mentioning it
+in the PR. A PR whose docs landed on the docs site instead of the wiki must still count
+as documented.
 
 #### Clone/Update Wiki Repository
 
@@ -69,6 +72,24 @@ fi
 
 cd inav.wiki
 git pull origin master
+
+# Get recent commits (last 7 days)
+git log --since="7 days ago" --pretty=format:"%H|%an|%ae|%ai|%s" --all
+```
+
+#### Docs Site (iNavFlight.github.io)
+
+The Docusaurus docs site is a regular git repo (not a `.wiki` repo), default branch
+`master`. Check it the same way:
+
+```bash
+# Clone if not already present
+if [ ! -d "iNavFlight.github.io" ]; then
+    git clone https://github.com/iNavFlight/iNavFlight.github.io.git
+fi
+
+cd iNavFlight.github.io
+git pull origin master   # or `git pull upstream master` if an upstream remote exists
 
 # Get recent commits (last 7 days)
 git log --since="7 days ago" --pretty=format:"%H|%an|%ae|%ai|%s" --all
@@ -297,13 +318,15 @@ Create a summary report with:
 
 (Similar structure)
 
-### Wiki Commits Summary
+### Docs Commits Summary
 
 **Total wiki commits (last 7 days):** 12
+**Total docs-site commits (last 7 days):** 3
 
 **Commits with PR references:**
 - abc123 - "Updated Navigation.md for #1234" (matched to PR #1234 ✅)
 - def456 - "OSD documentation #1237" (matched to PR #1237 ✅)
+- docs7f1 - "Documented altitude hold #1234" in iNavFlight.github.io (matched to PR #1234 ✅)
 
 **Commits without PR references (by author/time):**
 - ghi789 - "Updated telemetry docs" by user123, 2025-12-22 (matched to PR #1236 by author/time ✅)
@@ -492,16 +515,18 @@ git log --since="7 days ago" \
 
 ## Implementation Notes
 
-### Wiki Repository Locations
+### Docs Repository Locations
 
 ```bash
-# Clone wiki repos if not present
+# Clone wiki + docs-site repos if not present
 git clone https://github.com/iNavFlight/inav.wiki.git
 git clone https://github.com/iNavFlight/inav-configurator.wiki.git
+git clone https://github.com/iNavFlight/iNavFlight.github.io.git
 
 # Standard locations in workspace
 ~/Documents/planes/inavflight/inav.wiki/
 ~/Documents/planes/inavflight/inav-configurator.wiki/
+~/Documents/planes/inavflight/iNavFlight.github.io/
 ```
 
 ### Date Calculation
@@ -625,9 +650,11 @@ Generate a structured report for the user:
 - PRs needing doc review: 4 ⚠️
 - PRs not needing docs: 3 ℹ️
 
-## Wiki Activity Summary
+## Docs Activity Summary
 - Total wiki commits: 12
+- Total docs-site commits: 3
 - Wiki commits with PR refs: 5 (matched to PRs)
+- Docs-site commits with PR refs: 1 (matched to PRs)
 - Wiki commits matched by author/time: 3
 - Unmatched wiki commits: 4 (typo fixes, minor updates)
 

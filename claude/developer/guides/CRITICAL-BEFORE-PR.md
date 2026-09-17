@@ -89,7 +89,13 @@ Prompt: "Review changes in [files] - [brief description]"
 
 2. **Add documentation to the codebase:**
    - Technical docs → `inav/docs/` (committed with PR)
-   - End-user guides → `inavwiki/` (separate PR to wiki repo if needed)
+   - End-user docs → `iNavFlight.github.io/` (the Docusaurus docs site; separate PR to the docs-site repo if needed)
+   - End-user quick reference → `inavwiki/` (separate PR to wiki repo if needed)
+
+   **Docs site vs. wiki policy:** `iNavFlight.github.io/` is the primary source of
+   truth for substantive/new documentation. `inavwiki/` pages link to it rather than
+   duplicating procedure text — except wiki-only content with no docs-site equivalent
+   (quick-reference pages, community-maintained content).
 
 3. **Mention in PR description:**
    - List which documentation files were added/updated

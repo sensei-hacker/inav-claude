@@ -94,7 +94,8 @@ fallback if the script can't be used.
 
 3. **This draft will be updated later:**
    - After implementation, update the draft to match actual behavior
-   - Then add to `inav/docs/` and/or `inavwiki/` before PR
+   - Then add to `inav/docs/` (technical) and/or `iNavFlight.github.io/` (end-user) before PR
+   - Docs site vs. wiki: `iNavFlight.github.io/` is primary for substantive/new docs; `inavwiki/` links to it rather than duplicating procedure text (see CRITICAL-BEFORE-PR.md)
 
 ## 4. Check for Specialized Agents
 

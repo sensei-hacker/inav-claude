@@ -31,18 +31,24 @@ get_date_ago() {
 # Calculate search date
 SEARCH_DATE=$(get_date_ago $DAYS_BACK)
 
-# Step 1: Update wiki repositories
-echo "=== Step 1: Updating Wiki Repositories ==="
+# Step 1: Update wiki repositories + docs site
+echo "=== Step 1: Updating Wiki Repositories + Docs Site ==="
 cd "$WORKSPACE_ROOT"
 
 for wiki_info in "inav.wiki:https://github.com/iNavFlight/inav.wiki.git" \
-                 "inav-configurator.wiki:https://github.com/iNavFlight/inav-configurator.wiki.git"; do
+                 "inav-configurator.wiki:https://github.com/iNavFlight/inav-configurator.wiki.git" \
+                 "iNavFlight.github.io:https://github.com/iNavFlight/iNavFlight.github.io.git"; do
     IFS=':' read -r wiki_dir wiki_url <<< "$wiki_info"
 
     if [ -d "$wiki_dir" ]; then
         echo "Updating $wiki_dir..."
         cd "$wiki_dir"
-        git pull origin master 2>&1 | head -5
+        # Prefer upstream when present (the docs site is often cloned from a fork)
+        if git remote | grep -q '^upstream$'; then
+            git pull upstream master 2>&1 | head -5
+        else
+            git pull origin master 2>&1 | head -5
+        fi
         cd "$WORKSPACE_ROOT"
     else
         echo "Cloning $wiki_dir..."
@@ -51,8 +57,8 @@ for wiki_info in "inav.wiki:https://github.com/iNavFlight/inav.wiki.git" \
 done
 echo ""
 
-# Step 2: Extract recent wiki commits
-echo "=== Step 2: Extracting Recent Wiki Commits ==="
+# Step 2: Extract recent wiki + docs-site commits
+echo "=== Step 2: Extracting Recent Wiki + Docs Site Commits ==="
 
 cd "$WORKSPACE_ROOT/inav.wiki"
 echo "## inav.wiki commits (last $DAYS_BACK days):"
@@ -72,6 +78,16 @@ git log --since="$DAYS_BACK days ago" \
 cat /tmp/configurator_wiki_commits.txt | head -20
 conf_wiki_count=$(wc -l < /tmp/configurator_wiki_commits.txt)
 echo "Total: $conf_wiki_count commits"
+echo ""
+
+cd "$WORKSPACE_ROOT/iNavFlight.github.io"
+echo "## iNavFlight.github.io commits (last $DAYS_BACK days):"
+git log --since="$DAYS_BACK days ago" \
+    --pretty=format:"%H|%an|%ae|%ai|%s" \
+    --all > /tmp/docs_site_commits.txt
+cat /tmp/docs_site_commits.txt | head -20
+docs_site_count=$(wc -l < /tmp/docs_site_commits.txt)
+echo "Total: $docs_site_count commits"
 echo ""
 
 # Step 3: Check PRs in each repository
@@ -170,6 +186,17 @@ for repo_info in "inav:/tmp/inav_wiki_commits.txt" \
             doc_reasons="${doc_reasons}wiki PR ref; "
         fi
 
+        # Check 3b: Docs-site commits directly reference this PR
+        docs_pr_refs=$(grep "#$pr\b" /tmp/docs_site_commits.txt 2>/dev/null || true)
+        if [ -n "$docs_pr_refs" ]; then
+            echo "✅ Docs-site commit directly references PR #$pr:"
+            echo "$docs_pr_refs" | while IFS='|' read -r hash author_name email date msg; do
+                echo "  - [$hash] $date - $msg"
+            done
+            has_docs=true
+            doc_reasons="${doc_reasons}docs-site PR ref; "
+        fi
+
         # Check 4: Wiki commits by same author in time window (if merged)
         if [ "$state" = "MERGED" ] && [ "$merged" != "null" ]; then
             # Extract just the date from ISO 8601 timestamp
@@ -186,6 +213,19 @@ for repo_info in "inav:/tmp/inav_wiki_commits.txt" \
                 done
                 has_docs=true
                 doc_reasons="${doc_reasons}wiki author match; "
+            fi
+
+            # Check 4b: Docs-site commits by same author in time window
+            author_docs_commits=$(grep -i "$author" /tmp/docs_site_commits.txt 2>/dev/null || true)
+
+            if [ -n "$author_docs_commits" ]; then
+                echo "✅ Docs-site commits by same author found (check time proximity):"
+                echo "$author_docs_commits" | while IFS='|' read -r hash author_name email date msg; do
+                    commit_date=$(echo "$date" | cut -d' ' -f1)
+                    echo "  - [$hash] $commit_date - $msg"
+                done
+                has_docs=true
+                doc_reasons="${doc_reasons}docs-site author match; "
             fi
         fi
 
@@ -270,9 +310,10 @@ if [ ${#prs_no_docs[@]} -gt 0 ]; then
     echo ""
 fi
 
-echo "=== Wiki Activity ==="
+echo "=== Docs Activity ==="
 echo "  inav.wiki: $wiki_count commits"
 echo "  inav-configurator.wiki: $conf_wiki_count commits"
+echo "  iNavFlight.github.io: $docs_site_count commits"
 echo ""
 
 if [ $prs_need_review -gt 0 ]; then

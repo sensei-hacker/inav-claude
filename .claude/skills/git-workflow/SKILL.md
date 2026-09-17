@@ -115,12 +115,27 @@ operation — everything else follows the recognize-and-ask steps above.
 
 ## Repository Structure
 
-The INAV project consists of **three standalone repositories**:
+The INAV project consists of **four standalone repositories**:
 - `inav/` - Flight controller firmware (C/C99)
 - `inav-configurator/` - Desktop GUI (JavaScript/Electron)
-- `inavwiki/` - Documentation (Markdown)
+- `inavwiki/` - Documentation wiki (Markdown)
+- `iNavFlight.github.io/` - Docusaurus documentation site (primary end-user docs)
 
 Each repository has its own git history and must be managed independently.
+
+### Docs Site Versioning (`iNavFlight.github.io/`)
+
+The docs site (Docusaurus) versions its content by release. Discoverable
+pointers so future projects don't rediscover it:
+
+- **Current (unreleased) docs** → `iNavFlight.github.io/docs/`
+- **Per-release snapshots** → `iNavFlight.github.io/versioned_docs/version-X.Y.Z/` (one dir per released INAV version)
+- **Per-release sidebars** → `iNavFlight.github.io/versioned_sidebars/`
+- **Version list** → `iNavFlight.github.io/versions.json` (newest first)
+
+Adding a new release = snapshot `docs/` into `versioned_docs/version-X.Y.Z/` +
+`versioned_sidebars/`, then add the version to `versions.json`. See the
+`markdown2mdx-complete-pipeline` project for the conversion/versioning tooling.
 
 ## Creating Branches
 
@@ -155,8 +170,9 @@ remote, prints its reasoning, and creates the branch. Use `--dry-run` to preview
 | inav-configurator | `upstream` | bugfix | `maintenance-9.x` | **NOT** affected by the inav override — configurator's `maintenance-9.x` is fine |
 | inav-configurator | `upstream` | feature | `maintenance-9.x` | Not affected by the inav override |
 | inav-configurator | `upstream` | breaking | `maintenance-10.x` | MSP protocol / settings structure changes |
+| iNavFlight.github.io | `upstream` | any | `master` | No maintenance branches — single default branch, feature-branch PRs |
 
-**NEVER target PRs to master** - it receives merges only (maintenance-9.x → master → maintenance-10.x).
+**NEVER target PRs to master** - it receives merges only (maintenance-9.x → master → maintenance-10.x). This does not apply to `iNavFlight.github.io`, whose default branch *is* `master`.
 
 ### Manual fallback (only if the script can't be used)
 
@@ -358,13 +374,13 @@ git log --oneline --graph --all --decorate -10
 
 ## Working with Multiple Repositories
 
-Since `inav/`, `inav-configurator/`, and `inavwiki/` are standalone repos:
+Since `inav/`, `inav-configurator/`, `inavwiki/`, and `iNavFlight.github.io/` are standalone repos:
 
 ### Check Status Across All Repos
 
 ```bash
 # From project root
-for repo in inav inav-configurator inavwiki; do
+for repo in inav inav-configurator inavwiki iNavFlight.github.io; do
   if [ -d "$repo" ]; then
     echo "=== $repo ==="
     cd $repo
@@ -378,13 +394,14 @@ done
 ### Create Matching Branches
 
 If working on a feature that spans multiple repos, create each from its own correct
-base — see the decision table above (inavwiki has no base-branch table; branch it from
-its default branch):
+base — see the decision table above (inavwiki and `iNavFlight.github.io/` have no
+maintenance branches; branch them from their default branch):
 
 ```bash
 claude/developer/scripts/git/new-branch.sh inav <bugfix|feature|breaking> my-feature
 claude/developer/scripts/git/new-branch.sh inav-configurator <bugfix|feature|breaking> my-feature
 cd inavwiki && git checkout -b my-feature && git push -u origin my-feature
+cd iNavFlight.github.io && git checkout -b my-feature && git push -u origin my-feature
 ```
 
 ### Updating the Harness Repo Itself

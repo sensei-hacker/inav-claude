@@ -7,8 +7,9 @@ This skill checks pull requests for documentation compliance. It verifies that P
 ## Key Features
 
 - ✅ Checks PRs from the last 7 days (configurable)
-- ✅ Independently verifies wiki commits (doesn't rely on PR mentions)
+- ✅ Independently verifies wiki **and docs-site** commits (doesn't rely on PR mentions)
 - ✅ Matches wiki commits by PR reference, author, and time
+- ✅ Matches `iNavFlight.github.io` (Docusaurus docs site) commits the same way
 - ✅ Assesses whether documentation is needed based on file changes
 - ✅ Interactive tagging of PRs needing documentation
 - ✅ Supports both inav and inav-configurator repositories
@@ -107,6 +108,12 @@ The skill looks for documentation in multiple ways:
 - Wiki commits mentioning similar keywords
 - **LOW CONFIDENCE** - Needs manual review
 
+#### 6. Docs-Site Commits (iNavFlight.github.io)
+
+The Docusaurus docs site is checked with the same logic as the wikis (PR-reference
+match and author/time match). A PR whose documentation landed on the docs site instead
+of the wiki is treated as documented, not flagged as missing docs.
+
 ### Assessment Logic
 
 #### Likely Needs Documentation:
@@ -144,6 +151,7 @@ inavflight/
 ├── inav-configurator/       # Configurator repo
 ├── inav.wiki/              # Wiki (cloned automatically)
 ├── inav-configurator.wiki/ # Wiki (cloned automatically)
+├── iNavFlight.github.io/   # Docs site (cloned automatically)
 └── .claude/
     └── skills/
         └── check-pr-docs/
@@ -269,14 +277,15 @@ def tag_pr(repo: str, pr_number: int, label: str = "needs-documentation"):
 
 ## Troubleshooting
 
-### Wiki repositories not found
+### Wiki/docs-site repositories not found
 
-If wiki repos don't exist, they'll be cloned automatically. To manually clone:
+If wiki or docs-site repos don't exist, they'll be cloned automatically. To manually clone:
 
 ```bash
 cd ~/Documents/planes/inavflight
 git clone https://github.com/iNavFlight/inav.wiki.git
 git clone https://github.com/iNavFlight/inav-configurator.wiki.git
+git clone https://github.com/iNavFlight/iNavFlight.github.io.git
 ```
 
 ### Date command errors
