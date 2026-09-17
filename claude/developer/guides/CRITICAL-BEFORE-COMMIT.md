@@ -37,6 +37,7 @@ GIT_EDITOR="gedit" git commit --edit -m "Your commit message"
 - Be specific: "Fix blackbox corruption when no motors defined in mixer"
 - Keep it concise (1-2 sentences)
 - Follow repository's existing commit style (check `git log`)
+- When a change spans repos, reference the matching PR on the other repo in the commit message (subject or body), repo-qualified (`iNavFlight/inav#1234`) or by full URL — not a bare `#N`
 
 ### 4. Use HEREDOC for Multi-line Messages
 

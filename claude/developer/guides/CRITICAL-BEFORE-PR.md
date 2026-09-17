@@ -99,6 +99,7 @@ Prompt: "Review changes in [files] - [brief description]"
 
 3. **Mention in PR description:**
    - List which documentation files were added/updated
+   - Cross-reference the matching docs PR, repo-qualified (e.g. `iNavFlight/iNavFlight.github.io#12`) or by full URL
    - Or note "Documentation not needed (bug fix/target/refactor)"
 
 ---
@@ -165,6 +166,7 @@ IMPORTANT **Never open a pull request to the master branch**
 - Testing performed (be specific - what did you test and what were the results)
 - Code review performed (mention using inav-code-review agent)
 - Related issue number (if applicable)
+- **Matching PR on the other repo** (when a change spans repos — e.g. firmware ↔ configurator, or code ↔ docs site/wiki): repo-qualified reference like `iNavFlight/inav#1234` or a full PR URL. Never a bare `#N` — that's ambiguous across repos and invisible to the check-pr-docs cross-repo matcher.
 
 **Do NOT mention:**
 - Claude or AI assistance

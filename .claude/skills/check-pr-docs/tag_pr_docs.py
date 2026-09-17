@@ -96,8 +96,8 @@ def check_wiki_for_pr(repo: str, pr_number: int, author: str) -> Tuple[bool, str
     wiki_path = f"inav.wiki" if repo == "inav" else "inav-configurator.wiki"
 
     try:
-        # Check for PR reference
-        cmd = ["git", "log", "--since=14 days ago", "--grep", f"#{pr_number}", "--pretty=format:%s"]
+        # Check for PR reference — full message, any form (bare #N, repo-qualified, or /pull/N URL)
+        cmd = ["git", "log", "--since=14 days ago", "--grep", f"#{pr_number}", "--grep", f"/pull/{pr_number}", "--pretty=format:%s"]
         result = subprocess.run(cmd, capture_output=True, text=True, cwd=wiki_path)
         if result.stdout.strip():
             return True, f"Wiki commit references #{pr_number}"
@@ -123,8 +123,8 @@ def check_docs_site_for_pr(repo: str, pr_number: int, author: str) -> Tuple[bool
     docs_path = "iNavFlight.github.io"
 
     try:
-        # Check for PR reference
-        cmd = ["git", "log", "--since=14 days ago", "--grep", f"#{pr_number}", "--pretty=format:%s"]
+        # Check for PR reference — full message, any form (bare #N, repo-qualified, or /pull/N URL)
+        cmd = ["git", "log", "--since=14 days ago", "--grep", f"#{pr_number}", "--grep", f"/pull/{pr_number}", "--pretty=format:%s"]
         result = subprocess.run(cmd, capture_output=True, text=True, cwd=docs_path)
         if result.stdout.strip():
             return True, f"Docs-site commit references #{pr_number}"

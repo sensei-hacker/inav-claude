@@ -175,8 +175,10 @@ for repo_info in "inav:/tmp/inav_wiki_commits.txt" \
             doc_reasons="${doc_reasons}PR description; "
         fi
 
-        # Check 3: Wiki commits directly reference this PR
-        wiki_pr_refs=$(grep "#$pr\b" "$wiki_commits" 2>/dev/null || true)
+        # Check 3: Wiki commits directly reference this PR. Search the FULL commit
+        # message (subject + body) for any reference form: bare #N, repo-qualified
+        # inav#N / iNavFlight/inav#N, or a full /pull/N URL.
+        wiki_pr_refs=$(cd "$WORKSPACE_ROOT/$repo.wiki" && git log --all --since="$DAYS_BACK days ago" --grep "#$pr" --grep "/pull/$pr" --pretty=format:"%H|%an|%ae|%ai|%s" 2>/dev/null || true)
         if [ -n "$wiki_pr_refs" ]; then
             echo "✅ Wiki commit directly references PR #$pr:"
             echo "$wiki_pr_refs" | while IFS='|' read -r hash author_name email date msg; do
@@ -186,8 +188,8 @@ for repo_info in "inav:/tmp/inav_wiki_commits.txt" \
             doc_reasons="${doc_reasons}wiki PR ref; "
         fi
 
-        # Check 3b: Docs-site commits directly reference this PR
-        docs_pr_refs=$(grep "#$pr\b" /tmp/docs_site_commits.txt 2>/dev/null || true)
+        # Check 3b: Docs-site commits directly reference this PR (full message)
+        docs_pr_refs=$(cd "$WORKSPACE_ROOT/iNavFlight.github.io" && git log --all --since="$DAYS_BACK days ago" --grep "#$pr" --grep "/pull/$pr" --pretty=format:"%H|%an|%ae|%ai|%s" 2>/dev/null || true)
         if [ -n "$docs_pr_refs" ]; then
             echo "✅ Docs-site commit directly references PR #$pr:"
             echo "$docs_pr_refs" | while IFS='|' read -r hash author_name email date msg; do

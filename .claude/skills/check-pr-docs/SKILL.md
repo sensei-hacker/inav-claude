@@ -470,16 +470,24 @@ done
 echo "=== Check Complete ==="
 ```
 
-## Wiki Commit Matching Logic
+## Commit Matching Logic
 
 ### Priority 1: Direct PR Reference
 
 ```bash
-# Wiki commit message contains "#1234"
-grep "#$PR_NUM" /tmp/wiki_commits.txt
+# Commit message (subject OR body) references the PR — any of these forms:
+#   bare #1234 | repo-qualified inav#1234 | iNavFlight/inav#1234 | /pull/1234 URL
+git log --grep "#$PR_NUM" --grep "/pull/$PR_NUM"
 ```
 
 **Confidence:** HIGH - Explicit link
+
+**Reference convention:** when a change spans repos, reference the matching PR on
+the other repo repo-qualified (`iNavFlight/inav#1234`,
+`iNavFlight/inav-configurator#1234`, `iNavFlight/iNavFlight.github.io#12`) or by
+full URL. The matcher checks the full commit message (subject + body), so the
+reference may live in the body. A bare `#N` is ambiguous across repos — don't rely
+on it for cross-repo references.
 
 ### Priority 2: Author + Time Window
 
