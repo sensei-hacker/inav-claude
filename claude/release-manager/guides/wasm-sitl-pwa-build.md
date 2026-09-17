@@ -1,10 +1,10 @@
-# WASM SITL + Browser/PWA Build (Not Yet in Standard Release Flow)
+# WASM SITL + Browser/PWA Build
 
 **Read this guide when:** You need to build/package the browser-based PWA Configurator build, which bundles an in-browser WASM build of SITL. This is separate from and in addition to the native per-platform SITL binaries copied into `inav-configurator/resources/public/sitl/{linux,macos,windows}/` for desktop packaging — that existing step is unaffected.
 
-**Status as of 2026-09-01:** Feature not yet merged. Firmware: `inav` branch `feature/wasm-sitl-firmware` (not in master/maintenance-10.x). Configurator: PR #2729, branch `merge-2693-2722-best-of`. Verify current branch/merge status before using this guide.
+**Status as of 2026-09-16:** Configurator side **MERGED** into `maintenance-10.x` (PR #2729) — `js/web/SITL-Webassembly.js`, `js/web/WASM/`, `manifest.json`, and `vite.web.config.js` (with `web:build` / `web:dev` / `web:preview` scripts) are all present on `maintenance-10.x`. Firmware WASM toolchain (`cmake/wasm.cmake`) is still only on `inav` branch `feature/wasm-sitl-firmware` (also `feature/wasm-sitl-squashed`), **not yet** in `maintenance-10.x`. Verify current branch/merge status before using this guide.
 
-**Open blocker:** GitHub Pages COOP/COEP hosting gap — see Manager task `claude/manager/email/inbox/2026-08-31-2339-task-request-github-pages-coop-coep-wasm-sitl.md`. Don't assume this is resolved; check status first.
+**Hosting caveat (still open):** the prebuilt WASM binary checked into the repo was built **with pthreads** and needs COOP/COEP headers that GitHub Pages cannot set (see §3). A fresh no-pthread build from `feature/wasm-sitl-firmware` may not need them — verify before trusting either path. See Manager task `claude/manager/email/inbox/2026-08-31-2339-task-request-github-pages-coop-coep-wasm-sitl.md`.
 
 ---
 

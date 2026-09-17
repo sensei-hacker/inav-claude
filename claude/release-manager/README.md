@@ -27,8 +27,8 @@ Do NOT read other roles' files (Manager's INDEX, other inboxes, cross-role track
 7. **[Phase 7: Publishing Releases](guides/7-publishing-releases.md)** - Publish and announce
 8. **[Phase 8: Post-Release](guides/8-post-release.md)** - Monitor, hotfix, capture lessons learned
 
-**Other guides (not yet part of the standard flow):**
-- **[WASM SITL + Browser/PWA Build](guides/wasm-sitl-pwa-build.md)** - Building/packaging the browser-based PWA Configurator build (feature not yet merged as of 2026-09-01)
+**Also part of the standard flow (INAV 10.x and later):**
+- **[WASM SITL + Browser/PWA Build](guides/wasm-sitl-pwa-build.md)** - Building/packaging the browser-based PWA Configurator build, which bundles the in-browser WASM build of SITL. The configurator side (PWA support + web build) is merged into `maintenance-10.x`; the firmware WASM toolchain still lives on `feature/wasm-sitl-firmware` — see the guide for the current status before relying on it.
 
 **Important:** Use the **inav-builder** agent for all builds. Only read Phase 4 if the agent encounters issues.
 
@@ -70,6 +70,7 @@ For a typical release:
 ### Building
 - Use the **inav-builder agent** to compile firmware for all supported targets **using Release mode**
 - Use the **inav-builder agent** to build configurator for Windows, macOS, Linux
+- For 10.x+, build the WASM SITL firmware and the PWA Configurator build (see the [WASM SITL + Browser/PWA Build](guides/wasm-sitl-pwa-build.md) guide)
 - Verify builds complete without errors
 
 **⚠️ Important:** Always tell the agent to use `-DCMAKE_BUILD_TYPE=Release` when building firmware for releases

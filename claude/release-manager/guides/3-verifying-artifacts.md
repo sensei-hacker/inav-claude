@@ -65,6 +65,27 @@ hdiutil detach /Volumes/INAV-Configurator -quiet
 - Architecture matches DMG name (arm64 or x86_64)
 - Executable is valid Mach-O format
 
+### Verifying the macOS Code Signature
+
+The release-ready macOS build is **code-signed + notarized** by `release.yml`; the nightly build signs+notarizes only when the full secret set is present (and is used as the pre-tag dry-run — see Phase 6). After downloading the release macOS artifact, confirm the signature is present and valid **before** uploading, and then leave the file untouched:
+
+```bash
+# Verify the signature on the app bundle (macOS only)
+codesign --verify --deep --strict --verbose=2 "/path/to/INAV Configurator.app"
+
+# Gatekeeper assessment (macOS only)
+spctl --assess --type execute --verbose=4 "/path/to/INAV Configurator.app"
+
+# Confirm the notarization ticket is stapled (macOS only)
+xcrun stapler validate "/path/to/INAV Configurator.app"
+```
+
+- ✅ `codesign --verify` exits 0 and reports `valid on disk`
+- ✅ `spctl --assess` accepts the app (no "damaged / unidentified developer" error)
+- ✅ `xcrun stapler validate` confirms the notarization ticket is stapled
+
+**Do not modify the `.app` or DMG after this check.** Re-zipping, re-bundling, or editing invalidates the signature. If a fix is needed, re-run the release CI — see Phase 1's [macOS Signing Sequencing](1-workflow-and-preparation.md#️-macos-signing-sequencing-critical).
+
 ---
 
 ## Verifying Windows SITL Files (cygwin1.dll)
@@ -151,6 +172,18 @@ objdump -T downloads/sitl-9.0.0-RC3/resources/sitl/linux/inav_SITL | grep GLIBC 
 ### If glibc Version is Too High
 
 Build Linux x64 SITL locally on Ubuntu 22.04 LTS (see [Phase 4: Building Locally](4-building-locally.md)).
+
+---
+
+## Verifying the WASM SITL + PWA (10.x+)
+
+The PWA build bundles an in-browser WASM build of SITL and is published alongside the desktop packages.
+
+1. Confirm the WASM artifacts are present and versioned for this release:
+   - `inav-configurator/js/web/WASM/inav_<firmware-version>_WASM.js` and `.wasm` exist and match the firmware being released
+   - `js/web/SITL-Webassembly.js` imports that exact filename (no stale version string — see the WASM guide's "version-bump trap")
+2. Build and smoke-test the PWA locally (`yarn web:build` → `yarn web:preview`), then open it in a real browser (not Electron): SITL tab → start WASM SITL → connect via the port picker's "SITL" entry. See the [WASM SITL + Browser/PWA Build](wasm-sitl-pwa-build.md) guide §4 for the full procedure and service-worker gotchas.
+3. Verify the packaged PWA output (`dist-web/`) is the one uploaded — do not rebuild or edit it after the fact.
 
 ---
 
@@ -244,6 +277,7 @@ Use this checklist before proceeding to Phase 6 (Creating Releases):
 - [ ] DMG contents verified (no .exe/.dll/.msi files)
 - [ ] Architecture verified (arm64 vs x86_64 matches filename)
 - [ ] Executable is valid Mach-O format
+- [ ] Code signature verified (`codesign --verify` / `spctl --assess`) and artifact left unmodified
 
 ### Windows Verification
 - [ ] cygwin1.dll present in resources/sitl/windows/
@@ -252,6 +286,11 @@ Use this checklist before proceeding to Phase 6 (Creating Releases):
 
 ### Linux Verification
 - [ ] SITL glibc version ≤ 2.35 (verified with objdump)
+
+### PWA / WASM SITL (10.x+)
+- [ ] WASM artifacts in `js/web/WASM/` match the firmware version being released
+- [ ] `js/web/SITL-Webassembly.js` imports the correct (non-stale) filename
+- [ ] PWA built (`yarn web:build`) and smoke-tested in a real browser
 
 ### SITL Testing
 - [ ] Configurator launches successfully

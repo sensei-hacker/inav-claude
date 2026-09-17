@@ -191,6 +191,8 @@ gh pr create --title "Update SITL binaries for 9.0.0-RC3" \
 
 **After the SITL PR is merged**, the configurator CI will build packages with the updated SITL binaries. Download those artifacts for the release (see Phase 2).
 
+⚠️ **macOS signing:** the release-ready macOS build is code-signed + notarized by `release.yml`, which triggers on a **tag push**. Push the tag only **after** the SITL (and WASM SITL) is merged, and never modify the signed artifacts afterward. See Phase 1's [macOS Signing Sequencing](1-workflow-and-preparation.md#️-macos-signing-sequencing-critical).
+
 ### Important Notes
 
 - The `cygwin1.dll` in the Windows folder is a runtime dependency; only update if the build toolchain changes
@@ -200,6 +202,23 @@ gh pr create --title "Update SITL binaries for 9.0.0-RC3" \
 - Ensure the SITL version matches the firmware version being released
 - Test the SITL binaries work before committing (run configurator and try SITL mode)
 - The SITL PR triggers CI builds - use those artifacts for the configurator release
+
+---
+
+## Building the WASM SITL + PWA (10.x+)
+
+The browser-based PWA Configurator build bundles an in-browser WASM build of SITL. This is **in addition to** the native per-platform SITL binaries above, not a replacement.
+
+Follow the [WASM SITL + Browser/PWA Build](wasm-sitl-pwa-build.md) guide for the exact commands. In brief:
+
+1. Build the WASM SITL firmware from `feature/wasm-sitl-firmware` (`cmake .. -DTOOLCHAIN=wasm; make SITL`).
+2. **Rename** the output (`inav_<ver>_SITL.js`/`.wasm`) to `inav_<ver>_WASM.js`/`.wasm`, copy into `inav-configurator/js/web/WASM/`, and update the hardcoded import in `js/web/SITL-Webassembly.js` for the new firmware version.
+3. Commit these alongside the native SITL binaries in the same version-bump PR (Phase 1 step 4) so both are in place before CI.
+4. Build the PWA: `yarn web:build` → `dist-web/`.
+
+⚠️ **Same sequencing rule as macOS signing:** the WASM SITL must be in the repo **before** any release CI run that packages or signs the configurator. Do not rebuild or modify the packaged output after the fact.
+
+**Note:** the WASM guide's §3 (pthreads vs. no-pthread, COOP/COEP hosting) is still open — verify before treating the prebuilt binary as production-ready.
 
 ---
 

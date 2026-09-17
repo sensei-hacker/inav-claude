@@ -54,6 +54,59 @@ git tag --sort=-v:refname | head -10
 
 ⚠️ **"Atomically" only applies once published.** For a `--draft` release, GitHub does **not** push an actual Git tag ref into the repository yet — the draft just stores the target commitish and the intended tag name internally. `git ls-remote --tags` (or any clone) won't see the tag until the release is published. Don't be surprised that the tag "doesn't exist" while a draft is pending review — that's expected, not a bug.
 
+## ⚠️ Configurator: Signed macOS Requires a Real Tag Push (verify via nightly first)
+
+The signed + notarized macOS build is produced **only** by `.github/workflows/release.yml`, which triggers on a **tag push** matching `v*.*.*` or `*.*.*` (e.g. `9.1.3` or `v9.1.3`; RC tags like `9.1.3-rc1` also match). It calls `ci.yml` with `require_signing: true` — if the signing/notarization secrets are incomplete, the job **fails**.
+
+This means the "draft with `--target`, no real tag until publish" pattern **cannot** produce signed macOS artifacts (a `--draft` release never creates a real tag, so `release.yml` never runs). A pushed tag is effectively immutable, so **don't tag blind** — dry-run the signing via the nightly first (it uses `secrets: inherit` and signs+notarizes whenever the full secret set is present):
+
+1. Merge the version bump + SITL (and WASM SITL) PR — see Phase 1 step 4. This push to the maintenance branch triggers the nightly build automatically.
+2. **Dry-run the signing via the nightly (no tag):** download the macOS artifact from that nightly release and check it:
+   ```bash
+   codesign --verify --deep --strict --verbose=2 "/path/to/INAV Configurator.app"
+   xcrun stapler validate "/path/to/INAV Configurator.app"
+   ```
+   - **Both pass →** all six secrets + the cert/notarization pipeline are proven; proceed to tag.
+   - **`codesign` fails →** signing secrets missing (`MACOS_CERT_P12`/`MACOS_CERT_PASSWORD`/`MACOS_SIGN_IDENTITY`).
+   - **`codesign` passes but `stapler` fails →** notarization secrets missing (`APPLE_API_KEY_P8`/`APPLE_API_KEY_ID`/`APPLE_API_ISSUER`).
+
+   Fix missing secrets (org/repo admin) **before** tagging — `release.yml` would have failed anyway.
+3. **Push a real tag** to trigger `release.yml`:
+   ```bash
+   cd inav-configurator
+   git fetch upstream --tags
+   git tag 9.1.3            # or v9.1.3 — both patterns trigger release.yml
+   git push upstream 9.1.3  # must land on iNavFlight/inav-configurator to trigger the official build
+   ```
+4. Wait for the `release.yml` run to finish (it builds every platform and **requires** signed + notarized macOS).
+5. Download those artifacts — the signed macOS ones come from **this** run, not PR CI or nightly.
+6. Create the GitHub Release referencing the now-existing tag.
+
+**Firmware is unaffected** — hex files aren't signed, so it still uses `gh release create --draft --target <sha>`. Only the configurator is tag-first, and the nightly dry-run above is the pre-tag check that keeps that from being a blind-tag.
+
+The authoritative write-up lives in `inav-configurator/CLAUDE.md` ("macOS Code Signing & Notarization" / "Cutting an official release"). Keep this guide in sync with it.
+
+### Fallbacks if the nightly dry-run doesn't fire
+
+If the nightly build doesn't trigger (e.g. the release branch isn't `maintenance-*`, or nightly is broken), use one of these instead of tagging blind:
+
+**Preferred — `workflow_dispatch` (no tag, no cleanup).** Add `workflow_dispatch:` to `release.yml`'s `on:` block (a configurator source change — coordinate with Developer). Then trigger the exact `require_signing: true` build on any commit without a tag:
+```bash
+gh workflow run release.yml --repo iNavFlight/inav-configurator --ref <commit-sha>
+```
+This is the cleanest dry-run: the same fail-closed signing path as a real tag, with zero tags burned.
+
+**Last resort — throwaway test tag.** Push a clearly-named test tag (it matches `*.*.*`, so it triggers `release.yml`), verify, then delete it:
+```bash
+cd inav-configurator
+git fetch upstream --tags
+git tag 10.0.0-sign-test
+git push upstream 10.0.0-sign-test
+# ... wait for release.yml, download + verify the signed macOS artifact ...
+git push upstream --delete 10.0.0-sign-test   # clean up the test tag
+```
+Then push the real tag once it's confirmed good — `10.0.0-RC1` (uppercase `RC` + hyphen), **not** `10.0.0RC1`. The test tag points at the same commit, so its artifacts are the same files the real tag would produce (filenames come from `package.json` + the commit, not the tag name) — you can reuse them, but the real tag still has to exist. A `-sign-test` tag does **not** auto-create a GitHub Release.
+
 ### Choosing the Target Commit When the Branch Has Advanced
 
 If new commits landed on the release branch after the CI artifacts were built, check whether those commits affect compiled firmware:
@@ -131,6 +184,19 @@ gh release upload 9.1.1-rc1 linux/* --repo iNavFlight/inav-configurator
 gh release upload 9.1.1-rc1 macos/* --repo iNavFlight/inav-configurator
 gh release upload 9.1.1-rc1 windows/* --repo iNavFlight/inav-configurator
 ```
+
+### Upload the PWA Build (10.x+)
+
+The browser-based PWA build is an additional configurator asset, built from `inav-configurator/dist-web/` (via `yarn web:build`). Upload it alongside the desktop packages:
+
+```bash
+cd claude/release-manager/downloads/configurator-9.1.1-rc1
+gh release upload 9.1.1-rc1 <pwa-artifact> --repo iNavFlight/inav-configurator
+```
+
+⚠️ **Confirm the packaging format first.** As of 2026-09-16 there is no standardized zip/archive step for `dist-web/` (see the [WASM SITL + Browser/PWA Build](wasm-sitl-pwa-build.md) guide). Agree on the artifact name/format with maintainers before the release rather than inventing one on the fly.
+
+⚠️ **The PWA must be built from the same release commit as the desktop artifacts** and must include the WASM SITL that was in place before CI ran. It is a separate asset — do not rebuild or modify the already-signed desktop artifacts to "add" the PWA.
 
 ### Upload Firmware Hex Files
 
@@ -237,9 +303,9 @@ gh release edit 9.1.1-rc1 --repo iNavFlight/inav \
 
 ---
 
-## Alternative: Traditional Git Tagging (Less Common)
+## Alternative: Traditional Git Tagging (Required for Configurator Signed Builds)
 
-If you can't use `gh release create` for some reason, you can create tags locally:
+For firmware you can still use `gh release create`. For the **configurator**, a real `git tag` + `git push` is now **required** to trigger the signed macOS build (see the section above) — it is not optional.
 
 ```bash
 # Create tag locally
@@ -253,7 +319,7 @@ git push origin 9.1.1-rc1
 gh release create 9.1.1-rc1 --draft --title "INAV 9.1.1-rc1" --notes-file release-notes.md
 ```
 
-However, using `gh release create` with `--target` is preferred as it works even when repos are locked.
+Using `gh release create` with `--target` remains the preferred path for **firmware** (it works even when repos are locked). For the **configurator**, push the tag explicitly (`git push upstream <tag>`) to trigger `release.yml`.
 
 ---
 
@@ -312,6 +378,7 @@ gh api repos/<owner/repo>/releases/<id>/assets --paginate
 - [ ] Configurator Linux builds uploaded
 - [ ] Configurator macOS builds uploaded
 - [ ] Configurator Windows builds uploaded
+- [ ] Configurator PWA build uploaded (10.x+)
 - [ ] Asset naming verified
 - [ ] Release notes reviewed
 

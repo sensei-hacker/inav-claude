@@ -125,16 +125,21 @@ This guide covers the complete release workflow and preparation steps you need t
    ├── Download firmware hex files from CI
    ├── Download SITL binaries from same CI run
    ├── Build Linux x64 SITL locally if needed (for glibc compatibility)
-   └── This provides SITL binaries needed for configurator
+   ├── Build the WASM SITL firmware (see the WASM SITL + Browser/PWA Build guide)
+   └── This provides native SITL binaries + WASM SITL needed for configurator
 
-4. Update SITL in configurator (same PR as step 2)
-   ├── Add SITL binaries as additional commit to version bump PR
+4. Update SITL + WASM SITL in configurator (same PR as step 2)
+   ├── Add native SITL binaries as an additional commit to the version bump PR
+   ├── Add the renamed WASM SITL artifacts to js/web/WASM/ and fix the SITL-Webassembly.js import
    ├── Wait for configurator CI to pass
-   └── Merge the combined version bump + SITL PR
+   └── Merge the combined version bump + SITL + WASM PR
 
-5. Download configurator artifacts
-   ├── Download from CI run after combined PR merged
-   ├── Verify macOS DMGs (no cross-platform contamination)
+5. Build the PWA, then download configurator artifacts
+   ├── Build the PWA (yarn web:build → dist-web/) — AFTER the WASM SITL is in place
+   ├── Verify the nightly macOS artifact is signed (codesign + stapler) — dry-run, no tag, before tagging
+   ├── Push the version tag (v*.*.*) to trigger release.yml (signed + notarized macOS) AFTER the PR merged
+   ├── Download desktop configurator artifacts from that release.yml run
+   ├── Verify macOS DMGs are signed and have no cross-platform contamination
    ├── Verify Windows SITL (cygwin1.dll present)
    ├── Verify Linux SITL (glibc <= 2.35)
    └── Test SITL functionality
@@ -148,7 +153,7 @@ This guide covers the complete release workflow and preparation steps you need t
 7. Create tags and draft releases (ONLY after artifacts verified)
    ├── Create draft release for firmware (targeting verified commit)
    ├── Create tag + draft release tag for configurator (targeting verified commit)
-   ├── Upload verified artifacts
+   ├── Upload verified artifacts (including the PWA output)
    └── Add release notes
 
 8. Review and publish
@@ -162,6 +167,18 @@ This guide covers the complete release workflow and preparation steps you need t
 ```
 
 **Why this order matters:** If you tag first and then discover the build is broken, you have a tag pointing to a broken commit. By verifying artifacts first, you only tag commits that are proven to work.
+
+---
+
+## ⚠️ macOS Signing Sequencing (Critical)
+
+The release-ready macOS build is **code-signed and notarized** by `.github/workflows/release.yml`, which runs when you **push a version tag** (`v*.*.*` or `*.*.*`). PR CI never signs; the nightly build signs+notarizes only when the full secret set is present. Three rules:
+
+1. **Verify the signing path via the nightly before you tag.** A pushed tag is effectively immutable, so don't tag blind. After the SITL PR merges, the nightly runs automatically — check its macOS artifact with `codesign --verify` and `xcrun stapler validate`. Only push the tag once both pass (if either fails, the six signing secrets are missing and `release.yml` would fail anyway). See [Phase 6](6-creating-releases.md) for the full procedure.
+2. **The tag push must happen AFTER the SITL is in place.** The native SITL binaries — and, for 10.x+, the WASM SITL — must already be committed and merged into the configurator repo before you push the tag. If they aren't, the signed `.app`/`.dmg` ships with stale SITL.
+3. **Do not modify the signed macOS artifacts after `release.yml` runs.** No re-zipping, re-bundling, re-signing, or editing the DMG/`.app` — that invalidates the signature. If anything must change after that run, commit the fix and push a new tag; never patch the signed file in place.
+
+The code enforces this: SITL pruning runs in the `afterCopyExtraResources` hook (**before** signing) — files must not be deleted from the bundle after signing or notarization fails. See `inav-configurator/CLAUDE.md` ("macOS Code Signing & Notarization") for the full details and gotchas.
 
 ---
 
@@ -276,6 +293,7 @@ Both firmware and configurator GitHub releases follow the same cumulative patter
 - [ ] No critical open issues blocking release
 - [ ] Version numbers updated in both repositories
 - [ ] SITL binaries updated in configurator
+- [ ] WASM SITL built and added to configurator `js/web/WASM/` + `SITL-Webassembly.js` import updated (10.x+)
 - [ ] **PG validation passed** (see [Step 0.6](#️-step-06-run-pg-validation-now-before-downloading-anything) above — run this before Phase 2, not after)
 
 ### Documentation
@@ -290,8 +308,10 @@ Both firmware and configurator GitHub releases follow the same cumulative patter
 - [ ] Firmware hex files downloaded and renamed
 - [ ] Configurator artifacts organized by platform (linux/, macos/, windows/)
 - [ ] macOS DMG contents verified (no .exe files, correct architecture)
+- [ ] **macOS DMG signature verified** and left unmodified after the release CI ran (see [macOS Signing Sequencing](#️-macos-signing-sequencing-critical))
 - [ ] **Windows SITL cygwin1.dll verified** (use scripts/verify-windows-sitl.sh)
 - [ ] **Configurator SITL tested** (launch SITL, verify version matches firmware)
+- [ ] PWA built (`yarn web:build` → `dist-web/`) and bundled with the WASM SITL (10.x+)
 
 ---
 
