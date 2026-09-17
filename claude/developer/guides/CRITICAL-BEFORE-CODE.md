@@ -53,7 +53,7 @@ a lock looks stale.
 - Adding a parallel checkout dir touches more than `lock_manager.py` (hooks, `new-branch.sh`, permissions yaml, README) — grep the tree for the sibling name.
 - Tell subagents the exact safe path when a lock is held elsewhere — they don't inherit your lock discipline.
 
-## 3. Create Git Branch
+## 2. Create Git Branch
 The branch MUST be created off of the correct version branch — never off master.
 
 ```bash
@@ -70,7 +70,7 @@ fallback if the script can't be used.
 - Harness-only tasks (`.claude/`, `claude/`) commit straight to `master` — branches belong in the project repos.
 - The base-branch table above is the single authority, even when a task email says otherwise.
 
-## 4. Plan End-User Documentation (If Needed)
+## 3. Plan End-User Documentation (If Needed)
 
 **Evaluate if your planned change needs end-user documentation:**
 
@@ -96,7 +96,7 @@ fallback if the script can't be used.
    - After implementation, update the draft to match actual behavior
    - Then add to `inav/docs/` and/or `inavwiki/` before PR
 
-## 5. Check for Specialized Agents
+## 4. Check for Specialized Agents
 
 **Before starting implementation, check if specialized agents apply:**
 
@@ -147,7 +147,7 @@ fallback if the script can't be used.
 
 The agent will tell you exactly which files/directories to look at. THEN use Grep/Read on those specific locations.
 
-## 6. Debugging Tools Available
+## 7. Debugging Tools Available
 
 When investigating bugs or understanding code behavior:
 
@@ -163,7 +163,7 @@ See `guides/debugging-guide.md` for detailed usage instructions.
 
 ---
 
-## 7. When committing code
+## 8. When committing code
 1. *Do NOT mention Claude in commit messages* - Do NOT put "Co-Authored-By: Claude Sonnet 4.6" or similar in a commit message
 2. *Read claude/developer/guides/CRITICAL-BEFORE-COMMIT.md*
 

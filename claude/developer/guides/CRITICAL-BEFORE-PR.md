@@ -80,7 +80,7 @@ Prompt: "Review changes in [files] - [brief description]"
 
 ## 🔍 Finalize End-User Documentation
 
-**If you drafted user documentation before coding (see CRITICAL-BEFORE-CODE.md step 4):**
+**If you drafted user documentation before coding (see CRITICAL-BEFORE-CODE.md step 3):**
 
 1. **Update the draft** in `claude/developer/workspace/[task-name]/draft-user-docs.md`
    - Verify it matches the actual implementation

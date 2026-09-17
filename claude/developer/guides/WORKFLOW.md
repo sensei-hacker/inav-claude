@@ -19,7 +19,7 @@ Each step names the agent/skill to use and the guide to read first.
 1. **Check inbox for assignments** — `email-manager` agent ("Read my inbox. Current role: developer").
 2. **Read the task assignment** — the task file in the inbox.
 3. **Create a git branch** — `git-workflow` skill / `scripts/git/new-branch.sh`. Read `CRITICAL-BEFORE-CODE.md`, `git-workflow.md`.
-4. **Draft user documentation (if needed)** — only for new features / behavior changes. Read `CRITICAL-BEFORE-CODE.md` step 4.
+4. **Draft user documentation (if needed)** — only for new features / behavior changes. Read `CRITICAL-BEFORE-CODE.md` step 3.
 5. **Reproduce the issue (test should fail)** — `test-engineer` agent. Read `CRITICAL-BEFORE-TEST.md`.
 6. **Implement the fix** — check specialized agents first, then code. Read `CRITICAL-BEFORE-CODE.md`, `coding-standards.md`.
 7. **Compile** — `inav-builder` agent (never `cmake`/`make`/`npm build` directly).
