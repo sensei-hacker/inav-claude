@@ -12,9 +12,9 @@
 # Only includes PRs created after --after DATE (default: 6 months ago).
 #
 # Usage: scorecard-triage.sh <owner/repo> [skip-file] [--after DATE] [--before DATE] [--sort-oldest] [--offset N] [--output file]
-# Example: scorecard-triage.sh iNavFlight/inav /tmp/claude/skip-scorecard-inav.txt
-# Example: scorecard-triage.sh iNavFlight/inav /tmp/claude/skip-scorecard-inav.txt --after 2024-10-13 --sort-oldest
-# Example: scorecard-triage.sh iNavFlight/inav /tmp/claude/skip-scorecard-inav.txt --offset 1 --output /tmp/claude/prefetch-scorecard.txt
+# Example: scorecard-triage.sh iNavFlight/inav claude/local-data/triage/skip-scorecard-inav.txt
+# Example: scorecard-triage.sh iNavFlight/inav claude/local-data/triage/skip-scorecard-inav.txt --after 2024-10-13 --sort-oldest
+# Example: scorecard-triage.sh iNavFlight/inav claude/local-data/triage/skip-scorecard-inav.txt --offset 1 --output ./tmp/claude/prefetch-scorecard.txt
 
 set -euo pipefail
 
@@ -40,6 +40,11 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
+# Create the workspace tmp dir before redirecting, so both the --output target and
+# the PR-list cache below have a place to write. Use ./tmp (workspace tmp, shared
+# with subagents) — never /tmp, which is ephemeral per command/subagent in this harness.
+mkdir -p ./tmp/claude
+
 # Redirect all output to file if requested (enables background prefetch)
 if [[ -n "$OUTPUT_FILE" ]]; then
     exec > "$OUTPUT_FILE" 2>&1
@@ -48,7 +53,6 @@ fi
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 SCORE_CACHE="$(cd "$SCRIPT_DIR/../../../local-data/triage" 2>/dev/null && pwd)/pr-scorecard-history.json"
 mkdir -p "$(dirname "$SCORE_CACHE")"
-mkdir -p /tmp/claude
 
 # ---------------------------------------------------------------------------
 # Build skip list for jq
@@ -65,7 +69,7 @@ fi
 # Fetch PR list (cached for 2 minutes)
 # ---------------------------------------------------------------------------
 REPO_SLUG=$(echo "$REPO" | tr '/' '-')
-CACHE_FILE="/tmp/claude/scorecard-pr-cache-${REPO_SLUG}.json"
+CACHE_FILE="./tmp/claude/scorecard-pr-cache-${REPO_SLUG}.json"
 USE_CACHE=false
 
 if [[ -f "$CACHE_FILE" ]]; then

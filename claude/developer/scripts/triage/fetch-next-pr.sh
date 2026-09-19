@@ -9,8 +9,8 @@
 #
 # Usage: fetch-next-pr.sh <owner/repo> <YYYY-MM-DD> [skip-file] [--hierarchical offset] [--output file]
 # Example: fetch-next-pr.sh iNavFlight/inav 2025-02-07
-# Example: fetch-next-pr.sh iNavFlight/inav 2025-02-07 /tmp/claude/skip-inav.txt --offset 1
-# Example: fetch-next-pr.sh iNavFlight/inav 2025-02-07 /tmp/claude/skip-inav.txt --output /tmp/claude/next-pr.txt
+# Example: fetch-next-pr.sh iNavFlight/inav 2025-02-07 claude/local-data/triage/skip-inav.txt --offset 1
+# Example: fetch-next-pr.sh iNavFlight/inav 2025-02-07 claude/local-data/triage/skip-inav.txt --output ./tmp/claude/next-pr.txt
 
 set -euo pipefail
 
@@ -39,7 +39,10 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-# Redirect output to file if requested
+# Redirect output to file if requested. Create the workspace tmp dir first so the
+# --output target and PR-list cache have a place to write (./tmp is shared with
+# subagents; /tmp is ephemeral per command/subagent in this harness).
+mkdir -p ./tmp/claude
 if [[ -n "$OUTPUT_FILE" ]]; then
     exec > "$OUTPUT_FILE" 2>&1
 fi
@@ -123,7 +126,7 @@ fi
 
 # Use cached PR list if available and fresh (< 2 minutes old)
 REPO_SLUG=$(echo "$REPO" | tr '/' '-')
-CACHE_FILE="/tmp/claude/pr-cache-${REPO_SLUG}.json"
+CACHE_FILE="./tmp/claude/pr-cache-${REPO_SLUG}.json"
 USE_CACHE=false
 
 if [[ -f "$CACHE_FILE" ]]; then
@@ -142,7 +145,6 @@ else
         --jq '[.[] | select(.milestone == null) | select(.draft == false) | select((.labels | map(.name) | any(test("don.t merge"; "i"))) | not) | select(.created_at > "'"${AFTER_DATE}"'") | {number: .number, title: .title, createdAt: .created_at, author: .user.login, labels: [.labels[].name], body: .body, url: .html_url, baseBranch: .base.ref}]' \
         2>/dev/null | jq -s 'flatten')
     # Cache the result
-    mkdir -p /tmp/claude
     echo "$PR_JSON" > "$CACHE_FILE"
 fi
 

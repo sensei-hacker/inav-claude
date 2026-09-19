@@ -251,7 +251,7 @@ bash_rules:
 
   - name: "Allow echo to skip-scorecard file"
     command_pattern: "^echo$"
-    argument_pattern: ".*(>>|>)\\s*/tmp/claude/skip-scorecard-inav\\.txt.*"
+    argument_pattern: ".*(>>|>)\\s*claude/local-data/triage/skip-scorecard-(inav|configurator)\\.txt.*"
     category: write
     decision: allow
     message: "echo to skip-scorecard file allowed for PR triage workflow"

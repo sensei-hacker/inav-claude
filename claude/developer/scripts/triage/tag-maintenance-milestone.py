@@ -1,17 +1,24 @@
 #!/usr/bin/env python3
-"""Set milestone 10.0 on merged PRs targeting maintenance-10.x.
+"""Set a target milestone on merged PRs targeting a given base branch.
 
 For each repo (default: iNavFlight/inav and iNavFlight/inav-configurator),
-finds merged PRs whose base branch is maintenance-10.x:
-  - No milestone set  -> sets milestone to 10.0 (unless --dry-run)
-  - Milestone != 10.0 -> left untouched, reported as a possible error
+finds merged PRs whose base branch is --base (default maintenance-10.x):
+  - No milestone set  -> sets milestone to --milestone (default 10.0), unless --dry-run
+  - Milestone != target -> left untouched, reported as a possible error
     (never auto-changed - what to do with these may differ per PR)
-  - Routine merges of maintenance-9.x/release-9.1 into maintenance-10.x
+  - Routine merges of the previous release line into the base
     -> skipped entirely, not reported (identified by head branch name,
     see is_merge_pr()); these aren't "release work" PRs
 
 Usage:
-  tag-maintenance-milestone.py [--repo owner/repo ...] [--dry-run]
+  tag-maintenance-milestone.py [--repo owner/repo ...] [--base BRANCH] [--milestone TITLE] [--dry-run]
+
+Examples:
+  # Default: maintenance-10.x -> 10.0
+  tag-maintenance-milestone.py
+
+  # Future release cycle
+  tag-maintenance-milestone.py --base maintenance-11.x --milestone 11.0
 
 Requires: gh (authenticated), python3.
 """
@@ -22,12 +29,12 @@ import subprocess
 import sys
 
 DEFAULT_REPOS = ["iNavFlight/inav", "iNavFlight/inav-configurator"]
-BASE_BRANCH = "maintenance-10.x"
-TARGET_MILESTONE_TITLE = "10.0"
 
-# Head branch names used for routine maintenance-9.x/release-9.1 -> maintenance-10.x
-# merges, e.g. "maintenance-9.x", "release/9.1", "merge/9.1-into-10.x",
-# "merge-9x-into-10x". Verified against every merged PR in both repos before use.
+# Head branch names used for routine "previous release line -> current base" merges.
+# Currently encodes maintenance-9.x / release/9.1 flowing into maintenance-10.x.
+# If --base/--milestone are used for a later release cycle, extend this pattern
+# (and is_merge_pr below) to cover the new previous line, e.g. maintenance-10.x /
+# release/10.0 flowing into maintenance-11.x.
 MERGE_HEAD_RE = re.compile(r"^(maintenance-9\.x|release/9\.1)$")
 
 
@@ -45,19 +52,19 @@ def gh_json(args):
     return json.loads(result.stdout)
 
 
-def get_target_milestone_number(repo):
+def get_target_milestone_number(repo, milestone_title):
     milestones = gh_json(["api", f"repos/{repo}/milestones", "--paginate"])
     for m in milestones:
-        if m["title"] == TARGET_MILESTONE_TITLE:
+        if m["title"] == milestone_title:
             return m["number"]
-    print(f"ERROR: repo {repo} has no milestone titled '{TARGET_MILESTONE_TITLE}'", file=sys.stderr)
+    print(f"ERROR: repo {repo} has no milestone titled '{milestone_title}'", file=sys.stderr)
     sys.exit(1)
 
 
-def get_merged_prs(repo):
+def get_merged_prs(repo, base_branch):
     return gh_json([
         "pr", "list", "--repo", repo,
-        "--base", BASE_BRANCH, "--state", "merged",
+        "--base", base_branch, "--state", "merged",
         "--json", "number,title,milestone,mergedAt,headRefName",
         "--limit", "1000",
     ])
@@ -73,13 +80,22 @@ def set_milestone(repo, pr_number, milestone_number):
 
 
 def main():
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser(
+        description=__doc__,
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
     parser.add_argument("--repo", action="append", dest="repos",
-                         help="owner/repo to process (repeatable). Default: inav + inav-configurator")
+                        help="owner/repo to process (repeatable). Default: inav + inav-configurator")
+    parser.add_argument("--base", default="maintenance-10.x",
+                        help="base branch of merged PRs to tag (default: maintenance-10.x)")
+    parser.add_argument("--milestone", default="10.0",
+                        help="milestone title to set (default: 10.0)")
     parser.add_argument("--dry-run", action="store_true",
-                         help="Report what would change without modifying anything")
+                        help="Report what would change without modifying anything")
     args = parser.parse_args()
     repos = args.repos or DEFAULT_REPOS
+    base_branch = args.base
+    milestone_title = args.milestone
 
     anomalies = []  # (repo, pr_number, title, milestone_title)
     tagged = []     # (repo, pr_number, title)
@@ -88,9 +104,9 @@ def main():
 
     for repo in repos:
         print(f"\n=== {repo} ===")
-        target_milestone_number = get_target_milestone_number(repo)
-        prs = get_merged_prs(repo)
-        print(f"Found {len(prs)} merged PR(s) targeting {BASE_BRANCH}")
+        target_milestone_number = get_target_milestone_number(repo, milestone_title)
+        prs = get_merged_prs(repo, base_branch)
+        print(f"Found {len(prs)} merged PR(s) targeting {base_branch}")
 
         for pr in prs:
             number = pr["number"]
@@ -103,31 +119,31 @@ def main():
 
             if milestone is None:
                 if args.dry_run:
-                    print(f"  [dry-run] would set milestone 10.0 on #{number}: {title}")
+                    print(f"  [dry-run] would set milestone {milestone_title} on #{number}: {title}")
                     tagged.append((repo, number, title))
                     continue
                 ok, err = set_milestone(repo, number, target_milestone_number)
                 if ok:
-                    print(f"  OK: #{number} -> milestone 10.0 ({title})")
+                    print(f"  OK: #{number} -> milestone {milestone_title} ({title})")
                     tagged.append((repo, number, title))
                 else:
                     print(f"  FAIL: #{number} ({title}): {err}", file=sys.stderr)
                     failed.append((repo, number, title, err))
-            elif milestone["title"] != TARGET_MILESTONE_TITLE:
+            elif milestone["title"] != milestone_title:
                 print(f"  ANOMALY: #{number} already has milestone '{milestone['title']}' ({title})")
                 anomalies.append((repo, number, title, milestone["title"]))
             # else: already correctly milestoned, nothing to do
 
     print("\n" + "=" * 60)
-    print(f"Tagged with 10.0: {len(tagged)}")
+    print(f"Tagged with {milestone_title}: {len(tagged)}")
     print(f"Failed to tag: {len(failed)}")
-    print(f"Anomalies (non-10.0 milestone on a maintenance-10.x merge): {len(anomalies)}")
-    print(f"Skipped (routine 9.x/9.1 merge PRs): {skipped_merges}")
+    print(f"Anomalies (non-{milestone_title} milestone on a {base_branch} merge): {len(anomalies)}")
+    print(f"Skipped (routine previous-line merge PRs): {skipped_merges}")
 
     if anomalies:
-        print("\nPossible errors - merged PRs targeting maintenance-10.x with a different milestone:")
-        for repo, number, title, milestone_title in anomalies:
-            print(f"  {repo}#{number} [{milestone_title}] {title}")
+        print(f"\nPossible errors - merged PRs targeting {base_branch} with a different milestone:")
+        for repo, number, title, ms_title in anomalies:
+            print(f"  {repo}#{number} [{ms_title}] {title}")
 
     if failed:
         print("\nFailed updates:")

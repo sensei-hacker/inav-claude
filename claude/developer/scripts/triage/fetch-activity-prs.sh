@@ -33,10 +33,10 @@
 #   bash claude/developer/scripts/triage/fetch-activity-prs.sh iNavFlight/inav --months 6
 #
 #   # Prefetch next batch while user reviews the first:
-#   bash claude/developer/scripts/triage/fetch-activity-prs.sh iNavFlight/inav --months 6 --offset 5 --output /tmp/claude/prefetch-activity.txt
+#   bash claude/developer/scripts/triage/fetch-activity-prs.sh iNavFlight/inav --months 6 --offset 5 --output ./tmp/claude/prefetch-activity.txt
 #
 #   # Check for MORE_PRS at end of output file to know if another batch exists:
-#   grep "^MORE_PRS:" /tmp/claude/prefetch-activity.txt
+#   grep "^MORE_PRS:" ./tmp/claude/prefetch-activity.txt
 #
 #   # Larger batches for a longer review session:
 #   bash claude/developer/scripts/triage/fetch-activity-prs.sh iNavFlight/inav --months 6 --batch-size 10
@@ -70,18 +70,18 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
+mkdir -p ./tmp/claude
+
 if [[ -n "$OUTPUT_FILE" ]]; then
     exec > "$OUTPUT_FILE" 2>&1
 fi
-
-mkdir -p /tmp/claude
 
 # ISO 8601 stale cutoff date (lexicographically comparable)
 STALE_DATE=$(date -d "-${STALE_DAYS} days" +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || \
              date -v -${STALE_DAYS}d +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || echo "")
 
 REPO_SLUG=$(echo "$REPO" | tr '/' '-')
-CACHE_FILE="/tmp/claude/activity-prs-${REPO_SLUG}.json"
+CACHE_FILE="./tmp/claude/activity-prs-${REPO_SLUG}.json"
 
 # Fetch or reuse cached open PR list (5-minute TTL)
 if [[ "$NO_CACHE" == "true" ]] || [[ ! -f "$CACHE_FILE" ]] || \
@@ -147,8 +147,11 @@ while IFS= read -r pr; do
 
     # Fetch last 100 issue comments, newest first.
     # This covers PRs with up to 100 substantive comments; for older comments see PR directly.
-    COMMENTS=$(gh api "repos/${REPO}/issues/${NUMBER}/comments?sort=created&direction=desc&per_page=100" \
-        --jq '[.[] | {author: .user.login, date: .created_at}]' 2>/dev/null || echo "[]")
+    # NOTE (2026-09-19): the list-issue-comments endpoint ignores sort=created&direction=desc,
+    # returning oldest-first, so `first` below used to pick the OLDEST commenter/our-oldest-comment.
+    # Sort in jq instead (matches the REVIEWS handling below).
+    COMMENTS=$(gh api "repos/${REPO}/issues/${NUMBER}/comments?per_page=100" \
+        --jq '[.[] | {author: .user.login, date: .created_at}] | sort_by(.date) | reverse' 2>/dev/null || echo "[]")
 
     # Fetch pull request reviews (any non-pending state), newest first
     REVIEWS=$(gh api "repos/${REPO}/pulls/${NUMBER}/reviews" \
