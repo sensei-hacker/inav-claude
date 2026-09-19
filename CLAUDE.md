@@ -188,6 +188,12 @@ ctags -R --fields=+niazS --extras=+q --exclude=node_modules --exclude=.git --exc
 
 ---
 
+## Environment Facts
+
+- **`/tmp` is NOT shared with subagents.**  Use $TMPDIR (./tmp aka ~/inavflight/tmp/) for shared info
+
+
+
 ## Important: Read Your Role-Specific Guide
 
 This file provides only a brief overview. For detailed instructions, workflows, and best practices:
