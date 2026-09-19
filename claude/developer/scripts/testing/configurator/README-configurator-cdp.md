@@ -1,8 +1,11 @@
-# Configurator CDP Testing Script
+# Configurator CDP Testing Scripts
 
 ## Overview
 
-`configurator_cdp_test.py` - Comprehensive test script for verifying Chrome DevTools Protocol connection to INAV Configurator.
+Two scripts here cover Chrome DevTools Protocol (CDP) access to INAV Configurator:
+
+- `configurator_cdp_test.py` - Comprehensive test script for verifying the CDP connection to INAV Configurator works.
+- `cdp_eval.mjs` - Minimal zero-dependency helper that evaluates a single JS expression in the renderer and prints the JSON result.
 
 ## Purpose
 
@@ -58,6 +61,54 @@ The script performs 5 comprehensive tests:
    - Reads button text
    - Verifies text content access
    - Used for i18n testing
+
+## cdp_eval.mjs — One-Shot Expression Evaluator
+
+`cdp_eval.mjs` connects to a single CDP page target and evaluates one JS
+expression in the renderer, printing the JSON result. It complements
+`configurator_cdp_test.py` (which verifies the CDP *connection* is healthy) by
+being the quick way to *drive* arbitrary JS in the running Configurator. It is
+zero-dependency (uses Node's built-in `WebSocket`, Node 22+).
+
+### Usage
+
+```bash
+node cdp_eval.mjs <webSocketDebuggerUrl> <expression | ->
+# Pass `-` as the expression to read it from stdin.
+```
+
+Get the target URL first:
+
+```bash
+curl -s http://localhost:9222/json/list | jq -r '.[0].webSocketDebuggerUrl'
+```
+
+### Examples
+
+```bash
+WS_URL=$(curl -s http://localhost:9222/json/list | jq -r '.[0].webSocketDebuggerUrl')
+
+# Inspect renderer state
+node cdp_eval.mjs "$WS_URL" "document.title"
+
+# Read a longer expression from stdin
+echo "import('/js/msp.js').then(m => m.MSP.promise(1,1))" | node cdp_eval.mjs "$WS_URL" -
+```
+
+The expression is evaluated with `awaitPromise: true`, `returnByValue: true`,
+and `userGesture: true`, so async results are awaited and resolved to plain
+JSON. Exit codes: `0` success, `1` CDP error / renderer exception / 20s
+timeout, `2` usage error.
+
+### When to Use
+
+Use `cdp_eval.mjs` when you need a one-shot `Runtime.evaluate` in a live
+Configurator — state inspection, poisoning globals, or observing async promise
+settlement (e.g. reproducing the `MSP.promise()` hang: poison
+`MSP.parseFailures` and watch the promise never settle vs reject after a fix).
+
+For driving the full UI (clicking tabs, screenshots, DOM queries), use
+`tab_sweep_cdp.py` or the Chrome DevTools MCP instead.
 
 ## Expected Output
 

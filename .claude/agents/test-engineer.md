@@ -611,6 +611,7 @@ Many subdirectories have a `README.md` listing every script and its purpose:
 - `test_inverse_transform.py` / `_auto.py` / `_multi.py` - Sensor transform tests
 - `configurator_cdp_test.py` - Chrome DevTools Protocol test
 - `tab_sweep_cdp.py` - CDP tab sweep utility
+- `cdp_eval.mjs` - Evaluate one JS expression in the renderer via CDP (zero-dep, `Runtime.evaluate` with awaitPromise/returnByValue)
 - `test-configurator-startup.js` - Configurator startup test
 - `ports/test-sensor-port-function.js` - Sensor port function test
 
@@ -803,4 +804,5 @@ Use the Edit tool to append new entries. Format: `- **Brief title**: One-sentenc
 - **In-tree unit tests can drift from source for PG-excluded files:** Files guarded by `#if !defined(SITL_BUILD)` (e.g. `pwm_mapping.c`) can't be linked into host unit tests, so their tests hand-copy the logic inline. When using an existing test like this as a template, diff it against the CURRENT source function (not just skim it) — e.g. `pwm_mapping_beeper_unittest.cc` still reproduced an older, since-superseded version of `timerHardwareOverride()` (missing the `isCanonicalBeeperPad`/PINIO-fallback logic added in later commits), so copying its structure without re-deriving from current source would have produced a test for behavior that no longer exists.
 - **tests are auto-globbed by *_unittest.cc:** No CMakeLists.txt changes needed if you use the existing directory src/test/unit/
 - **Build test state via the real functions a caller would use, not by fabricating it directly**: a test exists to keep validating *behavior* as the implementation changes; one that pokes at memory directly instead (`memset(0)`, hand-assigned fields, reimplemented internal logic) is really pinned to today's implementation, not behavior — no more useful than hashing the file. E.g. a servo-mixer test's `SetUp()` used `memset(&rule, 0, ...)` instead of calling production's `Reset_servoMixers()`; when upstream later gave field `conditionId` a non-zero-means-"unconditional" default (`-1`), the memset'd `0` silently meant something else, and the test zeroed every input with no build error to flag it. Applies to any hand-built state, not just memset or reset functions.
+- **SITL reports zero timer/output-mapping entries**: `FC.OUTPUT_MAPPING.getOutputCount()` is always 0 on SITL/Demo mode, so Configurator features keyed off it (e.g. Mixer tab output markers) need a physical FC to reproduce.
 <!-- Add new lessons above this line -->
