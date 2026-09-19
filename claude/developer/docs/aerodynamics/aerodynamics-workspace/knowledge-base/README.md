@@ -19,6 +19,17 @@ This directory contains accumulated aerodynamic knowledge organized by topic, wi
    - References: H&C pages 26-44, 62-67
    - Includes: Small angle linearity analysis (sin(γ) ≈ γ for |γ| < 15°)
 
+3. **[banked-turn-altitude-loss.md](banked-turn-altitude-loss.md)**
+   - Topic: Steady coordinated turn — load factor, lift split, altitude loss in tight loiters
+   - Key equation: n = L/W = 1/cos(φ); tan(φ) = V²/(g·R); V_stall,turn = V_stall,level·√n
+   - INAV application: Why a hard bank (e.g. 35°) at max climb pitch (10°) loses altitude;
+     mitigations (reduce roll limit, enlarge loiter radius, raise climb angle, add throttle);
+     accelerometer centripetal-acceleration bias in sustained turns
+   - References: H&C §1.5.1 p.26 (lift def, Fig. 1.7(d)), §1.5.2 p.28 (Eqn 1.45a),
+     §1.5.7–1.5.8 pp.41–44 (induced drag ∝ C_L²), §1.5.9 pp.44–46 (C_Lmax/stall),
+     §3.3.11 p.136 & §5.2.3 p.221 (centripetal force mV²/r)
+   - Note: load factor n = 1/cos φ is derived (5th ed. has no flight-performance chapter)
+
 ### Related Topics
 
 These two documents are complementary:
