@@ -136,6 +136,8 @@ claude/developer/scripts/
 
 **Cleanup:** Files here may be deleted between sessions
 
+`/tmp` note: `/tmp` is **not shared with subagents** — use $TMPDIR or ./tmp/ (~/inavflight/tmp/)
+
 ---
 
 ## Examples by Use Case
