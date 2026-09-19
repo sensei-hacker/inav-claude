@@ -23,7 +23,7 @@ Two modes, plus one separate backfill script:
 | Mode | Question it answers | Script(s) | Order |
 |------|---------------------|-----------|-------|
 | **`activity`** | "What needs attention today?" | `fetch-activity-prs.sh` | most-recently-updated |
-| **`disposition`** | "What do we do with each open PR?" | `scorecard-triage.sh`, `pr-scorecard.sh`, `update-pr.sh` | highest-score-first |
+| **`disposition`** | "What's the next step toward merge?" | `scorecard-triage.sh`, `pr-scorecard.sh`, `update-pr.sh` | highest-score-first |
 
 Two things are **separate processes, not modes of this skill**:
 
@@ -230,22 +230,25 @@ bash claude/developer/scripts/triage/fetch-activity-prs.sh iNavFlight/inav --no-
 
 ---
 
-## Mode 2: Open-PR Disposition — "What do we do with each PR?"
+## Mode 2: Open-PR Disposition — "What's the next step toward merge?"
 
-Decide, per open PR, what to do: **merge, approve, comment, label, or skip** — and set the
-milestone as part of that decision. This is a disposition pass based on readiness signals,
-**not code review**. If a PR needs a deeper technical review, the outcome is *"send this to a
-developer for code review"* (handed off via `/pr-review`) — this skill does **not** run that
-review and does not need to know how it works.
+For each open PR that has had recent activity (see Mode 1), decide the **single next action that
+moves it one step closer to merged**: merge it, approve it, send it for code review, post a
+question or comment, request a tester, label it, set its milestone — or skip it for now. This is a
+disposition pass based on readiness signals, **not code review**. If the next step *is* a deeper
+technical review, that's a hand-off ("send this to a developer for `/pr-review`") — this skill
+does **not** run that review and does not need to know how it works.
 
-For each PR, lead with a **merge readiness verdict**:
-- **Ready to merge** — code is good, tested, reviewed, no open blockers
-- **Needs review** — no human review yet
-- **Needs testing** — author-tested only, or labeled "needs testing"
-- **Needs work** — open bot findings, review feedback, or known issues to resolve
-- **Not ready** — major concerns; flag specifically what must be resolved
+First ask **"is it ready to merge?"** When it is, merge (or approve). When it isn't, name the next
+step that unblocks it:
+- **Ready to merge** → merge (or approve, if you're not a maintainer)
+- **Needs code review first** → recommend a developer `/pr-review`
+- **Question to ask** → post a comment (clarify intent, ask for a test, point at a failing check)
+- **Needs testing** → find a tester / label `needs testing`
+- **Needs work** → comment with the specific fix (open bot findings, review feedback, a rebase)
+- **Not ready** → flag what specifically must change before revisiting
 
-The score (0–100, from `/pr-scorecard`) refines that verdict and orders the queue. Milestone
+The score (0–100, from `/pr-scorecard`) refines that judgment and orders the queue. Milestone
 assignment is one of the actions, not a separate pass.
 
 ### Usage
