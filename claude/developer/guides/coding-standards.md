@@ -166,5 +166,6 @@ rule, not the story.
 - **jBox modals don't auto-size to content** — bump the fixed `height` when adding content, and re-check live.
 - **Floats must end in `f` to avoid promotion to double** — `2.0` pulls in double math on embedded targets.
 - **A `SYSTEM` include dir silences `-Werror=switch` too** — prefer `#pragma GCC diagnostic ignored "-Wxxx"` around the one `#include`.
+- **A promise rejection is only as good as its callers** — before making a function reject, audit callers for a catch-all `.catch` that swallows it and still runs the success callback (defeats the fix), and for callers that never attached a rejection handler (now-unhandled rejection).
 
 <!-- Add new lessons above this line -->
