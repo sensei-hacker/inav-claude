@@ -249,12 +249,12 @@ bash_rules:
     decision: ask
     message: "find with -exec requires approval"
 
-  - name: "Allow echo to skip-scorecard file"
+  - name: "Allow echo to triage skip file"
     command_pattern: "^echo$"
-    argument_pattern: ".*(>>|>)\\s*claude/local-data/triage/skip-scorecard-(inav|configurator)\\.txt.*"
+    argument_pattern: ".*(>>|>)\\s*claude/local-data/triage/skip-(inav|configurator)\\.txt.*"
     category: write
     decision: allow
-    message: "echo to skip-scorecard file allowed for PR triage workflow"
+    message: "echo to triage skip file allowed for PR disposition workflow"
 
   - name: "Ask for echo with file redirection, allow otherwise"
     command_pattern: "^echo$"

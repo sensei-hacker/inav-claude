@@ -1,9 +1,10 @@
 ---
-description: Triage open PRs — activity review, milestone assignment, and merge-readiness disposition
+description: Disposition open PRs — decide merge/approve/comment/label/skip and set milestones; pre-scan activity
 triggers:
   - triage prs
   - pr triage
-  - milestone triage
+  - pr disposition
+  - disposition prs
   - assign milestones
   - pr milestones
   - scorecard triage
@@ -15,15 +16,22 @@ triggers:
   - pr review session
 ---
 
-# PR Triage Skill
+# PR Disposition Skill
 
-Three modes. Pick the one that matches the session goal:
+Two modes, plus one separate backfill script:
 
 | Mode | Question it answers | Script(s) | Order |
 |------|---------------------|-----------|-------|
 | **`activity`** | "What needs attention today?" | `fetch-activity-prs.sh` | most-recently-updated |
-| **`milestone`** | "Which unmilestoned PRs need a milestone + merge verdict?" | `fetch-next-pr.sh`, `update-pr.sh` | oldest-first |
-| **`disposition`** | "Which PRs are ready to merge/approve/comment/label?" | `scorecard-triage.sh`, `pr-scorecard.sh` | highest-score-first |
+| **`disposition`** | "What do we do with each open PR?" | `scorecard-triage.sh`, `pr-scorecard.sh`, `update-pr.sh` | highest-score-first |
+
+Two things are **separate processes, not modes of this skill**:
+
+- **Merged-PR milestone backfill** — `claude/developer/scripts/triage/tag-maintenance-milestone.py`
+  (retroactively set the milestone on already-merged PRs). See "Merged-PR Milestone Backfill" at the end.
+- **Deeper code review** — the `/pr-review` skill + code-review/hardware agents, done by a
+  **developer**. This skill may *recommend* "send this to a developer for code review", but it
+  does **not** run that review and does not need to know how it works.
 
 > **⚠️ Environment note:** `/tmp` is **not shared with subagents** in this harness — each
 > command/subagent sees a fresh, ephemeral `/tmp`. Use the workspace tmp dir **`./tmp`** (a.k.a.
@@ -33,17 +41,16 @@ Three modes. Pick the one that matches the session goal:
 > optional belt-and-suspenders. Never use `/tmp` in a path handed to these scripts or a subagent.
 
 **Milestone status ≠ "has this PR been looked at."** `fetch-activity-prs.sh` (activity mode) shows
-ALL open PRs regardless of milestone. Checking milestones is a separate task (milestone mode, or
-`gh pr list --search no:milestone`) — never use it as a stand-in for "which PRs need review."
-(2026-09-13: drifted into a `no:milestone` search to find "PRs we skipped," when the answer
-was already in that session's own NO-COMMENT bucket.)
+ALL open PRs regardless of milestone. Checking milestones is part of the disposition pass (below),
+never a stand-in for "which PRs need review." (2026-09-13: drifted into a `no:milestone` search to
+find "PRs we skipped," when the answer was already in that session's own NO-COMMENT bucket.)
 
 ---
 
 ## Milestone Criteria & Branch Validation (single source of truth)
 
-The `milestone` and `disposition` modes both consult these tables. They are authoritative for
-branch→milestone mapping — do not restate a second, divergent copy anywhere else.
+The `disposition` mode and the merged-PR backfill script both consult these tables. They are
+authoritative for branch→milestone mapping — do not restate a second, divergent copy anywhere else.
 
 ### Milestone Criteria
 
@@ -223,11 +230,13 @@ bash claude/developer/scripts/triage/fetch-activity-prs.sh iNavFlight/inav --no-
 
 ---
 
-## Mode 2: Milestone Triage — "Which unmilestoned PRs need a milestone?"
+## Mode 2: Open-PR Disposition — "What do we do with each PR?"
 
-Systematically triage open PRs for merge readiness, working through them in date order (oldest first).
-
-**Primary goal: decide if each PR is ready to merge.** Milestone assignment is a required step before merging, but the main triage question is merge readiness — code quality, testing, open issues, review status.
+Decide, per open PR, what to do: **merge, approve, comment, label, or skip** — and set the
+milestone as part of that decision. This is a disposition pass based on readiness signals,
+**not code review**. If a PR needs a deeper technical review, the outcome is *"send this to a
+developer for code review"* (handed off via `/pr-review`) — this skill does **not** run that
+review and does not need to know how it works.
 
 For each PR, lead with a **merge readiness verdict**:
 - **Ready to merge** — code is good, tested, reviewed, no open blockers
@@ -236,202 +245,8 @@ For each PR, lead with a **merge readiness verdict**:
 - **Needs work** — open bot findings, review feedback, or known issues to resolve
 - **Not ready** — major concerns; flag specifically what must be resolved
 
-Milestone is part of the output but secondary to the readiness verdict. Milestone criteria and
-branch validation live in the shared section above.
-
-### Usage
-
-```
-/pr-triage [inav|configurator|both] [after-date]
-```
-
-- Default repo: both (inav first, then configurator)
-- Default after-date: 12 months ago from today
-
-### Script Locations
-
-```
-claude/developer/scripts/triage/fetch-next-pr.sh   # Fetch next PR for triage
-claude/developer/scripts/triage/update-pr.sh        # Set milestone, branch, labels
-```
-
-**IMPORTANT:** You MUST use `update-pr.sh` for all PR updates (milestones, base branches, labels).
-Do NOT call `gh api` or `gh issue edit` directly — the script handles API quirks reliably.
-
-**The manager's `gh` token cannot merge PRs** (`gh pr merge` fails: "Resource not accessible by
-personal access token"). Set milestone/labels/base as usual, confirm merge readiness, then ask
-the user to merge — don't attempt `gh pr merge` expecting it to work (2026-09-13).
-
-### Workflow
-
-#### Step 1: Initialize
-
-Skip files persist across sessions at:
-```
-claude/local-data/triage/skip-inav.txt
-claude/local-data/triage/skip-configurator.txt
-```
-
-Ensure they exist:
-```bash
-touch claude/local-data/triage/skip-inav.txt
-touch claude/local-data/triage/skip-configurator.txt
-mkdir -p ./tmp/claude
-```
-
-#### Step 2: Fetch First PR + Prefetch Next
-
-On the very first iteration, fetch the current PR and **immediately start prefetching the next one in the background**:
-
-```bash
-# Fetch current PR (foreground)
-bash claude/developer/scripts/triage/fetch-next-pr.sh iNavFlight/inav YYYY-MM-DD claude/local-data/triage/skip-inav.txt
-
-# Prefetch next PR in background (uses cached PR list, only fetches reviews/comments)
-bash claude/developer/scripts/triage/fetch-next-pr.sh iNavFlight/inav YYYY-MM-DD claude/local-data/triage/skip-inav.txt --offset 1 --output ./tmp/claude/prefetch-inav.txt
-```
-
-The script caches the PR list for 2 minutes, so the prefetch reuses it and only makes API calls for the next PR's reviews and comments.
-
-Use the Bash tool with `run_in_background: true` for the prefetch call.
-
-**IMPORTANT:** When reading prefetch results, use the Read tool on the `--output` file path (`./tmp/claude/prefetch-inav.txt` or `./tmp/claude/prefetch-configurator.txt`), NOT the task runner's output file. The script redirects all output to the `--output` file, so the task runner captures nothing.
-
-#### Step 3: Analyze and Suggest
-
-After reading the script output, analyze:
-
-1. **What the PR does** - bug fix, feature, refactor, breaking change?
-2. **Risk level** - How much code changes? How confident is correctness?
-3. **Compatibility** - Does it break existing behavior for firmware or configurator users?
-4. **Base branch** - Does it target the right branch for the suggested milestone?
-5. **Testing status**:
-   - Is it labeled "needs testing" or "Testing Required"?
-   - Do comments indicate testing by someone other than the author?
-   - The PR description's testing section is NOT sufficient alone - external testing matters
-6. **Review status** - Has it been reviewed? Approved?
-7. **Companion/paired PRs** - If it references a companion PR (firmware ↔ configurator)
-   or depends on another PR, check that PR's real state before calling this one ready —
-   a clean, reviewed PR can still block on an unfixed companion. Verify, don't just
-   summarize the PR in isolation.
-
-Present your analysis with a **merge readiness verdict first**, then the suggested milestone. Flag testing concerns, open bot findings, branch mismatches, and companion-PR blockers prominently.
-
-**Cross-PR dependencies get a project, not just an email (2026-09-13):** if a developer task blocks something else (e.g. "don't merge A until B's fixes land"), track it under `active/`, naming the blocking relationship. An email alone can be forgotten.
-
-**Always include the PR URL** (e.g., `https://github.com/iNavFlight/inav/pull/NNNN`) so the user can quickly open it.
-
-**Link placement (manager convention, 2026-08-29):** in batch summaries, the PR number at the **start of the headline** must be the clickable link — `**[#NNNN](https://github.com/iNavFlight/inav/pull/NNNN) — PR title**`. Do NOT put the link somewhere else in the description body; the headline link is the only link for that PR.
-
-**Unaddressed Qodo/bot findings (manager convention, 2026-09-04):** ask the author to read and respond to the finding rather than the manager judging it right or wrong — Qodo is often wrong, but the author should still be the one to decide.
-
-**Always check the most recent comments/commits (manager convention, 2026-09-05):** an older flag (build failure, requested change, blocker) may already be resolved by later activity — don't stop at the first blocking comment you find, confirm it's still current.
-
-#### Step 4: User Confirms or Changes
-
-Wait for user to confirm the milestone choice or specify a different one.
-
-#### Step 5: Apply Changes with update-pr.sh
-
-Use `update-pr.sh` to set milestone, fix base branch, and add labels **in a single call**.
-Build the arguments based on what's needed:
-
-```bash
-# Example: milestone + branch fix + new target label
-bash claude/developer/scripts/triage/update-pr.sh iNavFlight/inav PR_NUMBER \
-    --milestone MILESTONE_NUMBER \
-    --base CORRECT_BRANCH \
-    --add-label "New target"
-
-# Example: just milestone (branch already correct, no label needed)
-bash claude/developer/scripts/triage/update-pr.sh iNavFlight/inav PR_NUMBER \
-    --milestone MILESTONE_NUMBER
-```
-
-Auto-tag: If the PR adds a new hardware target but is NOT labeled "New target", include `--add-label "New target"`.
-
-After applying changes, **invalidate the cache** so the next prefetch gets fresh data:
-```bash
-rm -f ./tmp/claude/pr-cache-*.json
-```
-
-Then **immediately read the prefetched output** and present it to the user:
-```bash
-# Read: ./tmp/claude/prefetch-inav.txt  (or prefetch-configurator.txt)
-```
-
-While the user reads the prefetched PR, **start prefetching the one after that** in the background:
-```bash
-bash claude/developer/scripts/triage/fetch-next-pr.sh iNavFlight/inav YYYY-MM-DD claude/local-data/triage/skip-inav.txt --offset 1 --output ./tmp/claude/prefetch-inav.txt
-```
-
-#### Step 7: Handle Skip
-
-If the user says "skip", add the PR number to the skip file:
-```bash
-echo "PR_NUMBER" >> claude/local-data/triage/skip-inav.txt
-# or
-echo "PR_NUMBER" >> claude/local-data/triage/skip-configurator.txt
-```
-
-**Date every skip entry** (manager convention, 2026-08-29): always annotate
-with `# PR - YYYY-MM-DD: <reason>` above the bare PR number. The date is
-the "last looked" timestamp — a future session must be able to re-find any
-PR whose activity is newer than its skip-date (e.g. read the PRs that have
-updates AFTER the last time we looked at them). Keep the reason brief and
-actionable (e.g. "awaiting author reply", "CI pending", "assigned to dev",
-"MERGED").
-
-Then invalidate cache and show prefetched PR as in Step 6.
-
-#### Step 8: Loop
-
-Continue the cycle: show prefetched PR, prefetch next one, wait for user decision. Stop when:
-- No more PRs to triage (script outputs `NO_MORE_PRS`)
-- User says to stop
-- Switching to the other repo
-
-### Example Session
-
-```
-> /pr-triage inav
-
-Fetching oldest untriaged PR for iNavFlight/inav (after 2025-02-07)...
-
-============================================================
-PR #11190: MSP: Add minimum power index to MSP_VTX_CONFIG
-============================================================
-URL:     https://github.com/iNavFlight/inav/pull/11190
-Author:  sensei-hacker
-Created: 2025-12-15
-Base:    maintenance-9.x
-Labels:  none
-...
-
-ANALYSIS:
-- Adds one byte to MSP_VTX_CONFIG response
-- Compatible change (older configurator ignores extra byte)
-- Base branch: maintenance-9.x (correct for 9.1)
-- Testing: Author-tested only, needs hardware VTX validation
-
-SUGGESTION: 9.1
-BRANCH: maintenance-9.x (correct)
-
-> [user]: 9.1
-
-Setting milestone 9.1 (50) on PR #11190... Done.
-Fetching next PR...
-```
-
----
-
-## Mode 3: Disposition — "Which PRs are ready to merge/approve/comment/label?"
-
-Walk through open PRs in merge-readiness order — highest-scoring first — and
-take action on each: merge, approve, comment, label, or skip.
-This is NOT code review. It is a disposition session based on readiness signals.
-The score comes from the `/pr-scorecard` rubric; merge actions (for users with a
-merge-capable token) happen here.
+The score (0–100, from `/pr-scorecard`) refines that verdict and orders the queue. Milestone
+assignment is one of the actions, not a separate pass.
 
 ### Usage
 
@@ -439,15 +254,14 @@ merge-capable token) happen here.
 /pr-triage disposition [inav|configurator|both] [--after YYYY-MM-DD]
 ```
 
-Default: both repos (inav first), PRs from the last 6 months.
-Pass `--after` to override the date window, e.g. `--after 2025-10-01`.
+Default: both repos (inav first), PRs from the last 6 months. Pass `--after` to override.
 
 ### Preparation
 
 ```bash
 mkdir -p ./tmp/claude
-touch claude/local-data/triage/skip-scorecard-inav.txt
-touch claude/local-data/triage/skip-scorecard-configurator.txt
+touch claude/local-data/triage/skip-inav.txt
+touch claude/local-data/triage/skip-configurator.txt
 ```
 
 ### Main Loop
@@ -458,67 +272,105 @@ touch claude/local-data/triage/skip-scorecard-configurator.txt
 # Fetch current PR (foreground) — default window is 6 months
 bash claude/developer/scripts/triage/scorecard-triage.sh \
     iNavFlight/inav \
-    claude/local-data/triage/skip-scorecard-inav.txt
+    claude/local-data/triage/skip-inav.txt
 
-# Or with explicit date window:
+# Or oldest-first (to avoid letting old PRs rot):
 bash claude/developer/scripts/triage/scorecard-triage.sh \
     iNavFlight/inav \
-    claude/local-data/triage/skip-scorecard-inav.txt \
-    --after 2025-10-01
+    claude/local-data/triage/skip-inav.txt \
+    --after 2025-10-01 --sort-oldest
 
 # Immediately prefetch next in background
 bash claude/developer/scripts/triage/scorecard-triage.sh \
     iNavFlight/inav \
-    claude/local-data/triage/skip-scorecard-inav.txt \
+    claude/local-data/triage/skip-inav.txt \
     --offset 1 \
     --output ./tmp/claude/prefetch-scorecard.txt
 ```
 
-Use `run_in_background: true` on the prefetch call.
-
-If output is `NO_MORE_PRS`: that repo is exhausted, move to the other repo or stop.
+Use `run_in_background: true` on the prefetch call. If output is `NO_MORE_PRS`, that repo is
+exhausted — move to the other repo or stop.
 
 #### Step 2 — Run the Scorecard
 
 Check the `CACHE_STATUS` line in the scorecard-triage output:
 
 **If `CACHE_STATUS=fresh`:**
-Run pr-scorecard.sh to get the cached result instantly:
 ```bash
 bash claude/developer/scripts/triage/pr-scorecard.sh iNavFlight/inav <PR_NUMBER>
 ```
-Output will contain `CACHE_HIT=true` — use the cached score and label directly.
-**Do NOT re-run pr-scorecard-record.sh** — the entry already exists.
+Output contains `CACHE_HIT=true` — use the cached score/label directly. Do **not** re-run
+`pr-scorecard-record.sh`.
 
-**If `CACHE_STATUS=unscored` or `CACHE_STATUS=expired`:**
-Fetch fresh data:
+**If `CACHE_STATUS=unscored` or `expired`:**
 ```bash
 bash claude/developer/scripts/triage/pr-scorecard.sh iNavFlight/inav <PR_NUMBER>
 # (add --force if status was expired)
 ```
-Apply the scoring rubric from `/pr-scorecard` SKILL.md to compute a score.
-Then record it immediately:
+Apply the scoring rubric from `/pr-scorecard` SKILL.md, then record:
 ```bash
 bash claude/developer/scripts/triage/pr-scorecard-record.sh \
     iNavFlight/inav <PR_NUMBER> <SCORE> "<LABEL>" "<TITLE>" "<URL>"
 ```
 
-#### Step 3 — Check Milestone
+#### Step 3 — Analyze
 
-Check the `MILESTONE CHECK` section in the scorecard output. If the milestone is
-wrong or missing, flag it with `⚠` in KEY SIGNALS and include setting the correct
-milestone in the suggested action.
+Beyond the scorecard output, check:
 
-Use the **Milestone Criteria & Branch Validation** tables at the top of this skill as the
-authoritative mapping (they already encode the git-workflow branch overrides). The
-`MILESTONE CHECK` line in `pr-scorecard.sh` output is only a coarse hint — confirm against
-those tables, not the hint, before acting. A wrong/missing milestone is NOT a hard blocker
-but should be fixed before merge. When suggesting an action that includes merging or
-approving, also add: set milestone to the correct value.
+1. **What the PR does** - bug fix, feature, refactor, breaking change?
+2. **Risk level** - How much code changes? How confident is correctness?
+3. **Compatibility** - Does it break existing behavior for firmware or configurator users?
+4. **Base branch** - Does it target the right branch for the suggested milestone?
+5. **Testing status** - Labeled "needs testing"? Evidence of testing by someone other than the
+   author? The PR description's testing section is NOT sufficient alone — external testing matters.
+6. **Review status** - Has it been reviewed? Approved?
+7. **Companion/paired PRs** - If it references a companion PR (firmware ↔ configurator) or
+   depends on another PR, check that PR's real state before calling this one ready — a clean,
+   reviewed PR can still block on an unfixed companion. Verify, don't just summarize.
 
-#### Step 4 — Generate Suggested Disposition
+**Cross-PR dependencies get a project, not just an email (2026-09-13):** if a developer task
+blocks something else (e.g. "don't merge A until B's fixes land"), track it under `active/`,
+naming the blocking relationship. An email alone can be forgotten.
 
-Based on the score and blockers, suggest one clear action. Use this table:
+**Always include the PR URL** (e.g., `https://github.com/iNavFlight/inav/pull/NNNN`).
+
+**Link placement (manager convention, 2026-08-29):** in batch summaries, the PR number at the
+**start of the headline** must be the clickable link — `**[#NNNN](https://github.com/iNavFlight/inav/pull/NNNN) — PR title**`.
+The headline link is the only link for that PR.
+
+**Unaddressed Qodo/bot findings (manager convention, 2026-09-04):** ask the author to read and
+respond to the finding rather than the manager judging it right or wrong — Qodo is often wrong,
+but the author should still be the one to decide. Substantive/technical bot findings that need a
+human eye are a signal to *recommend a developer code review*, not to adjudicate here.
+
+**Always check the most recent comments/commits (manager convention, 2026-09-05):** an older
+flag (build failure, requested change, blocker) may already be resolved by later activity —
+don't stop at the first blocking comment you find, confirm it's still current.
+
+#### Step 4 — Check Milestone + Base Branch
+
+If the milestone is wrong or missing, flag it with `⚠` in KEY SIGNALS and include setting it in
+the suggested action. Use the **Milestone Criteria & Branch Validation** tables at the top of
+this skill — the `MILESTONE CHECK` line in `pr-scorecard.sh` output is only a coarse hint, so
+confirm against those tables before acting. A wrong/missing milestone is NOT a hard blocker but
+should be fixed before merge.
+
+Set milestone, base branch, and labels in a single `update-pr.sh` call:
+```bash
+bash claude/developer/scripts/triage/update-pr.sh iNavFlight/inav PR_NUMBER \
+    --milestone MILESTONE_NUMBER \
+    --base CORRECT_BRANCH \
+    --add-label "New target"
+```
+
+**You MUST use `update-pr.sh`** for milestone/base/label — do not call `gh api`/`gh issue edit`
+directly (the script handles API quirks reliably).
+
+**The manager's `gh` token cannot merge PRs** (`gh pr merge` fails: "Resource not accessible by
+personal access token"). Set milestone/labels/base as usual, then ask the user to merge — don't
+attempt `gh pr merge` expecting it to work (2026-09-13).
+
+#### Step 5 — Generate Suggested Disposition
 
 | Condition | Suggested Action |
 |-----------|-----------------|
@@ -539,9 +391,12 @@ For comment suggestions, be specific. Examples:
 - "CI check `Build MATEKF405` is failing — please fix."
 - "Looks good! I'll merge once the open review thread is closed."
 
-#### Step 5 — Present to User
+**Needs a deeper technical review?** If a PR touches driver/register-level code or has substantive
+bot findings that warrant a human code review, the disposition is *"send this to a developer for
+`/pr-review`"* — create a tracked task/email to a developer. That review is a separate developer
+process; this skill only recommends it.
 
-Format each PR like this:
+#### Step 6 — Present to User
 
 ```
 ============================================================
@@ -564,7 +419,7 @@ KEY SIGNALS
 SUGGESTED: Comment asking reviewer to close the 2 open threads, then merge.
 
 ------------------------------------------------------------
-[m]erge   [a]pprove   [c]omment   [l]abel   [r]eview   [s]kip   [q]uit
+[m]erge   [a]pprove   [c]omment   [l]abel   [s]kip   [q]uit
 ```
 
 Key/symbol guide for KEY SIGNALS:
@@ -575,9 +430,7 @@ Key/symbol guide for KEY SIGNALS:
 
 **Always print the URL on its own line** so it's clickable in the terminal.
 
-#### Step 6 — Wait for User Decision
-
-Wait for one of:
+#### Step 7 — Wait for User Decision
 
 | Input | Action |
 |-------|--------|
@@ -585,21 +438,19 @@ Wait for one of:
 | `a` or `approve` | Approve the PR |
 | `c` or `comment <text>` | Post a comment (use suggested text if no text given) |
 | `l` or `label <name>` | Add a label |
-| `r` or `review` | Run bot check + code review (see below) |
 | `s`, `n`, or `skip` | Skip this PR for this session |
 | `q` or `done` | End the session |
 
 If the user types just `c` or `l` without text, prompt for the text/label.
 
-#### Step 7 — Execute the Action
+#### Step 8 — Execute the Action
 
 **Merge**
 ```bash
 gh pr merge <PR_NUMBER> --repo iNavFlight/inav --squash --auto
 ```
 Ask the user for merge strategy if not obvious: `--squash` (default), `--merge`, or `--rebase`.
-*Note: the manager's `gh` token cannot merge (see Mode 2) — if merge fails with a permission
-error, ask the user to merge instead.*
+If merge fails with a permission error (the manager token can't merge), ask the user to merge.
 
 **Approve**
 ```bash
@@ -617,58 +468,17 @@ gh api repos/iNavFlight/inav/issues/<PR_NUMBER>/labels \
     --method POST --field 'labels[]=needs testing'
 ```
 
-**Hardware register verification (proactive — use before Review)**
+**Milestone / base / labels** — via `update-pr.sh` (Step 4).
 
-When a PR touches `src/main/drivers/` with platform-specific register access
-(GPIO toggle, DMA stream control, timer implementations, MCU-specific HAL/StdPeriph),
-proactively invoke the `target-developer` agent to verify correctness against
-hardware docs **before** deciding to merge or request review:
-
-```
-Agent(target-developer): "Verify hardware register usage in PR #<N> in <REPO>.
-Fetch the diff with: gh pr diff <N> --repo <REPO>
-Check register names, field access patterns, and logic against docs in
-claude/developer/docs/targets/<mcu>/
-Return: is the register usage correct per the hardware docs?"
-```
-
-This caught a GPIO toggle correctness issue in PR #11228 (AT32 LED fix) before merge.
-
-**Review (bot check → then code review)**
-
-These run **sequentially** — the code review agent reads the bot comments file.
-
-**Step 1:** Run check-pr-bots agent first:
-```
-Agent(check-pr-bots): "Fetch all bot comments on PR #<N> in <REPO>.
-Save full formatted output to ./tmp/claude/pr-<N>-bot-comments.txt.
-Return the content in your response."
-```
-
-**Step 2:** Once bot comments are saved, run inav-code-review:
-```
-Agent(inav-code-review): "Review PR #<N> in <REPO>.
-Fetch the diff with: gh pr diff <N> --repo <REPO>
-Bot comments file is at ./tmp/claude/pr-<N>-bot-comments.txt — read it and
-assess whether each bot concern is valid, already addressed, or invalid.
-Return: categorized findings by severity, and suggested comment text."
-```
-
-After both agents return:
-- Present the combined findings to the user
-- Suggest a comment either confirming the bot findings or refuting them
-- Ask the user: post the comment, or take a different action?
-
-**Proactive trigger:** If the scorecard data showed bot review comments
-(visible in the CODE REVIEW section), offer `[r]eview` as the suggested
-action rather than waiting for the user to ask.
-
-**Skip (no GitHub action — just add to session skip file)**
+**Skip (no GitHub action — just add to the session skip file)**
 ```bash
-echo "<PR_NUMBER>" >> claude/local-data/triage/skip-scorecard-inav.txt
+echo "<PR_NUMBER>" >> claude/local-data/triage/skip-inav.txt
 ```
 
-#### Step 8 — Advance to Next PR
+**Recommend developer review** — create a tracked task/email to a developer (a `/pr-review`
+hand-off); do not run the review agents here.
+
+#### Step 9 — Advance to Next PR
 
 After any action (including skip):
 
@@ -677,7 +487,7 @@ After any action (including skip):
    rm -f ./tmp/claude/scorecard-pr-cache-*.json
    ```
 
-2. Read the prefetched output (already running in background):
+2. Read the prefetched output:
    ```bash
    # Read: ./tmp/claude/prefetch-scorecard.txt
    ```
@@ -690,21 +500,16 @@ After any action (including skip):
    ```
    Use `run_in_background: true`.
 
-4. While that runs, present the current prefetched PR to the user (go to Step 4).
+4. While that runs, present the current prefetched PR to the user (go to Step 5).
 
 5. Kick off the next `scorecard-triage.sh --offset 1` prefetch for the one after that.
 
-#### Step 9 — Loop
-
-Continue until:
-- User says `q` or `done`
-- `NO_MORE_PRS` from scorecard-triage.sh
-- Switching repos
+Continue until: user says `q`/`done`, `NO_MORE_PRS`, or you switch repos.
 
 ### Configurator Repo
 
-Replace `iNavFlight/inav` with `iNavFlight/inav-configurator` throughout.
-Use separate skip file: `claude/local-data/triage/skip-scorecard-configurator.txt`.
+Replace `iNavFlight/inav` with `iNavFlight/inav-configurator` throughout. Use the skip file
+`claude/local-data/triage/skip-configurator.txt`.
 
 ### Example Session
 
@@ -753,12 +558,12 @@ Moving to next PR...
 
 ### Score Calibration
 
-**"Needs Work" does not mean "don't merge."** The score reflects how many
-readiness signals are present — it is a floor for discussion, not a hard gate.
+**"Needs Work" does not mean "don't merge."** The score reflects how many readiness signals are
+present — it is a floor for discussion, not a hard gate.
 
-A COLLABORATOR's 2-day-old bugfix with perfect CI can legitimately score 30/100
-(no maturity, no approvals yet) and still be the right call to merge. The score
-helps surface *what's missing* — the maintainer decides whether that matters.
+A COLLABORATOR's 2-day-old bugfix with perfect CI can legitimately score 30/100 (no maturity, no
+approvals yet) and still be the right call to merge. The score helps surface *what's missing* —
+the maintainer decides whether that matters.
 
 Use the score to guide questions:
 - Low maturity + trusted author → fine to merge if the fix is obvious
@@ -789,15 +594,13 @@ This is the standard label the project uses for abandoned/unresponsive PRs.
 ## Related Skills
 
 - **pr-scorecard** — Score a single PR in detail (the rubric used by the disposition mode)
-- **pr-review** — Full code review (checkout, build, review bots)
+- **pr-review** — Full code review (checkout, build, review bots). This is a **developer**
+  process; the disposition mode recommends it as a hand-off but does not run it.
 - **check-builds** — Deep-dive CI failure investigation
 
 ## Notes
 
-- PRs that already have a milestone are automatically excluded from milestone mode
-- Draft PRs are automatically excluded
-- PRs labeled "don't merge" (case-insensitive) are automatically excluded
-- Once a milestone is set, the PR won't appear in subsequent milestone-mode fetches
+- Draft PRs and PRs labeled "don't merge" (case-insensitive) are automatically excluded
 - Skip files persist across sessions at `claude/local-data/triage/skip-*.txt` (gitignored local data)
 - Always verify milestone numbers are current before starting a session
 - If GitHub API calls fail with network errors, that's the sandbox — ask the user to approve the operation rather than disabling the sandbox (`api.github.com` is allowlisted, so failures usually mean something else is wrong)
@@ -807,13 +610,11 @@ This is the standard label the project uses for abandoned/unresponsive PRs.
 - Use `/pr-scorecard <N>` for the full detailed scorecard on any individual PR
 - Disposition-mode default date window is **6 months**; pass `--after YYYY-MM-DD` to override
 
-## Merged-PR Milestone Backfill (distinct process)
+## Merged-PR Milestone Backfill (separate process)
 
-Milestone assignment for **already-MERGED** PRs is handled separately by
-`claude/developer/scripts/triage/tag-maintenance-milestone.py` (retroactive backfill of
-the release milestone onto merged PRs targeting a maintenance base branch). This is not part
-of the open-PR triage loop above; run it as its own step when release milestones need to be
-backfilled:
+Milestone assignment for **already-MERGED** PRs is handled by a separate script — retroactive
+backfill of the release milestone onto merged PRs targeting a maintenance base branch. Run it as
+its own step when release milestones need to be backfilled (e.g. after a release branch cut):
 
 ```bash
 # Default: maintenance-10.x -> 10.0

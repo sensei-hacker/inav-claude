@@ -12,9 +12,9 @@
 # Only includes PRs created after --after DATE (default: 6 months ago).
 #
 # Usage: scorecard-triage.sh <owner/repo> [skip-file] [--after DATE] [--before DATE] [--sort-oldest] [--offset N] [--output file]
-# Example: scorecard-triage.sh iNavFlight/inav claude/local-data/triage/skip-scorecard-inav.txt
-# Example: scorecard-triage.sh iNavFlight/inav claude/local-data/triage/skip-scorecard-inav.txt --after 2024-10-13 --sort-oldest
-# Example: scorecard-triage.sh iNavFlight/inav claude/local-data/triage/skip-scorecard-inav.txt --offset 1 --output ./tmp/claude/prefetch-scorecard.txt
+# Example: scorecard-triage.sh iNavFlight/inav claude/local-data/triage/skip-inav.txt
+# Example: scorecard-triage.sh iNavFlight/inav claude/local-data/triage/skip-inav.txt --after 2024-10-13 --sort-oldest
+# Example: scorecard-triage.sh iNavFlight/inav claude/local-data/triage/skip-inav.txt --offset 1 --output ./tmp/claude/prefetch-scorecard.txt
 
 set -euo pipefail
 
