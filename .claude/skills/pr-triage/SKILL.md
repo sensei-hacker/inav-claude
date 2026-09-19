@@ -57,8 +57,10 @@ authoritative for branch→milestone mapping — do not restate a second, diverg
 | Milestone | When to use |
 |-----------|-------------|
 | **9.1** | Straightforward bug fixes and compatible fixes/features with very little risk. Minimal code change, obvious correctness, backward-compatible with Configurator 9.0.0 and firmware 9.0.0. *(9.0.1 milestone is closed as of 2026-08 — its low-risk fixes now land in 9.1.)* |
-| **10.0** | Breaking changes. Would break compatibility with Configurator 9.0.0 or firmware 9.0.0, or requires coordinated firmware+configurator changes. |
-| **11.0** | Next major after 10.0. Protocol/MSP cleanup that must wait for the following release cycle. |
+| **9.1.1 / 9.1.2** | Patch releases on the 9.1 bugfix line — urgent hotfixes/regressions after 9.1 ships. |
+| **10.0** | Breaking changes and coordinated firmware+configurator changes already in scope for 10.0. *(As of 2026-09 10.0 is in feature freeze — only critical fixes land here.)* |
+| **10.1** | New features / significant non-breaking changes that arrive after the 10.0 feature freeze, especially features with no independent testing yet. |
+| **11.0** | Next major after 10.1. Protocol/MSP cleanup that must wait for the following release cycle. |
 | **Future** | Good idea but not prioritized for any current release. Large scope or speculative. |
 | **Skip** | Don't assign a milestone now (add to skip file for later). |
 
@@ -70,8 +72,8 @@ Branches"). Current effective mapping:
 
 | Milestone | Expected Base Branch |
 |-----------|---------------------|
-| **9.1** | inav: `release/9.1` — **temporary override active** (bugfix line) · configurator: `maintenance-9.x` |
-| **10.0** | `maintenance-10.x` |
+| **9.1 / 9.1.1 / 9.1.2** | inav: `release/9.1` — **temporary override active** (bugfix line) · configurator: `maintenance-9.x` |
+| **10.0 / 10.1** | `maintenance-10.x` |
 | **11.0** | `maintenance-10.x` (current 11.0 PRs, e.g. #9929, target this) |
 | **Future** | any (no change needed) |
 
@@ -93,7 +95,9 @@ note before "fixing" a mismatch.
 | Milestone | API Number |
 |-----------|------------|
 | 9.1 | 50 |
+| 9.1.1 | 53 |
 | 10.0 | 46 |
+| 10.1 | 54 |
 | 11.0 | 52 |
 | Future | 18 |
 
@@ -104,7 +108,10 @@ note before "fixing" a mismatch.
 |-----------|------------|
 | 9.0.1 | 36 |
 | 9.1 | 35 |
+| 9.1.1 | 38 |
+| 9.1.2 | 39 |
 | 10.0 | 37 |
+| 10.1 | 40 |
 | Future | 5 |
 
 **Refreshing milestone numbers** (if milestones change):
