@@ -2,9 +2,10 @@
 
 ## Overview
 
-Two scripts here cover Chrome DevTools Protocol (CDP) access to INAV Configurator:
+Three scripts here cover Chrome DevTools Protocol (CDP) access to INAV Configurator:
 
 - `configurator_cdp_test.py` - Comprehensive test script for verifying the CDP connection to INAV Configurator works.
+- `tab_sweep_cdp.py` - Sweeps connected tabs for console errors (post-ES6-module-merge regression check).
 - `cdp_eval.mjs` - Minimal zero-dependency helper that evaluates a single JS expression in the renderer and prints the JSON result.
 
 ## Purpose
@@ -31,7 +32,7 @@ Tests that the configurator's CDP debugging interface is working correctly. This
 ## Usage
 
 ```bash
-python3 claude/developer/scripts/testing/configurator_cdp_test.py
+python3 claude/developer/scripts/testing/configurator/configurator_cdp_test.py
 ```
 
 ## What It Tests
@@ -201,14 +202,14 @@ If this script passes, the CDP layer is working. MCP provides a higher-level abs
 ```bash
 cd inav-configurator && npm start
 # Wait 3 seconds
-python3 claude/developer/scripts/testing/configurator_cdp_test.py
+python3 claude/developer/scripts/testing/configurator/configurator_cdp_test.py
 ```
 
 **After configurator changes:** Ensure CDP still works
 ```bash
 # After modifying main.js or startup code
 npm start
-python3 claude/developer/scripts/testing/configurator_cdp_test.py
+python3 claude/developer/scripts/testing/configurator/configurator_cdp_test.py
 ```
 
 **CI/CD validation:** Automated check
@@ -216,7 +217,7 @@ python3 claude/developer/scripts/testing/configurator_cdp_test.py
 # In GitHub Actions or local automation
 npm start &
 sleep 5
-python3 claude/developer/scripts/testing/configurator_cdp_test.py
+python3 claude/developer/scripts/testing/configurator/configurator_cdp_test.py
 ```
 
 ## Related Documentation
