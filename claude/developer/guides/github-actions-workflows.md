@@ -26,6 +26,10 @@ and mixing this up silently breaks a feature without any error:
   branch to a `push: branches:` list on `master` only affected pushes to
   `master`; `maintenance-10.x` kept running its own stale copy that didn't
   list itself, so pushes there never fired the workflow at all, for weeks.
+- **`pull_request_target`**: runs the copy of the workflow on the PR's
+  **base branch** (the merge target), not the PR head, so it only fires for
+  PRs targeting a branch that already contains the file. A cleanup workflow
+  present only on `maintenance-10.x` won't run for PRs targeting `release/9.1`.
 
 **Rule of thumb:** for a `workflow_run`-triggered feature split across
 multiple files, figure out which of those files are `push`/`workflow_call`
