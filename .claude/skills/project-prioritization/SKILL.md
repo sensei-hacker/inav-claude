@@ -47,11 +47,22 @@ unreliable directly from the terminal.
 The status→emoji map (updated 2026-09-15) covers 📋 TODO, 🚧 IN_PROGRESS,
 ✅ COMPLETE, ⏸️ BACKBURNER, 🚫 BLOCKED, ❌ CANCELLED — `list BLOCKED` works.
 
-**Known gap** (as of 2026-09-15): the `Priority` column reliably shows `N/A`
-— `INDEX.md` packs multiple fields pipe-separated on one line (e.g.
-`**Status:** ... | **Priority:** MEDIUM | ...`), and the parser only matches
-a field that starts its own line. Read `Priority:` by eye from the summary
-line, or from `show <slug>`'s raw output, until this is fixed.
+`Priority`, `Assignee`, `Created`, and `Directory`/`Location` are now parsed
+correctly regardless of position on the line (fixed 2026-09-15 — they used to
+only match if they started their own line, which meant `Priority` always came
+back `N/A` since `INDEX.md` packs them pipe-separated on one line). A related
+parser bug was fixed at the same time: the project-header regex used a
+character class over the status emoji, which silently failed to match ⏸️
+BACKBURNER headers (two Unicode codepoints — a class can't match them as a
+unit) and merged that project's fields into the *previous* project's block,
+corrupting its `Created`/`Assignee`/`Priority`. Fixed by matching emoji via
+alternation instead of a character class.
+
+**Data-quality note, not a script bug:** `Priority` values in `INDEX.md` are
+free text, not a fixed enum — besides `HIGH`/`MEDIUM`/`LOW` you'll see things
+like `LOW-MEDIUM`, `LOW/MEDIUM`, and compound values like `HIGH (feature-2) /
+MEDIUM (others)`. Don't filter/sort on exact string match; read each value
+when it matters for a ranking decision.
 
 Do NOT fall back to filesystem `mtime` on `active/*/summary.md` for dating —
 `claude/projects/` is gitignored (no git history either) and bulk workspace

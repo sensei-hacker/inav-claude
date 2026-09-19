@@ -250,6 +250,23 @@ MCP requires a new Claude session to load:
 4. Start configurator: `NODE_ENV=development npm start &`
 5. MCP tools should now be available
 
+### Stale/Inconsistent State While Editing Source Mid-Test
+
+If you edit a tab's `.js` file while a live click-through test is running
+against the same dev server, Vite's hot-module-reload can swap the module
+mid-session and leave some UI state (e.g. a currently-open editor panel)
+bound to closures from before the reload, while other elements (e.g. a
+`<select>` list) reflect the new module. This can look exactly like an
+application bug — a dropdown and its detail panel disagreeing about which
+item is selected — but it's a dev-workflow artifact, not a defect in the
+built app.
+
+If you hit something like this, reproduce it from a **clean full reload**
+(no source edits in between) before concluding it's a real bug. Two clean
+reproduction attempts with no interleaved edits and no reproduction is a
+strong signal the original observation was an HMR artifact, not worth a
+bug report.
+
 ## Code Location
 
 Remote debugging is enabled in:
