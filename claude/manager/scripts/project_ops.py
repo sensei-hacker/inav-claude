@@ -6,6 +6,7 @@ Prevents drift between INDEX.md, completed/INDEX.md, and directory structure
 by performing all related changes in a single operation.
 
 Commands:
+    create <project>      Create new project (dir + files + INDEX entry)
     complete <project>    Move project to completed (dir + both indexes)
     block <project>       Move project to blocked (dir + index status)
     backburner <project>  Move project to backburner (dir + index status)
@@ -490,6 +491,71 @@ def report_missing_index_entry(content, project_name, action="updated"):
     return False
 
 
+def build_active_entry_block(project_name, project_type, priority, summary, assignee):
+    """Build a correctly-formatted active-INDEX entry (TODO status), ending in '---'."""
+    today = date.today().isoformat()
+    return (
+        f"### {STATUS_EMOJI['TODO']} {project_name}\n\n"
+        f"**Status:** TODO | **Type:** {project_type} | **Priority:** {priority}\n"
+        f"**Created:** {today} | **Assignee:** {assignee}\n\n"
+        f"{summary}\n\n"
+        f"**Directory:** `active/{project_name}/`\n\n"
+        f"---\n"
+    )
+
+
+def insert_active_entry(entry_block):
+    """Insert a new entry right after the '## Active Projects' heading so the
+    newest project sits at the top of the active section. Reads and writes
+    INDEX.md here so callers never load the whole file into context."""
+    content = read_file(INDEX_PATH)
+    heading = re.search(r'## Active Projects\n', content)
+    if heading:
+        after = heading.end()
+        first = re.search(r'^### ', content[after:], re.MULTILINE)
+        pos = after + first.start() if first else len(content)
+    else:
+        pos = len(content)
+    content = content[:pos] + entry_block.rstrip('\n') + "\n\n" + content[pos:]
+    write_file(INDEX_PATH, content)
+
+
+def build_summary_md(project_name, title, project_type, priority, summary, notes, effort):
+    """Generate a summary.md skeleton matching the manager project template."""
+    today = date.today().isoformat()
+    lines = [
+        f"# Project: {title}",
+        "",
+        f"**Status:** 📋 TODO",
+        f"**Priority:** {priority}",
+        f"**Type:** {project_type}",
+        f"**Created:** {today}",
+        f"**Estimated Effort:** {effort}",
+        "",
+        "## Overview",
+        "",
+        summary,
+        "",
+    ]
+    if notes:
+        lines += ["## Notes", ""]
+        for n in notes:
+            lines.append(f"- {n}")
+        lines.append("")
+    return "\n".join(lines)
+
+
+def build_todo_md(title):
+    """Generate a minimal todo.md skeleton."""
+    return (
+        f"# Todo: {title}\n\n"
+        f"## Phase 1\n\n"
+        f"- [ ] \n\n"
+        f"## Completion\n\n"
+        f"- [ ] Completion report to manager\n"
+    )
+
+
 # ============================================================
 # Commands
 # ============================================================
@@ -711,6 +777,89 @@ def cmd_resume(project_name):
         return report_missing_index_entry(read_file(INDEX_PATH), project_name, action="updated")
     update_directory_reference(INDEX_PATH, project_name, f'active/{project_name}/')
     update_index_counts(INDEX_PATH)
+    print(f"  DONE")
+    return True
+
+
+def cmd_create(args):
+    """Create a new active project: directory + summary.md/todo.md + INDEX entry.
+
+    Usage: create <project-name> [--title T] [--type T] [--priority P]
+           [--summary S] [--assignee A] [--effort E] [--note N ...]
+
+    All file reads/writes (including locating the INDEX.md insertion point) happen
+    here so the calling agent never loads INDEX.md into context, and the entry is
+    generated with the exact format the other lifecycle commands parse.
+    """
+    if not args:
+        print("Usage: project_ops.py create <project-name> [--title T] [--type T] "
+              "[--priority P] [--summary S] [--assignee A] [--effort E] [--note N ...]")
+        return False
+
+    project_name = args[0]
+    title = None
+    ptype = 'Task'
+    priority = 'MEDIUM'
+    summary = None
+    assignee = '📝 Planned'
+    effort = 'TBD'
+    notes = []
+
+    i = 1
+    while i < len(args):
+        a = args[i]
+        if a in ('--title', '--type', '--priority', '--summary', '--assignee', '--effort', '--note') and i + 1 < len(args):
+            v = args[i + 1]
+            if a == '--title':
+                title = v
+            elif a == '--type':
+                ptype = v
+            elif a == '--priority':
+                priority = v.upper()
+            elif a == '--summary':
+                summary = v
+            elif a == '--assignee':
+                assignee = v
+            elif a == '--effort':
+                effort = v
+            elif a == '--note':
+                notes.append(v)
+            i += 2
+        else:
+            print(f"  Unknown or incomplete flag: {a}")
+            return False
+
+    title = title or project_name.replace('-', ' ').title()
+    summary = summary or project_name.replace('-', ' ')
+
+    # Slug must be lowercase kebab-case so the regex matching used by every
+    # other command stays unambiguous.
+    if not re.fullmatch(r'[a-z0-9][a-z0-9-]*', project_name):
+        print(f"  ERROR: project name must be lowercase kebab-case (got {project_name!r})")
+        return False
+
+    existing_dir, _ = find_project_dir(project_name)
+    if existing_dir is not None:
+        print(f"  ERROR: a project directory already exists for '{project_name}'")
+        return False
+    content = read_file(INDEX_PATH)
+    if find_raw_heading_line(content, project_name) or find_entry_bounds(content, project_name)[0] is not None:
+        print(f"  ERROR: '{project_name}' already has an entry in INDEX.md")
+        return False
+
+    print(f"\nCreating project: {project_name}")
+
+    proj_dir = ACTIVE_DIR / project_name
+    proj_dir.mkdir(parents=True, exist_ok=False)
+    write_file(proj_dir / "summary.md", build_summary_md(project_name, title, ptype, priority, summary, notes, effort))
+    write_file(proj_dir / "todo.md", build_todo_md(title))
+    print(f"  Created active/{project_name}/summary.md + todo.md")
+
+    insert_active_entry(build_active_entry_block(project_name, ptype, priority, summary, assignee))
+    print(f"  Added entry to INDEX.md")
+
+    update_index_counts(INDEX_PATH)
+    print(f"  Updated counts")
     print(f"  DONE")
     return True
 
@@ -938,12 +1087,88 @@ def cmd_audit(fix=False, dry_run=False, force=False):
     return len(issues) == 0
 
 
+def cmd_unsent():
+    """List active projects (TODO/IN_PROGRESS) that have not been sent to the developer."""
+    content = read_file(INDEX_PATH)
+
+    # Parse active entries -> name + assignee
+    active = {}
+    for e in re.split(r'\n### ', content):
+        m = re.match(r'(📋|🚧)\s+([^\n]+)', e)
+        if not m:
+            continue
+        name = m.group(2).strip()
+        am = re.search(r'\*\*Assignee:\*\*\s*([^\n]+)', e)
+        asm = re.search(r'\*\*Assignment:\*\*\s*([^\n]+)', e)
+        a = am.group(1).strip() if am else (asm.group(1).strip() if asm else '')
+        active[name] = a
+
+    # Projects explicitly referenced in sent task-assignment emails
+    sent_names = set()
+    sent_dir = REPO_ROOT / "claude" / "manager" / "email" / "sent"
+    if sent_dir.is_dir():
+        for f in sorted(sent_dir.glob("*-task-*.md")):
+            txt = f.read_text(errors="replace")
+            for m in re.finditer(r'\*\*(?:Directory|Project):\*\*\s*(.+)', txt):
+                v = m.group(1).strip().strip('`').strip()
+                dm = re.search(r'([a-z0-9][a-z0-9-]*)/?$', v)
+                if dm and '-' in dm.group(1):
+                    sent_names.add(dm.group(1))
+                elif re.fullmatch(r'[a-z0-9][a-z0-9-]*', v) and '-' in v:
+                    sent_names.add(v)
+
+    unsent, manager_owned = [], []
+    for name in sorted(active):
+        a = active[name]
+        al = a.lower()
+        if al.startswith('manager'):
+            manager_owned.append((name, a))
+        elif name in sent_names:
+            continue
+        elif ('planned' in al) or ('unassigned' in al) or (a.strip() == ''):
+            unsent.append((name, a))
+
+    print(f"\nUnsent active projects ({len(unsent)}):")
+    for name, a in unsent:
+        print(f"  - {name}   [{a or 'no assignee'}]")
+    if manager_owned:
+        print(f"\nManager-owned / not a developer task ({len(manager_owned)}):")
+        for name, a in manager_owned:
+            print(f"  - {name}   [{a or 'no assignee'}]")
+    print()
+
+
+HELP_TEXT = """Project Operations - atomic project lifecycle operations.
+
+Usage:
+  project_ops.py create <project> [flags]    Create new project (dir + files + INDEX entry)
+  project_ops.py complete <project>          Move project to completed (dir + both indexes)
+  project_ops.py cancel <project> [reason]   Cancel project (to completed as cancelled)
+  project_ops.py block <project> [reason]    Block project (active -> blocked)
+  project_ops.py backburner <project>        Backburner project (active -> backburner)
+  project_ops.py resume <project>            Resume blocked/backburner -> active
+  project_ops.py audit [--fix] [--dry-run] [--force]   Check/fix index-dir consistency
+  project_ops.py unsent                               List active projects not sent to the developer
+
+Options:
+  -h, --help   Show this help and exit
+"""
+
+
 def main():
+    if '--help' in sys.argv or '-h' in sys.argv:
+        print(HELP_TEXT)
+        sys.exit(0)
+
     if len(sys.argv) < 2:
         print(__doc__)
         sys.exit(1)
 
     command = sys.argv[1]
+
+    if command == 'help':
+        print(HELP_TEXT)
+        sys.exit(0)
 
     if command == 'complete':
         if len(sys.argv) < 3:
@@ -988,6 +1213,13 @@ def main():
         force = '--force' in sys.argv
         if not cmd_audit(fix=fix, dry_run=dry_run, force=force):
             sys.exit(1)
+
+    elif command == 'create':
+        if not cmd_create(sys.argv[2:]):
+            sys.exit(1)
+
+    elif command == 'unsent':
+        cmd_unsent()
 
     else:
         print(f"Unknown command: {command}")
