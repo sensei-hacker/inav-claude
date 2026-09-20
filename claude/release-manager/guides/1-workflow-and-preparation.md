@@ -45,12 +45,20 @@ Use this string **everywhere**: directory names, rename script argument, release
 **The hazard:** Once `maintenance-10.x`'s version number is set to `10.0.0`, any later patch fix on the previous major's release branch (e.g. `release/9.1` → `9.1.1`) has to be merged forward into `maintenance-10.x`, per [Post-Release: Merging Changes Upward](#️-post-release-merging-changes-upward-to-the-next-version) below. If that forward-merge happens *after* `10.0.0` was already set, it can carry the `9.1.x` branch's version-string commit along with it — silently overwriting the already-set `10.0.0` version number on `maintenance-10.x`.
 
 **Do this, in order, before setting the new major's version number:**
-1. On the previous major's release branch (e.g. `release/9.1`), bump the patch level (e.g. to `9.1.2`) — even if there's no pending bug fix. This reserves the next patch number.
-2. Commit that patch-level bump.
-3. Open a PR carrying it forward into the new major's branch (`maintenance-10.x`), following the [forward-merge procedure](#️-post-release-merging-changes-upward-to-the-next-version) below — **never use GitHub's "Resolve conflicts" button** on that PR.
-4. **Only after that PR merges**, set the new major's own version number (e.g. `10.0.0`) on `maintenance-10.x`.
+1. On the previous major's release branch (e.g. `release/9.1`), bump the patch level (e.g. to `9.1.2`) — even if there's no pending bug fix. This reserves the next patch number. **Check each repo's actual next-unused patch number rather than assuming firmware and configurator match** — they can drift (e.g. a configurator-only patch release uses up a number on that repo but not on firmware).
+2. **Ensure a GitHub milestone exists for that patch version (and for the new major version) on each repo**, creating it first if missing (`gh api repos/<owner/repo>/milestones -f title=<version>`). A version-string bump PR with no milestone to attach to falls through the cracks of PR/milestone tracking. Do this for both the patch-reservation bump and, later, the new major version itself.
+3. Commit that patch-level bump.
+4. Open a PR carrying it forward into the new major's branch (`maintenance-10.x`), following the [forward-merge procedure](#️-post-release-merging-changes-upward-to-the-next-version) below — **never use GitHub's "Resolve conflicts" button** on that PR. Attach the milestone from step 2 to this PR.
+5. **Only after that PR merges**, set the new major's own version number (e.g. `10.0.0`) on `maintenance-10.x`.
 
 This ordering exists because a version bump landing on `maintenance-10.x` before the previous major's patch reservation is merged forward can get silently reverted by that later merge.
+
+**In the new-major version-bump PR's description** (the PR that sets `10.0.0`/`10.0.0-rc1` etc. on `maintenance-10.x`), explicitly remind the maintainer of the required merge order, since GitHub doesn't enforce PR-merge sequencing on its own:
+1. Merge the patch-reservation PR (step 1-3 above) into the previous major's release branch first.
+2. Merge the forward-merge PR (step 4) carrying that patch bump into `maintenance-10.x` next.
+3. Only then merge this PR.
+
+A maintainer merging this PR out of order — before the patch reservation has landed and been forward-merged — recreates the exact hazard this procedure exists to avoid.
 
 ---
 
@@ -292,6 +300,7 @@ Both firmware and configurator GitHub releases follow the same cumulative patter
 - [ ] CI passing on master branch
 - [ ] No critical open issues blocking release
 - [ ] Version numbers updated in both repositories
+- [ ] **GitHub milestone for this version exists on both repos** (create with `gh api repos/<owner/repo>/milestones -f title=<version>` if missing) — every version-bump PR needs a milestone to attach to
 - [ ] SITL binaries updated in configurator
 - [ ] WASM SITL built and added to configurator `js/web/WASM/` + `SITL-Webassembly.js` import updated (10.x+)
 - [ ] **PG validation passed** (see [Step 0.6](#️-step-06-run-pg-validation-now-before-downloading-anything) above — run this before Phase 2, not after)
