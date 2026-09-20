@@ -18,19 +18,20 @@ Do NOT read other roles' files (Manager's INDEX, other inboxes, cross-role track
 
 **When performing a release, there is a guide for each step. When you get to each step, read the guide for the step you are about to start. You do not need to read them all up front!:**
 
-1. **[Phase 1: Workflow and Preparation](guides/1-workflow-and-preparation.md)** - Start here
-2. **[Phase 2: Downloading Artifacts](guides/2-downloading-artifacts.md)** - Download from CI/nightly
-3. **[Phase 3: Verifying Artifacts](guides/3-verifying-artifacts.md)** - Verify DMG, SITL, test
-4. **[Phase 4: Building Locally](guides/4-building-locally.md)** - Only if inav-builder agent fails
-5. **[Phase 5: Changelog and Notes](guides/5-changelog-and-notes.md)** - Generate release notes
-6. **[Phase 6: Creating Releases](guides/6-creating-releases.md)** - Create tags, draft releases, upload assets
-7. **[Phase 7: Publishing Releases](guides/7-publishing-releases.md)** - Publish and announce
-8. **[Phase 8: Post-Release](guides/8-post-release.md)** - Monitor, hotfix, capture lessons learned
+0. **[Major Version Bump](guides/05-major-version-bump.md)** - First RC of a new major version only (e.g. 10.0.0-RC1) — read this before Phase 10
+1. **[Phase 10: Workflow and Preparation](guides/10-workflow-and-preparation.md)** - Start here
+2. **[Phase 20: Downloading Artifacts](guides/20-downloading-artifacts.md)** - Download from CI/nightly
+3. **[Phase 30: Verifying Artifacts](guides/30-verifying-artifacts.md)** - Verify DMG, SITL, test
+4. **[Phase 40: Building Locally](guides/40-building-locally.md)** - Only if inav-builder agent fails
+5. **[Phase 50: Changelog and Notes](guides/50-changelog-and-notes.md)** - Generate release notes
+6. **[Phase 60: Creating Releases](guides/60-creating-releases.md)** - Create tags, draft releases, upload assets
+7. **[Phase 70: Publishing Releases](guides/70-publishing-releases.md)** - Publish and announce
+8. **[Phase 80: Post-Release](guides/80-post-release.md)** - Monitor, hotfix, capture lessons learned
 
 **Also part of the standard flow (INAV 10.x and later):**
 - **[WASM SITL + Browser/PWA Build](guides/wasm-sitl-pwa-build.md)** - Building/packaging the browser-based PWA Configurator build, which bundles the in-browser WASM build of SITL. The configurator side (PWA support + web build) is merged into `maintenance-10.x`; the firmware WASM toolchain still lives on `feature/wasm-sitl-firmware` — see the guide for the current status before relying on it.
 
-**Important:** Use the **inav-builder** agent for all builds. Only read Phase 4 if the agent encounters issues.
+**Important:** Use the **inav-builder** agent for all builds. Only read Phase 40 if the agent encounters issues.
 
 ---
 
@@ -38,13 +39,13 @@ Do NOT read other roles' files (Manager's INDEX, other inboxes, cross-role track
 
 For a typical release:
 
-1. **Read Phase 1** - Verify release readiness, understand workflow
-2. **Download artifacts** - Follow Phase 2 (firmware from nightly, configurator from CI)
-3. **Verify artifacts** - Follow Phase 3 (DMG, SITL, testing)
-4. **Generate changelog** - Follow Phase 5 (list PRs, find incompatible settings)
-5. **Create releases** - Follow Phase 6 (create tags, upload assets)
-6. **Publish releases** - Follow Phase 7 (publish, announce)
-7. **Post-release** - Follow Phase 8 (monitor, hotfix, lessons learned)
+1. **Read Phase 10** - Verify release readiness, understand workflow
+2. **Download artifacts** - Follow Phase 20 (firmware from nightly, configurator from CI)
+3. **Verify artifacts** - Follow Phase 30 (DMG, SITL, testing)
+4. **Generate changelog** - Follow Phase 50 (list PRs, find incompatible settings)
+5. **Create releases** - Follow Phase 60 (create tags, upload assets)
+6. **Publish releases** - Follow Phase 70 (publish, announce)
+7. **Post-release** - Follow Phase 80 (monitor, hotfix, lessons learned)
 
 ---
 
@@ -131,7 +132,7 @@ Version numbers are set in:
 
 ## Maintenance Branches
 
-When releasing a new major version, create maintenance branches for both repositories:
+**Creating branches for a new major version?** See [guides/05-major-version-bump.md](guides/05-major-version-bump.md) for the full one-time procedure (previous-major patch reservation, next-major branch creation, milestone, PR branch-suggestion workflow update, and setting the new version string, in the required order). This section is evergreen reference material on the branch strategy itself.
 
 ### Branch Strategy
 
@@ -167,34 +168,6 @@ narrower) release decision.
 See `claude/local-data/manager/10.0-rc1-priorities.md` for the 10.0 RC1 priority list
 this policy affects.
 
-### Creating Maintenance Branches
-
-Create branches from the release commit in both repos:
-
-```bash
-# Using gh API (works with HTTPS remotes)
-COMMIT_SHA="<full-40-char-sha>"
-
-# inav
-gh api repos/iNavFlight/inav/git/refs -f ref="refs/heads/maintenance-9.x" -f sha="$COMMIT_SHA"
-gh api repos/iNavFlight/inav/git/refs -f ref="refs/heads/maintenance-10.x" -f sha="$COMMIT_SHA"
-
-# inav-configurator
-gh api repos/iNavFlight/inav-configurator/git/refs -f ref="refs/heads/maintenance-9.x" -f sha="$COMMIT_SHA"
-gh api repos/iNavFlight/inav-configurator/git/refs -f ref="refs/heads/maintenance-10.x" -f sha="$COMMIT_SHA"
-```
-
-Or using git push (requires SSH remote):
-
-```bash
-git push upstream upstream/master:refs/heads/maintenance-9.x
-git push upstream upstream/master:refs/heads/maintenance-10.x
-```
-
-### When to Create
-
-Create the next major's maintenance branch at the first RC of the new major version (e.g. create `maintenance-11.x` around `10.0.0-RC1`). Once a version enters RC/stabilization, its maintenance branch should take only fixes; new breaking work goes to the next major's branch instead. Also at this point: create the matching GitHub milestone on both repos, and update the PR branch-suggestion workflow (below) to the new compatible/breaking pair.
-
 ### Usage
 
 Current base-branch assignment (may include a temporary override) is in
@@ -218,16 +191,6 @@ GitHub's own documentation states:
 For this PR the base branch is `maintenance-10.x`. Clicking "Resolve conflicts" merges ALL of `maintenance-10.x` into `release/9.x` — the wrong direction — contaminating the older release branch with months of newer development. The resulting commit will be innocuously named "Merge branch 'maintenance-10.x' into release/9.1" and will look routine in the history.
 
 **Instead:** Use the procedure in `claude/developer/guides/merge-release-into-next-version.md` — branch off `maintenance-10.x`, merge `release/9.x` into that branch, resolve conflicts there, then open a PR from that branch into `maintenance-10.x`.
-
-### Update PR Branch Suggestion Workflow
-
-When creating new maintenance branches, update the GitHub Action that suggests version branches to contributors:
-
-**Files to update:**
-- `inav/.github/workflows/pr-branch-suggestion.yml`
-- `inav-configurator/.github/workflows/pr-branch-suggestion.yml`
-
-Update the branch names mentioned in the comment text (e.g., change `maintenance-9.x` and `maintenance-10.x` to the current version branches).
 
 ---
 
@@ -317,12 +280,12 @@ Usage:
 **`claude/release-manager/scripts/find-incompatible-settings.sh`**
 - Identifies CLI settings that were renamed or removed between versions
 - Critical for major version releases (e.g., 8.x → 9.x)
-- See [Phase 5: Changelog and Notes](guides/5-changelog-and-notes.md) for usage
+- See [Phase 50: Changelog and Notes](guides/50-changelog-and-notes.md) for usage
 
 **`claude/release-manager/scripts/count-fixes-and-features.sh`**
 - Counts merged PRs since the last stable tag, split into fixes vs. features/enhancements, for release-note and social-media summary blurbs ("N fixes and M new features")
 - Title-keyword heuristic, not a precise audit — review the excluded-PR list it prints
-- See [Phase 5: Changelog and Notes](guides/5-changelog-and-notes.md) for usage
+- See [Phase 50: Changelog and Notes](guides/50-changelog-and-notes.md) for usage
 
 Usage:
 ```bash
@@ -364,7 +327,7 @@ gh release edit X.Y.Z --draft=false --repo <owner/repo>
 gh release view X.Y.Z --repo <owner/repo>
 ```
 
-For detailed command examples, see [Phase 6: Creating Releases](guides/6-creating-releases.md) (tag/draft/upload) and [Phase 7: Publishing Releases](guides/7-publishing-releases.md) (publish/announce).
+For detailed command examples, see [Phase 60: Creating Releases](guides/60-creating-releases.md) (tag/draft/upload) and [Phase 70: Publishing Releases](guides/70-publishing-releases.md) (publish/announce).
 
 ---
 
@@ -399,7 +362,7 @@ Use these agents via the Task tool for release operations:
 "Build SITL"
 ```
 
-**Note:** The inav-builder agent is the preferred way to build. Only read [Phase 4: Building Locally](guides/4-building-locally.md) if the agent encounters issues.
+**Note:** The inav-builder agent is the preferred way to build. Only read [Phase 40: Building Locally](guides/40-building-locally.md) if the agent encounters issues.
 
 ---
 
@@ -452,7 +415,7 @@ As Release Manager:
 **Remember:** Releases affect all INAV users. Double-check everything before publishing.
 
 ### Announcement Tips
-See [Phase 7: Publishing Releases § Announcement Tips](guides/7-publishing-releases.md#announcement-tips) for the full checklist (character limits, emoji policy, combined-announcement rule, reference examples).
+See [Phase 70: Publishing Releases § Announcement Tips](guides/70-publishing-releases.md#announcement-tips) for the full checklist (character limits, emoji policy, combined-announcement rule, reference examples).
 
 ---
 
@@ -460,15 +423,15 @@ See [Phase 7: Publishing Releases § Announcement Tips](guides/7-publishing-rele
 
 **New to release management? Start here:**
 
-1. Read [Phase 1: Workflow and Preparation](guides/1-workflow-and-preparation.md) to understand the complete release process
+1. Read [Phase 10: Workflow and Preparation](guides/10-workflow-and-preparation.md) to understand the complete release process
 2. Follow each phase guide in order during your release
-3. Use the pre-release checklist in Phase 1 before publishing
+3. Use the pre-release checklist in Phase 10 before publishing
 4. Keep the Quick Commands Reference above handy for common operations
 
 **For specific tasks:**
-- Downloading artifacts → [Phase 2](guides/2-downloading-artifacts.md)
-- Verifying builds → [Phase 3](guides/3-verifying-artifacts.md)
-- Writing release notes → [Phase 5](guides/5-changelog-and-notes.md)
-- Creating GitHub releases → [Phase 6](guides/6-creating-releases.md)
-- Publishing and announcing → [Phase 7](guides/7-publishing-releases.md)
-- Post-release monitoring and lessons learned → [Phase 8](guides/8-post-release.md)
+- Downloading artifacts → [Phase 20](guides/20-downloading-artifacts.md)
+- Verifying builds → [Phase 30](guides/30-verifying-artifacts.md)
+- Writing release notes → [Phase 50](guides/50-changelog-and-notes.md)
+- Creating GitHub releases → [Phase 60](guides/60-creating-releases.md)
+- Publishing and announcing → [Phase 70](guides/70-publishing-releases.md)
+- Post-release monitoring and lessons learned → [Phase 80](guides/80-post-release.md)

@@ -1,16 +1,16 @@
-# Phase 1: Release Workflow and Preparation
+# Phase 10: Release Workflow and Preparation
 
 **Read this guide when:** Starting a new release process
 
 **Related guides:**
-- Phase 2: [Downloading Artifacts](2-downloading-artifacts.md)
-- Phase 3: [Verifying Artifacts](3-verifying-artifacts.md)
-- Phase 4: [Building Locally](4-building-locally.md)
-- Phase 5: [Changelog and Notes](5-changelog-and-notes.md)
-- Phase 6: [Creating Releases](6-creating-releases.md)
-- Phase 7: [Publishing Releases](7-publishing-releases.md)
-- Phase 8: [Post-Release](8-post-release.md)
-- [PG Validation](pg-validation.md) — not phase-numbered; run right after freeze, before Phase 2 (see Step 0.6 below)
+- Phase 20: [Downloading Artifacts](20-downloading-artifacts.md)
+- Phase 30: [Verifying Artifacts](30-verifying-artifacts.md)
+- Phase 40: [Building Locally](40-building-locally.md)
+- Phase 50: [Changelog and Notes](50-changelog-and-notes.md)
+- Phase 60: [Creating Releases](60-creating-releases.md)
+- Phase 70: [Publishing Releases](70-publishing-releases.md)
+- Phase 80: [Post-Release](80-post-release.md)
+- [Phase 15: PG Validation](15-pg-validation.md) — run right after freeze, before Phase 20 (see Step 0.6 below)
 
 ---
 
@@ -38,27 +38,9 @@ Use this string **everywhere**: directory names, rename script argument, release
 
 ---
 
-## ⚠️ Step 0 (New Major Versions Only): Reserve the Previous Major's Patch Number First
+## ⚠️ New Major Version? Read guides/05-major-version-bump.md First
 
-**Applies only when this release establishes a new major version's version string for the first time** (e.g. setting `10.0.0` on `maintenance-10.x`). Not needed for RC-to-RC releases or for patch releases within an existing major version.
-
-**The hazard:** Once `maintenance-10.x`'s version number is set to `10.0.0`, any later patch fix on the previous major's release branch (e.g. `release/9.1` → `9.1.1`) has to be merged forward into `maintenance-10.x`, per [Post-Release: Merging Changes Upward](#️-post-release-merging-changes-upward-to-the-next-version) below. If that forward-merge happens *after* `10.0.0` was already set, it can carry the `9.1.x` branch's version-string commit along with it — silently overwriting the already-set `10.0.0` version number on `maintenance-10.x`.
-
-**Do this, in order, before setting the new major's version number:**
-1. On the previous major's release branch (e.g. `release/9.1`), bump the patch level (e.g. to `9.1.2`) — even if there's no pending bug fix. This reserves the next patch number. **Check each repo's actual next-unused patch number rather than assuming firmware and configurator match** — they can drift (e.g. a configurator-only patch release uses up a number on that repo but not on firmware).
-2. **Ensure a GitHub milestone exists for that patch version (and for the new major version) on each repo**, creating it first if missing (`gh api repos/<owner/repo>/milestones -f title=<version>`). A version-string bump PR with no milestone to attach to falls through the cracks of PR/milestone tracking. Do this for both the patch-reservation bump and, later, the new major version itself.
-3. Commit that patch-level bump.
-4. Open a PR carrying it forward into the new major's branch (`maintenance-10.x`), following the [forward-merge procedure](#️-post-release-merging-changes-upward-to-the-next-version) below — **never use GitHub's "Resolve conflicts" button** on that PR. Attach the milestone from step 2 to this PR.
-5. **Only after that PR merges**, set the new major's own version number (e.g. `10.0.0`) on `maintenance-10.x`.
-
-This ordering exists because a version bump landing on `maintenance-10.x` before the previous major's patch reservation is merged forward can get silently reverted by that later merge.
-
-**In the new-major version-bump PR's description** (the PR that sets `10.0.0`/`10.0.0-rc1` etc. on `maintenance-10.x`), explicitly remind the maintainer of the required merge order, since GitHub doesn't enforce PR-merge sequencing on its own:
-1. Merge the patch-reservation PR (step 1-3 above) into the previous major's release branch first.
-2. Merge the forward-merge PR (step 4) carrying that patch bump into `maintenance-10.x` next.
-3. Only then merge this PR.
-
-A maintainer merging this PR out of order — before the patch reservation has landed and been forward-merged — recreates the exact hazard this procedure exists to avoid.
+If this release establishes a new major version's version string for the first time (e.g. first setting `10.0.0` on `maintenance-10.x`), stop and read [05-major-version-bump.md](05-major-version-bump.md) before continuing — it covers the previous-major patch-number reservation, creating the next major's maintenance branch, and setting this version's string, all of which have to happen in a specific order before the rest of this guide applies. Not needed for RC-to-RC releases or patch releases within an existing major version.
 
 ---
 
@@ -99,14 +81,14 @@ If a build must run unattended or for a while, prefer an isolated `git clone` to
 
 ## ⚠️ Step 0.6: Run PG Validation Now, Before Downloading Anything
 
-Run [PG Validation](pg-validation.md) against the freeze commit **now** — before Phase 2's artifact downloads, not after. If it fails, you need a hotfix PR and a new freeze point, and there's no reason to spend time downloading/verifying artifacts or writing changelog notes for a commit that's about to be superseded.
+Run [Phase 15: PG Validation](15-pg-validation.md) against the freeze commit **now** — before Phase 20's artifact downloads, not after. If it fails, you need a hotfix PR and a new freeze point, and there's no reason to spend time downloading/verifying artifacts or writing changelog notes for a commit that's about to be superseded.
 
 ```bash
 cd inav
 ./cmake/validate-pg-for-release.sh
 ```
 
-If it fails, see [PG Validation](pg-validation.md) for the fix procedure, then re-freeze and re-run this step before proceeding.
+If it fails, see [Phase 15: PG Validation](15-pg-validation.md) for the fix procedure, then re-freeze and re-run this step before proceeding.
 
 ---
 
@@ -126,8 +108,8 @@ This guide covers the complete release workflow and preparation steps you need t
 
 1.5. Open draft releases with auto-generated notes (both repos)
    ├── gh release create <version> --target <freeze-commit> --draft --prerelease --generate-notes
-   ├── No tag required yet — see Phase 6
-   └── This PR list feeds Phase 5's release notes and the settings-migration profile below
+   ├── No tag required yet — see Phase 60
+   └── This PR list feeds Phase 50's release notes and the settings-migration profile below
 
 2. Configurator version bump PR
    ├── Create PR branch with version bump (package.json)
@@ -184,23 +166,11 @@ This guide covers the complete release workflow and preparation steps you need t
 
 ---
 
-## ⚠️ Settings-Migration Profile (Major Versions Only)
-
-Configurator auto-migrates a user's CLI backup/settings across a major version bump using a JSON profile — e.g. `inav-configurator/js/migration/8_to_9.json` for the 8→9 jump. **This does not exist automatically; a developer must create it, and it must land before the release-candidate configurator build, not after.**
-
-1. **Prerequisite: the freeze point, not the GitHub draft release.** The profile needs every feature/fix PR that's landing in this version to already be merged (so no settings get renamed/removed after the profile is written) — that's the same freeze point Step 0.6 and the version-bump PR already wait for. **Do not wait for the GitHub draft release** ([Phase 6](6-creating-releases.md)) — that happens after configurator artifacts are already built and verified; a profile added that late means rebuilding.
-2. **Assign to a developer role** (not Release Manager — see "Key Rule" in `claude/release-manager/CLAUDE.md`). Base the profile's `settingRenames`/`removed` content on the same diff `scripts/find-incompatible-settings.sh` produces for [Phase 5](5-changelog-and-notes.md)'s incompatible-settings report — same underlying data, two consumers (human-readable release notes + machine-readable migration profile). Cross-check against the draft release's auto-generated PR list ([Phase 6](6-creating-releases.md#open-the-draft-release-early-with-auto-generated-notes)) to confirm every settings-affecting PR is accounted for.
-3. **Create `inav-configurator/js/migration/<old>_to_<new>.json`** (e.g. `9_to_10.json`), following the shape of the existing `8_to_9.json` (`fromVersion`, `toVersion`, `commandRenames`, `settingRenames`, `valueReplacements`, `removed`, `settingPatternMappings`, `warnings`).
-4. **Wire it into `js/migration/migration_handler.js`** — `MIGRATION_PROFILES` is a hardcoded array; the new profile must be imported and appended, or it's silently never applied. Same class of gotcha as the WASM SITL static-import filename (see the [WASM SITL + Browser/PWA Build](wasm-sitl-pwa-build.md) guide).
-5. **Land this in the same version-bump + SITL PR** (Release Workflow step 4 above) so it ships in the same CI-built configurator artifacts as everything else for this release — don't split it into a separate later PR.
-
----
-
 ## ⚠️ macOS Signing Sequencing (Critical)
 
 The release-ready macOS build is **code-signed and notarized** by `.github/workflows/release.yml`, which runs when you **push a version tag** (`v*.*.*` or `*.*.*`). PR CI never signs; the nightly build signs+notarizes only when the full secret set is present. Three rules:
 
-1. **Verify the signing path via the nightly before you tag.** A pushed tag is effectively immutable, so don't tag blind. After the SITL PR merges, the nightly runs automatically — check its macOS artifact with `codesign --verify` and `xcrun stapler validate`. Only push the tag once both pass (if either fails, the six signing secrets are missing and `release.yml` would fail anyway). See [Phase 6](6-creating-releases.md) for the full procedure.
+1. **Verify the signing path via the nightly before you tag.** A pushed tag is effectively immutable, so don't tag blind. After the SITL PR merges, the nightly runs automatically — check its macOS artifact with `codesign --verify` and `xcrun stapler validate`. Only push the tag once both pass (if either fails, the six signing secrets are missing and `release.yml` would fail anyway). See [Phase 60](60-creating-releases.md) for the full procedure.
 2. **The tag push must happen AFTER the SITL is in place.** The native SITL binaries — and, for 10.x+, the WASM SITL — must already be committed and merged into the configurator repo before you push the tag. If they aren't, the signed `.app`/`.dmg` ships with stale SITL.
 3. **Do not modify the signed macOS artifacts after `release.yml` runs.** No re-zipping, re-bundling, re-signing, or editing the DMG/`.app` — that invalidates the signature. If anything must change after that run, commit the fix and push a new tag; never patch the signed file in place.
 
@@ -322,7 +292,7 @@ Both firmware and configurator GitHub releases follow the same cumulative patter
 - [ ] SITL binaries updated in configurator
 - [ ] WASM SITL built and added to configurator `js/web/WASM/` + `SITL-Webassembly.js` import updated (10.x+)
 - [ ] **Settings-migration profile created** (`js/migration/<old>_to_<new>.json`) and wired into `migration_handler.js`'s `MIGRATION_PROFILES` array — major versions only, assigned to a developer, landed in the version-bump PR before the RC configurator build
-- [ ] **PG validation passed** (see [Step 0.6](#️-step-06-run-pg-validation-now-before-downloading-anything) above — run this before Phase 2, not after)
+- [ ] **PG validation passed** (see [Step 0.6](#️-step-06-run-pg-validation-now-before-downloading-anything) above — run this before Phase 20, not after)
 
 ### Documentation
 
@@ -347,5 +317,5 @@ Both firmware and configurator GitHub releases follow the same cumulative patter
 
 Once you've verified release readiness:
 
-**→ Proceed to [Phase 2: Downloading Artifacts](2-downloading-artifacts.md)**
+**→ Proceed to [Phase 20: Downloading Artifacts](20-downloading-artifacts.md)**
 

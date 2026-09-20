@@ -1,22 +1,22 @@
-# Phase 6: Creating and Uploading Releases
+# Phase 60: Creating and Uploading Releases
 
 **Read this guide when:** Artifacts are verified and release notes are ready
 
 **Prerequisites:**
 - Artifacts downloaded and verified (Phases 2-3)
-- Release notes written (Phase 5)
+- Release notes written (Phase 50)
 
 **Related guides:**
-- [Phase 1: Workflow and Preparation](1-workflow-and-preparation.md)
-- [Phase 3: Verifying Artifacts](3-verifying-artifacts.md)
-- [Phase 5: Changelog and Notes](5-changelog-and-notes.md)
-- [Phase 7: Publishing Releases](7-publishing-releases.md)
+- [Phase 10: Workflow and Preparation](10-workflow-and-preparation.md)
+- [Phase 30: Verifying Artifacts](30-verifying-artifacts.md)
+- [Phase 50: Changelog and Notes](50-changelog-and-notes.md)
+- [Phase 70: Publishing Releases](70-publishing-releases.md)
 
 ---
 
 ## Overview
 
-This guide covers creating tags, draft releases, and uploading assets on GitHub. Once assets are uploaded and verified, proceed to [Phase 7](7-publishing-releases.md) to publish and announce.
+This guide covers creating tags, draft releases, and uploading assets on GitHub. Once assets are uploaded and verified, proceed to [Phase 70](70-publishing-releases.md) to publish and announce.
 
 ---
 
@@ -42,17 +42,17 @@ git tag --sort=-v:refname | head -10
 
 ## Open the Draft Release Early, With Auto-Generated Notes
 
-Right after freeze — before Phase 2's artifact downloads, and without needing a tag — open a draft release for each repo using `--generate-notes`:
+Right after freeze — before Phase 20's artifact downloads, and without needing a tag — open a draft release for each repo using `--generate-notes`:
 
 ```bash
 gh release create <version> --repo <owner/repo> --target <freeze-commit> --draft --prerelease --generate-notes
 ```
 
 This produces GitHub's auto-generated changelog (every PR merged into the target branch since the last tag, categorized, with contributors and a "Full Changelog" link) without creating a real tag yet (drafts don't tag until published — see below). Use that list as the source for:
-- **Phase 5's final release notes** — rewrite in user-facing terms; the auto-generated list is the definitive "what merged," not the published wording.
-- **The settings-migration profile** (developer task, major versions — see [Phase 1](1-workflow-and-preparation.md#️-settings-migration-profile-major-versions-only)) — cross-check this PR list against `find-incompatible-settings.sh`'s diff to confirm every settings-affecting PR is accounted for.
+- **Phase 50's final release notes** — rewrite in user-facing terms; the auto-generated list is the definitive "what merged," not the published wording.
+- **The settings-migration profile** (developer task, major versions — see [05-major-version-bump.md](05-major-version-bump.md#settings-migration-profile-only-if-this-major-changes-cli-settings)) — cross-check this PR list against `find-incompatible-settings.sh`'s diff to confirm every settings-affecting PR is accounted for.
 
-Replace the auto-generated notes with the final rewritten ones once Phase 5 is done: `gh release edit <version> --repo <owner/repo> --notes-file <file>`.
+Replace the auto-generated notes with the final rewritten ones once Phase 50 is done: `gh release edit <version> --repo <owner/repo> --notes-file <file>`.
 
 ## Creating Releases and Tags Using gh
 
@@ -74,7 +74,7 @@ The signed + notarized macOS build is produced **only** by `.github/workflows/re
 
 This means the "draft with `--target`, no real tag until publish" pattern **cannot** produce signed macOS artifacts (a `--draft` release never creates a real tag, so `release.yml` never runs). A pushed tag is effectively immutable, so **don't tag blind** — dry-run the signing via the nightly first (it uses `secrets: inherit` and signs+notarizes whenever the full secret set is present):
 
-1. Merge the version bump + SITL (and WASM SITL) PR — see Phase 1 step 4. This push to the maintenance branch triggers the nightly build automatically.
+1. Merge the version bump + SITL (and WASM SITL) PR — see Phase 10 step 4. This push to the maintenance branch triggers the nightly build automatically.
 2. **Dry-run the signing via the nightly (no tag):** download the macOS artifact from that nightly release and check it:
    ```bash
    codesign --verify --deep --strict --verbose=2 "/path/to/INAV Configurator.app"
@@ -220,7 +220,7 @@ cd ../firmware-9.1.1-rc1
 gh release upload 9.1.1-rc1 *.hex --repo iNavFlight/inav
 ```
 
-**Note:** Files should already be renamed (CI suffix removed, RC number added) as per Phase 2.
+**Note:** Files should already be renamed (CI suffix removed, RC number added) as per Phase 20.
 
 ---
 
@@ -398,7 +398,7 @@ gh api repos/<owner/repo>/releases/<id>/assets --paginate
 
 ---
 
-⚠️ **Reminder for the human user before Phase 7:** Publish firmware first, then verify the release loads correctly in the Configurator's Firmware Flasher tab, **before** publishing the Configurator release itself. Do not manually publish Configurator ahead of that check — see [Phase 7](7-publishing-releases.md) for the full sequence.
+⚠️ **Reminder for the human user before Phase 70:** Publish firmware first, then verify the release loads correctly in the Configurator's Firmware Flasher tab, **before** publishing the Configurator release itself. Do not manually publish Configurator ahead of that check — see [Phase 70](70-publishing-releases.md) for the full sequence.
 
 ---
 
@@ -406,4 +406,4 @@ gh api repos/<owner/repo>/releases/<id>/assets --paginate
 
 Once drafts are created and assets are uploaded:
 
-**→ Proceed to [Phase 7: Publishing Releases](7-publishing-releases.md)**
+**→ Proceed to [Phase 70: Publishing Releases](70-publishing-releases.md)**

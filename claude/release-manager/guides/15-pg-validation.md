@@ -1,6 +1,6 @@
-# Parameter Group (PG) Validation for Releases
+# Phase 15: Parameter Group (PG) Validation for Releases
 
-**Read this guide when:** Right after the freeze commit is locked in — this is not phase-numbered because it doesn't sit in the linear 1→7 sequence, but it must run early: right after [Phase 1](1-workflow-and-preparation.md#️-step-06-run-pg-validation-now-before-downloading-anything)'s freeze, before Phase 2's artifact downloads. A failure here means a new freeze point is needed, so running it late wastes any download/verify/changelog work done in between.
+**Read this guide when:** Right after the freeze commit is locked in, before [Phase 20](20-downloading-artifacts.md)'s artifact downloads — [Phase 10](10-workflow-and-preparation.md#️-step-06-run-pg-validation-now-before-downloading-anything) calls this out as Step 0.6. A failure here means a new freeze point is needed, so running it late wastes any download/verify/changelog work done in between.
 
 ## Overview
 

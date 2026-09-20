@@ -1,12 +1,12 @@
-# Phase 3: Verifying Release Artifacts
+# Phase 30: Verifying Release Artifacts
 
 **Read this guide when:** After downloading artifacts, before creating releases
 
-**Prerequisites:** Artifacts downloaded and organized by platform (Phase 2)
+**Prerequisites:** Artifacts downloaded and organized by platform (Phase 20)
 
 **Related guides:**
-- [Phase 2: Downloading Artifacts](2-downloading-artifacts.md)
-- [Phase 6: Creating Releases](6-creating-releases.md)
+- [Phase 20: Downloading Artifacts](20-downloading-artifacts.md)
+- [Phase 60: Creating Releases](60-creating-releases.md)
 
 ---
 
@@ -67,7 +67,7 @@ hdiutil detach /Volumes/INAV-Configurator -quiet
 
 ### Verifying the macOS Code Signature
 
-The release-ready macOS build is **code-signed + notarized** by `release.yml`; the nightly build signs+notarizes only when the full secret set is present (and is used as the pre-tag dry-run — see Phase 6). After downloading the release macOS artifact, confirm the signature is present and valid **before** uploading, and then leave the file untouched:
+The release-ready macOS build is **code-signed + notarized** by `release.yml`; the nightly build signs+notarizes only when the full secret set is present (and is used as the pre-tag dry-run — see Phase 60). After downloading the release macOS artifact, confirm the signature is present and valid **before** uploading, and then leave the file untouched:
 
 ```bash
 # Verify the signature on the app bundle (macOS only)
@@ -84,7 +84,7 @@ xcrun stapler validate "/path/to/INAV Configurator.app"
 - ✅ `spctl --assess` accepts the app (no "damaged / unidentified developer" error)
 - ✅ `xcrun stapler validate` confirms the notarization ticket is stapled
 
-**Do not modify the `.app` or DMG after this check.** Re-zipping, re-bundling, or editing invalidates the signature. If a fix is needed, re-run the release CI — see Phase 1's [macOS Signing Sequencing](1-workflow-and-preparation.md#️-macos-signing-sequencing-critical).
+**Do not modify the `.app` or DMG after this check.** Re-zipping, re-bundling, or editing invalidates the signature. If a fix is needed, re-run the release CI — see Phase 10's [macOS Signing Sequencing](10-workflow-and-preparation.md#️-macos-signing-sequencing-critical).
 
 ---
 
@@ -171,7 +171,7 @@ objdump -T downloads/sitl-9.0.0-RC3/resources/sitl/linux/inav_SITL | grep GLIBC 
 
 ### If glibc Version is Too High
 
-Build Linux x64 SITL locally on Ubuntu 22.04 LTS (see [Phase 4: Building Locally](4-building-locally.md)).
+Build Linux x64 SITL locally on Ubuntu 22.04 LTS (see [Phase 40: Building Locally](40-building-locally.md)).
 
 ---
 
@@ -261,7 +261,7 @@ cd test-configurator
 
 ## Verification Checklist
 
-Use this checklist before proceeding to Phase 6 (Creating Releases):
+Use this checklist before proceeding to Phase 60 (Creating Releases):
 
 ### Firmware Artifacts
 - [ ] All hex files downloaded from inav-nightly
@@ -311,8 +311,8 @@ Use this checklist before proceeding to Phase 6 (Creating Releases):
 
 Once all artifacts are verified:
 
-**→ Proceed to [Phase 5: Changelog and Notes](5-changelog-and-notes.md)** (if not done yet)
+**→ Proceed to [Phase 50: Changelog and Notes](50-changelog-and-notes.md)** (if not done yet)
 
 OR
 
-**→ Proceed to [Phase 6: Creating Releases](6-creating-releases.md)** (if changelog is ready)
+**→ Proceed to [Phase 60: Creating Releases](60-creating-releases.md)** (if changelog is ready)

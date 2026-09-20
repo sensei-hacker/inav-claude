@@ -1,12 +1,12 @@
-# Phase 2: Downloading Release Artifacts
+# Phase 20: Downloading Release Artifacts
 
 **Read this guide when:** You're ready to download firmware and configurator artifacts for a release
 
-**Prerequisites:** Phase 1 checklist completed (PRs merged, CI passing, version numbers updated)
+**Prerequisites:** Phase 10 checklist completed (PRs merged, CI passing, version numbers updated)
 
 **Related guides:**
-- [Phase 1: Workflow and Preparation](1-workflow-and-preparation.md)
-- [Phase 3: Verifying Artifacts](3-verifying-artifacts.md)
+- [Phase 10: Workflow and Preparation](10-workflow-and-preparation.md)
+- [Phase 30: Verifying Artifacts](30-verifying-artifacts.md)
 
 ---
 
@@ -115,7 +115,7 @@ cd downloads/sitl-9.0.0-rc3/
 unzip sitl-resources.zip
 ```
 
-The SITL binaries will be needed for the configurator (Phase 4: Building Locally).
+The SITL binaries will be needed for the configurator (Phase 40: Building Locally).
 
 ### Step 5: Rename Firmware Files
 
@@ -246,4 +246,4 @@ The fix is `NODE_OPTIONS: --max-old-space-size=4096` on the `Build MacOS x64` st
 
 Once artifacts are downloaded and organized:
 
-**→ Proceed to [Phase 3: Verifying Artifacts](3-verifying-artifacts.md)**
+**→ Proceed to [Phase 30: Verifying Artifacts](30-verifying-artifacts.md)**

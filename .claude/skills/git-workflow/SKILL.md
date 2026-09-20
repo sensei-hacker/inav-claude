@@ -166,10 +166,10 @@ remote, prints its reasoning, and creates the branch. Use `--dry-run` to preview
 | PrivacyLRS | `origin` | any | `secure_01` | Separate fork/derivative project |
 | inav | `upstream` | bugfix | `release/9.1` | **TEMPORARY OVERRIDE** — `maintenance-9.x` is damaged. REVIEW-BY 2027-02: verify repair before reverting to `maintenance-9.x` |
 | inav | `upstream` | feature | `maintenance-10.x` | Same temporary override as above |
-| inav | `upstream` | breaking | `maintenance-10.x` | Matches the normal (non-override) rule |
+| inav | `upstream` | breaking | `maintenance-11.x` | `maintenance-11.x` created 2026-09-20 for the 10.0-RC1 cycle — see `claude/release-manager/guides/05-major-version-bump.md` |
 | inav-configurator | `upstream` | bugfix | `maintenance-9.x` | **NOT** affected by the inav override — configurator's `maintenance-9.x` is fine |
 | inav-configurator | `upstream` | feature | `maintenance-9.x` | Not affected by the inav override |
-| inav-configurator | `upstream` | breaking | `maintenance-10.x` | MSP protocol / settings structure changes |
+| inav-configurator | `upstream` | breaking | `maintenance-11.x` | MSP protocol / settings structure changes — `maintenance-11.x` created 2026-09-20 for the 10.0-RC1 cycle |
 | iNavFlight.github.io | `upstream` | any | `master` | No maintenance branches — single default branch, feature-branch PRs |
 
 **NEVER target PRs to master** - it receives merges only (maintenance-9.x → master → maintenance-10.x). This does not apply to `iNavFlight.github.io`, whose default branch *is* `master`.

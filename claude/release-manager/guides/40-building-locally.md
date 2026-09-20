@@ -1,12 +1,12 @@
-# Phase 4: Building Locally (Optional)
+# Phase 40: Building Locally (Optional)
 
 **Read this guide when:** You need to build firmware, SITL, or configurator locally instead of using CI artifacts
 
-**Note:** For most releases, use pre-built artifacts from CI (Phase 2). Only build locally when necessary.
+**Note:** For most releases, use pre-built artifacts from CI (Phase 20). Only build locally when necessary.
 
 **Related guides:**
-- [Phase 2: Downloading Artifacts](2-downloading-artifacts.md)
-- [Phase 3: Verifying Artifacts](3-verifying-artifacts.md)
+- [Phase 20: Downloading Artifacts](20-downloading-artifacts.md)
+- [Phase 30: Verifying Artifacts](30-verifying-artifacts.md)
 
 ---
 
@@ -189,9 +189,9 @@ gh pr create --title "Update SITL binaries for 9.0.0-RC3" \
 # Wait for CI to pass, then merge
 ```
 
-**After the SITL PR is merged**, the configurator CI will build packages with the updated SITL binaries. Download those artifacts for the release (see Phase 2).
+**After the SITL PR is merged**, the configurator CI will build packages with the updated SITL binaries. Download those artifacts for the release (see Phase 20).
 
-⚠️ **macOS signing:** the release-ready macOS build is code-signed + notarized by `release.yml`, which triggers on a **tag push**. Push the tag only **after** the SITL (and WASM SITL) is merged, and never modify the signed artifacts afterward. See Phase 1's [macOS Signing Sequencing](1-workflow-and-preparation.md#️-macos-signing-sequencing-critical).
+⚠️ **macOS signing:** the release-ready macOS build is code-signed + notarized by `release.yml`, which triggers on a **tag push**. Push the tag only **after** the SITL (and WASM SITL) is merged, and never modify the signed artifacts afterward. See Phase 10's [macOS Signing Sequencing](10-workflow-and-preparation.md#️-macos-signing-sequencing-critical).
 
 ### Important Notes
 
@@ -213,7 +213,7 @@ Follow the [WASM SITL + Browser/PWA Build](wasm-sitl-pwa-build.md) guide for the
 
 1. Build the WASM SITL firmware from `feature/wasm-sitl-firmware` (`cmake .. -DTOOLCHAIN=wasm; make SITL`).
 2. **Rename** the output (`inav_<ver>_SITL.js`/`.wasm`) to `inav_<ver>_WASM.js`/`.wasm`, copy into `inav-configurator/js/web/WASM/`, and update the hardcoded import in `js/web/SITL-Webassembly.js` for the new firmware version.
-3. Commit these alongside the native SITL binaries in the same version-bump PR (Phase 1 step 4) so both are in place before CI.
+3. Commit these alongside the native SITL binaries in the same version-bump PR (Phase 10 step 4) so both are in place before CI.
 4. Build the PWA: `yarn web:build` → `dist-web/`.
 
 ⚠️ **Same sequencing rule as macOS signing:** the WASM SITL must be in the repo **before** any release CI run that packages or signs the configurator. Do not rebuild or modify the packaged output after the fact.
@@ -240,7 +240,7 @@ Pull requests to the configurator repo automatically trigger CI builds for all p
 # Or use gh CLI to download artifacts from a workflow run
 gh run download <run-id> --repo iNavFlight/inav-configurator
 
-# Organize by platform (see Phase 2: Downloading Artifacts)
+# Organize by platform (see Phase 20: Downloading Artifacts)
 mkdir -p downloads/configurator-9.0.0-RC3/{linux,macos,windows}
 mv INAV-Configurator_linux_x64/* downloads/configurator-9.0.0-RC3/linux/
 mv INAV-Configurator_macOS/* downloads/configurator-9.0.0-RC3/macos/
@@ -274,8 +274,8 @@ Configurator packages are output to: `inav-configurator/out/make/`
 
 After building locally:
 
-**→ Proceed to [Phase 3: Verifying Artifacts](3-verifying-artifacts.md)** to verify your builds
+**→ Proceed to [Phase 30: Verifying Artifacts](30-verifying-artifacts.md)** to verify your builds
 
 OR
 
-**→ Return to [Phase 2: Downloading Artifacts](2-downloading-artifacts.md)** if you built SITL and need to update configurator
+**→ Return to [Phase 20: Downloading Artifacts](20-downloading-artifacts.md)** if you built SITL and need to update configurator

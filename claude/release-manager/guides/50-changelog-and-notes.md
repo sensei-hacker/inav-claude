@@ -1,12 +1,12 @@
-# Phase 5: Changelog and Release Notes
+# Phase 50: Changelog and Release Notes
 
 **Read this guide when:** Ready to generate changelogs and write release notes
 
 **Note:** This can be done in parallel with artifact download/verification
 
 **Related guides:**
-- [Phase 1: Workflow and Preparation](1-workflow-and-preparation.md) - RC Release Pattern
-- [Phase 6: Creating Releases](6-creating-releases.md)
+- [Phase 10: Workflow and Preparation](10-workflow-and-preparation.md) - RC Release Pattern
+- [Phase 60: Creating Releases](60-creating-releases.md)
 
 ---
 
@@ -20,7 +20,7 @@ This guide covers generating changelogs from merged PRs, identifying incompatibl
 
 ### Start From the Draft Release's Auto-Generated Notes
 
-Per [Phase 6](6-creating-releases.md#open-the-draft-release-early-with-auto-generated-notes), open each repo's draft release right after freeze with `--generate-notes` — this is the primary source list of merged PRs. Rewrite it in user-facing terms for the final notes; don't manually re-derive the PR list if the draft already has it.
+Per [Phase 60](60-creating-releases.md#open-the-draft-release-early-with-auto-generated-notes), open each repo's draft release right after freeze with `--generate-notes` — this is the primary source list of merged PRs. Rewrite it in user-facing terms for the final notes; don't manually re-derive the PR list if the draft already has it.
 
 ### List PRs Since Last Tag (if a draft wasn't opened yet)
 
@@ -107,7 +107,7 @@ It's a title-keyword heuristic, not a precise audit — check the "Excluded" lis
 
 ### What Not to List as a Configurator Highlight
 
-"SITL binary updated to match firmware" is **not** a highlight — every release updates the bundled SITL, it's routine and not user-facing news. If the Phase 2 SITL PR is the only configurator change worth mentioning in a given cycle, look for an actual feature/UI improvement to headline instead (e.g., "LED tab improvements") rather than manufacturing a highlight out of housekeeping.
+"SITL binary updated to match firmware" is **not** a highlight — every release updates the bundled SITL, it's routine and not user-facing news. If the Phase 20 SITL PR is the only configurator change worth mentioning in a given cycle, look for an actual feature/UI improvement to headline instead (e.g., "LED tab improvements") rather than manufacturing a highlight out of housekeeping.
 
 ### Reviewing Recent Releases for Style
 
@@ -209,7 +209,7 @@ Create a document listing:
 1. **Release notes** - Add "Incompatible Settings" section
 2. **Wiki release notes** - Add to upgrade instructions
 3. **Separate document** - For reference during user support
-4. **Major versions only:** this same renamed/removed data is also the input for Configurator's settings-migration profile (`js/migration/<old>_to_<new>.json`) — see [Phase 1's Settings-Migration Profile section](1-workflow-and-preparation.md#️-settings-migration-profile-major-versions-only). That's a developer task, not a release-notes task, but hand them this output rather than making them re-derive it.
+4. **Major versions only:** this same renamed/removed data is also the input for Configurator's settings-migration profile (`js/migration/<old>_to_<new>.json`) — see [05-major-version-bump.md's Settings-Migration Profile section](05-major-version-bump.md#settings-migration-profile-only-if-this-major-changes-cli-settings). That's a developer task, not a release-notes task, but hand them this output rather than making them re-derive it.
 
 ### Common Types of Changes
 
@@ -249,7 +249,7 @@ See full upgrade guide: https://github.com/iNavFlight/inav/wiki/X.0.0-Release-No
 
 ## RC Release Notes Pattern
 
-For RC releases, follow the **cumulative** pattern (see [Phase 1: Workflow and Preparation](1-workflow-and-preparation.md#rc-release-pattern-cumulative-approach) for details).
+For RC releases, follow the **cumulative** pattern (see [Phase 10: Workflow and Preparation](10-workflow-and-preparation.md#rc-release-pattern-cumulative-approach) for details).
 
 **Key points:**
 - Each RC copies all content from previous RC
@@ -378,7 +378,7 @@ claude/release-manager/releases/9.1.0-RC3/
 └── 9.1.0-RC3-configurator-release-notes.md
 ```
 
-These files will be used when creating releases in Phase 6. These are **short** GitHub-release-body notes — they don't need the full detail the wiki page carries; link to the wiki for that.
+These files will be used when creating releases in Phase 60. These are **short** GitHub-release-body notes — they don't need the full detail the wiki page carries; link to the wiki for that.
 
 ### Wiki Release Notes (separate, fuller detail)
 
@@ -411,4 +411,4 @@ A draft of these pages is often started early (e.g., at RC1) and won't include P
 
 Once release notes are complete:
 
-**→ Proceed to [Phase 6: Creating Releases](6-creating-releases.md)**
+**→ Proceed to [Phase 60: Creating Releases](60-creating-releases.md)**

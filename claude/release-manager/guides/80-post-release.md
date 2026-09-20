@@ -1,10 +1,10 @@
-# Phase 8: Post-Release
+# Phase 80: Post-Release
 
-**Read this guide when:** The release has been published and announced (after Phase 7)
+**Read this guide when:** The release has been published and announced (after Phase 70)
 
 **Related guides:**
-- [Phase 1: Workflow and Preparation](1-workflow-and-preparation.md)
-- [Phase 7: Publishing Releases](7-publishing-releases.md)
+- [Phase 10: Workflow and Preparation](10-workflow-and-preparation.md)
+- [Phase 70: Publishing Releases](70-publishing-releases.md)
 
 ---
 
@@ -14,7 +14,7 @@ This is the closing step of the release loop: monitor the release, handle fallou
 
 ## Post-Release Tasks
 
-- [ ] Announce release (Discord, forums, etc.) — see [Phase 7](7-publishing-releases.md#announcement-tips) if not done already
+- [ ] Announce release (Discord, forums, etc.) — see [Phase 70](70-publishing-releases.md#announcement-tips) if not done already
 - [ ] Update any pinned issues
 - [ ] Monitor for critical bug reports
 - [ ] Prepare hotfix if needed
@@ -28,4 +28,4 @@ This is the closing step of the release loop: monitor the release, handle fallou
 
 Release complete. For the next release, start again at:
 
-**→ [Phase 1: Workflow and Preparation](1-workflow-and-preparation.md)**
+**→ [Phase 10: Workflow and Preparation](10-workflow-and-preparation.md)**

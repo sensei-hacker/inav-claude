@@ -1,15 +1,15 @@
-# Phase 7: Publishing Releases
+# Phase 70: Publishing Releases
 
 **Read this guide when:** Draft releases are created, assets are uploaded, and you're ready to make the release public
 
 **Prerequisites:**
-- Draft releases created for firmware and configurator (Phase 6)
-- All assets uploaded and verified (Phase 6)
+- Draft releases created for firmware and configurator (Phase 60)
+- All assets uploaded and verified (Phase 60)
 
 **Related guides:**
-- [Phase 1: Workflow and Preparation](1-workflow-and-preparation.md)
-- [Phase 6: Creating and Uploading Releases](6-creating-releases.md)
-- [Phase 8: Post-Release](8-post-release.md)
+- [Phase 10: Workflow and Preparation](10-workflow-and-preparation.md)
+- [Phase 60: Creating and Uploading Releases](60-creating-releases.md)
+- [Phase 80: Post-Release](80-post-release.md)
 
 ---
 
@@ -140,4 +140,4 @@ gh release view <version> --repo <owner/repo>
 
 After publishing:
 
-**→ Proceed to [Phase 8: Post-Release](8-post-release.md)** for the post-release checklist
+**→ Proceed to [Phase 80: Post-Release](80-post-release.md)** for the post-release checklist
