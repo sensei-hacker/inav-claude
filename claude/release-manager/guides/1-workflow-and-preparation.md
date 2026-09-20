@@ -124,6 +124,11 @@ This guide covers the complete release workflow and preparation steps you need t
    ├── Version number updated in firmware (CMakeLists.txt)
    └── CI passing on firmware target commit
 
+1.5. Open draft releases with auto-generated notes (both repos)
+   ├── gh release create <version> --target <freeze-commit> --draft --prerelease --generate-notes
+   ├── No tag required yet — see Phase 6
+   └── This PR list feeds Phase 5's release notes and the settings-migration profile below
+
 2. Configurator version bump PR
    ├── Create PR branch with version bump (package.json)
    ├── This PR will also receive SITL binaries in step 4
@@ -139,6 +144,7 @@ This guide covers the complete release workflow and preparation steps you need t
 4. Update SITL + WASM SITL in configurator (same PR as step 2)
    ├── Add native SITL binaries as an additional commit to the version bump PR
    ├── Add the renamed WASM SITL artifacts to js/web/WASM/ and fix the SITL-Webassembly.js import
+   ├── **Major versions: settings-migration profile** — see box below
    ├── Wait for configurator CI to pass
    └── Merge the combined version bump + SITL + WASM PR
 
@@ -175,6 +181,18 @@ This guide covers the complete release workflow and preparation steps you need t
 ```
 
 **Why this order matters:** If you tag first and then discover the build is broken, you have a tag pointing to a broken commit. By verifying artifacts first, you only tag commits that are proven to work.
+
+---
+
+## ⚠️ Settings-Migration Profile (Major Versions Only)
+
+Configurator auto-migrates a user's CLI backup/settings across a major version bump using a JSON profile — e.g. `inav-configurator/js/migration/8_to_9.json` for the 8→9 jump. **This does not exist automatically; a developer must create it, and it must land before the release-candidate configurator build, not after.**
+
+1. **Prerequisite: the freeze point, not the GitHub draft release.** The profile needs every feature/fix PR that's landing in this version to already be merged (so no settings get renamed/removed after the profile is written) — that's the same freeze point Step 0.6 and the version-bump PR already wait for. **Do not wait for the GitHub draft release** ([Phase 6](6-creating-releases.md)) — that happens after configurator artifacts are already built and verified; a profile added that late means rebuilding.
+2. **Assign to a developer role** (not Release Manager — see "Key Rule" in `claude/release-manager/CLAUDE.md`). Base the profile's `settingRenames`/`removed` content on the same diff `scripts/find-incompatible-settings.sh` produces for [Phase 5](5-changelog-and-notes.md)'s incompatible-settings report — same underlying data, two consumers (human-readable release notes + machine-readable migration profile). Cross-check against the draft release's auto-generated PR list ([Phase 6](6-creating-releases.md#open-the-draft-release-early-with-auto-generated-notes)) to confirm every settings-affecting PR is accounted for.
+3. **Create `inav-configurator/js/migration/<old>_to_<new>.json`** (e.g. `9_to_10.json`), following the shape of the existing `8_to_9.json` (`fromVersion`, `toVersion`, `commandRenames`, `settingRenames`, `valueReplacements`, `removed`, `settingPatternMappings`, `warnings`).
+4. **Wire it into `js/migration/migration_handler.js`** — `MIGRATION_PROFILES` is a hardcoded array; the new profile must be imported and appended, or it's silently never applied. Same class of gotcha as the WASM SITL static-import filename (see the [WASM SITL + Browser/PWA Build](wasm-sitl-pwa-build.md) guide).
+5. **Land this in the same version-bump + SITL PR** (Release Workflow step 4 above) so it ships in the same CI-built configurator artifacts as everything else for this release — don't split it into a separate later PR.
 
 ---
 
@@ -303,6 +321,7 @@ Both firmware and configurator GitHub releases follow the same cumulative patter
 - [ ] **GitHub milestone for this version exists on both repos** (create with `gh api repos/<owner/repo>/milestones -f title=<version>` if missing) — every version-bump PR needs a milestone to attach to
 - [ ] SITL binaries updated in configurator
 - [ ] WASM SITL built and added to configurator `js/web/WASM/` + `SITL-Webassembly.js` import updated (10.x+)
+- [ ] **Settings-migration profile created** (`js/migration/<old>_to_<new>.json`) and wired into `migration_handler.js`'s `MIGRATION_PROFILES` array — major versions only, assigned to a developer, landed in the version-bump PR before the RC configurator build
 - [ ] **PG validation passed** (see [Step 0.6](#️-step-06-run-pg-validation-now-before-downloading-anything) above — run this before Phase 2, not after)
 
 ### Documentation

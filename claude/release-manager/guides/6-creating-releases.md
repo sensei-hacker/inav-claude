@@ -40,6 +40,20 @@ git tag --sort=-v:refname | head -10
 
 ---
 
+## Open the Draft Release Early, With Auto-Generated Notes
+
+Right after freeze — before Phase 2's artifact downloads, and without needing a tag — open a draft release for each repo using `--generate-notes`:
+
+```bash
+gh release create <version> --repo <owner/repo> --target <freeze-commit> --draft --prerelease --generate-notes
+```
+
+This produces GitHub's auto-generated changelog (every PR merged into the target branch since the last tag, categorized, with contributors and a "Full Changelog" link) without creating a real tag yet (drafts don't tag until published — see below). Use that list as the source for:
+- **Phase 5's final release notes** — rewrite in user-facing terms; the auto-generated list is the definitive "what merged," not the published wording.
+- **The settings-migration profile** (developer task, major versions — see [Phase 1](1-workflow-and-preparation.md#️-settings-migration-profile-major-versions-only)) — cross-check this PR list against `find-incompatible-settings.sh`'s diff to confirm every settings-affecting PR is accounted for.
+
+Replace the auto-generated notes with the final rewritten ones once Phase 5 is done: `gh release edit <version> --repo <owner/repo> --notes-file <file>`.
+
 ## Creating Releases and Tags Using gh
 
 **TIP:** You can create both the tag and release in one step using `gh release create`, bypassing the need to work in locked local repositories.

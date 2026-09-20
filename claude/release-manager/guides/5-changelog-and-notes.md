@@ -18,7 +18,11 @@ This guide covers generating changelogs from merged PRs, identifying incompatibl
 
 ## Changelog Generation
 
-### List PRs Since Last Tag
+### Start From the Draft Release's Auto-Generated Notes
+
+Per [Phase 6](6-creating-releases.md#open-the-draft-release-early-with-auto-generated-notes), open each repo's draft release right after freeze with `--generate-notes` — this is the primary source list of merged PRs. Rewrite it in user-facing terms for the final notes; don't manually re-derive the PR list if the draft already has it.
+
+### List PRs Since Last Tag (if a draft wasn't opened yet)
 
 #### Using gh pr list
 
@@ -205,6 +209,7 @@ Create a document listing:
 1. **Release notes** - Add "Incompatible Settings" section
 2. **Wiki release notes** - Add to upgrade instructions
 3. **Separate document** - For reference during user support
+4. **Major versions only:** this same renamed/removed data is also the input for Configurator's settings-migration profile (`js/migration/<old>_to_<new>.json`) — see [Phase 1's Settings-Migration Profile section](1-workflow-and-preparation.md#️-settings-migration-profile-major-versions-only). That's a developer task, not a release-notes task, but hand them this output rather than making them re-derive it.
 
 ### Common Types of Changes
 
