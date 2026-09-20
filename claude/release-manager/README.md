@@ -375,6 +375,8 @@ A public version of this release guide is maintained at:
 
 When updating this README or phase guides with new procedures or lessons learned, also update the public documentation to keep them in sync.
 
+**Writing style for the public doc:** state what should be done, not the internal back-and-forth that arrived at it. Rejected alternatives, "we considered X but," and similar deliberation belong in this repo's commit messages or working notes, not in `release-create.md` — external readers need the current procedure, not its history.
+
 ---
 
 ## Agents
