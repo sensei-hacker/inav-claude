@@ -193,9 +193,7 @@ git push upstream upstream/master:refs/heads/maintenance-10.x
 
 ### When to Create
 
-Create maintenance branches when:
-- Releasing a new major version (e.g., 9.0.0)
-- First RC of a new major version is a good time
+Create the next major's maintenance branch at the first RC of the new major version (e.g. create `maintenance-11.x` around `10.0.0-RC1`). Once a version enters RC/stabilization, its maintenance branch should take only fixes; new breaking work goes to the next major's branch instead. Also at this point: create the matching GitHub milestone on both repos, and update the PR branch-suggestion workflow (below) to the new compatible/breaking pair.
 
 ### Usage
 
