@@ -174,6 +174,21 @@ remote, prints its reasoning, and creates the branch. Use `--dry-run` to preview
 
 **NEVER target PRs to master** - it receives merges only (maintenance-9.x → master → maintenance-10.x). This does not apply to `iNavFlight.github.io`, whose default branch *is* `master`.
 
+### Exception: CI/workflow-only changes must base from the OLDEST active branch
+
+The table above picks a base branch by *change type* (bugfix/feature/breaking) — that's for
+code that lands in one release. A change to `.github/workflows/*.yml` (or other repo-wide CI
+config) is different: it needs to reach **every** active branch, including `master`, and the
+only way files travel to `master` is by being merged there from an older branch in the normal
+forward-merge chain (`maintenance-9.x` → `master` → `maintenance-10.x` → ...).
+
+So: branch CI/workflow-only changes from the **oldest actively-maintained branch** for that
+repo (currently `release/9.1` for inav, `maintenance-9.x` for inav-configurator — check the
+table above for the current oldest row), not from the newest maintenance branch. A workflow
+PR based on `maintenance-11.x` will never reach `master` or any branch older than it; one
+based on the oldest branch flows forward through every branch as each does its routine
+forward-merge.
+
 ### Manual fallback (only if the script can't be used)
 
 ```bash

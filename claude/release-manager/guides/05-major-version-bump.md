@@ -54,6 +54,8 @@ gh api repos/iNavFlight/inav-configurator/git/refs -f ref="refs/heads/maintenanc
 
 **Update the PR branch-suggestion workflow** on both repos (`.github/workflows/pr-branch-suggestion.yml`), which comments on PRs targeting `master` to suggest the right version branch. Update the branch names it mentions to the current compatible/breaking pair (e.g. `maintenance-10.x` compatible, `maintenance-11.x` breaking).
 
+**Base this PR on the OLDEST actively-maintained branch, not the newest.** This is a CI/workflow-only change, and `master` only receives content via the normal forward-merge chain from older branches. A PR based on `maintenance-11.x` will never reach `master` or any branch older than it — base it on the oldest active branch instead (currently `release/9.1` for inav, `maintenance-9.x` for inav-configurator) so it flows forward through every branch as each does its routine forward-merge. See the "CI/workflow-only changes" exception in `.claude/skills/git-workflow/SKILL.md`'s base-branch table.
+
 **Update `.claude/skills/git-workflow/SKILL.md`'s base-branch decision table** to match — that table is the single authoritative source for base-branch decisions; every other doc should point to it, not repeat it.
 
 ---
