@@ -220,6 +220,8 @@ When you discover better ways to diagnose or fix target issues, patterns in git 
 
 ### Lessons
 
+- **`USE_SDCARD` typically pairs with `ENABLE_BLACKBOX_LOGGING_ON_SDCARD_BY_DEFAULT`; `USE_FLASHFS` typically pairs with `ENABLE_BLACKBOX_LOGGING_ON_SPIFLASH_BY_DEFAULT`.** Moving one without the other silently defaults blackbox to serial.
+- **Comments in code can go stale. Check before treating them as known facts.**
 - **PINIO debugging - high-Z multimeter misleads**: A high-impedance multimeter on an output pin causes voltage to fall very slowly, making a toggling pin appear stuck HIGH. Use a low-impedance load or oscilloscope for reliable readings, or account for slow discharge when interpreting multimeter results.
 - **BUSDEV_REGISTER_SPI_TAG variable name, DEVHW type, and ALIGN macro must be internally consistent**: e.g. don't name a variable `busdev_icm42688` for `DEVHW_ICM42605` (that constant is correct for both chips, WHO_AM_I auto-detects), and don't reuse another chip's `_ALIGN` macro unless the two chips share identical physical orientation.
 - **SoftSerial is unnecessary on targets with 6+ hardware UARTs**: H7/F7 boards have enough hardware UARTs that softserial on an already-used UART TX pin adds no value and wastes flash; it's more defensible on F405 boards for inverted SmartPort telemetry. `check_serial_port_count.py` flags a *dead* `FEATURE_SOFTSERIAL` bit, not this case, since a defined-but-unused softserial pin isn't statically distinguishable from a deliberate design choice.
