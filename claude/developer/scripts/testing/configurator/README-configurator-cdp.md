@@ -7,6 +7,7 @@ Three scripts here cover Chrome DevTools Protocol (CDP) access to INAV Configura
 - `configurator_cdp_test.py` - Comprehensive test script for verifying the CDP connection to INAV Configurator works.
 - `tab_sweep_cdp.py` - Sweeps connected tabs for console errors (post-ES6-module-merge regression check).
 - `cdp_eval.mjs` - Minimal zero-dependency helper that evaluates a single JS expression in the renderer and prints the JSON result.
+- `verify_cli_lock_write_guard.mjs` - Verifies a "dropped MSP write" completion-callback guard (e.g. `guardMspCallback()`) on real hardware: requires the real CLI tab already entered (genuinely locks the MSP queue), then proves via an unwrapped `MSP.send_message()` probe that the drop condition is really firing before trusting that the guarded call's callback silence means the fix works. See its header comment for full usage and a `--help` flag.
 
 ## Purpose
 
@@ -182,6 +183,21 @@ cd inav-configurator && npm start
 2. MCP server configured: `@modelcontextprotocol/server-chrome-devtools`
 3. Claude session was started with configurator running
 4. Agent vs interactive session (MCP may not load in agents)
+
+### Stale TCP Connection After Page Reload (testing against live SITL)
+
+**Problem:** After editing configurator source mid-session and reloading the
+renderer (`navigate_page reload` or similar) while already connected to a live
+SITL/FC over TCP, reconnect attempts silently time out (0 bytes received).
+
+**Cause:** A renderer-only reload doesn't close the Electron main process's TCP
+socket (owned by `js/main/tcp.js`/IPC, not the renderer). The stale socket stays
+pinned as SITL's "primary" client while a second, doomed connection sits in
+FIN-WAIT-2/CLOSE-WAIT.
+
+**Solution:** Click Disconnect in the UI before reloading, or do a full Electron
+process restart (not a bare page reload) whenever testing source changes against
+a live SITL/FC connection.
 
 ## Integration with MCP
 
