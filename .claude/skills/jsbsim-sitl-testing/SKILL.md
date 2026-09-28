@@ -203,6 +203,26 @@ build than your own work:
   controller is out of scope here — treat `inav-sitl-bench` and the fork as
   external references, like `mspapi2`.
 
+## Reference: Other Developers' Example Scripts
+
+`claude/developer/scripts/testing/inav/sitl/jsbsim_examples/` collects sample
+scripts from other INAV developers' own JSBSim test frameworks — separate
+from `inav-sitl-bench`, each with its own `Bench`-style API and support
+files. See that directory's README before using one.
+
+- **`plane_runway_takeoff.py`** (from `xznhj8129/Inav_jsbsim`, also the
+  `mspapi2` author) — Cessna 172 runway takeoff -> climb -> level-off ->
+  ANGLE + NAV ALTHOLD, flown by hand in ACRO up to level-off because (per its
+  original docstring) INAV's pitch estimate read ~12 deg high during the
+  takeoff roll's acceleration. That symptom matches a bug fixed by
+  https://github.com/iNavFlight/inav/pull/12055 (merged into
+  `maintenance-10.x`): `imuCalculateTurnRateacceleration()` in
+  `src/main/flight/imu.c` was only reapplying the GPS3Dspeed turn-rate filter
+  on a new GPS heartbeat instead of every IMU loop tick, giving it the wrong
+  time constant during acceleration. Re-verify against current mainline
+  before assuming the ACRO workaround is still needed. Needs `inavbench.py`
+  from the same upstream repo (not vendored here) to actually run.
+
 ## Related Skills
 
 - **install-jsbsim** — install/verify the JSBSim Python package (do this first)
@@ -213,6 +233,8 @@ build than your own work:
 
 ## Resources
 
+- `claude/developer/scripts/testing/inav/sitl/jsbsim_examples/README.md` —
+  other developers' example scripts (see above)
 - `inav-sitl-bench/README.md` — full command reference, SITL/HITL gotchas, JSBSim
   section, aircraft descriptions
 - `inav-sitl-bench/docs/rc_3d_flying_quick_guide.md` — maps real RC 3D-flying
