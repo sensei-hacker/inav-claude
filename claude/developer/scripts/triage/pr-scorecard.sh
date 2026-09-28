@@ -194,6 +194,36 @@ OPEN_HUMAN_THREADS=$(echo "$INLINE_COMMENTS" | jq '[
 ] | length')
 
 # ---------------------------------------------------------------------------
+# 4b. Review-thread RESOLUTION state — GraphQL only.
+#     REST `pulls/{n}/comments` does NOT expose isResolved/isOutdated, so a Qodo
+#     finding that has already been addressed still looks "open". A thread is a
+#     LIVE blocker only when isResolved=false AND isOutdated=false. (2026-09-20:
+#     configurator #2736 was mis-bucketed because REST showed its 2 findings as
+#     present, but GraphQL showed 1 resolved + 1 still open.)
+# ---------------------------------------------------------------------------
+REPO_OWNER="${REPO%/*}"
+REPO_NAME="${REPO#*/}"
+
+REVIEW_THREADS_JSON=$(gh api graphql -f query="query { repository(owner: \"${REPO_OWNER}\", name: \"${REPO_NAME}\") { pullRequest(number: ${PR_NUMBER}) { reviewThreads(first: 100) { nodes { isResolved isOutdated comments(first: 1) { nodes { author { login __typename } } } } } } } }" \
+    --jq '[.data.repository.pullRequest.reviewThreads.nodes[] | {
+        isResolved: .isResolved,
+        isOutdated: .isOutdated,
+        login: (.comments.nodes[0].author.login // ""),
+        bot: ((.comments.nodes[0].author.__typename // "") == "Bot" or
+              (.comments.nodes[0].author.login // "" | test("qodo|copilot|dependabot|codecov|sonar|renovate"; "i")))
+    }]' 2>/dev/null || echo "[]")
+
+# Bot-authored review threads (Qodo, Copilot, SonarCloud, dependabot, etc.)
+BOT_THREADS_TOTAL=$(echo "$REVIEW_THREADS_JSON" | jq '[.[] | select(.bot == true)] | length')
+BOT_THREADS_RESOLVED=$(echo "$REVIEW_THREADS_JSON" | jq '[.[] | select(.bot == true) | select(.isResolved == true)] | length')
+BOT_THREADS_OUTDATED=$(echo "$REVIEW_THREADS_JSON" | jq '[.[] | select(.bot == true) | select(.isOutdated == true)] | length')
+# Live = neither resolved nor outdated (still requires action)
+BOT_THREADS_OPEN=$(echo "$REVIEW_THREADS_JSON" | jq '[.[] | select(.bot == true) | select(.isResolved == false and .isOutdated == false)] | length')
+
+# Human review threads still open (resolution-aware, unlike OPEN_HUMAN_THREADS above)
+HUMAN_THREADS_OPEN=$(echo "$REVIEW_THREADS_JSON" | jq '[.[] | select(.bot == false) | select(.isResolved == false and .isOutdated == false)] | length')
+
+# ---------------------------------------------------------------------------
 # 5. Conversation comments — key for testing evidence
 # ---------------------------------------------------------------------------
 CONV_COMMENTS=$(gh api "repos/${REPO}/issues/${PR_NUMBER}/comments?per_page=100" \
@@ -346,6 +376,11 @@ echo "  Approvals total:            $APPROVALS"
 echo "  Member/collaborator approvals: $MEMBER_APPROVALS"
 echo "  Unresolved changes-requested:  $CHANGES_REQUESTED"
 echo "  Open human inline threads:     $OPEN_HUMAN_THREADS"
+echo ""
+echo "  Review threads (resolution-aware, GraphQL):"
+echo "    Bot threads:  total=$BOT_THREADS_TOTAL resolved=$BOT_THREADS_RESOLVED outdated=$BOT_THREADS_OUTDATED OPEN=$BOT_THREADS_OPEN"
+echo "    Human threads still open:     $HUMAN_THREADS_OPEN"
+echo "  NOTE: a bot thread counts as a live blocker ONLY when OPEN>0 (not resolved, not outdated)."
 echo ""
 echo "  Reviewer list (latest state per reviewer):"
 if [[ $(echo "$REVIEWS" | jq 'length') -eq 0 ]]; then

@@ -180,6 +180,14 @@ fix writeup right before it.)
 **Key insight:** A PR in WAITING is one where we already made a request or comment and the
 author hasn't responded. No need to re-read it. Focus time on NEEDS-REVIEW and NO-COMMENT.
 
+**Skip entries are only valid while fresher than the PR's last update (2026-09-20).** The skip
+file is not an archive of "never look again" — each entry is a decision made at a point in time.
+A PR is genuinely skip-able only if the skip entry is *newer* than the PR's last real activity
+(i.e. we were the last actor, or the author hasn't moved since we skipped). If the author pushed,
+commented, or a tester reported *after* the skip date, the skip is stale and the PR must be
+re-read. When consulting a skip file, compare the entry's recorded date against the PR's
+`updated_at` and timeline before treating it as skipped.
+
 **Auto-skip rule (2026-09-13):** a PR opened 6+ months ago with no substantive activity
 (excluding our own questions/pings) can be skipped without a full re-review — note the age
 and last-activity date in the skip file. Applies within NEEDS-REVIEW/NO-COMMENT too, not just
@@ -353,6 +361,28 @@ respond to the finding rather than the manager judging it right or wrong — Qod
 but the author should still be the one to decide. Substantive/technical bot findings that need a
 human eye are a signal to *recommend a developer code review*, not to adjudicate here.
 
+**A Qodo finding being present ≠ a Qodo finding still open (2026-09-20).** The REST
+`pulls/{n}/comments` endpoint lists review threads but does **not** expose whether each thread has
+been resolved. Treating "there is a Qodo bug comment" as "this PR has an open Qodo bug" is the
+error that mis-bucketed configurator #2736 (its two findings had been addressed, but the REST
+output showed no signal of that). Detect resolution state explicitly before citing a bot finding
+as a live blocker:
+
+1. **GraphQL `reviewThreads`** is the authoritative source — it carries `isResolved` and
+   `isOutdated` per thread (REST does not):
+   ```bash
+   gh api graphql -f query='query { repository(owner:"OWNER",name:"REPO"){ pullRequest(number:N){ reviewThreads(first:50){ nodes { isResolved isOutdated comments(first:1){ nodes { author { login } } } } } } } }'
+   ```
+   A thread is **still open only when `isResolved == false AND isOutdated == false`**. If either
+   is true, someone clicked "resolve conversation" or the code under the comment changed since —
+   both mean the finding has been acted on and should not be cited as a live blocker.
+2. **The latest Qodo "Code Review" comment is a second signal.** Qodo re-reviews on new commits
+   and posts a fresh `<h3>Code Review by Qodo</h3> 🐞 Bugs (N)` summary. A newer summary with
+   `Bugs (0)` supersedes the older per-thread findings even if those threads still exist. Read the
+   *most recent* Qodo review comment, not the first one.
+3. **Cross-check with the author's reply date.** If the author said "fixed" / "done" / "addressed"
+   *after* the finding, verify via (1)/(2) that the resolution actually landed before re-raising it.
+
 **Always check the most recent comments/commits (manager convention, 2026-09-05):** an older
 flag (build failure, requested change, blocker) may already be resolved by later activity —
 don't stop at the first blocking comment you find, confirm it's still current.
@@ -485,6 +515,15 @@ gh api repos/iNavFlight/inav/issues/<PR_NUMBER>/labels \
 echo "<PR_NUMBER>" >> claude/local-data/triage/skip-inav.txt
 ```
 
+> **Skip entries go stale (2026-09-20):** a skip entry only remains valid while it is
+> *fresher than the PR's last update*. A skip is a decision made at a point in time — if the
+> author (or a tester, or a real human — not a bot) touches the PR *after* we skipped it, the
+> skip no longer describes the PR's current state and the PR must be re-read and re-dispositioned.
+> Always record a date in the skip entry (e.g. `# 12345 - 2026-09-20: ...`) and, when reading a
+> skip file during a session, compare each entry's date against the PR's `updated_at` (and its
+> timeline) rather than trusting the entry blindly. "We skipped it six days ago" is not a reason
+> to skip it today if the author pushed yesterday.
+
 **Recommend developer review** — create a tracked task/email to a developer (a `/pr-review`
 hand-off); do not run the review agents here.
 
@@ -612,6 +651,7 @@ This is the standard label the project uses for abandoned/unresponsive PRs.
 
 - Draft PRs and PRs labeled "don't merge" (case-insensitive) are automatically excluded
 - Skip files persist across sessions at `claude/local-data/triage/skip-*.txt` (gitignored local data)
+- Skip entries are only valid while **fresher than the PR's last update** — re-read any PR whose author/tester moved after the skip entry was written
 - Always verify milestone numbers are current before starting a session
 - If GitHub API calls fail with network errors, that's the sandbox — ask the user to approve the operation rather than disabling the sandbox (`api.github.com` is allowlisted, so failures usually mean something else is wrong)
 - `CACHE_STATUS=fresh` means use cached score — no re-fetch, no re-record

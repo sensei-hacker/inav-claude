@@ -35,6 +35,18 @@ You are a GitHub PR bot comment analyzer for the INAV project. Your role is to f
    gh api repos/{owner}/{repo}/pulls/{PR_NUMBER}/comments --jq '.[] | {path: .path, line: .line, body: .body, user: .user.login}'
    ```
 
+   2b. **Fetch each thread's RESOLUTION STATE (GraphQL)** — the REST comment list above does
+   NOT say whether a finding has been resolved. A Qodo finding that the author already addressed
+   still appears in step 2, so treat "a Qodo comment exists" as OPEN **only** after this check:
+   ```bash
+   gh api graphql -f query='query { repository(owner:"{owner}", name:"{repo}"){ pullRequest(number:{PR_NUMBER}){ reviewThreads(first:100){ nodes { isResolved isOutdated comments(first:1){ nodes { body } } } } } } }'
+   ```
+   Match each step-2 finding to its thread by body text. A thread is **OPEN only when
+   `isResolved=false` AND `isOutdated=false`**. If either is true (someone clicked "resolve
+   conversation", or the code under the comment changed since), report it as RESOLVED/OUTDATED,
+   not as an open issue. (2026-09-20: configurator #2736 was misread as "2 open Qodo findings"
+   when GraphQL showed 1 resolved + 1 open.)
+
 3. **Fetch conversation comments**
    ```bash
    gh api repos/{owner}/{repo}/issues/{PR_NUMBER}/comments --jq '.[] | {user: .user.login, body: .body}'
@@ -193,11 +205,17 @@ Do not report back a comment that says "All compliance sections have been disabl
 Always include in your response:
 
 1. **PR identification**: Number and title
-2. **Inline code suggestions**: From `/pulls/{n}/comments` endpoint - MOST IMPORTANT, display FIRST
+2. **Inline code suggestions**: From `/pulls/{n}/comments` endpoint - MOST IMPORTANT, display FIRST.
+   For each one, label it **OPEN** / **RESOLVED** / **OUTDATED** using the GraphQL
+   `reviewThreads.isResolved`/`isOutdated` check (step 2b). Do NOT report a resolved/outdated
+   finding as if it still needs action.
 3. **Conversation comments**: From `/issues/{n}/comments` endpoint
 4. **Review summaries**: From `/pulls/{n}/reviews` endpoint
 
 **IMPORTANT**: Many bot suggestions are inline code review comments (endpoint #1). You MUST check this endpoint and display them prominently. Don't just check conversation comments!
+
+**IMPORTANT**: "A Qodo finding is present" ≠ "a Qodo finding is open". Only findings whose thread
+has `isResolved=false AND isOutdated=false` are open. Anything else has been acted on.
 
 **Example response (no comments):**
 ```
@@ -318,6 +336,7 @@ Use the Edit tool to append new entries. Format: `- **Brief title**: One-sentenc
 - **Author field variations**: Review comments use `.author.login`, while reviews use `.user.login` - check both fields when filtering
 
 - **Empty-body reviews have attached comments**: Qodo bot reviews often have `state: "COMMENTED"` with an empty `body` field. The actual suggestions are in `/pulls/{n}/reviews/{review_id}/comments` - you MUST fetch this 4th endpoint to find them.
+- **REST comments hide resolution state**: `/pulls/{n}/comments` lists findings but NOT whether each thread was resolved. Always fetch GraphQL `reviewThreads.isResolved`/`isOutdated` and label each finding OPEN vs RESOLVED/OUTDATED — a present Qodo comment is not necessarily an open bug.
 - **Use --jq for clean output**: Always use `--jq` with `gh api` to extract just the fields you need (body, path, line, user) - raw JSON is huge and hard to parse.
 - **Do not include @CLAUDE.md**: The root CLAUDE.md asks about roles which derails agent execution. Agent instructions must be self-contained.
 

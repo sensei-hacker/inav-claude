@@ -82,6 +82,22 @@ capture automated review issues that the script cannot detect:
 Agent(check-pr-bots): "Check bot comments on PR #<NUMBER> in iNavFlight/inav"
 ```
 
+**Bot findings must be checked for resolution before they are treated as open (2026-09-20).**
+The scorecard's "CODE REVIEW" section now emits a resolution-aware count from GraphQL:
+
+```
+  Review threads (resolution-aware, GraphQL):
+    Bot threads:  total=N resolved=R outdated=O OPEN=K
+```
+
+A bot (Qodo/Copilot/SonarCloud) finding is a **live blocker only when `OPEN > 0`** — i.e. the
+thread is neither `isResolved` nor `isOutdated`. If the finding is `resolved` or `outdated`
+(`OPEN == 0`), it has been acted on and must **not** be cited as an open bug — even though the
+REST `pulls/{n}/comments` output still lists the comment. (Regression: configurator #2736 was
+mis-bucketed as "2 open Qodo findings" when GraphQL showed 1 resolved + 1 open.) Also read the
+*most recent* Qodo "Code Review" summary comment — a newer `Bugs (0)` supersedes older per-thread
+findings.
+
 ---
 
 ## Step 2 — Check Hard Blockers
@@ -103,17 +119,11 @@ If a hard blocker is present: report it clearly, skip full scoring, label **Not 
 
 ## Step 2b — Check Milestone
 
-The script emits a `MILESTONE CHECK` section. Verify it is correct and flag any
-mismatch as a warning (not a hard blocker — wrong milestone does not block code
-readiness, but should be fixed before merge).
-
-**Current milestone policy (as of April 2026):**
-
-| Base branch | Expected milestone | Notes |
-|-------------|-------------------|-------|
-| `maintenance-9.x` | **9.1** | 9.0.1 shipped Jan 2026; 9.1 target Jun/Jul 2026 |
-| `maintenance-10.x` | **10.0** or **10.1** | Depends on where in the 10.x cycle |
-| `master` | next major | Check current development target |
+The script emits a `MILESTONE CHECK` section. It is a **coarse hint only** — do not
+trust it as the correct milestone. Verify against the authoritative **Milestone
+Criteria & Branch Validation** tables in `.claude/skills/pr-triage/SKILL.md` (the
+single source of truth), and flag any mismatch as a warning (not a hard blocker —
+wrong milestone does not block code readiness, but should be fixed before merge).
 
 If the milestone is wrong or missing, note it in KEY SIGNALS with `⚠` and include
 a suggested action: add the correct milestone label before merging.
@@ -322,7 +332,8 @@ Present the scorecard in this format:
 - ...
 
 ### Unaddressed Bot/Reviewer Issues
-- (from check-pr-bots output, list any open issues)
+- (from check-pr-bots output, list only issues that are genuinely OPEN — `isResolved=false`
+  AND `isOutdated=false` via GraphQL `reviewThreads`, not merely "a Qodo comment exists")
 
 ### Recommendation
 One paragraph: what would move this from its current score to the next tier.
@@ -334,7 +345,8 @@ One paragraph: what would move this from its current score to the next tier.
 
 - This skill is for **merge-readiness assessment**, not code correctness review
 - Use `/pr-review` or the `inav-code-review` agent for code-quality review
-- Use `/pr-triage` for milestone assignment
+- Use `/pr-triage` for open-PR disposition: deciding the single next-step action
+  toward merge (merge, approve, comment, label, set milestone, or skip)
 - The `check-pr-bots` agent finds specific bot-flagged issues not captured by this script
 - If GitHub API calls hit network sandbox restrictions, ask the user to approve the operation — do not disable the sandbox (`api.github.com` is allowlisted, so failures usually mean something else is wrong)
 
@@ -343,7 +355,9 @@ One paragraph: what would move this from its current score to the next tier.
 ## Related Skills
 
 - **pr-review** — Full code review workflow (checkout, review bot suggestions, build check)
-- **pr-triage** — Assign milestones (9.0.1 / 9.1 / 10.0) to open PRs
+- **pr-triage** — Disposition open PRs: decide the next-step action (merge / approve /
+  comment / label / set milestone / skip) and pre-scan recent activity; owns the
+  authoritative milestone↔branch tables
 - **check-builds** — Detailed CI build status investigation
 - **check-pr-docs** — Check if PR includes required documentation updates
 
