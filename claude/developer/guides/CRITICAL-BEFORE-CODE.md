@@ -183,5 +183,6 @@ rule, not the story.
 - **`git diff <a> <b> --stat` is the wrong measure for PR retargeting**: use `git log <target>..<branch>` or merge-base — a two-tree diff includes unrelated history.
 - **Build test state via real functions, not hand-fabricated memory** — a test pinned to today's implementation is no better than hashing the file.
 - **"Verify PR N" means test and report on N, not re-implement its diff as your own PR** — review, test, and comment instead.
+- **Verify the bug exists on the assigned base branch before branching** — the base-branch table picks a default by change-type, not by whether the code is there yet. If the buggy code was never backported (e.g. it's only on `maintenance-10.x`, not yet on `release/9.1`), branch from wherever the code actually lives instead.
 
 <!-- Add new lessons above this line -->

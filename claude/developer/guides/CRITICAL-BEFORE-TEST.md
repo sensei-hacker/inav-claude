@@ -23,6 +23,15 @@ action → verify the result persisted (reconnect, or check the file on disk). I
 drive it, ask the user for manual assistance. This check is mandatory before PR. Running
 the existing test suite is a *regression* check, not the reproduction.
 
+**Absence of evidence is not evidence of absence.** If a live/CDP reproduction attempt
+sees no symptom (e.g. a callback you expected to fire didn't), that is consistent with
+"the bug isn't there" OR with "this test script never actually touched the app's live
+state" (wrong module instance from a fresh `import()`, a variable reset by other code, a
+click that didn't register) — you cannot tell which without independent, positive
+evidence that the test really executed against the live app (a screenshot of the actual
+UI transition, a visible state change, a marker value read back). Don't report a fix as
+verified, or a bug as absent, on a negative result alone.
+
 Use `test-engineer` agent:
 ```
 Prompt: "Reproduce issue #XXXX: [description of bug].

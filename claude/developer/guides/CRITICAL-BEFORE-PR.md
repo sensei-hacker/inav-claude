@@ -161,6 +161,16 @@ IMPORTANT **Never open a pull request to the master branch**
 
 **PR Description Requirements:**
 
+**Structure it as a guide to the code, not a checklist of changes.** Lead with a
+**Design** section explaining the approach and *why* — the reviewer reads the diff
+for *what* changed; the body's job is the reasoning a diff can't carry (why this
+shape, why each call site/threshold/branch is what it is). Keep a "Changes" list
+short (file-level pointers, if included at all) rather than restating the diff.
+Don't include: alternatives you considered and didn't implement, or narration of
+your own process (e.g. "code review found X and it was fixed") — if it's not in
+the diff, it doesn't belong in the body. Testing evidence and the issue link
+still belong, per the requirements below.
+
 **Include:**
 - Summary of changes
 - Testing performed (be specific - what did you test and what were the results)
@@ -177,9 +187,11 @@ IMPORTANT **Never open a pull request to the master branch**
 ## Summary
 Fixes blackbox corruption when no motors are defined in the mixer.
 
-## Changes
-- Added motor count validation in blackbox logger
-- Return early if motor count is zero
+## Design
+The logger indexed motor fields unconditionally, assuming at least one motor;
+a zero-motor mixer (valid for some custom configs) wrote past the field array.
+Validates motor count once at logger init and returns early rather than
+guarding every field write.
 
 ## Testing
 - Built SITL target successfully
@@ -228,5 +240,6 @@ rule, not the story.
 - **Verify against the live PR before trusting a "not yet posted" note** — check `gh api repos/<owner>/<repo>/issues/<n>/comments`.
 - **Removing a debug call site doesn't remove the debug code** — grep for the scaffolding's own symbols; the pre-PR `inav-code-review` pass catches leftovers.
 - **SonarCloud gates on ≤3% duplication of *new* configurator code** — factor shared setup into a helper up front rather than discovering the gate after push.
+- **PR body is a guide to the diff, not a mirror of it** — lead with Design/why; drop rejected alternatives and process narration ("review found X") that aren't in the code.
 
 <!-- Add new lessons above this line -->

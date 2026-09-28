@@ -280,6 +280,8 @@ Concise, actionable one-liners not already captured in the checklist below:
 - **A merge can silently inherit a hazard the other branch introduced**: diff the hazard set (e.g. DMA assignments) before/after merging a branch that touched the same subsystem, and document what's newly introduced.
 - **Pushing a resolved conflict to a contributor's fork needs a remote and permission**: check `maintainer_can_modify` first; if true, add their fork as a remote and push there — if false, comment the fix on the PR instead.
 - **A bot flag on a dependent PR's diff can live in the PR it depends on**: `git log --oneline -1 -- <file>` shows which PR's commit introduced the flagged lines; fix it on that PR's branch.
+- **A tracked file can show as dirty on a clean checkout of a version branch** if its committed blob's line endings don't match what `.gitattributes` normalization would produce today (e.g. a `text`-attributed file whose blob still has raw CRLF). `git checkout --`/`git stash` on that path won't clear it — the smudge/clean filters just reproduce the same "diff." If content is otherwise identical, it's safe to `git reset --hard` past it (verify with `git diff` first); don't let it block a `--ff-only` update or get treated as someone's uncommitted work.
+- **An add/add conflict often means the same feature was independently added to both branches, then only one side got follow-on fixes** — compare `git log --oneline <branch> -- <file>` on both sides; if one branch's fix commits are a strict superset, take that branch's whole file rather than hand-splicing.
 
 ## Checklist
 
