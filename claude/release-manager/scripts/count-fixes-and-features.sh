@@ -11,8 +11,6 @@
 # Run from claude/release-manager/ — repo-path is two levels up from there.
 # Example: ./count-fixes-and-features.sh ../../inav 9.0.1 upstream/release/9.1 iNavFlight/inav
 
-set -e
-
 if [ $# -lt 3 ]; then
     echo "Usage: $0 <repo-path> <old-tag> <new-ref> [github-owner/repo]"
     echo ""
@@ -33,25 +31,47 @@ fi
 
 cd "$REPO_PATH"
 
-PR_NUMBERS=$(git log "$OLD_TAG..$NEW_REF" --merges --format='%s' | grep -oE '#[0-9]+' | tr -d '#' | sort -n)
+RAW_NUMBERS=$(git log "$OLD_TAG..$NEW_REF" --merges --format='%s' | grep -oE '#[0-9]+' | tr -d '#' | sort -n)
+
+# Sanity-check each candidate number's digit count against the batch's max.
+# A real release window's PR numbers cluster tightly (e.g. all 5-digit); a
+# stray "#1", "#2", "#47" extracted from unrelated text in a commit message
+# (not an actual PR reference) stands out as far shorter and gets dropped
+# here instead of wasting a doomed `gh pr view` call on it.
+MAX_DIGITS=$(echo "$RAW_NUMBERS" | awk '{ print length($0) }' | sort -rn | head -1)
+MIN_DIGITS=$((MAX_DIGITS - 1))
+PR_NUMBERS=$(echo "$RAW_NUMBERS" | awk -v min="$MIN_DIGITS" 'length($0) >= min')
+IMPLAUSIBLE=$(echo "$RAW_NUMBERS" | awk -v min="$MIN_DIGITS" 'length($0) < min')
+
 TOTAL=$(echo "$PR_NUMBERS" | grep -c . || true)
 
 echo "Fetching $TOTAL PR titles from $GH_REPO (this makes one gh call per PR, can take a minute)..." >&2
+if [ -n "$IMPLAUSIBLE" ]; then
+    echo "Skipped as implausible PR numbers (too few digits vs. the rest of this batch): $(echo "$IMPLAUSIBLE" | tr '\n' ' ')" >&2
+fi
 
 TITLES_TSV=$(mktemp)
+FAILED=""
 for pr in $PR_NUMBERS; do
-  gh pr view "$pr" --repo "$GH_REPO" --json number,title --jq '"\(.number)\t\(.title)"' >> "$TITLES_TSV" 2>/dev/null
+  if ! gh pr view "$pr" --repo "$GH_REPO" --json number,title --jq '"\(.number)\t\(.title)"' >> "$TITLES_TSV" 2>/dev/null; then
+    FAILED="$FAILED $pr"
+  fi
 done
+if [ -n "$FAILED" ]; then
+    echo "Failed to resolve via gh (not real PRs, or API error):$FAILED" >&2
+fi
+
+RESOLVED=$(wc -l < "$TITLES_TSV")
 
 EXCLUDE_PATTERN='\t(release/[0-9.]+ to master|maintenance-[0-9.x]+ to master|master to maintenance|to master$|catch up|agent\.md|version bump|bump.*version|ci: |update release guide|readme)'
 
 EXCLUDED=$(grep -icE "$EXCLUDE_PATTERN" "$TITLES_TSV" || true)
 FIXES=$(grep -ivE "$EXCLUDE_PATTERN" "$TITLES_TSV" | grep -icE $'\t.*(fix|bug)' || true)
-FEATURES=$((TOTAL - EXCLUDED - FIXES))
+FEATURES=$((RESOLVED - EXCLUDED - FIXES))
 
 echo ""
 echo "=== $GH_REPO: $OLD_TAG..$NEW_REF ==="
-echo "Total merged PRs: $TOTAL"
+echo "Candidate PR numbers found: $TOTAL (resolved via gh: $RESOLVED)"
 echo "Excluded (housekeeping/non-user-facing): $EXCLUDED"
 echo "Fixes: $FIXES"
 echo "Features/Enhancements: $FEATURES"

@@ -118,8 +118,9 @@ This guide covers the complete release workflow and preparation steps you need t
 
 3. Download firmware artifacts
    ├── Download firmware hex files from CI
-   ├── Download SITL binaries from same CI run
-   ├── Build Linux x64 SITL locally if needed (for glibc compatibility)
+   ├── Download Windows/macOS/Linux-arm64 SITL binaries from same CI run
+   ├── **ALWAYS build Linux x64 SITL locally on the oldest supported Ubuntu LTS** (currently 22.04.3,
+   │   glibc 2.35) — not "if needed"; CI runners get upgraded silently, do this now, before step 4's PR
    ├── Build the WASM SITL firmware (see the WASM SITL + Browser/PWA Build guide)
    └── This provides native SITL binaries + WASM SITL needed for configurator
 

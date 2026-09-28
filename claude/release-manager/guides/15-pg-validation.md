@@ -164,6 +164,15 @@ The validation runs as a POST_BUILD step. If the build itself fails, fix the bui
 - Verify no actual struct changes in recent commits
 - If confirmed false positive, increment version anyway (safer) or regenerate database
 
+### Two more confirmed false-positive modes (10.0.0-RC1, 2026-09-24) — check these before creating a hotfix PR
+
+The script's version comparison is a naive `current <= reference_db`, and it does not know about either of these. **Both were hit in the same release** — check for them before assuming a real failure:
+
+1. **4-bit version wraparound.** `PG_REGISTER`'s version is packed into the top 4 bits of `pgn_t` (`.pgn = _pgn | (_version << 12)`, `src/main/config/parameter_group.h:139`) — the max value is 15, and incrementing past it wraps to 0. The script sees `15 → 0` and reports "version not incremented," but `0` after `15` **is** a correct increment. If a failure shows the old version as `15` and the new version as `0`, this is that false positive, not a real bug — no hotfix needed.
+2. **Reference DB reflects dev-time state, not the last shipped tag.** The database auto-updates during normal development whenever a version is correctly bumped, so by release time it may already match the current mid-cycle version even if that version was bumped for unrelated reasons earlier in the cycle, well before this specific size change. The invariant that actually matters for EEPROM safety is **current version vs. the version in the last actually-shipped release tag**, not current version vs. this auto-updated database. Check the struct's version at the last shipped tag (`git show <last-tag>:src/main/.../file.c | grep PG_REGISTER`, or read the struct in that tag) — if it already differs from the current version, the change is safe regardless of what the script's dev-time database says, and no hotfix is needed. (Hit this on `batteryMetersConfig_t`: version had already gone `2→4` earlier in the cycle for unrelated reasons; a later PR changed the struct's size without touching the version again, and the script flagged it since the dev-time DB already said "4" — but 9.1.0 shipped it at version `2`, so any upgrader still gets a safe mismatch reset.)
+
+Both of these are open script bugs, not yet fixed in `validate-pg-for-release.sh` — worth a developer ticket to fix the comparison logic properly (understand the 4-bit wraparound; compare against the last shipped tag instead of the dev-time database).
+
 ### Validation doesn't catch a bug
 
 **Remember:** This only validates changes to SPEEDYBEEF745AIO configuration.

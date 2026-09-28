@@ -226,19 +226,19 @@ gh release upload 9.1.1-rc1 *.hex --repo iNavFlight/inav
 
 ## Asset Naming Conventions
 
-Ensure assets follow these naming patterns:
+**Source of truth is the Configurator's own filename parser** (`tabs/firmware_flasher.js`'s `parseFilename`), not precedent — actual past releases have used inconsistent formats (`inav_8.0.0_AIRBOTF4.hex`, `inav_9.0.0_RC4_AETH743Basic.hex`, `inav_9.1.0-rc1_AIRBOTF4.hex` have all shipped). Before trusting any pattern below, re-check that regex against the `maintenance-<N>.x` commit you're releasing from — it has changed at least once (`fix-firmware-flasher-target-matching`, merged into `maintenance-10.x`) and could again.
 
-### Firmware (RC releases)
-- Pattern: `inav_<version>_RC<n>_<TARGET>.hex`
-- Example: `inav_9.1.1_RC2_MATEKF405.hex`
+### Firmware (RC releases) — verified against `parseFilename`'s regex 2026-09-23
+- Pattern: `inav_<version>-rc<n>_<TARGET>.hex` (hyphen, lowercase `rc`, fused directly onto the version — **not** a separate `_RC<n>_` segment)
+- Example: `inav_10.0.0-rc1_MATEKF405.hex`
+- Produced correctly by `rename-firmware-for-release.sh` as-is; do not hand-rename to the old `_RC<n>_` style, it will make the flasher mis-parse the target name.
 
 ### Firmware (final releases)
 - Pattern: `inav_<version>_<TARGET>.hex`
 - Example: `inav_9.1.1_MATEKF405.hex`
 
-### Configurator (RC releases)
-- Pattern: `INAV-Configurator_<platform>_<version>_RC<n>.<ext>`
-- Example: `INAV-Configurator_linux_x64_9.1.1_RC2.deb`
+### Configurator (RC releases) — verified against actual shipped releases 2026-09-23
+- Configurator packages carry **no RC marker at all** in the filename, RC or not — real 9.0.0-RC4 and 9.1.0-RC1 release assets both shipped as bare `INAV-Configurator_<platform>_<version>.<ext>` (e.g. `INAV-Configurator_linux_x64_9.0.0.deb` for the 9.0.0-RC4 release). Use the CI-produced filenames unmodified.
 
 ### Configurator (final releases)
 - Pattern: `INAV-Configurator_<platform>_<version>.<ext>`

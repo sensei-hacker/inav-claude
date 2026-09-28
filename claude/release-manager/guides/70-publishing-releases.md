@@ -104,9 +104,10 @@ After publishing releases:
 - Focus on top 5 features users care about most
 - Include download link and upgrade warnings
 - **Combined announcements:** Firmware and Configurator are always announced together in one post — users think of it as a single "INAV X.Y.Z" release. Exception: hotfixes that touch only one repo get a targeted announcement, not a combined one.
-- **Link to the `/latest` release URL, not the specific version tag** — in case a fix release is needed in the first hours or days:
-  - **Firmware:** https://github.com/iNavFlight/inav/releases/latest
-  - **Configurator:** https://github.com/iNavFlight/inav-configurator/releases/latest
+- **Link to the `/latest` release URL, not the specific version tag — for FINAL/stable releases only.** GitHub's `/latest` endpoint always resolves to the newest release *not* marked prerelease (verified 2026-09-24: with 10.0.0-RC1 published as a prerelease, `/latest` still pointed at the old `9.1.0`/`9.1.1` stable releases). **For an RC announcement, link the specific tag instead** — `/latest` would send readers to the wrong, older release:
+  - **Firmware (final release):** https://github.com/iNavFlight/inav/releases/latest
+  - **Configurator (final release):** https://github.com/iNavFlight/inav-configurator/releases/latest
+  - **RC of either repo:** use `https://github.com/iNavFlight/<repo>/releases/tag/<exact-rc-tag>` instead.
 - **Reference examples (emoji-free, current style):** `releases/9.1.0/9.1.0-announcement-discord.md`, `releases/9.1.0/9.1.0-announcement-facebook.txt`
 - **Older examples contain emojis — don't copy that part of their style:** `releases/9.0.0/9.0.0-announcement-discord.md`, `releases/9.0.0/9.0.0-announcement-facebook.txt`, `releases/9.1.0-RC1/9.1.0-RC1-announcement-discord.md`, `releases/9.1.0-RC1/9.1.0-RC1-announcement-facebook.txt`
 

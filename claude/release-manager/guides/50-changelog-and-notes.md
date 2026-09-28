@@ -237,17 +237,28 @@ The following CLI settings have been renamed or removed in INAV X.0. When loadin
 - `removed_setting` - Reason for removal / what replaced it
 
 **Migration Instructions:**
-1. Export configuration from old version: CLI → `diff all` → Save to file
+1. **Backup Config** (Firmware Flasher tab) before flashing
 2. Flash new firmware with **Full Chip Erase**
-3. Edit your saved diff file and update the renamed settings
-4. Load edited diff into new CLI
+3. **Restore Config** (same tab) after flashing — this is what runs Configurator's automatic settings-migration tool, if one exists for this version jump
+4. If you use the manual CLI `diff all` path instead, none of the above gets auto-migrated — you must hand-edit the renamed/removed settings yourself
 
 See full upgrade guide: https://github.com/iNavFlight/inav/wiki/X.0.0-Release-Notes
 ```
 
+⚠️ **Don't claim the CLI `diff all` path triggers automatic migration — confirmed false, 10.0.0-RC1 (2026-09-24).** Verified against source: `MigrationHandler.migrateBackupData` is only called from `js/backup_restore.js`, wired into the Firmware Flasher tab's Backup Config/Restore Config buttons; `tabs/cli.js` has no migration reference at all. Our first draft of 10.0.0-RC1's release notes got this wrong and had to be corrected before publishing — check this again if a future release's migration profile changes how it's wired in.
+
 ---
 
 ## RC Release Notes Pattern
+
+### RC Stability Disclaimer (prepend to every RC's notes)
+
+Ray added this to the top of 10.0.0-RC1's published firmware notes (2026-09-23) and asked that future RCs use similar text. Adapt the bracketed parts per release; keep the structure:
+
+```markdown
+This is [the first Release Candidate for INAV 10.0, a new major version / Release Candidate N for INAV X.Y].
+This build contains significant new features first seen in this release. A release candidate is for testing out the new features prior to the stable release planned for [target month/quarter]. If you prefer a more reliable version and want bug fixes only, choose the latest release in the [X.Y-1.x] series instead.
+```
 
 For RC releases, follow the **cumulative** pattern (see [Phase 10: Workflow and Preparation](10-workflow-and-preparation.md#rc-release-pattern-cumulative-approach) for details).
 

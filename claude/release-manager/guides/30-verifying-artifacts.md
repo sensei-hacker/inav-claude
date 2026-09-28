@@ -22,6 +22,8 @@ This guide covers verification steps to ensure artifact quality before uploading
 
 **Lesson learned (9.0.0 release):** A Windows .exe file was found inside a Mac DMG, breaking the macOS release.
 
+**This recurred in 10.0.0-RC1 (2026-09-22):** `forge.config.js`'s SITL-pruning hook (`afterCopyExtraResources`) checked for `Contents/Resources/sitl` before it existed on the macOS packaging path, so pruning silently no-op'd there (Linux packaging was unaffected). Both macOS DMGs shipped with Windows `.exe`/`.dll` and Linux SITL binaries bundled in alongside macOS's own. Fixed in inav-configurator#2797. **Keep actually running this check every release — it is not a one-time-fixed problem.**
+
 ### Using the Verification Script (Linux)
 
 A verification script is available at: `claude/release-manager/scripts/verify-dmg-contents.sh`
@@ -30,6 +32,14 @@ A verification script is available at: `claude/release-manager/scripts/verify-dm
 # Verify all DMGs in a directory
 ./claude/release-manager/scripts/verify-dmg-contents.sh downloads/configurator-9.0.0-RC3/macos/*.dmg
 ```
+
+⚠️ **Known false-negative bug:** this script treats any non-zero `7z` exit code as "failed to extract" and skips the DMG entirely. But `7z` can exit non-zero on a DMG's outer-wrapper "Headers Error" while still fully extracting every file underneath. If you see "❌ Failed to extract DMG," **don't assume verification is blocked** — manually extract instead and inspect the tree yourself before concluding anything:
+```bash
+7z x -o/tmp/dmgcheck "path/to/file.dmg"
+find /tmp/dmgcheck -iname "*.exe" -o -iname "*.dll" -o -iname "*.msi"   # should be empty
+find /tmp/dmgcheck -path "*Contents/Resources/sitl*"                     # should show only this platform's binary
+```
+(Confirmed 2026-09-22: this exact false negative masked the real contamination bug above until manual extraction was used.)
 
 **What it checks:**
 - ✅ No Windows files (.exe, .dll, .msi)

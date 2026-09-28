@@ -67,8 +67,8 @@ SITL binaries must be updated in the configurator before tagging.
 
 ### When to Build SITL Locally
 
-**Build locally:**
-- **Linux x64** - To ensure glibc ≤ 2.35 compatibility
+**Always build locally:**
+- **Linux x64** - CI runner glibc isn't guaranteed ≤ 2.35 (it drifts as runner images update); build locally every release, don't assume the CI artifact is fine.
 
 **Use CI artifacts:**
 - **Windows** - Needs cygwin1.dll from CI build

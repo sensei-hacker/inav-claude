@@ -1,0 +1,37 @@
+INAV 10.0.0-RC1 — Release Candidate Available
+
+INAV 10.0 is a major release with significant new features: terrain-following navigation, DroneCAN support, VTOL auto-transition, and more. This Release Candidate is for pilots who want to test the new features early.
+
+We are also planning a final 9.1.x bug-fix release in about 4-6 weeks, for anyone who wants maximum reliability and would rather not deal with new-feature growing pains right now.
+
+Since 9.1.0/9.1.1: roughly 79 fixes and 134 new features/enhancements in the firmware, and 23 fixes and 60 new features/enhancements in the Configurator.
+
+HIGHLIGHTS
+
+Terrain-Following Navigation
+Fly at a set height above the ground using preloaded terrain data, loaded via the Configurator's new Map Generator tab. Powers the new Terrain AGL Hold flight mode.
+
+DroneCAN Support
+CAN-bus support for compatible peripherals, with a dedicated DroneCAN tab in the Configurator for setup and diagnostics.
+
+VTOL Auto Transition
+Airspeed-based automatic transition between hover and forward flight, with stabilization and lift-control smoothing.
+
+Fixed-Wing Auto Speed Mode and Coordinated Waypoint Turns
+Hold a chosen airspeed or ground speed instead of a fixed throttle, and fly mission waypoint turns as proper coordinated arcs sized to your aircraft.
+
+Mission Control Upgrades
+Grid Survey Pattern Generator, Google location and weather integration, 3D terrain view, and a waypoint list selector in the Configurator's Mission Control tab.
+
+UPGRADING FROM 9.x
+Full Chip Erase is required. Use the Configurator's Backup Config button before flashing and Restore Config after — that is what runs the automatic settings migration tool. Pasting a diff all directly into the CLI does not run migration. See the release notes for the full list of renamed and removed settings.
+
+Thanks in advance to everyone who tests this RC and reports issues — it helps make INAV 10.0 solid for the stable release planned for December. Download links in the first comment.
+
+Happy Flying!
+
+#INAV #FlightController #FPV #UAV #Drone #FixedWing #Multirotor #OpenSource
+
+--- NOT PART OF THE POST: paste as the first comment after posting ---
+Firmware: https://github.com/iNavFlight/inav/releases/tag/10.0.0-rc1
+Configurator: https://github.com/iNavFlight/inav-configurator/releases/tag/10.0.0-rc1

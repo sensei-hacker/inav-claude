@@ -1,51 +1,77 @@
 # 10.0.0-RC1 Release Notes-to-Self
 
 Working notes for this release cycle. Not a deliverable — internal tracking only.
+Updated 2026-09-24 — release cycle is complete except the public announcement (drafted, posting held for Ray's review).
 
 ---
 
-## OPEN: WASM SITL firmware — waiting on developer investigation
+## FINAL STATUS (2026-09-24)
 
-**Status as of 2026-09-20:** Ray has tasked a developer with investigating the WASM SITL situation. **Return to this before finalizing the WASM/PWA portion of the release plan.**
+Both releases are **published and live**:
+- Firmware: https://github.com/iNavFlight/inav/releases/tag/10.0.0-rc1 (`86a0441c`, unchanged all cycle)
+- Configurator: https://github.com/iNavFlight/inav-configurator/releases/tag/10.0.0-rc1 (`ce5b9733`, after 3 fix rounds — see Lessons Learned)
 
-Two competing, unmerged firmware PRs, neither merged into `maintenance-10.x`:
-- **PR #11282** (Scavanger, "New SITL TARGET: Webassembly") — targets `maintenance-10.x` (correct base), CI green, unreviewed, stale since 2026-05-23.
-- **PR #11314** (Ray/sensei-hacker, `feature/wasm-sitl-squashed`) — targets `release/9.1` (wrong base for a new feature), author's own description frames it as "for comparison... Scavanger's implementation is probably better overall" — not intended to merge as-is.
+Ray confirmed Configurator's Firmware Flasher tab correctly discovers/loads the new firmware. Completion report sent to Manager 2026-09-24. `master` sync checked on both repos — healthy, no action needed (by design, `master` only fast-forwards to a new major at final stable release, not RC1).
 
-Configurator side (PR #2729, browser/PWA build expecting a WASM SITL binary) already merged into `maintenance-10.x` on 2026-09-02, so the PWA build currently has no matching firmware WASM SITL to bundle.
-
-**Unaffected:** native (non-WASM) SITL is fully present on `maintenance-10.x` already — this blocker is WASM-only, doesn't affect the rest of the release.
-
-**Next step:** check with Developer/Manager on investigation status before scoping WASM/PWA into RC1 vs. deferring to RC2.
+**Only remaining step:** public Discord/Facebook announcement. Drafted at `10.0.0-RC1-announcement-{discord.md,facebook.txt}`; Ray is reviewing before posting (as of 2026-09-24, not yet posted). Once posted, this release cycle is fully closed — no further tracking needed here beyond that.
 
 ---
 
-## OPEN: Settings-migration profile (9_to_10.json) — needs a developer
+## Lessons Learned (apply to RC2 and future releases)
 
-Configurator has no `js/migration/9_to_10.json` yet, and `migration_handler.js`'s `MIGRATION_PROFILES` array (currently `[profile_7_to_8, profile_8_to_9]`) needs the new one imported and appended or it's silently never applied.
+### Three real bugs found in configurator this cycle — process takeaways, not just bug reports
 
-**Prerequisite:** freeze point (all planned 10.0 PRs merged), not the GitHub draft release — see `guides/10-workflow-and-preparation.md`'s "Settings-Migration Profile" section for why waiting for the draft release would be too late.
+1. **macOS SITL contamination** (recurrence of a 9.0.0-era bug) — `forge.config.js`'s SITL-pruning hook checked for a path before it existed on the macOS packaging step specifically, silently no-op'ing. Both DMGs shipped with Windows/Linux SITL binaries bundled in. **Takeaway:** `guides/30-verifying-artifacts.md` already documents the "9.0.0 lesson learned" DMG-contents check — that check is not a one-time-fixed problem, it needs to actually run every release. It also had a script bug (`verify-dmg-contents.sh` reports false negatives on 7z's benign outer-wrapper error) that almost hid this — always manually extract and inspect if the script says "failed."
+2. **Linux x64 SITL glibc regression** — the CI runner's glibc isn't pinned and drifted upward (2.35→2.38), which would have broken SITL for most current Linux users. **Takeaway:** guides now say to build Linux x64 SITL locally, unconditionally, every release, done early (with the version-bump PR) — not treated as conditional or discovered late in artifact verification.
+3. **Stale firmware-version-acceptance bounds** — hardcoded min/max firmware version strings were leftover from the 9.x cycle and got missed in the 10.0.0 version bump; Configurator would have rejected the matching firmware outright. **Takeaway:** this class of bug (hardcoded values that should derive from the app's own version) is exactly what self-correcting derivation (e.g. `semver.major()` off the app's own version) prevents for future cycles — worth checking for similar hardcoded-version patterns elsewhere if doing a pre-release audit in future cycles.
 
-**Content source:** `scripts/find-incompatible-settings.sh <9.1.0-or-later-tag> <10.0 freeze commit>` — same diff already needed for the release notes' incompatible-settings section (Phase 50).
+All three were caught by the Release Manager's own verification steps (DMG extraction, glibc check, SITL launch+MSP query), not by CI — CI was green throughout. **Don't treat a green CI run as sufficient for a major-version release; the documented Phase 60 verification steps exist precisely because CI doesn't catch these.**
 
-**Owner:** developer role (Marc, per Ray, 2026-09-20) — Release Manager doesn't write configurator source.
+### Process/tooling bugs fixed this cycle
 
-**Land where:** same version-bump + SITL PR (Phase 10 workflow step 4), before the RC configurator CI build — not a separate later PR.
+- `validate-pg-for-release.sh` has two false-positive modes (doesn't understand 4-bit PG-version wraparound; compares against a dev-time reference DB instead of the last shipped tag) — **not fixed in code, still open, worth a developer ticket.**
+- `count-fixes-and-features.sh` aborted entirely if any single candidate PR number failed to resolve (e.g. noise like `#1`/`#2` extracted from unrelated commit-message text) — fixed to skip implausible numbers and continue past individual failures.
+- `verify-dmg-contents.sh`'s 7z-exit-code false negative — documented as a known issue in `guides/30-verifying-artifacts.md`, not yet fixed in the script itself.
+- Release-manager guide corrections made this cycle based on things that turned out to be documented wrong: asset naming conventions for both firmware (`inav_X.Y.Z-rcN_TARGET.hex`, verified against the Configurator's actual filename-parsing regex, not against inconsistent historical precedent) and configurator (no RC marker in the filename at all, verified against actual past releases); the `/latest` release URL only working for final releases, never RCs (GitHub's `/latest` ignores prereleases — confirmed it still pointed at old 9.1.0/9.1.1 while our prerelease RC was live).
+- **New infra gap found, not yet fixed:** `inav-configurator`'s `release.yml` (the tag-triggered signed-build pipeline, `require_signing: true`) never actually engages for any tag push because no tag-protection ruleset exists matching `v*.*.*`/`*.*.*` — its job silently skips. Not a problem this cycle (branch-push CI already had working signing, confirmed via logs), but the hard-fail-on-bad-signing guarantee `release.yml` is supposed to provide doesn't currently exist for any release. Emailed the Manager to open a project for this.
+
+### Process discipline that worked and should continue
+
+- **Release Manager Key Rule held throughout:** every real bug found (PG version-wraparound false positive, `forge.config.js` hook timing, glibc regression, version-acceptance bounds) was reported and handed to a developer, never fixed directly. All came back clean.
+- **Ask before dropping `GITHUB_TOKEN`, every time** — did this consistently after an early-cycle lapse (see git history of this file if needed); no further lapses.
+- **Verify against source, not precedent or draft documentation, when they conflict.** Caught real discrepancies this cycle by reading actual code/diffs instead of trusting: a script's raw output (PG validation, fix/feature counts), a wiki draft's claim (`nav_fw_wp_turn_smoothing`'s real rename target), and our own first-draft release notes (CLI paste does NOT trigger settings migration — only Backup/Restore Config buttons do, confirmed via `js/backup_restore.js`).
+- **Ask before publishing, every time** — agent never runs `--draft=false`; Ray gave direct instruction for firmware, and configurator was published by Ray directly via the GitHub GUI.
 
 ---
 
-## Version-string reservation (Step 0, major-version-only)
+## RESOLVED — kept for brief history, no action needed
 
-Bumping the previous major's patch level on both repos before setting a `10.0.0` family version string on `maintenance-10.x`, per `guides/10-workflow-and-preparation.md` Step 0.
+<details>
+<summary>Configurator commit history this cycle (3 supersedes, all fixed)</summary>
 
-- Firmware: `release/9.1` next available patch is **9.1.1** (firmware has never shipped 9.1.1 — GH milestone "9.1.1" exists, no "9.1.2" milestone on the firmware repo). Reservation PR: https://github.com/iNavFlight/inav/pull/11981
-- Configurator: `maintenance-9.x` next available patch is **9.1.2** (configurator already shipped 9.1.1 as a configurator-only patch on 2026-07-13 — GH milestones "9.1.1" and "9.1.2" both exist on the configurator repo). Reservation PR: https://github.com/iNavFlight/inav-configurator/pull/2780
+`96d12ff5` (original version-bump+SITL PR #2793, macOS contamination bug) → `335538f2` (PR #2797 fixed contamination, glibc regression found) → `b084db8d` (PR #2799 fixed glibc, version-acceptance bounds found stale) → `ce5b9733` (PR #2800 fixed version bounds — final, published).
+</details>
 
-These numbers differ from each other by design.
+<details>
+<summary>WASM SITL firmware — deferred to RC2</summary>
 
-**Status (2026-09-20):** both reservation PRs opened, milestones attached, not yet merged. Still need, per repo, in order:
-1. Merge the reservation PR above.
-2. Forward-merge it into `maintenance-10.x` (branch off `maintenance-10.x`, merge the release/maintenance-9.x branch in, PR back — never GitHub's "Resolve conflicts" button).
-3. Only then open the PR that sets the `10.0.0-rc1` version string on `maintenance-10.x`.
+Two competing unmerged firmware PRs (#11282, #11314) were never reconciled; Ray decided WASM/PWA is out of scope for RC1 regardless, revisit for RC2. Native SITL unaffected.
+</details>
 
-**When opening that 10.0.0-rc1 version-string PR:** its description must explicitly remind the maintainer of this same merge order (reservation PR → forward-merge PR → version-bump PR) — GitHub doesn't enforce merge sequencing, so a maintainer merging it early recreates the exact version-collision hazard this whole procedure exists to avoid. (Also now documented in `guides/10-workflow-and-preparation.md` Step 0.)
+<details>
+<summary>Settings-migration profile, version-string reservation — merged early in cycle</summary>
+
+`inav-configurator#2784` (migration profile), `inav#11981`/`inav-configurator#2780` (version-string reservation patches), `inav#12006`/`inav-configurator#2793` (actual 10.0.0 version bumps) — all merged and forward-merged correctly, verified via `gh api compare` ancestry checks. Full detail in `10.0.0-RC1-release-plan.md` Phase 0.5.
+</details>
+
+<details>
+<summary>PG Validation — 2 false alarms, confirmed non-issues</summary>
+
+`osdConfig_t` (4-bit version wraparound 15→0, not a regression) and `batteryMetersConfig_t` (version only needs to reflect delta vs. last shipped release, not every dev commit). Full reasoning in `10.0.0-RC1-release-plan.md` Phase 20.
+</details>
+
+<details>
+<summary>Nightly-publish credentials broken (non-blocking, developer has it)</summary>
+
+Both repos' "Build nightly-release" step fails with `Bad credentials` — publish-only, doesn't affect actual build jobs. Already an assigned developer task.
+</details>
