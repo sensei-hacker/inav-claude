@@ -279,6 +279,13 @@ bash_rules:
     category: write
     decision: allow
 
+  - name: "Allow cat > to ./tmp directory (shared temp storage only)"
+    command_pattern: "^cat$"
+    argument_pattern: "^>\\s+((\\.\\./|\\./)?tmp/|/home/raymorris/Documents/planes/inavflight/tmp/)\\S+.*"
+    category: write
+    decision: allow
+    message: "cat write redirection to ./tmp directory only (shared inter-session storage, not system /tmp or arbitrary paths)"
+
   - name: "Ask for cat > to other locations"
     command_pattern: "^cat$"
     argument_pattern: "(^|\\s)>>?"
@@ -524,6 +531,13 @@ bash_rules:
   # Common Read-Only Commands (Broad Allow List)
   # ===================================================================
   # These are safe commands that only read/display data
+
+  - name: "Allow tr to convert newlines to spaces in pipes"
+    command_pattern: "^tr$"
+    argument_pattern: ".*\\\\n.*\\s+.*"
+    category: read
+    decision: allow
+    message: "tr command for converting newlines to spaces in pipe operations (read-only)"
 
   - name: "Allow pgrep command"
     command_pattern: "^pgrep$"
