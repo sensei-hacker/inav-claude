@@ -28,7 +28,7 @@ check() { # name expected_exit
 
 # 1 wraparound
 newrepo c1; db "fooConfig_t 8 15"; commit base; g tag 1.0.0; commit later
-cur "fooConfig_t 12 0"; check "1 wraparound v15->v0 size changed" 0
+cur "fooConfig_t 12 0"; check "1 wraparound v15->v0 passes but DB at HEAD is stale" 3
 
 # 2 dev-DB drift
 newrepo c2; db "fooConfig_t 8 3"; commit base; g tag 1.0.0
@@ -44,7 +44,7 @@ cur "fooConfig_t 12 3"; check "3 size changed, same version" 1
 # 4 negatives/positives
 newrepo c4; db "fooConfig_t 8 3"; commit base; g tag 1.0.0; commit later
 cur "fooConfig_t 8 3"; check "4a size unchanged" 0
-cur "fooConfig_t 8 3" "barConfig_t 4 0"; check "4b new struct not in baseline" 0
+cur "fooConfig_t 8 3" "barConfig_t 4 0"; check "4b new struct passes but DB at HEAD lacks it" 3
 
 newrepo c4c; db "fooConfig_t 8 3"; commit base; g tag 1.0.0
 db "fooConfig_t 12 4"; commit rc; g tag 1.1.0-RC1; commit later
@@ -53,6 +53,20 @@ cur "fooConfig_t 12 3"; check "4c RC tag ignored as baseline" 1
 newrepo c4d; db "fooConfig_t 8 3"; commit base; g tag 1.0.0
 db "fooConfig_t 12 3"; commit head; g tag 1.0.1
 cur "fooConfig_t 12 3"; check "4d tag at HEAD skipped" 1
+
+# 6 DB committed at HEAD matches the validated sizes
+newrepo c6; db "fooConfig_t 8 15"; commit base; g tag 1.0.0
+db "fooConfig_t 12 0"; commit "update PG db"
+cur "fooConfig_t 12 0"; check "6a wraparound with DB committed" 0
+# 6b: --current-file never rewrites the working DB
+newrepo c6b; db "fooConfig_t 8 3"; commit base; g tag 1.0.0; commit later
+cur "fooConfig_t 8 3" "barConfig_t 4 0"; check "6b new struct, DB stale" 3
+if git -C "$R" diff --quiet -- cmake/pg_struct_sizes.reference.db; then echo "PASS  6c --current-file leaves DB untouched"; PASS=$((PASS+1)); else echo "FAIL  6c --current-file modified the DB"; FAIL=$((FAIL+1)); fi
+
+# 6d committed DB in a different line order is not a difference
+newrepo c6d; db "fooConfig_t 8 3" "barConfig_t 4 0"; commit base; g tag 1.0.0
+printf "%-30s %3s %s\n" fooConfig_t 8 3 barConfig_t 4 0 > "$R/cmake/pg_struct_sizes.reference.db"; commit reorder
+cur "fooConfig_t 8 3" "barConfig_t 4 0"; check "6d DB line order ignored" 0
 
 # 5 baseline tag lacks DB
 newrepo c5; echo x > "$R/README"; commit base; g tag 1.0.0

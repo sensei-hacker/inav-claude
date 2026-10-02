@@ -50,7 +50,7 @@ This script will:
 2. Extract PG struct sizes from the binary
 3. Compare against the baseline: `cmake/pg_struct_sizes.reference.db` as committed at the newest final release tag (`X.Y.Z`, no RCs) reachable from HEAD, skipping a tag on HEAD itself. Override with `--baseline-tag TAG`
 4. Report any size changes without a version change (versions are 4 bits, so any difference modulo 16 counts; 15 → 0 is valid)
-5. Rewrite `cmake/pg_struct_sizes.reference.db` with the validated sizes (commit it before tagging so the tag carries its own baseline)
+5. If `cmake/pg_struct_sizes.reference.db` differs from the copy committed at HEAD, rewrite it and exit 3. Commit it **before the freeze/tag** and re-run until the script exits 0; otherwise the next release validates against a stale baseline
 
 ### 3. Interpret Results
 
@@ -106,7 +106,7 @@ Fix: Increment PG version in PG_REGISTER for affected structs
 
 **Action:**
 - This is expected and correct
-- The database is rewritten with the validated sizes
+- If the database was rewritten the script exits 3: commit it before the freeze, then re-run
 - Proceed with release
 
 #### ➕ New struct added
@@ -134,7 +134,7 @@ Due to conditional compilation (`#ifdef USE_I2C`, etc.), the same struct can hav
 
 - **cmake/pg_struct_sizes.reference.db** - Reference sizes from SPEEDYBEEF745AIO
 - Format: `struct_type  size  version` (space-separated, 3 columns)
-- Rewritten by `validate-pg-for-release.sh` after a passing run; the copy at the last release tag is the baseline for the next validation
+- Rewritten by `validate-pg-for-release.sh` when it differs from HEAD (exit 3); the copy at the last release tag is the baseline for the next validation, so it must be committed before tagging
 - Committed to the repository
 
 ### Validation Logic
@@ -173,7 +173,7 @@ Any differences in size for the same version indicate a problem.
 
 ## Updating the Database
 
-The script rewrites the database after every passing run, so new structs and legitimately re-versioned structs are recorded automatically.
+The script rewrites the database when the validated sizes differ from the copy committed at HEAD, and exits 3 so the change is committed before tagging. New structs and legitimately re-versioned structs are recorded this way.
 
 **Manual update (not normally needed):**
 
