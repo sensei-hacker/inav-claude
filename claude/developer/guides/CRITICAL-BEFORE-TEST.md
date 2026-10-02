@@ -23,6 +23,15 @@ action → verify the result persisted (reconnect, or check the file on disk). I
 drive it, ask the user for manual assistance. This check is mandatory before PR. Running
 the existing test suite is a *regression* check, not the reproduction.
 
+**Don't bake a frozen copy of the old/buggy code into the permanent test suite.** Reproducing
+the bug (red → green) is a one-time authoring-time step — do it manually (e.g. temporarily
+revert the fix, or hand-copy the old logic into a scratch script) to confirm the test would
+have failed before the fix, then discard that scaffolding. The test that ships and runs on
+every build should only ever exercise the real, current production code and assert on
+*behavior* — never reconstruct a historical "buggy copy" as permanent CI machinery just to
+prove the test is non-vacuous. A test that keeps a frozen old implementation around to diff
+against is really testing "the code hasn't changed," not the behavior it claims to cover.
+
 **Absence of evidence is not evidence of absence.** If a live/CDP reproduction attempt
 sees no symptom (e.g. a callback you expected to fire didn't), that is consistent with
 "the bug isn't there" OR with "this test script never actually touched the app's live
