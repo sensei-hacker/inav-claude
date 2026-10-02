@@ -33,13 +33,7 @@ A verification script is available at: `claude/release-manager/scripts/verify-dm
 ./claude/release-manager/scripts/verify-dmg-contents.sh downloads/configurator-9.0.0-RC3/macos/*.dmg
 ```
 
-⚠️ **Known false-negative bug:** this script treats any non-zero `7z` exit code as "failed to extract" and skips the DMG entirely. But `7z` can exit non-zero on a DMG's outer-wrapper "Headers Error" while still fully extracting every file underneath. If you see "❌ Failed to extract DMG," **don't assume verification is blocked** — manually extract instead and inspect the tree yourself before concluding anything:
-```bash
-7z x -o/tmp/dmgcheck "path/to/file.dmg"
-find /tmp/dmgcheck -iname "*.exe" -o -iname "*.dll" -o -iname "*.msi"   # should be empty
-find /tmp/dmgcheck -path "*Contents/Resources/sitl*"                     # should show only this platform's binary
-```
-(Confirmed 2026-09-22: this exact false negative masked the real contamination bug above until manual extraction was used.)
+`7z` can exit non-zero on a DMG's outer-wrapper "Headers Error" while still extracting every file underneath, so the script prints the `7z` output and then inspects whatever was extracted. It reports "Failed to extract DMG" only when nothing was extracted. The script exits non-zero if any DMG has Windows files, `.msi` files, no `.app` bundle, or no extracted files.
 
 **What it checks:**
 - ✅ No Windows files (.exe, .dll, .msi)

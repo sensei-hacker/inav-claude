@@ -48,8 +48,9 @@ cd inav
 This script will:
 1. Build the reference target (SPEEDYBEEF745AIO)
 2. Extract PG struct sizes from the binary
-3. Compare against the reference database
-4. Report any size changes without version increments
+3. Compare against the baseline: `cmake/pg_struct_sizes.reference.db` as committed at the newest final release tag (`X.Y.Z`, no RCs) reachable from HEAD, skipping a tag on HEAD itself. Override with `--baseline-tag TAG`
+4. Report any size changes without a version change (versions are 4 bits, so any difference modulo 16 counts; 15 → 0 is valid)
+5. Rewrite `cmake/pg_struct_sizes.reference.db` with the validated sizes (commit it before tagging so the tag carries its own baseline)
 
 ### 3. Interpret Results
 
@@ -105,7 +106,7 @@ Fix: Increment PG version in PG_REGISTER for affected structs
 
 **Action:**
 - This is expected and correct
-- The database will auto-update
+- The database is rewritten with the validated sizes
 - Proceed with release
 
 #### ➕ New struct added
@@ -133,7 +134,7 @@ Due to conditional compilation (`#ifdef USE_I2C`, etc.), the same struct can hav
 
 - **cmake/pg_struct_sizes.reference.db** - Reference sizes from SPEEDYBEEF745AIO
 - Format: `struct_type  size  version` (space-separated, 3 columns)
-- Auto-updated when versions are correctly incremented
+- Rewritten by `validate-pg-for-release.sh` after a passing run; the copy at the last release tag is the baseline for the next validation
 - Committed to the repository
 
 ### Validation Logic
@@ -143,9 +144,9 @@ Due to conditional compilation (`#ifdef USE_I2C`, etc.), the same struct can hav
 3. Parse source code to find `PG_REGISTER` macros and extract versions
 4. Compare each struct:
    - Size unchanged → ✓ Pass
-   - Size changed, version incremented → ✓ Pass, update database
+   - Size changed, version differs from the shipped baseline (modulo 16) → ✓ Pass
    - Size changed, version NOT incremented → ❌ Fail build
-   - New struct → ➕ Add to database
+   - New struct (not in the baseline) → ➕ Listed, no check
 
 ## Troubleshooting
 
@@ -164,49 +165,15 @@ The validation runs as a POST_BUILD step. If the build itself fails, fix the bui
 - Verify no actual struct changes in recent commits
 - If confirmed false positive, increment version anyway (safer) or regenerate database
 
-### Two more confirmed false-positive modes (10.0.0-RC1, 2026-09-24) — check these before creating a hotfix PR
+### Baseline missing or wrong
 
-The script's version comparison is a naive `current <= reference_db`, and it does not know about either of these. **Both were hit in the same release** — check for them before assuming a real failure:
-
-1. **4-bit version wraparound.** `PG_REGISTER`'s version is packed into the top 4 bits of `pgn_t` (`.pgn = _pgn | (_version << 12)`, `src/main/config/parameter_group.h:139`) — the max value is 15, and incrementing past it wraps to 0. The script sees `15 → 0` and reports "version not incremented," but `0` after `15` **is** a correct increment. If a failure shows the old version as `15` and the new version as `0`, this is that false positive, not a real bug — no hotfix needed.
-2. **Reference DB reflects dev-time state, not the last shipped tag.** The database auto-updates during normal development whenever a version is correctly bumped, so by release time it may already match the current mid-cycle version even if that version was bumped for unrelated reasons earlier in the cycle, well before this specific size change. The invariant that actually matters for EEPROM safety is **current version vs. the version in the last actually-shipped release tag**, not current version vs. this auto-updated database. Check the struct's version at the last shipped tag (`git show <last-tag>:src/main/.../file.c | grep PG_REGISTER`, or read the struct in that tag) — if it already differs from the current version, the change is safe regardless of what the script's dev-time database says, and no hotfix is needed. (Hit this on `batteryMetersConfig_t`: version had already gone `2→4` earlier in the cycle for unrelated reasons; a later PR changed the struct's size without touching the version again, and the script flagged it since the dev-time DB already said "4" — but 9.1.0 shipped it at version `2`, so any upgrader still gets a safe mismatch reset.)
-
-Both of these are open script bugs, not yet fixed in `validate-pg-for-release.sh` — worth a developer ticket to fix the comparison logic properly (understand the 4-bit wraparound; compare against the last shipped tag instead of the dev-time database).
-
-### Validation doesn't catch a bug
-
-**Remember:** This only validates changes to SPEEDYBEEF745AIO configuration.
-
-**If a struct only changes when a feature is disabled:**
-- Example: Field only present when `USE_FEATURE` is NOT defined
-- SPEEDYBEEF745AIO has `USE_FEATURE` enabled
-- Size change won't be detected
-
-**Mitigation:** Code review remains critical.
-
-## Manual Validation
-
-If the script fails or you need to validate a specific target:
-
-```bash
-# Build the target
-cd inav/build
-make YOURTARGET.elf
-
-# Extract sizes
-../cmake/extract-pg-sizes-nm.sh bin/YOURTARGET.elf > /tmp/current_sizes.txt
-
-# Compare manually
-diff ../cmake/pg_struct_sizes.reference.db /tmp/current_sizes.txt
-```
+The script exits 2 if no final release tag is reachable from HEAD, or if the baseline tag has no `cmake/pg_struct_sizes.reference.db` (tags before 9.0.1 do not). Pass `--baseline-tag <tag>` to choose a tag that has one.
 
 Any differences in size for the same version indicate a problem.
 
 ## Updating the Database
 
-The database auto-updates when:
-- New structs are added (first build after PG_REGISTER added)
-- Struct size changes AND version is incremented
+The script rewrites the database after every passing run, so new structs and legitimately re-versioned structs are recorded automatically.
 
 **Manual update (not normally needed):**
 
