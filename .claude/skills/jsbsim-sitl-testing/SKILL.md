@@ -220,8 +220,10 @@ files. See that directory's README before using one.
   `src/main/flight/imu.c` was only reapplying the GPS3Dspeed turn-rate filter
   on a new GPS heartbeat instead of every IMU loop tick, giving it the wrong
   time constant during acceleration. Re-verify against current mainline
-  before assuming the ACRO workaround is still needed. Needs `inavbench.py`
-  from the same upstream repo (not vendored here) to actually run.
+  before assuming the ACRO workaround is still needed. Needs the `inavbench`
+  package, cloned at `~/inavflight/Inav_jsbsim` with a `.venv` (jsbsim 1.3.1;
+  the system 1.2.3 is too old). Run command, `Bench` API and port notes are in
+  that directory's README.
 
 ## Related Skills
 
