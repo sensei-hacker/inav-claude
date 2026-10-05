@@ -533,17 +533,17 @@ bash_rules:
 
   - name: "Allow timeout wrapper for configurator dialog testing"
     command_pattern: "^timeout$"
-    argument_pattern: "^\\d+\\s+python3\\s+claude/developer/scripts/testing/configurator/test_dialogs_jbox_consolidation\\.py.*"
+    argument_pattern: "^\\d+\\s+python3\\s+claude/developer/scripts/testing/configurator/test_dialogs_jbox_consolidation\\.py(\\s+[A-Za-z0-9_=./:~-]+)*$"
     category: other
     decision: allow
     message: "Configurator dialog/jBox testing script with timeout wrapper (screenshot/GUI automation)"
 
-  - name: "Allow timeout wrapper for GUI testing scripts"
-    command_pattern: "^timeout$"
-    argument_pattern: "^\\d+\\s+(python3|node)\\s+claude/developer/scripts/testing/.*"
-    category: other
+  - name: "Allow ImageMagick import for screenshot automation to tmp"
+    command_pattern: "^import$"
+    argument_pattern: ".*(-window|root).*(/tmp/|\\./tmp/|inavflight/tmp/).*\\.png(\\s+2>&1)?$"
+    category: write
     decision: allow
-    message: "GUI testing and screenshot automation scripts with timeout wrapper"
+    message: "ImageMagick screenshot capture to temporary directory (screenshot/GUI automation)"
 
   # ===================================================================
   # Common Read-Only Commands (Broad Allow List)
