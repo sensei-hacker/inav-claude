@@ -528,6 +528,24 @@ bash_rules:
     message: "CommonJS test file operations (chmod +x, node execution)"
 
   # ===================================================================
+  # GUI Testing & Screenshot Session Scripts
+  # ===================================================================
+
+  - name: "Allow timeout wrapper for configurator dialog testing"
+    command_pattern: "^timeout$"
+    argument_pattern: "^\\d+\\s+python3\\s+claude/developer/scripts/testing/configurator/test_dialogs_jbox_consolidation\\.py.*"
+    category: other
+    decision: allow
+    message: "Configurator dialog/jBox testing script with timeout wrapper (screenshot/GUI automation)"
+
+  - name: "Allow timeout wrapper for GUI testing scripts"
+    command_pattern: "^timeout$"
+    argument_pattern: "^\\d+\\s+(python3|node)\\s+claude/developer/scripts/testing/.*"
+    category: other
+    decision: allow
+    message: "GUI testing and screenshot automation scripts with timeout wrapper"
+
+  # ===================================================================
   # Common Read-Only Commands (Broad Allow List)
   # ===================================================================
   # These are safe commands that only read/display data
