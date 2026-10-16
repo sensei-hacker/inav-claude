@@ -69,6 +69,7 @@ fallback if the script can't be used.
 - Peek at another ref with `git show <ref>:<path>` (read-only); `git checkout <other-ref> -- .` silently reverts local commits ahead of that ref.
 - Harness-only tasks (`.claude/`, `claude/`) commit straight to `master` — branches belong in the project repos.
 - The base-branch table above is the single authority, even when a task email says otherwise.
+- `new-branch.sh` refuses (non-zero, "dirty working tree") when there are uncommitted changes. Create the branch *before* editing; if you forgot, `git stash`, run the script, `git stash pop`. Never commit on, or push `HEAD` from, whatever branch you were left on.
 
 ## 3. Plan End-User Documentation (If Needed)
 
