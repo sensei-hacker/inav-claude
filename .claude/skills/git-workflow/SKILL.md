@@ -165,7 +165,7 @@ remote, prints its reasoning, and creates the branch. Use `--dry-run` to preview
 |------|--------|-------------|-------------|-------|
 | PrivacyLRS | `origin` | any | `secure_01` | Separate fork/derivative project |
 | inav | `upstream` | bugfix | `release/9.1` | **TEMPORARY OVERRIDE** — `maintenance-9.x` is damaged. REVIEW-BY 2027-02: verify repair before reverting to `maintenance-9.x` |
-| inav | `upstream` | feature | `maintenance-10.x` | Same temporary override as above |
+| inav | `upstream` | feature | `next-10.1` | Holding branch for 10.1 work during the 10.0 RC freeze; `maintenance-10.x` is fixes-only until 10.0 ships. A workflow forward-merges `maintenance-10.x` → `next-10.1` → `maintenance-11.x`. Milestone `10.1`. Revisit after 10.0 release |
 | inav | `upstream` | breaking | `maintenance-11.x` | `maintenance-11.x` created 2026-09-20 for the 10.0-RC1 cycle — see `claude/release-manager/guides/05-major-version-bump.md` |
 | inav-configurator | `upstream` | bugfix | `maintenance-9.x` | **NOT** affected by the inav override — configurator's `maintenance-9.x` is fine |
 | inav-configurator | `upstream` | feature | `maintenance-9.x` | Not affected by the inav override |

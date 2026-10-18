@@ -175,6 +175,7 @@ not every PR fits a label, and that's fine — don't force one.
 | `release/9.x` (e.g. `release/9.1`) | matching version, e.g. `"9.1"` |
 | `maintenance-9.x` | next 9.x patch version (check open milestones for the right one) |
 | `maintenance-10.x` | `"10.0"` |
+| `next-10.1` | `"10.1"` |
 | No specific target release / exploratory | `"Future"` |
 
 Check current open milestones before picking one — they change over time:

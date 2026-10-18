@@ -102,6 +102,17 @@ specific job/artifact you actually need (same fix as the aggregate-conclusion
 gotcha), or gate on `workflow_id` directly if the two files' identity is
 otherwise indistinguishable.
 
+## `run:` steps are `bash -e` — test scripts that way
+
+A `run:` step with no `shell:` key executes as `bash -e {0}`, so `errexit` is on
+even if the script only sets `set -uo pipefail`. Any bare failing command
+(e.g. `git merge --abort` with no merge in progress, a failed `gh pr create`)
+kills the script, skipping later cleanup/fallbacks. When a script is meant to
+handle failures itself: `set +e`, `|| true` / explicit `|| { rc=1; return; }`,
+and `exit $rc` at the end. Extract the block and run it with `bash -e -c` against
+scratch repos and a stubbed `gh` (put the stub's echo on stderr — stdout is
+captured by `$(gh ...)`). Testing with plain `bash -c` hides this class of bug.
+
 ## Debugging technique
 
 For all of the above, `gh run list --workflow <file> --event <event>`
