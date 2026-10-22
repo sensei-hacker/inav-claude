@@ -95,7 +95,7 @@ Count: >= 100 trials total (~2 min each = 3-4 h with human present; relay rig ma
 Purpose: measure the data gap while the state machine scans/deletes/relocates.
 Setup: real card (try 3 cards incl. a slow one) with 200+ LOG files filled using small logs, one case with 4 GB and one with 32 GB cards, then arm to trigger a split mid-"flight" with LOGS directory scan needed.
 Instrumentation (choose first available):
-1. **Log content (no firmware change, best):** log at 500 Hz or max rate with `looptime`-derived frame times. After the run, parse the new LOG file with `blackbox_decode`/`analysis/decode_blackbox_frames.py`, compute max delta of `time(us)` between consecutive main frames at the split (the gap is the interval between last frame in old file and first in new; the split starts a new file so the gap is reconstructed from the *last frame of the previous log* and the *first frame of the new one* — both are retrievable since both files stay on the card, unless the previous was the evicted one; the previous log is the current one so it always survives). Script: `blackbox/analysis/blackbox_split_gap.py`.
+1. **Log content (no firmware change, best):** log at 500 Hz or max rate with `looptime`-derived frame times. After the run, parse the new LOG file with `blackbox_decode`/`analysis/decode_blackbox_frames.py`, compute max delta of `time(us)` between consecutive main frames at the split (the gap is the interval between last frame in old file and first in new; the split starts a new file so the gap is reconstructed from the *last frame of the previous log* and the *first frame of the new one* — both are retrievable since both files stay on the card, unless the previous was the evicted one; the previous log is the current one so it always survives). Script: `scripts/testing/inav/hardware/sdcard/blackbox_split_gap.py`.
 2. Firmware counter: `debug_mode=BLACKBOX` slot with a dropped-frame counter and state-machine dwell times (needs developer help).
 3. External: logic analyzer on SD CLK/CS lines (manual) to see the physical write pause.
 Also measure `idle→split` using the arm→first-frame latency from `MSP_SDCARD_SUMMARY` polling timeline.
@@ -118,7 +118,7 @@ Metrics and proposed thresholds:
 
 ## 8. Scripts to write (summary, none exist yet)
 `sitl/sdcard/`: `fat_inspect.py`, `make_card_image.py`, `sdcard_sitl_flights.py`, `run_matrix.py`, `baseline_vs_fix.sh`, `crash_watch_kill.py`, `torn_write_replay.py`, `test_regress_{numbering,fopen_busy,paused_split,cluster0,concurrent_create,full_unreclaimable,control}.py`.
-`hardware/sdcard/`: `README.md` (rig), `fill_card_to_wrap.py`, `power_cut_trial.py`, `read_back_card.sh` (MSC + dd + inspect), `measure_split_gap.py` (wraps `blackbox/analysis/blackbox_split_gap.py`).
+`scripts/testing/inav/hardware/sdcard/` (run order and exit codes in its README.md): `hw_setup.py` (bench-arm config, `restore` to undo), `cli_cmd.py` (CLI, `msc` for mass-storage), `measure_split_gap.py` (arm and log, watch for splits), `read_card_logs.py` (read-only LOG extraction in MSC mode), `blackbox_split_gap.py` (gap parser), `shrink_freefile.py` (make a split happen in minutes; do NOT use --restore after the freefile has moved), `cut_trial.py` (power-cut driver; needs a test firmware with a hold between delete and relocate, patch kept out of the PR).
 Developer help requested (test engineer cannot edit src/): (1) SITL-only `blackbox_crash_phase` hook, (2) debug slots for blackbox sd state/dropped frames, (3) the fix F build + PR-head build as two SITL.elf paths.
 
 ## 9. Run order and exit criteria

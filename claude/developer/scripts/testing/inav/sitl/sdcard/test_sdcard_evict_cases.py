@@ -60,6 +60,7 @@ def layouts():
         'E': (low + [L(1, 640, 64), L(2, 704, 64), L(3, 768, 256), L(4, 1024, 256)],
               (640, 0), 1280, 'E: two consecutive unusable (<1 SC) logs at 640,704; freefile size 0'),
         'F': ([], (640, 0), 128, 'F: card full, no LOG files, nothing reclaimable'),
+        'G': ([], (128, 40 * CS), 168, 'G: freefile 40 clu (<1 SC, nonzero), NO LOG files, nothing reclaimable (fix4 new-condition gave-up path)'),
         'C': (low + [L(1, 640, 256), L(2, 896, 256), L(3, 1152, 256), L(4, 1408, 256)],
               (640, 0), 1664, 'control: freefile size 0, oldest log with 3 logs beyond'),
     }

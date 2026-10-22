@@ -54,6 +54,7 @@ def main():
     rng = random.Random(a.seed)
     rows, viol, unarmed, laps, prev_ff = [], [], 0, 0, None
     last_max, stall, max_stall = -1, 0, 0
+    holes = set()  # log numbers inside the surviving range with no LOG file
     with lib.MspClient('localhost', a.port) as c:
         time.sleep(3.0)  # gyro cal before HITL (see lessons)
         lib.enable_hitl(c); lib.rc_pump(c, 8.0)  # extra warm-up: SD init + freefile/LOGS creation
@@ -83,6 +84,13 @@ def main():
                 keep = '%s.viol_f%03d' % (a.image, i); shutil.copyfile(snap, keep); print('  saved violating snapshot', keep)
             mxlog = max((int(g['name'][3:8]) for g in r['logs'] if g['name'][3:8].isdigit()), default=-1)
             stall = stall + 1 if (mxlog == last_max and mxlog >= 0) else 0
+            nums = sorted(int(g['name'][3:8]) for g in r['logs'] if g['name'][3:8].isdigit())
+            if nums:
+                # evicted logs are always the OLDEST, so any hole INSIDE the surviving number range is a number
+                # consumed by a log that was discarded/never survived (e.g. an empty log) -> numbering not sequential
+                for h in set(range(nums[0], nums[-1] + 1)) - set(nums):
+                    if h not in holes:
+                        holes.add(h); print('  NUMBER HOLE LOG%05d (flight %d, surviving range LOG%05d..LOG%05d)' % (h, i, nums[0], nums[-1]))
             last_max = mxlog; max_stall = max(max_stall, stall)
             if last_max < 0 and i >= 5:
                 print('HARNESS FAIL/INCONCLUSIVE: no LOG file after 6 flights (blackbox never started; not a firmware verdict)')
@@ -100,6 +108,7 @@ def main():
     final = rows[-1][7] if rows else 0
     print('\nlaps(freefile start moved backwards)=%d  max_excess_stranded=%d clu (%.1f supercl.)  final_excess_stranded=%d clu (%.1f supercl.)  unarmed=%d  violations=%d  max_flights_without_new_log=%d'
           % (laps, mx, mx / sc, final, final / sc, unarmed, len(viol), max_stall))
+    print('log number holes (numbers consumed but missing inside the surviving range; sequential numbering => 0): %d %s' % (len(holes), sorted(holes)[:20]))
     for v in viol[:10]: print('  VIOLATION', v)
     bad = viol or max_stall >= 3 or unarmed or laps < 3 or mx > 2 * sc
     print('RESULT:', 'FAIL' if bad else 'PASS', '' if laps >= 3 else '(INCONCLUSIVE: fewer than 3 laps)')
