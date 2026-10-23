@@ -540,7 +540,7 @@ bash_rules:
 
   - name: "Allow ImageMagick import for screenshot automation to tmp"
     command_pattern: "^import$"
-    argument_pattern: ".*(-window|root).*(/tmp/|\\./tmp/|inavflight/tmp/).*\\.png(\\s+2>&1)?$"
+    argument_pattern: "^-window\\s+root\\s+(/tmp/|\\./tmp/|/home/[^/\\s]+/Documents/planes/inavflight/tmp/)[A-Za-z0-9_.-]+\\.png(\\s+2>&1)?$"
     category: write
     decision: allow
     message: "ImageMagick screenshot capture to temporary directory (screenshot/GUI automation)"
