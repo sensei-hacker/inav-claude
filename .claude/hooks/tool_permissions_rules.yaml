@@ -198,7 +198,8 @@ rules:
   - name: "Allow Write/Edit within the repo claude/ tree (absolute paths, no traversal)"
     tool_name_pattern: "^(Write|Edit)$"
     tool_input_patterns:
-      file_path: "^/home/raymorris/Documents/planes/inavflight/claude/(?!.*\\.\\.)[^\\x00]+$"
+      # [\s\S] so the '..' check also spans newlines; control characters rejected outright.
+      file_path: "^/home/raymorris/Documents/planes/inavflight/claude/(?![\\s\\S]*\\.\\.)[^\\x00-\\x1f\\x7f]+$"
     category: write
     decision: allow
     message: "Edit/Write under the repo claude/ tree (already allowed via settings.json Edit(claude/**))"
