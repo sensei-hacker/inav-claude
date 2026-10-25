@@ -48,6 +48,18 @@ rules:
     category: other
     decision: allow
 
+  - name: "Allow SendMessage to this session's own sub-agents"
+    tool_name_pattern: "^SendMessage$"
+    category: other
+    decision: allow
+    message: "SendMessage - messages sub-agents spawned by this session (no file, shell, or network effect)"
+
+  - name: "Allow SubagentHandback (sub-agent final report to its caller)"
+    tool_name_pattern: "^SubagentHandback$"
+    category: other
+    decision: allow
+    message: "SubagentHandback - returns a sub-agent's final report to its caller"
+
   - name: "Allow ScheduleWakeup for agent timing and scheduling"
     tool_name_pattern: "^ScheduleWakeup$"
     category: other

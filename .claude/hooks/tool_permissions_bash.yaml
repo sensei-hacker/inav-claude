@@ -546,6 +546,50 @@ bash_rules:
     message: "ImageMagick screenshot capture to temporary directory (screenshot/GUI automation)"
 
   # ===================================================================
+  # PDF / Tool-Presence / KiCad Read-Only Lookups (narrow, added 2026-10-25)
+  # ===================================================================
+
+  - name: "Allow which for tool-presence lookup (read-only)"
+    command_pattern: "^which$"
+    argument_pattern: "^-?[A-Za-z0-9_.+-]+(\\s+[A-Za-z0-9_.+-]+)*$"
+    category: read
+    decision: allow
+    message: "which - read-only check whether a command is installed (e.g. which ngspice)"
+
+  - name: "Allow pdfinfo (read-only PDF metadata)"
+    command_pattern: "^pdfinfo$"
+    category: read
+    decision: allow
+    message: "pdfinfo - read-only PDF metadata"
+
+  - name: "Allow pdftoppm to render PDF pages to PNG in scratch tmp/ directories only"
+    command_pattern: "^pdftoppm$"
+    argument_pattern: "^(-[A-Za-z]+\\s+\\S+\\s+|-[A-Za-z]+\\s+)*[A-Za-z0-9_./-]+\\.pdf\\s+[A-Za-z0-9_-]+$"
+    category: write
+    precondition_script: |
+      # pdftoppm writes <prefix>-N.png into the current directory, so only allow it
+      # when the working directory (or a leading cd in the same command) is a scratch tmp/ dir.
+      ABS_CWD=$(pwd)
+      ORIGINAL_CMD="{ORIGINAL_COMMAND}"
+      if echo "$ABS_CWD" | grep -q "/inavflight/tmp/"; then
+        echo "allow"
+      elif [ -n "$ORIGINAL_CMD" ] && echo "$ORIGINAL_CMD" | grep -qE "cd\\s+[^&|;]*/inavflight/tmp/"; then
+        echo "allow"
+      else
+        echo "ask"
+      fi
+    message: "pdftoppm PDF-to-PNG render into scratch tmp/ directory"
+
+  - name: "Allow KiCad 10 kicad-cli read/report subcommands (DRC, ERC, render, SVG/netlist export)"
+    command_pattern: "^(~|/home/raymorris)/Documents/electronics/kicad-10\\.0\\.6-x86_64\\.AppImage$"
+    # Only report/export subcommands. Any -o/--output must point into tmp/ (no writes into
+    # libraries or elsewhere). --save* flags (which write the board) are excluded. No fp/pcb upgrade.
+    argument_pattern: "^(?!.*\\s(-o|--output)(\\s+|=)(?!(\\.\\./|\\./)?tmp/|/home/raymorris/Documents/planes/inavflight/tmp/)\\S)(?!.*--save)kicad-cli\\s+(pcb\\s+(drc|render|export\\s+svg)|sch\\s+(erc|export\\s+netlist))\\s+.*"
+    category: read
+    decision: allow
+    message: "KiCad 10 kicad-cli read/report command (DRC, ERC, render, SVG/netlist export to tmp/)"
+
+  # ===================================================================
   # Common Read-Only Commands (Broad Allow List)
   # ===================================================================
   # These are safe commands that only read/display data
