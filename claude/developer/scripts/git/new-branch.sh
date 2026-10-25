@@ -7,7 +7,10 @@
 # .claude/skills/git-workflow/SKILL.md "Creating Branches") instead.
 #
 # Usage:
-#   new-branch.sh <repo> <bugfix|feature|breaking> <branch-name> [--dry-run]
+#   new-branch.sh <repo> <bugfix|bugfix-10.0|feature|breaking> <branch-name> [--dry-run]
+#
+#   bugfix-10.0 is a fix for code that exists only in 10.0 (not on the 9.x
+#   line), during the 10.0 RC freeze.
 #
 #   repo: inav | inav2 | inav3 | inav-configurator | inav-configurator2 | PrivacyLRS
 #
@@ -30,15 +33,16 @@ set -euo pipefail
 # inav-configurator's maintenance-9.x is NOT damaged and is unaffected by
 # this override. If you're reading this after Feb 2027, verify whether
 # inav's maintenance-9.x has been repaired before deleting this block (and
-# reverting inav bugfix/feature below to maintenance-9.x).
+# reverting inav bugfix below to maintenance-9.x).
 INAV_OVERRIDE_ACTIVE=1
 
 usage() {
   cat <<'EOF'
-Usage: new-branch.sh <repo> <bugfix|feature|breaking> <branch-name> [--dry-run]
+Usage: new-branch.sh <repo> <bugfix|bugfix-10.0|feature|breaking> <branch-name> [--dry-run]
 
   repo:        inav | inav2 | inav3 | inav-configurator | inav-configurator2 | PrivacyLRS
-  change-type: bugfix | feature | breaking
+  change-type: bugfix | bugfix-10.0 | feature | breaking
+               (bugfix-10.0: fix for code that exists only in 10.0, not on 9.x)
   branch-name: kebab-case, no slashes (e.g. fix-gps-recovery)
 
   --dry-run    Print the decision and commands without running them.
@@ -76,9 +80,9 @@ case "$REPO" in
 esac
 
 case "$CHANGE_TYPE" in
-  bugfix|feature|breaking) ;;
+  bugfix|bugfix-10.0|feature|breaking) ;;
   *)
-    echo "ERROR: unknown change-type '$CHANGE_TYPE' (expected bugfix | feature | breaking)" >&2
+    echo "ERROR: unknown change-type '$CHANGE_TYPE' (expected bugfix | bugfix-10.0 | feature | breaking)" >&2
     exit 1
     ;;
 esac
@@ -106,30 +110,28 @@ case "$DECISION_REPO" in
     ;;
   inav)
     REMOTE="upstream"
-    if [[ "$INAV_OVERRIDE_ACTIVE" == "1" ]]; then
-      case "$CHANGE_TYPE" in
-        bugfix)
+    case "$CHANGE_TYPE" in
+      bugfix)
+        if [[ "$INAV_OVERRIDE_ACTIVE" == "1" ]]; then
           BASE="release/9.1"
           REASON="TEMPORARY OVERRIDE (REVIEW-BY 2027-02): inav's maintenance-9.x is damaged; bug fixes base on release/9.1 instead."
-          ;;
-        feature|breaking)
-          BASE="maintenance-10.x"
-          REASON="TEMPORARY OVERRIDE (REVIEW-BY 2027-02) for feature; normal rule for breaking: maintenance-10.x either way."
-          ;;
-      esac
-    else
-      case "$CHANGE_TYPE" in
-        bugfix|feature) BASE="maintenance-9.x"; REASON="Current-version work (backward compatible)." ;;
-        breaking)        BASE="maintenance-10.x"; REASON="Breaking change (MSP protocol/settings structure)." ;;
-      esac
-    fi
+        else
+          BASE="maintenance-9.x"
+          REASON="Current-version bug fix (backward compatible)."
+        fi
+        ;;
+      bugfix-10.0) BASE="maintenance-10.x"; REASON="Fix for 10.0-only code; maintenance-10.x is fixes-only during the 10.0 RC freeze." ;;
+      feature)     BASE="next-10.1";        REASON="Holding branch for 10.1 features during the 10.0 RC freeze (milestone 10.1)." ;;
+      breaking)    BASE="maintenance-11.x"; REASON="Breaking change (MSP protocol/settings structure)." ;;
+    esac
     ;;
   inav-configurator)
     REMOTE="upstream"
     # Not affected by the inav override — configurator's maintenance-9.x is fine.
     case "$CHANGE_TYPE" in
-      bugfix|feature) BASE="maintenance-9.x"; REASON="Current-version work (backward compatible). Not affected by the inav-only override." ;;
-      breaking)        BASE="maintenance-10.x"; REASON="Breaking change (MSP protocol/settings structure)." ;;
+      bugfix|feature) BASE="maintenance-9.x";  REASON="Current-version work (backward compatible). Not affected by the inav-only override." ;;
+      bugfix-10.0)    BASE="maintenance-10.x"; REASON="Fix for 10.0-only code; maintenance-10.x is fixes-only during the 10.0 RC freeze." ;;
+      breaking)       BASE="maintenance-11.x"; REASON="Breaking change (MSP protocol/settings structure)." ;;
     esac
     ;;
 esac
@@ -149,8 +151,12 @@ fi
 cd "$REPO"
 
 if [[ -n "$(git status --porcelain)" ]]; then
-  echo "ERROR: $REPO has a dirty working tree. Commit, stash, or discard changes first." >&2
-  exit 1
+  if [[ "$DRY_RUN" == "1" ]]; then
+    echo "WARNING: $REPO has a dirty working tree; a real run would refuse." >&2
+  else
+    echo "ERROR: $REPO has a dirty working tree. Commit, stash, or discard changes first." >&2
+    exit 1
+  fi
 fi
 
 CMDS=(

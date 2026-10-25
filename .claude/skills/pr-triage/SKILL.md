@@ -73,8 +73,9 @@ Branches"). Current effective mapping:
 | Milestone | Expected Base Branch |
 |-----------|---------------------|
 | **9.1 / 9.1.1 / 9.1.2** | inav: `release/9.1` — **temporary override active** (bugfix line) · configurator: `maintenance-9.x` |
-| **10.0 / 10.1** | `maintenance-10.x` |
-| **11.0** | `maintenance-10.x` (current 11.0 PRs, e.g. #9929, target this) |
+| **10.0** | `maintenance-10.x` (fixes only during the 10.0 RC freeze; inav fixes may also correctly target `release/9.1`, see below) |
+| **10.1** | `next-10.1` |
+| **11.0** | `maintenance-11.x` |
 | **Future** | any (no change needed) |
 
 If the PR targets the wrong branch:

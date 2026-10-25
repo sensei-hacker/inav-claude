@@ -152,8 +152,8 @@ may include unrelated commits, WIP changes, or simply the wrong base, contaminat
 ### Use the script (preferred)
 
 ```bash
-claude/developer/scripts/git/new-branch.sh <repo> <bugfix|feature|breaking> <branch-name> [--dry-run]
-# repo: inav | inav-configurator | PrivacyLRS
+claude/developer/scripts/git/new-branch.sh <repo> <bugfix|bugfix-10.0|feature|breaking> <branch-name> [--dry-run]
+# repo: inav | inav2 | inav3 | inav-configurator | inav-configurator2 | PrivacyLRS
 ```
 
 It looks up the base branch below, refuses to run on a dirty tree, fetches the correct
@@ -165,9 +165,11 @@ remote, prints its reasoning, and creates the branch. Use `--dry-run` to preview
 |------|--------|-------------|-------------|-------|
 | PrivacyLRS | `origin` | any | `secure_01` | Separate fork/derivative project |
 | inav | `upstream` | bugfix | `release/9.1` | **TEMPORARY OVERRIDE** — `maintenance-9.x` is damaged. REVIEW-BY 2027-02: verify repair before reverting to `maintenance-9.x` |
+| inav | `upstream` | bugfix-10.0 | `maintenance-10.x` | Fix for code that exists only in 10.0 (not on the 9.x line). `maintenance-10.x` is fixes-only during the 10.0 RC freeze. Milestone `10.0` |
 | inav | `upstream` | feature | `next-10.1` | Holding branch for 10.1 work during the 10.0 RC freeze; `maintenance-10.x` is fixes-only until 10.0 ships. A workflow forward-merges `maintenance-10.x` → `next-10.1` → `maintenance-11.x`. Milestone `10.1`. Revisit after 10.0 release |
 | inav | `upstream` | breaking | `maintenance-11.x` | `maintenance-11.x` created 2026-09-20 for the 10.0-RC1 cycle — see `claude/release-manager/guides/05-major-version-bump.md` |
 | inav-configurator | `upstream` | bugfix | `maintenance-9.x` | **NOT** affected by the inav override — configurator's `maintenance-9.x` is fine |
+| inav-configurator | `upstream` | bugfix-10.0 | `maintenance-10.x` | Fix for code that exists only in 10.0 (not on the 9.x line) |
 | inav-configurator | `upstream` | feature | `maintenance-9.x` | Not affected by the inav override |
 | inav-configurator | `upstream` | breaking | `maintenance-11.x` | MSP protocol / settings structure changes — `maintenance-11.x` created 2026-09-20 for the 10.0-RC1 cycle |
 | iNavFlight.github.io | `upstream` | any | `master` | No maintenance branches — single default branch, feature-branch PRs |

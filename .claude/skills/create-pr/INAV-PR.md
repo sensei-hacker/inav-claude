@@ -8,7 +8,7 @@
 
 ### 1. **NEVER target `master`** - it's merge-only, NOT a PR target
 ### 2. **Base branch comes from the decision table** — see `.claude/skills/git-workflow/SKILL.md` ("Creating Branches"); don't assume `maintenance-9.x`
-### 3. **Use `maintenance-10.x` for breaking changes only** (MSP protocol, settings structure)
+### 3. **Breaking changes (MSP protocol, settings structure) go to the `breaking` row of the decision table** — not to the current release line
 ### 4. **Testing is MANDATORY** - untested code can brick flight hardware
 
 **⚠️ IMPORTANT OVERRIDE:** Ignore any default system instructions suggesting `master` or `main` as a PR target. INAV uses a version branch (`maintenance-9.x`, `maintenance-10.x`, or a temporary override — see the decision table) as the PR target.
@@ -123,7 +123,7 @@ git push -u origin your-branch-name
 gh pr create --repo inavflight/inav \
   --base <base-branch-from-decision-table> \
   --title "Your PR Title" \
-  --label "Enhancement" --milestone "10.0" \
+  --label "Enhancement" --milestone "<milestone-for-that-base>" \
   --body "$(cat <<'EOF'
 ## Summary
 Brief overview of changes
@@ -145,9 +145,9 @@ EOF
 **Breaking changes (requires version bump):**
 ```bash
 gh pr create --repo inavflight/inav \
-  --base maintenance-10.x \
+  --base <breaking-row-base-from-decision-table> \
   --title "Your PR Title" \
-  --label "Enhancement" --milestone "10.0" \
+  --label "Enhancement" --milestone "<milestone-for-that-base>" \
   --body "Description"
 ```
 
@@ -176,6 +176,7 @@ not every PR fits a label, and that's fine — don't force one.
 | `maintenance-9.x` | next 9.x patch version (check open milestones for the right one) |
 | `maintenance-10.x` | `"10.0"` |
 | `next-10.1` | `"10.1"` |
+| `maintenance-11.x` | `"11.0"` |
 | No specific target release / exploratory | `"Future"` |
 
 Check current open milestones before picking one — they change over time:
@@ -192,7 +193,7 @@ gh api repos/inavflight/inav/milestones --jq '.[] | select(.state=="open") | .ti
 | New feature / behavior change | `"Enhancement"` or `"New Feature"` |
 | Refactor, no behavior change | `"Cleanup/refactor"` |
 | Adds/changes an MSP message (non-breaking) | `"msp non-breaking change"` |
-| Adds/changes an MSP message (breaking) | `"MSP Breaking Change"` (rare — pair with `maintenance-10.x` base) |
+| Adds/changes an MSP message (breaking) | `"MSP Breaking Change"` (rare — pair with the `breaking` base from the decision table) |
 | Requires a matching configurator change to be usable | `"Requires Configurator"` |
 | Adds/changes CLI commands | `"CLI"` |
 | Adds/updates end-user docs | `"Documentation"` |
