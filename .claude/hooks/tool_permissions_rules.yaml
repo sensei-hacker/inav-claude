@@ -192,6 +192,17 @@ rules:
     decision: allow
     message: "WASM runtime file modification allowed - active development"
 
+  # Absolute repo claude/ tree only (matches settings.json Edit(claude/**)). Anchored at the
+  # start so .claude/, inav/claude/, etc. never match; ".." anywhere in the path is rejected
+  # so /claude/../ traversal falls through to the ask below. The deny rule above still runs first.
+  - name: "Allow Write/Edit within the repo claude/ tree (absolute paths, no traversal)"
+    tool_name_pattern: "^(Write|Edit)$"
+    tool_input_patterns:
+      file_path: "^/home/raymorris/Documents/planes/inavflight/claude/(?!.*\\.\\.)[^\\x00]+$"
+    category: write
+    decision: allow
+    message: "Edit/Write under the repo claude/ tree (already allowed via settings.json Edit(claude/**))"
+
   # ===================================================================
   # Ask Rules (File Modifications)
   # ===================================================================
