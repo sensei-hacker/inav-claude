@@ -256,6 +256,22 @@ bash_rules:
     decision: allow
     message: "echo to triage skip file allowed for PR disposition workflow"
 
+  # Hint rules: these only change the message shown with an ask, never the decision.
+  # Placed after the triage allow above and before the generic echo ask below.
+  - name: "Ask for echo redirection into claude/projects/ (hint: use Edit/Write)"
+    command_pattern: "^echo$"
+    argument_pattern: ">>?\\s*[\"']?(~/inavflight/|/home/raymorris/Documents/planes/inavflight/|(\\.\\./|\\./)*)claude/projects/"
+    category: write
+    decision: ask
+    message: "Use the Edit or Write tool for files under claude/projects/ (nested project repos; already allowed via settings.json Edit(claude/**)); avoid shell redirection."
+
+  - name: "Ask for echo redirection into claude/ (hint: use Edit/Write)"
+    command_pattern: "^echo$"
+    argument_pattern: ">>?\\s*[\"']?(~/inavflight/|/home/raymorris/Documents/planes/inavflight/|(\\.\\./|\\./)*)claude/"
+    category: write
+    decision: ask
+    message: "Use the Edit or Write tool for files under claude/ (those are already allowed: settings.json Edit(claude/**)); avoid shell redirection."
+
   - name: "Ask for echo with file redirection, allow otherwise"
     command_pattern: "^echo$"
     argument_pattern: ".*>>?.*"
@@ -285,6 +301,22 @@ bash_rules:
     category: write
     decision: allow
     message: "cat write redirection to ./tmp directory only (shared inter-session storage, not system /tmp or arbitrary paths)"
+
+  # Hint rules (ask only, never allow): reached only when the cat > claude/ allow above did not match,
+  # i.e. append (>>), no-space, or "cat file > claude/..." forms. Heredoc bodies are stripped before matching.
+  - name: "Ask for cat redirection into claude/projects/ (hint: use Edit/Write)"
+    command_pattern: "^cat$"
+    argument_pattern: ">>?\\s*[\"']?(~/inavflight/|/home/raymorris/Documents/planes/inavflight/|(\\.\\./|\\./)*)claude/projects/"
+    category: write
+    decision: ask
+    message: "Use the Edit or Write tool for files under claude/projects/ (nested project repos; already allowed via settings.json Edit(claude/**)); avoid shell redirection."
+
+  - name: "Ask for cat redirection into claude/ (hint: use Edit/Write)"
+    command_pattern: "^cat$"
+    argument_pattern: ">>?\\s*[\"']?(~/inavflight/|/home/raymorris/Documents/planes/inavflight/|(\\.\\./|\\./)*)claude/"
+    category: write
+    decision: ask
+    message: "Use the Edit or Write tool for files under claude/ (those are already allowed: settings.json Edit(claude/**)); avoid shell redirection."
 
   - name: "Ask for cat > to other locations"
     command_pattern: "^cat$"
