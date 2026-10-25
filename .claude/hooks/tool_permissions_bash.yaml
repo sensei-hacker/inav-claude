@@ -564,27 +564,19 @@ bash_rules:
 
   - name: "Allow pdftoppm to render PDF pages to PNG in scratch tmp/ directories only"
     command_pattern: "^pdftoppm$"
-    argument_pattern: "^(-[A-Za-z]+\\s+\\S+\\s+|-[A-Za-z]+\\s+)*[A-Za-z0-9_./-]+\\.pdf\\s+[A-Za-z0-9_-]+$"
+    # Known flags with numeric values only; output prefix must be an absolute path under the repo tmp/;
+    # no "..", no shell metacharacters. (No precondition script: interpolating the command into shell was unsafe.)
+    argument_pattern: "^(?!.*\\.\\.)((-r|-f|-l|-scale-to|-x|-y|-W|-H)\\s+[0-9]+\\s+|-(png|singlefile|gray)\\s+)*[A-Za-z0-9_./-]+\\.pdf\\s+/home/raymorris/Documents/planes/inavflight/tmp/[A-Za-z0-9_/-]+$"
     category: write
-    precondition_script: |
-      # pdftoppm writes <prefix>-N.png into the current directory, so only allow it
-      # when the working directory (or a leading cd in the same command) is a scratch tmp/ dir.
-      ABS_CWD=$(pwd)
-      ORIGINAL_CMD="{ORIGINAL_COMMAND}"
-      if echo "$ABS_CWD" | grep -q "/inavflight/tmp/"; then
-        echo "allow"
-      elif [ -n "$ORIGINAL_CMD" ] && echo "$ORIGINAL_CMD" | grep -qE "cd\\s+[^&|;]*/inavflight/tmp/"; then
-        echo "allow"
-      else
-        echo "ask"
-      fi
+    decision: allow
     message: "pdftoppm PDF-to-PNG render into scratch tmp/ directory"
 
   - name: "Allow KiCad 10 kicad-cli read/report subcommands (DRC, ERC, render, SVG/netlist export)"
     command_pattern: "^(~|/home/raymorris)/Documents/electronics/kicad-10\\.0\\.6-x86_64\\.AppImage$"
     # Only report/export subcommands. Any -o/--output must point into tmp/ (no writes into
     # libraries or elsewhere). --save* flags (which write the board) are excluded. No fp/pcb upgrade.
-    argument_pattern: "^(?!.*\\s(-o|--output)(\\s+|=)(?!(\\.\\./|\\./)?tmp/|/home/raymorris/Documents/planes/inavflight/tmp/)\\S)(?!.*--save)kicad-cli\\s+(pcb\\s+(drc|render|export\\s+svg)|sch\\s+(erc|export\\s+netlist))\\s+.*"
+    # Strict charset (no shell metacharacters), no "..", no attached -o/--output forms, output only under the absolute repo tmp/.
+    argument_pattern: "^(?!.*\\.\\.)(?!.*--save)(?!.*\\s-o[^\\s])(?!.*--output[^\\s=])(?!.*\\s(-o|--output)(\\s+|=)(?!/home/raymorris/Documents/planes/inavflight/tmp/)\\S)kicad-cli\\s+(pcb\\s+(drc|render|export\\s+svg)|sch\\s+(erc|export\\s+netlist))(\\s+[A-Za-z0-9_./=-]+)*$"
     category: read
     decision: allow
     message: "KiCad 10 kicad-cli read/report command (DRC, ERC, render, SVG/netlist export to tmp/)"
