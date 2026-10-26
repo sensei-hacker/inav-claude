@@ -357,5 +357,6 @@ rule, not the story.
 - **Never blindly accept `--ours`/`--theirs`** — diff the discarded side and verify generated/doc files match the merged source.
 - **Regenerate generated docs after merge** (`settings.yaml` → `update_cli_docs.py`; enum headers / `msp_messages.json` → `gen_docs.sh`) — CI catches forgotten regeneration.
 - **Avoid the literal substrings `maintenance`/`master`/`main` in feature branch names** — the push-blocking hook matches them anywhere in the command text, not just the target branch; rename (e.g. `fix-x-10x`) rather than bypass the hook.
+- **A PR's head branch may be based on an old commit** — to measure or test only the PR's own change (flash size, behavior), apply `git diff <base>...<pr-branch> -- src/main | git apply` onto the current base; building the PR branch itself mixes in unrelated commits (a "−876 B" result turned out to be +96 B).
 
 <!-- Add new lessons above this line -->
