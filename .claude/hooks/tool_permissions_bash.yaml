@@ -603,6 +603,14 @@ bash_rules:
     decision: allow
     message: "pdftoppm PDF-to-PNG render into scratch tmp/ directory"
 
+  - name: "Allow mkdir -p of a single scratch directory under repo tmp/"
+    command_pattern: "^mkdir$"
+    # Single -p path, absolute, under the repo tmp/ only. No "." at all (blocks ".." traversal), no spaces or shell metacharacters.
+    argument_pattern: "^-p\\s+/home/raymorris/Documents/planes/inavflight/tmp/[A-Za-z0-9_/-]+$"
+    category: write
+    decision: allow
+    message: "mkdir -p in scratch tmp/ directory"
+
   - name: "Allow KiCad 10 kicad-cli read/report subcommands (DRC, ERC, render, SVG/netlist export)"
     command_pattern: "^(~|/home/raymorris)/Documents/electronics/kicad-10\\.0\\.6-x86_64\\.AppImage$"
     # Only report/export subcommands. Any -o/--output must point into tmp/ (no writes into
