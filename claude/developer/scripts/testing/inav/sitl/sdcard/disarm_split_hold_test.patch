@@ -1,0 +1,30 @@
+diff --git a/src/main/blackbox/blackbox_io.c b/src/main/blackbox/blackbox_io.c
+index 7f2b674454..e72fa38fe0 100644
+--- a/src/main/blackbox/blackbox_io.c
++++ b/src/main/blackbox/blackbox_io.c
+@@ -466,6 +466,7 @@ static void blackboxCreateLogFile(void)
+  *
+  * Keep calling until the function returns true (open is complete).
+  */
++static uint8_t testRelocN = 0; static bool testInReloc = false;
+ static bool blackboxSDCardBeginLog(void)
+ {
+     fatDirectoryEntry_t *directoryEntry;
+@@ -652,7 +653,17 @@ static bool blackboxSDCardBeginLog(void)
+         break;
+ 
+     case BLACKBOX_SDCARD_RELOCATE_FREEFILE:
++        {   // TEST BUILD ONLY, NOT FOR THE PR: hold the 2nd relocation for 3 s so a disarm can land inside the split
++            static timeMs_t holdStart = 0;
++            if (!testInReloc) { testInReloc = true; testRelocN++; holdStart = 0; }
++            if (testRelocN == 2) {
++                if (afatfs_hasPendingWrites()) break;
++                if (holdStart == 0) holdStart = millis();
++                if (millis() - holdStart < 3000) break;
++            }
++        }
+         if (afatfs_freeFileRelocate(blackboxSDCard.oldestLogFirstCluster, blackboxSDCard.oldestLogFileSize) == AFATFS_OPERATION_SUCCESS) {
++            testInReloc = false;
+             blackboxSDCard.state = BLACKBOX_SDCARD_READY_TO_CREATE_LOG;
+             goto doMore;
+         }
